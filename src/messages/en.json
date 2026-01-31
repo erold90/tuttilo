@@ -654,15 +654,100 @@
     },
     "compress-video": {
       "name": "Compress Video",
-      "description": "Reduce video file size while maintaining quality"
+      "description": "Reduce video file size while maintaining quality",
+      "seo": {
+        "title": "Free Online Video Compressor",
+        "content": "Compress video files directly in your browser. Reduce file size with adjustable quality settings using H.264 encoding. Free, private, no upload to external servers."
+      },
+      "faq": {
+        "q1": "What video formats are supported?",
+        "a1": "The tool supports MP4, WebM, MOV and most common video formats. The output is always MP4 (H.264) for maximum compatibility across devices and platforms.",
+        "q2": "How much can the file size be reduced?",
+        "a2": "Results vary depending on the original video. Typically you can expect 30-70% size reduction at medium quality. Higher quality preserves more detail with less compression.",
+        "q3": "Does compression reduce video quality?",
+        "a3": "The tool offers three quality levels. High quality preserves most detail, medium offers a good balance, and low creates the smallest files. You choose the best tradeoff for your needs."
+      },
+      "ui": {
+        "dropzone": "Drop a video file here or click to select",
+        "dropzoneHint": "MP4, WebM, MOV up to 500 MB",
+        "quality": "Quality",
+        "quality_high": "High",
+        "quality_medium": "Medium",
+        "quality_low": "Low",
+        "compress": "Compress Video",
+        "loadingFfmpeg": "Loading encoder...",
+        "compressing": "Compressing...",
+        "done": "Compression complete!",
+        "original": "Original",
+        "compressed": "Compressed",
+        "download": "Download",
+        "reset": "Reset",
+        "compressError": "An error occurred during compression. Please try again."
+      }
     },
     "trim-video": {
       "name": "Trim Video",
-      "description": "Cut and trim your videos with precision"
+      "description": "Cut and trim your videos with precision",
+      "seo": {
+        "title": "Free Online Video Trimmer",
+        "content": "Trim and cut video files directly in your browser. Set precise start and end points with a visual preview. Free, private, no upload needed."
+      },
+      "faq": {
+        "q1": "What video formats are supported?",
+        "a1": "The tool supports MP4, WebM, MOV and most common video formats playable by your browser. The output is MP4 for maximum compatibility.",
+        "q2": "Can I preview before trimming?",
+        "a2": "Yes, the built-in video player lets you preview the entire video. Adjust the start and end sliders to select the portion you want to keep, and the player follows your selection.",
+        "q3": "Is there a length limit?",
+        "a3": "There is no length limit. The tool supports videos up to 500 MB. Processing happens in your browser, so longer videos may take more time depending on your device."
+      },
+      "ui": {
+        "dropzone": "Drop a video file here or click to select",
+        "dropzoneHint": "MP4, WebM, MOV up to 500 MB",
+        "start": "Start",
+        "end": "End",
+        "selection": "Selection",
+        "trim": "Trim Video",
+        "loadingFfmpeg": "Loading encoder...",
+        "trimming": "Trimming...",
+        "done": "Trim complete!",
+        "download": "Download",
+        "reset": "Reset",
+        "preview": "Preview",
+        "trimError": "An error occurred during trimming. Please try again."
+      }
     },
     "video-to-gif": {
       "name": "Video to GIF",
-      "description": "Convert videos to animated GIFs"
+      "description": "Convert videos to animated GIFs",
+      "seo": {
+        "title": "Free Online Video to GIF Converter",
+        "content": "Convert video clips to animated GIFs directly in your browser. Adjust FPS, width, and select the portion to convert. High-quality palette optimization. Free, private, no upload."
+      },
+      "faq": {
+        "q1": "What video formats are supported?",
+        "a1": "The tool supports MP4, WebM and most common video formats. Simply upload your video and select the portion you want to convert to GIF.",
+        "q2": "How can I control the GIF file size?",
+        "a2": "Use the FPS and width controls. Lower FPS (5-10) and smaller width (320px) create smaller files. Higher FPS (15-20) and larger width (640px) produce smoother, larger GIFs.",
+        "q3": "Is there a duration limit?",
+        "a3": "There is no hard limit, but GIFs are best for short clips (3-15 seconds). Longer clips create very large files. The tool supports videos up to 200 MB."
+      },
+      "ui": {
+        "dropzone": "Drop a video file here or click to select",
+        "dropzoneHint": "MP4, WebM up to 200 MB",
+        "start": "Start",
+        "end": "End",
+        "selection": "Selection",
+        "fps": "FPS",
+        "width": "Width",
+        "convert": "Convert to GIF",
+        "loadingFfmpeg": "Loading encoder...",
+        "converting": "Converting...",
+        "done": "Conversion complete!",
+        "download": "Download GIF",
+        "reset": "Reset",
+        "preview": "Preview",
+        "convertError": "An error occurred during conversion. Please try again."
+      }
     },
     "video-to-mp3": {
       "name": "Video to MP3",
@@ -748,7 +833,31 @@
     },
     "audio-converter": {
       "name": "Audio Converter",
-      "description": "Convert audio files between different formats"
+      "description": "Convert audio files between different formats",
+      "seo": {
+        "title": "Free Online Audio Converter",
+        "content": "Convert audio files between MP3, WAV, OGG, FLAC, and AAC formats directly in your browser. High-quality conversion powered by FFmpeg. Free, private, no upload needed."
+      },
+      "faq": {
+        "q1": "What audio formats are supported?",
+        "a1": "You can convert between MP3, WAV, OGG, FLAC, and AAC. The tool accepts any audio format your browser can read and outputs in your chosen format.",
+        "q2": "Does conversion affect audio quality?",
+        "a2": "Converting to lossless formats (WAV, FLAC) preserves full quality. Converting to lossy formats (MP3, OGG, AAC) uses high-quality settings to minimize any loss.",
+        "q3": "Is there a file size limit?",
+        "a3": "The tool supports audio files up to 100 MB. All processing happens in your browser using FFmpeg WebAssembly — your files are never uploaded."
+      },
+      "ui": {
+        "dropzone": "Drop an audio file here or click to select",
+        "dropzoneHint": "MP3, WAV, OGG, FLAC, AAC and more",
+        "outputFormat": "Output Format",
+        "convert": "Convert",
+        "loadingFfmpeg": "Loading encoder...",
+        "converting": "Converting...",
+        "done": "Conversion complete!",
+        "download": "Download",
+        "reset": "Reset",
+        "convertError": "An error occurred during conversion. Please try again."
+      }
     },
     "voice-recorder": {
       "name": "Voice Recorder",
@@ -988,7 +1097,27 @@
     },
     "youtube-thumbnail": {
       "name": "YouTube Thumbnail Downloader",
-      "description": "Download YouTube video thumbnails in high quality"
+      "description": "Download YouTube video thumbnails in high quality",
+      "seo": {
+        "title": "Free YouTube Thumbnail Downloader",
+        "content": "Download YouTube video thumbnails in all available resolutions. Paste a YouTube URL and save HD, SD, HQ or MQ thumbnails. Free, instant, no registration needed."
+      },
+      "faq": {
+        "q1": "What resolutions are available?",
+        "a1": "Thumbnails are available in HD (1280x720), SD (640x480), HQ (480x360), and MQ (320x180). Not all resolutions may be available for every video.",
+        "q2": "Do I need to be logged in to YouTube?",
+        "a2": "No. Thumbnails are publicly accessible for all YouTube videos. Simply paste the video URL and download the resolution you need.",
+        "q3": "What YouTube URL formats are supported?",
+        "a3": "The tool supports standard youtube.com/watch URLs, youtu.be short links, YouTube Shorts URLs, and embed URLs. You can also paste just the video ID."
+      },
+      "ui": {
+        "urlLabel": "YouTube URL",
+        "urlPlaceholder": "Paste YouTube video URL...",
+        "fetch": "Get Thumbnails",
+        "download": "Download",
+        "reset": "Reset",
+        "invalidUrl": "Please enter a valid YouTube URL or video ID."
+      }
     },
     "youtube-transcript": {
       "name": "YouTube Transcript",
