@@ -11,7 +11,7 @@ import {
   DialogTitle,
 } from "@/components/ui/dialog";
 import { Input } from "@/components/ui/input";
-import { getAllTools, type Tool } from "@/lib/tools/registry";
+import { tools, type Tool, type ToolCategoryId } from "@/lib/tools/registry";
 import { cn } from "@/lib/utils";
 
 const categoryColors: Record<string, string> = {
@@ -24,13 +24,18 @@ const categoryColors: Record<string, string> = {
   youtube: "text-[#EC4899]",
 };
 
+function getToolHref(tool: Tool): string {
+  return `/${tool.category}/${tool.slug}`;
+}
+
 export function SearchDialog() {
   const [open, setOpen] = useState(false);
   const [query, setQuery] = useState("");
-  const t = useTranslations("search");
+  const t = useTranslations("tools");
+  const tSearch = useTranslations("search");
+  const tNav = useTranslations("nav");
   const router = useRouter();
 
-  // CMD+K / CTRL+K shortcut
   useEffect(() => {
     function onKeyDown(e: KeyboardEvent) {
       if ((e.metaKey || e.ctrlKey) && e.key === "k") {
@@ -42,31 +47,36 @@ export function SearchDialog() {
     return () => document.removeEventListener("keydown", onKeyDown);
   }, []);
 
-  const allTools = useMemo(() => {
-    try {
-      return getAllTools();
-    } catch {
-      return [];
-    }
-  }, []);
+  const toolsWithNames = useMemo(() => {
+    return tools.map((tool) => {
+      let name = tool.id;
+      let description = "";
+      try {
+        name = t(`${tool.id}.name`);
+        description = t(`${tool.id}.description`);
+      } catch {
+        name = tool.id.replace(/-/g, " ");
+      }
+      return { ...tool, name, description };
+    });
+  }, [t]);
 
   const filteredTools = useMemo(() => {
-    if (!query.trim()) return allTools.slice(0, 12);
+    if (!query.trim()) return toolsWithNames.slice(0, 12);
     const q = query.toLowerCase();
-    return allTools.filter(
-      (tool: Tool) =>
+    return toolsWithNames.filter(
+      (tool) =>
         tool.name.toLowerCase().includes(q) ||
-        tool.description?.toLowerCase().includes(q) ||
-        tool.category?.toLowerCase().includes(q)
+        tool.description.toLowerCase().includes(q) ||
+        tool.category.toLowerCase().includes(q)
     );
-  }, [query, allTools]);
+  }, [query, toolsWithNames]);
 
   const grouped = useMemo(() => {
-    const groups: Record<string, Tool[]> = {};
+    const groups: Record<string, (Tool & { name: string; description: string })[]> = {};
     for (const tool of filteredTools) {
-      const cat = tool.category || "other";
-      if (!groups[cat]) groups[cat] = [];
-      groups[cat].push(tool);
+      if (!groups[tool.category]) groups[tool.category] = [];
+      groups[tool.category].push(tool);
     }
     return groups;
   }, [filteredTools]);
@@ -75,7 +85,7 @@ export function SearchDialog() {
     (tool: Tool) => {
       setOpen(false);
       setQuery("");
-      router.push(tool.href);
+      router.push(getToolHref(tool) as any);
     },
     [router]
   );
@@ -85,7 +95,7 @@ export function SearchDialog() {
       <button
         onClick={() => setOpen(true)}
         className="flex h-9 w-9 items-center justify-center rounded-md hover:bg-accent transition-colors"
-        aria-label={t("openSearch")}
+        aria-label={tSearch("openSearch")}
       >
         <Search className="h-4 w-4" />
       </button>
@@ -93,7 +103,7 @@ export function SearchDialog() {
       <Dialog open={open} onOpenChange={setOpen}>
         <DialogContent className="sm:max-w-[520px] p-0 gap-0">
           <DialogHeader className="sr-only">
-            <DialogTitle>{t("title")}</DialogTitle>
+            <DialogTitle>{tSearch("title")}</DialogTitle>
           </DialogHeader>
 
           <div className="flex items-center border-b px-3">
@@ -101,7 +111,7 @@ export function SearchDialog() {
             <Input
               value={query}
               onChange={(e) => setQuery(e.target.value)}
-              placeholder={t("placeholder")}
+              placeholder={tSearch("placeholder")}
               className="border-0 focus-visible:ring-0 focus-visible:ring-offset-0 h-11"
               autoFocus
             />
@@ -113,10 +123,10 @@ export function SearchDialog() {
           <div className="max-h-[300px] overflow-y-auto p-2">
             {Object.keys(grouped).length === 0 ? (
               <p className="py-6 text-center text-sm text-muted-foreground">
-                {t("noResults")}
+                {tSearch("noResults")}
               </p>
             ) : (
-              Object.entries(grouped).map(([category, tools]) => (
+              Object.entries(grouped).map(([category, categoryTools]) => (
                 <div key={category} className="mb-2">
                   <p
                     className={cn(
@@ -124,26 +134,22 @@ export function SearchDialog() {
                       categoryColors[category] || "text-muted-foreground"
                     )}
                   >
-                    {category}
+                    {(() => { try { return tNav(category); } catch { return category; } })()}
                   </p>
-                  {tools.map((tool: Tool) => (
+                  {categoryTools.map((tool) => (
                     <button
                       key={tool.id}
                       onClick={() => handleSelect(tool)}
                       className="flex w-full items-center gap-3 rounded-md px-2 py-2 text-sm hover:bg-accent transition-colors text-left"
                     >
-                      {tool.icon && (
-                        <span className="flex h-8 w-8 items-center justify-center rounded-md bg-muted">
-                          {tool.icon}
-                        </span>
-                      )}
+                      <span className="flex h-8 w-8 items-center justify-center rounded-md bg-muted text-xs">
+                        {tool.category.slice(0, 2).toUpperCase()}
+                      </span>
                       <div className="flex-1 min-w-0">
                         <p className="font-medium truncate">{tool.name}</p>
-                        {tool.description && (
-                          <p className="text-xs text-muted-foreground truncate">
-                            {tool.description}
-                          </p>
-                        )}
+                        <p className="text-xs text-muted-foreground truncate">
+                          {tool.description}
+                        </p>
                       </div>
                     </button>
                   ))}
@@ -153,7 +159,7 @@ export function SearchDialog() {
           </div>
 
           <div className="border-t p-2 text-xs text-muted-foreground flex items-center justify-between">
-            <span>{t("hint")}</span>
+            <span>{tSearch("hint")}</span>
             <kbd className="hidden sm:inline-flex items-center gap-1 rounded border bg-muted px-1.5 py-0.5 font-mono text-[10px]">
               Cmd+K
             </kbd>

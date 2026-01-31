@@ -7,7 +7,7 @@ import { ThemeProvider } from "@/components/layout/theme-provider";
 import { Header } from "@/components/layout/header";
 import { Footer } from "@/components/layout/footer";
 import { routing } from "@/i18n/routing";
-import "@/app/globals.css";
+import "@/styles/globals.css";
 
 const inter = Inter({
   subsets: ["latin"],
@@ -24,7 +24,7 @@ const jetbrainsMono = JetBrains_Mono({
 export const metadata = {
   title: {
     template: "%s | Tuttilo",
-    default: "Tuttilo \u2014 Free Online Tools",
+    default: "Tuttilo — Free Online Tools",
   },
   description:
     "Free all-in-one online tools for PDF, images, video, audio, text, and developer utilities. All processing happens in your browser.",
@@ -39,7 +39,6 @@ export default async function LocaleLayout({
 }) {
   const { locale } = await params;
 
-  // Validate locale
   if (!routing.locales.includes(locale as any)) {
     notFound();
   }
