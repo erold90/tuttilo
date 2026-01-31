@@ -127,7 +127,7 @@ export function SvgToPng() {
 
           {svgPreview && (
             <div className="flex justify-center bg-[url('data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iMjAiIGhlaWdodD0iMjAiIHhtbG5zPSJodHRwOi8vd3d3LnczLm9yZy8yMDAwL3N2ZyI+PHJlY3Qgd2lkdGg9IjEwIiBoZWlnaHQ9IjEwIiBmaWxsPSIjZGRkIi8+PHJlY3QgeD0iMTAiIHk9IjEwIiB3aWR0aD0iMTAiIGhlaWdodD0iMTAiIGZpbGw9IiNkZGQiLz48L3N2Zz4=')] rounded-lg p-4 max-h-64 overflow-hidden">
-              <div dangerouslySetInnerHTML={{ __html: svgPreview }} className="max-w-full max-h-56 [&>svg]:max-w-full [&>svg]:max-h-56 [&>svg]:w-auto [&>svg]:h-auto" />
+              <img src={`data:image/svg+xml;charset=utf-8,${encodeURIComponent(svgPreview)}`} alt="SVG preview" className="max-w-full max-h-56 w-auto h-auto" />
             </div>
           )}
 

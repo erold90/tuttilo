@@ -2,60 +2,19 @@
 
 import { useState, useCallback } from "react";
 import { useTranslations } from "next-intl";
-
-function encodeWav(audioBuffer: AudioBuffer): Blob {
-  const numChannels = audioBuffer.numberOfChannels;
-  const sampleRate = audioBuffer.sampleRate;
-  const length = audioBuffer.length * numChannels * 2;
-  const buffer = new ArrayBuffer(44 + length);
-  const view = new DataView(buffer);
-
-  const writeStr = (offset: number, str: string) => {
-    for (let i = 0; i < str.length; i++) view.setUint8(offset + i, str.charCodeAt(i));
-  };
-
-  writeStr(0, "RIFF");
-  view.setUint32(4, 36 + length, true);
-  writeStr(8, "WAVE");
-  writeStr(12, "fmt ");
-  view.setUint32(16, 16, true);
-  view.setUint16(20, 1, true);
-  view.setUint16(22, numChannels, true);
-  view.setUint32(24, sampleRate, true);
-  view.setUint32(28, sampleRate * numChannels * 2, true);
-  view.setUint16(32, numChannels * 2, true);
-  view.setUint16(34, 16, true);
-  writeStr(36, "data");
-  view.setUint32(40, length, true);
-
-  let offset = 44;
-  const channels: Float32Array[] = [];
-  for (let ch = 0; ch < numChannels; ch++) {
-    channels.push(audioBuffer.getChannelData(ch));
-  }
-
-  for (let i = 0; i < audioBuffer.length; i++) {
-    for (let ch = 0; ch < numChannels; ch++) {
-      const sample = Math.max(-1, Math.min(1, channels[ch][i]));
-      view.setInt16(offset, sample < 0 ? sample * 0x8000 : sample * 0x7fff, true);
-      offset += 2;
-    }
-  }
-
-  return new Blob([buffer], { type: "audio/wav" });
-}
+import { getFFmpeg, ffmpegFetchFile } from "@/lib/ffmpeg";
 
 export function VideoToMp3() {
   const t = useTranslations("tools.video-to-mp3.ui");
   const [file, setFile] = useState<File | null>(null);
-  const [processing, setProcessing] = useState(false);
+  const [loading, setLoading] = useState(false);
+  const [converting, setConverting] = useState(false);
   const [progress, setProgress] = useState(0);
   const [result, setResult] = useState<{ url: string; name: string; size: number } | null>(null);
   const [error, setError] = useState("");
 
   const loadVideo = useCallback((f: File) => {
-    const validTypes = ["video/mp4", "video/webm", "video/quicktime", "video/x-matroska"];
-    if (!validTypes.some((t) => f.type.startsWith(t.split("/")[0]))) return;
+    if (!f.type.startsWith("video/")) return;
     setError("");
     setResult(null);
     setFile(f);
@@ -63,34 +22,42 @@ export function VideoToMp3() {
 
   const extract = useCallback(async () => {
     if (!file) return;
-    setProcessing(true);
+    setLoading(true);
     setError("");
-    setProgress(10);
+    setProgress(0);
     try {
-      const arrayBuffer = await file.arrayBuffer();
-      setProgress(30);
+      const ffmpeg = await getFFmpeg(setProgress);
+      setLoading(false);
+      setConverting(true);
 
-      const audioCtx = new AudioContext();
-      const audioBuffer = await audioCtx.decodeAudioData(arrayBuffer);
-      setProgress(70);
+      const inputExt = file.name.match(/\.\w+$/)?.[0] || ".mp4";
+      const inputName = "input" + inputExt;
+      const outputName = "output.mp3";
 
-      const wavBlob = encodeWav(audioBuffer);
-      setProgress(90);
+      await ffmpeg.writeFile(inputName, await ffmpegFetchFile(file));
+      await ffmpeg.exec(["-i", inputName, "-vn", "-codec:a", "libmp3lame", "-q:a", "2", outputName]);
+
+      const data = await ffmpeg.readFile(outputName);
+      const blob = new Blob([(data as Uint8Array).buffer as ArrayBuffer], { type: "audio/mpeg" });
 
       const baseName = file.name.replace(/\.[^.]+$/, "");
+      if (result) URL.revokeObjectURL(result.url);
       setResult({
-        url: URL.createObjectURL(wavBlob),
-        name: `${baseName}.wav`,
-        size: wavBlob.size,
+        url: URL.createObjectURL(blob),
+        name: `${baseName}.mp3`,
+        size: blob.size,
       });
-      setProgress(100);
-      audioCtx.close();
+
+      await ffmpeg.deleteFile(inputName);
+      await ffmpeg.deleteFile(outputName);
     } catch {
       setError(t("extractError"));
     } finally {
-      setProcessing(false);
+      setLoading(false);
+      setConverting(false);
+      setProgress(0);
     }
-  }, [file, t]);
+  }, [file, result, t]);
 
   const download = useCallback(() => {
     if (!result) return;
@@ -114,12 +81,6 @@ export function VideoToMp3() {
     return `${(bytes / (1024 * 1024)).toFixed(1)} MB`;
   };
 
-  const formatDuration = (seconds: number) => {
-    const m = Math.floor(seconds / 60);
-    const s = Math.floor(seconds % 60);
-    return `${m}:${s.toString().padStart(2, "0")}`;
-  };
-
   return (
     <div className="space-y-6">
       {!file ? (
@@ -141,7 +102,7 @@ export function VideoToMp3() {
             <p className="text-sm text-muted-foreground">{formatSize(file.size)}</p>
           </div>
 
-          {processing && (
+          {(loading || converting) && (
             <div className="w-full bg-muted rounded-full h-2">
               <div
                 className="bg-primary h-2 rounded-full transition-all duration-300"
@@ -152,10 +113,10 @@ export function VideoToMp3() {
 
           <button
             onClick={extract}
-            disabled={processing}
+            disabled={loading || converting}
             className="w-full py-3 px-4 bg-primary text-primary-foreground rounded-lg font-medium hover:bg-primary/90 disabled:opacity-50 transition-colors"
           >
-            {processing ? `${t("processing")} ${progress}%` : t("extract")}
+            {loading ? t("processing") : converting ? `${t("processing")} ${progress}%` : t("extract")}
           </button>
         </div>
       ) : (
@@ -164,7 +125,9 @@ export function VideoToMp3() {
           <div className="bg-muted/50 rounded-lg p-4 flex items-center justify-between">
             <div>
               <p className="font-medium">{result.name}</p>
-              <p className="text-sm text-muted-foreground">{formatSize(result.size)}</p>
+              <p className="text-sm text-muted-foreground">
+                {formatSize(file.size)} → {formatSize(result.size)}
+              </p>
             </div>
             <div className="flex gap-2">
               <button onClick={download} className="py-2 px-4 bg-primary text-primary-foreground rounded-lg font-medium hover:bg-primary/90 transition-colors">

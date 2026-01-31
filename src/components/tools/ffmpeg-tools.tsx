@@ -21,3 +21,8 @@ export const AudioConverter = dynamic(
   () => import("./audio-converter").then((m) => m.AudioConverter),
   { ssr: false }
 );
+
+export const VideoToMp3 = dynamic(
+  () => import("./video-to-mp3").then((m) => m.VideoToMp3),
+  { ssr: false }
+);
