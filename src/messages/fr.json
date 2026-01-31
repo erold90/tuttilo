@@ -21,7 +21,11 @@
     "privacyBadge": "Vos fichiers ne quittent jamais votre navigateur",
     "free": "Gratuit",
     "noRegistration": "Sans inscription",
-    "noLimits": "Sans limites"
+    "noLimits": "Sans limites",
+    "faq": "Questions Fréquentes",
+    "relatedTools": "Outils Associés",
+    "tryNow": "Essayer maintenant",
+    "home": "Accueil"
   },
   "nav": {
     "pdf": "PDF",
@@ -202,11 +206,57 @@
     },
     "word-counter": {
       "name": "Compteur de mots",
-      "description": "Comptez les mots, caractères, phrases et paragraphes"
+      "description": "Comptez les mots, caractères, phrases et paragraphes",
+      "seo": {
+        "title": "Compteur de mots en ligne gratuit - Caractères, phrases et paragraphes",
+        "content": "Comptez instantanément les mots, caractères, phrases et paragraphes de votre texte. Outil gratuit en ligne avec temps de lecture et temps de parole. Sans inscription."
+      },
+      "faq": {
+        "q1": "Comment fonctionne le compteur de mots ?",
+        "a1": "Tapez ou collez simplement votre texte dans le champ de saisie. Le compteur analyse automatiquement le contenu en temps réel et affiche le nombre de mots, caractères, phrases et paragraphes.",
+        "q2": "Mes données sont-elles privées ?",
+        "a2": "Oui, totalement. Tout le traitement s'effectue directement dans votre navigateur. Votre texte n'est jamais envoyé vers un serveur externe.",
+        "q3": "Sur quoi se base le calcul du temps de lecture ?",
+        "a3": "Le temps de lecture est calculé sur la base d'une vitesse moyenne de 200 mots par minute, ce qui correspond à la vitesse de lecture standard d'un adulte."
+      },
+      "ui": {
+        "placeholder": "Tapez ou collez votre texte ici...",
+        "words": "Mots",
+        "characters": "Caractères",
+        "charactersNoSpaces": "Caractères sans espaces",
+        "sentences": "Phrases",
+        "paragraphs": "Paragraphes",
+        "readingTime": "Temps de lecture",
+        "speakingTime": "Temps de parole",
+        "clear": "Effacer"
+      }
     },
     "lorem-ipsum": {
       "name": "Générateur Lorem Ipsum",
-      "description": "Générez du texte de remplissage Lorem Ipsum personnalisé"
+      "description": "Générez du texte de remplissage Lorem Ipsum personnalisé",
+      "seo": {
+        "title": "Générateur Lorem Ipsum en ligne gratuit - Texte de remplissage personnalisé",
+        "content": "Générez du texte de remplissage Lorem Ipsum personnalisé pour vos maquettes et projets. Choisissez entre paragraphes, phrases ou mots. Outil gratuit en ligne."
+      },
+      "faq": {
+        "q1": "Qu'est-ce que Lorem Ipsum ?",
+        "a1": "Lorem Ipsum est un texte de remplissage standard utilisé en graphisme, typographie et mise en page web depuis le XVIe siècle. Il permet de visualiser le rendu d'un projet sans être distrait par le contenu réel.",
+        "q2": "Puis-je personnaliser le texte généré ?",
+        "a2": "Oui, vous pouvez choisir la quantité et le type de contenu à générer : paragraphes, phrases ou mots individuels, selon vos besoins.",
+        "q3": "Le texte généré est-il toujours aléatoire ?",
+        "a3": "Le texte se base sur le Lorem Ipsum classique mais inclut des variations pour que chaque génération soit légèrement différente, tout en conservant une structure naturelle."
+      },
+      "ui": {
+        "count": "Quantité",
+        "type": "Type",
+        "paragraphs": "Paragraphes",
+        "sentences": "Phrases",
+        "words": "Mots",
+        "generate": "Générer",
+        "copy": "Copier",
+        "copied": "Copié !",
+        "wordsCount": "mots"
+      }
     },
     "case-converter": {
       "name": "Convertisseur majuscules/minuscules",
@@ -222,19 +272,108 @@
     },
     "json-formatter": {
       "name": "Formateur JSON",
-      "description": "Formatez, validez et minimisez du code JSON"
+      "description": "Formatez, validez et minimisez du code JSON",
+      "seo": {
+        "title": "Formateur et validateur JSON en ligne gratuit",
+        "content": "Formatez, validez et minimisez du code JSON instantanément. Mise en évidence des erreurs, indentation personnalisable et copie en un clic. Outil gratuit en ligne sans inscription."
+      },
+      "faq": {
+        "q1": "Que se passe-t-il si mon JSON est invalide ?",
+        "a1": "L'outil détecte automatiquement les erreurs de syntaxe dans votre JSON et affiche un message d'erreur indiquant l'emplacement du problème, afin que vous puissiez le corriger facilement.",
+        "q2": "Puis-je modifier la taille de l'indentation ?",
+        "a2": "Oui, vous pouvez choisir le niveau d'indentation souhaité (2 ou 4 espaces) pour formater votre JSON de la manière la plus lisible.",
+        "q3": "Mes données sont-elles en sécurité ?",
+        "a3": "Absolument. Le traitement s'effectue entièrement dans votre navigateur. Votre code JSON n'est jamais envoyé vers des serveurs externes."
+      },
+      "ui": {
+        "format": "Formater",
+        "minify": "Minimiser",
+        "copy": "Copier",
+        "copied": "Copié !",
+        "indent": "Indentation",
+        "error": "Erreur",
+        "input": "Entrée",
+        "output": "Sortie",
+        "inputPlaceholder": "Collez votre JSON ici...",
+        "outputPlaceholder": "Le JSON formaté apparaîtra ici..."
+      }
     },
     "base64": {
       "name": "Encodeur Base64",
-      "description": "Encodez et décodez du texte et des fichiers en Base64"
+      "description": "Encodez et décodez du texte et des fichiers en Base64",
+      "seo": {
+        "title": "Encodeur et décodeur Base64 en ligne gratuit",
+        "content": "Encodez et décodez du texte en Base64 instantanément. Compatible Unicode et caractères spéciaux. Outil gratuit en ligne sans inscription."
+      },
+      "faq": {
+        "q1": "Qu'est-ce que le Base64 ?",
+        "a1": "Le Base64 est un système d'encodage qui convertit des données binaires en texte ASCII. Il est couramment utilisé pour intégrer des données dans du HTML, CSS, des e-mails et le transfert de données sur le web.",
+        "q2": "Les caractères Unicode sont-ils pris en charge ?",
+        "a2": "Oui, l'outil prend entièrement en charge l'Unicode, y compris les caractères spéciaux, les accents, les emojis et les caractères de langues comme le japonais, le coréen ou l'arabe.",
+        "q3": "Y a-t-il une limite de taille ?",
+        "a3": "Il n'y a pas de limite stricte, mais comme tout est traité dans votre navigateur, des textes très volumineux pourraient ralentir les performances. Pour une utilisation normale, cela fonctionne parfaitement."
+      },
+      "ui": {
+        "encode": "Encoder",
+        "decode": "Décoder",
+        "input": "Entrée",
+        "output": "Sortie",
+        "copy": "Copier",
+        "copied": "Copié !",
+        "encodePlaceholder": "Saisissez le texte à encoder en Base64...",
+        "decodePlaceholder": "Collez le texte Base64 à décoder...",
+        "invalidInput": "Entrée invalide"
+      }
     },
     "regex-tester": {
       "name": "Testeur Regex",
-      "description": "Testez et déboguez des expressions régulières en temps réel"
+      "description": "Testez et déboguez des expressions régulières en temps réel",
+      "seo": {
+        "title": "Testeur d'expressions régulières en ligne gratuit",
+        "content": "Testez et déboguez des expressions régulières (regex) en temps réel. Mise en évidence des correspondances, support des drapeaux et résultats instantanés. Outil gratuit en ligne."
+      },
+      "faq": {
+        "q1": "Quelle syntaxe d'expressions régulières est prise en charge ?",
+        "a1": "L'outil utilise la syntaxe des expressions régulières JavaScript, compatible avec la plupart des motifs regex courants, y compris les groupes de capture, les quantificateurs, les classes de caractères et les assertions.",
+        "q2": "Que signifient les drapeaux (flags) ?",
+        "a2": "Les drapeaux modifient le comportement de la regex : 'g' (global) recherche toutes les correspondances, 'i' ignore la casse, 'm' active le mode multiligne, et 's' permet au point de correspondre aux sauts de ligne.",
+        "q3": "Y a-t-il une limite de taille pour le texte de test ?",
+        "a3": "Il n'y a pas de limite stricte, mais comme le traitement s'effectue dans votre navigateur, des textes extrêmement volumineux pourraient affecter les performances. Pour une utilisation courante, cela fonctionne sans problème."
+      },
+      "ui": {
+        "pattern": "Motif",
+        "patternPlaceholder": "Saisissez votre expression régulière...",
+        "testString": "Texte de test",
+        "testPlaceholder": "Saisissez le texte de test ici...",
+        "result": "Résultat",
+        "matchesFound": "correspondances trouvées",
+        "atIndex": "à la position",
+        "global": "Global",
+        "caseInsensitive": "Insensible à la casse",
+        "multiline": "Multiligne",
+        "dotAll": "Point inclut sauts de ligne"
+      }
     },
     "color-picker": {
       "name": "Sélecteur de couleur",
-      "description": "Sélectionnez des couleurs et convertissez entre HEX, RGB, HSL"
+      "description": "Sélectionnez des couleurs et convertissez entre HEX, RGB, HSL",
+      "seo": {
+        "title": "Sélecteur de couleur en ligne gratuit - HEX, RGB, HSL",
+        "content": "Sélectionnez des couleurs et convertissez entre les formats HEX, RGB et HSL instantanément. Outil visuel avec copie en un clic. Gratuit et sans inscription."
+      },
+      "faq": {
+        "q1": "Quels formats de couleur sont pris en charge ?",
+        "a1": "L'outil prend en charge les formats de couleur les plus utilisés : HEX (ex. #FF5733), RGB (ex. rgb(255, 87, 51)) et HSL (ex. hsl(11, 100%, 60%)). La conversion entre formats est instantanée.",
+        "q2": "Puis-je saisir un code HEX directement ?",
+        "a2": "Oui, vous pouvez taper ou coller directement un code couleur HEX, RGB ou HSL, et l'outil le convertira automatiquement vers les autres formats.",
+        "q3": "Est-ce compatible avec les appareils mobiles ?",
+        "a3": "Oui, l'outil est entièrement optimisé pour les appareils mobiles. Vous pouvez sélectionner des couleurs et copier les valeurs facilement depuis n'importe quel smartphone ou tablette."
+      },
+      "ui": {
+        "pickColor": "Choisir une couleur",
+        "copy": "Copier",
+        "copied": "Copié !"
+      }
     },
     "qr-code": {
       "name": "Générateur de QR Code",
