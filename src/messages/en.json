@@ -6,13 +6,11 @@
     "darkMode": "Dark mode",
     "lightMode": "Light mode",
     "systemMode": "System theme",
+    "toggleTheme": "Toggle theme",
+    "switchLanguage": "Switch language",
     "languages": {
       "it": "Italiano",
       "en": "English"
-    },
-    "footer": {
-      "madeWith": "Made with ❤️ to simplify your life",
-      "allRightsReserved": "All rights reserved"
     },
     "privacyBadge": "Your files never leave your browser",
     "free": "Free",
@@ -28,32 +26,52 @@
     "developer": "Developer",
     "youtube": "YouTube",
     "allTools": "All Tools",
-    "home": "Home"
+    "home": "Home",
+    "openMenu": "Open menu"
   },
   "home": {
-    "hero": {
-      "title": "All the online tools you need",
-      "subtitle": "Free, no registration, right in your browser. Edit PDFs, images, videos, audio and much more."
-    },
+    "title": "All the online tools you need",
+    "subtitle": "Free, no registration, right in your browser. Edit PDFs, images, videos, audio and much more.",
     "searchPlaceholder": "What do you want to do? Search among 45+ tools...",
+    "privacyNote": "Your files never leave your browser",
+    "categories": "Categories",
+    "categoryDesc": {
+      "pdf": "Merge, split, compress and convert PDFs",
+      "image": "Compress, resize and convert images",
+      "video": "Compress, trim and convert videos",
+      "audio": "Cut, convert and record audio",
+      "text": "Word count, text compare and more",
+      "developer": "JSON, Base64, Regex, QR Code and more",
+      "youtube": "Thumbnails and YouTube transcripts"
+    },
     "popularTools": "Most Popular Tools",
     "allTools": "All Tools",
     "stats": {
       "tools": "45+ tools",
-      "free": "100% free",
-      "noSignup": "No sign-up",
-      "privacy": "All in-browser"
+      "filesProcessed": "Files processed",
+      "noUpload": "100% in-browser"
     },
-    "categories": {
-      "all": "All",
-      "pdf": "PDF",
-      "image": "Images",
-      "video": "Video",
-      "audio": "Audio",
-      "text": "Text",
-      "developer": "Developer",
-      "youtube": "YouTube"
+    "features": {
+      "privacy": {
+        "title": "Privacy guaranteed",
+        "desc": "Your files are processed directly in your browser. No uploads to external servers."
+      },
+      "fast": {
+        "title": "Fast and free",
+        "desc": "All tools are free and work instantly with no waiting."
+      },
+      "free": {
+        "title": "No registration",
+        "desc": "No account required. Use any tool immediately, with no limits."
+      }
     }
+  },
+  "search": {
+    "openSearch": "Search",
+    "title": "Search tools",
+    "placeholder": "Search among tools...",
+    "noResults": "No results found",
+    "hint": "Use arrow keys to navigate"
   },
   "tools": {
     "merge-pdf": {
@@ -255,33 +273,17 @@
     }
   },
   "footer": {
-    "tools": {
-      "title": "Tools",
-      "links": {
-        "pdf": "PDF Tools",
-        "image": "Image Tools",
-        "video": "Video Tools",
-        "audio": "Audio Tools",
-        "text": "Text Tools",
-        "developer": "Developer Tools",
-        "youtube": "YouTube Tools"
-      }
-    },
-    "company": {
-      "title": "Company",
-      "links": {
-        "about": "About Us",
-        "contact": "Contact",
-        "blog": "Blog"
-      }
-    },
-    "legal": {
-      "title": "Legal",
-      "links": {
-        "privacy": "Privacy Policy",
-        "terms": "Terms of Service",
-        "cookies": "Cookie Policy"
-      }
-    }
+    "tagline": "All the online tools you need, free and without registration.",
+    "privacyBadge": "Your files never leave your browser",
+    "tools": "Tools",
+    "company": "Company",
+    "about": "About Us",
+    "contact": "Contact",
+    "privacy": "Privacy Policy",
+    "terms": "Terms of Service",
+    "settings": "Settings",
+    "language": "Language",
+    "allRightsReserved": "All rights reserved",
+    "filesNeverLeave": "Your files never leave your browser"
   }
 }

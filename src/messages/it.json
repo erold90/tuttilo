@@ -6,13 +6,11 @@
     "darkMode": "Modalità scura",
     "lightMode": "Modalità chiara",
     "systemMode": "Tema di sistema",
+    "toggleTheme": "Cambia tema",
+    "switchLanguage": "Cambia lingua",
     "languages": {
       "it": "Italiano",
       "en": "English"
-    },
-    "footer": {
-      "madeWith": "Fatto con ❤️ per semplificarti la vita",
-      "allRightsReserved": "Tutti i diritti riservati"
     },
     "privacyBadge": "I tuoi file non lasciano mai il browser",
     "free": "Gratuito",
@@ -28,32 +26,52 @@
     "developer": "Sviluppatori",
     "youtube": "YouTube",
     "allTools": "Tutti gli strumenti",
-    "home": "Home"
+    "home": "Home",
+    "openMenu": "Apri menu"
   },
   "home": {
-    "hero": {
-      "title": "Tutti gli strumenti online di cui hai bisogno",
-      "subtitle": "Gratuito, senza registrazione, direttamente nel browser. Modifica PDF, immagini, video, audio e molto altro."
-    },
+    "title": "Tutti gli strumenti online di cui hai bisogno",
+    "subtitle": "Gratuito, senza registrazione, direttamente nel browser. Modifica PDF, immagini, video, audio e molto altro.",
     "searchPlaceholder": "Cosa vuoi fare? Cerca tra oltre 45 strumenti...",
+    "privacyNote": "I tuoi file non lasciano mai il browser",
+    "categories": "Categorie",
+    "categoryDesc": {
+      "pdf": "Unisci, dividi, comprimi e converti PDF",
+      "image": "Comprimi, ridimensiona e converti immagini",
+      "video": "Comprimi, taglia e converti video",
+      "audio": "Taglia, converti e registra audio",
+      "text": "Conta parole, confronta testi e altro",
+      "developer": "JSON, Base64, Regex, QR Code e altro",
+      "youtube": "Thumbnail e trascrizioni YouTube"
+    },
     "popularTools": "Strumenti più popolari",
     "allTools": "Tutti gli strumenti",
     "stats": {
       "tools": "45+ strumenti",
-      "free": "100% gratuito",
-      "noSignup": "Nessuna registrazione",
-      "privacy": "Tutto nel browser"
+      "filesProcessed": "File elaborati",
+      "noUpload": "100% nel browser"
     },
-    "categories": {
-      "all": "Tutti",
-      "pdf": "PDF",
-      "image": "Immagini",
-      "video": "Video",
-      "audio": "Audio",
-      "text": "Testo",
-      "developer": "Sviluppatori",
-      "youtube": "YouTube"
+    "features": {
+      "privacy": {
+        "title": "Privacy garantita",
+        "desc": "I tuoi file vengono elaborati direttamente nel browser. Nessun upload su server esterni."
+      },
+      "fast": {
+        "title": "Veloce e gratuito",
+        "desc": "Tutti gli strumenti sono gratuiti e funzionano istantaneamente senza attese."
+      },
+      "free": {
+        "title": "Senza registrazione",
+        "desc": "Nessun account richiesto. Usa qualsiasi strumento immediatamente, senza limiti."
+      }
     }
+  },
+  "search": {
+    "openSearch": "Cerca",
+    "title": "Cerca strumenti",
+    "placeholder": "Cerca tra gli strumenti...",
+    "noResults": "Nessun risultato trovato",
+    "hint": "Usa i tasti freccia per navigare"
   },
   "tools": {
     "merge-pdf": {
@@ -255,33 +273,17 @@
     }
   },
   "footer": {
-    "tools": {
-      "title": "Strumenti",
-      "links": {
-        "pdf": "Strumenti PDF",
-        "image": "Strumenti immagini",
-        "video": "Strumenti video",
-        "audio": "Strumenti audio",
-        "text": "Strumenti testo",
-        "developer": "Strumenti sviluppatori",
-        "youtube": "Strumenti YouTube"
-      }
-    },
-    "company": {
-      "title": "Azienda",
-      "links": {
-        "about": "Chi siamo",
-        "contact": "Contatti",
-        "blog": "Blog"
-      }
-    },
-    "legal": {
-      "title": "Legale",
-      "links": {
-        "privacy": "Privacy Policy",
-        "terms": "Termini di Servizio",
-        "cookies": "Cookie Policy"
-      }
-    }
+    "tagline": "Tutti gli strumenti online di cui hai bisogno, gratuiti e senza registrazione.",
+    "privacyBadge": "I tuoi file non lasciano mai il browser",
+    "tools": "Strumenti",
+    "company": "Azienda",
+    "about": "Chi siamo",
+    "contact": "Contatti",
+    "privacy": "Privacy Policy",
+    "terms": "Termini di Servizio",
+    "settings": "Impostazioni",
+    "language": "Lingua",
+    "allRightsReserved": "Tutti i diritti riservati",
+    "filesNeverLeave": "I tuoi file non lasciano mai il browser"
   }
 }
