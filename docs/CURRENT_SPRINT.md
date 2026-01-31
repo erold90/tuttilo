@@ -1,7 +1,7 @@
-# Sprint Corrente: Sprint 0 — Setup Progetto
+# Sprint Corrente: Sprint 1 — Text/Dev Tools (6 tool)
 
 ## Obiettivo
-Setup completo del progetto Next.js 15 con layout, components base, i18n (8 lingue), dark mode, tool registry, e deploy su Cloudflare Pages.
+Implementare i primi 6 tool funzionanti: 3 Text + 3 Developer, con traduzioni complete in 8 lingue, SEO (meta + FAQ), e deploy su Cloudflare Pages.
 
 ## REGOLA CRITICA: 8 LINGUE
 Ogni pagina, componente e contenuto DEVE essere tradotto in TUTTE le 8 lingue:
@@ -12,29 +12,29 @@ File traduzioni: src/messages/{locale}.json
 
 | # | Task | Status | Note |
 |---|------|--------|------|
-| 0.1 | Init Next.js 15 + TypeScript + Tailwind CSS 4 | DONE | Build OK, Turbopack |
-| 0.2 | Setup shadcn/ui components base (14) | DONE | button, card, dialog, tabs, progress, input, select, toast, badge, separator, sheet, tooltip, slider, sonner |
-| 0.3 | Setup next-intl (8 lingue) | DONE | EN default, IT, ES, FR, DE, PT, JA, KO |
-| 0.4 | Setup next-themes (dark mode) | DONE | class-based, system default |
-| 0.5 | Header component | DONE | Sticky, nav categorie, search CMD+K, lang switch 8 bandiere, theme toggle |
-| 0.6 | Footer component | DONE | 4 colonne, link tool, privacy badge |
-| 0.7 | Homepage | DONE | Hero, search, categorie con colori, stats, features |
-| 0.8 | ToolLayout component wrapper | DONE | Breadcrumb, title, sidebar ads, related tools |
-| 0.9 | FileUploader component | DONE | Drag & drop, validazione, a11y |
-| 0.10 | ProcessingProgress component | DONE | Progress bar con %, testo, spinner |
-| 0.11 | DownloadButton component | DONE | Single/multiple, before-after |
-| 0.12 | Tool registry system | DONE | 45 tool, 7 categorie, helper functions |
-| 0.13 | Ad slot components | DONE | Sidebar 300x250, leaderboard 728x90, mobile sticky |
-| 0.14 | SEO setup (sitemap, robots, meta, JSON-LD) | DONE | sitemap.ts, robots.ts, generateMetadata, JSON-LD, OpenGraph, hreflang |
-| 0.15 | Deploy su Cloudflare Pages | DONE | tuttilo.pages.dev live, custom domain tuttilo.com configurato |
-| 0.16 | Git init + repo GitHub | DONE | erold90/tuttilo (public) |
+| 1.1 | Word Counter component | DONE | Stats: words, chars, chars no spaces, sentences, paragraphs, reading/speaking time |
+| 1.2 | JSON Formatter component | DONE | Two-panel, Format/Minify/Copy, indent 2/4/8 |
+| 1.3 | Base64 Encoder component | DONE | Encode/Decode toggle, Unicode support |
+| 1.4 | Lorem Ipsum Generator component | DONE | Paragraphs/sentences/words, standard vocabulary |
+| 1.5 | Color Picker component | DONE | HEX/RGB/HSL/CSS rgba(), copy buttons |
+| 1.6 | Regex Tester component | DONE | Flags g/i/m/s, highlighted matches, match results |
+| 1.7 | Dynamic tool route page | DONE | src/app/[locale]/[category]/[tool]/page.tsx, edge runtime |
+| 1.8 | ToolLayout + RelatedTools fix | DONE | Breadcrumb links, client component for RelatedTools |
+| 1.9 | Traduzioni 8 lingue (seo+faq+ui) | DONE | EN, IT, ES, FR, DE, PT, JA, KO — fix placeholder issues |
+| 1.10 | Registry update (6 tool available) | DONE | isAvailable: true per i 6 tool |
+| 1.11 | Build + Push GitHub + Deploy CF | DONE | Live su tuttilo.com |
 
 ## Progresso
-- Completati: 16/16
-- In corso: 0/16
-- Rimanenti: 0/16
+- Completati: 11/11
+- In corso: 0/11
+- Rimanenti: 0/11
 
-## SPRINT 0 COMPLETATO
+## SPRINT 1 COMPLETATO
+
+## Fix applicati
+- DE/ES/FR: rimossi placeholder `{count}` e `{index}` da wordsCount, matchesFound, atIndex (i componenti rendono i numeri separatamente)
+- regex-tester.tsx: fix ESLint unescaped entities (`"` → `&ldquo;`/`&rdquo;`)
+- Installato @vercel/next per build Cloudflare Pages
 
 ## Ultimo aggiornamento
-2026-01-31 — Sprint 0 completato al 100%. Sito live su tuttilo.pages.dev + tuttilo.com
+2026-01-31 — Sprint 1 completato al 100%. 6 tool live su tuttilo.com
