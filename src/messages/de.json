@@ -271,25 +271,155 @@
         "invalidRange": "Ungültiger Seitenbereich. Bitte überprüfen Sie Ihre Eingabe."
       }
     },
-    "pdf-to-word": {
-      "name": "PDF in Word",
-      "description": "PDF-Dokumente in bearbeitbare Word-Dateien umwandeln"
-    },
-    "word-to-pdf": {
-      "name": "Word in PDF",
-      "description": "Word-Dokumente in PDF umwandeln"
-    },
     "pdf-to-png": {
-      "name": "PDF in PNG",
-      "description": "PDF-Seiten in hochwertige PNG-Bilder umwandeln"
+      "name": "PDF zu PNG",
+      "description": "PDF-Seiten in PNG-Bilder umwandeln",
+      "seo": {
+        "title": "Kostenloser Online PDF zu PNG Konverter",
+        "content": "Wandeln Sie PDF-Seiten in hochwertige PNG-Bilder um. Einstellbare Auflösung von 1x bis 4x DPI für gestochen scharfe Ergebnisse. Unterstützung für transparente Hintergründe. Kostenlos, direkt im Browser, ohne Upload."
+      },
+      "faq": {
+        "q1": "Welche Auflösungsoptionen stehen zur Verfügung?",
+        "a1": "Sie können zwischen 1x, 2x, 3x und 4x DPI wählen. Höhere Auflösungen erzeugen schärfere, detailliertere Bilder, die ideal für Druck oder hochauflösende Bildschirme sind.",
+        "q2": "Werden transparente Hintergründe unterstützt?",
+        "a2": "Ja. Sie können die Option für transparenten Hintergrund aktivieren, um PNG-Bilder mit Transparenz statt weißem Hintergrund zu erstellen.",
+        "q3": "Gibt es ein Seitenlimit für die Konvertierung?",
+        "a3": "Nein, es gibt kein Seitenlimit. Alle Seiten werden konvertiert und als ZIP-Datei zum Herunterladen bereitgestellt."
+      },
+      "ui": {
+        "dropzone": "PDF-Datei hier ablegen oder klicken",
+        "dropzoneHint": "PDF-Dateien bis 100 MB",
+        "scale": "Auflösung",
+        "transparent": "Transparenter Hintergrund",
+        "convert": "In PNG umwandeln",
+        "processing": "Seite {current} von {total} wird konvertiert...",
+        "done": "Konvertierung abgeschlossen!",
+        "download": "ZIP herunterladen",
+        "reset": "Zurücksetzen",
+        "convertError": "Bei der Konvertierung ist ein Fehler aufgetreten. Bitte versuchen Sie es erneut."
+      }
+    },
+    "images-to-pdf": {
+      "name": "Bilder zu PDF",
+      "description": "Mehrere Bilder zu einem PDF zusammenfügen",
+      "seo": {
+        "title": "Kostenloser Online Bilder-zu-PDF-Konverter",
+        "content": "Fügen Sie mehrere JPG-, PNG- und WebP-Bilder zu einem einzigen PDF-Dokument zusammen. Wählen Sie Seitengröße und Ränder, ordnen Sie Bilder nach Belieben an. Kostenlos, direkt im Browser, ohne Upload."
+      },
+      "faq": {
+        "q1": "Welche Bildformate werden unterstützt?",
+        "a1": "Sie können JPG-, PNG- und WebP-Bilder verwenden und diese auch beliebig mischen. Alle gängigen Bildformate werden direkt im Browser verarbeitet.",
+        "q2": "Kann ich die Reihenfolge der Bilder ändern?",
+        "a2": "Ja, verwenden Sie die Pfeil-Schaltflächen, um die Bilder in die gewünschte Reihenfolge zu bringen, bevor Sie die PDF erstellen.",
+        "q3": "Welche Seitengrößen stehen zur Verfügung?",
+        "a3": "Sie können zwischen 'An Bild anpassen', A4 und Letter wählen. Zusätzlich können Sie Ränder einstellen: keiner, klein, mittel oder groß."
+      },
+      "ui": {
+        "dropzone": "Bilder hier ablegen oder klicken",
+        "dropzoneHint": "JPG, PNG, WebP bis 50 MB pro Bild",
+        "pageSize": "Seitengröße",
+        "fitToImage": "An Bild anpassen",
+        "margin": "Rand",
+        "marginNone": "Keiner",
+        "marginSmall": "Klein",
+        "marginMedium": "Mittel",
+        "marginLarge": "Groß",
+        "imagesCount": "{count} Bilder ausgewählt",
+        "moveUp": "Nach oben",
+        "moveDown": "Nach unten",
+        "removeImage": "Entfernen",
+        "addMore": "Weitere Bilder hinzufügen",
+        "create": "PDF erstellen",
+        "processing": "PDF wird erstellt...",
+        "done": "PDF erstellt!",
+        "download": "PDF herunterladen",
+        "reset": "Zurücksetzen",
+        "createError": "Beim Erstellen der PDF ist ein Fehler aufgetreten. Bitte versuchen Sie es erneut."
+      }
     },
     "unlock-pdf": {
       "name": "PDF entsperren",
-      "description": "Passwortschutz von PDF-Dateien entfernen"
+      "description": "Passwortschutz von PDF-Dateien entfernen",
+      "seo": {
+        "title": "Kostenloser Online PDF-Entsperrer",
+        "content": "Entfernen Sie Passwortschutz und Berechtigungsbeschränkungen von PDF-Dateien. Entsperren Sie geschützte PDFs direkt im Browser. Kostenlos, privat, ohne Upload auf externe Server."
+      },
+      "faq": {
+        "q1": "Welche Arten von Schutz können entfernt werden?",
+        "a1": "Es gibt zwei Arten von PDF-Schutz: Eigentümer-Passwort (schränkt Drucken, Kopieren, Bearbeiten ein) und Benutzer-Passwort (zum Öffnen erforderlich). Das Tool kann beide Arten behandeln.",
+        "q2": "Brauche ich das Passwort, um die PDF zu entsperren?",
+        "a2": "Wenn die PDF nur Berechtigungsbeschränkungen hat (Eigentümer-Passwort), wird kein Passwort benötigt. Ist die PDF mit einem Benutzer-Passwort geschützt, müssen Sie das Passwort eingeben.",
+        "q3": "Ist das Entsperren von PDFs legal?",
+        "a3": "Das Entsperren von PDFs ist legal, wenn Sie der rechtmäßige Eigentümer der Datei sind oder die Berechtigung haben, den Schutz zu entfernen. Verwenden Sie dieses Tool nur für Ihre eigenen Dokumente."
+      },
+      "ui": {
+        "dropzone": "PDF-Datei hier ablegen oder klicken",
+        "dropzoneHint": "PDF-Dateien bis 100 MB",
+        "password": "Passwort (falls erforderlich)",
+        "passwordPlaceholder": "PDF-Passwort eingeben...",
+        "passwordHint": "Leer lassen, wenn das PDF nur Berechtigungsbeschränkungen hat",
+        "unlock": "PDF entsperren",
+        "processing": "Wird entsperrt...",
+        "done": "PDF entsperrt!",
+        "download": "Herunterladen",
+        "reset": "Zurücksetzen",
+        "unlockError": "Beim Entsperren ist ein Fehler aufgetreten. Bitte versuchen Sie es erneut.",
+        "wrongPassword": "Falsches Passwort. Bitte versuchen Sie es erneut."
+      }
     },
-    "images-to-pdf": {
-      "name": "Bilder in PDF",
-      "description": "Mehrere Bilder in ein einzelnes PDF-Dokument umwandeln"
+    "word-to-pdf": {
+      "name": "Word zu PDF",
+      "description": "Word-Dokumente in PDF umwandeln",
+      "seo": {
+        "title": "Kostenloser Online Word-zu-PDF-Konverter",
+        "content": "Wandeln Sie DOCX- und DOC-Dokumente in PDF um. Behalten Sie Formatierung, Schriftarten und Layout bei. Kostenlos, direkt im Browser, ohne Upload auf externe Server."
+      },
+      "faq": {
+        "q1": "Welche Word-Formate werden unterstützt?",
+        "a1": "DOCX-Dateien (Word 2007 und neuer) werden am besten unterstützt. DOC-Dateien (älteres Format) werden mit eingeschränkter Unterstützung verarbeitet.",
+        "q2": "Bleibt die Formatierung erhalten?",
+        "a2": "Ja, das Tool behält Formatierung, Schriftarten, Bilder und Layout so weit wie möglich bei. Komplexe Layouts können geringfügige Unterschiede aufweisen.",
+        "q3": "Gibt es eine Dateigrößenbeschränkung?",
+        "a3": "Das Tool unterstützt Word-Dateien bis 50 MB. Die Verarbeitung erfolgt vollständig im Browser."
+      },
+      "ui": {
+        "dropzone": "Word-Datei hier ablegen oder klicken",
+        "dropzoneHint": "DOCX und DOC Dateien bis 50 MB",
+        "convert": "In PDF umwandeln",
+        "processing": "Wird konvertiert...",
+        "done": "Konvertierung abgeschlossen!",
+        "download": "PDF herunterladen",
+        "reset": "Zurücksetzen",
+        "convertError": "Bei der Konvertierung ist ein Fehler aufgetreten. Bitte versuchen Sie es erneut.",
+        "printHint": "Klicken Sie auf PDF herunterladen und wählen Sie 'Als PDF speichern' im Druckdialog.",
+        "preview": "Vorschau"
+      }
+    },
+    "pdf-to-word": {
+      "name": "PDF zu Word",
+      "description": "PDF-Dokumente in bearbeitbare Word-Dateien umwandeln",
+      "seo": {
+        "title": "Kostenloser Online PDF-zu-Word-Konverter",
+        "content": "Wandeln Sie PDF-Dokumente in bearbeitbare DOCX-Dateien um. Behalten Sie Text, Bilder und Layout bei. Kostenlos, direkt im Browser, ohne Upload auf externe Server."
+      },
+      "faq": {
+        "q1": "Bleibt die Formatierung bei der Konvertierung erhalten?",
+        "a1": "Das Tool bewahrt Text, Bilder und grundlegende Formatierung so weit wie möglich. Komplexe Layouts mit mehreren Spalten oder besonderen Formatierungen können geringfügige Unterschiede aufweisen.",
+        "q2": "Können gescannte PDFs konvertiert werden?",
+        "a2": "Gescannte PDFs enthalten Bilder statt Text. Da das Tool keine OCR-Texterkennung durchführt, werden gescannte Seiten als Bilder in das Word-Dokument eingefügt.",
+        "q3": "Gibt es ein Seitenlimit?",
+        "a3": "Nein, es gibt kein Seitenlimit. Die gesamte PDF wird konvertiert. Größere Dokumente können jedoch etwas länger dauern."
+      },
+      "ui": {
+        "dropzone": "PDF-Datei hier ablegen oder klicken",
+        "dropzoneHint": "PDF-Dateien bis 50 MB",
+        "convert": "In Word umwandeln",
+        "processing": "Seite {current} von {total} wird konvertiert...",
+        "done": "Konvertierung abgeschlossen!",
+        "download": "DOCX herunterladen",
+        "reset": "Zurücksetzen",
+        "convertError": "Bei der Konvertierung ist ein Fehler aufgetreten. Bitte versuchen Sie es erneut."
+      }
     },
     "pdf-editor": {
       "name": "PDF-Editor",
