@@ -273,23 +273,153 @@
     },
     "pdf-to-word": {
       "name": "PDF a Word",
-      "description": "Convierte documentos PDF en archivos Word editables"
+      "description": "Convierte documentos PDF en archivos Word editables",
+      "seo": {
+        "title": "Convertidor de PDF a Word online gratuito",
+        "content": "Convierte documentos PDF en archivos Word (DOCX) editables directamente en tu navegador. Extrae el texto preservando la estructura. Gratuito, privado, sin necesidad de subir archivos."
+      },
+      "faq": {
+        "q1": "¿Se conserva el formato del documento?",
+        "a1": "El texto y la estructura básica (párrafos, encabezados) se conservan. Los diseños complejos pueden requerir ajustes manuales tras la conversión.",
+        "q2": "¿Funciona con PDF escaneados?",
+        "a2": "No, la herramienta extrae texto digital del PDF. Los PDF escaneados (imágenes) no contienen texto extraíble y necesitan software de OCR.",
+        "q3": "¿Hay un límite de páginas?",
+        "a3": "No hay límite de páginas. El progreso de conversión se muestra durante el procesamiento. Todo ocurre en tu navegador."
+      },
+      "ui": {
+        "dropzone": "Arrastra un archivo PDF aquí o haz clic para seleccionar",
+        "dropzoneHint": "Archivos PDF de hasta 50 MB",
+        "convert": "Convertir a Word",
+        "processing": "Convirtiendo página {current} de {total}...",
+        "done": "¡Conversión completada!",
+        "download": "Descargar DOCX",
+        "reset": "Reiniciar",
+        "convertError": "Se produjo un error durante la conversión. Inténtalo de nuevo."
+      }
     },
     "word-to-pdf": {
       "name": "Word a PDF",
-      "description": "Convierte documentos Word en PDF"
+      "description": "Convierte documentos Word en PDF",
+      "seo": {
+        "title": "Convertidor de Word a PDF online gratuito",
+        "content": "Convierte documentos Word (DOCX, DOC) a PDF directamente en tu navegador. Conserva el formato y la maquetación. Gratuito, privado, sin necesidad de subir archivos."
+      },
+      "faq": {
+        "q1": "¿Qué formatos de Word son compatibles?",
+        "a1": "La herramienta es compatible con archivos DOCX (Microsoft Word 2007+). Los archivos DOC (formato antiguo) tienen compatibilidad limitada. Para mejores resultados, usa formato DOCX.",
+        "q2": "¿Se conserva el formato del documento?",
+        "a2": "El texto, encabezados, párrafos, listas y tablas se convierten correctamente. Algunos formatos complejos como fuentes personalizadas u objetos incrustados pueden aparecer de forma diferente.",
+        "q3": "¿Hay un límite de tamaño de archivo?",
+        "a3": "La herramienta soporta archivos Word de hasta 50 MB. Todo el procesamiento ocurre en tu navegador — tus archivos nunca se suben a ningún servidor."
+      },
+      "ui": {
+        "dropzone": "Arrastra un archivo Word aquí o haz clic para seleccionar",
+        "dropzoneHint": "Archivos DOCX y DOC de hasta 50 MB",
+        "convert": "Convertir a PDF",
+        "processing": "Convirtiendo...",
+        "done": "¡Conversión completada!",
+        "download": "Descargar PDF",
+        "reset": "Reiniciar",
+        "convertError": "Se produjo un error durante la conversión. Inténtalo de nuevo.",
+        "printHint": "Haz clic en Descargar PDF y selecciona 'Guardar como PDF' en el diálogo de impresión.",
+        "preview": "Vista previa"
+      }
     },
     "pdf-to-png": {
       "name": "PDF a PNG",
-      "description": "Convierte páginas PDF en imágenes PNG de alta calidad"
+      "description": "Convierte páginas PDF en imágenes PNG",
+      "seo": {
+        "title": "Convertidor de PDF a PNG online gratuito",
+        "content": "Convierte páginas PDF en imágenes PNG de alta calidad directamente en tu navegador. Resolución ajustable con soporte de fondo transparente. Gratuito, privado, sin necesidad de subir archivos."
+      },
+      "faq": {
+        "q1": "¿Qué resolución tienen las imágenes PNG resultantes?",
+        "a1": "Puedes elegir entre escala 1x y 4x. A 2x (predeterminado), una página A4 estándar produce imágenes de aproximadamente 1654x2339 píxeles. Mayor escala significa mejor calidad pero archivos más grandes.",
+        "q2": "¿Puedo obtener fondos transparentes?",
+        "a2": "¡Sí! Activa la opción de transparencia para obtener imágenes PNG con fondo transparente en lugar de blanco. Útil para superponer contenido PDF sobre otros diseños.",
+        "q3": "¿Hay un límite de páginas?",
+        "a3": "No hay límite de páginas. Todas las páginas de tu PDF se convertirán en imágenes PNG individuales y se descargarán como ZIP. El procesamiento ocurre en tu navegador."
+      },
+      "ui": {
+        "dropzone": "Arrastra un archivo PDF aquí o haz clic para seleccionar",
+        "dropzoneHint": "Archivos PDF de hasta 100 MB",
+        "scale": "Resolución",
+        "transparent": "Fondo transparente",
+        "convert": "Convertir a PNG",
+        "processing": "Convirtiendo página {current} de {total}...",
+        "done": "¡Conversión completada!",
+        "download": "Descargar ZIP",
+        "reset": "Reiniciar",
+        "convertError": "Se produjo un error durante la conversión. Inténtalo de nuevo."
+      }
     },
     "unlock-pdf": {
       "name": "Desbloquear PDF",
-      "description": "Elimina la contraseña de protección de archivos PDF"
+      "description": "Elimina la contraseña de protección de archivos PDF",
+      "seo": {
+        "title": "Desbloqueador de PDF online gratuito",
+        "content": "Elimina la protección por contraseña y las restricciones de archivos PDF directamente en tu navegador. Desbloquea la impresión, copia y edición. Gratuito, privado, sin necesidad de subir archivos."
+      },
+      "faq": {
+        "q1": "¿Qué tipos de protección se pueden eliminar?",
+        "a1": "La herramienta puede eliminar contraseñas de propietario (que restringen edición, impresión o copia) y contraseñas de usuario (necesarias para abrir el PDF). Debes conocer la contraseña para desbloquear el archivo.",
+        "q2": "¿Necesito conocer la contraseña?",
+        "a2": "Para restricciones de permisos (edición, impresión, copia), no siempre es necesario. Para contraseñas de apertura (usuario), sí debes introducir la contraseña correcta.",
+        "q3": "¿Es legal usar esta herramienta?",
+        "a3": "Sí, siempre que tengas derecho a acceder al PDF. Esta herramienta está diseñada para usuarios que desean eliminar la protección de sus propios documentos por comodidad."
+      },
+      "ui": {
+        "dropzone": "Arrastra un archivo PDF aquí o haz clic para seleccionar",
+        "dropzoneHint": "Archivos PDF de hasta 100 MB",
+        "password": "Contraseña (si es necesaria)",
+        "passwordPlaceholder": "Introduce la contraseña del PDF...",
+        "passwordHint": "Deja vacío si el PDF solo tiene restricciones de permisos",
+        "unlock": "Desbloquear PDF",
+        "processing": "Desbloqueando...",
+        "done": "¡PDF desbloqueado!",
+        "download": "Descargar",
+        "reset": "Reiniciar",
+        "unlockError": "No se pudo desbloquear el PDF. Inténtalo de nuevo.",
+        "wrongPassword": "Contraseña incorrecta. Inténtalo de nuevo."
+      }
     },
     "images-to-pdf": {
       "name": "Imágenes a PDF",
-      "description": "Convierte varias imágenes en un solo documento PDF"
+      "description": "Combina varias imágenes en un solo documento PDF",
+      "seo": {
+        "title": "Convertidor de imágenes a PDF online gratuito",
+        "content": "Combina varias imágenes (JPG, PNG, WebP) en un solo documento PDF. Elige el tamaño de página y los márgenes. Reordena las imágenes fácilmente. Gratuito, privado, sin necesidad de subir archivos."
+      },
+      "faq": {
+        "q1": "¿Qué formatos de imagen son compatibles?",
+        "a1": "Puedes usar imágenes JPG, PNG y WebP. Todos los formatos son compatibles y se pueden mezclar en el mismo documento PDF.",
+        "q2": "¿Puedo reordenar las imágenes?",
+        "a2": "¡Sí! Después de cargarlas, puedes reordenar las imágenes usando las flechas de arriba/abajo. El PDF final seguirá el orden que establezcas.",
+        "q3": "¿Qué tamaños de página están disponibles?",
+        "a3": "Elige entre Ajustar a imagen (cada página se adapta al tamaño de la imagen), A4 o Carta. También puedes añadir márgenes (ninguno, pequeño, mediano, grande)."
+      },
+      "ui": {
+        "dropzone": "Arrastra imágenes aquí o haz clic para seleccionar",
+        "dropzoneHint": "JPG, PNG, WebP de hasta 50 MB cada una",
+        "pageSize": "Tamaño de página",
+        "fitToImage": "Ajustar a imagen",
+        "margin": "Margen",
+        "marginNone": "Ninguno",
+        "marginSmall": "Pequeño",
+        "marginMedium": "Mediano",
+        "marginLarge": "Grande",
+        "imagesCount": "{count} imágenes seleccionadas",
+        "moveUp": "Mover arriba",
+        "moveDown": "Mover abajo",
+        "removeImage": "Eliminar",
+        "addMore": "Añadir más imágenes",
+        "create": "Crear PDF",
+        "processing": "Creando PDF...",
+        "done": "¡PDF creado!",
+        "download": "Descargar PDF",
+        "reset": "Reiniciar",
+        "createError": "Se produjo un error al crear el PDF. Inténtalo de nuevo."
+      }
     },
     "pdf-editor": {
       "name": "Editor PDF",
