@@ -44,7 +44,7 @@ export function WebpToPng() {
     a.click();
   }
 
-  function reset() { setFile(null); setPreview(""); setResultUrl(""); }
+  function reset() { if (preview) URL.revokeObjectURL(preview); if (resultUrl) URL.revokeObjectURL(resultUrl); setFile(null); setPreview(""); setResultUrl(""); }
 
   return (
     <div className="space-y-6">

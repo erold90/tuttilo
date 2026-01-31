@@ -39,6 +39,7 @@ export function CropImage() {
   }
 
   function reset() {
+    if (preview) URL.revokeObjectURL(preview);
     setFile(null);
     setPreview("");
     setResultUrl("");

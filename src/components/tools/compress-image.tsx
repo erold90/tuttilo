@@ -62,6 +62,7 @@ export function CompressImage() {
           quality / 100
         );
       };
+      img.onerror = () => setProcessing(false);
       img.src = URL.createObjectURL(file);
       return;
     }
@@ -78,6 +79,8 @@ export function CompressImage() {
   }
 
   function reset() {
+    if (preview) URL.revokeObjectURL(preview);
+    if (resultUrl) URL.revokeObjectURL(resultUrl);
     setFile(null);
     setPreview("");
     setResult(null);

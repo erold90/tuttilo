@@ -75,6 +75,8 @@ export function ResizeImage() {
   }
 
   function reset() {
+    if (preview) URL.revokeObjectURL(preview);
+    if (resultUrl) URL.revokeObjectURL(resultUrl);
     setFile(null);
     setPreview("");
     setResultUrl("");

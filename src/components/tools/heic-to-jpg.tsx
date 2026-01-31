@@ -46,6 +46,7 @@ export function HeicToJpg() {
   }
 
   function reset() {
+    if (resultUrl) URL.revokeObjectURL(resultUrl);
     setFile(null);
     setResultUrl("");
     setError("");
