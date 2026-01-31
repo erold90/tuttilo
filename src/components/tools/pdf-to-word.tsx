@@ -58,11 +58,13 @@ export function PdfToWord() {
 
         for (const item of textContent.items) {
           if (!("str" in item)) continue;
-          const y = Math.round((item as { transform: number[] }).transform[5]);
+          const transform = (item as { transform?: number[] }).transform;
+          if (!transform || transform.length < 6) continue;
+          const y = Math.round(transform[5]);
 
           if (lastY !== null && Math.abs(y - lastY) > 5) {
             if (currentText.trim()) {
-              const fontSize = (item as { height?: number }).height || 12;
+              const fontSize = (item as { height?: number }).height ?? 12;
               if (fontSize > 20) {
                 paragraphs.push(
                   new Paragraph({

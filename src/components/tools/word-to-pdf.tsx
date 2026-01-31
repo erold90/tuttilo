@@ -130,6 +130,7 @@ export function WordToPdf() {
             <iframe
               ref={iframeRef}
               srcDoc={htmlContent}
+              sandbox="allow-same-origin allow-modals"
               className="w-full bg-white"
               style={{ height: "500px" }}
               title="Preview"
