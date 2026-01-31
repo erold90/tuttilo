@@ -21,7 +21,11 @@
     "privacyBadge": "Your files never leave your browser",
     "free": "Free",
     "noRegistration": "No registration",
-    "noLimits": "No limits"
+    "noLimits": "No limits",
+    "faq": "Frequently Asked Questions",
+    "relatedTools": "Related Tools",
+    "tryNow": "Try now",
+    "home": "Home"
   },
   "nav": {
     "pdf": "PDF",
@@ -202,11 +206,57 @@
     },
     "word-counter": {
       "name": "Word Counter",
-      "description": "Count words, characters, sentences and paragraphs"
+      "description": "Count words, characters, sentences and paragraphs",
+      "seo": {
+        "title": "Free Online Word Counter Tool",
+        "content": "Count words, characters, sentences and paragraphs in your text instantly. Our free word counter works directly in your browser with no uploads needed. Perfect for essays, articles, social media posts and any text content."
+      },
+      "faq": {
+        "q1": "How does the word counter work?",
+        "a1": "Simply paste or type your text in the input area. The counter instantly analyzes your text and shows the number of words, characters, sentences, paragraphs, and estimated reading/speaking time.",
+        "q2": "Is my text stored on any server?",
+        "a2": "No. All processing happens directly in your browser. Your text is never uploaded or stored anywhere.",
+        "q3": "What is the reading time based on?",
+        "a3": "Reading time is estimated at 200 words per minute (average adult reading speed). Speaking time uses 130 words per minute."
+      },
+      "ui": {
+        "placeholder": "Type or paste your text here...",
+        "words": "Words",
+        "characters": "Characters",
+        "charactersNoSpaces": "Characters (no spaces)",
+        "sentences": "Sentences",
+        "paragraphs": "Paragraphs",
+        "readingTime": "Reading time",
+        "speakingTime": "Speaking time",
+        "clear": "Clear"
+      }
     },
     "lorem-ipsum": {
       "name": "Lorem Ipsum Generator",
-      "description": "Generate customizable Lorem Ipsum placeholder text"
+      "description": "Generate customizable Lorem Ipsum placeholder text",
+      "seo": {
+        "title": "Free Lorem Ipsum Generator",
+        "content": "Generate customizable Lorem Ipsum placeholder text for your designs and projects. Choose between paragraphs, sentences, or words. Copy with one click. No registration needed."
+      },
+      "faq": {
+        "q1": "What is Lorem Ipsum?",
+        "a1": "Lorem Ipsum is placeholder text used in the printing and typesetting industry since the 1500s. It helps designers visualize how content will look without being distracted by readable text.",
+        "q2": "Can I customize the output?",
+        "a2": "Yes, you can choose the number and type of content to generate: paragraphs, sentences, or individual words.",
+        "q3": "Is the generated text random?",
+        "a3": "The text uses standard Lorem Ipsum vocabulary arranged in random combinations, ensuring realistic-looking placeholder content every time."
+      },
+      "ui": {
+        "count": "Count",
+        "type": "Type",
+        "paragraphs": "Paragraphs",
+        "sentences": "Sentences",
+        "words": "Words",
+        "generate": "Generate",
+        "copy": "Copy",
+        "copied": "Copied!",
+        "wordsCount": "words"
+      }
     },
     "case-converter": {
       "name": "Case Converter",
@@ -222,19 +272,108 @@
     },
     "json-formatter": {
       "name": "JSON Formatter",
-      "description": "Format, validate and minify JSON code"
+      "description": "Format, validate and minify JSON code",
+      "seo": {
+        "title": "Free Online JSON Formatter & Validator",
+        "content": "Format, validate and minify JSON data instantly in your browser. Our free JSON formatter beautifies messy JSON, validates syntax, and can minify your code. No data leaves your browser."
+      },
+      "faq": {
+        "q1": "Can I format invalid JSON?",
+        "a1": "The tool will show you the exact error message if your JSON is invalid, helping you quickly find and fix syntax issues.",
+        "q2": "What indent sizes are supported?",
+        "a2": "You can choose between 2, 4, or 8 spaces for indentation when formatting your JSON.",
+        "q3": "Is my JSON data safe?",
+        "a3": "Absolutely. All processing happens in your browser. Your JSON data is never sent to any server."
+      },
+      "ui": {
+        "format": "Format",
+        "minify": "Minify",
+        "copy": "Copy",
+        "copied": "Copied!",
+        "indent": "Indent",
+        "error": "Error",
+        "input": "Input",
+        "output": "Output",
+        "inputPlaceholder": "Paste your JSON here...",
+        "outputPlaceholder": "Formatted output will appear here..."
+      }
     },
     "base64": {
       "name": "Base64 Encoder",
-      "description": "Encode and decode text and files to Base64"
+      "description": "Encode and decode text and files to Base64",
+      "seo": {
+        "title": "Free Online Base64 Encoder & Decoder",
+        "content": "Encode and decode Base64 strings instantly in your browser. Convert text to Base64 and back with our free tool. Perfect for developers working with APIs, data URIs, and encoded content."
+      },
+      "faq": {
+        "q1": "What is Base64 encoding?",
+        "a1": "Base64 is a binary-to-text encoding scheme that converts binary data into ASCII characters. It's commonly used in data URIs, email attachments, and API payloads.",
+        "q2": "Does it support Unicode?",
+        "a2": "Yes, our encoder handles Unicode characters including emojis, accented letters, and non-Latin scripts correctly.",
+        "q3": "Is there a size limit?",
+        "a3": "There's no practical limit for text encoding/decoding. The tool works entirely in your browser."
+      },
+      "ui": {
+        "encode": "Encode",
+        "decode": "Decode",
+        "input": "Input",
+        "output": "Output",
+        "copy": "Copy",
+        "copied": "Copied!",
+        "encodePlaceholder": "Enter text to encode...",
+        "decodePlaceholder": "Enter Base64 to decode...",
+        "invalidInput": "Invalid input for decoding"
+      }
     },
     "regex-tester": {
       "name": "Regex Tester",
-      "description": "Test and debug regular expressions in real time"
+      "description": "Test and debug regular expressions in real time",
+      "seo": {
+        "title": "Free Online Regex Tester & Debugger",
+        "content": "Test and debug regular expressions in real-time. See matches highlighted, capture groups, and match positions. Supports JavaScript regex syntax with global, case-insensitive, multiline, and dotAll flags."
+      },
+      "faq": {
+        "q1": "What regex syntax is supported?",
+        "a1": "The tool uses JavaScript's native RegExp engine, supporting all standard regex features including lookaheads, lookbehinds, capture groups, and named groups.",
+        "q2": "What do the flags mean?",
+        "a2": "g = global (find all matches), i = case-insensitive, m = multiline (^ and $ match line boundaries), s = dotAll (. matches newlines).",
+        "q3": "Is there a limit on text size?",
+        "a3": "There's no hard limit. Processing happens in your browser, so performance depends on your device. Complex patterns on very large texts may be slower."
+      },
+      "ui": {
+        "pattern": "Regular Expression",
+        "patternPlaceholder": "Enter regex pattern...",
+        "testString": "Test String",
+        "testPlaceholder": "Enter test string...",
+        "result": "Result",
+        "matchesFound": "matches found",
+        "atIndex": "at index",
+        "global": "Global",
+        "caseInsensitive": "Case Insensitive",
+        "multiline": "Multiline",
+        "dotAll": "Dot All"
+      }
     },
     "color-picker": {
       "name": "Color Picker",
-      "description": "Pick colors and convert between HEX, RGB, HSL"
+      "description": "Pick colors and convert between HEX, RGB, HSL",
+      "seo": {
+        "title": "Free Online Color Picker — HEX, RGB, HSL",
+        "content": "Pick any color and instantly get HEX, RGB, HSL and CSS values. Our free color picker works in your browser and lets you copy color codes with one click. Perfect for designers and developers."
+      },
+      "faq": {
+        "q1": "What color formats are supported?",
+        "a1": "The tool supports HEX, RGB, HSL, and CSS rgba() formats. All values update in real-time as you pick a color.",
+        "q2": "Can I enter a specific HEX code?",
+        "a2": "Yes, you can type a HEX code directly in the input field and all other formats will update automatically.",
+        "q3": "Does it work on mobile?",
+        "a3": "Yes, the color picker is fully responsive and works on mobile devices with touch-friendly controls."
+      },
+      "ui": {
+        "pickColor": "Pick a color",
+        "copy": "Copy",
+        "copied": "Copied!"
+      }
     },
     "qr-code": {
       "name": "QR Code Generator",
