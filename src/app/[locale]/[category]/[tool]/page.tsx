@@ -27,7 +27,7 @@ import { QrCode } from "@/components/tools/qr-code";
 import { SvgToPng } from "@/components/tools/svg-to-png";
 import { VoiceRecorder } from "@/components/tools/voice-recorder";
 import { ScreenRecorder } from "@/components/tools/screen-recorder";
-import { VideoToMp3 } from "@/components/tools/video-to-mp3";
+// VideoToMp3 moved to ffmpeg-tools.tsx (uses FFmpeg)
 import { AudioCutter } from "@/components/tools/audio-cutter";
 import { SplitPdf } from "@/components/tools/split-pdf";
 import { CompressPdf } from "@/components/tools/compress-pdf";
@@ -48,7 +48,7 @@ import { UnlockPdf } from "@/components/tools/unlock-pdf";
 import { WordToPdf } from "@/components/tools/word-to-pdf";
 import { PdfToWord } from "@/components/tools/pdf-to-word";
 // Sprint 6 (Video) — via client wrapper for ssr:false (FFmpeg references document)
-import { CompressVideo, TrimVideo, VideoToGif, AudioConverter } from "@/components/tools/ffmpeg-tools";
+import { CompressVideo, TrimVideo, VideoToGif, AudioConverter, VideoToMp3 } from "@/components/tools/ffmpeg-tools";
 import { YoutubeThumbnail } from "@/components/tools/youtube-thumbnail";
 
 const BASE_URL = "https://tuttilo.com";

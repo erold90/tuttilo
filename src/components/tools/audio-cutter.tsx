@@ -117,6 +117,7 @@ export function AudioCutter() {
     setFile(f);
     try {
       const arrayBuffer = await f.arrayBuffer();
+      audioCtxRef.current?.close();
       const ctx = new AudioContext();
       audioCtxRef.current = ctx;
       const buffer = await ctx.decodeAudioData(arrayBuffer);
@@ -198,6 +199,8 @@ export function AudioCutter() {
   const reset = useCallback(() => {
     if (result) URL.revokeObjectURL(result.url);
     audioSourceRef.current?.stop();
+    audioCtxRef.current?.close();
+    audioCtxRef.current = null;
     setFile(null);
     setAudioBuffer(null);
     setResult(null);
