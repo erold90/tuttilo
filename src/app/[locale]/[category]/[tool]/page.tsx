@@ -47,6 +47,9 @@ import { ImagesToPdf } from "@/components/tools/images-to-pdf";
 import { UnlockPdf } from "@/components/tools/unlock-pdf";
 import { WordToPdf } from "@/components/tools/word-to-pdf";
 import { PdfToWord } from "@/components/tools/pdf-to-word";
+// Sprint 6 (Video) — via client wrapper for ssr:false (FFmpeg references document)
+import { CompressVideo, TrimVideo, VideoToGif, AudioConverter } from "@/components/tools/ffmpeg-tools";
+import { YoutubeThumbnail } from "@/components/tools/youtube-thumbnail";
 
 const BASE_URL = "https://tuttilo.com";
 
@@ -82,6 +85,11 @@ const toolComponents: Record<string, React.ComponentType> = {
   "unlock-pdf": UnlockPdf,
   "word-to-pdf": WordToPdf,
   "pdf-to-word": PdfToWord,
+  "compress-video": CompressVideo,
+  "trim-video": TrimVideo,
+  "video-to-gif": VideoToGif,
+  "audio-converter": AudioConverter,
+  "youtube-thumbnail": YoutubeThumbnail,
 };
 
 export async function generateMetadata({

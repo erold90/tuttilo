@@ -14,13 +14,16 @@
   - QR Code Generator, SVG→PNG, Voice Recorder, Screen Recorder, Video→MP3, Audio Cutter
 - **Sprint 5 COMPLETATO** (11/11 task) — 5 PDF Advanced tool live
   - PDF→PNG, Images→PDF, Unlock PDF, Word→PDF, PDF→Word
+- **Sprint 6 IN CORSO** (10/12 task) — 5 Video tool implementati, push in corso
+  - Compress Video, Trim Video, Video→GIF, Audio Converter, YouTube Thumbnail
   - Tutte le traduzioni 8 lingue (seo+faq+ui) completate
-  - Build OK — Push GitHub completato — Deploy Cloudflare Pages OK
-  - 31 tool totali live su tuttilo.com
+  - Build OK — Push GitHub in corso
+  - 36 tool totali (31 precedenti + 5 Sprint 6)
 
 ## Cosa resta da fare
-- Sprint 6 (SEO & Performance): Core Web Vitals, sitemap dinamica, structured data
-- Sprint 7 (Footer Pages): About, Contact, Privacy, Terms
+- Sprint 6: Push GitHub + Deploy Cloudflare Pages
+- Sprint 7 (SEO & Performance): Core Web Vitals, sitemap dinamica, structured data
+- Sprint 8 (Footer Pages): About, Contact, Privacy, Terms
 - Vedere docs/ROADMAP.md per piano sprint completo
 
 ## Decisioni prese
@@ -40,19 +43,22 @@
 14. pdfjs-dist: dynamic import + CDN worker, canvas prop obbligatorio in render
 15. mammoth: dynamic import per DOCX→HTML (browser-side)
 16. docx: client-side DOCX creation via Packer.toBlob()
+17. FFmpeg.wasm: single-threaded mode, WASM da unpkg CDN, client wrapper pattern
 
 ## Problemi aperti
 - git push locale non funziona (SSH key mismatch witerose ≠ erold90) — usare MCP GitHub
 - HTTPS push fallisce ("could not read Username") — usare MCP GitHub
 - @cloudflare/next-on-pages è deprecated, migrare a OpenNext in futuro
 
-## File creati/modificati in Sprint 5
-- `src/components/tools/pdf-to-png.tsx` — PDF to PNG (pdfjs-dist, scale, transparent bg, ZIP)
-- `src/components/tools/images-to-pdf.tsx` — Images to PDF (pdf-lib, page sizes, margins)
-- `src/components/tools/unlock-pdf.tsx` — Unlock PDF (pdf-lib + pdfjs-dist password)
-- `src/components/tools/word-to-pdf.tsx` — Word to PDF (mammoth DOCX→HTML, iframe print)
-- `src/components/tools/pdf-to-word.tsx` — PDF to Word (pdfjs-dist → docx)
-- `src/lib/tools/registry.ts` — 5 Sprint 5 tools isAvailable: true
+## File creati/modificati in Sprint 6
+- `src/lib/ffmpeg.ts` — Shared FFmpeg utility (lazy load, singleton, progress callback)
+- `src/components/tools/ffmpeg-tools.tsx` — Client wrapper con next/dynamic ssr:false
+- `src/components/tools/compress-video.tsx` — Video compression (H.264, CRF 23/28/33)
+- `src/components/tools/trim-video.tsx` — Video trimming (range sliders, re-encode MP4)
+- `src/components/tools/video-to-gif.tsx` — Video→GIF (2-pass palette, fps/width controls)
+- `src/components/tools/audio-converter.tsx` — Audio format converter (MP3/WAV/OGG/FLAC/AAC)
+- `src/components/tools/youtube-thumbnail.tsx` — YouTube thumbnail downloader (4 risoluzioni)
+- `src/lib/tools/registry.ts` — 5 Sprint 6 tools isAvailable: true
 - `src/app/[locale]/[category]/[tool]/page.tsx` — 5 new imports + mappings
-- `src/messages/*.json` — Tutte 8 traduzioni aggiornate (seo+faq+ui per 5 Sprint 5 tools)
-- `package.json` — mammoth + docx dependencies
+- `src/messages/*.json` — Tutte 8 traduzioni aggiornate (seo+faq+ui per 5 Sprint 6 tools)
+- `package.json` — @ffmpeg/ffmpeg + @ffmpeg/util dependencies
