@@ -1,6 +1,6 @@
 # Tuttilo — Roadmap Generale
 
-## Stato: Sprint 3 (PDF Core) - COMPLETATO
+## Stato: Sprint 4 (Audio/Media) - IN CORSO
 
 ### Sprint Overview
 
@@ -10,7 +10,7 @@
 | **1** | 1-2 | Text/Dev | Word Counter, JSON Formatter, Base64, Lorem Ipsum, Color Picker, Regex Tester | 3.9M | COMPLETATO |
 | **2** | 3-4 | Immagini | Compress, Resize, PNG↔JPG, WebP↔PNG/JPG, HEIC→JPG, Crop | 5.6M | COMPLETATO |
 | **3** | 5-7 | PDF Core | Merge, Split, Compress, PDF→JPG, JPG→PDF, Rotate | 8.2M | COMPLETATO |
-| **4** | 8-9 | Audio/Media | MP3 Cutter, Voice Recorder, Screen Recorder, MP4→MP3, QR Code, SVG→PNG | 3.6M | PENDING |
+| **4** | 8-9 | Audio/Media | MP3 Cutter, Voice Recorder, Screen Recorder, MP4→MP3, QR Code, SVG→PNG | 3.6M | IN CORSO |
 | **5** | 10-12 | PDF Avanzato | Word→PDF, PDF→Word, Batch Image→PDF, PDF Unlock, PDF→PNG | 6.2M | PENDING |
 | **6** | 13-15 | Video | Video→GIF, Trimmer, Audio Converter, Compress Video, YT Thumbnail | 1.8M | PENDING |
 | **7** | 16-20 | AI/Server | Remove Background, OCR, PDF Editor, Excel→PDF, YT Transcript | 6.7M | PENDING |
