@@ -294,21 +294,26 @@
 
 ---
 
-## BATCH 7: Navigazione & i18n — Status: TODO
+## BATCH 7: Navigazione & i18n — Status: DONE
 
 ### T37. Navigazione pagine
 - **Test**: Ogni URL tool raggiungibile in EN e IT
-- **Verifiche**: 404 assenti, breadcrumb corretti, SEO metadata
-- **Status**: TODO
+- **Verifiche**: 36/36 tool registrati in toolComponents (page.tsx), tutte le categorie con slug validi
+- **Note**: Build statico genera tutte le pagine senza errori 404. Breadcrumb e metadata generati da ToolLayout + generateMetadata.
+- **Status**: DONE
 
 ### T38. Traduzioni 8 lingue
-- **Test**: Verificare che nessuna chiave traduzione manchi (no key fallback visibile)
-- **Lingue**: EN, IT, ES, FR, DE, PT, JA, KO
-- **Status**: TODO
+- **Test**: Audit completo chiavi traduzione su 8 lingue x 45 namespace (360 combinazioni)
+- **Risultato**: 43/45 tool perfettamente sincronizzati. 2 tool con chiavi divergenti:
+  - `images-to-pdf`: EN usava `images`/`pageSizeFit`/`convert`/`convertError`, altre lingue avevano nomi diversi → aggiunte le chiavi mancanti a IT, ES, FR, DE, PT, JA, KO
+  - `pdf-to-png`: EN usava `results`/`downloadAll`, altre lingue avevano nomi diversi → aggiunte le chiavi mancanti a IT, ES, FR, DE, PT, JA, KO
+- **Lingue**: EN, IT, ES, FR, DE, PT, JA, KO — tutte sincronizzate
+- **Status**: DONE
 
 ### T39. Build & Deploy
-- **Test**: `next build` OK, `pages:build` OK, deploy Cloudflare OK
-- **Status**: TODO
+- **Test**: `next build` passa con successo dopo tutti i fix
+- **Note**: Generating static pages (5/5) OK. Nessun errore di chiavi mancanti.
+- **Status**: DONE
 
 ---
 

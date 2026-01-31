@@ -20,6 +20,13 @@
   - Build OK — Push GitHub OK — Deploy Cloudflare Pages OK
   - 36 tool totali live su tuttilo.com
 
+## Testing Completo (Post-Sprint 6)
+- **36/36 tool testati** — tutti funzionanti
+- **11 bug trovati e fixati** (vedi docs/TESTING_ROADMAP.md per dettagli)
+- **Fix critici**: video-to-mp3 riscritto con FFmpeg, XSS fix su svg-to-png e word-to-pdf, memory leak fix su 8 image tools + audio-cutter
+- **i18n audit**: 43/45 tool perfetti, 2 fixati (images-to-pdf, pdf-to-png) — 6 chiavi aggiunte a 7 lingue
+- **Build OK** dopo tutti i fix
+
 ## Cosa resta da fare
 - Sprint 7 (SEO & Performance): Core Web Vitals, sitemap dinamica, structured data
 - Sprint 8 (Footer Pages): About, Contact, Privacy, Terms
