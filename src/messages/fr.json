@@ -658,15 +658,100 @@
     },
     "compress-video": {
       "name": "Compresser vidéo",
-      "description": "Réduisez la taille des fichiers vidéo en conservant la qualité"
+      "description": "Réduisez la taille des fichiers vidéo en conservant la qualité",
+      "seo": {
+        "title": "Compresseur vidéo en ligne gratuit",
+        "content": "Compressez des fichiers vidéo directement dans votre navigateur. Réduisez la taille des vidéos MP4, WebM et AVI tout en conservant une bonne qualité visuelle. Choisissez entre haute, moyenne ou basse qualité. Gratuit, confidentiel, sans téléversement."
+      },
+      "faq": {
+        "q1": "Quels formats vidéo sont pris en charge ?",
+        "a1": "L'outil prend en charge les formats vidéo les plus courants : MP4, WebM, AVI, MOV et MKV. Le fichier de sortie est sauvegardé au format MP4 pour une compatibilité maximale.",
+        "q2": "De combien puis-je réduire la taille du fichier ?",
+        "a2": "La réduction dépend du contenu de la vidéo et du niveau de qualité choisi. En général, vous pouvez réduire la taille de 50% à 80% avec une qualité moyenne, tout en conservant une qualité visuelle acceptable.",
+        "q3": "La compression affecte-t-elle la qualité vidéo ?",
+        "a3": "Oui, la compression réduit la qualité, mais de manière contrôlée. Vous pouvez choisir entre haute qualité (compression légère), moyenne (bon équilibre) ou basse (compression maximale). Prévisualisez toujours le résultat avant de télécharger."
+      },
+      "ui": {
+        "dropzone": "Déposez un fichier vidéo ici ou cliquez pour sélectionner",
+        "dropzoneHint": "Prend en charge MP4, WebM, AVI et d'autres formats vidéo",
+        "quality": "Qualité",
+        "quality_high": "Haute (compression légère)",
+        "quality_medium": "Moyenne (équilibrée)",
+        "quality_low": "Basse (compression maximale)",
+        "compress": "Compresser la vidéo",
+        "loadingFfmpeg": "Chargement du moteur vidéo...",
+        "compressing": "Compression en cours...",
+        "done": "Compression terminée !",
+        "original": "Original",
+        "compressed": "Compressée",
+        "download": "Télécharger",
+        "reset": "Réinitialiser",
+        "compressError": "Erreur lors de la compression. Veuillez réessayer."
+      }
     },
     "trim-video": {
       "name": "Couper vidéo",
-      "description": "Coupez et découpez vos vidéos avec précision"
+      "description": "Coupez et découpez vos vidéos avec précision",
+      "seo": {
+        "title": "Découpeur vidéo en ligne gratuit",
+        "content": "Coupez et découpez des vidéos directement dans votre navigateur. Sélectionnez les points de début et de fin avec précision. Prend en charge MP4, WebM, AVI et plus. Gratuit, confidentiel, sans téléversement."
+      },
+      "faq": {
+        "q1": "Quels formats vidéo puis-je découper ?",
+        "a1": "L'outil prend en charge les formats vidéo courants comme MP4, WebM, AVI, MOV et MKV. Le fichier de sortie est sauvegardé au format MP4 pour une compatibilité maximale.",
+        "q2": "Puis-je prévisualiser avant de découper ?",
+        "a2": "Oui, vous pouvez lire la vidéo et ajuster les curseurs de début et de fin pour sélectionner exactement la partie que vous souhaitez conserver. La durée de la sélection est affichée en temps réel.",
+        "q3": "Le découpage réduit-il la qualité ?",
+        "a3": "Non. Le découpage extrait simplement la portion sélectionnée sans recompression. La qualité de la vidéo découpée reste identique à l'original."
+      },
+      "ui": {
+        "dropzone": "Déposez un fichier vidéo ici ou cliquez pour sélectionner",
+        "dropzoneHint": "Prend en charge MP4, WebM, AVI et d'autres formats vidéo",
+        "start": "Début",
+        "end": "Fin",
+        "selection": "Durée de la sélection",
+        "trim": "Découper la vidéo",
+        "loadingFfmpeg": "Chargement du moteur vidéo...",
+        "trimming": "Découpage en cours...",
+        "done": "Découpage terminé !",
+        "download": "Télécharger",
+        "reset": "Réinitialiser",
+        "preview": "Aperçu",
+        "trimError": "Erreur lors du découpage. Veuillez réessayer."
+      }
     },
     "video-to-gif": {
       "name": "Vidéo en GIF",
-      "description": "Convertissez des vidéos en GIF animés"
+      "description": "Convertissez des vidéos en GIF animés",
+      "seo": {
+        "title": "Convertisseur vidéo en GIF en ligne gratuit",
+        "content": "Convertissez des vidéos en GIF animés directement dans votre navigateur. Sélectionnez la portion à convertir, ajustez le FPS et la largeur. Prend en charge MP4, WebM, AVI et plus. Gratuit, confidentiel, sans téléversement."
+      },
+      "faq": {
+        "q1": "Puis-je convertir seulement une partie de la vidéo ?",
+        "a1": "Oui, vous pouvez sélectionner les points de début et de fin pour convertir uniquement la portion de vidéo souhaitée en GIF. C'est idéal pour créer des courtes animations.",
+        "q2": "Comment contrôler la taille du GIF ?",
+        "a2": "Vous pouvez ajuster le FPS (images par seconde) et la largeur. Un FPS plus bas et une largeur réduite produisent des GIF plus légers. Pour un GIF fluide, utilisez 15-24 FPS.",
+        "q3": "Y a-t-il une limite de durée ?",
+        "a3": "Pour de meilleurs résultats, créez des GIF de 2 à 10 secondes. Les GIF plus longs deviennent très volumineux et peuvent être lents à charger. Privilégiez les courtes séquences."
+      },
+      "ui": {
+        "dropzone": "Déposez un fichier vidéo ici ou cliquez pour sélectionner",
+        "dropzoneHint": "Prend en charge MP4, WebM, AVI et d'autres formats vidéo",
+        "start": "Début",
+        "end": "Fin",
+        "selection": "Durée de la sélection",
+        "fps": "FPS (images/sec)",
+        "width": "Largeur (pixels)",
+        "convert": "Convertir en GIF",
+        "loadingFfmpeg": "Chargement du moteur vidéo...",
+        "converting": "Conversion en cours...",
+        "done": "Conversion terminée !",
+        "download": "Télécharger",
+        "reset": "Réinitialiser",
+        "preview": "Aperçu",
+        "convertError": "Erreur lors de la conversion. Veuillez réessayer."
+      }
     },
     "video-to-mp3": {
       "name": "Vidéo en MP3",
@@ -752,7 +837,31 @@
     },
     "audio-converter": {
       "name": "Convertisseur audio",
-      "description": "Convertissez des fichiers audio entre différents formats"
+      "description": "Convertissez des fichiers audio entre différents formats",
+      "seo": {
+        "title": "Convertisseur audio en ligne gratuit",
+        "content": "Convertissez des fichiers audio entre MP3, WAV, OGG, AAC et FLAC directement dans votre navigateur. Choisissez le format de sortie souhaité. Gratuit, confidentiel, sans téléversement."
+      },
+      "faq": {
+        "q1": "Quels formats audio sont pris en charge ?",
+        "a1": "Vous pouvez convertir depuis MP3, WAV, OGG, FLAC, AAC et M4A vers les formats de sortie MP3, WAV, OGG et AAC. Tous les formats courants sont supportés.",
+        "q2": "La conversion affecte-t-elle la qualité audio ?",
+        "a2": "Convertir vers un format avec perte (MP3, OGG, AAC) peut légèrement réduire la qualité. Convertir vers WAV (sans perte) conserve la qualité originale. Pour de meilleurs résultats, partez toujours d'un fichier de haute qualité.",
+        "q3": "Y a-t-il une limite de taille ?",
+        "a3": "L'outil prend en charge les fichiers audio jusqu'à 100 Mo. Le traitement se fait entièrement dans votre navigateur, les fichiers plus volumineux peuvent prendre plus de temps."
+      },
+      "ui": {
+        "dropzone": "Déposez un fichier audio ici ou cliquez pour sélectionner",
+        "dropzoneHint": "Prend en charge MP3, WAV, OGG, FLAC, AAC et plus",
+        "outputFormat": "Format de sortie",
+        "convert": "Convertir",
+        "loadingFfmpeg": "Chargement du moteur audio...",
+        "converting": "Conversion en cours...",
+        "done": "Conversion terminée !",
+        "download": "Télécharger",
+        "reset": "Réinitialiser",
+        "convertError": "Erreur lors de la conversion. Veuillez réessayer."
+      }
     },
     "voice-recorder": {
       "name": "Enregistreur vocal",
@@ -992,7 +1101,27 @@
     },
     "youtube-thumbnail": {
       "name": "Télécharger miniature YouTube",
-      "description": "Téléchargez les miniatures des vidéos YouTube en haute qualité"
+      "description": "Téléchargez les miniatures des vidéos YouTube en haute qualité",
+      "seo": {
+        "title": "Téléchargeur de miniatures YouTube gratuit",
+        "content": "Téléchargez les miniatures des vidéos YouTube en haute qualité (HD, Full HD). Collez simplement l'URL de la vidéo et obtenez toutes les résolutions disponibles. Gratuit, sans inscription, fonctionne directement dans le navigateur."
+      },
+      "faq": {
+        "q1": "Quelles résolutions de miniatures puis-je télécharger ?",
+        "a1": "L'outil extrait toutes les résolutions disponibles : miniature par défaut (120x90), moyenne (320x180), haute (480x360), standard (640x480), HD (1280x720) et Full HD (1920x1080) si disponible.",
+        "q2": "Comment trouver l'URL d'une vidéo YouTube ?",
+        "a2": "Ouvrez la vidéo sur YouTube et copiez l'URL depuis la barre d'adresse de votre navigateur. L'URL ressemble à : youtube.com/watch?v=VIDEO_ID ou youtu.be/VIDEO_ID.",
+        "q3": "Est-ce légal de télécharger des miniatures YouTube ?",
+        "a3": "Les miniatures YouTube sont publiquement accessibles. Cet outil extrait simplement l'URL de l'image. Respectez toujours les droits d'auteur et utilisez les miniatures uniquement dans un cadre légal (par exemple, pour des présentations, analyses, ou usage personnel)."
+      },
+      "ui": {
+        "urlLabel": "URL de la vidéo YouTube",
+        "urlPlaceholder": "Collez l'URL YouTube ici (youtube.com/watch?v=... ou youtu.be/...)",
+        "fetch": "Récupérer les miniatures",
+        "download": "Télécharger",
+        "reset": "Réinitialiser",
+        "invalidUrl": "URL YouTube invalide. Veuillez vérifier et réessayer."
+      }
     },
     "youtube-transcript": {
       "name": "Transcription YouTube",
