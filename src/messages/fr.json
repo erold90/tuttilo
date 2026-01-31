@@ -273,23 +273,153 @@
     },
     "pdf-to-word": {
       "name": "PDF en Word",
-      "description": "Convertissez des documents PDF en fichiers Word modifiables"
+      "description": "Convertissez des documents PDF en fichiers Word modifiables",
+      "seo": {
+        "title": "Convertisseur PDF en Word en ligne gratuit",
+        "content": "Convertissez des fichiers PDF en documents Word modifiables directement dans votre navigateur. Extrayez le texte et la mise en forme des PDF au format DOCX. Gratuit, confidentiel, sans téléversement."
+      },
+      "faq": {
+        "q1": "La mise en forme est-elle conservée lors de la conversion ?",
+        "a1": "Le texte, la structure des paragraphes et les titres sont préservés. Les mises en page complexes peuvent nécessiter des ajustements manuels après la conversion.",
+        "q2": "L'outil prend-il en charge les PDF numérisés ?",
+        "a2": "Non, l'outil extrait le texte intégré dans le PDF. Les PDF numérisés (images) ne contiennent pas de texte extractible et ne sont pas pris en charge par la reconnaissance optique (OCR).",
+        "q3": "Y a-t-il une limite de pages ?",
+        "a3": "Non, il n'y a aucune limite de pages. Toutes les pages de votre PDF seront converties en un document Word. Le traitement s'effectue dans votre navigateur, les documents volumineux peuvent donc prendre plus de temps."
+      },
+      "ui": {
+        "dropzone": "Déposez un fichier PDF ici ou cliquez pour sélectionner",
+        "dropzoneHint": "Fichiers PDF jusqu'à 50 Mo",
+        "convert": "Convertir en Word",
+        "processing": "Conversion de la page {current} sur {total}...",
+        "done": "Conversion terminée !",
+        "download": "Télécharger le DOCX",
+        "reset": "Réinitialiser",
+        "convertError": "Erreur lors de la conversion. Veuillez réessayer."
+      }
     },
     "word-to-pdf": {
       "name": "Word en PDF",
-      "description": "Convertissez des documents Word en PDF"
+      "description": "Convertissez des documents Word en PDF",
+      "seo": {
+        "title": "Convertisseur Word en PDF en ligne gratuit",
+        "content": "Convertissez des documents Word (DOCX, DOC) en PDF directement dans votre navigateur. Conservez la mise en forme et la mise en page. Gratuit, confidentiel, sans téléversement."
+      },
+      "faq": {
+        "q1": "Quels formats Word sont pris en charge ?",
+        "a1": "L'outil prend en charge les fichiers DOCX (Microsoft Word 2007+). Les fichiers DOC (ancien format) ont un support limité. Pour de meilleurs résultats, utilisez le format DOCX.",
+        "q2": "La mise en forme est-elle préservée ?",
+        "a2": "Le contenu textuel, les titres, les paragraphes, les listes et les tableaux sont convertis. Certaines mises en forme complexes comme les polices personnalisées ou les objets intégrés peuvent apparaître différemment.",
+        "q3": "Quelle est la limite de taille de fichier ?",
+        "a3": "L'outil prend en charge les fichiers Word jusqu'à 50 Mo. Tout le traitement s'effectue dans votre navigateur — vos fichiers ne sont jamais envoyés vers un serveur."
+      },
+      "ui": {
+        "dropzone": "Déposez un fichier Word ici ou cliquez pour sélectionner",
+        "dropzoneHint": "Fichiers DOCX et DOC jusqu'à 50 Mo",
+        "convert": "Convertir en PDF",
+        "processing": "Conversion en cours...",
+        "done": "Conversion terminée !",
+        "download": "Télécharger le PDF",
+        "reset": "Réinitialiser",
+        "convertError": "Erreur lors de la conversion. Veuillez réessayer.",
+        "printHint": "Cliquez sur Télécharger le PDF et sélectionnez « Enregistrer en PDF » dans la boîte de dialogue d'impression.",
+        "preview": "Aperçu"
+      }
     },
     "pdf-to-png": {
       "name": "PDF en PNG",
-      "description": "Convertissez les pages PDF en images PNG haute qualité"
+      "description": "Convertissez les pages PDF en images PNG haute qualité",
+      "seo": {
+        "title": "Convertisseur PDF en PNG en ligne gratuit",
+        "content": "Convertissez les pages PDF en images PNG haute qualité directement dans votre navigateur. Résolution ajustable, prise en charge de l'arrière-plan transparent. Gratuit, confidentiel, sans téléversement."
+      },
+      "faq": {
+        "q1": "Quelles options de résolution sont disponibles ?",
+        "a1": "Vous pouvez choisir une échelle de 1x à 4x DPI. À 2x (par défaut), une page A4 standard produit des images d'environ 1654x2339 pixels. Une échelle plus élevée offre une meilleure qualité mais des fichiers plus volumineux.",
+        "q2": "Puis-je obtenir des images PNG avec un fond transparent ?",
+        "a2": "Oui ! Activez l'option de transparence pour obtenir des images PNG avec un arrière-plan transparent au lieu de blanc. C'est utile pour superposer le contenu PDF sur d'autres designs.",
+        "q3": "Y a-t-il une limite de pages ?",
+        "a3": "Non, il n'y a aucune limite de pages. Toutes les pages de votre PDF seront converties en images PNG individuelles. Le traitement s'effectue dans votre navigateur, les documents très volumineux peuvent donc prendre plus de temps. Les images sont téléchargeables en ZIP."
+      },
+      "ui": {
+        "dropzone": "Déposez un fichier PDF ici ou cliquez pour sélectionner",
+        "dropzoneHint": "Fichiers PDF jusqu'à 100 Mo",
+        "scale": "Résolution",
+        "transparent": "Arrière-plan transparent",
+        "convert": "Convertir en PNG",
+        "processing": "Conversion de la page {current} sur {total}...",
+        "done": "Conversion terminée !",
+        "download": "Télécharger le ZIP",
+        "reset": "Réinitialiser",
+        "convertError": "Erreur lors de la conversion. Veuillez réessayer."
+      }
     },
     "unlock-pdf": {
       "name": "Déverrouiller PDF",
-      "description": "Supprimez la protection par mot de passe des fichiers PDF"
+      "description": "Supprimez la protection par mot de passe des fichiers PDF",
+      "seo": {
+        "title": "Déverrouilleur PDF en ligne gratuit",
+        "content": "Supprimez la protection par mot de passe et les restrictions des fichiers PDF directement dans votre navigateur. Déverrouillez les PDF pour permettre la modification, l'impression et la copie. Gratuit, confidentiel, sans téléversement."
+      },
+      "faq": {
+        "q1": "Quels types de protection PDF peuvent être supprimés ?",
+        "a1": "L'outil peut supprimer le mot de passe propriétaire (qui restreint la modification, l'impression ou la copie) et le mot de passe utilisateur (requis pour ouvrir le PDF). Vous devez connaître le mot de passe pour déverrouiller le fichier.",
+        "q2": "Ai-je besoin du mot de passe pour déverrouiller ?",
+        "a2": "Pas nécessairement. Si le PDF n'a que des restrictions de permissions (mot de passe propriétaire), vous pouvez le déverrouiller sans mot de passe. En revanche, si un mot de passe utilisateur est requis pour l'ouvrir, vous devez le fournir.",
+        "q3": "Est-ce légal ?",
+        "a3": "Oui, tant que vous avez le droit d'accéder au PDF. Cet outil est conçu pour les utilisateurs qui connaissent le mot de passe mais souhaitent le supprimer par commodité. Ne l'utilisez jamais sur des fichiers qui ne vous appartiennent pas."
+      },
+      "ui": {
+        "dropzone": "Déposez un PDF protégé ici ou cliquez pour sélectionner",
+        "dropzoneHint": "Fichiers PDF jusqu'à 100 Mo",
+        "password": "Mot de passe (si requis)",
+        "passwordPlaceholder": "Entrez le mot de passe du PDF",
+        "passwordHint": "Laissez vide si seules les restrictions de permissions sont appliquées",
+        "unlock": "Déverrouiller le PDF",
+        "processing": "Déverrouillage en cours...",
+        "done": "PDF déverrouillé !",
+        "download": "Télécharger",
+        "reset": "Réinitialiser",
+        "unlockError": "Erreur lors du déverrouillage. Veuillez réessayer.",
+        "wrongPassword": "Mot de passe incorrect. Veuillez vérifier et réessayer."
+      }
     },
     "images-to-pdf": {
       "name": "Images en PDF",
-      "description": "Convertissez plusieurs images en un seul document PDF"
+      "description": "Combinez plusieurs images en un seul document PDF",
+      "seo": {
+        "title": "Convertisseur images en PDF en ligne gratuit",
+        "content": "Combinez plusieurs images (JPG, PNG, WebP) en un seul document PDF. Réorganisez les pages, choisissez la taille de page et ajoutez des marges. Gratuit, confidentiel, sans téléversement."
+      },
+      "faq": {
+        "q1": "Quels formats d'image sont pris en charge ?",
+        "a1": "Vous pouvez utiliser des images JPG, PNG et WebP. Tous les formats sont pris en charge et peuvent être combinés dans le même document PDF.",
+        "q2": "Puis-je réorganiser les images ?",
+        "a2": "Oui ! Après l'import, vous pouvez réorganiser les images avec les flèches haut/bas. Le PDF final suivra l'ordre que vous avez défini.",
+        "q3": "Quelles tailles de page sont disponibles ?",
+        "a3": "Choisissez parmi Ajuster à l'image (chaque page correspond à la taille de l'image), A4 ou Letter. Vous pouvez également ajouter des marges (aucune, petite, moyenne, grande)."
+      },
+      "ui": {
+        "dropzone": "Déposez des images ici ou cliquez pour sélectionner",
+        "dropzoneHint": "JPG, PNG, WebP jusqu'à 50 Mo chacun",
+        "pageSize": "Taille de page",
+        "fitToImage": "Ajuster à l'image",
+        "margin": "Marge",
+        "marginNone": "Aucune",
+        "marginSmall": "Petite",
+        "marginMedium": "Moyenne",
+        "marginLarge": "Grande",
+        "imagesCount": "{count} images sélectionnées",
+        "moveUp": "Monter",
+        "moveDown": "Descendre",
+        "removeImage": "Supprimer l'image",
+        "addMore": "Ajouter plus",
+        "create": "Créer le PDF",
+        "processing": "Création du PDF en cours...",
+        "done": "PDF créé !",
+        "download": "Télécharger le PDF",
+        "reset": "Réinitialiser",
+        "createError": "Erreur lors de la création. Veuillez réessayer."
+      }
     },
     "pdf-editor": {
       "name": "Éditeur PDF",
