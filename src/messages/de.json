@@ -21,7 +21,11 @@
     "privacyBadge": "Deine Dateien verlassen niemals den Browser",
     "free": "Kostenlos",
     "noRegistration": "Ohne Registrierung",
-    "noLimits": "Ohne Limits"
+    "noLimits": "Ohne Limits",
+    "faq": "Häufig gestellte Fragen",
+    "relatedTools": "Verwandte Tools",
+    "tryNow": "Jetzt ausprobieren",
+    "home": "Startseite"
   },
   "nav": {
     "pdf": "PDF",
@@ -202,11 +206,57 @@
     },
     "word-counter": {
       "name": "Wörterzähler",
-      "description": "Wörter, Zeichen, Sätze und Absätze zählen"
+      "description": "Wörter, Zeichen, Sätze und Absätze zählen",
+      "seo": {
+        "title": "Kostenloser Online-Wörterzähler - Zeichen, Sätze und Absätze",
+        "content": "Zähle sofort Wörter, Zeichen, Sätze und Absätze in deinem Text. Kostenloses Online-Tool mit Lesezeit und Sprechzeit. Ohne Registrierung."
+      },
+      "faq": {
+        "q1": "Wie funktioniert der Wörterzähler?",
+        "a1": "Gib einfach deinen Text ein oder füge ihn in das Eingabefeld ein. Der Zähler analysiert den Inhalt automatisch in Echtzeit und zeigt die Anzahl der Wörter, Zeichen, Sätze und Absätze an.",
+        "q2": "Sind meine Daten privat?",
+        "a2": "Ja, vollständig. Die gesamte Verarbeitung erfolgt direkt in deinem Browser. Dein Text wird niemals an einen externen Server gesendet.",
+        "q3": "Worauf basiert die Berechnung der Lesezeit?",
+        "a3": "Die Lesezeit wird auf Basis einer durchschnittlichen Geschwindigkeit von 200 Wörtern pro Minute berechnet, was der Standardlesegeschwindigkeit eines Erwachsenen entspricht."
+      },
+      "ui": {
+        "placeholder": "Gib deinen Text hier ein oder füge ihn ein...",
+        "words": "Wörter",
+        "characters": "Zeichen",
+        "charactersNoSpaces": "Zeichen ohne Leerzeichen",
+        "sentences": "Sätze",
+        "paragraphs": "Absätze",
+        "readingTime": "Lesezeit",
+        "speakingTime": "Sprechzeit",
+        "clear": "Löschen"
+      }
     },
     "lorem-ipsum": {
       "name": "Lorem Ipsum-Generator",
-      "description": "Benutzerdefinierten Lorem Ipsum-Platzhaltertext generieren"
+      "description": "Benutzerdefinierten Lorem Ipsum-Platzhaltertext generieren",
+      "seo": {
+        "title": "Kostenloser Online Lorem Ipsum-Generator - Individueller Platzhaltertext",
+        "content": "Generiere benutzerdefinierten Lorem Ipsum-Platzhaltertext für deine Designs und Projekte. Wähle zwischen Absätzen, Sätzen oder Wörtern. Kostenloses Online-Tool."
+      },
+      "faq": {
+        "q1": "Was ist Lorem Ipsum?",
+        "a1": "Lorem Ipsum ist ein Standard-Platzhaltertext, der seit dem 16. Jahrhundert in Grafikdesign, Typografie und Webgestaltung verwendet wird. Er ermöglicht es, das Layout eines Projekts zu visualisieren, ohne vom eigentlichen Inhalt abgelenkt zu werden.",
+        "q2": "Kann ich den generierten Text anpassen?",
+        "a2": "Ja, du kannst die Menge und Art des zu generierenden Inhalts wählen: Absätze, Sätze oder einzelne Wörter, je nach deinen Bedürfnissen.",
+        "q3": "Ist der generierte Text immer zufällig?",
+        "a3": "Der Text basiert auf dem klassischen Lorem Ipsum, enthält aber Variationen, sodass jede Generierung leicht unterschiedlich ausfällt und dabei stets eine natürliche Struktur beibehalten wird."
+      },
+      "ui": {
+        "count": "Anzahl",
+        "type": "Typ",
+        "paragraphs": "Absätze",
+        "sentences": "Sätze",
+        "words": "Wörter",
+        "generate": "Generieren",
+        "copy": "Kopieren",
+        "copied": "Kopiert!",
+        "wordsCount": "Wörter"
+      }
     },
     "case-converter": {
       "name": "Groß-/Kleinschreibung-Konverter",
@@ -222,19 +272,108 @@
     },
     "json-formatter": {
       "name": "JSON-Formatierer",
-      "description": "JSON-Code formatieren, validieren und minimieren"
+      "description": "JSON-Code formatieren, validieren und minimieren",
+      "seo": {
+        "title": "Kostenloser Online JSON-Formatierer und Validierer",
+        "content": "JSON-Code sofort formatieren, validieren und minimieren. Fehlerhervorhebung, anpassbare Einrückung und Kopieren mit einem Klick. Kostenloses Online-Tool ohne Registrierung."
+      },
+      "faq": {
+        "q1": "Was passiert, wenn mein JSON ungültig ist?",
+        "a1": "Das Tool erkennt automatisch Syntaxfehler in deinem JSON und zeigt eine Fehlermeldung an, die auf die Problemstelle hinweist, damit du den Fehler leicht beheben kannst.",
+        "q2": "Kann ich die Einrückungsgröße ändern?",
+        "a2": "Ja, du kannst die gewünschte Einrückungstiefe wählen (2 oder 4 Leerzeichen), um dein JSON so übersichtlich wie möglich zu formatieren.",
+        "q3": "Sind meine Daten sicher?",
+        "a3": "Absolut. Die Verarbeitung erfolgt vollständig in deinem Browser. Dein JSON-Code wird niemals an externe Server gesendet."
+      },
+      "ui": {
+        "format": "Formatieren",
+        "minify": "Minimieren",
+        "copy": "Kopieren",
+        "copied": "Kopiert!",
+        "indent": "Einrückung",
+        "error": "Fehler",
+        "input": "Eingabe",
+        "output": "Ausgabe",
+        "inputPlaceholder": "Füge deinen JSON hier ein...",
+        "outputPlaceholder": "Der formatierte JSON erscheint hier..."
+      }
     },
     "base64": {
       "name": "Base64-Encoder",
-      "description": "Text und Dateien in Base64 kodieren und dekodieren"
+      "description": "Text und Dateien in Base64 kodieren und dekodieren",
+      "seo": {
+        "title": "Kostenloser Online Base64-Encoder und -Decoder",
+        "content": "Text sofort in Base64 kodieren und dekodieren. Unicode- und Sonderzeichen-kompatibel. Kostenloses Online-Tool ohne Registrierung."
+      },
+      "faq": {
+        "q1": "Was ist Base64?",
+        "a1": "Base64 ist ein Kodierungssystem, das Binärdaten in ASCII-Text umwandelt. Es wird häufig verwendet, um Daten in HTML, CSS, E-Mails und bei der Datenübertragung im Web einzubetten.",
+        "q2": "Werden Unicode-Zeichen unterstützt?",
+        "a2": "Ja, das Tool unterstützt Unicode vollständig, einschließlich Sonderzeichen, Umlaute, Emojis und Zeichen aus Sprachen wie Japanisch, Koreanisch oder Arabisch.",
+        "q3": "Gibt es eine Größenbeschränkung?",
+        "a3": "Es gibt keine strikte Begrenzung, aber da alles in deinem Browser verarbeitet wird, könnten sehr große Texte die Leistung beeinträchtigen. Für den normalen Gebrauch funktioniert es einwandfrei."
+      },
+      "ui": {
+        "encode": "Kodieren",
+        "decode": "Dekodieren",
+        "input": "Eingabe",
+        "output": "Ausgabe",
+        "copy": "Kopieren",
+        "copied": "Kopiert!",
+        "encodePlaceholder": "Gib den Text zum Kodieren in Base64 ein...",
+        "decodePlaceholder": "Füge den zu dekodierenden Base64-Text ein...",
+        "invalidInput": "Ungültige Eingabe"
+      }
     },
     "regex-tester": {
       "name": "Regex-Tester",
-      "description": "Reguläre Ausdrücke in Echtzeit testen und debuggen"
+      "description": "Reguläre Ausdrücke in Echtzeit testen und debuggen",
+      "seo": {
+        "title": "Kostenloser Online-Tester für reguläre Ausdrücke",
+        "content": "Reguläre Ausdrücke (Regex) in Echtzeit testen und debuggen. Treffer-Hervorhebung, Flag-Unterstützung und sofortige Ergebnisse. Kostenloses Online-Tool."
+      },
+      "faq": {
+        "q1": "Welche Regex-Syntax wird unterstützt?",
+        "a1": "Das Tool verwendet die JavaScript-Regex-Syntax, die mit den meisten gängigen Regex-Mustern kompatibel ist, einschließlich Erfassungsgruppen, Quantifizierer, Zeichenklassen und Assertionen.",
+        "q2": "Was bedeuten die Flags?",
+        "a2": "Flags ändern das Verhalten der Regex: 'g' (global) sucht alle Treffer, 'i' ignoriert Groß-/Kleinschreibung, 'm' aktiviert den Mehrzeilenmodus, und 's' lässt den Punkt auch Zeilenumbrüche matchen.",
+        "q3": "Gibt es eine Größenbeschränkung für den Testtext?",
+        "a3": "Es gibt keine strikte Begrenzung, aber da die Verarbeitung in deinem Browser stattfindet, könnten extrem große Texte die Leistung beeinträchtigen. Für den normalen Gebrauch funktioniert es problemlos."
+      },
+      "ui": {
+        "pattern": "Muster",
+        "patternPlaceholder": "Gib deinen regulären Ausdruck ein...",
+        "testString": "Testtext",
+        "testPlaceholder": "Gib den Testtext hier ein...",
+        "result": "Ergebnis",
+        "matchesFound": "Treffer gefunden",
+        "atIndex": "an Position",
+        "global": "Global",
+        "caseInsensitive": "Groß-/Kleinschreibung ignorieren",
+        "multiline": "Mehrzeilig",
+        "dotAll": "Punkt inkl. Zeilenumbrüche"
+      }
     },
     "color-picker": {
       "name": "Farbwähler",
-      "description": "Farben auswählen und zwischen HEX, RGB, HSL konvertieren"
+      "description": "Farben auswählen und zwischen HEX, RGB, HSL konvertieren",
+      "seo": {
+        "title": "Kostenloser Online-Farbwähler - HEX, RGB, HSL",
+        "content": "Farben auswählen und sofort zwischen HEX, RGB und HSL umrechnen. Visuelles Tool mit Kopieren per Klick. Kostenlos und ohne Registrierung."
+      },
+      "faq": {
+        "q1": "Welche Farbformate werden unterstützt?",
+        "a1": "Das Tool unterstützt die gängigsten Farbformate: HEX (z. B. #FF5733), RGB (z. B. rgb(255, 87, 51)) und HSL (z. B. hsl(11, 100%, 60%)). Die Umrechnung zwischen den Formaten erfolgt sofort.",
+        "q2": "Kann ich einen HEX-Code direkt eingeben?",
+        "a2": "Ja, du kannst einen HEX-, RGB- oder HSL-Farbcode direkt eintippen oder einfügen, und das Tool wandelt ihn automatisch in die anderen Formate um.",
+        "q3": "Funktioniert es auf Mobilgeräten?",
+        "a3": "Ja, das Tool ist vollständig für Mobilgeräte optimiert. Du kannst Farben auswählen und Werte bequem von jedem Smartphone oder Tablet kopieren."
+      },
+      "ui": {
+        "pickColor": "Farbe auswählen",
+        "copy": "Kopieren",
+        "copied": "Kopiert!"
+      }
     },
     "qr-code": {
       "name": "QR Code-Generator",

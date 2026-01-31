@@ -21,7 +21,11 @@
     "privacyBadge": "Seus arquivos nunca saem do navegador",
     "free": "Gratuito",
     "noRegistration": "Sem cadastro",
-    "noLimits": "Sem limites"
+    "noLimits": "Sem limites",
+    "faq": "Perguntas Frequentes",
+    "relatedTools": "Ferramentas Relacionadas",
+    "tryNow": "Experimentar agora",
+    "home": "Início"
   },
   "nav": {
     "pdf": "PDF",
@@ -202,11 +206,57 @@
     },
     "word-counter": {
       "name": "Contador de palavras",
-      "description": "Conte palavras, caracteres, frases e parágrafos"
+      "description": "Conte palavras, caracteres, frases e parágrafos",
+      "seo": {
+        "title": "Contador de Palavras Online Gratuito",
+        "content": "Conte palavras, caracteres, frases e parágrafos no seu texto instantaneamente. Nosso contador de palavras gratuito funciona diretamente no navegador, sem necessidade de uploads. Perfeito para redações, artigos, publicações em redes sociais e qualquer conteúdo de texto."
+      },
+      "faq": {
+        "q1": "Como funciona o contador de palavras?",
+        "a1": "Basta colar ou digitar seu texto na área de entrada. O contador analisa instantaneamente seu texto e mostra o número de palavras, caracteres, frases, parágrafos e o tempo estimado de leitura/fala.",
+        "q2": "Meu texto é armazenado em algum servidor?",
+        "a2": "Não. Todo o processamento acontece diretamente no seu navegador. Seu texto nunca é enviado ou armazenado em lugar algum.",
+        "q3": "Em que se baseia o tempo de leitura?",
+        "a3": "O tempo de leitura é estimado em 200 palavras por minuto (velocidade média de leitura de um adulto). O tempo de fala usa 130 palavras por minuto."
+      },
+      "ui": {
+        "placeholder": "Digite ou cole seu texto aqui...",
+        "words": "Palavras",
+        "characters": "Caracteres",
+        "charactersNoSpaces": "Caracteres (sem espaços)",
+        "sentences": "Frases",
+        "paragraphs": "Parágrafos",
+        "readingTime": "Tempo de leitura",
+        "speakingTime": "Tempo de fala",
+        "clear": "Limpar"
+      }
     },
     "lorem-ipsum": {
       "name": "Gerador Lorem Ipsum",
-      "description": "Gere texto de preenchimento Lorem Ipsum personalizado"
+      "description": "Gere texto de preenchimento Lorem Ipsum personalizado",
+      "seo": {
+        "title": "Gerador de Lorem Ipsum Gratuito",
+        "content": "Gere texto de preenchimento Lorem Ipsum personalizável para seus designs e projetos. Escolha entre parágrafos, frases ou palavras. Copie com um clique. Sem necessidade de cadastro."
+      },
+      "faq": {
+        "q1": "O que é Lorem Ipsum?",
+        "a1": "Lorem Ipsum é um texto de preenchimento usado na indústria de impressão e tipografia desde os anos 1500. Ele ajuda designers a visualizar como o conteúdo ficará sem ser distraído por texto legível.",
+        "q2": "Posso personalizar a saída?",
+        "a2": "Sim, você pode escolher a quantidade e o tipo de conteúdo a ser gerado: parágrafos, frases ou palavras individuais.",
+        "q3": "O texto gerado é aleatório?",
+        "a3": "O texto usa o vocabulário padrão do Lorem Ipsum organizado em combinações aleatórias, garantindo um conteúdo de preenchimento com aparência realista a cada vez."
+      },
+      "ui": {
+        "count": "Quantidade",
+        "type": "Tipo",
+        "paragraphs": "Parágrafos",
+        "sentences": "Frases",
+        "words": "Palavras",
+        "generate": "Gerar",
+        "copy": "Copiar",
+        "copied": "Copiado!",
+        "wordsCount": "palavras"
+      }
     },
     "case-converter": {
       "name": "Conversor de maiúsculas/minúsculas",
@@ -222,19 +272,108 @@
     },
     "json-formatter": {
       "name": "Formatador JSON",
-      "description": "Formate, valide e minimize código JSON"
+      "description": "Formate, valide e minimize código JSON",
+      "seo": {
+        "title": "Formatador e Validador JSON Online Gratuito",
+        "content": "Formate, valide e minimize dados JSON instantaneamente no seu navegador. Nosso formatador JSON gratuito embeleza JSON desorganizado, valida a sintaxe e pode minificar seu código. Nenhum dado sai do seu navegador."
+      },
+      "faq": {
+        "q1": "Posso formatar JSON inválido?",
+        "a1": "A ferramenta mostrará a mensagem de erro exata se o seu JSON for inválido, ajudando você a encontrar e corrigir rapidamente problemas de sintaxe.",
+        "q2": "Quais tamanhos de indentação são suportados?",
+        "a2": "Você pode escolher entre 2, 4 ou 8 espaços de indentação ao formatar seu JSON.",
+        "q3": "Meus dados JSON estão seguros?",
+        "a3": "Com certeza. Todo o processamento acontece no seu navegador. Seus dados JSON nunca são enviados a nenhum servidor."
+      },
+      "ui": {
+        "format": "Formatar",
+        "minify": "Minificar",
+        "copy": "Copiar",
+        "copied": "Copiado!",
+        "indent": "Indentação",
+        "error": "Erro",
+        "input": "Entrada",
+        "output": "Saída",
+        "inputPlaceholder": "Cole seu JSON aqui...",
+        "outputPlaceholder": "A saída formatada aparecerá aqui..."
+      }
     },
     "base64": {
       "name": "Codificador Base64",
-      "description": "Codifique e decodifique texto e arquivos em Base64"
+      "description": "Codifique e decodifique texto e arquivos em Base64",
+      "seo": {
+        "title": "Codificador e Decodificador Base64 Online Gratuito",
+        "content": "Codifique e decodifique strings Base64 instantaneamente no seu navegador. Converta texto para Base64 e vice-versa com nossa ferramenta gratuita. Perfeito para desenvolvedores que trabalham com APIs, URIs de dados e conteúdo codificado."
+      },
+      "faq": {
+        "q1": "O que é a codificação Base64?",
+        "a1": "Base64 é um esquema de codificação de binário para texto que converte dados binários em caracteres ASCII. É comumente usado em URIs de dados, anexos de e-mail e payloads de API.",
+        "q2": "Suporta Unicode?",
+        "a2": "Sim, nosso codificador lida corretamente com caracteres Unicode, incluindo emojis, letras acentuadas e scripts não-latinos.",
+        "q3": "Existe um limite de tamanho?",
+        "a3": "Não há limite prático para codificação/decodificação de texto. A ferramenta funciona inteiramente no seu navegador."
+      },
+      "ui": {
+        "encode": "Codificar",
+        "decode": "Decodificar",
+        "input": "Entrada",
+        "output": "Saída",
+        "copy": "Copiar",
+        "copied": "Copiado!",
+        "encodePlaceholder": "Digite o texto para codificar...",
+        "decodePlaceholder": "Digite o Base64 para decodificar...",
+        "invalidInput": "Entrada inválida para decodificação"
+      }
     },
     "regex-tester": {
       "name": "Testador de Regex",
-      "description": "Teste e depure expressões regulares em tempo real"
+      "description": "Teste e depure expressões regulares em tempo real",
+      "seo": {
+        "title": "Testador e Depurador de Regex Online Gratuito",
+        "content": "Teste e depure expressões regulares em tempo real. Veja as correspondências destacadas, grupos de captura e posições das correspondências. Suporta sintaxe JavaScript regex com flags global, insensível a maiúsculas, multilinha e dotAll."
+      },
+      "faq": {
+        "q1": "Qual sintaxe de regex é suportada?",
+        "a1": "A ferramenta usa o motor RegExp nativo do JavaScript, suportando todos os recursos padrão de regex, incluindo lookaheads, lookbehinds, grupos de captura e grupos nomeados.",
+        "q2": "O que significam as flags?",
+        "a2": "g = global (encontra todas as correspondências), i = insensível a maiúsculas, m = multilinha (^ e $ correspondem a limites de linha), s = dotAll (. corresponde a quebras de linha).",
+        "q3": "Existe um limite no tamanho do texto?",
+        "a3": "Não há limite fixo. O processamento acontece no seu navegador, então o desempenho depende do seu dispositivo. Padrões complexos em textos muito grandes podem ser mais lentos."
+      },
+      "ui": {
+        "pattern": "Expressão Regular",
+        "patternPlaceholder": "Digite o padrão regex...",
+        "testString": "Texto de Teste",
+        "testPlaceholder": "Digite o texto de teste...",
+        "result": "Resultado",
+        "matchesFound": "correspondências encontradas",
+        "atIndex": "no índice",
+        "global": "Global",
+        "caseInsensitive": "Insensível a Maiúsculas",
+        "multiline": "Multilinha",
+        "dotAll": "Dot All"
+      }
     },
     "color-picker": {
       "name": "Seletor de cores",
-      "description": "Selecione cores e converta entre HEX, RGB, HSL"
+      "description": "Selecione cores e converta entre HEX, RGB, HSL",
+      "seo": {
+        "title": "Seletor de Cores Online Gratuito — HEX, RGB, HSL",
+        "content": "Selecione qualquer cor e obtenha instantaneamente os valores HEX, RGB, HSL e CSS. Nosso seletor de cores gratuito funciona no navegador e permite copiar os códigos de cor com um clique. Perfeito para designers e desenvolvedores."
+      },
+      "faq": {
+        "q1": "Quais formatos de cores são suportados?",
+        "a1": "A ferramenta suporta os formatos HEX, RGB, HSL e CSS rgba(). Todos os valores são atualizados em tempo real conforme você seleciona uma cor.",
+        "q2": "Posso inserir um código HEX específico?",
+        "a2": "Sim, você pode digitar um código HEX diretamente no campo de entrada e todos os outros formatos serão atualizados automaticamente.",
+        "q3": "Funciona em dispositivos móveis?",
+        "a3": "Sim, o seletor de cores é totalmente responsivo e funciona em dispositivos móveis com controles adaptados ao toque."
+      },
+      "ui": {
+        "pickColor": "Selecione uma cor",
+        "copy": "Copiar",
+        "copied": "Copiado!"
+      }
     },
     "qr-code": {
       "name": "Gerador de QR Code",
