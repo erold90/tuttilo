@@ -271,25 +271,155 @@
         "invalidRange": "Intervalo de páginas inválido. Verifique sua entrada."
       }
     },
-    "pdf-to-word": {
-      "name": "PDF para Word",
-      "description": "Converta documentos PDF em arquivos Word editáveis"
-    },
-    "word-to-pdf": {
-      "name": "Word para PDF",
-      "description": "Converta documentos Word em PDF"
-    },
     "pdf-to-png": {
       "name": "PDF para PNG",
-      "description": "Converta páginas PDF em imagens PNG de alta qualidade"
-    },
-    "unlock-pdf": {
-      "name": "Desbloquear PDF",
-      "description": "Remova a proteção por senha dos arquivos PDF"
+      "description": "Converter páginas PDF em imagens PNG",
+      "seo": {
+        "title": "Converter PDF para PNG online grátis — Alta resolução",
+        "content": "Converta todas as páginas do seu PDF em imagens PNG de alta qualidade diretamente no navegador. Escolha a resolução de 1x até 4x para resultados nítidos em qualquer tamanho. Suporta fundo transparente. Totalmente gratuito, sem cadastro e sem upload para servidores externos."
+      },
+      "faq": {
+        "q1": "Qual resolução posso escolher para as imagens PNG?",
+        "a1": "Você pode selecionar entre 1x (resolução padrão), 2x (ideal para telas retina), 3x e 4x (altíssima resolução para impressão). Quanto maior a escala, mais nítida será a imagem resultante, mas o arquivo será maior.",
+        "q2": "Posso gerar PNGs com fundo transparente?",
+        "a2": "Sim. Ative a opção de fundo transparente para remover o fundo branco das páginas. Isso é útil para logotipos, gráficos e elementos que precisam ser sobrepostos a outras imagens.",
+        "q3": "Existe limite de páginas para conversão?",
+        "a3": "Não há limite de páginas. Todas as páginas do PDF são convertidas automaticamente em imagens PNG individuais. O processamento ocorre inteiramente no seu navegador."
+      },
+      "ui": {
+        "dropzone": "Arraste um arquivo PDF aqui ou clique para selecionar",
+        "dropzoneHint": "Selecione um arquivo PDF para converter",
+        "scale": "Resolução",
+        "transparent": "Fundo transparente",
+        "convert": "Converter para PNG",
+        "processing": "Convertendo página {current} de {total}...",
+        "done": "Conversão concluída!",
+        "download": "Baixar ZIP",
+        "reset": "Redefinir",
+        "convertError": "Erro na conversão. Tente novamente."
+      }
     },
     "images-to-pdf": {
       "name": "Imagens para PDF",
-      "description": "Converta várias imagens em um único documento PDF"
+      "description": "Combinar várias imagens em um único PDF",
+      "seo": {
+        "title": "Converter imagens para PDF online grátis",
+        "content": "Combine várias imagens em um único documento PDF de forma rápida e fácil. Suporta JPG, PNG e WebP. Reorganize as imagens, escolha o tamanho da página e ajuste as margens. Tudo acontece no navegador — gratuito, privado e sem cadastro."
+      },
+      "faq": {
+        "q1": "Quais formatos de imagem são aceitos?",
+        "a1": "A ferramenta aceita imagens nos formatos JPG, PNG e WebP. Você pode misturar diferentes formatos em um único PDF sem nenhum problema.",
+        "q2": "Posso reorganizar a ordem das imagens?",
+        "a2": "Sim. Após adicionar as imagens, use os botões de mover para cima e mover para baixo para organizar as imagens na ordem desejada antes de criar o PDF.",
+        "q3": "Quais tamanhos de página estão disponíveis?",
+        "a3": "Você pode escolher entre os tamanhos padrão como A4, Carta e Legal, ou usar a opção 'Ajustar à imagem' para que cada página tenha exatamente o tamanho da imagem correspondente."
+      },
+      "ui": {
+        "dropzone": "Arraste imagens aqui ou clique para selecionar",
+        "dropzoneHint": "JPG, PNG ou WebP — selecione várias imagens",
+        "pageSize": "Tamanho da página",
+        "fitToImage": "Ajustar à imagem",
+        "margin": "Margem",
+        "marginNone": "Nenhuma",
+        "marginSmall": "Pequena",
+        "marginMedium": "Média",
+        "marginLarge": "Grande",
+        "imagesCount": "{count} imagens selecionadas",
+        "moveUp": "Mover para cima",
+        "moveDown": "Mover para baixo",
+        "removeImage": "Remover",
+        "addMore": "Adicionar mais imagens",
+        "create": "Criar PDF",
+        "processing": "Criando PDF...",
+        "done": "PDF criado!",
+        "download": "Baixar PDF",
+        "reset": "Reiniciar",
+        "createError": "Erro ao criar o PDF. Tente novamente."
+      }
+    },
+    "unlock-pdf": {
+      "name": "Desbloquear PDF",
+      "description": "Remover proteção por senha de arquivos PDF",
+      "seo": {
+        "title": "Desbloquear PDF protegido por senha online grátis",
+        "content": "Remova a proteção por senha e as restrições de permissão de arquivos PDF diretamente no navegador. Desbloqueie PDFs protegidos para copiar, imprimir e editar. Gratuito, privado e sem upload para servidores externos."
+      },
+      "faq": {
+        "q1": "Qual a diferença entre senha de proprietário e senha de usuário?",
+        "a1": "A senha de proprietário restringe ações como copiar, imprimir e editar, mas permite abrir o PDF. A senha de usuário impede a abertura do arquivo sem a senha correta. A ferramenta pode remover ambos os tipos de proteção.",
+        "q2": "Preciso saber a senha para desbloquear o PDF?",
+        "a2": "Se o PDF tiver apenas restrições de permissão (senha de proprietário), geralmente é possível desbloqueá-lo sem digitar nenhuma senha. Se tiver senha de usuário para abertura, você precisará informá-la.",
+        "q3": "É legal desbloquear um PDF protegido?",
+        "a3": "É perfeitamente legal desbloquear PDFs dos quais você é o proprietário ou tem autorização para acessar. Esta ferramenta é destinada a recuperar o acesso aos seus próprios documentos."
+      },
+      "ui": {
+        "dropzone": "Arraste um arquivo PDF aqui ou clique para selecionar",
+        "dropzoneHint": "Selecione um PDF protegido por senha",
+        "password": "Senha (se necessário)",
+        "passwordPlaceholder": "Digite a senha do PDF...",
+        "passwordHint": "Deixe vazio se o PDF tiver apenas restrições de permissão",
+        "unlock": "Desbloquear PDF",
+        "processing": "Desbloqueando...",
+        "done": "PDF desbloqueado!",
+        "download": "Baixar",
+        "reset": "Reiniciar",
+        "unlockError": "Erro ao desbloquear. Tente novamente.",
+        "wrongPassword": "Senha incorreta. Tente novamente."
+      }
+    },
+    "word-to-pdf": {
+      "name": "Word para PDF",
+      "description": "Converter documentos Word em PDF",
+      "seo": {
+        "title": "Converter Word para PDF online grátis",
+        "content": "Converta documentos Word (DOCX e DOC) em PDF de forma rápida e fácil diretamente no navegador. Mantenha a formatação original intacta. Gratuito, privado e sem necessidade de cadastro ou instalação de software."
+      },
+      "faq": {
+        "q1": "Quais formatos de Word são suportados?",
+        "a1": "A ferramenta suporta os formatos DOCX (Word moderno) e DOC (Word clássico). Basta arrastar e soltar o arquivo para iniciar a conversão.",
+        "q2": "A formatação do documento é preservada?",
+        "a2": "Sim. A ferramenta preserva a formatação do documento, incluindo fontes, estilos, tabelas, imagens e layouts de página. O PDF resultante reproduz fielmente o documento original.",
+        "q3": "Qual o limite de tamanho de arquivo?",
+        "a3": "A ferramenta aceita arquivos de até 50 MB. Todo o processamento ocorre no navegador, então arquivos maiores podem demorar mais dependendo do seu dispositivo."
+      },
+      "ui": {
+        "dropzone": "Solte um arquivo Word aqui ou clique para selecionar",
+        "dropzoneHint": "Arquivos DOCX e DOC até 50 MB",
+        "convert": "Converter para PDF",
+        "processing": "Convertendo...",
+        "done": "Conversão concluída!",
+        "download": "Baixar PDF",
+        "reset": "Reiniciar",
+        "convertError": "Erro na conversão. Tente novamente.",
+        "printHint": "Clique em Baixar PDF e selecione 'Salvar como PDF' na caixa de diálogo de impressão.",
+        "preview": "Visualização"
+      }
+    },
+    "pdf-to-word": {
+      "name": "PDF para Word",
+      "description": "Converter documentos PDF em arquivos Word editáveis",
+      "seo": {
+        "title": "Converter PDF para Word online grátis",
+        "content": "Converta documentos PDF em arquivos Word (DOCX) editáveis diretamente no navegador. Extraia texto, parágrafos e formatação para edição fácil no Word. Gratuito, sem cadastro e sem upload para servidores externos."
+      },
+      "faq": {
+        "q1": "A formatação do PDF é mantida na conversão?",
+        "a1": "A ferramenta extrai o texto e a estrutura do PDF e os converte em formato Word editável. A maioria das formatações como parágrafos, fontes e estilos é preservada, embora layouts muito complexos possam apresentar pequenas diferenças.",
+        "q2": "Funciona com PDFs escaneados?",
+        "a2": "Não. Esta ferramenta extrai texto digital de PDFs. PDFs escaneados (que contêm imagens em vez de texto) não podem ser convertidos sem OCR (reconhecimento óptico de caracteres), que não é suportado nesta versão.",
+        "q3": "Existe limite de páginas para conversão?",
+        "a3": "Não há limite de páginas. Todas as páginas do PDF são convertidas em um único arquivo Word. O processamento ocorre inteiramente no seu navegador, então documentos maiores podem demorar mais."
+      },
+      "ui": {
+        "dropzone": "Arraste um arquivo PDF aqui ou clique para selecionar",
+        "dropzoneHint": "Arquivos PDF até 50 MB",
+        "convert": "Converter para Word",
+        "processing": "Convertendo página {current} de {total}...",
+        "done": "Conversão concluída!",
+        "download": "Baixar DOCX",
+        "reset": "Reiniciar",
+        "convertError": "Erro na conversão. Tente novamente."
+      }
     },
     "pdf-editor": {
       "name": "Editor PDF",
