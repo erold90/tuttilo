@@ -134,35 +134,204 @@
     },
     "compress-image": {
       "name": "Comprimir imagen",
-      "description": "Reduce el tamaño de las imágenes sin perder calidad"
+      "description": "Reduce el tamaño de las imágenes sin perder calidad",
+      "seo": {
+        "title": "Compresor de imágenes online gratuito",
+        "content": "Comprime imágenes JPG, PNG y WebP directamente en tu navegador. Reduce el tamaño manteniendo la calidad visual. Gratuito, sin subidas — tus archivos permanecen privados."
+      },
+      "faq": {
+        "q1": "¿Qué formatos de imagen puedo comprimir?",
+        "a1": "Puedes comprimir imágenes JPG, PNG y WebP. La herramienta procesa los archivos directamente en tu navegador usando algoritmos de compresión avanzados.",
+        "q2": "¿La compresión reduce la calidad de la imagen?",
+        "a2": "Puedes controlar la calidad con un deslizador. Mayor calidad significa archivos más grandes, menor calidad archivos más pequeños. El ajuste predeterminado ofrece un excelente equilibrio.",
+        "q3": "¿Hay un límite de tamaño de archivo?",
+        "a3": "La herramienta soporta imágenes de hasta 50 MB. Todo el procesamiento ocurre en tu navegador, por lo que archivos más grandes pueden tardar más en dispositivos lentos."
+      },
+      "ui": {
+        "dropzone": "Arrastra una imagen aquí o haz clic para seleccionar",
+        "quality": "Calidad",
+        "processing": "Comprimiendo...",
+        "compress": "Comprimir",
+        "download": "Descargar",
+        "reset": "Reiniciar",
+        "originalSize": "Tamaño original",
+        "compressedSize": "Tamaño comprimido",
+        "savings": "Ahorro",
+        "original": "Original",
+        "compressed": "Comprimida"
+      }
     },
     "resize-image": {
       "name": "Redimensionar imagen",
-      "description": "Cambia las dimensiones de tus imágenes"
+      "description": "Cambia las dimensiones de tus imágenes",
+      "seo": {
+        "title": "Redimensionador de imágenes online gratuito",
+        "content": "Redimensiona imágenes JPG, PNG y WebP a cualquier tamaño. Bloquea la relación de aspecto, usa presets de porcentaje o introduce medidas personalizadas. Gratuito, todo en el navegador."
+      },
+      "faq": {
+        "q1": "¿Puedo mantener la relación de aspecto al redimensionar?",
+        "a1": "Sí, el bloqueo de relación de aspecto está activado por defecto. Cuando cambias el ancho o alto, la otra dimensión se ajusta automáticamente para mantener las proporciones.",
+        "q2": "¿Qué son los presets de porcentaje?",
+        "a2": "Los presets rápidos te permiten redimensionar al 25%, 50%, 75%, 150% o 200% del tamaño original con un solo clic.",
+        "q3": "¿El redimensionado afecta la calidad?",
+        "a3": "La herramienta usa interpolación bicúbica de alta calidad. Ampliar más allá del tamaño original puede reducir la nitidez, mientras que reducir mantiene la calidad."
+      },
+      "ui": {
+        "dropzone": "Arrastra una imagen aquí o haz clic para seleccionar",
+        "width": "Ancho",
+        "height": "Alto",
+        "lockAspectRatio": "Bloquear proporción",
+        "processing": "Redimensionando...",
+        "resize": "Redimensionar",
+        "download": "Descargar",
+        "reset": "Reiniciar",
+        "original": "Original",
+        "resized": "Redimensionada",
+        "originalDimensions": "Dimensiones originales"
+      }
     },
     "crop-image": {
       "name": "Recortar imagen",
-      "description": "Recorta tus imágenes con precisión"
+      "description": "Recorta tus imágenes con precisión",
+      "seo": {
+        "title": "Recortador de imágenes online gratuito",
+        "content": "Recorta imágenes JPG, PNG y WebP con un editor visual. Elige entre proporciones predefinidas o recorta libremente. Sin subidas — funciona completamente en tu navegador."
+      },
+      "faq": {
+        "q1": "¿Qué proporciones predefinidas están disponibles?",
+        "a1": "Puedes recortar con selección libre o usar presets: 1:1 (cuadrado), 16:9 (panorámico), 4:3 (estándar) y 3:2 (foto).",
+        "q2": "¿Puedo recortar con un tamaño de píxel exacto?",
+        "a2": "El editor visual te permite arrastrar para seleccionar cualquier área. Para tamaños exactos, combina con la herramienta Redimensionar después del recorte.",
+        "q3": "¿El recorte reduce la calidad?",
+        "a3": "No. El recorte simplemente extrae el área seleccionada a su resolución original. No se aplica recompresión a la región recortada."
+      },
+      "ui": {
+        "dropzone": "Arrastra una imagen aquí o haz clic para seleccionar",
+        "crop": "Recortar",
+        "download": "Descargar",
+        "reset": "Reiniciar",
+        "result": "Resultado",
+        "freeform": "Libre"
+      }
     },
     "png-to-jpg": {
       "name": "PNG a JPG",
-      "description": "Convierte imágenes PNG a formato JPG"
+      "description": "Convierte imágenes PNG a formato JPG",
+      "seo": {
+        "title": "Convertidor PNG a JPG online gratuito",
+        "content": "Convierte imágenes PNG a formato JPG instantáneamente en tu navegador. Calidad ajustable, áreas transparentes rellenas de blanco. Sin subidas — completamente privado."
+      },
+      "faq": {
+        "q1": "¿Qué pasa con las áreas transparentes?",
+        "a1": "JPG no soporta transparencia. Las áreas transparentes del PNG se rellenarán con un fondo blanco durante la conversión.",
+        "q2": "¿Puedo controlar la calidad de salida?",
+        "a2": "Sí, usa el deslizador de calidad para equilibrar entre tamaño de archivo y calidad de imagen. Valores más altos producen mejores JPG pero más grandes.",
+        "q3": "¿Hay un límite de tamaño?",
+        "a3": "Se soportan imágenes de hasta 50 MB. La conversión ocurre completamente en tu navegador, así que tus archivos permanecen privados."
+      },
+      "ui": {
+        "dropzone": "Arrastra una imagen PNG aquí o haz clic para seleccionar",
+        "quality": "Calidad",
+        "processing": "Convirtiendo...",
+        "convert": "Convertir",
+        "download": "Descargar",
+        "reset": "Reiniciar"
+      }
     },
     "jpg-to-png": {
       "name": "JPG a PNG",
-      "description": "Convierte imágenes JPG a formato PNG con transparencia"
+      "description": "Convierte imágenes JPG a formato PNG con transparencia",
+      "seo": {
+        "title": "Convertidor JPG a PNG online gratuito",
+        "content": "Convierte imágenes JPG a formato PNG instantáneamente en tu navegador. PNG soporta transparencia y compresión sin pérdida. Gratuito, privado, sin registro."
+      },
+      "faq": {
+        "q1": "¿Por qué convertir JPG a PNG?",
+        "a1": "PNG soporta transparencia y compresión sin pérdida, ideal para logotipos, gráficos e imágenes que necesitan bordes nítidos sin artefactos de compresión.",
+        "q2": "¿Aumentará el tamaño del archivo?",
+        "a2": "Los archivos PNG son típicamente más grandes que los JPG porque PNG usa compresión sin pérdida. La ventaja es mayor calidad sin artefactos.",
+        "q3": "¿La conversión añade transparencia?",
+        "a3": "Convertir JPG a PNG no añade transparencia automáticamente. La imagen mantiene su contenido original, pero ahora está en un formato que soporta transparencia para ediciones futuras."
+      },
+      "ui": {
+        "dropzone": "Arrastra una imagen JPG aquí o haz clic para seleccionar",
+        "processing": "Convirtiendo...",
+        "convert": "Convertir",
+        "download": "Descargar",
+        "reset": "Reiniciar"
+      }
     },
     "webp-to-png": {
       "name": "WebP a PNG",
-      "description": "Convierte imágenes WebP a formato PNG"
+      "description": "Convierte imágenes WebP a formato PNG",
+      "seo": {
+        "title": "Convertidor WebP a PNG online gratuito",
+        "content": "Convierte imágenes WebP a formato PNG instantáneamente en tu navegador. Mantiene transparencia y calidad. Sin subidas — tus archivos permanecen en tu dispositivo."
+      },
+      "faq": {
+        "q1": "¿Por qué convertir WebP a PNG?",
+        "a1": "Aunque WebP es excelente para la web, PNG es más ampliamente compatible con aplicaciones, editores de imagen y plataformas. La conversión garantiza máxima compatibilidad.",
+        "q2": "¿Se preserva la transparencia?",
+        "a2": "Sí. Si tu imagen WebP tiene áreas transparentes, se preservarán en la salida PNG.",
+        "q3": "¿Cambiará el tamaño del archivo?",
+        "a3": "Los archivos PNG pueden ser más grandes que los WebP ya que WebP usa compresión más agresiva. La calidad permanece idéntica."
+      },
+      "ui": {
+        "dropzone": "Arrastra una imagen WebP aquí o haz clic para seleccionar",
+        "processing": "Convirtiendo...",
+        "convert": "Convertir",
+        "download": "Descargar",
+        "reset": "Reiniciar"
+      }
     },
     "webp-to-jpg": {
       "name": "WebP a JPG",
-      "description": "Convierte imágenes WebP a formato JPG"
+      "description": "Convierte imágenes WebP a formato JPG",
+      "seo": {
+        "title": "Convertidor WebP a JPG online gratuito",
+        "content": "Convierte imágenes WebP a formato JPG instantáneamente en tu navegador. Calidad ajustable con fondo blanco para transparencia. Gratuito, privado, sin registro."
+      },
+      "faq": {
+        "q1": "¿Qué pasa con las áreas transparentes en WebP?",
+        "a1": "JPG no soporta transparencia. Cualquier área transparente en la imagen WebP se rellenará con un fondo blanco.",
+        "q2": "¿Puedo ajustar la calidad del JPG?",
+        "a2": "Sí, usa el deslizador de calidad para ajustar la calidad de salida del 10% al 100%. Valores más altos significan mejor calidad pero archivos más grandes.",
+        "q3": "¿Es gratuita esta herramienta?",
+        "a3": "Sí, completamente gratuita y sin límites. La conversión se ejecuta en tu navegador, así que ningún dato se sube a ningún servidor."
+      },
+      "ui": {
+        "dropzone": "Arrastra una imagen WebP aquí o haz clic para seleccionar",
+        "quality": "Calidad",
+        "processing": "Convirtiendo...",
+        "convert": "Convertir",
+        "download": "Descargar",
+        "reset": "Reiniciar"
+      }
     },
     "heic-to-jpg": {
       "name": "HEIC a JPG",
-      "description": "Convierte fotos HEIC de iPhone a formato JPG"
+      "description": "Convierte fotos HEIC de iPhone a formato JPG",
+      "seo": {
+        "title": "Convertidor HEIC a JPG online gratuito",
+        "content": "Convierte fotos HEIC y HEIF de iPhone a formato JPG. Funciona directamente en tu navegador sin subidas. Gratuito, rápido y completamente privado."
+      },
+      "faq": {
+        "q1": "¿Qué es el formato HEIC?",
+        "a1": "HEIC (High Efficiency Image Container) es el formato de foto predeterminado de Apple en iPhone. Ofrece mejor compresión que JPG pero no es universalmente compatible.",
+        "q2": "¿Por qué convertir HEIC a JPG?",
+        "a2": "JPG es universalmente compatible con todos los dispositivos, aplicaciones y plataformas. Convertir HEIC a JPG garantiza que tus fotos se puedan abrir y compartir en cualquier lugar.",
+        "q3": "¿La conversión pierde calidad?",
+        "a3": "La conversión usa ajustes de alta calidad (92%) para minimizar la pérdida. El resultado es visualmente idéntico al original en la mayoría de los casos."
+      },
+      "ui": {
+        "dropzone": "Arrastra un archivo HEIC/HEIF aquí o haz clic para seleccionar",
+        "processing": "Convirtiendo...",
+        "convert": "Convertir",
+        "download": "Descargar",
+        "reset": "Reiniciar",
+        "result": "Resultado",
+        "error": "La conversión ha fallado. Asegúrate de que el archivo sea una imagen HEIC válida."
+      }
     },
     "svg-to-png": {
       "name": "SVG a PNG",
