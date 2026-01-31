@@ -1,3 +1,4 @@
+
 {
   "common": {
     "siteName": "Tuttilo",
@@ -347,6 +348,8 @@
         "transparent": "투명 배경",
         "convert": "PNG로 변환",
         "processing": "페이지 {current}/{total} 변환 중...",
+        "results": "결과",
+        "downloadAll": "모두 다운로드",
         "done": "변환 완료!",
         "download": "ZIP 다운로드",
         "reset": "초기화",
@@ -401,6 +404,10 @@
       "ui": {
         "dropzone": "이미지를 드롭하거나 클릭하여 선택",
         "dropzoneHint": "JPG, PNG, WebP 각 50 MB 이하",
+        "images": "이미지",
+        "pageSizeFit": "이미지에 맞춤",
+        "convert": "PDF 만들기",
+        "convertError": "오류가 발생했습니다. 다시 시도해 주세요.",
         "pageSize": "페이지 크기",
         "fitToImage": "이미지에 맞춤",
         "margin": "여백",
