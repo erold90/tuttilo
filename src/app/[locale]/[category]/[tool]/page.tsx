@@ -11,13 +11,22 @@ import {
 } from "@/lib/tools/registry";
 import { ToolLayout } from "@/components/tools/tool-layout";
 
-// Tool components
+// Tool components — Sprint 1 (Text/Dev)
 import { WordCounter } from "@/components/tools/word-counter";
 import { JsonFormatter } from "@/components/tools/json-formatter";
 import { Base64Encoder } from "@/components/tools/base64-encoder";
 import { LoremIpsum } from "@/components/tools/lorem-ipsum";
 import { ColorPicker } from "@/components/tools/color-picker";
 import { RegexTester } from "@/components/tools/regex-tester";
+// Sprint 2 (Image)
+import { CompressImage } from "@/components/tools/compress-image";
+import { ResizeImage } from "@/components/tools/resize-image";
+import { CropImage } from "@/components/tools/crop-image";
+import { PngToJpg } from "@/components/tools/png-to-jpg";
+import { JpgToPng } from "@/components/tools/jpg-to-png";
+import { WebpToPng } from "@/components/tools/webp-to-png";
+import { WebpToJpg } from "@/components/tools/webp-to-jpg";
+import { HeicToJpg } from "@/components/tools/heic-to-jpg";
 
 const BASE_URL = "https://tuttilo.com";
 
@@ -28,6 +37,14 @@ const toolComponents: Record<string, React.ComponentType> = {
   "lorem-ipsum": LoremIpsum,
   "color-picker": ColorPicker,
   "regex-tester": RegexTester,
+  "compress-image": CompressImage,
+  "resize-image": ResizeImage,
+  "crop-image": CropImage,
+  "png-to-jpg": PngToJpg,
+  "jpg-to-png": JpgToPng,
+  "webp-to-png": WebpToPng,
+  "webp-to-jpg": WebpToJpg,
+  "heic-to-jpg": HeicToJpg,
 };
 
 export async function generateMetadata({
