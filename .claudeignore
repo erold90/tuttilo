@@ -1,0 +1,15 @@
+node_modules/
+.next/
+dist/
+out/
+.git/
+*.lock
+package-lock.json
+pnpm-lock.yaml
+yarn.lock
+.vercel/
+.wrangler/
+public/wasm/
+coverage/
+.turbo/
+*.tsbuildinfo
