@@ -1,0 +1,36 @@
+{
+  "metadata": {
+    "title": "Tuttilo - Strumenti Online Gratuiti",
+    "description": "Tutti gli strumenti di cui hai bisogno in un unico posto. PDF, immagini, video, audio e molto altro. Gratis, senza registrazione."
+  },
+  "common": {
+    "home": "Home",
+    "tools": "Strumenti",
+    "about": "Chi siamo",
+    "privacy": "Privacy",
+    "terms": "Termini",
+    "language": "Lingua",
+    "darkMode": "Tema scuro",
+    "lightMode": "Tema chiaro",
+    "upload": "Carica file",
+    "download": "Scarica",
+    "processing": "Elaborazione in corso...",
+    "done": "Fatto!",
+    "error": "Errore",
+    "retry": "Riprova",
+    "cancel": "Annulla",
+    "reset": "Ricomincia",
+    "dragAndDrop": "Trascina i file qui o clicca per selezionare",
+    "allToolsFree": "Tutti gli strumenti sono gratuiti e funzionano nel browser",
+    "noUpload": "I file non vengono caricati su nessun server"
+  },
+  "categories": {
+    "pdf": "PDF",
+    "image": "Immagini",
+    "video": "Video",
+    "audio": "Audio",
+    "text": "Testo",
+    "developer": "Sviluppatori",
+    "youtube": "YouTube"
+  }
+}

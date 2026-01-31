@@ -1,0 +1,36 @@
+{
+  "metadata": {
+    "title": "Tuttilo - Free Online Tools",
+    "description": "All the tools you need in one place. PDF, images, video, audio and more. Free, no registration required."
+  },
+  "common": {
+    "home": "Home",
+    "tools": "Tools",
+    "about": "About",
+    "privacy": "Privacy",
+    "terms": "Terms",
+    "language": "Language",
+    "darkMode": "Dark mode",
+    "lightMode": "Light mode",
+    "upload": "Upload file",
+    "download": "Download",
+    "processing": "Processing...",
+    "done": "Done!",
+    "error": "Error",
+    "retry": "Retry",
+    "cancel": "Cancel",
+    "reset": "Start over",
+    "dragAndDrop": "Drag files here or click to select",
+    "allToolsFree": "All tools are free and run in your browser",
+    "noUpload": "Files are never uploaded to any server"
+  },
+  "categories": {
+    "pdf": "PDF",
+    "image": "Images",
+    "video": "Video",
+    "audio": "Audio",
+    "text": "Text",
+    "developer": "Developer",
+    "youtube": "YouTube"
+  }
+}
