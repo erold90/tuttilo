@@ -658,15 +658,100 @@
     },
     "compress-video": {
       "name": "Video komprimieren",
-      "description": "Videodateigröße reduzieren bei gleichbleibender Qualität"
+      "description": "Videodateigröße reduzieren bei gleichbleibender Qualität",
+      "seo": {
+        "title": "Kostenloser Online Video-Kompressor",
+        "content": "Reduzieren Sie die Dateigröße Ihrer Videos direkt im Browser. Wählen Sie zwischen hoher, mittlerer und niedriger Qualität. Unterstützt MP4, WebM und andere Formate. Kostenlos, privat, kein Upload nötig."
+      },
+      "faq": {
+        "q1": "Welche Videoformate werden unterstützt?",
+        "a1": "Das Tool unterstützt MP4, WebM, MOV, AVI und die meisten gängigen Videoformate. Die Ausgabe wird als MP4-Datei mit H.264-Codec gespeichert, der universell kompatibel ist.",
+        "q2": "Wie stark wird das Video komprimiert?",
+        "a2": "Sie können zwischen drei Qualitätsstufen wählen: Hoch (beste Qualität, moderate Kompression), Mittel (ausgewogenes Verhältnis) und Niedrig (kleinste Dateigröße, sichtbarer Qualitätsverlust). Die tatsächliche Kompression hängt vom Originalvideo ab.",
+        "q3": "Gibt es eine Dateigrößenbeschränkung?",
+        "a3": "Das Tool unterstützt Videos bis 500 MB. Die Verarbeitung erfolgt vollständig im Browser mithilfe von FFmpeg WebAssembly, größere Dateien können auf langsameren Geräten länger dauern."
+      },
+      "ui": {
+        "dropzone": "Videodatei hierher ziehen oder klicken zum Auswählen",
+        "dropzoneHint": "Unterstützt MP4, WebM, MOV und andere Videoformate",
+        "quality": "Qualität",
+        "quality_high": "Hoch",
+        "quality_medium": "Mittel",
+        "quality_low": "Niedrig",
+        "compress": "Komprimieren",
+        "loadingFfmpeg": "FFmpeg wird geladen...",
+        "compressing": "Video wird komprimiert...",
+        "done": "Kompression abgeschlossen!",
+        "original": "Originalgröße",
+        "compressed": "Komprimierte Größe",
+        "download": "Herunterladen",
+        "reset": "Zurücksetzen",
+        "compressError": "Beim Komprimieren ist ein Fehler aufgetreten. Bitte versuchen Sie es erneut."
+      }
     },
     "trim-video": {
       "name": "Video schneiden",
-      "description": "Deine Videos präzise schneiden und kürzen"
+      "description": "Deine Videos präzise schneiden und kürzen",
+      "seo": {
+        "title": "Kostenloser Online Video-Schneider",
+        "content": "Schneiden und kürzen Sie Videos direkt im Browser. Wählen Sie Start- und Endpunkt mit präziser Zeitleiste. Unterstützt MP4, WebM und andere Formate. Kostenlos, privat, kein Upload nötig."
+      },
+      "faq": {
+        "q1": "Welche Videoformate kann ich schneiden?",
+        "a1": "Das Tool unterstützt MP4, WebM, MOV, AVI und die meisten gängigen Videoformate. Die Ausgabe wird als MP4-Datei mit H.264-Codec gespeichert.",
+        "q2": "Wie genau kann ich schneiden?",
+        "a2": "Sie können Start- und Endzeit präzise mit Schiebereglern oder durch direkte Eingabe von Zeitstempeln festlegen. Die Vorschaufunktion ermöglicht es Ihnen, den ausgewählten Bereich vor dem Schneiden zu überprüfen.",
+        "q3": "Geht bei der Bearbeitung Qualität verloren?",
+        "a3": "Das Tool schneidet das Video ohne Neukodierung, wenn möglich, um die Qualität zu bewahren. In einigen Fällen kann eine leichte Neukodierung erforderlich sein, die die Qualität minimal beeinflusst."
+      },
+      "ui": {
+        "dropzone": "Videodatei hierher ziehen oder klicken zum Auswählen",
+        "dropzoneHint": "Unterstützt MP4, WebM, MOV und andere Videoformate",
+        "start": "Start",
+        "end": "Ende",
+        "selection": "Auswahldauer",
+        "trim": "Schneiden",
+        "loadingFfmpeg": "FFmpeg wird geladen...",
+        "trimming": "Video wird geschnitten...",
+        "done": "Schnitt abgeschlossen!",
+        "download": "Herunterladen",
+        "reset": "Zurücksetzen",
+        "preview": "Vorschau",
+        "trimError": "Beim Schneiden ist ein Fehler aufgetreten. Bitte versuchen Sie es erneut."
+      }
     },
     "video-to-gif": {
       "name": "Video in GIF",
-      "description": "Videos in animierte GIF umwandeln"
+      "description": "Videos in animierte GIF umwandeln",
+      "seo": {
+        "title": "Kostenloser Online Video-zu-GIF-Konverter",
+        "content": "Wandeln Sie Videos in animierte GIF-Dateien direkt im Browser um. Wählen Sie Start- und Endpunkt, passen Sie FPS und Breite an. Unterstützt MP4, WebM und andere Formate. Kostenlos, privat, kein Upload nötig."
+      },
+      "faq": {
+        "q1": "Welche Videoformate werden unterstützt?",
+        "a1": "Das Tool unterstützt MP4, WebM, MOV, AVI und die meisten gängigen Videoformate. Sie können jeden beliebigen Abschnitt des Videos in ein animiertes GIF umwandeln.",
+        "q2": "Wie kann ich die GIF-Größe kontrollieren?",
+        "a2": "Sie können die Dateigröße durch Anpassen von drei Parametern steuern: FPS (Bilder pro Sekunde), Breite (kleinere Breite = kleinere Datei) und die Länge des ausgewählten Videoabschnitts.",
+        "q3": "Was ist die optimale FPS-Einstellung?",
+        "a3": "10-15 FPS ist ein guter Kompromiss zwischen flüssiger Animation und Dateigröße. Niedrigere FPS erzeugen kleinere GIF-Dateien, aber weniger flüssige Animationen."
+      },
+      "ui": {
+        "dropzone": "Videodatei hierher ziehen oder klicken zum Auswählen",
+        "dropzoneHint": "Unterstützt MP4, WebM, MOV und andere Videoformate",
+        "start": "Start",
+        "end": "Ende",
+        "selection": "Auswahldauer",
+        "fps": "FPS (Bilder/Sek.)",
+        "width": "Breite (px)",
+        "convert": "In GIF umwandeln",
+        "loadingFfmpeg": "FFmpeg wird geladen...",
+        "converting": "GIF wird erstellt...",
+        "done": "Konvertierung abgeschlossen!",
+        "download": "Herunterladen",
+        "reset": "Zurücksetzen",
+        "preview": "Vorschau",
+        "convertError": "Beim Konvertieren ist ein Fehler aufgetreten. Bitte versuchen Sie es erneut."
+      }
     },
     "video-to-mp3": {
       "name": "Video in MP3",
@@ -752,7 +837,31 @@
     },
     "audio-converter": {
       "name": "Audio-Konverter",
-      "description": "Audiodateien zwischen verschiedenen Formaten konvertieren"
+      "description": "Audiodateien zwischen verschiedenen Formaten konvertieren",
+      "seo": {
+        "title": "Kostenloser Online Audio-Konverter",
+        "content": "Konvertieren Sie Audiodateien zwischen verschiedenen Formaten direkt im Browser. Unterstützt MP3, WAV, OGG, AAC, FLAC und mehr. Kostenlos, privat, kein Upload nötig."
+      },
+      "faq": {
+        "q1": "Welche Audioformate werden unterstützt?",
+        "a1": "Das Tool unterstützt die gängigsten Audioformate: MP3, WAV, OGG, AAC, FLAC, M4A und mehr. Sie können zwischen allen unterstützten Formaten konvertieren.",
+        "q2": "Geht bei der Konvertierung Qualität verloren?",
+        "a2": "Das hängt vom Zielformat ab. Verlustfreie Formate wie WAV und FLAC bewahren die volle Qualität. Verlustbehaftete Formate wie MP3 und AAC komprimieren die Audio, was zu leichtem Qualitätsverlust führen kann.",
+        "q3": "Gibt es eine Dateigrößenbeschränkung?",
+        "a3": "Das Tool unterstützt Audiodateien bis 100 MB. Die Verarbeitung erfolgt vollständig im Browser mithilfe von FFmpeg WebAssembly."
+      },
+      "ui": {
+        "dropzone": "Audiodatei hierher ziehen oder klicken zum Auswählen",
+        "dropzoneHint": "Unterstützt MP3, WAV, OGG, AAC, FLAC und mehr",
+        "outputFormat": "Ausgabeformat",
+        "convert": "Konvertieren",
+        "loadingFfmpeg": "FFmpeg wird geladen...",
+        "converting": "Audio wird konvertiert...",
+        "done": "Konvertierung abgeschlossen!",
+        "download": "Herunterladen",
+        "reset": "Zurücksetzen",
+        "convertError": "Beim Konvertieren ist ein Fehler aufgetreten. Bitte versuchen Sie es erneut."
+      }
     },
     "voice-recorder": {
       "name": "Sprachrekorder",
@@ -992,7 +1101,27 @@
     },
     "youtube-thumbnail": {
       "name": "YouTube-Vorschaubild herunterladen",
-      "description": "YouTube-Video-Vorschaubilder in hoher Qualität herunterladen"
+      "description": "YouTube-Video-Vorschaubilder in hoher Qualität herunterladen",
+      "seo": {
+        "title": "Kostenloser YouTube-Vorschaubild-Downloader",
+        "content": "Laden Sie YouTube-Video-Vorschaubilder in höchster Qualität herunter. Fügen Sie einfach die Video-URL ein und erhalten Sie das Vorschaubild als hochauflösendes Bild. Kostenlos, ohne Registrierung."
+      },
+      "faq": {
+        "q1": "Welche Qualität hat das heruntergeladene Vorschaubild?",
+        "a1": "Das Tool lädt das Vorschaubild in der höchsten verfügbaren Auflösung herunter, normalerweise 1280x720 Pixel (HD) oder höher, falls vom Video-Ersteller bereitgestellt.",
+        "q2": "Funktioniert es mit jedem YouTube-Video?",
+        "a2": "Ja, das Tool funktioniert mit jedem öffentlichen YouTube-Video. Fügen Sie einfach die Video-URL ein, und das Vorschaubild wird sofort abgerufen.",
+        "q3": "Ist es legal, YouTube-Vorschaubilder herunterzuladen?",
+        "a3": "Vorschaubilder sind öffentlich zugängliche Bilder. Beachten Sie jedoch Urheberrechte, wenn Sie das Bild für kommerzielle Zwecke verwenden möchten. Verwenden Sie es verantwortungsvoll."
+      },
+      "ui": {
+        "urlLabel": "YouTube-Video-URL",
+        "urlPlaceholder": "https://www.youtube.com/watch?v=...",
+        "fetch": "Vorschaubild abrufen",
+        "download": "Herunterladen",
+        "reset": "Zurücksetzen",
+        "invalidUrl": "Ungültige YouTube-URL. Bitte geben Sie eine gültige Video-URL ein."
+      }
     },
     "youtube-transcript": {
       "name": "YouTube-Transkription",
