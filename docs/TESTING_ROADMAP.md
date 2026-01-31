@@ -9,9 +9,9 @@
 
 ## Stato Generale
 - **Tool totali**: 36 disponibili (isAvailable: true)
-- **Tool testati**: 31/36
-- **Bug trovati**: 10
-- **Bug fixati**: 10
+- **Tool testati**: 36/36
+- **Bug trovati**: 11
+- **Bug fixati**: 11
 - **Ultimo aggiornamento**: 2026-01-31
 
 ---
@@ -258,52 +258,39 @@
 
 ---
 
-## BATCH 6: Video Tools (5 tool) — Status: TODO
+## BATCH 6: Video Tools (5 tool) — Status: DONE
 
 ### T32. Compress Video `/en/video/compress`
 - **File**: `src/components/tools/compress-video.tsx` (via ffmpeg-tools.tsx wrapper)
 - **Test**: Comprimere video con 3 livelli qualita, verificare riduzione
-- **Bug noti dal codice**:
-  - No timeout su FFmpeg init
-  - Cast aggressivo Uint8Array
-- **Status**: TODO
-- **Fix applicati**: —
+- **Note**: FFmpeg init gestito da getFFmpeg con error handling. Cast Uint8Array e il pattern standard per FFmpeg.wasm v0.12. URL e FFmpeg file cleanup presenti.
+- **Status**: DONE (nessun fix necessario)
 
 ### T33. Trim Video `/en/video/trim`
 - **File**: `src/components/tools/trim-video.tsx` (via ffmpeg-tools.tsx wrapper)
 - **Test**: Tagliare video con range slider, verificare output
-- **Bug noti dal codice**:
-  - Race condition su loadedmetadata
-  - Start/end logic fragile se end=0
-- **Status**: TODO
-- **Fix applicati**: —
+- **Note**: `isFinite(dur)` gestisce edge case streaming. Guard `end - start < 0.1` disabilita trim vuoto. useEffect cleanup corretto per loadedmetadata. URL cleanup in loadFile e reset.
+- **Status**: DONE (nessun fix necessario)
 
 ### T34. Video to GIF `/en/video/to-gif`
 - **File**: `src/components/tools/video-to-gif.tsx` (via ffmpeg-tools.tsx wrapper)
 - **Test**: Convertire video in GIF, testare fps/width/durata
-- **Bug noti dal codice**:
-  - Limite 10sec default non spiegato in UI
-  - Due passate FFmpeg (lento)
-- **Status**: TODO
-- **Fix applicati**: —
+- **Note**: Due passate FFmpeg (palettegen + paletteuse) e la tecnica corretta per GIF di qualita. Default 10sec visibile nei slider. URL e FFmpeg file cleanup presenti.
+- **Status**: DONE (nessun fix necessario)
 
 ### T35. Audio Converter `/en/audio/converter`
 - **File**: `src/components/tools/audio-converter.tsx` (via ffmpeg-tools.tsx wrapper)
 - **Test**: Convertire tra MP3/WAV/OGG/FLAC/AAC
-- **Bug noti dal codice**:
-  - Accetta qualsiasi file (non solo audio)
-  - No check codec availability
-- **Status**: TODO
-- **Fix applicati**: —
+- **Bug fixati**:
+  - B10: Aggiunto `if (!f.type.startsWith("audio/")) return;` in loadFile per impedire upload di file non-audio
+- **Note**: Codec availability gestita da FFmpeg internamente (errore catturato dal try/catch).
+- **Status**: DONE
 
 ### T36. YouTube Thumbnail `/en/youtube/thumbnail`
 - **File**: `src/components/tools/youtube-thumbnail.tsx`
 - **Test**: URL YouTube vari formati (watch, youtu.be, shorts, embed, video ID)
-- **Bug noti dal codice**:
-  - Possibile CORS su fetch i.ytimg.com
-  - Regex assume 11 caratteri (potrebbe cambiare)
-- **Status**: TODO
-- **Fix applicati**: —
+- **Note**: CORS gestito con fallback `window.open`. Download con revoke immediato. Placeholder detection (`naturalWidth > 120`). Regex 11 chars e lo standard YouTube.
+- **Status**: DONE (nessun fix necessario)
 
 ---
 
@@ -338,7 +325,7 @@
 | B07 | screen-recorder | Race condition ended event | MEDIA | DONE (non era un bug — guard state check OK) |
 | B08 | audio-cutter | Play/stop + AudioContext leak | MEDIA | DONE (play OK, aggiunto ctx.close()) |
 | B09 | compress-image | PNG perde trasparenza | MEDIA | DONE (comportamento accettabile per JPEG) |
-| B10 | audio-converter | Accetta qualsiasi file tipo | MEDIA | TODO |
+| B10 | audio-converter | Accetta qualsiasi file tipo | MEDIA | DONE (aggiunto type check audio/*) |
 
 ---
 

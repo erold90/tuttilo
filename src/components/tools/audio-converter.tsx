@@ -26,6 +26,7 @@ export function AudioConverter() {
   const [error, setError] = useState("");
 
   const loadFile = useCallback((f: File) => {
+    if (!f.type.startsWith("audio/")) return;
     setError("");
     setResultUrl("");
     setFile(f);
