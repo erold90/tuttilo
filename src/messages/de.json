@@ -86,27 +86,190 @@
   "tools": {
     "merge-pdf": {
       "name": "PDF zusammenführen",
-      "description": "Mehrere PDF-Dateien zu einem Dokument zusammenführen"
+      "description": "Mehrere PDF-Dateien zu einem Dokument zusammenführen",
+      "seo": {
+        "title": "PDF-Dateien kostenlos online zusammenführen",
+        "content": "Führen Sie mehrere PDF-Dateien schnell und einfach zu einem einzigen Dokument zusammen. Alles geschieht direkt in Ihrem Browser — kein Upload, keine Registrierung, vollständig kostenlos und privat."
+      },
+      "faq": {
+        "q1": "Wie viele PDF-Dateien kann ich gleichzeitig zusammenführen?",
+        "a1": "Es gibt keine feste Obergrenze. Sie können beliebig viele PDF-Dateien hinzufügen und in der gewünschten Reihenfolge zusammenführen. Die Verarbeitung erfolgt vollständig im Browser.",
+        "q2": "Bleibt die Formatierung der PDFs erhalten?",
+        "a2": "Ja. Alle Seiten, Bilder, Schriften und Layouts der einzelnen PDF-Dateien bleiben beim Zusammenführen vollständig erhalten.",
+        "q3": "Werden meine Dateien auf einen Server hochgeladen?",
+        "a3": "Nein. Die gesamte Verarbeitung findet lokal in Ihrem Browser statt. Ihre Dateien verlassen niemals Ihr Gerät."
+      },
+      "ui": {
+        "dropzone": "PDF-Dateien hierher ziehen oder klicken zum Auswählen",
+        "dropzoneHint": "Mehrere PDF-Dateien auswählen",
+        "files": "Dateien",
+        "pages": "Seiten",
+        "moveUp": "Nach oben",
+        "moveDown": "Nach unten",
+        "remove": "Entfernen",
+        "merge": "Zusammenführen",
+        "processing": "Zusammenführung läuft...",
+        "done": "Fertig!",
+        "download": "Herunterladen",
+        "reset": "Zurücksetzen",
+        "invalidPdf": "Ungültige PDF-Datei. Bitte wählen Sie eine gültige PDF.",
+        "mergeError": "Fehler beim Zusammenführen. Bitte versuchen Sie es erneut."
+      }
     },
     "split-pdf": {
       "name": "PDF teilen",
-      "description": "Eine PDF in mehrere separate Dateien aufteilen"
+      "description": "Eine PDF in mehrere separate Dateien aufteilen",
+      "seo": {
+        "title": "PDF kostenlos online teilen",
+        "content": "Teilen Sie PDF-Dokumente in einzelne Seiten oder benutzerdefinierte Seitenbereiche auf. Schnell, kostenlos und direkt im Browser — ohne Upload auf externe Server."
+      },
+      "faq": {
+        "q1": "Kann ich bestimmte Seitenbereiche extrahieren?",
+        "a1": "Ja. Sie können alle Seiten einzeln extrahieren oder einen bestimmten Seitenbereich angeben (z. B. 1-3, 5, 7-10), um genau die gewünschten Seiten zu erhalten.",
+        "q2": "Was passiert mit der Original-PDF?",
+        "a2": "Die Original-PDF bleibt unverändert. Das Tool erstellt neue, separate PDF-Dateien aus den ausgewählten Seiten.",
+        "q3": "Kann ich passwortgeschützte PDFs teilen?",
+        "a3": "Passwortgeschützte PDFs müssen zuerst entsperrt werden. Verwenden Sie unser PDF-Entsperrungs-Tool und teilen Sie die Datei anschließend."
+      },
+      "ui": {
+        "dropzone": "PDF-Datei hierher ziehen oder klicken zum Auswählen",
+        "dropzoneHint": "Eine einzelne PDF-Datei auswählen",
+        "pages": "Seiten",
+        "splitAll": "Alle Seiten extrahieren",
+        "splitRange": "Seitenbereich extrahieren",
+        "rangeLabel": "Seitenbereich",
+        "rangePlaceholder": "z.B. 1-3, 5, 7-10",
+        "rangeHint": "Geben Sie Seiten oder Bereiche an, getrennt durch Komma",
+        "split": "Teilen",
+        "processing": "Teilung läuft...",
+        "results": "Ergebnisse",
+        "download": "Herunterladen",
+        "reset": "Zurücksetzen",
+        "invalidPdf": "Ungültige PDF-Datei. Bitte wählen Sie eine gültige PDF.",
+        "splitError": "Fehler beim Teilen. Bitte versuchen Sie es erneut.",
+        "invalidRange": "Ungültiger Seitenbereich. Bitte überprüfen Sie Ihre Eingabe."
+      }
     },
     "compress-pdf": {
       "name": "PDF komprimieren",
-      "description": "PDF-Dateigröße reduzieren bei gleichbleibender Qualität"
+      "description": "PDF-Dateigröße reduzieren bei gleichbleibender Qualität",
+      "seo": {
+        "title": "PDF kostenlos online komprimieren",
+        "content": "Reduzieren Sie die Dateigröße Ihrer PDFs schnell und einfach. Optimale Kompression bei bestmöglicher Qualität — alles direkt im Browser, ohne Upload."
+      },
+      "faq": {
+        "q1": "Wie stark wird die PDF komprimiert?",
+        "a1": "Die Kompressionsrate hängt vom Inhalt der PDF ab. Dateien mit vielen Bildern können deutlich verkleinert werden, während textlastige PDFs weniger Einsparungen erzielen.",
+        "q2": "Geht bei der Kompression Qualität verloren?",
+        "a2": "Das Tool optimiert die PDF intelligent, sodass die Qualität so weit wie möglich erhalten bleibt. Bei Bildern in der PDF kann eine leichte Qualitätsreduktion auftreten.",
+        "q3": "Funktioniert es mit gescannten PDFs?",
+        "a3": "Ja. Gescannte PDFs enthalten in der Regel große Bilddaten und profitieren besonders von der Kompression."
+      },
+      "ui": {
+        "dropzone": "PDF-Datei hierher ziehen oder klicken zum Auswählen",
+        "dropzoneHint": "Eine PDF-Datei zum Komprimieren auswählen",
+        "compress": "Komprimieren",
+        "processing": "Komprimierung läuft...",
+        "done": "Fertig!",
+        "original": "Originalgröße",
+        "compressed": "Komprimierte Größe",
+        "reduction": "Reduzierung",
+        "noReduction": "Keine weitere Reduzierung möglich",
+        "download": "Herunterladen",
+        "reset": "Zurücksetzen",
+        "invalidPdf": "Ungültige PDF-Datei. Bitte wählen Sie eine gültige PDF.",
+        "compressError": "Fehler beim Komprimieren. Bitte versuchen Sie es erneut."
+      }
     },
     "pdf-to-jpg": {
       "name": "PDF in JPG",
-      "description": "PDF-Seiten in JPG-Bilder umwandeln"
+      "description": "PDF-Seiten in JPG-Bilder umwandeln",
+      "seo": {
+        "title": "PDF kostenlos in JPG umwandeln",
+        "content": "Wandeln Sie PDF-Seiten in hochwertige JPG-Bilder um. Wählen Sie die gewünschte Qualität und laden Sie die Bilder einzeln oder als Paket herunter. Kostenlos und ohne Registrierung."
+      },
+      "faq": {
+        "q1": "In welcher Qualität werden die JPG-Bilder erstellt?",
+        "a1": "Sie können die Bildqualität selbst einstellen. Höhere Qualität erzeugt schärfere Bilder mit größerer Dateigröße, niedrigere Qualität ergibt kleinere Dateien.",
+        "q2": "Werden alle Seiten konvertiert?",
+        "a2": "Ja, alle Seiten der PDF werden automatisch in einzelne JPG-Bilder umgewandelt. Sie können jedes Bild einzeln herunterladen.",
+        "q3": "Ist die Konvertierung kostenlos?",
+        "a3": "Ja, vollständig kostenlos und ohne Limits. Die Konvertierung läuft direkt in Ihrem Browser, es werden keine Daten hochgeladen."
+      },
+      "ui": {
+        "dropzone": "PDF-Datei hierher ziehen oder klicken zum Auswählen",
+        "dropzoneHint": "Eine PDF-Datei zur Konvertierung auswählen",
+        "quality": "Bildqualität",
+        "convert": "Konvertieren",
+        "processing": "Konvertierung läuft...",
+        "results": "Ergebnisse",
+        "downloadAll": "Alle herunterladen",
+        "download": "Herunterladen",
+        "reset": "Zurücksetzen",
+        "convertError": "Fehler bei der Konvertierung. Bitte versuchen Sie es erneut."
+      }
     },
     "jpg-to-pdf": {
       "name": "JPG in PDF",
-      "description": "JPG-Bilder in ein PDF-Dokument umwandeln"
+      "description": "JPG-Bilder in ein PDF-Dokument umwandeln",
+      "seo": {
+        "title": "JPG kostenlos in PDF umwandeln",
+        "content": "Wandeln Sie ein oder mehrere JPG-Bilder in ein PDF-Dokument um. Ordnen Sie die Bilder nach Belieben an und erstellen Sie Ihr PDF direkt im Browser — kostenlos und privat."
+      },
+      "faq": {
+        "q1": "Kann ich mehrere Bilder in eine PDF umwandeln?",
+        "a1": "Ja. Sie können beliebig viele JPG-Bilder hinzufügen. Jedes Bild wird auf einer eigenen Seite in der PDF platziert.",
+        "q2": "Kann ich die Reihenfolge der Bilder ändern?",
+        "a2": "Ja, Sie können die Bilder per Drag-and-Drop in die gewünschte Reihenfolge bringen, bevor Sie die PDF erstellen.",
+        "q3": "Welche Bildformate werden unterstützt?",
+        "a3": "Dieses Tool akzeptiert JPG- und JPEG-Dateien. Für andere Formate verwenden Sie unser Tool 'Bilder in PDF'."
+      },
+      "ui": {
+        "dropzone": "JPG-Bilder hierher ziehen oder klicken zum Auswählen",
+        "dropzoneHint": "Ein oder mehrere JPG-Bilder auswählen",
+        "images": "Bilder",
+        "convert": "In PDF umwandeln",
+        "processing": "Umwandlung läuft...",
+        "done": "Fertig!",
+        "download": "Herunterladen",
+        "reset": "Zurücksetzen",
+        "convertError": "Fehler bei der Umwandlung. Bitte versuchen Sie es erneut."
+      }
     },
     "rotate-pdf": {
       "name": "PDF drehen",
-      "description": "Seiten eines PDF-Dokuments drehen"
+      "description": "Seiten eines PDF-Dokuments drehen",
+      "seo": {
+        "title": "PDF-Seiten kostenlos online drehen",
+        "content": "Drehen Sie einzelne oder alle Seiten eines PDF-Dokuments um 90°, 180° oder 270°. Schnell, kostenlos und direkt im Browser — ohne Installation oder Registrierung."
+      },
+      "faq": {
+        "q1": "Kann ich nur bestimmte Seiten drehen?",
+        "a1": "Ja. Sie können wählen, ob alle Seiten oder nur bestimmte Seiten gedreht werden sollen. Geben Sie einfach die gewünschten Seitennummern an.",
+        "q2": "Welche Drehwinkel sind verfügbar?",
+        "a2": "Sie können Seiten um 90° (Vierteldrehung rechts), 180° (auf den Kopf) oder 270° (Vierteldrehung links) drehen.",
+        "q3": "Wird der Inhalt der PDF verändert?",
+        "a3": "Nein. Der Seiteninhalt bleibt vollständig erhalten — nur die Ausrichtung der Seiten wird geändert."
+      },
+      "ui": {
+        "dropzone": "PDF-Datei hierher ziehen oder klicken zum Auswählen",
+        "dropzoneHint": "Eine PDF-Datei zum Drehen auswählen",
+        "pages": "Seiten",
+        "rotationAngle": "Drehwinkel",
+        "applyTo": "Anwenden auf",
+        "allPages": "Alle Seiten",
+        "customPages": "Bestimmte Seiten",
+        "pagesPlaceholder": "z.B. 1, 3, 5-8",
+        "pagesHint": "Geben Sie Seiten oder Bereiche an, getrennt durch Komma",
+        "rotate": "Drehen",
+        "processing": "Drehung läuft...",
+        "done": "Fertig!",
+        "download": "Herunterladen",
+        "reset": "Zurücksetzen",
+        "invalidPdf": "Ungültige PDF-Datei. Bitte wählen Sie eine gültige PDF.",
+        "rotateError": "Fehler beim Drehen. Bitte versuchen Sie es erneut.",
+        "invalidRange": "Ungültiger Seitenbereich. Bitte überprüfen Sie Ihre Eingabe."
+      }
     },
     "pdf-to-word": {
       "name": "PDF in Word",
