@@ -1,0 +1,295 @@
+{
+  "common": {
+    "siteName": "Tuttilo",
+    "tagline": "Tous les outils en ligne au même endroit",
+    "searchPlaceholder": "Rechercher un outil...",
+    "darkMode": "Mode sombre",
+    "lightMode": "Mode clair",
+    "systemMode": "Thème système",
+    "toggleTheme": "Changer de thème",
+    "switchLanguage": "Changer de langue",
+    "languages": {
+      "it": "Italiano",
+      "en": "English",
+      "es": "Español",
+      "fr": "Français",
+      "de": "Deutsch",
+      "pt": "Português",
+      "ja": "日本語",
+      "ko": "한국어"
+    },
+    "privacyBadge": "Vos fichiers ne quittent jamais votre navigateur",
+    "free": "Gratuit",
+    "noRegistration": "Sans inscription",
+    "noLimits": "Sans limites"
+  },
+  "nav": {
+    "pdf": "PDF",
+    "image": "Images",
+    "video": "Vidéo",
+    "audio": "Audio",
+    "text": "Texte",
+    "developer": "Développeurs",
+    "youtube": "YouTube",
+    "allTools": "Tous les outils",
+    "home": "Accueil",
+    "openMenu": "Ouvrir le menu"
+  },
+  "home": {
+    "title": "Tous les outils en ligne dont vous avez besoin",
+    "subtitle": "Gratuit, sans inscription, directement dans votre navigateur. Modifiez des PDF, images, vidéos, fichiers audio et bien plus.",
+    "searchPlaceholder": "Que voulez-vous faire ? Cherchez parmi plus de 45 outils...",
+    "privacyNote": "Vos fichiers ne quittent jamais votre navigateur",
+    "categories": "Catégories",
+    "categoryDesc": {
+      "pdf": "Fusionnez, divisez, compressez et convertissez des PDF",
+      "image": "Compressez, redimensionnez et convertissez des images",
+      "video": "Compressez, coupez et convertissez des vidéos",
+      "audio": "Coupez, convertissez et enregistrez de l'audio",
+      "text": "Compteur de mots, comparaison de textes et plus",
+      "developer": "JSON, Base64, Regex, QR Code et plus",
+      "youtube": "Miniatures et transcriptions YouTube"
+    },
+    "popularTools": "Outils les plus populaires",
+    "allTools": "Tous les outils",
+    "stats": {
+      "tools": "45+ outils",
+      "filesProcessed": "Fichiers traités",
+      "noUpload": "100% dans le navigateur"
+    },
+    "features": {
+      "privacy": {
+        "title": "Confidentialité garantie",
+        "desc": "Vos fichiers sont traités directement dans votre navigateur. Aucun téléversement vers des serveurs externes."
+      },
+      "fast": {
+        "title": "Rapide et gratuit",
+        "desc": "Tous les outils sont gratuits et fonctionnent instantanément, sans attente."
+      },
+      "free": {
+        "title": "Sans inscription",
+        "desc": "Aucun compte requis. Utilisez n'importe quel outil immédiatement, sans limites."
+      }
+    }
+  },
+  "search": {
+    "openSearch": "Rechercher",
+    "title": "Rechercher des outils",
+    "placeholder": "Rechercher parmi les outils...",
+    "noResults": "Aucun résultat trouvé",
+    "hint": "Utilisez les touches fléchées pour naviguer"
+  },
+  "tools": {
+    "merge-pdf": {
+      "name": "Fusionner PDF",
+      "description": "Combinez plusieurs fichiers PDF en un seul document"
+    },
+    "split-pdf": {
+      "name": "Diviser PDF",
+      "description": "Divisez un PDF en plusieurs fichiers séparés"
+    },
+    "compress-pdf": {
+      "name": "Compresser PDF",
+      "description": "Réduisez la taille des fichiers PDF en conservant la qualité"
+    },
+    "pdf-to-jpg": {
+      "name": "PDF en JPG",
+      "description": "Convertissez les pages PDF en images JPG"
+    },
+    "jpg-to-pdf": {
+      "name": "JPG en PDF",
+      "description": "Convertissez des images JPG en un document PDF"
+    },
+    "rotate-pdf": {
+      "name": "Pivoter PDF",
+      "description": "Faites pivoter les pages d'un document PDF"
+    },
+    "pdf-to-word": {
+      "name": "PDF en Word",
+      "description": "Convertissez des documents PDF en fichiers Word modifiables"
+    },
+    "word-to-pdf": {
+      "name": "Word en PDF",
+      "description": "Convertissez des documents Word en PDF"
+    },
+    "pdf-to-png": {
+      "name": "PDF en PNG",
+      "description": "Convertissez les pages PDF en images PNG haute qualité"
+    },
+    "unlock-pdf": {
+      "name": "Déverrouiller PDF",
+      "description": "Supprimez la protection par mot de passe des fichiers PDF"
+    },
+    "images-to-pdf": {
+      "name": "Images en PDF",
+      "description": "Convertissez plusieurs images en un seul document PDF"
+    },
+    "pdf-editor": {
+      "name": "Éditeur PDF",
+      "description": "Modifiez, annotez et signez vos documents PDF"
+    },
+    "compress-image": {
+      "name": "Compresser image",
+      "description": "Réduisez la taille des images sans perte de qualité"
+    },
+    "resize-image": {
+      "name": "Redimensionner image",
+      "description": "Modifiez les dimensions de vos images"
+    },
+    "crop-image": {
+      "name": "Recadrer image",
+      "description": "Recadrez vos images avec précision"
+    },
+    "png-to-jpg": {
+      "name": "PNG en JPG",
+      "description": "Convertissez des images PNG au format JPG"
+    },
+    "jpg-to-png": {
+      "name": "JPG en PNG",
+      "description": "Convertissez des images JPG au format PNG avec transparence"
+    },
+    "webp-to-png": {
+      "name": "WebP en PNG",
+      "description": "Convertissez des images WebP au format PNG"
+    },
+    "webp-to-jpg": {
+      "name": "WebP en JPG",
+      "description": "Convertissez des images WebP au format JPG"
+    },
+    "heic-to-jpg": {
+      "name": "HEIC en JPG",
+      "description": "Convertissez les photos HEIC d'iPhone au format JPG"
+    },
+    "svg-to-png": {
+      "name": "SVG en PNG",
+      "description": "Convertissez des graphiques vectoriels SVG en images PNG"
+    },
+    "remove-bg": {
+      "name": "Supprimer l'arrière-plan",
+      "description": "Supprimez automatiquement l'arrière-plan des images"
+    },
+    "compress-video": {
+      "name": "Compresser vidéo",
+      "description": "Réduisez la taille des fichiers vidéo en conservant la qualité"
+    },
+    "trim-video": {
+      "name": "Couper vidéo",
+      "description": "Coupez et découpez vos vidéos avec précision"
+    },
+    "video-to-gif": {
+      "name": "Vidéo en GIF",
+      "description": "Convertissez des vidéos en GIF animés"
+    },
+    "video-to-mp3": {
+      "name": "Vidéo en MP3",
+      "description": "Extrayez l'audio des vidéos au format MP3"
+    },
+    "screen-recorder": {
+      "name": "Enregistreur d'écran",
+      "description": "Enregistrez votre écran directement depuis le navigateur"
+    },
+    "audio-cutter": {
+      "name": "Découpeur audio",
+      "description": "Coupez et découpez des fichiers audio avec précision"
+    },
+    "audio-converter": {
+      "name": "Convertisseur audio",
+      "description": "Convertissez des fichiers audio entre différents formats"
+    },
+    "voice-recorder": {
+      "name": "Enregistreur vocal",
+      "description": "Enregistrez votre voix directement depuis le navigateur"
+    },
+    "word-counter": {
+      "name": "Compteur de mots",
+      "description": "Comptez les mots, caractères, phrases et paragraphes"
+    },
+    "lorem-ipsum": {
+      "name": "Générateur Lorem Ipsum",
+      "description": "Générez du texte de remplissage Lorem Ipsum personnalisé"
+    },
+    "case-converter": {
+      "name": "Convertisseur majuscules/minuscules",
+      "description": "Convertissez le texte entre majuscules, minuscules et autres formats"
+    },
+    "diff-checker": {
+      "name": "Comparateur de textes",
+      "description": "Comparez deux textes et trouvez les différences"
+    },
+    "markdown-editor": {
+      "name": "Éditeur Markdown",
+      "description": "Écrivez et prévisualisez du Markdown en temps réel"
+    },
+    "json-formatter": {
+      "name": "Formateur JSON",
+      "description": "Formatez, validez et minimisez du code JSON"
+    },
+    "base64": {
+      "name": "Encodeur Base64",
+      "description": "Encodez et décodez du texte et des fichiers en Base64"
+    },
+    "regex-tester": {
+      "name": "Testeur Regex",
+      "description": "Testez et déboguez des expressions régulières en temps réel"
+    },
+    "color-picker": {
+      "name": "Sélecteur de couleur",
+      "description": "Sélectionnez des couleurs et convertissez entre HEX, RGB, HSL"
+    },
+    "qr-code": {
+      "name": "Générateur de QR Code",
+      "description": "Générez des codes QR personnalisés à partir de texte ou d'URL"
+    },
+    "hex-rgb": {
+      "name": "Convertisseur HEX/RGB",
+      "description": "Convertissez des couleurs entre les formats HEX et RGB"
+    },
+    "url-encoder": {
+      "name": "Encodeur URL",
+      "description": "Encodez et décodez des URL et des paramètres"
+    },
+    "timestamp": {
+      "name": "Convertisseur Timestamp",
+      "description": "Convertissez des timestamps Unix en dates lisibles et inversement"
+    },
+    "youtube-thumbnail": {
+      "name": "Télécharger miniature YouTube",
+      "description": "Téléchargez les miniatures des vidéos YouTube en haute qualité"
+    },
+    "youtube-transcript": {
+      "name": "Transcription YouTube",
+      "description": "Extrayez les sous-titres et la transcription des vidéos YouTube"
+    }
+  },
+  "upload": {
+    "dragDrop": "Glissez-déposez les fichiers ici",
+    "or": "ou",
+    "clickToSelect": "Cliquez pour sélectionner des fichiers",
+    "supportedFormats": "Formats pris en charge : {formats}",
+    "maxSize": "Taille maximale : {size}",
+    "processing": "Traitement en cours...",
+    "done": "Terminé !",
+    "download": "Télécharger",
+    "downloadAll": "Tout télécharger",
+    "error": {
+      "fileTooLarge": "Le fichier est trop volumineux. Taille maximale : {size}",
+      "unsupportedFormat": "Format non pris en charge. Formats acceptés : {formats}",
+      "processingFailed": "Le traitement a échoué. Veuillez réessayer.",
+      "tooManyFiles": "Trop de fichiers. Maximum : {max}"
+    }
+  },
+  "footer": {
+    "tagline": "Tous les outils en ligne dont vous avez besoin, gratuits et sans inscription.",
+    "privacyBadge": "Vos fichiers ne quittent jamais votre navigateur",
+    "tools": "Outils",
+    "company": "Entreprise",
+    "about": "À propos",
+    "contact": "Contact",
+    "privacy": "Privacy Policy",
+    "terms": "Conditions d'utilisation",
+    "settings": "Paramètres",
+    "language": "Langue",
+    "allRightsReserved": "Tous droits réservés",
+    "filesNeverLeave": "Vos fichiers ne quittent jamais votre navigateur"
+  }
+}

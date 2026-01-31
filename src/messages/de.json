@@ -1,0 +1,295 @@
+{
+  "common": {
+    "siteName": "Tuttilo",
+    "tagline": "Alle Online-Tools an einem Ort",
+    "searchPlaceholder": "Werkzeug suchen...",
+    "darkMode": "Dunkler Modus",
+    "lightMode": "Heller Modus",
+    "systemMode": "Systemdesign",
+    "toggleTheme": "Design wechseln",
+    "switchLanguage": "Sprache wechseln",
+    "languages": {
+      "it": "Italiano",
+      "en": "English",
+      "es": "Español",
+      "fr": "Français",
+      "de": "Deutsch",
+      "pt": "Português",
+      "ja": "日本語",
+      "ko": "한국어"
+    },
+    "privacyBadge": "Deine Dateien verlassen niemals den Browser",
+    "free": "Kostenlos",
+    "noRegistration": "Ohne Registrierung",
+    "noLimits": "Ohne Limits"
+  },
+  "nav": {
+    "pdf": "PDF",
+    "image": "Bilder",
+    "video": "Video",
+    "audio": "Audio",
+    "text": "Text",
+    "developer": "Entwickler",
+    "youtube": "YouTube",
+    "allTools": "Alle Werkzeuge",
+    "home": "Startseite",
+    "openMenu": "Menü öffnen"
+  },
+  "home": {
+    "title": "Alle Online-Werkzeuge, die du brauchst",
+    "subtitle": "Kostenlos, ohne Registrierung, direkt im Browser. Bearbeite PDF, Bilder, Videos, Audio und vieles mehr.",
+    "searchPlaceholder": "Was möchtest du tun? Suche unter über 45 Werkzeugen...",
+    "privacyNote": "Deine Dateien verlassen niemals den Browser",
+    "categories": "Kategorien",
+    "categoryDesc": {
+      "pdf": "PDF zusammenführen, teilen, komprimieren und konvertieren",
+      "image": "Bilder komprimieren, skalieren und konvertieren",
+      "video": "Videos komprimieren, schneiden und konvertieren",
+      "audio": "Audio schneiden, konvertieren und aufnehmen",
+      "text": "Wörter zählen, Texte vergleichen und mehr",
+      "developer": "JSON, Base64, Regex, QR Code und mehr",
+      "youtube": "Vorschaubilder und YouTube-Transkriptionen"
+    },
+    "popularTools": "Beliebteste Werkzeuge",
+    "allTools": "Alle Werkzeuge",
+    "stats": {
+      "tools": "45+ Werkzeuge",
+      "filesProcessed": "Verarbeitete Dateien",
+      "noUpload": "100% im Browser"
+    },
+    "features": {
+      "privacy": {
+        "title": "Datenschutz garantiert",
+        "desc": "Deine Dateien werden direkt im Browser verarbeitet. Kein Upload auf externe Server."
+      },
+      "fast": {
+        "title": "Schnell und kostenlos",
+        "desc": "Alle Werkzeuge sind kostenlos und funktionieren sofort, ohne Wartezeit."
+      },
+      "free": {
+        "title": "Ohne Registrierung",
+        "desc": "Kein Konto erforderlich. Nutze jedes Werkzeug sofort, ohne Einschränkungen."
+      }
+    }
+  },
+  "search": {
+    "openSearch": "Suchen",
+    "title": "Werkzeuge suchen",
+    "placeholder": "Unter den Werkzeugen suchen...",
+    "noResults": "Keine Ergebnisse gefunden",
+    "hint": "Verwende die Pfeiltasten zum Navigieren"
+  },
+  "tools": {
+    "merge-pdf": {
+      "name": "PDF zusammenführen",
+      "description": "Mehrere PDF-Dateien zu einem Dokument zusammenführen"
+    },
+    "split-pdf": {
+      "name": "PDF teilen",
+      "description": "Eine PDF in mehrere separate Dateien aufteilen"
+    },
+    "compress-pdf": {
+      "name": "PDF komprimieren",
+      "description": "PDF-Dateigröße reduzieren bei gleichbleibender Qualität"
+    },
+    "pdf-to-jpg": {
+      "name": "PDF in JPG",
+      "description": "PDF-Seiten in JPG-Bilder umwandeln"
+    },
+    "jpg-to-pdf": {
+      "name": "JPG in PDF",
+      "description": "JPG-Bilder in ein PDF-Dokument umwandeln"
+    },
+    "rotate-pdf": {
+      "name": "PDF drehen",
+      "description": "Seiten eines PDF-Dokuments drehen"
+    },
+    "pdf-to-word": {
+      "name": "PDF in Word",
+      "description": "PDF-Dokumente in bearbeitbare Word-Dateien umwandeln"
+    },
+    "word-to-pdf": {
+      "name": "Word in PDF",
+      "description": "Word-Dokumente in PDF umwandeln"
+    },
+    "pdf-to-png": {
+      "name": "PDF in PNG",
+      "description": "PDF-Seiten in hochwertige PNG-Bilder umwandeln"
+    },
+    "unlock-pdf": {
+      "name": "PDF entsperren",
+      "description": "Passwortschutz von PDF-Dateien entfernen"
+    },
+    "images-to-pdf": {
+      "name": "Bilder in PDF",
+      "description": "Mehrere Bilder in ein einzelnes PDF-Dokument umwandeln"
+    },
+    "pdf-editor": {
+      "name": "PDF-Editor",
+      "description": "PDF-Dokumente bearbeiten, kommentieren und unterschreiben"
+    },
+    "compress-image": {
+      "name": "Bild komprimieren",
+      "description": "Bildgröße reduzieren ohne Qualitätsverlust"
+    },
+    "resize-image": {
+      "name": "Bild skalieren",
+      "description": "Die Abmessungen deiner Bilder ändern"
+    },
+    "crop-image": {
+      "name": "Bild zuschneiden",
+      "description": "Deine Bilder präzise zuschneiden"
+    },
+    "png-to-jpg": {
+      "name": "PNG in JPG",
+      "description": "PNG-Bilder in das JPG-Format umwandeln"
+    },
+    "jpg-to-png": {
+      "name": "JPG in PNG",
+      "description": "JPG-Bilder in das PNG-Format mit Transparenz umwandeln"
+    },
+    "webp-to-png": {
+      "name": "WebP in PNG",
+      "description": "WebP-Bilder in das PNG-Format umwandeln"
+    },
+    "webp-to-jpg": {
+      "name": "WebP in JPG",
+      "description": "WebP-Bilder in das JPG-Format umwandeln"
+    },
+    "heic-to-jpg": {
+      "name": "HEIC in JPG",
+      "description": "iPhone HEIC-Fotos in das JPG-Format umwandeln"
+    },
+    "svg-to-png": {
+      "name": "SVG in PNG",
+      "description": "SVG-Vektorgrafiken in PNG-Bilder umwandeln"
+    },
+    "remove-bg": {
+      "name": "Hintergrund entfernen",
+      "description": "Hintergrund automatisch aus Bildern entfernen"
+    },
+    "compress-video": {
+      "name": "Video komprimieren",
+      "description": "Videodateigröße reduzieren bei gleichbleibender Qualität"
+    },
+    "trim-video": {
+      "name": "Video schneiden",
+      "description": "Deine Videos präzise schneiden und kürzen"
+    },
+    "video-to-gif": {
+      "name": "Video in GIF",
+      "description": "Videos in animierte GIF umwandeln"
+    },
+    "video-to-mp3": {
+      "name": "Video in MP3",
+      "description": "Audio aus Videos im MP3-Format extrahieren"
+    },
+    "screen-recorder": {
+      "name": "Bildschirmaufnahme",
+      "description": "Bildschirm direkt im Browser aufnehmen"
+    },
+    "audio-cutter": {
+      "name": "Audio-Schneider",
+      "description": "Audiodateien präzise schneiden und kürzen"
+    },
+    "audio-converter": {
+      "name": "Audio-Konverter",
+      "description": "Audiodateien zwischen verschiedenen Formaten konvertieren"
+    },
+    "voice-recorder": {
+      "name": "Sprachrekorder",
+      "description": "Stimme direkt im Browser aufnehmen"
+    },
+    "word-counter": {
+      "name": "Wörterzähler",
+      "description": "Wörter, Zeichen, Sätze und Absätze zählen"
+    },
+    "lorem-ipsum": {
+      "name": "Lorem Ipsum-Generator",
+      "description": "Benutzerdefinierten Lorem Ipsum-Platzhaltertext generieren"
+    },
+    "case-converter": {
+      "name": "Groß-/Kleinschreibung-Konverter",
+      "description": "Text zwischen Großbuchstaben, Kleinbuchstaben und anderen Formaten umwandeln"
+    },
+    "diff-checker": {
+      "name": "Textvergleich",
+      "description": "Zwei Texte vergleichen und Unterschiede finden"
+    },
+    "markdown-editor": {
+      "name": "Markdown-Editor",
+      "description": "Markdown in Echtzeit schreiben und anzeigen"
+    },
+    "json-formatter": {
+      "name": "JSON-Formatierer",
+      "description": "JSON-Code formatieren, validieren und minimieren"
+    },
+    "base64": {
+      "name": "Base64-Encoder",
+      "description": "Text und Dateien in Base64 kodieren und dekodieren"
+    },
+    "regex-tester": {
+      "name": "Regex-Tester",
+      "description": "Reguläre Ausdrücke in Echtzeit testen und debuggen"
+    },
+    "color-picker": {
+      "name": "Farbwähler",
+      "description": "Farben auswählen und zwischen HEX, RGB, HSL konvertieren"
+    },
+    "qr-code": {
+      "name": "QR Code-Generator",
+      "description": "Benutzerdefinierte QR-Codes aus Text oder URL generieren"
+    },
+    "hex-rgb": {
+      "name": "HEX/RGB-Konverter",
+      "description": "Farben zwischen HEX- und RGB-Format konvertieren"
+    },
+    "url-encoder": {
+      "name": "URL-Encoder",
+      "description": "URL und Parameter kodieren und dekodieren"
+    },
+    "timestamp": {
+      "name": "Timestamp-Konverter",
+      "description": "Unix-Timestamps in lesbare Daten umwandeln und umgekehrt"
+    },
+    "youtube-thumbnail": {
+      "name": "YouTube-Vorschaubild herunterladen",
+      "description": "YouTube-Video-Vorschaubilder in hoher Qualität herunterladen"
+    },
+    "youtube-transcript": {
+      "name": "YouTube-Transkription",
+      "description": "Untertitel und Transkription aus YouTube-Videos extrahieren"
+    }
+  },
+  "upload": {
+    "dragDrop": "Dateien hierher ziehen",
+    "or": "oder",
+    "clickToSelect": "Klicke, um Dateien auszuwählen",
+    "supportedFormats": "Unterstützte Formate: {formats}",
+    "maxSize": "Maximale Größe: {size}",
+    "processing": "Verarbeitung läuft...",
+    "done": "Fertig!",
+    "download": "Herunterladen",
+    "downloadAll": "Alles herunterladen",
+    "error": {
+      "fileTooLarge": "Die Datei ist zu groß. Maximale Größe: {size}",
+      "unsupportedFormat": "Nicht unterstütztes Format. Akzeptierte Formate: {formats}",
+      "processingFailed": "Verarbeitung fehlgeschlagen. Bitte versuche es erneut.",
+      "tooManyFiles": "Zu viele Dateien. Maximum: {max}"
+    }
+  },
+  "footer": {
+    "tagline": "Alle Online-Werkzeuge, die du brauchst, kostenlos und ohne Registrierung.",
+    "privacyBadge": "Deine Dateien verlassen niemals den Browser",
+    "tools": "Werkzeuge",
+    "company": "Unternehmen",
+    "about": "Über uns",
+    "contact": "Kontakt",
+    "privacy": "Privacy Policy",
+    "terms": "Nutzungsbedingungen",
+    "settings": "Einstellungen",
+    "language": "Sprache",
+    "allRightsReserved": "Alle Rechte vorbehalten",
+    "filesNeverLeave": "Deine Dateien verlassen niemals den Browser"
+  }
+}

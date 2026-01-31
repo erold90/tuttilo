@@ -1,0 +1,295 @@
+{
+  "common": {
+    "siteName": "Tuttilo",
+    "tagline": "Todas las herramientas online en un solo lugar",
+    "searchPlaceholder": "Buscar una herramienta...",
+    "darkMode": "Modo oscuro",
+    "lightMode": "Modo claro",
+    "systemMode": "Tema del sistema",
+    "toggleTheme": "Cambiar tema",
+    "switchLanguage": "Cambiar idioma",
+    "languages": {
+      "it": "Italiano",
+      "en": "English",
+      "es": "Español",
+      "fr": "Français",
+      "de": "Deutsch",
+      "pt": "Português",
+      "ja": "日本語",
+      "ko": "한국어"
+    },
+    "privacyBadge": "Tus archivos nunca salen del navegador",
+    "free": "Gratuito",
+    "noRegistration": "Sin registro",
+    "noLimits": "Sin límites"
+  },
+  "nav": {
+    "pdf": "PDF",
+    "image": "Imágenes",
+    "video": "Vídeo",
+    "audio": "Audio",
+    "text": "Texto",
+    "developer": "Desarrolladores",
+    "youtube": "YouTube",
+    "allTools": "Todas las herramientas",
+    "home": "Inicio",
+    "openMenu": "Abrir menú"
+  },
+  "home": {
+    "title": "Todas las herramientas online que necesitas",
+    "subtitle": "Gratis, sin registro, directamente en tu navegador. Edita PDF, imágenes, vídeos, audio y mucho más.",
+    "searchPlaceholder": "¿Qué quieres hacer? Busca entre más de 45 herramientas...",
+    "privacyNote": "Tus archivos nunca salen del navegador",
+    "categories": "Categorías",
+    "categoryDesc": {
+      "pdf": "Combina, divide, comprime y convierte PDF",
+      "image": "Comprime, redimensiona y convierte imágenes",
+      "video": "Comprime, recorta y convierte vídeos",
+      "audio": "Corta, convierte y graba audio",
+      "text": "Cuenta palabras, compara textos y más",
+      "developer": "JSON, Base64, Regex, QR Code y más",
+      "youtube": "Miniaturas y transcripciones de YouTube"
+    },
+    "popularTools": "Herramientas más populares",
+    "allTools": "Todas las herramientas",
+    "stats": {
+      "tools": "45+ herramientas",
+      "filesProcessed": "Archivos procesados",
+      "noUpload": "100% en el navegador"
+    },
+    "features": {
+      "privacy": {
+        "title": "Privacidad garantizada",
+        "desc": "Tus archivos se procesan directamente en tu navegador. Sin subidas a servidores externos."
+      },
+      "fast": {
+        "title": "Rápido y gratuito",
+        "desc": "Todas las herramientas son gratuitas y funcionan al instante, sin esperas."
+      },
+      "free": {
+        "title": "Sin registro",
+        "desc": "No se necesita cuenta. Usa cualquier herramienta de inmediato, sin límites."
+      }
+    }
+  },
+  "search": {
+    "openSearch": "Buscar",
+    "title": "Buscar herramientas",
+    "placeholder": "Buscar entre las herramientas...",
+    "noResults": "No se encontraron resultados",
+    "hint": "Usa las teclas de flecha para navegar"
+  },
+  "tools": {
+    "merge-pdf": {
+      "name": "Combinar PDF",
+      "description": "Combina varios archivos PDF en un solo documento"
+    },
+    "split-pdf": {
+      "name": "Dividir PDF",
+      "description": "Divide un PDF en varios archivos separados"
+    },
+    "compress-pdf": {
+      "name": "Comprimir PDF",
+      "description": "Reduce el tamaño de archivos PDF manteniendo la calidad"
+    },
+    "pdf-to-jpg": {
+      "name": "PDF a JPG",
+      "description": "Convierte páginas PDF en imágenes JPG"
+    },
+    "jpg-to-pdf": {
+      "name": "JPG a PDF",
+      "description": "Convierte imágenes JPG en un documento PDF"
+    },
+    "rotate-pdf": {
+      "name": "Rotar PDF",
+      "description": "Rota las páginas de un documento PDF"
+    },
+    "pdf-to-word": {
+      "name": "PDF a Word",
+      "description": "Convierte documentos PDF en archivos Word editables"
+    },
+    "word-to-pdf": {
+      "name": "Word a PDF",
+      "description": "Convierte documentos Word en PDF"
+    },
+    "pdf-to-png": {
+      "name": "PDF a PNG",
+      "description": "Convierte páginas PDF en imágenes PNG de alta calidad"
+    },
+    "unlock-pdf": {
+      "name": "Desbloquear PDF",
+      "description": "Elimina la contraseña de protección de archivos PDF"
+    },
+    "images-to-pdf": {
+      "name": "Imágenes a PDF",
+      "description": "Convierte varias imágenes en un solo documento PDF"
+    },
+    "pdf-editor": {
+      "name": "Editor PDF",
+      "description": "Edita, anota y firma tus documentos PDF"
+    },
+    "compress-image": {
+      "name": "Comprimir imagen",
+      "description": "Reduce el tamaño de las imágenes sin perder calidad"
+    },
+    "resize-image": {
+      "name": "Redimensionar imagen",
+      "description": "Cambia las dimensiones de tus imágenes"
+    },
+    "crop-image": {
+      "name": "Recortar imagen",
+      "description": "Recorta tus imágenes con precisión"
+    },
+    "png-to-jpg": {
+      "name": "PNG a JPG",
+      "description": "Convierte imágenes PNG a formato JPG"
+    },
+    "jpg-to-png": {
+      "name": "JPG a PNG",
+      "description": "Convierte imágenes JPG a formato PNG con transparencia"
+    },
+    "webp-to-png": {
+      "name": "WebP a PNG",
+      "description": "Convierte imágenes WebP a formato PNG"
+    },
+    "webp-to-jpg": {
+      "name": "WebP a JPG",
+      "description": "Convierte imágenes WebP a formato JPG"
+    },
+    "heic-to-jpg": {
+      "name": "HEIC a JPG",
+      "description": "Convierte fotos HEIC de iPhone a formato JPG"
+    },
+    "svg-to-png": {
+      "name": "SVG a PNG",
+      "description": "Convierte gráficos vectoriales SVG en imágenes PNG"
+    },
+    "remove-bg": {
+      "name": "Eliminar fondo",
+      "description": "Elimina automáticamente el fondo de las imágenes"
+    },
+    "compress-video": {
+      "name": "Comprimir vídeo",
+      "description": "Reduce el tamaño de archivos de vídeo manteniendo la calidad"
+    },
+    "trim-video": {
+      "name": "Recortar vídeo",
+      "description": "Corta y recorta tus vídeos con precisión"
+    },
+    "video-to-gif": {
+      "name": "Vídeo a GIF",
+      "description": "Convierte vídeos en GIF animados"
+    },
+    "video-to-mp3": {
+      "name": "Vídeo a MP3",
+      "description": "Extrae el audio de los vídeos en formato MP3"
+    },
+    "screen-recorder": {
+      "name": "Grabador de pantalla",
+      "description": "Graba tu pantalla directamente desde el navegador"
+    },
+    "audio-cutter": {
+      "name": "Cortador de audio",
+      "description": "Corta y recorta archivos de audio con precisión"
+    },
+    "audio-converter": {
+      "name": "Conversor de audio",
+      "description": "Convierte archivos de audio entre diferentes formatos"
+    },
+    "voice-recorder": {
+      "name": "Grabadora de voz",
+      "description": "Graba tu voz directamente desde el navegador"
+    },
+    "word-counter": {
+      "name": "Contador de palabras",
+      "description": "Cuenta palabras, caracteres, frases y párrafos"
+    },
+    "lorem-ipsum": {
+      "name": "Generador Lorem Ipsum",
+      "description": "Genera texto de relleno Lorem Ipsum personalizado"
+    },
+    "case-converter": {
+      "name": "Conversor de mayúsculas/minúsculas",
+      "description": "Convierte texto entre mayúsculas, minúsculas y otros formatos"
+    },
+    "diff-checker": {
+      "name": "Comparador de textos",
+      "description": "Compara dos textos y encuentra las diferencias"
+    },
+    "markdown-editor": {
+      "name": "Editor Markdown",
+      "description": "Escribe y previsualiza Markdown en tiempo real"
+    },
+    "json-formatter": {
+      "name": "Formateador JSON",
+      "description": "Formatea, valida y minimiza código JSON"
+    },
+    "base64": {
+      "name": "Codificador Base64",
+      "description": "Codifica y decodifica texto y archivos en Base64"
+    },
+    "regex-tester": {
+      "name": "Probador de Regex",
+      "description": "Prueba y depura expresiones regulares en tiempo real"
+    },
+    "color-picker": {
+      "name": "Selector de color",
+      "description": "Selecciona colores y convierte entre HEX, RGB, HSL"
+    },
+    "qr-code": {
+      "name": "Generador de QR Code",
+      "description": "Genera códigos QR personalizados desde texto o URL"
+    },
+    "hex-rgb": {
+      "name": "Conversor HEX/RGB",
+      "description": "Convierte colores entre formato HEX y RGB"
+    },
+    "url-encoder": {
+      "name": "Codificador URL",
+      "description": "Codifica y decodifica URL y parámetros"
+    },
+    "timestamp": {
+      "name": "Conversor de Timestamp",
+      "description": "Convierte timestamps Unix en fechas legibles y viceversa"
+    },
+    "youtube-thumbnail": {
+      "name": "Descargar miniatura YouTube",
+      "description": "Descarga las miniaturas de vídeos de YouTube en alta calidad"
+    },
+    "youtube-transcript": {
+      "name": "Transcripción YouTube",
+      "description": "Extrae los subtítulos y la transcripción de vídeos de YouTube"
+    }
+  },
+  "upload": {
+    "dragDrop": "Arrastra los archivos aquí",
+    "or": "o",
+    "clickToSelect": "Haz clic para seleccionar archivos",
+    "supportedFormats": "Formatos compatibles: {formats}",
+    "maxSize": "Tamaño máximo: {size}",
+    "processing": "Procesando...",
+    "done": "¡Completado!",
+    "download": "Descargar",
+    "downloadAll": "Descargar todo",
+    "error": {
+      "fileTooLarge": "El archivo es demasiado grande. Tamaño máximo: {size}",
+      "unsupportedFormat": "Formato no compatible. Formatos aceptados: {formats}",
+      "processingFailed": "El procesamiento ha fallado. Inténtalo de nuevo.",
+      "tooManyFiles": "Demasiados archivos. Máximo: {max}"
+    }
+  },
+  "footer": {
+    "tagline": "Todas las herramientas online que necesitas, gratis y sin registro.",
+    "privacyBadge": "Tus archivos nunca salen del navegador",
+    "tools": "Herramientas",
+    "company": "Empresa",
+    "about": "Quiénes somos",
+    "contact": "Contacto",
+    "privacy": "Privacy Policy",
+    "terms": "Términos de Servicio",
+    "settings": "Configuración",
+    "language": "Idioma",
+    "allRightsReserved": "Todos los derechos reservados",
+    "filesNeverLeave": "Tus archivos nunca salen del navegador"
+  }
+}

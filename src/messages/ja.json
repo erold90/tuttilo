@@ -1,0 +1,295 @@
+{
+  "common": {
+    "siteName": "Tuttilo",
+    "tagline": "すべてのオンラインツールを一か所に",
+    "searchPlaceholder": "ツールを検索...",
+    "darkMode": "ダークモード",
+    "lightMode": "ライトモード",
+    "systemMode": "システムテーマ",
+    "toggleTheme": "テーマを切り替え",
+    "switchLanguage": "言語を変更",
+    "languages": {
+      "it": "Italiano",
+      "en": "English",
+      "es": "Español",
+      "fr": "Français",
+      "de": "Deutsch",
+      "pt": "Português",
+      "ja": "日本語",
+      "ko": "한국어"
+    },
+    "privacyBadge": "ファイルがブラウザの外に出ることはありません",
+    "free": "無料",
+    "noRegistration": "登録不要",
+    "noLimits": "制限なし"
+  },
+  "nav": {
+    "pdf": "PDF",
+    "image": "画像",
+    "video": "動画",
+    "audio": "音声",
+    "text": "テキスト",
+    "developer": "開発者",
+    "youtube": "YouTube",
+    "allTools": "すべてのツール",
+    "home": "ホーム",
+    "openMenu": "メニューを開く"
+  },
+  "home": {
+    "title": "必要なオンラインツールがすべて揃っています",
+    "subtitle": "無料、登録不要、ブラウザ上で直接操作。PDF、画像、動画、音声などを編集できます。",
+    "searchPlaceholder": "何をしたいですか？45以上のツールから検索...",
+    "privacyNote": "ファイルがブラウザの外に出ることはありません",
+    "categories": "カテゴリ",
+    "categoryDesc": {
+      "pdf": "PDFの結合、分割、圧縮、変換",
+      "image": "画像の圧縮、リサイズ、変換",
+      "video": "動画の圧縮、カット、変換",
+      "audio": "音声のカット、変換、録音",
+      "text": "文字数カウント、テキスト比較など",
+      "developer": "JSON、Base64、Regex、QR Codeなど",
+      "youtube": "YouTubeのサムネイルと文字起こし"
+    },
+    "popularTools": "人気のツール",
+    "allTools": "すべてのツール",
+    "stats": {
+      "tools": "45以上のツール",
+      "filesProcessed": "処理済みファイル",
+      "noUpload": "100%ブラウザ内処理"
+    },
+    "features": {
+      "privacy": {
+        "title": "プライバシー保証",
+        "desc": "ファイルはブラウザ内で直接処理されます。外部サーバーへのアップロードはありません。"
+      },
+      "fast": {
+        "title": "高速かつ無料",
+        "desc": "すべてのツールは無料で、待ち時間なしで即座に動作します。"
+      },
+      "free": {
+        "title": "登録不要",
+        "desc": "アカウント不要。どのツールもすぐに、制限なしで使えます。"
+      }
+    }
+  },
+  "search": {
+    "openSearch": "検索",
+    "title": "ツールを検索",
+    "placeholder": "ツールを検索...",
+    "noResults": "結果が見つかりませんでした",
+    "hint": "矢印キーでナビゲートできます"
+  },
+  "tools": {
+    "merge-pdf": {
+      "name": "PDF結合",
+      "description": "複数のPDFファイルを1つのドキュメントに結合"
+    },
+    "split-pdf": {
+      "name": "PDF分割",
+      "description": "PDFを複数の個別ファイルに分割"
+    },
+    "compress-pdf": {
+      "name": "PDF圧縮",
+      "description": "品質を維持しながらPDFファイルサイズを縮小"
+    },
+    "pdf-to-jpg": {
+      "name": "PDFからJPG",
+      "description": "PDFページをJPG画像に変換"
+    },
+    "jpg-to-pdf": {
+      "name": "JPGからPDF",
+      "description": "JPG画像をPDFドキュメントに変換"
+    },
+    "rotate-pdf": {
+      "name": "PDF回転",
+      "description": "PDFドキュメントのページを回転"
+    },
+    "pdf-to-word": {
+      "name": "PDFからWord",
+      "description": "PDFドキュメントを編集可能なWordファイルに変換"
+    },
+    "word-to-pdf": {
+      "name": "WordからPDF",
+      "description": "WordドキュメントをPDFに変換"
+    },
+    "pdf-to-png": {
+      "name": "PDFからPNG",
+      "description": "PDFページを高品質なPNG画像に変換"
+    },
+    "unlock-pdf": {
+      "name": "PDFロック解除",
+      "description": "PDFファイルのパスワード保護を解除"
+    },
+    "images-to-pdf": {
+      "name": "画像からPDF",
+      "description": "複数の画像を1つのPDFドキュメントに変換"
+    },
+    "pdf-editor": {
+      "name": "PDFエディタ",
+      "description": "PDFドキュメントの編集、注釈、署名"
+    },
+    "compress-image": {
+      "name": "画像圧縮",
+      "description": "品質を損なわずに画像サイズを縮小"
+    },
+    "resize-image": {
+      "name": "画像リサイズ",
+      "description": "画像の寸法を変更"
+    },
+    "crop-image": {
+      "name": "画像トリミング",
+      "description": "画像を正確にトリミング"
+    },
+    "png-to-jpg": {
+      "name": "PNGからJPG",
+      "description": "PNG画像をJPG形式に変換"
+    },
+    "jpg-to-png": {
+      "name": "JPGからPNG",
+      "description": "JPG画像を透過対応のPNG形式に変換"
+    },
+    "webp-to-png": {
+      "name": "WebPからPNG",
+      "description": "WebP画像をPNG形式に変換"
+    },
+    "webp-to-jpg": {
+      "name": "WebPからJPG",
+      "description": "WebP画像をJPG形式に変換"
+    },
+    "heic-to-jpg": {
+      "name": "HEICからJPG",
+      "description": "iPhoneのHEIC写真をJPG形式に変換"
+    },
+    "svg-to-png": {
+      "name": "SVGからPNG",
+      "description": "SVGベクターグラフィックをPNG画像に変換"
+    },
+    "remove-bg": {
+      "name": "背景除去",
+      "description": "画像の背景を自動で除去"
+    },
+    "compress-video": {
+      "name": "動画圧縮",
+      "description": "品質を維持しながら動画ファイルサイズを縮小"
+    },
+    "trim-video": {
+      "name": "動画カット",
+      "description": "動画を正確にカット・トリミング"
+    },
+    "video-to-gif": {
+      "name": "動画からGIF",
+      "description": "動画をアニメーションGIFに変換"
+    },
+    "video-to-mp3": {
+      "name": "動画からMP3",
+      "description": "動画からMP3形式で音声を抽出"
+    },
+    "screen-recorder": {
+      "name": "画面録画",
+      "description": "ブラウザから直接画面を録画"
+    },
+    "audio-cutter": {
+      "name": "音声カッター",
+      "description": "音声ファイルを正確にカット・トリミング"
+    },
+    "audio-converter": {
+      "name": "音声コンバーター",
+      "description": "音声ファイルを異なるフォーマット間で変換"
+    },
+    "voice-recorder": {
+      "name": "ボイスレコーダー",
+      "description": "ブラウザから直接音声を録音"
+    },
+    "word-counter": {
+      "name": "文字数カウンター",
+      "description": "単語、文字、文、段落をカウント"
+    },
+    "lorem-ipsum": {
+      "name": "Lorem Ipsumジェネレーター",
+      "description": "カスタマイズ可能なLorem Ipsumダミーテキストを生成"
+    },
+    "case-converter": {
+      "name": "大文字/小文字変換",
+      "description": "テキストを大文字、小文字、その他の形式に変換"
+    },
+    "diff-checker": {
+      "name": "テキスト比較",
+      "description": "2つのテキストを比較して差分を検出"
+    },
+    "markdown-editor": {
+      "name": "Markdownエディタ",
+      "description": "Markdownをリアルタイムで書いてプレビュー"
+    },
+    "json-formatter": {
+      "name": "JSONフォーマッター",
+      "description": "JSONコードのフォーマット、検証、圧縮"
+    },
+    "base64": {
+      "name": "Base64エンコーダー",
+      "description": "テキストとファイルをBase64でエンコード・デコード"
+    },
+    "regex-tester": {
+      "name": "Regexテスター",
+      "description": "正規表現をリアルタイムでテスト・デバッグ"
+    },
+    "color-picker": {
+      "name": "カラーピッカー",
+      "description": "色を選択し、HEX、RGB、HSL間で変換"
+    },
+    "qr-code": {
+      "name": "QR Codeジェネレーター",
+      "description": "テキストやURLからカスタムQRコードを生成"
+    },
+    "hex-rgb": {
+      "name": "HEX/RGBコンバーター",
+      "description": "HEX形式とRGB形式間で色を変換"
+    },
+    "url-encoder": {
+      "name": "URLエンコーダー",
+      "description": "URLとパラメータをエンコード・デコード"
+    },
+    "timestamp": {
+      "name": "タイムスタンプ変換",
+      "description": "Unixタイムスタンプを読みやすい日付に変換（逆も可能）"
+    },
+    "youtube-thumbnail": {
+      "name": "YouTubeサムネイルダウンロード",
+      "description": "YouTube動画のサムネイルを高画質でダウンロード"
+    },
+    "youtube-transcript": {
+      "name": "YouTube文字起こし",
+      "description": "YouTube動画から字幕と文字起こしを抽出"
+    }
+  },
+  "upload": {
+    "dragDrop": "ここにファイルをドラッグ&ドロップ",
+    "or": "または",
+    "clickToSelect": "クリックしてファイルを選択",
+    "supportedFormats": "対応フォーマット: {formats}",
+    "maxSize": "最大サイズ: {size}",
+    "processing": "処理中...",
+    "done": "完了！",
+    "download": "ダウンロード",
+    "downloadAll": "すべてダウンロード",
+    "error": {
+      "fileTooLarge": "ファイルが大きすぎます。最大サイズ: {size}",
+      "unsupportedFormat": "非対応のフォーマットです。対応フォーマット: {formats}",
+      "processingFailed": "処理に失敗しました。もう一度お試しください。",
+      "tooManyFiles": "ファイル数が多すぎます。最大: {max}"
+    }
+  },
+  "footer": {
+    "tagline": "必要なオンラインツールがすべて揃っています。無料、登録不要。",
+    "privacyBadge": "ファイルがブラウザの外に出ることはありません",
+    "tools": "ツール",
+    "company": "会社情報",
+    "about": "私たちについて",
+    "contact": "お問い合わせ",
+    "privacy": "Privacy Policy",
+    "terms": "利用規約",
+    "settings": "設定",
+    "language": "言語",
+    "allRightsReserved": "全著作権所有",
+    "filesNeverLeave": "ファイルがブラウザの外に出ることはありません"
+  }
+}
