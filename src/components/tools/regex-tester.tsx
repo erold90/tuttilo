@@ -14,7 +14,6 @@ export function RegexTester() {
   const [pattern, setPattern] = useState("");
   const [flags, setFlags] = useState("g");
   const [testString, setTestString] = useState("");
-  const [error, setError] = useState("");
 
   const flagOptions = [
     { flag: "g", label: t("global") },
@@ -29,19 +28,18 @@ export function RegexTester() {
     );
   }
 
-  const matches = useMemo<MatchResult[]>(() => {
+  const { matches, matchError } = useMemo<{ matches: MatchResult[]; matchError: string }>(() => {
     if (!pattern || !testString) {
-      setError("");
-      return [];
+      return { matches: [], matchError: "" };
     }
     try {
       const regex = new RegExp(pattern, flags);
-      setError("");
       const results: MatchResult[] = [];
       let match;
+      const MAX_MATCHES = 500;
 
       if (flags.includes("g")) {
-        while ((match = regex.exec(testString)) !== null) {
+        while ((match = regex.exec(testString)) !== null && results.length < MAX_MATCHES) {
           results.push({
             match: match[0],
             index: match.index,
@@ -59,10 +57,9 @@ export function RegexTester() {
           });
         }
       }
-      return results;
-    } catch (e: any) {
-      setError(e.message);
-      return [];
+      return { matches: results, matchError: "" };
+    } catch (e: unknown) {
+      return { matches: [], matchError: e instanceof Error ? e.message : String(e) };
     }
   }, [pattern, flags, testString]);
 
@@ -133,9 +130,9 @@ export function RegexTester() {
         ))}
       </div>
 
-      {error && (
+      {matchError && (
         <div className="rounded-md border border-red-500/30 bg-red-500/10 p-3 text-sm text-red-500">
-          {error}
+          {matchError}
         </div>
       )}
 

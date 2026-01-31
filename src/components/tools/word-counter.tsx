@@ -16,8 +16,8 @@ export function WordCounter() {
   const paragraphs = text.trim()
     ? text.split(/\n\s*\n/).filter((p) => p.trim()).length
     : 0;
-  const readingTime = Math.max(1, Math.ceil(words / 200));
-  const speakingTime = Math.max(1, Math.ceil(words / 130));
+  const readingTime = words === 0 ? 0 : Math.max(1, Math.ceil(words / 200));
+  const speakingTime = words === 0 ? 0 : Math.max(1, Math.ceil(words / 130));
 
   const stats = [
     { label: t("words"), value: words },

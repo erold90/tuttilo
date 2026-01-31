@@ -16,9 +16,13 @@ export function Base64Encoder() {
     setError("");
     try {
       if (currentMode === "encode") {
-        setOutput(btoa(unescape(encodeURIComponent(text))));
+        const bytes = new TextEncoder().encode(text);
+        const binary = Array.from(bytes, (b) => String.fromCharCode(b)).join("");
+        setOutput(btoa(binary));
       } else {
-        setOutput(decodeURIComponent(escape(atob(text))));
+        const binary = atob(text);
+        const bytes = Uint8Array.from(binary, (c) => c.charCodeAt(0));
+        setOutput(new TextDecoder().decode(bytes));
       }
     } catch {
       setError(t("invalidInput"));

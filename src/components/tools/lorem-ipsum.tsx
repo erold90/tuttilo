@@ -70,7 +70,7 @@ export function LoremIpsum() {
             min={1}
             max={100}
             value={count}
-            onChange={(e) => setCount(Math.max(1, parseInt(e.target.value) || 1))}
+            onChange={(e) => setCount(Math.min(100, Math.max(1, parseInt(e.target.value) || 1)))}
             className="w-24 rounded-md border border-border bg-background px-3 py-2 text-sm focus:outline-none focus:ring-2 focus:ring-primary/50"
           />
         </div>
