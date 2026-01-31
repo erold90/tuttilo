@@ -1,1 +1,903 @@
-PLACEHOLDER_FR
+{
+  "common": {
+    "siteName": "Tuttilo",
+    "tagline": "Tous les outils en ligne au même endroit",
+    "searchPlaceholder": "Rechercher un outil...",
+    "darkMode": "Mode sombre",
+    "lightMode": "Mode clair",
+    "systemMode": "Thème système",
+    "toggleTheme": "Changer de thème",
+    "switchLanguage": "Changer de langue",
+    "languages": {
+      "it": "Italiano",
+      "en": "English",
+      "es": "Español",
+      "fr": "Français",
+      "de": "Deutsch",
+      "pt": "Português",
+      "ja": "日本語",
+      "ko": "한국어"
+    },
+    "privacyBadge": "Vos fichiers ne quittent jamais votre navigateur",
+    "free": "Gratuit",
+    "noRegistration": "Sans inscription",
+    "noLimits": "Sans limites",
+    "faq": "Questions Fréquentes",
+    "relatedTools": "Outils Associés",
+    "tryNow": "Essayer maintenant",
+    "home": "Accueil"
+  },
+  "nav": {
+    "pdf": "PDF",
+    "image": "Images",
+    "video": "Vidéo",
+    "audio": "Audio",
+    "text": "Texte",
+    "developer": "Développeurs",
+    "youtube": "YouTube",
+    "allTools": "Tous les outils",
+    "home": "Accueil",
+    "openMenu": "Ouvrir le menu"
+  },
+  "home": {
+    "title": "Tous les outils en ligne dont vous avez besoin",
+    "subtitle": "Gratuit, sans inscription, directement dans votre navigateur. Modifiez des PDF, images, vidéos, fichiers audio et bien plus.",
+    "searchPlaceholder": "Que voulez-vous faire ? Cherchez parmi plus de 45 outils...",
+    "privacyNote": "Vos fichiers ne quittent jamais votre navigateur",
+    "categories": "Catégories",
+    "categoryDesc": {
+      "pdf": "Fusionnez, divisez, compressez et convertissez des PDF",
+      "image": "Compressez, redimensionnez et convertissez des images",
+      "video": "Compressez, coupez et convertissez des vidéos",
+      "audio": "Coupez, convertissez et enregistrez de l'audio",
+      "text": "Compteur de mots, comparaison de textes et plus",
+      "developer": "JSON, Base64, Regex, QR Code et plus",
+      "youtube": "Miniatures et transcriptions YouTube"
+    },
+    "popularTools": "Outils les plus populaires",
+    "allTools": "Tous les outils",
+    "stats": {
+      "tools": "45+ outils",
+      "filesProcessed": "Fichiers traités",
+      "noUpload": "100% dans le navigateur"
+    },
+    "features": {
+      "privacy": {
+        "title": "Confidentialité garantie",
+        "desc": "Vos fichiers sont traités directement dans votre navigateur. Aucun téléversement vers des serveurs externes."
+      },
+      "fast": {
+        "title": "Rapide et gratuit",
+        "desc": "Tous les outils sont gratuits et fonctionnent instantanément, sans attente."
+      },
+      "free": {
+        "title": "Sans inscription",
+        "desc": "Aucun compte requis. Utilisez n'importe quel outil immédiatement, sans limites."
+      }
+    }
+  },
+  "search": {
+    "openSearch": "Rechercher",
+    "title": "Rechercher des outils",
+    "placeholder": "Rechercher parmi les outils...",
+    "noResults": "Aucun résultat trouvé",
+    "hint": "Utilisez les touches fléchées pour naviguer"
+  },
+  "tools": {
+    "merge-pdf": {
+      "name": "Fusionner PDF",
+      "description": "Combinez plusieurs fichiers PDF en un seul document",
+      "seo": {
+        "title": "Fusionner des fichiers PDF en ligne gratuitement",
+        "content": "Combinez plusieurs fichiers PDF en un seul document rapidement et facilement. Réorganisez les pages comme vous le souhaitez. Entièrement gratuit, sans inscription et traité directement dans votre navigateur."
+      },
+      "faq": {
+        "q1": "Combien de fichiers PDF puis-je fusionner en une fois ?",
+        "a1": "Vous pouvez fusionner autant de fichiers PDF que nécessaire. Faites simplement glisser tous les documents dans la zone de dépôt et réorganisez-les comme vous le souhaitez avant de les fusionner.",
+        "q2": "Puis-je modifier l'ordre des fichiers avant de les fusionner ?",
+        "a2": "Oui, vous pouvez réorganiser les fichiers avec les boutons monter et descendre, ou en les faisant glisser à la position souhaitée avant de lancer la fusion.",
+        "q3": "La qualité des PDF originaux est-elle conservée ?",
+        "a3": "Oui, la fusion préserve la qualité originale de chaque document. Les pages, polices, images et mise en forme restent exactement comme dans les fichiers d'origine."
+      },
+      "ui": {
+        "dropzone": "Déposez des fichiers PDF ici ou cliquez pour sélectionner",
+        "dropzoneHint": "Vous pouvez sélectionner plusieurs fichiers PDF",
+        "files": "Fichiers",
+        "pages": "pages",
+        "moveUp": "Monter",
+        "moveDown": "Descendre",
+        "remove": "Supprimer",
+        "merge": "Fusionner les PDF",
+        "processing": "Fusion en cours...",
+        "done": "Fusion terminée !",
+        "download": "Télécharger le PDF",
+        "reset": "Réinitialiser",
+        "invalidPdf": "Fichier PDF invalide",
+        "mergeError": "Erreur lors de la fusion des fichiers. Veuillez réessayer."
+      }
+    },
+    "split-pdf": {
+      "name": "Diviser PDF",
+      "description": "Divisez un PDF en plusieurs fichiers séparés",
+      "seo": {
+        "title": "Diviser des fichiers PDF en ligne gratuitement",
+        "content": "Divisez des documents PDF en fichiers individuels par page ou par plage personnalisée. Extrayez uniquement les pages dont vous avez besoin. Gratuit, sans inscription et traité dans votre navigateur."
+      },
+      "faq": {
+        "q1": "Puis-je extraire des pages spécifiques d'un PDF ?",
+        "a1": "Oui, vous pouvez diviser toutes les pages individuellement ou spécifier une plage personnalisée (par exemple, 1-3, 5, 7-10) pour extraire uniquement les pages souhaitées.",
+        "q2": "Quel est le format de la plage de pages ?",
+        "a2": "Utilisez des virgules pour les pages individuelles et des tirets pour les plages. Par exemple : 1,3,5-8 extraira les pages 1, 3, et de 5 à 8.",
+        "q3": "La qualité est-elle conservée lors de la division ?",
+        "a3": "Oui, la division n'affecte pas la qualité du contenu. Chaque page extraite conserve exactement la même qualité, les mêmes polices et images que le document original."
+      },
+      "ui": {
+        "dropzone": "Déposez un fichier PDF ici ou cliquez pour sélectionner",
+        "dropzoneHint": "Sélectionnez un fichier PDF à diviser",
+        "pages": "pages",
+        "splitAll": "Diviser toutes les pages",
+        "splitRange": "Diviser par plage",
+        "rangeLabel": "Plage de pages",
+        "rangePlaceholder": "ex. 1-3, 5, 7-10",
+        "rangeHint": "Utilisez des virgules et des tirets pour définir la plage",
+        "split": "Diviser le PDF",
+        "processing": "Division en cours...",
+        "results": "Résultats",
+        "download": "Télécharger",
+        "reset": "Réinitialiser",
+        "invalidPdf": "Fichier PDF invalide",
+        "splitError": "Erreur lors de la division du fichier. Veuillez réessayer.",
+        "invalidRange": "Plage de pages invalide"
+      }
+    },
+    "compress-pdf": {
+      "name": "Compresser PDF",
+      "description": "Réduisez la taille des fichiers PDF en conservant la qualité",
+      "seo": {
+        "title": "Compresser des fichiers PDF en ligne gratuitement",
+        "content": "Réduisez la taille de vos fichiers PDF sans perte de qualité significative. Idéal pour l'envoi par e-mail ou le téléversement sur des plateformes avec limite de taille. Gratuit et traité dans votre navigateur."
+      },
+      "faq": {
+        "q1": "De combien peut-on réduire la taille du PDF ?",
+        "a1": "La réduction dépend du contenu du PDF. Les documents contenant beaucoup d'images peuvent être considérablement réduits, tandis que les PDF contenant uniquement du texte sont déjà assez compacts.",
+        "q2": "La compression affecte-t-elle la qualité du document ?",
+        "a2": "La compression optimise les images et les ressources du PDF de manière intelligente. Le résultat conserve une bonne qualité visuelle avec une taille de fichier nettement réduite.",
+        "q3": "Puis-je compresser un PDF protégé par mot de passe ?",
+        "a3": "Les PDF protégés doivent d'abord être déverrouillés. Vous pouvez utiliser notre outil Déverrouiller PDF, puis compresser le fichier obtenu."
+      },
+      "ui": {
+        "dropzone": "Déposez un fichier PDF ici ou cliquez pour sélectionner",
+        "dropzoneHint": "Sélectionnez un fichier PDF à compresser",
+        "compress": "Compresser le PDF",
+        "processing": "Compression en cours...",
+        "done": "Compression terminée !",
+        "original": "Original",
+        "compressed": "Compressé",
+        "reduction": "Réduction",
+        "noReduction": "Le fichier est déjà optimisé",
+        "download": "Télécharger le PDF",
+        "reset": "Réinitialiser",
+        "invalidPdf": "Fichier PDF invalide",
+        "compressError": "Erreur lors de la compression du fichier. Veuillez réessayer."
+      }
+    },
+    "pdf-to-jpg": {
+      "name": "PDF en JPG",
+      "description": "Convertissez les pages PDF en images JPG",
+      "seo": {
+        "title": "Convertir PDF en JPG en ligne gratuitement",
+        "content": "Convertissez chaque page d'un PDF en image JPG de haute qualité. Ajustez la qualité de sortie selon vos besoins. Gratuit, sans inscription et entièrement confidentiel."
+      },
+      "faq": {
+        "q1": "Toutes les pages du PDF sont-elles converties ?",
+        "a1": "Oui, chaque page du document PDF est convertie en une image JPG individuelle. Vous pouvez télécharger toutes les images ou uniquement celles dont vous avez besoin.",
+        "q2": "Puis-je ajuster la qualité des images ?",
+        "a2": "Oui, vous pouvez ajuster la qualité de sortie avec un curseur. Une qualité plus élevée produit des images plus nettes mais avec un fichier plus volumineux.",
+        "q3": "Quelle est la résolution des images obtenues ?",
+        "a3": "Les images sont générées à une résolution qui conserve la netteté du document original. La qualité finale dépend du réglage choisi et du contenu du PDF."
+      },
+      "ui": {
+        "dropzone": "Déposez un fichier PDF ici ou cliquez pour sélectionner",
+        "dropzoneHint": "Sélectionnez un fichier PDF à convertir",
+        "quality": "Qualité",
+        "convert": "Convertir en JPG",
+        "processing": "Conversion en cours...",
+        "results": "Résultats",
+        "downloadAll": "Tout télécharger",
+        "download": "Télécharger",
+        "reset": "Réinitialiser",
+        "convertError": "Erreur lors de la conversion du fichier. Veuillez réessayer."
+      }
+    },
+    "jpg-to-pdf": {
+      "name": "JPG en PDF",
+      "description": "Convertissez des images JPG en un document PDF",
+      "seo": {
+        "title": "Convertir JPG en PDF en ligne gratuitement",
+        "content": "Convertissez une ou plusieurs images JPG en document PDF. Organisez les images dans l'ordre de votre choix. Gratuit, sans inscription et traité directement dans votre navigateur."
+      },
+      "faq": {
+        "q1": "Puis-je convertir plusieurs images en un seul PDF ?",
+        "a1": "Oui, vous pouvez sélectionner plusieurs images JPG qui seront combinées en un seul document PDF, chaque image occupant une page séparée.",
+        "q2": "La qualité des images est-elle conservée ?",
+        "a2": "Oui, les images sont intégrées dans le PDF en conservant leur résolution et qualité d'origine. Aucune compression supplémentaire n'est appliquée lors de la conversion.",
+        "q3": "Puis-je modifier l'ordre des images ?",
+        "a3": "Oui, vous pouvez réorganiser les images avant la conversion pour qu'elles apparaissent dans l'ordre souhaité dans le document PDF final."
+      },
+      "ui": {
+        "dropzone": "Déposez des images JPG ici ou cliquez pour sélectionner",
+        "dropzoneHint": "Vous pouvez sélectionner plusieurs images JPG",
+        "images": "Images",
+        "convert": "Convertir en PDF",
+        "processing": "Conversion en cours...",
+        "done": "Conversion terminée !",
+        "download": "Télécharger le PDF",
+        "reset": "Réinitialiser",
+        "convertError": "Erreur lors de la conversion des images. Veuillez réessayer."
+      }
+    },
+    "rotate-pdf": {
+      "name": "Pivoter PDF",
+      "description": "Faites pivoter les pages d'un document PDF",
+      "seo": {
+        "title": "Pivoter les pages d'un PDF en ligne gratuitement",
+        "content": "Faites pivoter les pages de vos documents PDF de 90, 180 ou 270 degrés. Appliquez la rotation à toutes les pages ou uniquement à celles de votre choix. Gratuit, sans inscription et traité dans votre navigateur."
+      },
+      "faq": {
+        "q1": "Puis-je pivoter seulement certaines pages du PDF ?",
+        "a1": "Oui, vous pouvez choisir de pivoter toutes les pages du document ou de spécifier des pages précises en saisissant les numéros de page que vous souhaitez pivoter.",
+        "q2": "Quels angles de rotation sont disponibles ?",
+        "a2": "Vous pouvez pivoter les pages de 90 degrés (quart de tour à droite), 180 degrés (demi-tour) ou 270 degrés (quart de tour à gauche).",
+        "q3": "La rotation affecte-t-elle la qualité du PDF ?",
+        "a3": "Non, la rotation modifie simplement l'orientation des pages sans altérer ni recompresser le contenu. La qualité reste identique à l'original."
+      },
+      "ui": {
+        "dropzone": "Déposez un fichier PDF ici ou cliquez pour sélectionner",
+        "dropzoneHint": "Sélectionnez un fichier PDF à pivoter",
+        "pages": "pages",
+        "rotationAngle": "Angle de rotation",
+        "applyTo": "Appliquer à",
+        "allPages": "Toutes les pages",
+        "customPages": "Pages spécifiques",
+        "pagesPlaceholder": "ex. 1, 3, 5-8",
+        "pagesHint": "Utilisez des virgules et des tirets pour définir les pages",
+        "rotate": "Pivoter le PDF",
+        "processing": "Rotation en cours...",
+        "done": "Rotation terminée !",
+        "download": "Télécharger le PDF",
+        "reset": "Réinitialiser",
+        "invalidPdf": "Fichier PDF invalide",
+        "rotateError": "Erreur lors de la rotation du fichier. Veuillez réessayer.",
+        "invalidRange": "Plage de pages invalide"
+      }
+    },
+    "pdf-to-word": {
+      "name": "PDF en Word",
+      "description": "Convertissez des documents PDF en fichiers Word modifiables"
+    },
+    "word-to-pdf": {
+      "name": "Word en PDF",
+      "description": "Convertissez des documents Word en PDF"
+    },
+    "pdf-to-png": {
+      "name": "PDF en PNG",
+      "description": "Convertissez les pages PDF en images PNG haute qualité"
+    },
+    "unlock-pdf": {
+      "name": "Déverrouiller PDF",
+      "description": "Supprimez la protection par mot de passe des fichiers PDF"
+    },
+    "images-to-pdf": {
+      "name": "Images en PDF",
+      "description": "Convertissez plusieurs images en un seul document PDF"
+    },
+    "pdf-editor": {
+      "name": "Éditeur PDF",
+      "description": "Modifiez, annotez et signez vos documents PDF"
+    },
+    "compress-image": {
+      "name": "Compresser image",
+      "description": "Réduisez la taille des images sans perte de qualité",
+      "seo": {
+        "title": "Compresseur d'images en ligne gratuit",
+        "content": "Compressez des images JPG, PNG et WebP directement dans votre navigateur. Réduisez la taille en conservant la qualité visuelle. Gratuit, sans téléversement — vos fichiers restent privés."
+      },
+      "faq": {
+        "q1": "Quels formats d'image puis-je compresser ?",
+        "a1": "Vous pouvez compresser des images JPG, PNG et WebP. L'outil traite les fichiers directement dans votre navigateur à l'aide d'algorithmes de compression avancés.",
+        "q2": "La compression réduit-elle la qualité de l'image ?",
+        "a2": "Vous contrôlez la qualité avec un curseur. Une qualité plus élevée signifie des fichiers plus grands, une qualité inférieure des fichiers plus petits. Le réglage par défaut offre un excellent équilibre.",
+        "q3": "Y a-t-il une limite de taille de fichier ?",
+        "a3": "L'outil prend en charge les images jusqu'à 50 Mo. Tout le traitement se fait dans votre navigateur, les fichiers plus volumineux peuvent prendre plus de temps sur les appareils lents."
+      },
+      "ui": {
+        "dropzone": "Déposez une image ici ou cliquez pour sélectionner",
+        "quality": "Qualité",
+        "processing": "Compression en cours...",
+        "compress": "Compresser",
+        "download": "Télécharger",
+        "reset": "Réinitialiser",
+        "originalSize": "Taille originale",
+        "compressedSize": "Taille compressée",
+        "savings": "Économie",
+        "original": "Original",
+        "compressed": "Compressée"
+      }
+    },
+    "resize-image": {
+      "name": "Redimensionner image",
+      "description": "Modifiez les dimensions de vos images",
+      "seo": {
+        "title": "Redimensionneur d'images en ligne gratuit",
+        "content": "Redimensionnez des images JPG, PNG et WebP à n'importe quelle taille. Verrouillez le rapport d'aspect, utilisez des préréglages en pourcentage ou saisissez des dimensions personnalisées. Gratuit, tout dans le navigateur."
+      },
+      "faq": {
+        "q1": "Puis-je maintenir le rapport d'aspect lors du redimensionnement ?",
+        "a1": "Oui, le verrouillage du rapport d'aspect est activé par défaut. Lorsque vous modifiez la largeur ou la hauteur, l'autre dimension s'ajuste automatiquement pour conserver les proportions.",
+        "q2": "Que sont les préréglages en pourcentage ?",
+        "a2": "Les préréglages rapides vous permettent de redimensionner à 25%, 50%, 75%, 150% ou 200% de la taille originale en un seul clic.",
+        "q3": "Le redimensionnement affecte-t-il la qualité ?",
+        "a3": "L'outil utilise une interpolation bicubique de haute qualité. Agrandir au-delà de la taille originale peut réduire la netteté, tandis que réduire maintient la qualité."
+      },
+      "ui": {
+        "dropzone": "Déposez une image ici ou cliquez pour sélectionner",
+        "width": "Largeur",
+        "height": "Hauteur",
+        "lockAspectRatio": "Verrouiller les proportions",
+        "processing": "Redimensionnement en cours...",
+        "resize": "Redimensionner",
+        "download": "Télécharger",
+        "reset": "Réinitialiser",
+        "original": "Original",
+        "resized": "Redimensionnée",
+        "originalDimensions": "Dimensions originales"
+      }
+    },
+    "crop-image": {
+      "name": "Recadrer image",
+      "description": "Recadrez vos images avec précision",
+      "seo": {
+        "title": "Outil de recadrage d'images en ligne gratuit",
+        "content": "Recadrez des images JPG, PNG et WebP avec un éditeur visuel. Choisissez parmi des rapports d'aspect prédéfinis ou recadrez librement. Sans téléversement — fonctionne entièrement dans votre navigateur."
+      },
+      "faq": {
+        "q1": "Quels rapports d'aspect prédéfinis sont disponibles ?",
+        "a1": "Vous pouvez recadrer en sélection libre ou utiliser des préréglages : 1:1 (carré), 16:9 (panoramique), 4:3 (standard) et 3:2 (photo).",
+        "q2": "Puis-je recadrer avec une taille en pixels exacte ?",
+        "a2": "L'éditeur visuel vous permet de faire glisser pour sélectionner n'importe quelle zone. Pour des tailles exactes, combinez avec l'outil Redimensionner après le recadrage.",
+        "q3": "Le recadrage réduit-il la qualité ?",
+        "a3": "Non. Le recadrage extrait simplement la zone sélectionnée à sa résolution originale. Aucune recompression n'est appliquée à la région recadrée."
+      },
+      "ui": {
+        "dropzone": "Déposez une image ici ou cliquez pour sélectionner",
+        "crop": "Recadrer",
+        "download": "Télécharger",
+        "reset": "Réinitialiser",
+        "result": "Résultat",
+        "freeform": "Libre"
+      }
+    },
+    "png-to-jpg": {
+      "name": "PNG en JPG",
+      "description": "Convertissez des images PNG au format JPG",
+      "seo": {
+        "title": "Convertisseur PNG en JPG en ligne gratuit",
+        "content": "Convertissez des images PNG au format JPG instantanément dans votre navigateur. Qualité réglable, zones transparentes remplies de blanc. Sans téléversement — totalement privé."
+      },
+      "faq": {
+        "q1": "Qu'advient-il des zones transparentes ?",
+        "a1": "Le JPG ne prend pas en charge la transparence. Les zones transparentes de votre PNG seront remplies d'un fond blanc lors de la conversion.",
+        "q2": "Puis-je contrôler la qualité de sortie ?",
+        "a2": "Oui, utilisez le curseur de qualité pour équilibrer entre la taille du fichier et la qualité de l'image. Des valeurs plus élevées produisent de meilleurs JPG mais plus volumineux.",
+        "q3": "Y a-t-il une limite de taille ?",
+        "a3": "Les images jusqu'à 50 Mo sont prises en charge. La conversion se fait entièrement dans votre navigateur, vos fichiers restent donc privés."
+      },
+      "ui": {
+        "dropzone": "Déposez une image PNG ici ou cliquez pour sélectionner",
+        "quality": "Qualité",
+        "processing": "Conversion en cours...",
+        "convert": "Convertir",
+        "download": "Télécharger",
+        "reset": "Réinitialiser"
+      }
+    },
+    "jpg-to-png": {
+      "name": "JPG en PNG",
+      "description": "Convertissez des images JPG au format PNG avec transparence",
+      "seo": {
+        "title": "Convertisseur JPG en PNG en ligne gratuit",
+        "content": "Convertissez des images JPG au format PNG instantanément dans votre navigateur. Le PNG prend en charge la transparence et la compression sans perte. Gratuit, privé, sans inscription."
+      },
+      "faq": {
+        "q1": "Pourquoi convertir JPG en PNG ?",
+        "a1": "Le PNG prend en charge la transparence et la compression sans perte, idéal pour les logos, graphiques et images nécessitant des bords nets sans artefacts de compression.",
+        "q2": "La taille du fichier va-t-elle augmenter ?",
+        "a2": "Les fichiers PNG sont généralement plus volumineux que les JPG car le PNG utilise une compression sans perte. L'avantage est une qualité supérieure sans artefacts.",
+        "q3": "La conversion ajoute-t-elle de la transparence ?",
+        "a3": "Convertir JPG en PNG n'ajoute pas automatiquement de transparence. L'image conserve son contenu original, mais est maintenant dans un format qui prend en charge la transparence pour des modifications futures."
+      },
+      "ui": {
+        "dropzone": "Déposez une image JPG ici ou cliquez pour sélectionner",
+        "processing": "Conversion en cours...",
+        "convert": "Convertir",
+        "download": "Télécharger",
+        "reset": "Réinitialiser"
+      }
+    },
+    "webp-to-png": {
+      "name": "WebP en PNG",
+      "description": "Convertissez des images WebP au format PNG",
+      "seo": {
+        "title": "Convertisseur WebP en PNG en ligne gratuit",
+        "content": "Convertissez des images WebP au format PNG instantanément dans votre navigateur. Conservez la transparence et la qualité. Sans téléversement — vos fichiers restent sur votre appareil."
+      },
+      "faq": {
+        "q1": "Pourquoi convertir WebP en PNG ?",
+        "a1": "Bien que WebP soit excellent pour le web, le PNG est plus largement pris en charge par les applications, éditeurs d'images et plateformes. La conversion garantit une compatibilité maximale.",
+        "q2": "La transparence est-elle préservée ?",
+        "a2": "Oui. Si votre image WebP comporte des zones transparentes, elles seront préservées dans la sortie PNG.",
+        "q3": "La taille du fichier va-t-elle changer ?",
+        "a3": "Les fichiers PNG peuvent être plus volumineux que les WebP car WebP utilise une compression plus agressive. La qualité reste identique."
+      },
+      "ui": {
+        "dropzone": "Déposez une image WebP ici ou cliquez pour sélectionner",
+        "processing": "Conversion en cours...",
+        "convert": "Convertir",
+        "download": "Télécharger",
+        "reset": "Réinitialiser"
+      }
+    },
+    "webp-to-jpg": {
+      "name": "WebP en JPG",
+      "description": "Convertissez des images WebP au format JPG",
+      "seo": {
+        "title": "Convertisseur WebP en JPG en ligne gratuit",
+        "content": "Convertissez des images WebP au format JPG instantanément dans votre navigateur. Qualité réglable avec fond blanc pour la transparence. Gratuit, privé, sans inscription."
+      },
+      "faq": {
+        "q1": "Qu'advient-il des zones transparentes dans WebP ?",
+        "a1": "Le JPG ne prend pas en charge la transparence. Toute zone transparente dans l'image WebP sera remplie d'un fond blanc.",
+        "q2": "Puis-je ajuster la qualité du JPG ?",
+        "a2": "Oui, utilisez le curseur de qualité pour régler la qualité de sortie de 10% à 100%. Des valeurs plus élevées signifient une meilleure qualité mais des fichiers plus volumineux.",
+        "q3": "Cet outil est-il gratuit ?",
+        "a3": "Oui, entièrement gratuit et sans limites. La conversion s'exécute dans votre navigateur, aucune donnée n'est envoyée vers un serveur."
+      },
+      "ui": {
+        "dropzone": "Déposez une image WebP ici ou cliquez pour sélectionner",
+        "quality": "Qualité",
+        "processing": "Conversion en cours...",
+        "convert": "Convertir",
+        "download": "Télécharger",
+        "reset": "Réinitialiser"
+      }
+    },
+    "heic-to-jpg": {
+      "name": "HEIC en JPG",
+      "description": "Convertissez les photos HEIC d'iPhone au format JPG",
+      "seo": {
+        "title": "Convertisseur HEIC en JPG en ligne gratuit",
+        "content": "Convertissez des photos HEIC et HEIF d'iPhone au format JPG. Fonctionne directement dans votre navigateur sans téléversement. Gratuit, rapide et totalement privé."
+      },
+      "faq": {
+        "q1": "Qu'est-ce que le format HEIC ?",
+        "a1": "HEIC (High Efficiency Image Container) est le format photo par défaut d'Apple sur iPhone. Il offre une meilleure compression que le JPG mais n'est pas universellement pris en charge.",
+        "q2": "Pourquoi convertir HEIC en JPG ?",
+        "a2": "Le JPG est universellement pris en charge sur tous les appareils, applications et plateformes. Convertir HEIC en JPG garantit que vos photos puissent être ouvertes et partagées partout.",
+        "q3": "La conversion perd-elle en qualité ?",
+        "a3": "La conversion utilise des paramètres de haute qualité (92%) pour minimiser la perte. Le résultat est visuellement identique à l'original dans la plupart des cas."
+      },
+      "ui": {
+        "dropzone": "Déposez un fichier HEIC/HEIF ici ou cliquez pour sélectionner",
+        "processing": "Conversion en cours...",
+        "convert": "Convertir",
+        "download": "Télécharger",
+        "reset": "Réinitialiser",
+        "result": "Résultat",
+        "error": "La conversion a échoué. Assurez-vous que le fichier est une image HEIC valide."
+      }
+    },
+    "svg-to-png": {
+      "name": "SVG en PNG",
+      "description": "Convertissez des graphiques vectoriels SVG en images PNG",
+      "seo": {
+        "title": "Convertisseur SVG en PNG en ligne gratuit",
+        "content": "Convertissez des graphiques vectoriels SVG en images PNG haute qualité dans votre navigateur. Choisissez l'échelle (1x, 2x, 3x, 4x) pour un rendu net à toute résolution. Gratuit, privé, sans téléversement."
+      },
+      "faq": {
+        "q1": "Pourquoi convertir SVG en PNG ?",
+        "a1": "Le SVG est idéal pour le web, mais le PNG est pris en charge universellement par toutes les applications, réseaux sociaux et messageries. La conversion garantit un affichage correct partout.",
+        "q2": "Que signifient les options d'échelle ?",
+        "a2": "L'échelle multiplie les dimensions du SVG. 1x donne la taille d'origine, 2x la double pour les écrans Retina, et 4x produit une sortie très haute résolution pour l'impression ou les grands formats.",
+        "q3": "La transparence est-elle préservée ?",
+        "a3": "Oui, les zones transparentes du SVG sont conservées en tant que transparence dans le fichier PNG de sortie."
+      },
+      "ui": {
+        "dropzone": "Déposez un fichier SVG ici ou cliquez pour sélectionner",
+        "dropzoneHint": "Sélectionnez un fichier SVG à convertir en PNG",
+        "scale": "Échelle de sortie",
+        "convert": "Convertir en PNG",
+        "processing": "Conversion en cours...",
+        "download": "Télécharger",
+        "reset": "Réinitialiser",
+        "convertError": "Impossible de convertir le SVG. Veuillez vérifier que le fichier est un SVG valide."
+      }
+    },
+    "remove-bg": {
+      "name": "Supprimer l'arrière-plan",
+      "description": "Supprimez automatiquement l'arrière-plan des images"
+    },
+    "compress-video": {
+      "name": "Compresser vidéo",
+      "description": "Réduisez la taille des fichiers vidéo en conservant la qualité"
+    },
+    "trim-video": {
+      "name": "Couper vidéo",
+      "description": "Coupez et découpez vos vidéos avec précision"
+    },
+    "video-to-gif": {
+      "name": "Vidéo en GIF",
+      "description": "Convertissez des vidéos en GIF animés"
+    },
+    "video-to-mp3": {
+      "name": "Vidéo en MP3",
+      "description": "Extrayez l'audio des vidéos au format MP3",
+      "seo": {
+        "title": "Extracteur audio de vidéo en ligne gratuit",
+        "content": "Extrayez la piste audio de vos fichiers vidéo directement dans votre navigateur. Importez des fichiers MP4, WebM ou d'autres formats vidéo et téléchargez la piste audio. Gratuit, confidentiel, sans envoi vers des serveurs externes."
+      },
+      "faq": {
+        "q1": "Quels formats vidéo sont pris en charge ?",
+        "a1": "L'outil prend en charge les fichiers MP4, WebM et la plupart des formats vidéo courants que votre navigateur peut lire. Glissez et déposez simplement votre fichier vidéo pour commencer.",
+        "q2": "Dans quel format est l'audio extrait ?",
+        "a2": "L'audio est extrait au format WAV, un format non compressé sans perte. Les fichiers WAV sont universellement compatibles avec tous les lecteurs et éditeurs audio.",
+        "q3": "Y a-t-il une limite de taille de fichier ?",
+        "a3": "L'outil prend en charge les vidéos jusqu'à 500 Mo. Le traitement se fait entièrement dans votre navigateur, les fichiers plus volumineux peuvent prendre plus de temps selon votre appareil."
+      },
+      "ui": {
+        "dropzone": "Déposez un fichier vidéo ici ou cliquez pour sélectionner",
+        "dropzoneHint": "Prend en charge MP4, WebM et d'autres formats vidéo",
+        "extract": "Extraire l'audio",
+        "processing": "Extraction en cours...",
+        "download": "Télécharger",
+        "reset": "Réinitialiser",
+        "extractError": "Impossible d'extraire l'audio. Veuillez vérifier que le fichier est une vidéo valide contenant une piste audio."
+      }
+    },
+    "screen-recorder": {
+      "name": "Enregistreur d'écran",
+      "description": "Enregistrez votre écran directement depuis le navigateur",
+      "seo": {
+        "title": "Enregistreur d'écran en ligne gratuit",
+        "content": "Enregistrez votre écran directement depuis votre navigateur. Capturez l'écran entier, une fenêtre ou un onglet avec audio en option. Aucun logiciel à installer, aucune inscription requise."
+      },
+      "faq": {
+        "q1": "Dois-je installer quelque chose ?",
+        "a1": "Non. L'enregistreur d'écran utilise l'API de capture d'écran intégrée à votre navigateur. Il fonctionne directement sans aucun téléchargement ni extension.",
+        "q2": "Puis-je enregistrer l'audio en même temps que l'écran ?",
+        "a2": "Oui, vous pouvez activer l'enregistrement audio pour capturer les sons du système en même temps que votre écran. Activez l'option Inclure l'audio avant de commencer.",
+        "q3": "Dans quel format est l'enregistrement ?",
+        "a3": "Les enregistrements sont sauvegardés au format WebM, pris en charge par tous les navigateurs modernes et lecteurs vidéo. Vous pouvez convertir vers d'autres formats avec des outils de conversion vidéo."
+      },
+      "ui": {
+        "startRecording": "Démarrer l'enregistrement",
+        "pause": "Pause",
+        "resume": "Reprendre",
+        "stop": "Arrêter",
+        "download": "Télécharger",
+        "newRecording": "Nouvel enregistrement",
+        "includeAudio": "Inclure l'audio du système",
+        "screenError": "Impossible d'accéder à l'écran. Veuillez autoriser le partage d'écran lorsque demandé."
+      }
+    },
+    "audio-cutter": {
+      "name": "Découpeur audio",
+      "description": "Coupez et découpez des fichiers audio avec précision",
+      "seo": {
+        "title": "Découpeur audio en ligne gratuit",
+        "content": "Coupez et découpez des fichiers audio directement dans votre navigateur. Éditeur visuel avec forme d'onde et sélection précise du début et de la fin. Prend en charge MP3, WAV, OGG et plus. Gratuit, confidentiel, sans téléversement."
+      },
+      "faq": {
+        "q1": "Quels formats audio sont pris en charge ?",
+        "a1": "L'outil prend en charge MP3, WAV, OGG, FLAC, AAC et tout format audio que votre navigateur peut décoder. Le fichier de sortie est sauvegardé au format WAV haute qualité.",
+        "q2": "Puis-je écouter un aperçu avant de couper ?",
+        "a2": "Oui, utilisez le bouton Aperçu pour écouter la portion sélectionnée avant de la couper. Ajustez les points de début et de fin avec les curseurs ou en saisissant des temps précis.",
+        "q3": "Pourquoi le fichier de sortie est-il au format WAV ?",
+        "a3": "Le WAV est un format non compressé sans perte qui préserve la qualité audio intégrale. Il garantit aucune perte de qualité lors du découpage et est compatible avec tous les lecteurs audio."
+      },
+      "ui": {
+        "dropzone": "Déposez un fichier audio ici ou cliquez pour sélectionner",
+        "dropzoneHint": "Prend en charge MP3, WAV, OGG, FLAC et plus",
+        "start": "Début",
+        "end": "Fin",
+        "selection": "Durée de la sélection",
+        "preview": "Aperçu",
+        "stopPreview": "Arrêter",
+        "cut": "Couper l'audio",
+        "processing": "Découpage en cours...",
+        "download": "Télécharger",
+        "reset": "Réinitialiser",
+        "loadError": "Impossible de charger le fichier audio. Veuillez vérifier que le fichier est un fichier audio valide.",
+        "cutError": "Une erreur est survenue lors du découpage. Veuillez réessayer."
+      }
+    },
+    "audio-converter": {
+      "name": "Convertisseur audio",
+      "description": "Convertissez des fichiers audio entre différents formats"
+    },
+    "voice-recorder": {
+      "name": "Enregistreur vocal",
+      "description": "Enregistrez votre voix directement depuis le navigateur",
+      "seo": {
+        "title": "Enregistreur vocal en ligne gratuit",
+        "content": "Enregistrez votre voix directement depuis votre navigateur sans logiciel à installer. Visualisez la forme d'onde en temps réel pendant l'enregistrement. Mettez en pause, reprenez et téléchargez vos enregistrements. Gratuit et confidentiel."
+      },
+      "faq": {
+        "q1": "Ai-je besoin d'un microphone ?",
+        "a1": "Oui, vous avez besoin d'un microphone connecté à votre appareil. La plupart des ordinateurs portables et smartphones disposent d'un microphone intégré. Le navigateur vous demandera l'autorisation d'y accéder.",
+        "q2": "Dans quel format les enregistrements sont-ils sauvegardés ?",
+        "a2": "Les enregistrements sont sauvegardés au format audio WebM, pris en charge par tous les navigateurs modernes et la plupart des lecteurs audio. Vous pouvez les convertir vers d'autres formats avec un outil de conversion audio.",
+        "q3": "Mon enregistrement est-il stocké quelque part ?",
+        "a3": "Non. L'enregistrement est traité entièrement dans votre navigateur et n'est jamais envoyé vers un serveur. Vous seul avez accès à vos enregistrements."
+      },
+      "ui": {
+        "record": "Enregistrer",
+        "pause": "Pause",
+        "resume": "Reprendre",
+        "stop": "Arrêter",
+        "download": "Télécharger",
+        "newRecording": "Nouvel enregistrement",
+        "micError": "Impossible d'accéder au microphone. Veuillez autoriser l'accès au microphone lorsque demandé."
+      }
+    },
+    "word-counter": {
+      "name": "Compteur de mots",
+      "description": "Comptez les mots, caractères, phrases et paragraphes",
+      "seo": {
+        "title": "Compteur de mots en ligne gratuit - Caractères, phrases et paragraphes",
+        "content": "Comptez instantanément les mots, caractères, phrases et paragraphes de votre texte. Outil gratuit en ligne avec temps de lecture et temps de parole. Sans inscription."
+      },
+      "faq": {
+        "q1": "Comment fonctionne le compteur de mots ?",
+        "a1": "Tapez ou collez simplement votre texte dans le champ de saisie. Le compteur analyse automatiquement le contenu en temps réel et affiche le nombre de mots, caractères, phrases et paragraphes.",
+        "q2": "Mes données sont-elles privées ?",
+        "a2": "Oui, totalement. Tout le traitement s'effectue directement dans votre navigateur. Votre texte n'est jamais envoyé vers un serveur externe.",
+        "q3": "Sur quoi se base le calcul du temps de lecture ?",
+        "a3": "Le temps de lecture est calculé sur la base d'une vitesse moyenne de 200 mots par minute, ce qui correspond à la vitesse de lecture standard d'un adulte."
+      },
+      "ui": {
+        "placeholder": "Tapez ou collez votre texte ici...",
+        "words": "Mots",
+        "characters": "Caractères",
+        "charactersNoSpaces": "Caractères sans espaces",
+        "sentences": "Phrases",
+        "paragraphs": "Paragraphes",
+        "readingTime": "Temps de lecture",
+        "speakingTime": "Temps de parole",
+        "clear": "Effacer"
+      }
+    },
+    "lorem-ipsum": {
+      "name": "Générateur Lorem Ipsum",
+      "description": "Générez du texte de remplissage Lorem Ipsum personnalisé",
+      "seo": {
+        "title": "Générateur Lorem Ipsum en ligne gratuit - Texte de remplissage personnalisé",
+        "content": "Générez du texte de remplissage Lorem Ipsum personnalisé pour vos maquettes et projets. Choisissez entre paragraphes, phrases ou mots. Outil gratuit en ligne."
+      },
+      "faq": {
+        "q1": "Qu'est-ce que Lorem Ipsum ?",
+        "a1": "Lorem Ipsum est un texte de remplissage standard utilisé en graphisme, typographie et mise en page web depuis le XVIe siècle. Il permet de visualiser le rendu d'un projet sans être distrait par le contenu réel.",
+        "q2": "Puis-je personnaliser le texte généré ?",
+        "a2": "Oui, vous pouvez choisir la quantité et le type de contenu à générer : paragraphes, phrases ou mots individuels, selon vos besoins.",
+        "q3": "Le texte généré est-il toujours aléatoire ?",
+        "a3": "Le texte se base sur le Lorem Ipsum classique mais inclut des variations pour que chaque génération soit légèrement différente, tout en conservant une structure naturelle."
+      },
+      "ui": {
+        "count": "Quantité",
+        "type": "Type",
+        "paragraphs": "Paragraphes",
+        "sentences": "Phrases",
+        "words": "Mots",
+        "generate": "Générer",
+        "copy": "Copier",
+        "copied": "Copié !",
+        "wordsCount": "mots"
+      }
+    },
+    "case-converter": {
+      "name": "Convertisseur majuscules/minuscules",
+      "description": "Convertissez le texte entre majuscules, minuscules et autres formats"
+    },
+    "diff-checker": {
+      "name": "Comparateur de textes",
+      "description": "Comparez deux textes et trouvez les différences"
+    },
+    "markdown-editor": {
+      "name": "Éditeur Markdown",
+      "description": "Écrivez et prévisualisez du Markdown en temps réel"
+    },
+    "json-formatter": {
+      "name": "Formateur JSON",
+      "description": "Formatez, validez et minimisez du code JSON",
+      "seo": {
+        "title": "Formateur et validateur JSON en ligne gratuit",
+        "content": "Formatez, validez et minimisez du code JSON instantanément. Mise en évidence des erreurs, indentation personnalisable et copie en un clic. Outil gratuit en ligne sans inscription."
+      },
+      "faq": {
+        "q1": "Que se passe-t-il si mon JSON est invalide ?",
+        "a1": "L'outil détecte automatiquement les erreurs de syntaxe dans votre JSON et affiche un message d'erreur indiquant l'emplacement du problème, afin que vous puissiez le corriger facilement.",
+        "q2": "Puis-je modifier la taille de l'indentation ?",
+        "a2": "Oui, vous pouvez choisir le niveau d'indentation souhaité (2 ou 4 espaces) pour formater votre JSON de la manière la plus lisible.",
+        "q3": "Mes données sont-elles en sécurité ?",
+        "a3": "Absolument. Le traitement s'effectue entièrement dans votre navigateur. Votre code JSON n'est jamais envoyé vers des serveurs externes."
+      },
+      "ui": {
+        "format": "Formater",
+        "minify": "Minimiser",
+        "copy": "Copier",
+        "copied": "Copié !",
+        "indent": "Indentation",
+        "error": "Erreur",
+        "input": "Entrée",
+        "output": "Sortie",
+        "inputPlaceholder": "Collez votre JSON ici...",
+        "outputPlaceholder": "Le JSON formaté apparaîtra ici..."
+      }
+    },
+    "base64": {
+      "name": "Encodeur Base64",
+      "description": "Encodez et décodez du texte et des fichiers en Base64",
+      "seo": {
+        "title": "Encodeur et décodeur Base64 en ligne gratuit",
+        "content": "Encodez et décodez du texte en Base64 instantanément. Compatible Unicode et caractères spéciaux. Outil gratuit en ligne sans inscription."
+      },
+      "faq": {
+        "q1": "Qu'est-ce que le Base64 ?",
+        "a1": "Le Base64 est un système d'encodage qui convertit des données binaires en texte ASCII. Il est couramment utilisé pour intégrer des données dans du HTML, CSS, des e-mails et le transfert de données sur le web.",
+        "q2": "Les caractères Unicode sont-ils pris en charge ?",
+        "a2": "Oui, l'outil prend entièrement en charge l'Unicode, y compris les caractères spéciaux, les accents, les emojis et les caractères de langues comme le japonais, le coréen ou l'arabe.",
+        "q3": "Y a-t-il une limite de taille ?",
+        "a3": "Il n'y a pas de limite stricte, mais comme tout est traité dans votre navigateur, des textes très volumineux pourraient ralentir les performances. Pour une utilisation normale, cela fonctionne parfaitement."
+      },
+      "ui": {
+        "encode": "Encoder",
+        "decode": "Décoder",
+        "input": "Entrée",
+        "output": "Sortie",
+        "copy": "Copier",
+        "copied": "Copié !",
+        "encodePlaceholder": "Saisissez le texte à encoder en Base64...",
+        "decodePlaceholder": "Collez le texte Base64 à décoder...",
+        "invalidInput": "Entrée invalide"
+      }
+    },
+    "regex-tester": {
+      "name": "Testeur Regex",
+      "description": "Testez et déboguez des expressions régulières en temps réel",
+      "seo": {
+        "title": "Testeur d'expressions régulières en ligne gratuit",
+        "content": "Testez et déboguez des expressions régulières (regex) en temps réel. Mise en évidence des correspondances, support des drapeaux et résultats instantanés. Outil gratuit en ligne."
+      },
+      "faq": {
+        "q1": "Quelle syntaxe d'expressions régulières est prise en charge ?",
+        "a1": "L'outil utilise la syntaxe des expressions régulières JavaScript, compatible avec la plupart des motifs regex courants, y compris les groupes de capture, les quantificateurs, les classes de caractères et les assertions.",
+        "q2": "Que signifient les drapeaux (flags) ?",
+        "a2": "Les drapeaux modifient le comportement de la regex : 'g' (global) recherche toutes les correspondances, 'i' ignore la casse, 'm' active le mode multiligne, et 's' permet au point de correspondre aux sauts de ligne.",
+        "q3": "Y a-t-il une limite de taille pour le texte de test ?",
+        "a3": "Il n'y a pas de limite stricte, mais comme le traitement s'effectue dans votre navigateur, des textes extrêmement volumineux pourraient affecter les performances. Pour une utilisation courante, cela fonctionne sans problème."
+      },
+      "ui": {
+        "pattern": "Motif",
+        "patternPlaceholder": "Saisissez votre expression régulière...",
+        "testString": "Texte de test",
+        "testPlaceholder": "Saisissez le texte de test ici...",
+        "result": "Résultat",
+        "matchesFound": "correspondances trouvées",
+        "atIndex": "à la position",
+        "global": "Global",
+        "caseInsensitive": "Insensible à la casse",
+        "multiline": "Multiligne",
+        "dotAll": "Point inclut sauts de ligne"
+      }
+    },
+    "color-picker": {
+      "name": "Sélecteur de couleur",
+      "description": "Sélectionnez des couleurs et convertissez entre HEX, RGB, HSL",
+      "seo": {
+        "title": "Sélecteur de couleur en ligne gratuit - HEX, RGB, HSL",
+        "content": "Sélectionnez des couleurs et convertissez entre les formats HEX, RGB et HSL instantanément. Outil visuel avec copie en un clic. Gratuit et sans inscription."
+      },
+      "faq": {
+        "q1": "Quels formats de couleur sont pris en charge ?",
+        "a1": "L'outil prend en charge les formats de couleur les plus utilisés : HEX (ex. #FF5733), RGB (ex. rgb(255, 87, 51)) et HSL (ex. hsl(11, 100%, 60%)). La conversion entre formats est instantanée.",
+        "q2": "Puis-je saisir un code HEX directement ?",
+        "a2": "Oui, vous pouvez taper ou coller directement un code couleur HEX, RGB ou HSL, et l'outil le convertira automatiquement vers les autres formats.",
+        "q3": "Est-ce compatible avec les appareils mobiles ?",
+        "a3": "Oui, l'outil est entièrement optimisé pour les appareils mobiles. Vous pouvez sélectionner des couleurs et copier les valeurs facilement depuis n'importe quel smartphone ou tablette."
+      },
+      "ui": {
+        "pickColor": "Choisir une couleur",
+        "copy": "Copier",
+        "copied": "Copié !"
+      }
+    },
+    "qr-code": {
+      "name": "Générateur de QR Code",
+      "description": "Générez des codes QR personnalisés à partir de texte ou d'URL",
+      "seo": {
+        "title": "Générateur de QR Code en ligne gratuit",
+        "content": "Créez des codes QR personnalisés à partir de texte ou d'URL directement dans votre navigateur. Personnalisez les couleurs, la taille et le niveau de correction. Téléchargez en PNG. Gratuit, sans inscription."
+      },
+      "faq": {
+        "q1": "Que puis-je encoder dans un QR code ?",
+        "a1": "Vous pouvez encoder du texte, une URL, une adresse e-mail, un numéro de téléphone, des identifiants WiFi ou toute chaîne de caractères jusqu'à environ 4 000 caractères selon le niveau de correction.",
+        "q2": "À quoi servent les niveaux de correction d'erreur ?",
+        "a2": "La correction d'erreur permet de lire un QR code même s'il est partiellement endommagé. Faible (7%), Moyen (15%), Quartile (25%) et Élevé (30%) offrent des niveaux croissants de redondance.",
+        "q3": "Puis-je personnaliser les couleurs ?",
+        "a3": "Oui, vous pouvez définir les couleurs de premier plan et d'arrière-plan. Veillez à maintenir un contraste suffisant pour que les lecteurs puissent scanner le code de manière fiable."
+      },
+      "ui": {
+        "textLabel": "Texte ou URL",
+        "placeholder": "Saisissez du texte ou une URL...",
+        "size": "Taille",
+        "errorLevel": "Correction d'erreur",
+        "fgColor": "Premier plan",
+        "bgColor": "Arrière-plan",
+        "generate": "Générer le QR Code",
+        "download": "Télécharger PNG",
+        "reset": "Réinitialiser",
+        "generateError": "Impossible de générer le QR code. Veuillez vérifier votre saisie."
+      }
+    },
+    "hex-rgb": {
+      "name": "Convertisseur HEX/RGB",
+      "description": "Convertissez des couleurs entre les formats HEX et RGB"
+    },
+    "url-encoder": {
+      "name": "Encodeur URL",
+      "description": "Encodez et décodez des URL et des paramètres"
+    },
+    "timestamp": {
+      "name": "Convertisseur Timestamp",
+      "description": "Convertissez des timestamps Unix en dates lisibles et inversement"
+    },
+    "youtube-thumbnail": {
+      "name": "Télécharger miniature YouTube",
+      "description": "Téléchargez les miniatures des vidéos YouTube en haute qualité"
+    },
+    "youtube-transcript": {
+      "name": "Transcription YouTube",
+      "description": "Extrayez les sous-titres et la transcription des vidéos YouTube"
+    }
+  },
+  "upload": {
+    "dragDrop": "Glissez-déposez les fichiers ici",
+    "or": "ou",
+    "clickToSelect": "Cliquez pour sélectionner des fichiers",
+    "supportedFormats": "Formats pris en charge : {formats}",
+    "maxSize": "Taille maximale : {size}",
+    "processing": "Traitement en cours...",
+    "done": "Terminé !",
+    "download": "Télécharger",
+    "downloadAll": "Tout télécharger",
+    "error": {
+      "fileTooLarge": "Le fichier est trop volumineux. Taille maximale : {size}",
+      "unsupportedFormat": "Format non pris en charge. Formats acceptés : {formats}",
+      "processingFailed": "Le traitement a échoué. Veuillez réessayer.",
+      "tooManyFiles": "Trop de fichiers. Maximum : {max}"
+    }
+  },
+  "footer": {
+    "tagline": "Tous les outils en ligne dont vous avez besoin, gratuits et sans inscription.",
+    "privacyBadge": "Vos fichiers ne quittent jamais votre navigateur",
+    "tools": "Outils",
+    "company": "Entreprise",
+    "about": "À propos",
+    "contact": "Contact",
+    "privacy": "Privacy Policy",
+    "terms": "Conditions d'utilisation",
+    "settings": "Paramètres",
+    "language": "Langue",
+    "allRightsReserved": "Tous droits réservés",
+    "filesNeverLeave": "Vos fichiers ne quittent jamais votre navigateur"
+  }
+}
