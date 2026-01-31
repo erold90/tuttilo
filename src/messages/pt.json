@@ -658,15 +658,100 @@
     },
     "compress-video": {
       "name": "Comprimir vídeo",
-      "description": "Reduza o tamanho dos arquivos de vídeo mantendo a qualidade"
+      "description": "Reduza o tamanho dos arquivos de vídeo mantendo a qualidade",
+      "seo": {
+        "title": "Compressor de Vídeo Online Gratuito",
+        "content": "Comprima arquivos de vídeo diretamente no navegador. Reduza o tamanho de vídeos MP4 e WebM mantendo a qualidade visual. Escolha entre alta, média ou baixa qualidade. Gratuito, privado, sem upload para servidores externos."
+      },
+      "faq": {
+        "q1": "Quais formatos de vídeo são suportados?",
+        "a1": "A ferramenta suporta os formatos MP4 e WebM, que são os mais comuns para vídeos na web. O vídeo comprimido é salvo no formato MP4 para máxima compatibilidade.",
+        "q2": "Quanto o vídeo será comprimido?",
+        "a2": "A taxa de compressão depende do conteúdo do vídeo e da configuração de qualidade escolhida. Qualidade alta mantém a maior parte da qualidade visual, média oferece bom equilíbrio, e baixa produz arquivos muito menores com alguma perda de qualidade.",
+        "q3": "Existe limite de tamanho de arquivo?",
+        "a3": "A ferramenta suporta vídeos de até 500 MB. O processamento ocorre inteiramente no navegador usando FFmpeg, então vídeos maiores podem demorar mais dependendo do seu dispositivo."
+      },
+      "ui": {
+        "dropzone": "Arraste um arquivo de vídeo aqui ou clique para selecionar",
+        "dropzoneHint": "Suporta MP4 e WebM até 500 MB",
+        "quality": "Qualidade",
+        "quality_high": "Alta (melhor qualidade, arquivo maior)",
+        "quality_medium": "Média (bom equilíbrio)",
+        "quality_low": "Baixa (arquivo menor, menor qualidade)",
+        "compress": "Comprimir vídeo",
+        "loadingFfmpeg": "Carregando FFmpeg...",
+        "compressing": "Comprimindo...",
+        "done": "Compressão concluída!",
+        "original": "Tamanho original",
+        "compressed": "Tamanho comprimido",
+        "download": "Baixar",
+        "reset": "Reiniciar",
+        "compressError": "Erro ao comprimir. Certifique-se de que o arquivo é um vídeo válido."
+      }
     },
     "trim-video": {
       "name": "Cortar vídeo",
-      "description": "Corte e recorte seus vídeos com precisão"
+      "description": "Corte e recorte seus vídeos com precisão",
+      "seo": {
+        "title": "Cortador de Vídeo Online Gratuito",
+        "content": "Corte e recorte vídeos diretamente no navegador. Selecione os pontos de início e fim com precisão usando controles visuais. Suporta MP4 e WebM. Gratuito, privado, sem necessidade de upload."
+      },
+      "faq": {
+        "q1": "Como funciona o corte de vídeo?",
+        "a1": "Arraste os controles deslizantes para definir os pontos de início e fim do trecho que deseja manter. Use o botão de pré-visualização para verificar antes de cortar. O vídeo resultante será salvo em formato MP4.",
+        "q2": "Posso ver o trecho antes de cortar?",
+        "a2": "Sim, use o botão Pré-visualizar para reproduzir apenas o segmento selecionado antes de realizar o corte. Isso ajuda a garantir que você escolheu os pontos corretos.",
+        "q3": "O corte reduz a qualidade do vídeo?",
+        "a3": "Não, o vídeo é cortado sem recodificação quando possível, preservando a qualidade original. O processamento ocorre inteiramente no navegador usando FFmpeg."
+      },
+      "ui": {
+        "dropzone": "Arraste um arquivo de vídeo aqui ou clique para selecionar",
+        "dropzoneHint": "Suporta MP4 e WebM até 500 MB",
+        "start": "Início",
+        "end": "Fim",
+        "selection": "Duração da seleção",
+        "trim": "Cortar vídeo",
+        "loadingFfmpeg": "Carregando FFmpeg...",
+        "trimming": "Cortando...",
+        "done": "Corte concluído!",
+        "download": "Baixar",
+        "reset": "Reiniciar",
+        "preview": "Pré-visualizar",
+        "trimError": "Erro ao cortar. Certifique-se de que o arquivo é um vídeo válido."
+      }
     },
     "video-to-gif": {
       "name": "Vídeo para GIF",
-      "description": "Converta vídeos em GIF animados"
+      "description": "Converta vídeos em GIF animados",
+      "seo": {
+        "title": "Conversor de Vídeo para GIF Online Gratuito",
+        "content": "Converta vídeos em GIFs animados diretamente no navegador. Selecione o trecho desejado, ajuste FPS e largura para otimizar o tamanho. Suporta MP4 e WebM. Gratuito, privado, sem upload."
+      },
+      "faq": {
+        "q1": "Como posso reduzir o tamanho do GIF?",
+        "a1": "Você pode reduzir o tamanho do GIF de três formas: diminuindo a largura, reduzindo os FPS (quadros por segundo) ou selecionando um trecho mais curto do vídeo. Quanto menores esses valores, menor será o arquivo GIF.",
+        "q2": "Qual FPS devo usar?",
+        "a2": "Para a maioria dos GIFs, 10-15 FPS é suficiente. Valores mais altos (20-30 FPS) produzem movimentos mais suaves mas arquivos maiores. Para memes e clips curtos, 10 FPS geralmente é ideal.",
+        "q3": "Existe limite de duração?",
+        "a3": "Não há limite fixo, mas GIFs muito longos podem ficar extremamente grandes. Para melhores resultados, mantenha o GIF entre 2-10 segundos e ajuste FPS e largura conforme necessário."
+      },
+      "ui": {
+        "dropzone": "Arraste um arquivo de vídeo aqui ou clique para selecionar",
+        "dropzoneHint": "Suporta MP4 e WebM",
+        "start": "Início",
+        "end": "Fim",
+        "selection": "Duração da seleção",
+        "fps": "FPS (quadros por segundo)",
+        "width": "Largura (pixels)",
+        "convert": "Converter para GIF",
+        "loadingFfmpeg": "Carregando FFmpeg...",
+        "converting": "Convertendo...",
+        "done": "Conversão concluída!",
+        "download": "Baixar",
+        "reset": "Reiniciar",
+        "preview": "Pré-visualizar",
+        "convertError": "Erro na conversão. Certifique-se de que o arquivo é um vídeo válido."
+      }
     },
     "video-to-mp3": {
       "name": "Vídeo para MP3",
@@ -752,7 +837,31 @@
     },
     "audio-converter": {
       "name": "Conversor de áudio",
-      "description": "Converta arquivos de áudio entre diferentes formatos"
+      "description": "Converta arquivos de áudio entre diferentes formatos",
+      "seo": {
+        "title": "Conversor de Áudio Online Gratuito",
+        "content": "Converta arquivos de áudio entre MP3, WAV, OGG e outros formatos diretamente no navegador. Suporta os formatos de áudio mais populares. Gratuito, privado, sem necessidade de upload para servidores externos."
+      },
+      "faq": {
+        "q1": "Quais formatos de áudio são suportados?",
+        "a1": "A ferramenta suporta conversão entre MP3, WAV, OGG, FLAC, AAC e outros formatos de áudio comuns. Você pode converter de qualquer formato suportado para qualquer outro.",
+        "q2": "A conversão reduz a qualidade do áudio?",
+        "a2": "A qualidade depende do formato de saída escolhido. Formatos sem perda como WAV e FLAC preservam a qualidade original, enquanto MP3 e OGG usam compressão com perda mas mantêm excelente qualidade audível.",
+        "q3": "Existe limite de tamanho de arquivo?",
+        "a3": "A ferramenta suporta arquivos de áudio de até 100 MB. O processamento ocorre inteiramente no navegador usando FFmpeg, garantindo total privacidade."
+      },
+      "ui": {
+        "dropzone": "Arraste um arquivo de áudio aqui ou clique para selecionar",
+        "dropzoneHint": "Suporta MP3, WAV, OGG, FLAC, AAC e mais",
+        "outputFormat": "Formato de saída",
+        "convert": "Converter áudio",
+        "loadingFfmpeg": "Carregando FFmpeg...",
+        "converting": "Convertendo...",
+        "done": "Conversão concluída!",
+        "download": "Baixar",
+        "reset": "Reiniciar",
+        "convertError": "Erro na conversão. Certifique-se de que o arquivo é um áudio válido."
+      }
     },
     "voice-recorder": {
       "name": "Gravador de voz",
@@ -992,7 +1101,27 @@
     },
     "youtube-thumbnail": {
       "name": "Baixar miniatura YouTube",
-      "description": "Baixe as miniaturas dos vídeos do YouTube em alta qualidade"
+      "description": "Baixe as miniaturas dos vídeos do YouTube em alta qualidade",
+      "seo": {
+        "title": "Baixar Miniaturas do YouTube em Alta Qualidade",
+        "content": "Baixe miniaturas de vídeos do YouTube em alta resolução. Cole a URL do vídeo e baixe a miniatura em qualidade máxima. Gratuito, sem cadastro, sem necessidade de extensões."
+      },
+      "faq": {
+        "q1": "Em qual resolução as miniaturas são baixadas?",
+        "a1": "A ferramenta busca a miniatura na maior resolução disponível, geralmente 1280x720 pixels (HD) ou superior, dependendo do que o criador do vídeo enviou para o YouTube.",
+        "q2": "Preciso de uma conta do YouTube?",
+        "a2": "Não. Basta colar a URL do vídeo do YouTube e a ferramenta irá buscar e baixar a miniatura imediatamente. Nenhum login ou autenticação é necessário.",
+        "q3": "Funciona com vídeos privados ou não listados?",
+        "a3": "Não. A ferramenta só consegue buscar miniaturas de vídeos públicos do YouTube. Vídeos privados ou não listados não podem ter suas miniaturas acessadas sem autenticação."
+      },
+      "ui": {
+        "urlLabel": "URL do vídeo do YouTube",
+        "urlPlaceholder": "Cole a URL do vídeo do YouTube aqui...",
+        "fetch": "Buscar miniatura",
+        "download": "Baixar",
+        "reset": "Reiniciar",
+        "invalidUrl": "URL inválida. Cole uma URL válida de vídeo do YouTube."
+      }
     },
     "youtube-transcript": {
       "name": "Transcrição YouTube",
