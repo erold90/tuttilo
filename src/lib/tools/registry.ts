@@ -68,20 +68,20 @@ export const tools: Tool[] = [
   { id: 'webp-to-png', slug: 'webp-to-png', category: 'image', icon: 'ArrowRightLeft', isAvailable: true, isPremium: false, maxFileSize: 50 * 1024 * 1024, acceptedFormats: ['image/webp'], processingType: 'client' },
   { id: 'webp-to-jpg', slug: 'webp-to-jpg', category: 'image', icon: 'ArrowRightLeft', isAvailable: true, isPremium: false, maxFileSize: 50 * 1024 * 1024, acceptedFormats: ['image/webp'], processingType: 'client' },
   { id: 'heic-to-jpg', slug: 'heic-to-jpg', category: 'image', icon: 'Smartphone', isAvailable: true, isPremium: false, maxFileSize: 50 * 1024 * 1024, acceptedFormats: ['image/heic', 'image/heif'], processingType: 'client' },
-  { id: 'svg-to-png', slug: 'svg-to-png', category: 'image', icon: 'ArrowRightLeft', isAvailable: false, isPremium: false, maxFileSize: 10 * 1024 * 1024, acceptedFormats: ['image/svg+xml'], processingType: 'client' },
+  { id: 'svg-to-png', slug: 'svg-to-png', category: 'image', icon: 'ArrowRightLeft', isAvailable: true, isPremium: false, maxFileSize: 10 * 1024 * 1024, acceptedFormats: ['image/svg+xml'], processingType: 'client' },
   { id: 'remove-bg', slug: 'remove-bg', category: 'image', icon: 'Eraser', isAvailable: false, isPremium: false, maxFileSize: 25 * 1024 * 1024, acceptedFormats: ['image/jpeg', 'image/png', 'image/webp'], processingType: 'client' },
 
   // ---------- Video (5 tools) ----------
   { id: 'compress-video', slug: 'compress', category: 'video', icon: 'Minimize2', isAvailable: false, isPremium: false, maxFileSize: 500 * 1024 * 1024, acceptedFormats: ['video/mp4', 'video/webm', 'video/quicktime'], processingType: 'client' },
   { id: 'trim-video', slug: 'trim', category: 'video', icon: 'Scissors', isAvailable: false, isPremium: false, maxFileSize: 500 * 1024 * 1024, acceptedFormats: ['video/mp4', 'video/webm', 'video/quicktime'], processingType: 'client' },
   { id: 'video-to-gif', slug: 'to-gif', category: 'video', icon: 'Film', isAvailable: false, isPremium: false, maxFileSize: 200 * 1024 * 1024, acceptedFormats: ['video/mp4', 'video/webm'], processingType: 'client' },
-  { id: 'video-to-mp3', slug: 'to-mp3', category: 'video', icon: 'Music', isAvailable: false, isPremium: false, maxFileSize: 500 * 1024 * 1024, acceptedFormats: ['video/mp4', 'video/webm', 'video/quicktime'], processingType: 'client' },
-  { id: 'screen-recorder', slug: 'screen-recorder', category: 'video', icon: 'Monitor', isAvailable: false, isPremium: false, maxFileSize: 0, acceptedFormats: [], processingType: 'none' },
+  { id: 'video-to-mp3', slug: 'to-mp3', category: 'video', icon: 'Music', isAvailable: true, isPremium: false, maxFileSize: 500 * 1024 * 1024, acceptedFormats: ['video/mp4', 'video/webm', 'video/quicktime'], processingType: 'client' },
+  { id: 'screen-recorder', slug: 'screen-recorder', category: 'video', icon: 'Monitor', isAvailable: true, isPremium: false, maxFileSize: 0, acceptedFormats: [], processingType: 'none' },
 
   // ---------- Audio (3 tools) ----------
-  { id: 'audio-cutter', slug: 'cutter', category: 'audio', icon: 'Scissors', isAvailable: false, isPremium: false, maxFileSize: 100 * 1024 * 1024, acceptedFormats: ['audio/mpeg', 'audio/wav', 'audio/ogg', 'audio/flac', 'audio/aac'], processingType: 'client' },
+  { id: 'audio-cutter', slug: 'cutter', category: 'audio', icon: 'Scissors', isAvailable: true, isPremium: false, maxFileSize: 100 * 1024 * 1024, acceptedFormats: ['audio/mpeg', 'audio/wav', 'audio/ogg', 'audio/flac', 'audio/aac'], processingType: 'client' },
   { id: 'audio-converter', slug: 'converter', category: 'audio', icon: 'ArrowRightLeft', isAvailable: false, isPremium: false, maxFileSize: 100 * 1024 * 1024, acceptedFormats: ['audio/mpeg', 'audio/wav', 'audio/ogg', 'audio/flac', 'audio/aac'], processingType: 'client' },
-  { id: 'voice-recorder', slug: 'voice-recorder', category: 'audio', icon: 'Mic', isAvailable: false, isPremium: false, maxFileSize: 0, acceptedFormats: [], processingType: 'none' },
+  { id: 'voice-recorder', slug: 'voice-recorder', category: 'audio', icon: 'Mic', isAvailable: true, isPremium: false, maxFileSize: 0, acceptedFormats: [], processingType: 'none' },
 
   // ---------- Text (5 tools) ----------
   { id: 'word-counter', slug: 'word-counter', category: 'text', icon: 'Hash', isAvailable: true, isPremium: false, maxFileSize: 0, acceptedFormats: [], processingType: 'none' },
@@ -95,7 +95,7 @@ export const tools: Tool[] = [
   { id: 'base64', slug: 'base64', category: 'developer', icon: 'Binary', isAvailable: true, isPremium: false, maxFileSize: 10 * 1024 * 1024, acceptedFormats: [], processingType: 'none' },
   { id: 'regex-tester', slug: 'regex-tester', category: 'developer', icon: 'Regex', isAvailable: true, isPremium: false, maxFileSize: 0, acceptedFormats: [], processingType: 'none' },
   { id: 'color-picker', slug: 'color-picker', category: 'developer', icon: 'Palette', isAvailable: true, isPremium: false, maxFileSize: 0, acceptedFormats: [], processingType: 'none' },
-  { id: 'qr-code', slug: 'qr-code', category: 'developer', icon: 'QrCode', isAvailable: false, isPremium: false, maxFileSize: 0, acceptedFormats: [], processingType: 'none' },
+  { id: 'qr-code', slug: 'qr-code', category: 'developer', icon: 'QrCode', isAvailable: true, isPremium: false, maxFileSize: 0, acceptedFormats: [], processingType: 'none' },
   { id: 'hex-rgb', slug: 'hex-rgb', category: 'developer', icon: 'Pipette', isAvailable: false, isPremium: false, maxFileSize: 0, acceptedFormats: [], processingType: 'none' },
   { id: 'url-encoder', slug: 'url-encoder', category: 'developer', icon: 'Link', isAvailable: false, isPremium: false, maxFileSize: 0, acceptedFormats: [], processingType: 'none' },
   { id: 'timestamp', slug: 'timestamp', category: 'developer', icon: 'Clock', isAvailable: false, isPremium: false, maxFileSize: 0, acceptedFormats: [], processingType: 'none' },

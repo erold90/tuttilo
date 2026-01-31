@@ -22,6 +22,13 @@ import { RegexTester } from "@/components/tools/regex-tester";
 import { CompressImage } from "@/components/tools/compress-image";
 // Sprint 3 (PDF)
 import { MergePdf } from "@/components/tools/merge-pdf";
+// Sprint 4 (Audio/Media)
+import { QrCode } from "@/components/tools/qr-code";
+import { SvgToPng } from "@/components/tools/svg-to-png";
+import { VoiceRecorder } from "@/components/tools/voice-recorder";
+import { ScreenRecorder } from "@/components/tools/screen-recorder";
+import { VideoToMp3 } from "@/components/tools/video-to-mp3";
+import { AudioCutter } from "@/components/tools/audio-cutter";
 import { SplitPdf } from "@/components/tools/split-pdf";
 import { CompressPdf } from "@/components/tools/compress-pdf";
 import { PdfToJpg } from "@/components/tools/pdf-to-jpg";
@@ -58,6 +65,12 @@ const toolComponents: Record<string, React.ComponentType> = {
   "pdf-to-jpg": PdfToJpg,
   "jpg-to-pdf": JpgToPdf,
   "rotate-pdf": RotatePdf,
+  "qr-code": QrCode,
+  "svg-to-png": SvgToPng,
+  "voice-recorder": VoiceRecorder,
+  "screen-recorder": ScreenRecorder,
+  "video-to-mp3": VideoToMp3,
+  "audio-cutter": AudioCutter,
 };
 
 export async function generateMetadata({

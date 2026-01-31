@@ -10,12 +10,14 @@
   - Compress Image, Resize Image, Crop Image, PNG→JPG, JPG→PNG, WebP→PNG, WebP→JPG, HEIC→JPG
 - **Sprint 3 COMPLETATO** (12/12 task) — 6 PDF Core tool funzionanti
   - Merge PDF, Split PDF, Compress PDF, PDF→JPG, JPG→PDF, Rotate PDF
+- **Sprint 4 IN CORSO** (10/12 task) — 6 Audio/Media tool implementati
+  - QR Code Generator, SVG→PNG, Voice Recorder, Screen Recorder, Video→MP3, Audio Cutter
   - Tutte le traduzioni 8 lingue (seo+faq+ui) completate
-  - Build OK + Deploy Cloudflare Pages completato
-- Sito live su tuttilo.com con 20 tool (6 Sprint 1 + 8 Sprint 2 + 6 Sprint 3)
+  - Build OK — Push GitHub e Deploy in corso
 
 ## Cosa resta da fare
-- Iniziare Sprint 4 (Audio/Media: MP3 Cutter, Voice Recorder, Screen Recorder, MP4→MP3, QR Code, SVG→PNG)
+- Completare push GitHub Sprint 4
+- Deploy Cloudflare Pages (26 tool totali)
 - Vedere docs/ROADMAP.md per piano sprint completo
 
 ## Decisioni prese
@@ -39,14 +41,14 @@
 - HTTPS push fallisce ("could not read Username") — usare MCP GitHub
 - @cloudflare/next-on-pages è deprecated, migrare a OpenNext in futuro
 
-## File creati/modificati in Sprint 3
-- `src/components/tools/merge-pdf.tsx` — Merge PDF (pdf-lib)
-- `src/components/tools/split-pdf.tsx` — Split PDF (pdf-lib)
-- `src/components/tools/compress-pdf.tsx` — Compress PDF (pdf-lib, object streams)
-- `src/components/tools/pdf-to-jpg.tsx` — PDF to JPG (pdfjs-dist, dynamic import)
-- `src/components/tools/jpg-to-pdf.tsx` — JPG to PDF (pdf-lib, embed images)
-- `src/components/tools/rotate-pdf.tsx` — Rotate PDF (pdf-lib, degrees)
-- `src/lib/tools/registry.ts` — 6 PDF tools isAvailable: true
+## File creati/modificati in Sprint 4
+- `src/components/tools/qr-code.tsx` — QR Code Generator (qrcode lib, Canvas)
+- `src/components/tools/svg-to-png.tsx` — SVG to PNG (Canvas API, scale 1x-4x)
+- `src/components/tools/voice-recorder.tsx` — Voice Recorder (MediaRecorder + getUserMedia)
+- `src/components/tools/screen-recorder.tsx` — Screen Recorder (MediaRecorder + getDisplayMedia)
+- `src/components/tools/video-to-mp3.tsx` — Video to MP3 (Web Audio API, WAV output)
+- `src/components/tools/audio-cutter.tsx` — Audio Cutter (Web Audio API, waveform, WAV output)
+- `src/lib/tools/registry.ts` — 6 Sprint 4 tools isAvailable: true
 - `src/app/[locale]/[category]/[tool]/page.tsx` — 6 new imports + mappings
-- `src/messages/*.json` — Tutte 8 traduzioni aggiornate (seo+faq+ui per 6 PDF tools)
-- `package.json` — pdf-lib + pdfjs-dist
+- `src/messages/*.json` — Tutte 8 traduzioni aggiornate (seo+faq+ui per 6 Sprint 4 tools)
+- `package.json` — qrcode + @types/qrcode
