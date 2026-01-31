@@ -2,7 +2,6 @@
 
 import { useTranslations } from "next-intl";
 import { Link } from "@/i18n/routing";
-import { cn } from "@/lib/utils";
 import { ChevronRight, Home } from "lucide-react";
 import { SidebarAd } from "@/components/ads/sidebar-ad";
 import { LeaderboardAd } from "@/components/ads/leaderboard-ad";
@@ -19,7 +18,7 @@ export function ToolLayout({ toolId, category, children }: ToolLayoutProps) {
 
   const toolName = t(`tools.${toolId}.name`);
   const toolDescription = t(`tools.${toolId}.description`);
-  const categoryName = t(`categories.${category}`);
+  const categoryName = t(`nav.${category}`);
 
   return (
     <div className="w-full">
@@ -33,11 +32,11 @@ export function ToolLayout({ toolId, category, children }: ToolLayoutProps) {
           className="flex items-center gap-1 transition-colors hover:text-foreground"
         >
           <Home className="h-3.5 w-3.5" />
-          <span>{t("common.home")}</span>
+          <span>{t("nav.home")}</span>
         </Link>
         <ChevronRight className="h-3.5 w-3.5" />
         <Link
-          href={`/tools/${category}`}
+          href={`/${category}`}
           className="transition-colors hover:text-foreground"
         >
           {categoryName}
@@ -58,12 +57,7 @@ export function ToolLayout({ toolId, category, children }: ToolLayoutProps) {
 
       {/* Main content + sidebar */}
       <div className="flex gap-8">
-        {/* Main area */}
-        <div className="min-w-0 flex-1">
-          {children}
-        </div>
-
-        {/* Sidebar ads - hidden on mobile */}
+        <div className="min-w-0 flex-1">{children}</div>
         <aside className="hidden shrink-0 lg:block" style={{ width: 300 }}>
           <SidebarAd />
         </aside>
@@ -88,17 +82,11 @@ export function ToolLayout({ toolId, category, children }: ToolLayoutProps) {
 
         {/* FAQ */}
         <div className="mt-8">
-          <h2 className="mb-4 text-2xl font-bold">
-            {t("common.faq")}
-          </h2>
+          <h2 className="mb-4 text-2xl font-bold">{t("common.faq")}</h2>
           <div className="space-y-4">
             {[1, 2, 3].map((i) => {
-              const question = t.rich(`tools.${toolId}.faq.q${i}`, {
-                defaultValue: "",
-              });
-              const answer = t.rich(`tools.${toolId}.faq.a${i}`, {
-                defaultValue: "",
-              });
+              const question = t(`tools.${toolId}.faq.q${i}`);
+              const answer = t(`tools.${toolId}.faq.a${i}`);
               if (!question) return null;
               return (
                 <details
