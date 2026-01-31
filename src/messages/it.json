@@ -86,27 +86,190 @@
   "tools": {
     "merge-pdf": {
       "name": "Unisci PDF",
-      "description": "Combina più file PDF in un unico documento"
+      "description": "Combina più file PDF in un unico documento",
+      "seo": {
+        "title": "Unisci PDF Online Gratis",
+        "content": "Unisci più file PDF in un unico documento direttamente nel browser. Trascina e riordina le pagine, combina contratti, report o qualsiasi PDF. Gratuito, privato, senza registrazione."
+      },
+      "faq": {
+        "q1": "Quanti file PDF posso unire contemporaneamente?",
+        "a1": "Non c'è un limite fisso. Puoi aggiungere tutti i file PDF di cui hai bisogno. Tutta l'elaborazione avviene nel browser, quindi le prestazioni dipendono dal dispositivo e dalla dimensione totale dei file.",
+        "q2": "Posso riordinare i file prima di unirli?",
+        "a2": "Sì, puoi trascinare e rilasciare per cambiare l'ordine dei file prima dell'unione. Usa i pulsanti sposta su e sposta giù per un controllo preciso.",
+        "q3": "L'unione influisce sulla qualità dei PDF?",
+        "a3": "No. Il processo di unione combina le pagine originali senza alcuna ricompressione. Il contenuto, le immagini e la formattazione restano esattamente come erano."
+      },
+      "ui": {
+        "dropzone": "Trascina file PDF qui o clicca per selezionare",
+        "dropzoneHint": "Puoi aggiungere più file PDF",
+        "files": "File",
+        "pages": "pagine",
+        "moveUp": "Sposta su",
+        "moveDown": "Sposta giù",
+        "remove": "Rimuovi",
+        "merge": "Unisci PDF",
+        "processing": "Unione in corso...",
+        "done": "Unione completata!",
+        "download": "Scarica",
+        "reset": "Ricomincia",
+        "invalidPdf": "File PDF non valido. Seleziona un PDF valido.",
+        "mergeError": "Si è verificato un errore durante l'unione. Riprova."
+      }
     },
     "split-pdf": {
       "name": "Dividi PDF",
-      "description": "Dividi un PDF in più file separati"
+      "description": "Dividi un PDF in più file separati",
+      "seo": {
+        "title": "Dividi PDF Online Gratis",
+        "content": "Dividi file PDF in pagine singole o intervalli personalizzati. Estrai pagine specifiche da documenti grandi con facilità. Tutto avviene nel browser — i tuoi file restano privati."
+      },
+      "faq": {
+        "q1": "Posso estrarre pagine specifiche da un PDF?",
+        "a1": "Sì, puoi dividere ogni pagina in un file separato oppure specificare intervalli personalizzati come 1-3, 5, 8-10 per estrarre solo le pagine che ti servono.",
+        "q2": "Cosa succede al PDF originale?",
+        "a2": "Il file originale non viene modificato. Lo strumento crea nuovi file PDF dalle pagine selezionate, lasciando il documento sorgente intatto.",
+        "q3": "C'è un limite di pagine?",
+        "a3": "Non c'è un limite rigido. Lo strumento elabora PDF di qualsiasi dimensione direttamente nel browser. Documenti molto grandi potrebbero richiedere più tempo a seconda del dispositivo."
+      },
+      "ui": {
+        "dropzone": "Trascina un file PDF qui o clicca per selezionare",
+        "dropzoneHint": "Seleziona un PDF da dividere",
+        "pages": "pagine",
+        "splitAll": "Dividi tutte le pagine",
+        "splitRange": "Dividi per intervallo",
+        "rangeLabel": "Intervallo pagine",
+        "rangePlaceholder": "es. 1-3, 5, 8-10",
+        "rangeHint": "Inserisci numeri di pagina o intervalli separati da virgole",
+        "split": "Dividi PDF",
+        "processing": "Divisione in corso...",
+        "results": "Risultati della divisione",
+        "download": "Scarica",
+        "reset": "Ricomincia",
+        "invalidPdf": "File PDF non valido. Seleziona un PDF valido.",
+        "splitError": "Si è verificato un errore durante la divisione. Riprova.",
+        "invalidRange": "Intervallo di pagine non valido. Controlla il tuo input."
+      }
     },
     "compress-pdf": {
       "name": "Comprimi PDF",
-      "description": "Riduci le dimensioni dei file PDF mantenendo la qualità"
+      "description": "Riduci le dimensioni dei file PDF mantenendo la qualità",
+      "seo": {
+        "title": "Comprimi PDF Online Gratis",
+        "content": "Comprimi file PDF per ridurne le dimensioni mantenendo la qualità. Perfetto per allegati email e upload. Funziona interamente nel browser — nessun dato viene inviato a server esterni."
+      },
+      "faq": {
+        "q1": "Di quanto si possono ridurre le dimensioni del file?",
+        "a1": "I risultati variano in base al contenuto del PDF. I documenti con molte immagini vedono le riduzioni maggiori, spesso del 50-80%. I PDF con prevalenza di testo possono avere riduzioni minori.",
+        "q2": "La compressione riduce la qualità del PDF?",
+        "a2": "Lo strumento usa una compressione intelligente che agisce sulle immagini incorporate mantenendo la nitidezza del testo. Il risultato è visivamente molto simile all'originale nella maggior parte dei casi.",
+        "q3": "Posso comprimere PDF protetti da password?",
+        "a3": "I PDF protetti da password devono essere prima sbloccati. Usa il nostro strumento Sblocca PDF per rimuovere la protezione, poi comprimi il file."
+      },
+      "ui": {
+        "dropzone": "Trascina un file PDF qui o clicca per selezionare",
+        "dropzoneHint": "Seleziona un PDF da comprimere",
+        "compress": "Comprimi PDF",
+        "processing": "Compressione in corso...",
+        "done": "Compressione completata!",
+        "original": "Originale",
+        "compressed": "Compresso",
+        "reduction": "Riduzione",
+        "noReduction": "Il file è già ottimizzato, nessuna ulteriore riduzione possibile.",
+        "download": "Scarica",
+        "reset": "Ricomincia",
+        "invalidPdf": "File PDF non valido. Seleziona un PDF valido.",
+        "compressError": "Si è verificato un errore durante la compressione. Riprova."
+      }
     },
     "pdf-to-jpg": {
       "name": "PDF in JPG",
-      "description": "Converti le pagine PDF in immagini JPG"
+      "description": "Converti le pagine PDF in immagini JPG",
+      "seo": {
+        "title": "Convertitore PDF in JPG Online Gratis",
+        "content": "Converti le pagine PDF in immagini JPG di alta qualità. Scegli la qualità dell'output e scarica le singole pagine o tutte insieme. Funziona interamente nel browser con totale privacy."
+      },
+      "faq": {
+        "q1": "Posso convertire pagine specifiche in JPG?",
+        "a1": "Lo strumento converte tutte le pagine del PDF in immagini JPG singole. Puoi poi scaricare solo le pagine che ti servono.",
+        "q2": "Quali impostazioni di qualità sono disponibili?",
+        "a2": "Puoi regolare la qualità dell'output da bassa ad alta. Una qualità più alta produce immagini più nitide con file più grandi, mentre una qualità più bassa crea file più piccoli.",
+        "q3": "C'è un limite di pagine per la conversione?",
+        "a3": "Non c'è un limite di pagine. Lo strumento elabora tutte le pagine del PDF. Documenti più grandi potrebbero richiedere più tempo, a seconda del dispositivo."
+      },
+      "ui": {
+        "dropzone": "Trascina un file PDF qui o clicca per selezionare",
+        "dropzoneHint": "Seleziona un PDF da convertire in JPG",
+        "quality": "Qualità",
+        "convert": "Converti in JPG",
+        "processing": "Conversione in corso...",
+        "results": "Pagine convertite",
+        "downloadAll": "Scarica tutto",
+        "download": "Scarica",
+        "reset": "Ricomincia",
+        "convertError": "Si è verificato un errore durante la conversione. Riprova."
+      }
     },
     "jpg-to-pdf": {
       "name": "JPG in PDF",
-      "description": "Converti immagini JPG in un documento PDF"
+      "description": "Converti immagini JPG in un documento PDF",
+      "seo": {
+        "title": "Convertitore JPG in PDF Online Gratis",
+        "content": "Converti una o più immagini JPG in un unico documento PDF. Riordina le immagini prima della conversione. Veloce, gratuito, elaborato interamente nel browser."
+      },
+      "faq": {
+        "q1": "Posso combinare più immagini JPG in un unico PDF?",
+        "a1": "Sì, puoi aggiungere tutte le immagini JPG che vuoi. Ogni immagine diventa una pagina nel PDF risultante. Trascina per riordinarle prima della conversione.",
+        "q2": "La conversione preserva la qualità delle immagini?",
+        "a2": "Sì, le immagini vengono incorporate nel PDF alla loro risoluzione originale. Nessuna compressione aggiuntiva viene applicata durante la conversione.",
+        "q3": "Quali formati immagine sono supportati?",
+        "a3": "Questo strumento accetta file JPG e JPEG. Per altri formati come PNG, usa il nostro strumento Immagini in PDF."
+      },
+      "ui": {
+        "dropzone": "Trascina immagini JPG qui o clicca per selezionare",
+        "dropzoneHint": "Puoi aggiungere più immagini JPG",
+        "images": "Immagini",
+        "convert": "Converti in PDF",
+        "processing": "Conversione in corso...",
+        "done": "Conversione completata!",
+        "download": "Scarica",
+        "reset": "Ricomincia",
+        "convertError": "Si è verificato un errore durante la conversione. Riprova."
+      }
     },
     "rotate-pdf": {
       "name": "Ruota PDF",
-      "description": "Ruota le pagine di un documento PDF"
+      "description": "Ruota le pagine di un documento PDF",
+      "seo": {
+        "title": "Ruota Pagine PDF Online Gratis",
+        "content": "Ruota le pagine del PDF di 90, 180 o 270 gradi. Applica la rotazione a tutte le pagine o selezionane di specifiche. Funziona direttamente nel browser senza upload su server esterni."
+      },
+      "faq": {
+        "q1": "Posso ruotare solo pagine specifiche?",
+        "a1": "Sì, puoi scegliere di ruotare tutte le pagine contemporaneamente oppure specificare singole pagine e intervalli. Ad esempio, inserisci 1, 3, 5-8 per ruotare solo quelle pagine.",
+        "q2": "Quali angoli di rotazione sono disponibili?",
+        "a2": "Puoi ruotare le pagine di 90 gradi (orario), 180 gradi (sottosopra) o 270 gradi (antiorario).",
+        "q3": "La rotazione influisce sul contenuto del PDF?",
+        "a3": "No. La rotazione cambia solo l'orientamento della pagina. Tutto il testo, le immagini e la formattazione all'interno delle pagine restano esattamente come erano."
+      },
+      "ui": {
+        "dropzone": "Trascina un file PDF qui o clicca per selezionare",
+        "dropzoneHint": "Seleziona un PDF da ruotare",
+        "pages": "pagine",
+        "rotationAngle": "Angolo di rotazione",
+        "applyTo": "Applica a",
+        "allPages": "Tutte le pagine",
+        "customPages": "Pagine specifiche",
+        "pagesPlaceholder": "es. 1, 3, 5-8",
+        "pagesHint": "Inserisci numeri di pagina o intervalli separati da virgole",
+        "rotate": "Ruota PDF",
+        "processing": "Rotazione in corso...",
+        "done": "Rotazione completata!",
+        "download": "Scarica",
+        "reset": "Ricomincia",
+        "invalidPdf": "File PDF non valido. Seleziona un PDF valido.",
+        "rotateError": "Si è verificato un errore durante la rotazione. Riprova.",
+        "invalidRange": "Intervallo di pagine non valido. Controlla il tuo input."
+      }
     },
     "pdf-to-word": {
       "name": "PDF in Word",

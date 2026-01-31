@@ -86,27 +86,190 @@
   "tools": {
     "merge-pdf": {
       "name": "Merge PDF",
-      "description": "Combine multiple PDF files into a single document"
+      "description": "Combine multiple PDF files into a single document",
+      "seo": {
+        "title": "Free Online PDF Merger",
+        "content": "Merge multiple PDF files into one document directly in your browser. Drag and drop to reorder pages, combine contracts, reports or any PDFs. Free, private, and no registration required."
+      },
+      "faq": {
+        "q1": "How many PDF files can I merge at once?",
+        "a1": "There is no fixed limit. You can add as many PDF files as you need. All processing happens in your browser, so performance depends on your device and total file size.",
+        "q2": "Can I reorder the files before merging?",
+        "a2": "Yes, you can drag and drop to rearrange the order of files before merging. Use the move up and move down buttons for precise control.",
+        "q3": "Does merging affect the quality of my PDFs?",
+        "a3": "No. The merge process combines the original pages without any recompression. Your content, images, and formatting remain exactly as they were."
+      },
+      "ui": {
+        "dropzone": "Drop PDF files here or click to select",
+        "dropzoneHint": "You can add multiple PDF files",
+        "files": "Files",
+        "pages": "pages",
+        "moveUp": "Move up",
+        "moveDown": "Move down",
+        "remove": "Remove",
+        "merge": "Merge PDFs",
+        "processing": "Merging...",
+        "done": "Merge complete!",
+        "download": "Download",
+        "reset": "Reset",
+        "invalidPdf": "Invalid PDF file. Please select a valid PDF.",
+        "mergeError": "An error occurred while merging. Please try again."
+      }
     },
     "split-pdf": {
       "name": "Split PDF",
-      "description": "Split a PDF into multiple separate files"
+      "description": "Split a PDF into multiple separate files",
+      "seo": {
+        "title": "Free Online PDF Splitter",
+        "content": "Split PDF files into individual pages or custom page ranges. Extract specific pages from large documents easily. Everything runs in your browser — your files stay private."
+      },
+      "faq": {
+        "q1": "Can I extract specific pages from a PDF?",
+        "a1": "Yes, you can split every page into a separate file or specify custom page ranges like 1-3, 5, 8-10 to extract only the pages you need.",
+        "q2": "What happens to the original PDF?",
+        "a2": "The original file is not modified. The tool creates new PDF files from the pages you select, leaving the source document intact.",
+        "q3": "Is there a page limit?",
+        "a3": "There is no hard limit. The tool processes PDFs of any size directly in your browser. Very large documents may take a bit longer depending on your device."
+      },
+      "ui": {
+        "dropzone": "Drop a PDF file here or click to select",
+        "dropzoneHint": "Select a PDF to split",
+        "pages": "pages",
+        "splitAll": "Split all pages",
+        "splitRange": "Split by range",
+        "rangeLabel": "Page range",
+        "rangePlaceholder": "e.g. 1-3, 5, 8-10",
+        "rangeHint": "Enter page numbers or ranges separated by commas",
+        "split": "Split PDF",
+        "processing": "Splitting...",
+        "results": "Split results",
+        "download": "Download",
+        "reset": "Reset",
+        "invalidPdf": "Invalid PDF file. Please select a valid PDF.",
+        "splitError": "An error occurred while splitting. Please try again.",
+        "invalidRange": "Invalid page range. Please check your input."
+      }
     },
     "compress-pdf": {
       "name": "Compress PDF",
-      "description": "Reduce PDF file size while maintaining quality"
+      "description": "Reduce PDF file size while maintaining quality",
+      "seo": {
+        "title": "Free Online PDF Compressor",
+        "content": "Compress PDF files to reduce their size while preserving quality. Perfect for email attachments and uploads. Works entirely in your browser — no data is sent to any server."
+      },
+      "faq": {
+        "q1": "How much can the file size be reduced?",
+        "a1": "Compression results vary depending on the PDF content. Documents with many images typically see the largest reductions, often 50-80% smaller. Text-heavy PDFs may see smaller reductions.",
+        "q2": "Does compression reduce the quality of my PDF?",
+        "a2": "The tool uses smart compression that targets embedded images while preserving text sharpness. The result is visually very close to the original in most cases.",
+        "q3": "Can I compress password-protected PDFs?",
+        "a3": "Password-protected PDFs need to be unlocked first. Use our Unlock PDF tool to remove the protection, then compress the file."
+      },
+      "ui": {
+        "dropzone": "Drop a PDF file here or click to select",
+        "dropzoneHint": "Select a PDF to compress",
+        "compress": "Compress PDF",
+        "processing": "Compressing...",
+        "done": "Compression complete!",
+        "original": "Original",
+        "compressed": "Compressed",
+        "reduction": "Reduction",
+        "noReduction": "File is already optimized, no further reduction possible.",
+        "download": "Download",
+        "reset": "Reset",
+        "invalidPdf": "Invalid PDF file. Please select a valid PDF.",
+        "compressError": "An error occurred while compressing. Please try again."
+      }
     },
     "pdf-to-jpg": {
       "name": "PDF to JPG",
-      "description": "Convert PDF pages to JPG images"
+      "description": "Convert PDF pages to JPG images",
+      "seo": {
+        "title": "Free Online PDF to JPG Converter",
+        "content": "Convert PDF pages to high-quality JPG images. Choose the output quality and download individual pages or all at once. Runs entirely in your browser with full privacy."
+      },
+      "faq": {
+        "q1": "Can I convert specific pages to JPG?",
+        "a1": "The tool converts all pages in the PDF to individual JPG images. You can then download only the pages you need.",
+        "q2": "What quality settings are available?",
+        "a2": "You can adjust the output quality from low to high. Higher quality produces sharper images with larger file sizes, while lower quality creates smaller files.",
+        "q3": "Is there a page limit for conversion?",
+        "a3": "There is no page limit. The tool processes all pages in your PDF. Larger documents may take longer to convert, depending on your device."
+      },
+      "ui": {
+        "dropzone": "Drop a PDF file here or click to select",
+        "dropzoneHint": "Select a PDF to convert to JPG",
+        "quality": "Quality",
+        "convert": "Convert to JPG",
+        "processing": "Converting...",
+        "results": "Converted pages",
+        "downloadAll": "Download all",
+        "download": "Download",
+        "reset": "Reset",
+        "convertError": "An error occurred during conversion. Please try again."
+      }
     },
     "jpg-to-pdf": {
       "name": "JPG to PDF",
-      "description": "Convert JPG images to a PDF document"
+      "description": "Convert JPG images to a PDF document",
+      "seo": {
+        "title": "Free Online JPG to PDF Converter",
+        "content": "Convert one or multiple JPG images into a single PDF document. Reorder images before converting. Fast, free, and processed entirely in your browser."
+      },
+      "faq": {
+        "q1": "Can I combine multiple JPG images into one PDF?",
+        "a1": "Yes, you can add as many JPG images as you need. Each image becomes a page in the resulting PDF. Drag to reorder them before converting.",
+        "q2": "Does the conversion preserve image quality?",
+        "a2": "Yes, images are embedded in the PDF at their original resolution. No additional compression is applied during the conversion.",
+        "q3": "What image formats are supported?",
+        "a3": "This tool accepts JPG and JPEG files. For other formats like PNG, use our Images to PDF tool instead."
+      },
+      "ui": {
+        "dropzone": "Drop JPG images here or click to select",
+        "dropzoneHint": "You can add multiple JPG images",
+        "images": "Images",
+        "convert": "Convert to PDF",
+        "processing": "Converting...",
+        "done": "Conversion complete!",
+        "download": "Download",
+        "reset": "Reset",
+        "convertError": "An error occurred during conversion. Please try again."
+      }
     },
     "rotate-pdf": {
       "name": "Rotate PDF",
-      "description": "Rotate pages of a PDF document"
+      "description": "Rotate pages of a PDF document",
+      "seo": {
+        "title": "Free Online PDF Page Rotator",
+        "content": "Rotate PDF pages by 90, 180, or 270 degrees. Apply rotation to all pages or select specific ones. Works directly in your browser with no uploads to external servers."
+      },
+      "faq": {
+        "q1": "Can I rotate only specific pages?",
+        "a1": "Yes, you can choose to rotate all pages at once or specify individual pages and ranges. For example, enter 1, 3, 5-8 to rotate only those pages.",
+        "q2": "What rotation angles are available?",
+        "a2": "You can rotate pages by 90 degrees (clockwise), 180 degrees (upside down), or 270 degrees (counter-clockwise).",
+        "q3": "Does rotation affect the PDF content?",
+        "a3": "No. Rotation only changes the page orientation. All text, images, and formatting within the pages remain exactly as they were."
+      },
+      "ui": {
+        "dropzone": "Drop a PDF file here or click to select",
+        "dropzoneHint": "Select a PDF to rotate",
+        "pages": "pages",
+        "rotationAngle": "Rotation angle",
+        "applyTo": "Apply to",
+        "allPages": "All pages",
+        "customPages": "Custom pages",
+        "pagesPlaceholder": "e.g. 1, 3, 5-8",
+        "pagesHint": "Enter page numbers or ranges separated by commas",
+        "rotate": "Rotate PDF",
+        "processing": "Rotating...",
+        "done": "Rotation complete!",
+        "download": "Download",
+        "reset": "Reset",
+        "invalidPdf": "Invalid PDF file. Please select a valid PDF.",
+        "rotateError": "An error occurred while rotating. Please try again.",
+        "invalidRange": "Invalid page range. Please check your input."
+      }
     },
     "pdf-to-word": {
       "name": "PDF to Word",
