@@ -1,7 +1,7 @@
-# Sprint Corrente: Sprint 4 — Audio/Media Tools (6 tool)
+# Sprint Corrente: Sprint 5 — PDF Avanzato (5 tool)
 
 ## Obiettivo
-Implementare 6 tool audio/media: audio-cutter, voice-recorder, screen-recorder, video-to-mp3, qr-code, svg-to-png. Tutto client-side con Web Audio API, MediaRecorder API, Canvas API, qrcode.
+Implementare 5 tool PDF avanzati: PDF→PNG, Images→PDF, Unlock PDF, Word→PDF, PDF→Word. Tutto client-side con pdfjs-dist, pdf-lib, mammoth, docx.
 
 ## REGOLA CRITICA: 8 LINGUE
 Ogni pagina, componente e contenuto DEVE essere tradotto in TUTTE le 8 lingue:
@@ -12,29 +12,28 @@ File traduzioni: src/messages/{locale}.json
 
 | # | Task | Status | Note |
 |---|------|--------|------|
-| 4.1 | QR Code Generator component | DONE | qrcode lib, text/URL input, colors, sizes, error correction |
-| 4.2 | SVG to PNG component | DONE | Canvas API, scale 1x-4x, transparency, drag&drop |
-| 4.3 | Voice Recorder component | DONE | MediaRecorder + getUserMedia, waveform viz, pause/resume |
-| 4.4 | Screen Recorder component | DONE | MediaRecorder + getDisplayMedia, WebM output, audio toggle |
-| 4.5 | Video to MP3 component | DONE | Web Audio API, extract audio, WAV output |
-| 4.6 | Audio Cutter component | DONE | Web Audio API, waveform, trim sliders, preview, WAV output |
-| 4.7 | Registry update (6 tool available) | DONE | isAvailable: true for 6 tools |
-| 4.8 | Tool page imports + mapping | DONE | 6 new imports + toolComponents entries |
-| 4.9 | Traduzioni 8 lingue (seo+faq+ui) | DONE | EN, IT, ES, FR, DE, PT, JA, KO |
-| 4.10 | Build verification | DONE | npm run build OK |
-| 4.11 | Push GitHub | DONE | MCP push_files — tutti i file pushati su main |
-| 4.12 | Deploy Cloudflare Pages | DONE | Auto-deploy da GitHub main — 26 tool totali |
+| 5.1 | PDF to PNG component | DONE | pdfjs-dist, scale 1x-4x, transparent bg, ZIP download |
+| 5.2 | Images to PDF component | DONE | pdf-lib, page size/margin options, reorder images |
+| 5.3 | Unlock PDF component | DONE | pdf-lib ignoreEncryption + pdfjs-dist password fallback |
+| 5.4 | Word to PDF component | DONE | mammoth DOCX→HTML, iframe + browser print |
+| 5.5 | PDF to Word component | DONE | pdfjs-dist text extraction, docx library for DOCX |
+| 5.6 | Registry update (5 tool available) | DONE | isAvailable: true for 5 tools |
+| 5.7 | Tool page imports + mapping | DONE | 5 new imports + toolComponents entries |
+| 5.8 | Traduzioni 8 lingue (seo+faq+ui) | DONE | EN, IT, ES, FR, DE, PT, JA, KO |
+| 5.9 | Build verification | DONE | npm run pages:build OK |
+| 5.10 | Push GitHub | DONE | MCP push — tutti i file pushati su main |
+| 5.11 | Deploy Cloudflare Pages | DONE | wrangler pages deploy — 31 tool totali |
 
 ## Progresso
-- Completati: 12/12
-- In corso: 0/12
-- Rimanenti: 0/12
+- Completati: 11/11
+- In corso: 0/11
+- Rimanenti: 0/11
 
 ## Dependencies
-- qrcode: ^1.5.4 (QR code generation)
-- Web Audio API: audio decoding, waveform, slicing (built-in)
-- MediaRecorder API: voice/screen recording (built-in)
-- Canvas API: SVG rendering, waveform visualization (built-in)
+- mammoth: ^1.9.0 (DOCX → HTML conversion)
+- docx: ^9.4.1 (DOCX file creation)
+- pdfjs-dist: (PDF rendering, text extraction)
+- pdf-lib: (PDF manipulation, image embedding)
 
 ## Ultimo aggiornamento
-2026-01-31 — Sprint 4 COMPLETATO: 12/12 task. 6 componenti + registry + imports + traduzioni 8 lingue + push GitHub + deploy Cloudflare Pages. 26 tool totali live su tuttilo.com.
+2026-01-31 — Sprint 5 COMPLETATO: 11/11 task. 5 componenti + registry + imports + traduzioni 8 lingue + push GitHub + deploy Cloudflare Pages. 31 tool totali live su tuttilo.com.
