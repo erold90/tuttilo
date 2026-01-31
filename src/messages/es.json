@@ -658,15 +658,100 @@
     },
     "compress-video": {
       "name": "Comprimir vídeo",
-      "description": "Reduce el tamaño de archivos de vídeo manteniendo la calidad"
+      "description": "Reduce el tamaño de archivos de vídeo manteniendo la calidad",
+      "seo": {
+        "title": "Compresor de vídeo online gratuito",
+        "content": "Comprime archivos de vídeo directamente en tu navegador con FFmpeg. Reduce el tamaño manteniendo buena calidad visual. Compatible con MP4, WebM, AVI y más. Gratuito, privado, sin subidas a servidores."
+      },
+      "faq": {
+        "q1": "¿Qué formatos de vídeo son compatibles?",
+        "a1": "La herramienta soporta MP4, WebM, AVI, MOV y la mayoría de formatos de vídeo comunes. El vídeo comprimido se exporta en formato MP4 para máxima compatibilidad.",
+        "q2": "¿Cuánta calidad pierdo al comprimir?",
+        "a2": "Puedes elegir entre alta, media y baja calidad. La calidad alta reduce el tamaño con pérdida mínima de calidad visual, media equilibra tamaño y calidad, y baja produce archivos muy pequeños con calidad reducida.",
+        "q3": "¿Cuánto tarda la compresión?",
+        "a3": "El tiempo depende del tamaño del vídeo, la configuración de calidad y la potencia de tu dispositivo. La compresión ocurre completamente en tu navegador usando WebAssembly FFmpeg."
+      },
+      "ui": {
+        "dropzone": "Arrastra un archivo de vídeo aquí o haz clic para seleccionar",
+        "dropzoneHint": "Compatible con MP4, WebM, AVI, MOV y más",
+        "quality": "Calidad",
+        "quality_high": "Alta (tamaño menor, calidad óptima)",
+        "quality_medium": "Media (equilibrio entre tamaño y calidad)",
+        "quality_low": "Baja (archivo muy pequeño, calidad reducida)",
+        "compress": "Comprimir vídeo",
+        "loadingFfmpeg": "Cargando FFmpeg...",
+        "compressing": "Comprimiendo...",
+        "done": "¡Compresión completada!",
+        "original": "Original",
+        "compressed": "Comprimido",
+        "download": "Descargar",
+        "reset": "Reiniciar",
+        "compressError": "Error al comprimir el vídeo. Inténtalo de nuevo."
+      }
     },
     "trim-video": {
       "name": "Recortar vídeo",
-      "description": "Corta y recorta tus vídeos con precisión"
+      "description": "Corta y recorta tus vídeos con precisión",
+      "seo": {
+        "title": "Recortador de vídeo online gratuito",
+        "content": "Recorta y corta vídeos directamente en tu navegador con FFmpeg. Selecciona punto de inicio y fin con vista previa en tiempo real. Compatible con MP4, WebM, AVI. Gratuito, privado, sin subidas."
+      },
+      "faq": {
+        "q1": "¿Cómo selecciono la parte del vídeo a recortar?",
+        "a1": "Usa los deslizadores o introduce los tiempos exactos de inicio y fin. Puedes previsualizar el fragmento seleccionado antes de recortar para asegurarte de que capturas exactamente lo que necesitas.",
+        "q2": "¿Qué formatos de vídeo son compatibles?",
+        "a2": "La herramienta es compatible con MP4, WebM, AVI, MOV y la mayoría de formatos de vídeo comunes. El vídeo recortado se exporta en formato MP4.",
+        "q3": "¿El recorte afecta la calidad del vídeo?",
+        "a3": "No, el recorte extrae el segmento seleccionado sin recodificar, preservando la calidad original del vídeo. Solo se corta la línea de tiempo, sin pérdida de calidad."
+      },
+      "ui": {
+        "dropzone": "Arrastra un archivo de vídeo aquí o haz clic para seleccionar",
+        "dropzoneHint": "Compatible con MP4, WebM, AVI, MOV y más",
+        "start": "Inicio",
+        "end": "Fin",
+        "selection": "Duración de la selección",
+        "trim": "Recortar vídeo",
+        "loadingFfmpeg": "Cargando FFmpeg...",
+        "trimming": "Recortando...",
+        "done": "¡Recorte completado!",
+        "download": "Descargar",
+        "reset": "Reiniciar",
+        "preview": "Vista previa",
+        "trimError": "Error al recortar el vídeo. Inténtalo de nuevo."
+      }
     },
     "video-to-gif": {
       "name": "Vídeo a GIF",
-      "description": "Convierte vídeos en GIF animados"
+      "description": "Convierte vídeos en GIF animados",
+      "seo": {
+        "title": "Convertidor de vídeo a GIF online gratuito",
+        "content": "Convierte vídeos a GIF animados directamente en tu navegador con FFmpeg. Ajusta FPS, ancho y segmento de tiempo. Compatible con MP4, WebM, AVI. Gratuito, privado, sin subidas."
+      },
+      "faq": {
+        "q1": "¿Puedo controlar el tamaño del GIF resultante?",
+        "a1": "Sí, puedes ajustar el ancho (el alto se escala automáticamente) y los FPS (fotogramas por segundo). Menor ancho y FPS producen archivos GIF más pequeños pero con menos calidad.",
+        "q2": "¿Puedo convertir solo una parte del vídeo?",
+        "a2": "Sí, puedes seleccionar el punto de inicio y fin exactos del vídeo que deseas convertir en GIF. Esto te permite extraer solo el momento que necesitas.",
+        "q3": "¿Qué son los FPS y cómo afectan al GIF?",
+        "a3": "FPS (fotogramas por segundo) controla la fluidez de la animación. Valores más altos (20-30) producen GIFs suaves pero más grandes, mientras que valores bajos (10-15) crean archivos más pequeños pero menos fluidos."
+      },
+      "ui": {
+        "dropzone": "Arrastra un archivo de vídeo aquí o haz clic para seleccionar",
+        "dropzoneHint": "Compatible con MP4, WebM, AVI, MOV y más",
+        "start": "Inicio",
+        "end": "Fin",
+        "selection": "Duración de la selección",
+        "fps": "FPS (fotogramas por segundo)",
+        "width": "Ancho (px)",
+        "convert": "Convertir a GIF",
+        "loadingFfmpeg": "Cargando FFmpeg...",
+        "converting": "Convirtiendo...",
+        "done": "¡Conversión completada!",
+        "download": "Descargar",
+        "reset": "Reiniciar",
+        "preview": "Vista previa",
+        "convertError": "Error al convertir el vídeo. Inténtalo de nuevo."
+      }
     },
     "video-to-mp3": {
       "name": "Vídeo a MP3",
@@ -752,7 +837,31 @@
     },
     "audio-converter": {
       "name": "Conversor de audio",
-      "description": "Convierte archivos de audio entre diferentes formatos"
+      "description": "Convierte archivos de audio entre diferentes formatos",
+      "seo": {
+        "title": "Conversor de audio online gratuito",
+        "content": "Convierte archivos de audio entre MP3, WAV, OGG, FLAC y más formatos directamente en tu navegador con FFmpeg. Sin subidas, completamente privado. Gratuito, sin registro."
+      },
+      "faq": {
+        "q1": "¿Qué formatos de audio son compatibles?",
+        "a1": "La herramienta soporta entrada de MP3, WAV, OGG, FLAC, AAC, M4A y otros formatos comunes. Puedes convertir a MP3, WAV, OGG o FLAC según tus necesidades.",
+        "q2": "¿La conversión afecta la calidad del audio?",
+        "a2": "Convertir a formatos con pérdida como MP3 u OGG puede reducir ligeramente la calidad, mientras que formatos sin pérdida como WAV o FLAC preservan la calidad completa. Elige el formato según tu prioridad entre tamaño y calidad.",
+        "q3": "¿Cuánto tarda la conversión?",
+        "a3": "El tiempo depende del tamaño del archivo, el formato de destino y la potencia de tu dispositivo. La conversión ocurre completamente en tu navegador usando WebAssembly FFmpeg."
+      },
+      "ui": {
+        "dropzone": "Arrastra un archivo de audio aquí o haz clic para seleccionar",
+        "dropzoneHint": "Compatible con MP3, WAV, OGG, FLAC, AAC y más",
+        "outputFormat": "Formato de salida",
+        "convert": "Convertir",
+        "loadingFfmpeg": "Cargando FFmpeg...",
+        "converting": "Convirtiendo...",
+        "done": "¡Conversión completada!",
+        "download": "Descargar",
+        "reset": "Reiniciar",
+        "convertError": "Error al convertir el audio. Inténtalo de nuevo."
+      }
     },
     "voice-recorder": {
       "name": "Grabadora de voz",
@@ -992,7 +1101,27 @@
     },
     "youtube-thumbnail": {
       "name": "Descargar miniatura YouTube",
-      "description": "Descarga las miniaturas de vídeos de YouTube en alta calidad"
+      "description": "Descarga las miniaturas de vídeos de YouTube en alta calidad",
+      "seo": {
+        "title": "Descargador de miniaturas de YouTube online gratuito",
+        "content": "Descarga miniaturas de vídeos de YouTube en la máxima calidad disponible. Simplemente pega la URL del vídeo y obtén la imagen de miniatura en HD. Gratuito, sin registro, instantáneo."
+      },
+      "faq": {
+        "q1": "¿Qué calidad de miniatura puedo descargar?",
+        "a1": "La herramienta descarga la miniatura de máxima calidad disponible del vídeo de YouTube, generalmente en resolución HD (1280x720) si el creador del vídeo la ha subido.",
+        "q2": "¿Necesito proporcionar la URL completa del vídeo?",
+        "a2": "Sí, pega la URL completa del vídeo de YouTube (por ejemplo: https://www.youtube.com/watch?v=...). La herramienta extraerá automáticamente el ID del vídeo.",
+        "q3": "¿Es legal descargar miniaturas de YouTube?",
+        "a3": "Las miniaturas son imágenes públicamente visibles. Descargarlas para uso personal, educativo o de referencia generalmente está permitido, pero debes respetar los derechos de autor para uso comercial."
+      },
+      "ui": {
+        "urlLabel": "URL del vídeo de YouTube",
+        "urlPlaceholder": "https://www.youtube.com/watch?v=...",
+        "fetch": "Obtener miniatura",
+        "download": "Descargar",
+        "reset": "Reiniciar",
+        "invalidUrl": "URL de YouTube no válida. Introduce una URL de vídeo válida."
+      }
     },
     "youtube-transcript": {
       "name": "Transcripción YouTube",
