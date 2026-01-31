@@ -22,13 +22,13 @@ File traduzioni: src/messages/{locale}.json
 | 6.8 | Tool page imports + mapping | DONE | ffmpeg-tools.tsx wrapper + 5 toolComponents entries |
 | 6.9 | Traduzioni 8 lingue (seo+faq+ui) | DONE | EN, IT, ES, FR, DE, PT, JA, KO — tutte complete |
 | 6.10 | Build verification | DONE | next build OK — 0 errors |
-| 6.11 | Push GitHub | IN PROGRESS | MCP push — tutti i file su main |
-| 6.12 | Deploy Cloudflare Pages | TODO | wrangler pages deploy — 36 tool totali |
+| 6.11 | Push GitHub | DONE | MCP push — 12 commit su main |
+| 6.12 | Deploy Cloudflare Pages | DONE | wrangler pages deploy — 36 tool totali live |
 
 ## Progresso
-- Completati: 10/12
-- In corso: 1/12
-- Rimanenti: 1/12
+- Completati: 12/12
+- In corso: 0/12
+- Rimanenti: 0/12
 
 ## Dependencies
 - @ffmpeg/ffmpeg: FFmpeg.wasm core (single-threaded, no COOP/COEP needed)
@@ -44,4 +44,4 @@ File traduzioni: src/messages/{locale}.json
 - TypeScript 5.7 Uint8Array fix: (data as Uint8Array).buffer as ArrayBuffer
 
 ## Ultimo aggiornamento
-2026-01-31 — Sprint 6 task 6.1-6.10 completati. Build OK. Push in corso.
+2026-01-31 — Sprint 6 COMPLETATO. 12/12 task. 36 tool totali live su tuttilo.com.

@@ -14,14 +14,13 @@
   - QR Code Generator, SVG→PNG, Voice Recorder, Screen Recorder, Video→MP3, Audio Cutter
 - **Sprint 5 COMPLETATO** (11/11 task) — 5 PDF Advanced tool live
   - PDF→PNG, Images→PDF, Unlock PDF, Word→PDF, PDF→Word
-- **Sprint 6 IN CORSO** (10/12 task) — 5 Video tool implementati, push in corso
+- **Sprint 6 COMPLETATO** (12/12 task) — 5 Video tool live
   - Compress Video, Trim Video, Video→GIF, Audio Converter, YouTube Thumbnail
   - Tutte le traduzioni 8 lingue (seo+faq+ui) completate
-  - Build OK — Push GitHub in corso
-  - 36 tool totali (31 precedenti + 5 Sprint 6)
+  - Build OK — Push GitHub OK — Deploy Cloudflare Pages OK
+  - 36 tool totali live su tuttilo.com
 
 ## Cosa resta da fare
-- Sprint 6: Push GitHub + Deploy Cloudflare Pages
 - Sprint 7 (SEO & Performance): Core Web Vitals, sitemap dinamica, structured data
 - Sprint 8 (Footer Pages): About, Contact, Privacy, Terms
 - Vedere docs/ROADMAP.md per piano sprint completo
