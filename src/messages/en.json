@@ -10,7 +10,13 @@
     "switchLanguage": "Switch language",
     "languages": {
       "it": "Italiano",
-      "en": "English"
+      "en": "English",
+      "es": "Español",
+      "fr": "Français",
+      "de": "Deutsch",
+      "pt": "Português",
+      "ja": "日本語",
+      "ko": "한국어"
     },
     "privacyBadge": "Your files never leave your browser",
     "free": "Free",

@@ -12,8 +12,14 @@ import {
 } from "@/components/ui/dropdown-menu";
 
 const locales = [
-  { code: "it", label: "Italiano", flag: "🇮🇹" },
   { code: "en", label: "English", flag: "🇬🇧" },
+  { code: "it", label: "Italiano", flag: "🇮🇹" },
+  { code: "es", label: "Español", flag: "🇪🇸" },
+  { code: "fr", label: "Français", flag: "🇫🇷" },
+  { code: "de", label: "Deutsch", flag: "🇩🇪" },
+  { code: "pt", label: "Português", flag: "🇧🇷" },
+  { code: "ja", label: "日本語", flag: "🇯🇵" },
+  { code: "ko", label: "한국어", flag: "🇰🇷" },
 ] as const;
 
 export function LanguageSwitcher() {
@@ -32,11 +38,11 @@ export function LanguageSwitcher() {
     <DropdownMenu>
       <DropdownMenuTrigger asChild>
         <Button variant="ghost" size="icon" className="h-9 w-9">
-          <Globe className="h-4 w-4" />
+          <span className="text-sm">{currentLocale?.flag ?? "🌐"}</span>
           <span className="sr-only">{t("switchLanguage")}</span>
         </Button>
       </DropdownMenuTrigger>
-      <DropdownMenuContent align="end">
+      <DropdownMenuContent align="end" className="max-h-[300px] overflow-y-auto">
         {locales.map((l) => (
           <DropdownMenuItem
             key={l.code}
