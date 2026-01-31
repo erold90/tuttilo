@@ -10,14 +10,14 @@
   - Compress Image, Resize Image, Crop Image, PNG→JPG, JPG→PNG, WebP→PNG, WebP→JPG, HEIC→JPG
 - **Sprint 3 COMPLETATO** (12/12 task) — 6 PDF Core tool funzionanti
   - Merge PDF, Split PDF, Compress PDF, PDF→JPG, JPG→PDF, Rotate PDF
-- **Sprint 4 IN CORSO** (10/12 task) — 6 Audio/Media tool implementati
+- **Sprint 4 COMPLETATO** (12/12 task) — 6 Audio/Media tool live
   - QR Code Generator, SVG→PNG, Voice Recorder, Screen Recorder, Video→MP3, Audio Cutter
   - Tutte le traduzioni 8 lingue (seo+faq+ui) completate
-  - Build OK — Push GitHub e Deploy in corso
+  - Build OK — Push GitHub completato — Deploy Cloudflare Pages auto-deploy da main
+  - Fix: aggiunta pagina indice categoria (`src/app/[locale]/[category]/page.tsx`) per risolvere 404
 
 ## Cosa resta da fare
-- Completare push GitHub Sprint 4
-- Deploy Cloudflare Pages (26 tool totali)
+- Sprint 5 (PDF Avanzato): Word→PDF, PDF→Word, Batch Image→PDF, PDF Unlock, PDF→PNG
 - Vedere docs/ROADMAP.md per piano sprint completo
 
 ## Decisioni prese
@@ -50,5 +50,6 @@
 - `src/components/tools/audio-cutter.tsx` — Audio Cutter (Web Audio API, waveform, WAV output)
 - `src/lib/tools/registry.ts` — 6 Sprint 4 tools isAvailable: true
 - `src/app/[locale]/[category]/[tool]/page.tsx` — 6 new imports + mappings
+- `src/app/[locale]/[category]/page.tsx` — NEW: pagina indice categoria (fix 404)
 - `src/messages/*.json` — Tutte 8 traduzioni aggiornate (seo+faq+ui per 6 Sprint 4 tools)
 - `package.json` — qrcode + @types/qrcode

@@ -22,13 +22,13 @@ File traduzioni: src/messages/{locale}.json
 | 4.8 | Tool page imports + mapping | DONE | 6 new imports + toolComponents entries |
 | 4.9 | Traduzioni 8 lingue (seo+faq+ui) | DONE | EN, IT, ES, FR, DE, PT, JA, KO |
 | 4.10 | Build verification | DONE | npm run build OK |
-| 4.11 | Push GitHub | TODO | MCP push_files |
-| 4.12 | Deploy Cloudflare Pages | TODO | Live su tuttilo.com — 26 tool totali |
+| 4.11 | Push GitHub | DONE | MCP push_files — tutti i file pushati su main |
+| 4.12 | Deploy Cloudflare Pages | DONE | Auto-deploy da GitHub main — 26 tool totali |
 
 ## Progresso
-- Completati: 10/12
+- Completati: 12/12
 - In corso: 0/12
-- Rimanenti: 2/12
+- Rimanenti: 0/12
 
 ## Dependencies
 - qrcode: ^1.5.4 (QR code generation)
@@ -37,4 +37,4 @@ File traduzioni: src/messages/{locale}.json
 - Canvas API: SVG rendering, waveform visualization (built-in)
 
 ## Ultimo aggiornamento
-2026-01-31 — Sprint 4: 6 componenti + registry + imports + traduzioni 8 lingue completate. Build OK. Push e deploy in corso.
+2026-01-31 — Sprint 4 COMPLETATO: 12/12 task. 6 componenti + registry + imports + traduzioni 8 lingue + push GitHub + deploy Cloudflare Pages. 26 tool totali live su tuttilo.com.
