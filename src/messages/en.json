@@ -1,0 +1,287 @@
+{
+  "common": {
+    "siteName": "Tuttilo",
+    "tagline": "All online tools in one place",
+    "searchPlaceholder": "Search for a tool...",
+    "darkMode": "Dark mode",
+    "lightMode": "Light mode",
+    "systemMode": "System theme",
+    "languages": {
+      "it": "Italiano",
+      "en": "English"
+    },
+    "footer": {
+      "madeWith": "Made with ❤️ to simplify your life",
+      "allRightsReserved": "All rights reserved"
+    },
+    "privacyBadge": "Your files never leave your browser",
+    "free": "Free",
+    "noRegistration": "No registration",
+    "noLimits": "No limits"
+  },
+  "nav": {
+    "pdf": "PDF",
+    "image": "Images",
+    "video": "Video",
+    "audio": "Audio",
+    "text": "Text",
+    "developer": "Developer",
+    "youtube": "YouTube",
+    "allTools": "All Tools",
+    "home": "Home"
+  },
+  "home": {
+    "hero": {
+      "title": "All the online tools you need",
+      "subtitle": "Free, no registration, right in your browser. Edit PDFs, images, videos, audio and much more."
+    },
+    "searchPlaceholder": "What do you want to do? Search among 45+ tools...",
+    "popularTools": "Most Popular Tools",
+    "allTools": "All Tools",
+    "stats": {
+      "tools": "45+ tools",
+      "free": "100% free",
+      "noSignup": "No sign-up",
+      "privacy": "All in-browser"
+    },
+    "categories": {
+      "all": "All",
+      "pdf": "PDF",
+      "image": "Images",
+      "video": "Video",
+      "audio": "Audio",
+      "text": "Text",
+      "developer": "Developer",
+      "youtube": "YouTube"
+    }
+  },
+  "tools": {
+    "merge-pdf": {
+      "name": "Merge PDF",
+      "description": "Combine multiple PDF files into a single document"
+    },
+    "split-pdf": {
+      "name": "Split PDF",
+      "description": "Split a PDF into multiple separate files"
+    },
+    "compress-pdf": {
+      "name": "Compress PDF",
+      "description": "Reduce PDF file size while maintaining quality"
+    },
+    "pdf-to-jpg": {
+      "name": "PDF to JPG",
+      "description": "Convert PDF pages to JPG images"
+    },
+    "jpg-to-pdf": {
+      "name": "JPG to PDF",
+      "description": "Convert JPG images to a PDF document"
+    },
+    "rotate-pdf": {
+      "name": "Rotate PDF",
+      "description": "Rotate pages of a PDF document"
+    },
+    "pdf-to-word": {
+      "name": "PDF to Word",
+      "description": "Convert PDF documents to editable Word files"
+    },
+    "word-to-pdf": {
+      "name": "Word to PDF",
+      "description": "Convert Word documents to PDF"
+    },
+    "pdf-to-png": {
+      "name": "PDF to PNG",
+      "description": "Convert PDF pages to high-quality PNG images"
+    },
+    "unlock-pdf": {
+      "name": "Unlock PDF",
+      "description": "Remove password protection from PDF files"
+    },
+    "images-to-pdf": {
+      "name": "Images to PDF",
+      "description": "Convert multiple images into a single PDF document"
+    },
+    "pdf-editor": {
+      "name": "PDF Editor",
+      "description": "Edit, annotate and sign your PDF documents"
+    },
+    "compress-image": {
+      "name": "Compress Image",
+      "description": "Reduce image file size without losing quality"
+    },
+    "resize-image": {
+      "name": "Resize Image",
+      "description": "Change the dimensions of your images"
+    },
+    "crop-image": {
+      "name": "Crop Image",
+      "description": "Crop your images with precision"
+    },
+    "png-to-jpg": {
+      "name": "PNG to JPG",
+      "description": "Convert PNG images to JPG format"
+    },
+    "jpg-to-png": {
+      "name": "JPG to PNG",
+      "description": "Convert JPG images to PNG format with transparency"
+    },
+    "webp-to-png": {
+      "name": "WebP to PNG",
+      "description": "Convert WebP images to PNG format"
+    },
+    "webp-to-jpg": {
+      "name": "WebP to JPG",
+      "description": "Convert WebP images to JPG format"
+    },
+    "heic-to-jpg": {
+      "name": "HEIC to JPG",
+      "description": "Convert iPhone HEIC photos to JPG format"
+    },
+    "svg-to-png": {
+      "name": "SVG to PNG",
+      "description": "Convert SVG vector graphics to PNG images"
+    },
+    "remove-bg": {
+      "name": "Remove Background",
+      "description": "Automatically remove background from images"
+    },
+    "compress-video": {
+      "name": "Compress Video",
+      "description": "Reduce video file size while maintaining quality"
+    },
+    "trim-video": {
+      "name": "Trim Video",
+      "description": "Cut and trim your videos with precision"
+    },
+    "video-to-gif": {
+      "name": "Video to GIF",
+      "description": "Convert videos to animated GIFs"
+    },
+    "video-to-mp3": {
+      "name": "Video to MP3",
+      "description": "Extract audio from videos in MP3 format"
+    },
+    "screen-recorder": {
+      "name": "Screen Recorder",
+      "description": "Record your screen directly from the browser"
+    },
+    "audio-cutter": {
+      "name": "Audio Cutter",
+      "description": "Cut and trim audio files with precision"
+    },
+    "audio-converter": {
+      "name": "Audio Converter",
+      "description": "Convert audio files between different formats"
+    },
+    "voice-recorder": {
+      "name": "Voice Recorder",
+      "description": "Record your voice directly from the browser"
+    },
+    "word-counter": {
+      "name": "Word Counter",
+      "description": "Count words, characters, sentences and paragraphs"
+    },
+    "lorem-ipsum": {
+      "name": "Lorem Ipsum Generator",
+      "description": "Generate customizable Lorem Ipsum placeholder text"
+    },
+    "case-converter": {
+      "name": "Case Converter",
+      "description": "Convert text between uppercase, lowercase and other formats"
+    },
+    "diff-checker": {
+      "name": "Diff Checker",
+      "description": "Compare two texts and find the differences"
+    },
+    "markdown-editor": {
+      "name": "Markdown Editor",
+      "description": "Write and preview Markdown in real time"
+    },
+    "json-formatter": {
+      "name": "JSON Formatter",
+      "description": "Format, validate and minify JSON code"
+    },
+    "base64": {
+      "name": "Base64 Encoder",
+      "description": "Encode and decode text and files to Base64"
+    },
+    "regex-tester": {
+      "name": "Regex Tester",
+      "description": "Test and debug regular expressions in real time"
+    },
+    "color-picker": {
+      "name": "Color Picker",
+      "description": "Pick colors and convert between HEX, RGB, HSL"
+    },
+    "qr-code": {
+      "name": "QR Code Generator",
+      "description": "Generate custom QR codes from text or URLs"
+    },
+    "hex-rgb": {
+      "name": "HEX/RGB Converter",
+      "description": "Convert colors between HEX and RGB formats"
+    },
+    "url-encoder": {
+      "name": "URL Encoder",
+      "description": "Encode and decode URLs and parameters"
+    },
+    "timestamp": {
+      "name": "Timestamp Converter",
+      "description": "Convert Unix timestamps to readable dates and vice versa"
+    },
+    "youtube-thumbnail": {
+      "name": "YouTube Thumbnail Downloader",
+      "description": "Download YouTube video thumbnails in high quality"
+    },
+    "youtube-transcript": {
+      "name": "YouTube Transcript",
+      "description": "Extract subtitles and transcripts from YouTube videos"
+    }
+  },
+  "upload": {
+    "dragDrop": "Drag and drop files here",
+    "or": "or",
+    "clickToSelect": "Click to select files",
+    "supportedFormats": "Supported formats: {formats}",
+    "maxSize": "Maximum size: {size}",
+    "processing": "Processing...",
+    "done": "Done!",
+    "download": "Download",
+    "downloadAll": "Download all",
+    "error": {
+      "fileTooLarge": "File is too large. Maximum size: {size}",
+      "unsupportedFormat": "Unsupported format. Accepted formats: {formats}",
+      "processingFailed": "Processing failed. Please try again.",
+      "tooManyFiles": "Too many files. Maximum: {max}"
+    }
+  },
+  "footer": {
+    "tools": {
+      "title": "Tools",
+      "links": {
+        "pdf": "PDF Tools",
+        "image": "Image Tools",
+        "video": "Video Tools",
+        "audio": "Audio Tools",
+        "text": "Text Tools",
+        "developer": "Developer Tools",
+        "youtube": "YouTube Tools"
+      }
+    },
+    "company": {
+      "title": "Company",
+      "links": {
+        "about": "About Us",
+        "contact": "Contact",
+        "blog": "Blog"
+      }
+    },
+    "legal": {
+      "title": "Legal",
+      "links": {
+        "privacy": "Privacy Policy",
+        "terms": "Terms of Service",
+        "cookies": "Cookie Policy"
+      }
+    }
+  }
+}

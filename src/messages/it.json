@@ -1,0 +1,287 @@
+{
+  "common": {
+    "siteName": "Tuttilo",
+    "tagline": "Tutti gli strumenti online in un posto",
+    "searchPlaceholder": "Cerca uno strumento...",
+    "darkMode": "Modalità scura",
+    "lightMode": "Modalità chiara",
+    "systemMode": "Tema di sistema",
+    "languages": {
+      "it": "Italiano",
+      "en": "English"
+    },
+    "footer": {
+      "madeWith": "Fatto con ❤️ per semplificarti la vita",
+      "allRightsReserved": "Tutti i diritti riservati"
+    },
+    "privacyBadge": "I tuoi file non lasciano mai il browser",
+    "free": "Gratuito",
+    "noRegistration": "Nessuna registrazione",
+    "noLimits": "Nessun limite"
+  },
+  "nav": {
+    "pdf": "PDF",
+    "image": "Immagini",
+    "video": "Video",
+    "audio": "Audio",
+    "text": "Testo",
+    "developer": "Sviluppatori",
+    "youtube": "YouTube",
+    "allTools": "Tutti gli strumenti",
+    "home": "Home"
+  },
+  "home": {
+    "hero": {
+      "title": "Tutti gli strumenti online di cui hai bisogno",
+      "subtitle": "Gratuito, senza registrazione, direttamente nel browser. Modifica PDF, immagini, video, audio e molto altro."
+    },
+    "searchPlaceholder": "Cosa vuoi fare? Cerca tra oltre 45 strumenti...",
+    "popularTools": "Strumenti più popolari",
+    "allTools": "Tutti gli strumenti",
+    "stats": {
+      "tools": "45+ strumenti",
+      "free": "100% gratuito",
+      "noSignup": "Nessuna registrazione",
+      "privacy": "Tutto nel browser"
+    },
+    "categories": {
+      "all": "Tutti",
+      "pdf": "PDF",
+      "image": "Immagini",
+      "video": "Video",
+      "audio": "Audio",
+      "text": "Testo",
+      "developer": "Sviluppatori",
+      "youtube": "YouTube"
+    }
+  },
+  "tools": {
+    "merge-pdf": {
+      "name": "Unisci PDF",
+      "description": "Combina più file PDF in un unico documento"
+    },
+    "split-pdf": {
+      "name": "Dividi PDF",
+      "description": "Dividi un PDF in più file separati"
+    },
+    "compress-pdf": {
+      "name": "Comprimi PDF",
+      "description": "Riduci le dimensioni dei file PDF mantenendo la qualità"
+    },
+    "pdf-to-jpg": {
+      "name": "PDF in JPG",
+      "description": "Converti le pagine PDF in immagini JPG"
+    },
+    "jpg-to-pdf": {
+      "name": "JPG in PDF",
+      "description": "Converti immagini JPG in un documento PDF"
+    },
+    "rotate-pdf": {
+      "name": "Ruota PDF",
+      "description": "Ruota le pagine di un documento PDF"
+    },
+    "pdf-to-word": {
+      "name": "PDF in Word",
+      "description": "Converti documenti PDF in file Word modificabili"
+    },
+    "word-to-pdf": {
+      "name": "Word in PDF",
+      "description": "Converti documenti Word in PDF"
+    },
+    "pdf-to-png": {
+      "name": "PDF in PNG",
+      "description": "Converti le pagine PDF in immagini PNG ad alta qualità"
+    },
+    "unlock-pdf": {
+      "name": "Sblocca PDF",
+      "description": "Rimuovi la password di protezione dai file PDF"
+    },
+    "images-to-pdf": {
+      "name": "Immagini in PDF",
+      "description": "Converti più immagini in un unico documento PDF"
+    },
+    "pdf-editor": {
+      "name": "Editor PDF",
+      "description": "Modifica, annota e firma i tuoi documenti PDF"
+    },
+    "compress-image": {
+      "name": "Comprimi immagine",
+      "description": "Riduci le dimensioni delle immagini senza perdere qualità"
+    },
+    "resize-image": {
+      "name": "Ridimensiona immagine",
+      "description": "Cambia le dimensioni delle tue immagini"
+    },
+    "crop-image": {
+      "name": "Ritaglia immagine",
+      "description": "Ritaglia le tue immagini con precisione"
+    },
+    "png-to-jpg": {
+      "name": "PNG in JPG",
+      "description": "Converti immagini PNG in formato JPG"
+    },
+    "jpg-to-png": {
+      "name": "JPG in PNG",
+      "description": "Converti immagini JPG in formato PNG con trasparenza"
+    },
+    "webp-to-png": {
+      "name": "WebP in PNG",
+      "description": "Converti immagini WebP in formato PNG"
+    },
+    "webp-to-jpg": {
+      "name": "WebP in JPG",
+      "description": "Converti immagini WebP in formato JPG"
+    },
+    "heic-to-jpg": {
+      "name": "HEIC in JPG",
+      "description": "Converti foto HEIC di iPhone in formato JPG"
+    },
+    "svg-to-png": {
+      "name": "SVG in PNG",
+      "description": "Converti grafica vettoriale SVG in immagini PNG"
+    },
+    "remove-bg": {
+      "name": "Rimuovi sfondo",
+      "description": "Rimuovi automaticamente lo sfondo dalle immagini"
+    },
+    "compress-video": {
+      "name": "Comprimi video",
+      "description": "Riduci le dimensioni dei file video mantenendo la qualità"
+    },
+    "trim-video": {
+      "name": "Taglia video",
+      "description": "Taglia e ritaglia i tuoi video con precisione"
+    },
+    "video-to-gif": {
+      "name": "Video in GIF",
+      "description": "Converti video in GIF animate"
+    },
+    "video-to-mp3": {
+      "name": "Video in MP3",
+      "description": "Estrai l'audio dai video in formato MP3"
+    },
+    "screen-recorder": {
+      "name": "Registra schermo",
+      "description": "Registra lo schermo direttamente dal browser"
+    },
+    "audio-cutter": {
+      "name": "Taglia audio",
+      "description": "Taglia e ritaglia file audio con precisione"
+    },
+    "audio-converter": {
+      "name": "Convertitore audio",
+      "description": "Converti file audio tra diversi formati"
+    },
+    "voice-recorder": {
+      "name": "Registratore vocale",
+      "description": "Registra la tua voce direttamente dal browser"
+    },
+    "word-counter": {
+      "name": "Contaparole",
+      "description": "Conta parole, caratteri, frasi e paragrafi"
+    },
+    "lorem-ipsum": {
+      "name": "Generatore Lorem Ipsum",
+      "description": "Genera testo segnaposto Lorem Ipsum personalizzato"
+    },
+    "case-converter": {
+      "name": "Convertitore maiuscole/minuscole",
+      "description": "Converti il testo tra maiuscolo, minuscolo e altri formati"
+    },
+    "diff-checker": {
+      "name": "Confronta testi",
+      "description": "Confronta due testi e trova le differenze"
+    },
+    "markdown-editor": {
+      "name": "Editor Markdown",
+      "description": "Scrivi e visualizza Markdown in tempo reale"
+    },
+    "json-formatter": {
+      "name": "Formattatore JSON",
+      "description": "Formatta, valida e minimizza codice JSON"
+    },
+    "base64": {
+      "name": "Codificatore Base64",
+      "description": "Codifica e decodifica testo e file in Base64"
+    },
+    "regex-tester": {
+      "name": "Tester Regex",
+      "description": "Testa e debugga espressioni regolari in tempo reale"
+    },
+    "color-picker": {
+      "name": "Selettore colore",
+      "description": "Seleziona colori e converti tra HEX, RGB, HSL"
+    },
+    "qr-code": {
+      "name": "Generatore QR Code",
+      "description": "Genera codici QR personalizzati da testo o URL"
+    },
+    "hex-rgb": {
+      "name": "Convertitore HEX/RGB",
+      "description": "Converti colori tra formato HEX e RGB"
+    },
+    "url-encoder": {
+      "name": "Codificatore URL",
+      "description": "Codifica e decodifica URL e parametri"
+    },
+    "timestamp": {
+      "name": "Convertitore Timestamp",
+      "description": "Converti timestamp Unix in date leggibili e viceversa"
+    },
+    "youtube-thumbnail": {
+      "name": "Scarica thumbnail YouTube",
+      "description": "Scarica le miniature dei video YouTube in alta qualità"
+    },
+    "youtube-transcript": {
+      "name": "Trascrizione YouTube",
+      "description": "Estrai i sottotitoli e la trascrizione dai video YouTube"
+    }
+  },
+  "upload": {
+    "dragDrop": "Trascina i file qui",
+    "or": "oppure",
+    "clickToSelect": "Clicca per selezionare i file",
+    "supportedFormats": "Formati supportati: {formats}",
+    "maxSize": "Dimensione massima: {size}",
+    "processing": "Elaborazione in corso...",
+    "done": "Completato!",
+    "download": "Scarica",
+    "downloadAll": "Scarica tutto",
+    "error": {
+      "fileTooLarge": "Il file è troppo grande. Dimensione massima: {size}",
+      "unsupportedFormat": "Formato non supportato. Formati accettati: {formats}",
+      "processingFailed": "Elaborazione fallita. Riprova.",
+      "tooManyFiles": "Troppi file. Massimo: {max}"
+    }
+  },
+  "footer": {
+    "tools": {
+      "title": "Strumenti",
+      "links": {
+        "pdf": "Strumenti PDF",
+        "image": "Strumenti immagini",
+        "video": "Strumenti video",
+        "audio": "Strumenti audio",
+        "text": "Strumenti testo",
+        "developer": "Strumenti sviluppatori",
+        "youtube": "Strumenti YouTube"
+      }
+    },
+    "company": {
+      "title": "Azienda",
+      "links": {
+        "about": "Chi siamo",
+        "contact": "Contatti",
+        "blog": "Blog"
+      }
+    },
+    "legal": {
+      "title": "Legale",
+      "links": {
+        "privacy": "Privacy Policy",
+        "terms": "Termini di Servizio",
+        "cookies": "Cookie Policy"
+      }
+    }
+  }
+}
