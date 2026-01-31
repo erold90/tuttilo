@@ -86,27 +86,190 @@
   "tools": {
     "merge-pdf": {
       "name": "Juntar PDF",
-      "description": "Combine vários arquivos PDF em um único documento"
+      "description": "Combine vários arquivos PDF em um único documento",
+      "seo": {
+        "title": "Juntar arquivos PDF online grátis",
+        "content": "Combine vários arquivos PDF em um único documento de forma rápida e fácil. Tudo acontece diretamente no seu navegador — sem upload, sem cadastro, totalmente gratuito e privado."
+      },
+      "faq": {
+        "q1": "Quantos arquivos PDF posso juntar de uma vez?",
+        "a1": "Não há limite fixo. Você pode adicionar quantos arquivos PDF quiser e organizá-los na ordem desejada antes de juntá-los. Todo o processamento ocorre no navegador.",
+        "q2": "A formatação dos PDFs é preservada?",
+        "a2": "Sim. Todas as páginas, imagens, fontes e layouts dos arquivos PDF individuais são preservados integralmente ao juntar.",
+        "q3": "Meus arquivos são enviados para algum servidor?",
+        "a3": "Não. Todo o processamento acontece localmente no seu navegador. Seus arquivos nunca saem do seu dispositivo."
+      },
+      "ui": {
+        "dropzone": "Arraste arquivos PDF aqui ou clique para selecionar",
+        "dropzoneHint": "Selecione vários arquivos PDF",
+        "files": "Arquivos",
+        "pages": "Páginas",
+        "moveUp": "Mover para cima",
+        "moveDown": "Mover para baixo",
+        "remove": "Remover",
+        "merge": "Juntar",
+        "processing": "Juntando...",
+        "done": "Concluído!",
+        "download": "Baixar",
+        "reset": "Reiniciar",
+        "invalidPdf": "Arquivo PDF inválido. Selecione um PDF válido.",
+        "mergeError": "Erro ao juntar. Tente novamente."
+      }
     },
     "split-pdf": {
       "name": "Dividir PDF",
-      "description": "Divida um PDF em vários arquivos separados"
+      "description": "Divida um PDF em vários arquivos separados",
+      "seo": {
+        "title": "Dividir PDF online grátis",
+        "content": "Divida documentos PDF em páginas individuais ou intervalos personalizados. Rápido, gratuito e direto no navegador — sem upload para servidores externos."
+      },
+      "faq": {
+        "q1": "Posso extrair intervalos específicos de páginas?",
+        "a1": "Sim. Você pode extrair todas as páginas individualmente ou especificar intervalos personalizados (ex: 1-3, 5, 7-10) para obter exatamente as páginas desejadas.",
+        "q2": "O que acontece com o PDF original?",
+        "a2": "O PDF original permanece inalterado. A ferramenta cria novos arquivos PDF separados a partir das páginas selecionadas.",
+        "q3": "Posso dividir PDFs protegidos por senha?",
+        "a3": "PDFs protegidos por senha precisam ser desbloqueados primeiro. Use nossa ferramenta de desbloqueio de PDF e depois divida o arquivo."
+      },
+      "ui": {
+        "dropzone": "Arraste um arquivo PDF aqui ou clique para selecionar",
+        "dropzoneHint": "Selecione um único arquivo PDF",
+        "pages": "Páginas",
+        "splitAll": "Extrair todas as páginas",
+        "splitRange": "Extrair intervalo de páginas",
+        "rangeLabel": "Intervalo de páginas",
+        "rangePlaceholder": "Ex: 1-3, 5, 7-10",
+        "rangeHint": "Informe páginas ou intervalos separados por vírgula",
+        "split": "Dividir",
+        "processing": "Dividindo...",
+        "results": "Resultados",
+        "download": "Baixar",
+        "reset": "Reiniciar",
+        "invalidPdf": "Arquivo PDF inválido. Selecione um PDF válido.",
+        "splitError": "Erro ao dividir. Tente novamente.",
+        "invalidRange": "Intervalo de páginas inválido. Verifique sua entrada."
+      }
     },
     "compress-pdf": {
       "name": "Comprimir PDF",
-      "description": "Reduza o tamanho dos arquivos PDF mantendo a qualidade"
+      "description": "Reduza o tamanho dos arquivos PDF mantendo a qualidade",
+      "seo": {
+        "title": "Comprimir PDF online grátis",
+        "content": "Reduza o tamanho dos seus arquivos PDF de forma rápida e fácil. Compressão otimizada com a melhor qualidade possível — tudo direto no navegador, sem upload."
+      },
+      "faq": {
+        "q1": "Quanto o PDF será comprimido?",
+        "a1": "A taxa de compressão depende do conteúdo do PDF. Arquivos com muitas imagens podem ser bastante reduzidos, enquanto PDFs com predominância de texto apresentam menos economia.",
+        "q2": "A compressão reduz a qualidade?",
+        "a2": "A ferramenta otimiza o PDF de forma inteligente, preservando a qualidade o máximo possível. Imagens dentro do PDF podem sofrer uma leve redução de qualidade.",
+        "q3": "Funciona com PDFs escaneados?",
+        "a3": "Sim. PDFs escaneados geralmente contêm grandes volumes de dados de imagem e se beneficiam especialmente da compressão."
+      },
+      "ui": {
+        "dropzone": "Arraste um arquivo PDF aqui ou clique para selecionar",
+        "dropzoneHint": "Selecione um arquivo PDF para comprimir",
+        "compress": "Comprimir",
+        "processing": "Comprimindo...",
+        "done": "Concluído!",
+        "original": "Tamanho original",
+        "compressed": "Tamanho comprimido",
+        "reduction": "Redução",
+        "noReduction": "Não foi possível reduzir mais",
+        "download": "Baixar",
+        "reset": "Reiniciar",
+        "invalidPdf": "Arquivo PDF inválido. Selecione um PDF válido.",
+        "compressError": "Erro ao comprimir. Tente novamente."
+      }
     },
     "pdf-to-jpg": {
       "name": "PDF para JPG",
-      "description": "Converta páginas PDF em imagens JPG"
+      "description": "Converta páginas PDF em imagens JPG",
+      "seo": {
+        "title": "Converter PDF para JPG online grátis",
+        "content": "Converta páginas PDF em imagens JPG de alta qualidade. Escolha a qualidade desejada e baixe as imagens individualmente ou em pacote. Gratuito e sem cadastro."
+      },
+      "faq": {
+        "q1": "Em qual qualidade as imagens JPG são geradas?",
+        "a1": "Você pode ajustar a qualidade da imagem. Maior qualidade gera imagens mais nítidas com arquivos maiores; menor qualidade produz arquivos menores.",
+        "q2": "Todas as páginas são convertidas?",
+        "a2": "Sim, todas as páginas do PDF são convertidas automaticamente em imagens JPG individuais. Você pode baixar cada imagem separadamente.",
+        "q3": "A conversão é gratuita?",
+        "a3": "Sim, totalmente gratuita e sem limites. A conversão acontece direto no seu navegador, nenhum dado é enviado para servidores."
+      },
+      "ui": {
+        "dropzone": "Arraste um arquivo PDF aqui ou clique para selecionar",
+        "dropzoneHint": "Selecione um arquivo PDF para converter",
+        "quality": "Qualidade da imagem",
+        "convert": "Converter",
+        "processing": "Convertendo...",
+        "results": "Resultados",
+        "downloadAll": "Baixar tudo",
+        "download": "Baixar",
+        "reset": "Reiniciar",
+        "convertError": "Erro na conversão. Tente novamente."
+      }
     },
     "jpg-to-pdf": {
       "name": "JPG para PDF",
-      "description": "Converta imagens JPG em um documento PDF"
+      "description": "Converta imagens JPG em um documento PDF",
+      "seo": {
+        "title": "Converter JPG para PDF online grátis",
+        "content": "Converta uma ou mais imagens JPG em um documento PDF. Organize as imagens como quiser e crie seu PDF direto no navegador — gratuito e privado."
+      },
+      "faq": {
+        "q1": "Posso converter várias imagens em um único PDF?",
+        "a1": "Sim. Você pode adicionar quantas imagens JPG quiser. Cada imagem será colocada em uma página separada no PDF.",
+        "q2": "Posso alterar a ordem das imagens?",
+        "a2": "Sim, você pode arrastar e soltar as imagens para organizá-las na ordem desejada antes de criar o PDF.",
+        "q3": "Quais formatos de imagem são aceitos?",
+        "a3": "Esta ferramenta aceita arquivos JPG e JPEG. Para outros formatos, use nossa ferramenta \"Imagens para PDF\"."
+      },
+      "ui": {
+        "dropzone": "Arraste imagens JPG aqui ou clique para selecionar",
+        "dropzoneHint": "Selecione uma ou mais imagens JPG",
+        "images": "Imagens",
+        "convert": "Converter para PDF",
+        "processing": "Convertendo...",
+        "done": "Concluído!",
+        "download": "Baixar",
+        "reset": "Reiniciar",
+        "convertError": "Erro na conversão. Tente novamente."
+      }
     },
     "rotate-pdf": {
       "name": "Girar PDF",
-      "description": "Gire as páginas de um documento PDF"
+      "description": "Gire as páginas de um documento PDF",
+      "seo": {
+        "title": "Girar páginas de PDF online grátis",
+        "content": "Gire páginas individuais ou todas as páginas de um documento PDF em 90°, 180° ou 270°. Rápido, gratuito e direto no navegador — sem instalação ou cadastro."
+      },
+      "faq": {
+        "q1": "Posso girar apenas páginas específicas?",
+        "a1": "Sim. Você pode escolher girar todas as páginas ou apenas páginas específicas. Basta informar os números das páginas desejadas.",
+        "q2": "Quais ângulos de rotação estão disponíveis?",
+        "a2": "Você pode girar as páginas em 90° (um quarto à direita), 180° (de cabeça para baixo) ou 270° (um quarto à esquerda).",
+        "q3": "O conteúdo do PDF é alterado?",
+        "a3": "Não. O conteúdo das páginas permanece integralmente preservado — apenas a orientação das páginas é modificada."
+      },
+      "ui": {
+        "dropzone": "Arraste um arquivo PDF aqui ou clique para selecionar",
+        "dropzoneHint": "Selecione um arquivo PDF para girar",
+        "pages": "Páginas",
+        "rotationAngle": "Ângulo de rotação",
+        "applyTo": "Aplicar a",
+        "allPages": "Todas as páginas",
+        "customPages": "Páginas específicas",
+        "pagesPlaceholder": "Ex: 1, 3, 5-8",
+        "pagesHint": "Informe páginas ou intervalos separados por vírgula",
+        "rotate": "Girar",
+        "processing": "Girando...",
+        "done": "Concluído!",
+        "download": "Baixar",
+        "reset": "Reiniciar",
+        "invalidPdf": "Arquivo PDF inválido. Selecione um PDF válido.",
+        "rotateError": "Erro ao girar. Tente novamente.",
+        "invalidRange": "Intervalo de páginas inválido. Verifique sua entrada."
+      }
     },
     "pdf-to-word": {
       "name": "PDF para Word",
