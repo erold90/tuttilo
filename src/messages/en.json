@@ -498,7 +498,29 @@
     },
     "svg-to-png": {
       "name": "SVG to PNG",
-      "description": "Convert SVG vector graphics to PNG images"
+      "description": "Convert SVG vector graphics to PNG images",
+      "seo": {
+        "title": "Free Online SVG to PNG Converter",
+        "content": "Convert SVG vector graphics to high-quality PNG images in your browser. Choose scale (1x, 2x, 3x, 4x) for crisp output at any resolution. Free, private, no upload needed."
+      },
+      "faq": {
+        "q1": "Why convert SVG to PNG?",
+        "a1": "While SVG is ideal for web, PNG is universally supported across all applications, social media platforms, and messaging apps. Converting ensures your graphics display correctly everywhere.",
+        "q2": "What do the scale options mean?",
+        "a2": "Scale multiplies the SVG dimensions. 1x gives the original size, 2x doubles it for retina displays, and 4x creates very high-resolution output for print or large formats.",
+        "q3": "Is transparency preserved?",
+        "a3": "Yes, transparent areas in the SVG are preserved as transparency in the PNG output."
+      },
+      "ui": {
+        "dropzone": "Drop an SVG file here or click to select",
+        "dropzoneHint": "Select an SVG to convert to PNG",
+        "scale": "Output scale",
+        "convert": "Convert to PNG",
+        "processing": "Converting...",
+        "download": "Download",
+        "reset": "Reset",
+        "convertError": "Failed to convert SVG. Please make sure the file is a valid SVG."
+      }
     },
     "remove-bg": {
       "name": "Remove Background",
@@ -518,15 +540,85 @@
     },
     "video-to-mp3": {
       "name": "Video to MP3",
-      "description": "Extract audio from videos in MP3 format"
+      "description": "Extract audio from videos in MP3 format",
+      "seo": {
+        "title": "Free Online Video to Audio Converter",
+        "content": "Extract audio from video files directly in your browser. Upload MP4, WebM, or other video formats and download the audio track. Free, private, no upload to external servers."
+      },
+      "faq": {
+        "q1": "What video formats are supported?",
+        "a1": "The tool supports MP4, WebM, and most common video formats that your browser can play. Simply drag and drop your video file to get started.",
+        "q2": "What format is the extracted audio?",
+        "a2": "The audio is extracted as a WAV file, which is a lossless uncompressed format. WAV files are universally compatible with all audio players and editors.",
+        "q3": "Is there a file size limit?",
+        "a3": "The tool supports videos up to 500 MB. Processing happens entirely in your browser, so larger files may take longer depending on your device."
+      },
+      "ui": {
+        "dropzone": "Drop a video file here or click to select",
+        "dropzoneHint": "Supports MP4, WebM and other video formats",
+        "extract": "Extract Audio",
+        "processing": "Extracting...",
+        "download": "Download",
+        "reset": "Reset",
+        "extractError": "Failed to extract audio. Please make sure the file is a valid video with an audio track."
+      }
     },
     "screen-recorder": {
       "name": "Screen Recorder",
-      "description": "Record your screen directly from the browser"
+      "description": "Record your screen directly from the browser",
+      "seo": {
+        "title": "Free Online Screen Recorder",
+        "content": "Record your screen directly from your browser. Capture your entire screen, a window, or a tab with optional audio. No software to install, no registration required."
+      },
+      "faq": {
+        "q1": "Do I need to install anything?",
+        "a1": "No. The screen recorder uses your browsers built-in screen capture API. It works directly in the browser without any downloads or extensions.",
+        "q2": "Can I record audio along with the screen?",
+        "a2": "Yes, you can enable audio recording to capture system sounds along with your screen. Toggle the Include audio option before starting.",
+        "q3": "What format is the recording?",
+        "a3": "Recordings are saved in WebM format, which is supported by all modern browsers and video players. You can convert to other formats using video conversion tools."
+      },
+      "ui": {
+        "startRecording": "Start Recording",
+        "pause": "Pause",
+        "resume": "Resume",
+        "stop": "Stop",
+        "download": "Download",
+        "newRecording": "New Recording",
+        "includeAudio": "Include system audio",
+        "screenError": "Could not access screen. Please allow screen sharing when prompted."
+      }
     },
     "audio-cutter": {
       "name": "Audio Cutter",
-      "description": "Cut and trim audio files with precision"
+      "description": "Cut and trim audio files with precision",
+      "seo": {
+        "title": "Free Online Audio Cutter",
+        "content": "Cut and trim audio files directly in your browser. Visual waveform editor with precise start and end selection. Supports MP3, WAV, OGG, and more. Free, private, no upload needed."
+      },
+      "faq": {
+        "q1": "What audio formats are supported?",
+        "a1": "The tool supports MP3, WAV, OGG, FLAC, AAC, and any audio format your browser can decode. The output is saved as a high-quality WAV file.",
+        "q2": "Can I preview before cutting?",
+        "a2": "Yes, use the Preview button to listen to the selected portion before cutting. Adjust the start and end points using the sliders or by typing exact times.",
+        "q3": "Why is the output in WAV format?",
+        "a3": "WAV is a lossless uncompressed format that preserves full audio quality. It ensures no quality loss during the cutting process and is compatible with all audio players."
+      },
+      "ui": {
+        "dropzone": "Drop an audio file here or click to select",
+        "dropzoneHint": "Supports MP3, WAV, OGG, FLAC and more",
+        "start": "Start",
+        "end": "End",
+        "selection": "Selection duration",
+        "preview": "Preview",
+        "stopPreview": "Stop",
+        "cut": "Cut Audio",
+        "processing": "Cutting...",
+        "download": "Download",
+        "reset": "Reset",
+        "loadError": "Failed to load audio file. Please make sure the file is a valid audio file.",
+        "cutError": "An error occurred while cutting. Please try again."
+      }
     },
     "audio-converter": {
       "name": "Audio Converter",
@@ -534,7 +626,28 @@
     },
     "voice-recorder": {
       "name": "Voice Recorder",
-      "description": "Record your voice directly from the browser"
+      "description": "Record your voice directly from the browser",
+      "seo": {
+        "title": "Free Online Voice Recorder",
+        "content": "Record your voice directly from your browser with no software to install. See a real-time waveform while recording. Pause, resume, and download your recordings. Free and private."
+      },
+      "faq": {
+        "q1": "Do I need a microphone?",
+        "a1": "Yes, you need a microphone connected to your device. Most laptops and smartphones have built-in microphones. The browser will ask for permission to access it.",
+        "q2": "What format are recordings saved in?",
+        "a2": "Recordings are saved in WebM audio format, which is supported by all modern browsers and most audio players. You can convert to other formats using audio conversion tools.",
+        "q3": "Is my recording stored anywhere?",
+        "a3": "No. The recording is processed entirely in your browser and is never uploaded to any server. Only you have access to your recordings."
+      },
+      "ui": {
+        "record": "Record",
+        "pause": "Pause",
+        "resume": "Resume",
+        "stop": "Stop",
+        "download": "Download",
+        "newRecording": "New Recording",
+        "micError": "Could not access microphone. Please allow microphone access when prompted."
+      }
     },
     "word-counter": {
       "name": "Word Counter",
@@ -709,7 +822,31 @@
     },
     "qr-code": {
       "name": "QR Code Generator",
-      "description": "Generate custom QR codes from text or URLs"
+      "description": "Generate custom QR codes from text or URLs",
+      "seo": {
+        "title": "Free Online QR Code Generator",
+        "content": "Generate custom QR codes from any text or URL directly in your browser. Customize colors, size, and error correction level. Download as PNG. Free, no registration required."
+      },
+      "faq": {
+        "q1": "What can I encode in a QR code?",
+        "a1": "You can encode any text, URL, email address, phone number, WiFi credentials, or any string up to about 4,000 characters depending on the error correction level.",
+        "q2": "What are the error correction levels?",
+        "a2": "Error correction allows QR codes to be read even if partially damaged. Low (7%), Medium (15%), Quartile (25%), and High (30%) offer increasing levels of redundancy.",
+        "q3": "Can I customize the colors?",
+        "a3": "Yes, you can set both foreground and background colors. Make sure there is enough contrast for scanners to read the code reliably."
+      },
+      "ui": {
+        "textLabel": "Text or URL",
+        "placeholder": "Enter text or URL...",
+        "size": "Size",
+        "errorLevel": "Error correction",
+        "fgColor": "Foreground",
+        "bgColor": "Background",
+        "generate": "Generate QR Code",
+        "download": "Download PNG",
+        "reset": "Reset",
+        "generateError": "Failed to generate QR code. Please check your input."
+      }
     },
     "hex-rgb": {
       "name": "HEX/RGB Converter",
