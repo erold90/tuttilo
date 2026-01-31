@@ -273,23 +273,149 @@
     },
     "pdf-to-word": {
       "name": "PDF to Word",
-      "description": "Convert PDF documents to editable Word files"
+      "description": "Convert PDF documents to editable Word files",
+      "seo": {
+        "title": "Free Online PDF to Word Converter",
+        "content": "Convert PDF files to editable Word documents directly in your browser. Extract text and formatting from PDFs into DOCX format. Free, private, no upload needed."
+      },
+      "faq": {
+        "q1": "How does PDF to Word conversion work?",
+        "a1": "The tool extracts text content from each PDF page and reconstructs it as a Word document with paragraphs and headings preserved. Processing happens entirely in your browser.",
+        "q2": "Will the formatting be preserved?",
+        "a2": "Basic text formatting, headings, and paragraph structure are preserved. Complex layouts, images, and advanced formatting may require manual adjustment after conversion.",
+        "q3": "What file formats are supported?",
+        "a3": "The tool accepts PDF files and outputs DOCX format compatible with Microsoft Word, Google Docs, and LibreOffice."
+      },
+      "ui": {
+        "dropzone": "Drop a PDF file here or click to select",
+        "dropzoneHint": "PDF files up to 50 MB",
+        "convert": "Convert to Word",
+        "processing": "Converting...",
+        "done": "Conversion complete!",
+        "download": "Download DOCX",
+        "reset": "Reset",
+        "convertError": "An error occurred during conversion. Please try again."
+      }
     },
     "word-to-pdf": {
       "name": "Word to PDF",
-      "description": "Convert Word documents to PDF"
+      "description": "Convert Word documents to PDF",
+      "seo": {
+        "title": "Free Online Word to PDF Converter",
+        "content": "Convert Word documents (DOCX, DOC) to PDF directly in your browser. Preserve formatting and layout. Free, private, no upload needed."
+      },
+      "faq": {
+        "q1": "What Word formats are supported?",
+        "a1": "The tool supports DOCX files (Microsoft Word 2007+). DOC files (older format) have limited support. For best results, use DOCX format.",
+        "q2": "Will the formatting be preserved?",
+        "a2": "Text content, headings, paragraphs, lists, and tables are converted. Some complex formatting like custom fonts or embedded objects may appear differently.",
+        "q3": "Is there a file size limit?",
+        "a3": "The tool supports Word files up to 50 MB. All processing happens in your browser — your files are never uploaded to any server."
+      },
+      "ui": {
+        "dropzone": "Drop a Word file here or click to select",
+        "dropzoneHint": "DOCX and DOC files up to 50 MB",
+        "convert": "Convert to PDF",
+        "processing": "Converting...",
+        "done": "Conversion complete!",
+        "download": "Download PDF",
+        "reset": "Reset",
+        "convertError": "An error occurred during conversion. Please try again.",
+        "printHint": "Click Download PDF and select 'Save as PDF' in the print dialog.",
+        "preview": "Preview"
+      }
     },
     "pdf-to-png": {
       "name": "PDF to PNG",
-      "description": "Convert PDF pages to high-quality PNG images"
+      "description": "Convert PDF pages to high-quality PNG images",
+      "seo": {
+        "title": "Free Online PDF to PNG Converter",
+        "content": "Convert PDF pages to high-quality PNG images directly in your browser. Choose resolution scale, enable transparency. Free, private, no upload needed."
+      },
+      "faq": {
+        "q1": "What resolution will the PNG images be?",
+        "a1": "You can choose from 1x to 4x scale. At 2x (default), a standard A4 page produces approximately 1654x2339 pixel images. Higher scale means better quality but larger files.",
+        "q2": "Can I get transparent PNG images?",
+        "a2": "Yes! Enable the transparency option to get PNG images with a transparent background instead of white. This is useful for overlaying PDF content on other designs.",
+        "q3": "How many pages can I convert?",
+        "a3": "There is no page limit. All pages in your PDF will be converted to individual PNG images. Processing happens in your browser, so very large documents may take longer."
+      },
+      "ui": {
+        "dropzone": "Drop a PDF file here or click to select",
+        "dropzoneHint": "PDF files up to 100 MB",
+        "scale": "Resolution scale",
+        "transparent": "Transparent background",
+        "convert": "Convert to PNG",
+        "processing": "Converting...",
+        "results": "Results",
+        "downloadAll": "Download all",
+        "reset": "Reset",
+        "convertError": "An error occurred during conversion. Please try again."
+      }
     },
     "unlock-pdf": {
       "name": "Unlock PDF",
-      "description": "Remove password protection from PDF files"
+      "description": "Remove password protection from PDF files",
+      "seo": {
+        "title": "Free Online PDF Unlocker",
+        "content": "Remove password protection from PDF files directly in your browser. Unlock PDFs to enable editing, printing, and copying. Free, private, no upload needed."
+      },
+      "faq": {
+        "q1": "What types of PDF protection can be removed?",
+        "a1": "The tool can remove both user passwords (required to open the PDF) and owner passwords (that restrict editing, printing, or copying). You must know the password to unlock the file.",
+        "q2": "Is this legal to use?",
+        "a2": "Yes, as long as you have the right to access the PDF. This tool is designed for users who know the password but want to remove it for convenience. Never use it on files you do not own.",
+        "q3": "Will the PDF content be changed?",
+        "a3": "No. The tool only removes the password protection. All content, formatting, images, and metadata remain exactly the same."
+      },
+      "ui": {
+        "dropzone": "Drop a protected PDF here or click to select",
+        "dropzoneHint": "PDF files up to 100 MB",
+        "password": "PDF password",
+        "passwordPlaceholder": "Enter the PDF password",
+        "passwordHint": "Leave empty if the PDF only has editing restrictions",
+        "unlock": "Unlock PDF",
+        "processing": "Unlocking...",
+        "done": "PDF unlocked!",
+        "download": "Download",
+        "reset": "Reset",
+        "wrongPassword": "Incorrect password. Please check and try again.",
+        "unlockError": "An error occurred while unlocking. Please try again."
+      }
     },
     "images-to-pdf": {
       "name": "Images to PDF",
-      "description": "Convert multiple images into a single PDF document"
+      "description": "Convert multiple images into a single PDF document",
+      "seo": {
+        "title": "Free Online Images to PDF Converter",
+        "content": "Convert multiple images (JPG, PNG, WebP) into a single PDF document. Reorder pages, choose page size, add margins. Free, private, no upload needed."
+      },
+      "faq": {
+        "q1": "What image formats are supported?",
+        "a1": "You can use JPG, PNG, and WebP images. All formats are supported and can be mixed in the same PDF document.",
+        "q2": "Can I reorder the images?",
+        "a2": "Yes! After uploading, you can reorder images using the up/down arrows. The final PDF will follow the order you set.",
+        "q3": "What page sizes are available?",
+        "a3": "Choose from Fit to Image (each page matches the image size), A4, or Letter. You can also add margins (none, small, medium, large)."
+      },
+      "ui": {
+        "dropzone": "Drop images here or click to select",
+        "dropzoneHint": "JPG, PNG, WebP — multiple files supported",
+        "images": "Images",
+        "pageSize": "Page size",
+        "pageSizeFit": "Fit to image",
+        "margin": "Margin",
+        "marginNone": "None",
+        "marginSmall": "Small",
+        "marginMedium": "Medium",
+        "marginLarge": "Large",
+        "convert": "Create PDF",
+        "processing": "Creating PDF...",
+        "done": "PDF created!",
+        "download": "Download PDF",
+        "reset": "Reset",
+        "convertError": "An error occurred. Please try again."
+      }
     },
     "pdf-editor": {
       "name": "PDF Editor",
