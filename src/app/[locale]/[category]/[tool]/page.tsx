@@ -20,6 +20,13 @@ import { ColorPicker } from "@/components/tools/color-picker";
 import { RegexTester } from "@/components/tools/regex-tester";
 // Sprint 2 (Image)
 import { CompressImage } from "@/components/tools/compress-image";
+// Sprint 3 (PDF)
+import { MergePdf } from "@/components/tools/merge-pdf";
+import { SplitPdf } from "@/components/tools/split-pdf";
+import { CompressPdf } from "@/components/tools/compress-pdf";
+import { PdfToJpg } from "@/components/tools/pdf-to-jpg";
+import { JpgToPdf } from "@/components/tools/jpg-to-pdf";
+import { RotatePdf } from "@/components/tools/rotate-pdf";
 import { ResizeImage } from "@/components/tools/resize-image";
 import { CropImage } from "@/components/tools/crop-image";
 import { PngToJpg } from "@/components/tools/png-to-jpg";
@@ -45,6 +52,12 @@ const toolComponents: Record<string, React.ComponentType> = {
   "webp-to-png": WebpToPng,
   "webp-to-jpg": WebpToJpg,
   "heic-to-jpg": HeicToJpg,
+  "merge-pdf": MergePdf,
+  "split-pdf": SplitPdf,
+  "compress-pdf": CompressPdf,
+  "pdf-to-jpg": PdfToJpg,
+  "jpg-to-pdf": JpgToPdf,
+  "rotate-pdf": RotatePdf,
 };
 
 export async function generateMetadata({

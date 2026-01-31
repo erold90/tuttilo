@@ -46,12 +46,12 @@ export const categories: ToolCategory[] = [
 
 export const tools: Tool[] = [
   // ---------- PDF (12 tools) ----------
-  { id: 'merge-pdf', slug: 'merge', category: 'pdf', icon: 'Merge', isAvailable: false, isPremium: false, maxFileSize: 100 * 1024 * 1024, acceptedFormats: ['application/pdf'], processingType: 'client' },
-  { id: 'split-pdf', slug: 'split', category: 'pdf', icon: 'Scissors', isAvailable: false, isPremium: false, maxFileSize: 100 * 1024 * 1024, acceptedFormats: ['application/pdf'], processingType: 'client' },
-  { id: 'compress-pdf', slug: 'compress', category: 'pdf', icon: 'Minimize2', isAvailable: false, isPremium: false, maxFileSize: 100 * 1024 * 1024, acceptedFormats: ['application/pdf'], processingType: 'client' },
-  { id: 'pdf-to-jpg', slug: 'to-jpg', category: 'pdf', icon: 'FileImage', isAvailable: false, isPremium: false, maxFileSize: 100 * 1024 * 1024, acceptedFormats: ['application/pdf'], processingType: 'client' },
-  { id: 'jpg-to-pdf', slug: 'from-jpg', category: 'pdf', icon: 'FileUp', isAvailable: false, isPremium: false, maxFileSize: 50 * 1024 * 1024, acceptedFormats: ['image/jpeg'], processingType: 'client' },
-  { id: 'rotate-pdf', slug: 'rotate', category: 'pdf', icon: 'RotateCw', isAvailable: false, isPremium: false, maxFileSize: 100 * 1024 * 1024, acceptedFormats: ['application/pdf'], processingType: 'client' },
+  { id: 'merge-pdf', slug: 'merge', category: 'pdf', icon: 'Merge', isAvailable: true, isPremium: false, maxFileSize: 100 * 1024 * 1024, acceptedFormats: ['application/pdf'], processingType: 'client' },
+  { id: 'split-pdf', slug: 'split', category: 'pdf', icon: 'Scissors', isAvailable: true, isPremium: false, maxFileSize: 100 * 1024 * 1024, acceptedFormats: ['application/pdf'], processingType: 'client' },
+  { id: 'compress-pdf', slug: 'compress', category: 'pdf', icon: 'Minimize2', isAvailable: true, isPremium: false, maxFileSize: 100 * 1024 * 1024, acceptedFormats: ['application/pdf'], processingType: 'client' },
+  { id: 'pdf-to-jpg', slug: 'to-jpg', category: 'pdf', icon: 'FileImage', isAvailable: true, isPremium: false, maxFileSize: 100 * 1024 * 1024, acceptedFormats: ['application/pdf'], processingType: 'client' },
+  { id: 'jpg-to-pdf', slug: 'from-jpg', category: 'pdf', icon: 'FileUp', isAvailable: true, isPremium: false, maxFileSize: 50 * 1024 * 1024, acceptedFormats: ['image/jpeg'], processingType: 'client' },
+  { id: 'rotate-pdf', slug: 'rotate', category: 'pdf', icon: 'RotateCw', isAvailable: true, isPremium: false, maxFileSize: 100 * 1024 * 1024, acceptedFormats: ['application/pdf'], processingType: 'client' },
   { id: 'pdf-to-word', slug: 'to-word', category: 'pdf', icon: 'FileText', isAvailable: false, isPremium: false, maxFileSize: 50 * 1024 * 1024, acceptedFormats: ['application/pdf'], processingType: 'server' },
   { id: 'word-to-pdf', slug: 'from-word', category: 'pdf', icon: 'FileUp', isAvailable: false, isPremium: false, maxFileSize: 50 * 1024 * 1024, acceptedFormats: ['application/vnd.openxmlformats-officedocument.wordprocessingml.document', 'application/msword'], processingType: 'server' },
   { id: 'pdf-to-png', slug: 'to-png', category: 'pdf', icon: 'FileImage', isAvailable: false, isPremium: false, maxFileSize: 100 * 1024 * 1024, acceptedFormats: ['application/pdf'], processingType: 'client' },
