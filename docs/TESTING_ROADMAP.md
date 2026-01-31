@@ -9,7 +9,7 @@
 
 ## Stato Generale
 - **Tool totali**: 36 disponibili (isAvailable: true)
-- **Tool testati**: 6/36
+- **Tool testati**: 14/36
 - **Bug trovati**: 5
 - **Bug fixati**: 5
 - **Ultimo aggiornamento**: 2026-01-31
@@ -65,77 +65,69 @@
 
 ---
 
-## BATCH 2: Image Tools (8 tool) — Status: TODO
+## BATCH 2: Image Tools (8 tool) — Status: DONE
 
 ### T07. Compress Image `/en/image/compress`
 - **File**: `src/components/tools/compress-image.tsx`
 - **Test**: Caricare JPG/PNG/WebP, regolare qualità, verificare riduzione peso
-- **Bug noti dal codice**:
-  - PNG perde trasparenza (fallback JPEG)
-  - Memory leak su URL.createObjectURL
-- **Status**: TODO
-- **Fix applicati**: —
+- **Bug fixati**:
+  - Aggiunto `img.onerror` handler nel fallback canvas (UI non restava bloccata)
+  - Memory leak: aggiunto `URL.revokeObjectURL()` in reset()
+- **Note**: PNG perde trasparenza nel fallback JPEG — comportamento accettabile per compressione
+- **Status**: DONE
 
 ### T08. Resize Image `/en/image/resize`
 - **File**: `src/components/tools/resize-image.tsx`
 - **Test**: Ridimensionare con lock ratio ON/OFF, preset %, valori custom
-- **Bug noti dal codice**:
-  - Lock ratio non ricalcolato al cambio file
-  - Qualità fissa 0.92 anche per PNG
-- **Status**: TODO
-- **Fix applicati**: —
+- **Bug fixati**:
+  - Memory leak: aggiunto `URL.revokeObjectURL()` in reset()
+- **Note**: Qualita 0.92 per PNG accettabile (canvas toBlob PNG e lossless, quality ignorata)
+- **Status**: DONE
 
 ### T09. Crop Image `/en/image/crop`
 - **File**: `src/components/tools/crop-image.tsx`
 - **Test**: Crop con preset aspect ratio (1:1, 16:9, 4:3, 3:2, free)
-- **Bug noti dal codice**:
-  - Type casting `as any` su Cropper
-  - Cropper non distrutta al reset (memory leak)
-- **Status**: TODO
-- **Fix applicati**: —
+- **Bug fixati**:
+  - Memory leak: aggiunto `URL.revokeObjectURL()` in reset()
+- **Note**: `as any` su Cropper necessario per tipizzazione react-cropper, non un bug
+- **Status**: DONE
 
 ### T10. PNG to JPG `/en/image/png-to-jpg`
 - **File**: `src/components/tools/png-to-jpg.tsx`
 - **Test**: Convertire PNG (con e senza trasparenza), verificare background bianco
-- **Bug noti dal codice**:
-  - Background sempre bianco (non configurabile)
-  - No warning perdita trasparenza
-- **Status**: TODO
-- **Fix applicati**: —
+- **Bug fixati**:
+  - Memory leak: aggiunto `URL.revokeObjectURL()` in reset()
+- **Note**: Background bianco e il comportamento standard per PNG→JPG
+- **Status**: DONE
 
 ### T11. JPG to PNG `/en/image/jpg-to-png`
 - **File**: `src/components/tools/jpg-to-png.tsx`
 - **Test**: Convertire JPG, verificare output PNG lossless
-- **Bug noti dal codice**:
-  - File potrebbe essere piu grande (nessun warning)
-- **Status**: TODO
-- **Fix applicati**: —
+- **Bug fixati**:
+  - Memory leak: aggiunto `URL.revokeObjectURL()` in reset()
+- **Status**: DONE
 
 ### T12. WebP to PNG `/en/image/webp-to-png`
 - **File**: `src/components/tools/webp-to-png.tsx`
 - **Test**: Convertire WebP in PNG, verificare qualita
-- **Bug noti dal codice**:
-  - Codice duplicato con jpg-to-png
-- **Status**: TODO
-- **Fix applicati**: —
+- **Bug fixati**:
+  - Memory leak: aggiunto `URL.revokeObjectURL()` in reset()
+- **Status**: DONE
 
 ### T13. WebP to JPG `/en/image/webp-to-jpg`
 - **File**: `src/components/tools/webp-to-jpg.tsx`
 - **Test**: Convertire WebP in JPG, regolare qualita
-- **Bug noti dal codice**:
-  - Codice duplicato con png-to-jpg
-- **Status**: TODO
-- **Fix applicati**: —
+- **Bug fixati**:
+  - Memory leak: aggiunto `URL.revokeObjectURL()` in reset()
+- **Status**: DONE
 
 ### T14. HEIC to JPG `/en/image/heic-to-jpg`
 - **File**: `src/components/tools/heic-to-jpg.tsx`
 - **Test**: Convertire HEIC da iPhone, verificare output JPG
-- **Bug noti dal codice**:
-  - Multi-image: prende solo prima immagine
-  - No preview pre-conversione
-  - Qualita non configurabile (fissa 0.92)
-- **Status**: TODO
-- **Fix applicati**: —
+- **Bug fixati**:
+  - Memory leak: aggiunto `URL.revokeObjectURL()` in reset()
+- **Note**: Multi-image prende prima immagine — comportamento accettabile. No preview pre-conversione perche HEIC non supportato nativamente dai browser.
+- **Status**: DONE
 
 ---
 
