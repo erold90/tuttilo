@@ -52,11 +52,11 @@ export const tools: Tool[] = [
   { id: 'pdf-to-jpg', slug: 'to-jpg', category: 'pdf', icon: 'FileImage', isAvailable: true, isPremium: false, maxFileSize: 100 * 1024 * 1024, acceptedFormats: ['application/pdf'], processingType: 'client' },
   { id: 'jpg-to-pdf', slug: 'from-jpg', category: 'pdf', icon: 'FileUp', isAvailable: true, isPremium: false, maxFileSize: 50 * 1024 * 1024, acceptedFormats: ['image/jpeg'], processingType: 'client' },
   { id: 'rotate-pdf', slug: 'rotate', category: 'pdf', icon: 'RotateCw', isAvailable: true, isPremium: false, maxFileSize: 100 * 1024 * 1024, acceptedFormats: ['application/pdf'], processingType: 'client' },
-  { id: 'pdf-to-word', slug: 'to-word', category: 'pdf', icon: 'FileText', isAvailable: false, isPremium: false, maxFileSize: 50 * 1024 * 1024, acceptedFormats: ['application/pdf'], processingType: 'server' },
-  { id: 'word-to-pdf', slug: 'from-word', category: 'pdf', icon: 'FileUp', isAvailable: false, isPremium: false, maxFileSize: 50 * 1024 * 1024, acceptedFormats: ['application/vnd.openxmlformats-officedocument.wordprocessingml.document', 'application/msword'], processingType: 'server' },
-  { id: 'pdf-to-png', slug: 'to-png', category: 'pdf', icon: 'FileImage', isAvailable: false, isPremium: false, maxFileSize: 100 * 1024 * 1024, acceptedFormats: ['application/pdf'], processingType: 'client' },
-  { id: 'unlock-pdf', slug: 'unlock', category: 'pdf', icon: 'Unlock', isAvailable: false, isPremium: false, maxFileSize: 100 * 1024 * 1024, acceptedFormats: ['application/pdf'], processingType: 'client' },
-  { id: 'images-to-pdf', slug: 'from-images', category: 'pdf', icon: 'Images', isAvailable: false, isPremium: false, maxFileSize: 50 * 1024 * 1024, acceptedFormats: ['image/jpeg', 'image/png', 'image/webp'], processingType: 'client' },
+  { id: 'pdf-to-word', slug: 'to-word', category: 'pdf', icon: 'FileText', isAvailable: true, isPremium: false, maxFileSize: 50 * 1024 * 1024, acceptedFormats: ['application/pdf'], processingType: 'client' },
+  { id: 'word-to-pdf', slug: 'from-word', category: 'pdf', icon: 'FileUp', isAvailable: true, isPremium: false, maxFileSize: 50 * 1024 * 1024, acceptedFormats: ['application/vnd.openxmlformats-officedocument.wordprocessingml.document', 'application/msword'], processingType: 'client' },
+  { id: 'pdf-to-png', slug: 'to-png', category: 'pdf', icon: 'FileImage', isAvailable: true, isPremium: false, maxFileSize: 100 * 1024 * 1024, acceptedFormats: ['application/pdf'], processingType: 'client' },
+  { id: 'unlock-pdf', slug: 'unlock', category: 'pdf', icon: 'Unlock', isAvailable: true, isPremium: false, maxFileSize: 100 * 1024 * 1024, acceptedFormats: ['application/pdf'], processingType: 'client' },
+  { id: 'images-to-pdf', slug: 'from-images', category: 'pdf', icon: 'Images', isAvailable: true, isPremium: false, maxFileSize: 50 * 1024 * 1024, acceptedFormats: ['image/jpeg', 'image/png', 'image/webp'], processingType: 'client' },
   { id: 'pdf-editor', slug: 'editor', category: 'pdf', icon: 'PenTool', isAvailable: false, isPremium: false, maxFileSize: 100 * 1024 * 1024, acceptedFormats: ['application/pdf'], processingType: 'client' },
 
   // ---------- Image (10 tools) ----------

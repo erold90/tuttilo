@@ -41,6 +41,12 @@ import { JpgToPng } from "@/components/tools/jpg-to-png";
 import { WebpToPng } from "@/components/tools/webp-to-png";
 import { WebpToJpg } from "@/components/tools/webp-to-jpg";
 import { HeicToJpg } from "@/components/tools/heic-to-jpg";
+// Sprint 5 (PDF Advanced)
+import { PdfToPng } from "@/components/tools/pdf-to-png";
+import { ImagesToPdf } from "@/components/tools/images-to-pdf";
+import { UnlockPdf } from "@/components/tools/unlock-pdf";
+import { WordToPdf } from "@/components/tools/word-to-pdf";
+import { PdfToWord } from "@/components/tools/pdf-to-word";
 
 const BASE_URL = "https://tuttilo.com";
 
@@ -71,6 +77,11 @@ const toolComponents: Record<string, React.ComponentType> = {
   "screen-recorder": ScreenRecorder,
   "video-to-mp3": VideoToMp3,
   "audio-cutter": AudioCutter,
+  "pdf-to-png": PdfToPng,
+  "images-to-pdf": ImagesToPdf,
+  "unlock-pdf": UnlockPdf,
+  "word-to-pdf": WordToPdf,
+  "pdf-to-word": PdfToWord,
 };
 
 export async function generateMetadata({
