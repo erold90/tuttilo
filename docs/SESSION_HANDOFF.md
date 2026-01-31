@@ -6,17 +6,16 @@
 - **Sprint 0 COMPLETATO** (16/16 task) — Setup progetto, SEO, deploy
 - **Sprint 1 COMPLETATO** (11/11 task) — 6 Text/Dev tool funzionanti
   - Word Counter, JSON Formatter, Base64 Encoder, Lorem Ipsum Generator, Color Picker, Regex Tester
-  - Dynamic route: `src/app/[locale]/[category]/[tool]/page.tsx` (edge runtime)
-  - ToolLayout: breadcrumb fix, SEO section, FAQ section
-  - RelatedTools: client component, filtra per isAvailable
-  - Registry: 6 tool isAvailable: true
-  - Traduzioni complete 8 lingue (seo+faq+ui per ogni tool)
-  - Fix placeholder DE/ES/FR, fix ESLint regex-tester
-  - Push GitHub (MCP push_files in batch da 2) + Deploy Cloudflare Pages
-- Sito live su tuttilo.com e tuttilo.pages.dev
+- **Sprint 2 COMPLETATO** (14/14 task) — 8 Image tool funzionanti
+  - Compress Image, Resize Image, Crop Image, PNG→JPG, JPG→PNG, WebP→PNG, WebP→JPG, HEIC→JPG
+- **Sprint 3 COMPLETATO** (12/12 task) — 6 PDF Core tool funzionanti
+  - Merge PDF, Split PDF, Compress PDF, PDF→JPG, JPG→PDF, Rotate PDF
+  - Tutte le traduzioni 8 lingue (seo+faq+ui) completate
+  - Build OK + Deploy Cloudflare Pages completato
+- Sito live su tuttilo.com con 20 tool (6 Sprint 1 + 8 Sprint 2 + 6 Sprint 3)
 
 ## Cosa resta da fare
-- Iniziare Sprint 2 (Image tools: compress, resize, crop, format convert)
+- Iniziare Sprint 4 (Audio/Media: MP3 Cutter, Voice Recorder, Screen Recorder, MP4→MP3, QR Code, SVG→PNG)
 - Vedere docs/ROADMAP.md per piano sprint completo
 
 ## Decisioni prese
@@ -28,23 +27,26 @@
 6. Edge runtime per Cloudflare Pages
 7. Git push via MCP (mcp__github__push_files) — SSH key mismatch locale
 8. Tool components: `"use client"`, `useTranslations("tools.{tool-id}.ui")`
-9. Traduzioni senza ICU placeholder per valori che sono renderizzati come `{number} {t("key")}` nei componenti
+9. Traduzioni senza ICU placeholder
 10. Build CF Pages richiede `@vercel/next` installato esplicitamente
+11. cropperjs v1 (non v2) — v2 ha rimosso dist/cropper.css
+12. PDF slug: merge/split/compress/rotate (corti), to-jpg/from-jpg (con prefisso)
+13. TypeScript 5.7 + pdf-lib: `pdfBytes.buffer as ArrayBuffer` per Blob
+14. pdfjs-dist: dynamic import + CDN worker, canvas prop obbligatorio in render
 
 ## Problemi aperti
-- git push locale non funziona (SSH key mismatch) — usare MCP GitHub per push
-- Build CF Pages: `@vercel/next` va installato manualmente (`npm install @vercel/next`)
+- git push locale non funziona (SSH key mismatch witerose ≠ erold90) — usare MCP GitHub
+- HTTPS push fallisce ("could not read Username") — usare MCP GitHub
 - @cloudflare/next-on-pages è deprecated, migrare a OpenNext in futuro
 
-## File principali modificati in Sprint 1
-- `src/app/[locale]/[category]/[tool]/page.tsx` — Dynamic tool route
-- `src/components/tools/tool-layout.tsx` — ToolLayout wrapper
-- `src/components/tools/related-tools.tsx` — Related tools client component
-- `src/components/tools/word-counter.tsx` — Word Counter
-- `src/components/tools/json-formatter.tsx` — JSON Formatter
-- `src/components/tools/base64-encoder.tsx` — Base64 Encoder/Decoder
-- `src/components/tools/lorem-ipsum.tsx` — Lorem Ipsum Generator
-- `src/components/tools/color-picker.tsx` — Color Picker
-- `src/components/tools/regex-tester.tsx` — Regex Tester
-- `src/lib/tools/registry.ts` — Tool registry (6 tool available)
-- `src/messages/*.json` — Tutte 8 traduzioni aggiornate
+## File creati/modificati in Sprint 3
+- `src/components/tools/merge-pdf.tsx` — Merge PDF (pdf-lib)
+- `src/components/tools/split-pdf.tsx` — Split PDF (pdf-lib)
+- `src/components/tools/compress-pdf.tsx` — Compress PDF (pdf-lib, object streams)
+- `src/components/tools/pdf-to-jpg.tsx` — PDF to JPG (pdfjs-dist, dynamic import)
+- `src/components/tools/jpg-to-pdf.tsx` — JPG to PDF (pdf-lib, embed images)
+- `src/components/tools/rotate-pdf.tsx` — Rotate PDF (pdf-lib, degrees)
+- `src/lib/tools/registry.ts` — 6 PDF tools isAvailable: true
+- `src/app/[locale]/[category]/[tool]/page.tsx` — 6 new imports + mappings
+- `src/messages/*.json` — Tutte 8 traduzioni aggiornate (seo+faq+ui per 6 PDF tools)
+- `package.json` — pdf-lib + pdfjs-dist
