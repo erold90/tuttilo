@@ -498,7 +498,29 @@
     },
     "svg-to-png": {
       "name": "SVG a PNG",
-      "description": "Convierte gráficos vectoriales SVG en imágenes PNG"
+      "description": "Convierte gráficos vectoriales SVG en imágenes PNG",
+      "seo": {
+        "title": "Convertidor de SVG a PNG Online Gratuito",
+        "content": "Convierte gráficos vectoriales SVG en imágenes PNG de alta calidad en tu navegador. Elige la escala (1x, 2x, 3x, 4x) para obtener un resultado nítido a cualquier resolución. Gratuito, privado, sin subidas."
+      },
+      "faq": {
+        "q1": "¿Por qué convertir SVG a PNG?",
+        "a1": "Aunque SVG es ideal para la web, PNG es compatible universalmente con todas las aplicaciones, redes sociales y apps de mensajería. La conversión garantiza que tus gráficos se muestren correctamente en cualquier lugar.",
+        "q2": "¿Qué significan las opciones de escala?",
+        "a2": "La escala multiplica las dimensiones del SVG. 1x mantiene el tamaño original, 2x lo duplica para pantallas retina y 4x crea una salida de muy alta resolución para impresión o formatos grandes.",
+        "q3": "¿Se conserva la transparencia?",
+        "a3": "Sí, las áreas transparentes del SVG se conservan como transparencia en la imagen PNG resultante."
+      },
+      "ui": {
+        "dropzone": "Arrastra un archivo SVG aquí o haz clic para seleccionar",
+        "dropzoneHint": "Selecciona un SVG para convertir a PNG",
+        "scale": "Escala de salida",
+        "convert": "Convertir a PNG",
+        "processing": "Convirtiendo...",
+        "download": "Descargar",
+        "reset": "Reiniciar",
+        "convertError": "No se pudo convertir el SVG. Asegúrate de que el archivo sea un SVG válido."
+      }
     },
     "remove-bg": {
       "name": "Eliminar fondo",
@@ -518,15 +540,85 @@
     },
     "video-to-mp3": {
       "name": "Vídeo a MP3",
-      "description": "Extrae el audio de los vídeos en formato MP3"
+      "description": "Extrae el audio de los vídeos en formato MP3",
+      "seo": {
+        "title": "Convertidor de Vídeo a Audio Online Gratuito",
+        "content": "Extrae el audio de archivos de vídeo directamente en tu navegador. Sube MP4, WebM u otros formatos de vídeo y descarga la pista de audio. Gratuito, privado, sin subidas a servidores externos."
+      },
+      "faq": {
+        "q1": "¿Qué formatos de vídeo son compatibles?",
+        "a1": "La herramienta es compatible con MP4, WebM y la mayoría de formatos de vídeo habituales que tu navegador puede reproducir. Simplemente arrastra y suelta tu archivo de vídeo para empezar.",
+        "q2": "¿En qué formato se extrae el audio?",
+        "a2": "El audio se extrae como archivo WAV, un formato sin compresión y sin pérdida de calidad. Los archivos WAV son universalmente compatibles con todos los reproductores y editores de audio.",
+        "q3": "¿Hay un límite de tamaño de archivo?",
+        "a3": "La herramienta admite vídeos de hasta 500 MB. El procesamiento ocurre íntegramente en tu navegador, por lo que archivos más grandes pueden tardar más dependiendo de tu dispositivo."
+      },
+      "ui": {
+        "dropzone": "Arrastra un archivo de vídeo aquí o haz clic para seleccionar",
+        "dropzoneHint": "Compatible con MP4, WebM y otros formatos de vídeo",
+        "extract": "Extraer audio",
+        "processing": "Extrayendo...",
+        "download": "Descargar",
+        "reset": "Reiniciar",
+        "extractError": "No se pudo extraer el audio. Asegúrate de que el archivo sea un vídeo válido con pista de audio."
+      }
     },
     "screen-recorder": {
       "name": "Grabador de pantalla",
-      "description": "Graba tu pantalla directamente desde el navegador"
+      "description": "Graba tu pantalla directamente desde el navegador",
+      "seo": {
+        "title": "Grabador de Pantalla Online Gratuito",
+        "content": "Graba tu pantalla directamente desde el navegador. Captura toda la pantalla, una ventana o una pestaña con audio opcional. Sin software que instalar, sin registro necesario."
+      },
+      "faq": {
+        "q1": "¿Necesito instalar algo?",
+        "a1": "No. El grabador de pantalla utiliza la API de captura de pantalla integrada en el navegador. Funciona directamente sin descargas ni extensiones.",
+        "q2": "¿Puedo grabar audio junto con la pantalla?",
+        "a2": "Sí, puedes activar la grabación de audio para capturar los sonidos del sistema junto con la pantalla. Activa la opción Incluir audio antes de comenzar.",
+        "q3": "¿En qué formato se guarda la grabación?",
+        "a3": "Las grabaciones se guardan en formato WebM, compatible con todos los navegadores modernos y reproductores de vídeo. Puedes convertirlas a otros formatos con herramientas de conversión de vídeo."
+      },
+      "ui": {
+        "startRecording": "Iniciar grabación",
+        "pause": "Pausa",
+        "resume": "Reanudar",
+        "stop": "Detener",
+        "download": "Descargar",
+        "newRecording": "Nueva grabación",
+        "includeAudio": "Incluir audio del sistema",
+        "screenError": "No se pudo acceder a la pantalla. Permite la compartición de pantalla cuando se solicite."
+      }
     },
     "audio-cutter": {
       "name": "Cortador de audio",
-      "description": "Corta y recorta archivos de audio con precisión"
+      "description": "Corta y recorta archivos de audio con precisión",
+      "seo": {
+        "title": "Cortador de Audio Online Gratuito",
+        "content": "Corta y recorta archivos de audio directamente en tu navegador. Editor visual con forma de onda y selección precisa de inicio y fin. Compatible con MP3, WAV, OGG y más. Gratuito, privado, sin subidas."
+      },
+      "faq": {
+        "q1": "¿Qué formatos de audio son compatibles?",
+        "a1": "La herramienta es compatible con MP3, WAV, OGG, FLAC, AAC y cualquier formato de audio que tu navegador pueda decodificar. El resultado se guarda como archivo WAV de alta calidad.",
+        "q2": "¿Puedo escuchar una vista previa antes de cortar?",
+        "a2": "Sí, usa el botón Vista previa para escuchar la porción seleccionada antes de cortar. Ajusta los puntos de inicio y fin con los deslizadores o introduciendo los tiempos exactos.",
+        "q3": "¿Por qué el resultado está en formato WAV?",
+        "a3": "WAV es un formato sin compresión y sin pérdida que preserva la calidad de audio completa. Garantiza que no haya pérdida de calidad durante el corte y es compatible con todos los reproductores de audio."
+      },
+      "ui": {
+        "dropzone": "Arrastra un archivo de audio aquí o haz clic para seleccionar",
+        "dropzoneHint": "Compatible con MP3, WAV, OGG, FLAC y más",
+        "start": "Inicio",
+        "end": "Fin",
+        "selection": "Duración de la selección",
+        "preview": "Vista previa",
+        "stopPreview": "Detener",
+        "cut": "Cortar audio",
+        "processing": "Cortando...",
+        "download": "Descargar",
+        "reset": "Reiniciar",
+        "loadError": "No se pudo cargar el archivo de audio. Asegúrate de que sea un archivo de audio válido.",
+        "cutError": "Se produjo un error durante el corte. Inténtalo de nuevo."
+      }
     },
     "audio-converter": {
       "name": "Conversor de audio",
@@ -534,7 +626,28 @@
     },
     "voice-recorder": {
       "name": "Grabadora de voz",
-      "description": "Graba tu voz directamente desde el navegador"
+      "description": "Graba tu voz directamente desde el navegador",
+      "seo": {
+        "title": "Grabadora de Voz Online Gratuita",
+        "content": "Graba tu voz directamente desde el navegador sin instalar ningún software. Visualiza la forma de onda en tiempo real mientras grabas. Pausa, reanuda y descarga tus grabaciones. Gratuito y privado."
+      },
+      "faq": {
+        "q1": "¿Necesito un micrófono?",
+        "a1": "Sí, necesitas un micrófono conectado a tu dispositivo. La mayoría de portátiles y smartphones tienen micrófono integrado. El navegador te pedirá permiso para acceder a él.",
+        "q2": "¿En qué formato se guardan las grabaciones?",
+        "a2": "Las grabaciones se guardan en formato de audio WebM, compatible con todos los navegadores modernos y la mayoría de reproductores de audio. Puedes convertirlas a otros formatos con herramientas de conversión de audio.",
+        "q3": "¿Mi grabación se almacena en algún lugar?",
+        "a3": "No. La grabación se procesa íntegramente en tu navegador y nunca se sube a ningún servidor. Solo tú tienes acceso a tus grabaciones."
+      },
+      "ui": {
+        "record": "Grabar",
+        "pause": "Pausa",
+        "resume": "Reanudar",
+        "stop": "Detener",
+        "download": "Descargar",
+        "newRecording": "Nueva grabación",
+        "micError": "No se pudo acceder al micrófono. Permite el acceso al micrófono cuando se solicite."
+      }
     },
     "word-counter": {
       "name": "Contador de palabras",
@@ -709,7 +822,31 @@
     },
     "qr-code": {
       "name": "Generador de QR Code",
-      "description": "Genera códigos QR personalizados desde texto o URL"
+      "description": "Genera códigos QR personalizados desde texto o URL",
+      "seo": {
+        "title": "Generador de Códigos QR Online Gratuito",
+        "content": "Crea códigos QR personalizados a partir de cualquier texto o URL directamente en tu navegador. Personaliza colores, tamaño y nivel de corrección de errores. Descarga en formato PNG. Gratuito, sin registro."
+      },
+      "faq": {
+        "q1": "¿Qué puedo codificar en un código QR?",
+        "a1": "Puedes codificar cualquier texto, URL, dirección de correo electrónico, número de teléfono, credenciales WiFi o cualquier cadena de hasta unos 4.000 caracteres, dependiendo del nivel de corrección de errores.",
+        "q2": "¿Qué son los niveles de corrección de errores?",
+        "a2": "La corrección de errores permite leer códigos QR incluso si están parcialmente dañados. Bajo (7%), Medio (15%), Cuartil (25%) y Alto (30%) ofrecen niveles crecientes de redundancia.",
+        "q3": "¿Puedo personalizar los colores?",
+        "a3": "Sí, puedes configurar tanto el color del primer plano como el del fondo. Asegúrate de que haya suficiente contraste para que los escáneres puedan leer el código correctamente."
+      },
+      "ui": {
+        "textLabel": "Texto o URL",
+        "placeholder": "Introduce texto o URL...",
+        "size": "Tamaño",
+        "errorLevel": "Corrección de errores",
+        "fgColor": "Primer plano",
+        "bgColor": "Fondo",
+        "generate": "Generar QR Code",
+        "download": "Descargar PNG",
+        "reset": "Reiniciar",
+        "generateError": "No se pudo generar el código QR. Revisa tu entrada."
+      }
     },
     "hex-rgb": {
       "name": "Conversor HEX/RGB",
