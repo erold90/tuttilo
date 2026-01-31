@@ -25,14 +25,16 @@ File traduzioni: src/messages/{locale}.json
 | 0.11 | DownloadButton component | DONE | Single/multiple, before-after |
 | 0.12 | Tool registry system | DONE | 45 tool, 7 categorie, helper functions |
 | 0.13 | Ad slot components | DONE | Sidebar 300x250, leaderboard 728x90, mobile sticky |
-| 0.14 | SEO setup (sitemap, robots, meta, JSON-LD) | PENDING | |
-| 0.15 | Deploy su Cloudflare Pages | PENDING | |
+| 0.14 | SEO setup (sitemap, robots, meta, JSON-LD) | DONE | sitemap.ts, robots.ts, generateMetadata, JSON-LD, OpenGraph, hreflang |
+| 0.15 | Deploy su Cloudflare Pages | DONE | tuttilo.pages.dev live, custom domain tuttilo.com configurato |
 | 0.16 | Git init + repo GitHub | DONE | erold90/tuttilo (public) |
 
 ## Progresso
-- Completati: 14/16
+- Completati: 16/16
 - In corso: 0/16
-- Rimanenti: 2/16 (SEO + Deploy)
+- Rimanenti: 0/16
+
+## SPRINT 0 COMPLETATO
 
 ## Ultimo aggiornamento
-2026-01-31 — 14 task completati, homepage funzionante con 8 lingue, build OK
+2026-01-31 — Sprint 0 completato al 100%. Sito live su tuttilo.pages.dev + tuttilo.com
