@@ -70,9 +70,17 @@
 - **Footer links**: Già funzionanti (erano placeholder, ora puntano a pagine reali)
 - **Build OK** — zero errori
 
+## UX Redesign V2 Fase 3 (2026-02-01) — COMPLETO
+- **How it Works**: `src/components/tools/how-it-works.tsx` — 3-step flow (Upload→Process→Download) con icone, numeri, colori brand
+- **Favorites System**: `src/hooks/use-favorites.ts` + `src/components/tools/favorites-button.tsx` — localStorage (tuttilo:favorites), cuore toggle rosso
+- **Recents System**: `src/hooks/use-recents.ts` — localStorage (tuttilo:recents), max 8 entry, auto-tracking in tool-layout.tsx
+- **Homepage Sections**: `src/components/home-user-sections.tsx` — Griglia favoriti (Heart) + recenti (Clock), ritorna null se vuoto
+- **Tool Layout**: Integrato HowItWorks tra header e contenuto, FavoritesButton accanto al titolo, useEffect per tracking recenti
+- **Traduzioni**: `common.howItWorks.*` + `home.favorites` + `home.recents` in tutte 8 lingue
+- **Build OK** — zero errori
+
 ## Cosa resta da fare
 - UX Redesign V2 Fase 1: F1.6 mega-menu (opzionale)
-- UX Redesign V2 Fase 3: Tool UX Consistency
 - Sprint 7 (SEO & Performance): Core Web Vitals, sitemap dinamica, structured data
 - Vedere docs/ROADMAP.md per piano sprint completo
 

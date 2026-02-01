@@ -45,11 +45,13 @@ Pattern universali: tool grid con icone, mega-menu, popular tools, 3-step flow, 
 - Tutte le traduzioni 8 lingue — DONE
 - Build OK, pushato su GitHub, deploy automatico
 
-## Fase 3 (Dopo): Tool UX Consistency
-- Standardizzare tutti tool su shared components
-- "How it works" 3-step per tool
-- Favoriti/Recenti (localStorage)
-- Micro-animazioni
+## Fase 3 (COMPLETATA): Tool UX Consistency
+- "How it works" 3-step component su ogni tool page — DONE
+- Sistema Favoriti con localStorage + cuore toggle — DONE
+- Sistema Recenti con localStorage (max 8, auto-tracking) — DONE
+- Sezione Favoriti/Recenti in homepage — DONE
+- Traduzioni 8 lingue (common.howItWorks, home.favorites, home.recents) — DONE
+- Build OK, pushato su GitHub, deploy automatico
 
 ## Extra: Consolidamento PDF (Completato)
 - 11 PDF tool → 5 super-tool (pdf-organizer, pdf-to-images, pdf-word, compress-pdf, unlock-pdf)
@@ -67,5 +69,15 @@ Pattern universali: tool grid con icone, mega-menu, popular tools, 3-step flow, 
 - `src/app/[locale]/page.tsx` — MODIFY: Trust signals section tra hero e Popular Tools
 - `src/messages/*.json` (x8) — MODIFY: Chiavi pages.privacy/terms/about/contact + home.trust
 
+## File Creati in Fase 3
+- `src/components/tools/how-it-works.tsx` — NEW: 3-step flow (Upload→Process→Download)
+- `src/components/tools/favorites-button.tsx` — NEW: Heart toggle button per favoriti
+- `src/hooks/use-favorites.ts` — NEW: localStorage hook per favoriti (tuttilo:favorites)
+- `src/hooks/use-recents.ts` — NEW: localStorage hook per recenti (tuttilo:recents, max 8)
+- `src/components/home-user-sections.tsx` — NEW: Sezione homepage favoriti/recenti
+- `src/components/tools/tool-layout.tsx` — MODIFY: Integrato HowItWorks, FavoritesButton, recents tracking
+- `src/app/[locale]/page.tsx` — MODIFY: Aggiunto HomeUserSections tra trust signals e Popular Tools
+- `src/messages/*.json` (x8) — MODIFY: Chiavi common.howItWorks.*, home.favorites, home.recents
+
 ## Ultimo aggiornamento
-2026-02-01 — Fase 1 (8/9) + Fase 2 (Trust+Legal) completate. 4 nuove pagine + trust signals homepage. Consolidamento PDF (11→5). Tutto tradotto 8 lingue, pushato, deployato.
+2026-02-01 — Fase 1 (8/9) + Fase 2 (Trust+Legal) + Fase 3 (Tool UX) completate. How-it-works, favoriti, recenti. Consolidamento PDF (11→5). Tutto tradotto 8 lingue, pushato, deployato.
