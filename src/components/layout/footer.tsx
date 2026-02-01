@@ -5,16 +5,9 @@ import { Link } from "@/i18n/routing";
 import { Shield } from "lucide-react";
 import { LanguageSwitcher } from "@/components/layout/language-switcher";
 import { cn } from "@/lib/utils";
+import { getCategoryNavItems } from "@/lib/tools/registry";
 
-const toolCategories = [
-  { key: "pdf", href: "/pdf", color: "hover:text-[#EF4444]" },
-  { key: "image", href: "/image", color: "hover:text-[#22C55E]" },
-  { key: "video", href: "/video", color: "hover:text-[#8B5CF6]" },
-  { key: "audio", href: "/audio", color: "hover:text-[#F97316]" },
-  { key: "text", href: "/text", color: "hover:text-[#3B82F6]" },
-  { key: "developer", href: "/developer", color: "hover:text-[#14B8A6]" },
-  { key: "youtube", href: "/youtube", color: "hover:text-[#EC4899]" },
-] as const;
+const categories = getCategoryNavItems();
 
 const companyLinks = [
   { key: "about", href: "/about" },
@@ -49,13 +42,13 @@ export function Footer() {
           <div>
             <h3 className="mb-3 text-sm font-semibold">{t("tools")}</h3>
             <ul className="space-y-2">
-              {toolCategories.map((cat) => (
+              {categories.map((cat) => (
                 <li key={cat.key}>
                   <Link
                     href={cat.href}
                     className={cn(
                       "text-sm text-muted-foreground transition-colors",
-                      cat.color
+                      cat.hoverText
                     )}
                   >
                     {tNav(cat.key)}

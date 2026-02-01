@@ -1,70 +1,29 @@
 import { useTranslations } from "next-intl";
 import { Link } from "@/i18n/routing";
-import { Search, Shield, Zap, Globe } from "lucide-react";
-import { Button } from "@/components/ui/button";
+import { Shield, Zap, Globe, ArrowRight } from "lucide-react";
 import { cn } from "@/lib/utils";
-
-const categoryCards = [
-  {
-    key: "pdf",
-    href: "/pdf",
-    color: "bg-red-500/10 text-red-500 border-red-500/20",
-    hoverColor: "hover:border-red-500/40",
-  },
-  {
-    key: "image",
-    href: "/image",
-    color: "bg-green-500/10 text-green-500 border-green-500/20",
-    hoverColor: "hover:border-green-500/40",
-  },
-  {
-    key: "video",
-    href: "/video",
-    color: "bg-violet-500/10 text-violet-500 border-violet-500/20",
-    hoverColor: "hover:border-violet-500/40",
-  },
-  {
-    key: "audio",
-    href: "/audio",
-    color: "bg-orange-500/10 text-orange-500 border-orange-500/20",
-    hoverColor: "hover:border-orange-500/40",
-  },
-  {
-    key: "text",
-    href: "/text",
-    color: "bg-blue-500/10 text-blue-500 border-blue-500/20",
-    hoverColor: "hover:border-blue-500/40",
-  },
-  {
-    key: "developer",
-    href: "/developer",
-    color: "bg-teal-500/10 text-teal-500 border-teal-500/20",
-    hoverColor: "hover:border-teal-500/40",
-  },
-  {
-    key: "youtube",
-    href: "/youtube",
-    color: "bg-pink-500/10 text-pink-500 border-pink-500/20",
-    hoverColor: "hover:border-pink-500/40",
-  },
-] as const;
-
-const stats = [
-  { key: "tools", value: "50+" },
-  { key: "filesProcessed", value: "100K+" },
-  { key: "noUpload", value: "100%" },
-] as const;
+import {
+  categories,
+  getToolsByCategory,
+  getPopularTools,
+  getCategoryClasses,
+} from "@/lib/tools/registry";
+import { ToolIcon } from "@/components/tool-icon";
+import { HomeSearchTrigger } from "@/components/home-search-trigger";
 
 export default function HomePage() {
   const t = useTranslations("home");
   const tNav = useTranslations("nav");
+  const tTools = useTranslations("tools");
+
+  const popularTools = getPopularTools();
 
   return (
     <div className="flex flex-col">
-      {/* Hero Section */}
+      {/* Hero */}
       <section className="relative overflow-hidden border-b">
         <div className="absolute inset-0 bg-gradient-to-b from-indigo-500/5 via-transparent to-transparent" />
-        <div className="container mx-auto max-w-7xl px-4 py-20 md:py-28 relative">
+        <div className="container mx-auto max-w-7xl px-4 py-16 md:py-24 relative">
           <div className="mx-auto max-w-3xl text-center space-y-6">
             <h1 className="text-4xl font-bold tracking-tight sm:text-5xl md:text-6xl">
               {t("title")}
@@ -72,24 +31,7 @@ export default function HomePage() {
             <p className="text-lg text-muted-foreground md:text-xl leading-relaxed">
               {t("subtitle")}
             </p>
-
-            {/* Search bar */}
-            <div className="mx-auto max-w-lg">
-              <div className="relative">
-                <Search className="absolute left-3 top-1/2 -translate-y-1/2 h-4 w-4 text-muted-foreground" />
-                <input
-                  type="text"
-                  placeholder={t("searchPlaceholder")}
-                  className="w-full rounded-lg border bg-background/50 py-3 pl-10 pr-4 text-sm backdrop-blur focus:outline-none focus:ring-2 focus:ring-indigo-500/50 transition-shadow"
-                  readOnly
-                />
-                <kbd className="absolute right-3 top-1/2 -translate-y-1/2 hidden sm:inline-flex h-5 items-center gap-1 rounded border bg-muted px-1.5 font-mono text-[10px] font-medium text-muted-foreground">
-                  Cmd+K
-                </kbd>
-              </div>
-            </div>
-
-            {/* Privacy badge */}
+            <HomeSearchTrigger />
             <div className="flex items-center justify-center gap-2 text-sm text-muted-foreground">
               <Shield className="h-4 w-4 text-green-500" />
               <span>{t("privacyNote")}</span>
@@ -98,44 +40,114 @@ export default function HomePage() {
         </div>
       </section>
 
-      {/* Category Cards */}
+      {/* Popular Tools */}
       <section className="container mx-auto max-w-7xl px-4 py-16">
-        <h2 className="text-2xl font-bold text-center mb-8">{t("categories")}</h2>
-        <div className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-4 gap-4">
-          {categoryCards.map((cat) => (
-            <Link
-              key={cat.key}
-              href={cat.href}
-              className={cn(
-                "flex flex-col items-center gap-3 rounded-xl border p-6 transition-all",
-                cat.color,
-                cat.hoverColor,
-                "hover:shadow-md"
-              )}
-            >
-              <span className="text-2xl font-bold">{tNav(cat.key)}</span>
-              <span className="text-xs opacity-70 text-center">
-                {t(`categoryDesc.${cat.key}`)}
-              </span>
-            </Link>
-          ))}
+        <h2 className="text-2xl font-bold text-center mb-8">
+          {t("popularTools")}
+        </h2>
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4">
+          {popularTools.map((tool) => {
+            const classes = getCategoryClasses(tool.category);
+            return (
+              <Link
+                key={tool.id}
+                href={`/${tool.category}/${tool.slug}` as any}
+                className={cn(
+                  "flex items-center gap-3 rounded-xl border p-4 transition-all hover:shadow-md",
+                  classes.border,
+                  classes.hoverBorder
+                )}
+              >
+                <span
+                  className={cn(
+                    "flex h-10 w-10 shrink-0 items-center justify-center rounded-lg",
+                    classes.bg,
+                    classes.text
+                  )}
+                >
+                  <ToolIcon name={tool.icon} className="h-5 w-5" />
+                </span>
+                <div className="min-w-0">
+                  <p className="font-medium text-sm truncate">
+                    {tTools(`${tool.id}.name`)}
+                  </p>
+                  <p className="text-xs text-muted-foreground truncate">
+                    {tTools(`${tool.id}.description`)}
+                  </p>
+                </div>
+              </Link>
+            );
+          })}
         </div>
       </section>
 
-      {/* Stats Section */}
+      {/* All Tools by Category */}
       <section className="border-t bg-muted/30">
-        <div className="container mx-auto max-w-7xl px-4 py-12">
-          <div className="grid grid-cols-1 sm:grid-cols-3 gap-8 text-center">
-            {stats.map((stat) => (
-              <div key={stat.key} className="space-y-1">
-                <p className="text-3xl font-bold text-indigo-500">
-                  {stat.value}
-                </p>
-                <p className="text-sm text-muted-foreground">
-                  {t(`stats.${stat.key}`)}
-                </p>
-              </div>
-            ))}
+        <div className="container mx-auto max-w-7xl px-4 py-16">
+          <h2 className="text-2xl font-bold text-center mb-12">
+            {t("allTools")}
+          </h2>
+          <div className="space-y-12">
+            {categories.map((cat) => {
+              const catTools = getToolsByCategory(cat.id).filter(
+                (tool) => tool.isAvailable
+              );
+              if (catTools.length === 0) return null;
+              const classes = getCategoryClasses(cat.id);
+              return (
+                <div key={cat.id}>
+                  <div className="flex items-center gap-3 mb-4">
+                    <span
+                      className={cn(
+                        "flex h-8 w-8 items-center justify-center rounded-lg",
+                        classes.bg,
+                        classes.text
+                      )}
+                    >
+                      <ToolIcon name={cat.icon} className="h-4 w-4" />
+                    </span>
+                    <Link
+                      href={`/${cat.slug}` as any}
+                      className="group flex items-center gap-2"
+                    >
+                      <h3 className={cn("text-lg font-semibold", classes.text)}>
+                        {tNav(cat.id)}
+                      </h3>
+                      <span className="text-xs text-muted-foreground">
+                        ({catTools.length})
+                      </span>
+                      <ArrowRight className="h-4 w-4 opacity-0 -translate-x-2 group-hover:opacity-100 group-hover:translate-x-0 transition-all text-muted-foreground" />
+                    </Link>
+                  </div>
+                  <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-3">
+                    {catTools.map((tool) => (
+                      <Link
+                        key={tool.id}
+                        href={`/${cat.slug}/${tool.slug}` as any}
+                        className={cn(
+                          "flex items-center gap-3 rounded-lg border bg-background p-3 transition-all hover:shadow-sm",
+                          classes.border,
+                          classes.hoverBorder
+                        )}
+                      >
+                        <ToolIcon
+                          name={tool.icon}
+                          className={cn("h-4 w-4 shrink-0", classes.text)}
+                        />
+                        <div className="min-w-0">
+                          <p className="font-medium text-sm truncate">
+                            {tTools(`${tool.id}.name`)}
+                          </p>
+                          <p className="text-xs text-muted-foreground truncate">
+                            {tTools(`${tool.id}.description`)}
+                          </p>
+                        </div>
+                      </Link>
+                    ))}
+                  </div>
+                </div>
+              );
+            })}
           </div>
         </div>
       </section>

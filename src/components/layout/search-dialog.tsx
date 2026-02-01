@@ -11,18 +11,9 @@ import {
   DialogTitle,
 } from "@/components/ui/dialog";
 import { Input } from "@/components/ui/input";
-import { tools, type Tool, type ToolCategoryId } from "@/lib/tools/registry";
+import { tools, type Tool, type ToolCategoryId, getCategoryClasses } from "@/lib/tools/registry";
+import { ToolIcon } from "@/components/tool-icon";
 import { cn } from "@/lib/utils";
-
-const categoryColors: Record<string, string> = {
-  pdf: "text-[#EF4444]",
-  image: "text-[#22C55E]",
-  video: "text-[#8B5CF6]",
-  audio: "text-[#F97316]",
-  text: "text-[#3B82F6]",
-  developer: "text-[#14B8A6]",
-  youtube: "text-[#EC4899]",
-};
 
 function getToolHref(tool: Tool): string {
   return `/${tool.category}/${tool.slug}`;
@@ -131,7 +122,7 @@ export function SearchDialog() {
                   <p
                     className={cn(
                       "px-2 py-1.5 text-xs font-semibold uppercase tracking-wider",
-                      categoryColors[category] || "text-muted-foreground"
+                      getCategoryClasses(category as ToolCategoryId).text
                     )}
                   >
                     {(() => { try { return tNav(category); } catch { return category; } })()}
@@ -142,8 +133,8 @@ export function SearchDialog() {
                       onClick={() => handleSelect(tool)}
                       className="flex w-full items-center gap-3 rounded-md px-2 py-2 text-sm hover:bg-accent transition-colors text-left"
                     >
-                      <span className="flex h-8 w-8 items-center justify-center rounded-md bg-muted text-xs">
-                        {tool.category.slice(0, 2).toUpperCase()}
+                      <span className={cn("flex h-8 w-8 items-center justify-center rounded-md", getCategoryClasses(tool.category).bg, getCategoryClasses(tool.category).text)}>
+                        <ToolIcon name={tool.icon} className="h-4 w-4" />
                       </span>
                       <div className="flex-1 min-w-0">
                         <p className="font-medium truncate">{tool.name}</p>
