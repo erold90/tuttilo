@@ -148,9 +148,15 @@ export async function compressImage(
     let buffer: ArrayBuffer;
     let mime: string;
 
-    if (file.type === "image/png") {
+    if (file.type === "image/png" && quality >= 0.9) {
+      // PNG at high quality: lossless OxiPNG optimization
       buffer = await encodeWithJsquashPng(imageData);
       mime = "image/png";
+    } else if (file.type === "image/png") {
+      // PNG at low quality: convert to JPEG for real lossy compression
+      // (PNG is lossless — quality slider has no effect on PNG encoding)
+      buffer = await encodeWithJsquashJpeg(imageData, quality);
+      mime = "image/jpeg";
     } else if (file.type === "image/webp") {
       buffer = await encodeWithJsquashWebp(imageData, quality);
       mime = "image/webp";
@@ -173,15 +179,20 @@ export async function compressImage(
     canvas.height = img.height;
     const ctx = canvas.getContext("2d")!;
 
-    if (file.type === "image/jpeg") {
+    // White background for JPEG output (no transparency)
+    const outputMime = (file.type === "image/png" && quality < 0.9) ? "image/jpeg"
+      : file.type === "image/webp" ? "image/webp"
+      : file.type === "image/png" ? "image/png"
+      : "image/jpeg";
+
+    if (outputMime === "image/jpeg") {
       ctx.fillStyle = "#FFFFFF";
       ctx.fillRect(0, 0, canvas.width, canvas.height);
     }
     ctx.drawImage(img, 0, 0);
 
     onProgress?.(60);
-    const mime = file.type === "image/png" ? "image/png" : file.type === "image/webp" ? "image/webp" : "image/jpeg";
-    const blob = await canvasToBlob(canvas, mime, quality);
+    const blob = await canvasToBlob(canvas, outputMime, quality);
 
     cleanupCanvas(canvas);
     URL.revokeObjectURL(url);
