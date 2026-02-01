@@ -46,6 +46,7 @@ const iconMap: Record<string, LucideIcons.LucideIcon> = {
   Link: LucideIcons.Link,
   Clock: LucideIcons.Clock,
   Subtitles: LucideIcons.Subtitles,
+  LayoutDashboard: LucideIcons.LayoutDashboard,
 };
 
 export function ToolIcon({ name, ...props }: ToolIconProps) {

@@ -13,6 +13,18 @@ const nextConfig: NextConfig = {
       },
     ],
   },
+  async redirects() {
+    return [
+      { source: "/:locale/pdf/from-jpg", destination: "/:locale/pdf/from-images", permanent: true },
+      { source: "/:locale/pdf/to-jpg", destination: "/:locale/pdf/to-images", permanent: true },
+      { source: "/:locale/pdf/to-png", destination: "/:locale/pdf/to-images", permanent: true },
+      { source: "/:locale/pdf/to-word", destination: "/:locale/pdf/word", permanent: true },
+      { source: "/:locale/pdf/from-word", destination: "/:locale/pdf/word", permanent: true },
+      { source: "/:locale/pdf/merge", destination: "/:locale/pdf/organizer", permanent: true },
+      { source: "/:locale/pdf/split", destination: "/:locale/pdf/organizer", permanent: true },
+      { source: "/:locale/pdf/rotate", destination: "/:locale/pdf/organizer", permanent: true },
+    ];
+  },
   webpack: (config) => {
     config.experiments = {
       ...config.experiments,

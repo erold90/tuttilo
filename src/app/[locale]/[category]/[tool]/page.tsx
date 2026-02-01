@@ -21,7 +21,7 @@ import { RegexTester } from "@/components/tools/regex-tester";
 // Sprint 2 (Image)
 import { CompressImage } from "@/components/tools/compress-image";
 // Sprint 3 (PDF)
-import { MergePdf } from "@/components/tools/merge-pdf";
+import { PdfOrganizer } from "@/components/tools/pdf-organizer";
 // Sprint 4 (Audio/Media)
 import { QrCode } from "@/components/tools/qr-code";
 import { SvgToPng } from "@/components/tools/svg-to-png";
@@ -29,11 +29,7 @@ import { VoiceRecorder } from "@/components/tools/voice-recorder";
 import { ScreenRecorder } from "@/components/tools/screen-recorder";
 // VideoToMp3 moved to ffmpeg-tools.tsx (uses FFmpeg)
 import { AudioCutter } from "@/components/tools/audio-cutter";
-import { SplitPdf } from "@/components/tools/split-pdf";
 import { CompressPdf } from "@/components/tools/compress-pdf";
-import { PdfToJpg } from "@/components/tools/pdf-to-jpg";
-import { JpgToPdf } from "@/components/tools/jpg-to-pdf";
-import { RotatePdf } from "@/components/tools/rotate-pdf";
 import { ResizeImage } from "@/components/tools/resize-image";
 import { CropImage } from "@/components/tools/crop-image";
 import { PngToJpg } from "@/components/tools/png-to-jpg";
@@ -41,12 +37,11 @@ import { JpgToPng } from "@/components/tools/jpg-to-png";
 import { WebpToPng } from "@/components/tools/webp-to-png";
 import { WebpToJpg } from "@/components/tools/webp-to-jpg";
 import { HeicToJpg } from "@/components/tools/heic-to-jpg";
-// Sprint 5 (PDF Advanced)
-import { PdfToPng } from "@/components/tools/pdf-to-png";
+// Sprint 5 (PDF Advanced — consolidated)
+import { PdfToImages } from "@/components/tools/pdf-to-images";
 import { ImagesToPdf } from "@/components/tools/images-to-pdf";
 import { UnlockPdf } from "@/components/tools/unlock-pdf";
-import { WordToPdf } from "@/components/tools/word-to-pdf";
-import { PdfToWord } from "@/components/tools/pdf-to-word";
+import { PdfWord } from "@/components/tools/pdf-word";
 // Sprint 6 (Video) — via client wrapper for ssr:false (FFmpeg references document)
 import { CompressVideo, TrimVideo, VideoToGif, AudioConverter, VideoToMp3 } from "@/components/tools/ffmpeg-tools";
 import { YoutubeThumbnail } from "@/components/tools/youtube-thumbnail";
@@ -68,23 +63,18 @@ const toolComponents: Record<string, React.ComponentType> = {
   "webp-to-png": WebpToPng,
   "webp-to-jpg": WebpToJpg,
   "heic-to-jpg": HeicToJpg,
-  "merge-pdf": MergePdf,
-  "split-pdf": SplitPdf,
+  "pdf-organizer": PdfOrganizer,
   "compress-pdf": CompressPdf,
-  "pdf-to-jpg": PdfToJpg,
-  "jpg-to-pdf": JpgToPdf,
-  "rotate-pdf": RotatePdf,
   "qr-code": QrCode,
   "svg-to-png": SvgToPng,
   "voice-recorder": VoiceRecorder,
   "screen-recorder": ScreenRecorder,
   "video-to-mp3": VideoToMp3,
   "audio-cutter": AudioCutter,
-  "pdf-to-png": PdfToPng,
+  "pdf-to-images": PdfToImages,
   "images-to-pdf": ImagesToPdf,
   "unlock-pdf": UnlockPdf,
-  "word-to-pdf": WordToPdf,
-  "pdf-to-word": PdfToWord,
+  "pdf-word": PdfWord,
   "compress-video": CompressVideo,
   "trim-video": TrimVideo,
   "video-to-gif": VideoToGif,
