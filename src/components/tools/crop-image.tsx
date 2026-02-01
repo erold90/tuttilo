@@ -4,13 +4,19 @@ import { useState, useRef, useCallback } from "react";
 import { useTranslations } from "next-intl";
 import Cropper from "react-cropper";
 import "cropperjs/dist/cropper.css";
+import { canvasToBlob, cleanupCanvas, formatFileSize, triggerDownload, revokeUrls } from "@/lib/image-utils";
 
 export function CropImage() {
   const t = useTranslations("tools.crop-image.ui");
   const [file, setFile] = useState<File | null>(null);
   const [preview, setPreview] = useState("");
   const [resultUrl, setResultUrl] = useState("");
+  const [processing, setProcessing] = useState(false);
+  const [error, setError] = useState("");
   const [aspectRatio, setAspectRatio] = useState<number>(NaN);
+  const [quality, setQuality] = useState(92);
+  const [originalSize, setOriginalSize] = useState(0);
+  const [resultSize, setResultSize] = useState(0);
   const [dragOver, setDragOver] = useState(false);
   const inputRef = useRef<HTMLInputElement>(null);
   const cropperRef = useRef<Cropper>(null);
@@ -19,31 +25,49 @@ export function CropImage() {
     setFile(f);
     setPreview(URL.createObjectURL(f));
     setResultUrl("");
+    setError("");
+    setOriginalSize(f.size);
+    setResultSize(0);
   }
 
-  const crop = useCallback(() => {
+  const crop = useCallback(async () => {
     const cropper = (cropperRef.current as any)?.cropper;
-    if (!cropper) return;
-    const mime = file?.type === "image/png" ? "image/png" : "image/jpeg";
-    const url = cropper.getCroppedCanvas().toDataURL(mime, 0.92);
-    setResultUrl(url);
-  }, [file]);
+    if (!cropper || !file) return;
+    setProcessing(true);
+    setError("");
+    try {
+      const canvas = cropper.getCroppedCanvas() as HTMLCanvasElement;
+      const mime = file.type === "image/png" ? "image/png" : "image/jpeg";
+      const blob = await canvasToBlob(canvas, mime, quality / 100);
+
+      revokeUrls(resultUrl);
+      const url = URL.createObjectURL(blob);
+      setResultUrl(url);
+      setResultSize(blob.size);
+      // Note: don't cleanup cropper's canvas — it still owns it
+    } catch {
+      setError(t("error"));
+    }
+    setProcessing(false);
+  }, [file, quality, resultUrl, t]);
 
   function download() {
     if (!resultUrl || !file) return;
-    const a = document.createElement("a");
-    a.href = resultUrl;
     const ext = file.name.replace(/.*\./, "");
-    a.download = file.name.replace(`.${ext}`, `-cropped.${ext}`);
-    a.click();
+    triggerDownload(resultUrl, file.name.replace(`.${ext}`, `-cropped.${ext}`));
   }
 
   function reset() {
-    if (preview) URL.revokeObjectURL(preview);
+    revokeUrls(preview, resultUrl);
     setFile(null);
     setPreview("");
     setResultUrl("");
+    setError("");
+    setOriginalSize(0);
+    setResultSize(0);
   }
+
+  const isJpeg = file?.type !== "image/png";
 
   const aspects: { label: string; value: number }[] = [
     { label: t("freeform"), value: NaN },
@@ -91,6 +115,17 @@ export function CropImage() {
             ))}
           </div>
 
+          {/* Quality slider (only for JPEG output) */}
+          {isJpeg && (
+            <div className="space-y-2">
+              <div className="flex items-center justify-between">
+                <label className="text-sm font-medium">{t("quality")}</label>
+                <span className="text-sm font-mono text-primary">{quality}%</span>
+              </div>
+              <input type="range" min={10} max={100} value={quality} onChange={(e) => setQuality(Number(e.target.value))} className="w-full accent-primary" />
+            </div>
+          )}
+
           {/* Cropper */}
           <div className="overflow-hidden rounded-lg border border-border">
             <Cropper
@@ -106,10 +141,15 @@ export function CropImage() {
             />
           </div>
 
+          {/* Error */}
+          {error && (
+            <div className="rounded-md border border-red-500/30 bg-red-500/10 p-3 text-sm text-red-500">{error}</div>
+          )}
+
           {/* Actions */}
           <div className="flex flex-wrap gap-3">
-            <button onClick={crop} className="rounded-md bg-primary px-4 py-2 text-sm font-medium text-primary-foreground transition-colors hover:bg-primary/90">
-              {t("crop")}
+            <button onClick={crop} disabled={processing} className="rounded-md bg-primary px-4 py-2 text-sm font-medium text-primary-foreground transition-colors hover:bg-primary/90 disabled:opacity-50">
+              {processing ? t("processing") : t("crop")}
             </button>
             {resultUrl && (
               <button onClick={download} className="rounded-md bg-green-600 px-4 py-2 text-sm font-medium text-white transition-colors hover:bg-green-700">
@@ -120,6 +160,20 @@ export function CropImage() {
               {t("reset")}
             </button>
           </div>
+
+          {/* File size info */}
+          {resultSize > 0 && (
+            <div className="flex gap-3">
+              <div className="rounded-lg border border-border bg-card px-4 py-2 text-center">
+                <p className="text-sm font-bold">{formatFileSize(originalSize)}</p>
+                <p className="text-xs text-muted-foreground">{t("originalSize")}</p>
+              </div>
+              <div className="rounded-lg border border-border bg-card px-4 py-2 text-center">
+                <p className="text-sm font-bold text-primary">{formatFileSize(resultSize)}</p>
+                <p className="text-xs text-muted-foreground">{t("resultSize")}</p>
+              </div>
+            </div>
+          )}
 
           {/* Result preview */}
           {resultUrl && (

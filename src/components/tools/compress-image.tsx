@@ -2,15 +2,16 @@
 
 import { useState, useRef, useCallback } from "react";
 import { useTranslations } from "next-intl";
-import imageCompression from "browser-image-compression";
+import { compressImage, formatFileSize, triggerDownload, revokeUrls } from "@/lib/image-utils";
 
 export function CompressImage() {
   const t = useTranslations("tools.compress-image.ui");
   const [file, setFile] = useState<File | null>(null);
   const [preview, setPreview] = useState("");
-  const [result, setResult] = useState<Blob | null>(null);
   const [resultUrl, setResultUrl] = useState("");
   const [processing, setProcessing] = useState(false);
+  const [progress, setProgress] = useState(0);
+  const [error, setError] = useState("");
   const [quality, setQuality] = useState(80);
   const [originalSize, setOriginalSize] = useState(0);
   const [compressedSize, setCompressedSize] = useState(0);
@@ -21,78 +22,47 @@ export function CompressImage() {
     setFile(f);
     setOriginalSize(f.size);
     setPreview(URL.createObjectURL(f));
-    setResult(null);
     setResultUrl("");
     setCompressedSize(0);
+    setError("");
+    setProgress(0);
   }
 
   const compress = useCallback(async () => {
     if (!file) return;
     setProcessing(true);
+    setError("");
+    setProgress(0);
     try {
-      const compressed = await imageCompression(file, {
-        maxSizeMB: (file.size / 1024 / 1024) * (quality / 100),
-        maxWidthOrHeight: 4096,
-        useWebWorker: true,
-        initialQuality: quality / 100,
+      const blob = await compressImage(file, {
+        quality: quality / 100,
+        onProgress: setProgress,
       });
-      setCompressedSize(compressed.size);
-      const url = URL.createObjectURL(compressed);
-      setResult(compressed);
-      setResultUrl(url);
+
+      setCompressedSize(blob.size);
+      revokeUrls(resultUrl);
+      setResultUrl(URL.createObjectURL(blob));
     } catch {
-      // fallback: use canvas
-      const img = new Image();
-      img.onload = () => {
-        const canvas = document.createElement("canvas");
-        canvas.width = img.width;
-        canvas.height = img.height;
-        const ctx = canvas.getContext("2d")!;
-        ctx.drawImage(img, 0, 0);
-        canvas.toBlob(
-          (blob) => {
-            if (blob) {
-              setCompressedSize(blob.size);
-              setResult(blob);
-              setResultUrl(URL.createObjectURL(blob));
-            }
-            setProcessing(false);
-          },
-          "image/jpeg",
-          quality / 100
-        );
-      };
-      img.onerror = () => setProcessing(false);
-      img.src = URL.createObjectURL(file);
-      return;
+      setError(t("error"));
     }
     setProcessing(false);
-  }, [file, quality]);
+  }, [file, quality, resultUrl, t]);
 
   function download() {
     if (!resultUrl || !file) return;
-    const a = document.createElement("a");
-    a.href = resultUrl;
     const ext = file.name.replace(/.*\./, "");
-    a.download = file.name.replace(`.${ext}`, `-compressed.${ext}`);
-    a.click();
+    triggerDownload(resultUrl, file.name.replace(`.${ext}`, `-compressed.${ext}`));
   }
 
   function reset() {
-    if (preview) URL.revokeObjectURL(preview);
-    if (resultUrl) URL.revokeObjectURL(resultUrl);
+    revokeUrls(preview, resultUrl);
     setFile(null);
     setPreview("");
-    setResult(null);
     setResultUrl("");
     setCompressedSize(0);
     setOriginalSize(0);
-  }
-
-  function formatSize(bytes: number) {
-    if (bytes < 1024) return `${bytes} B`;
-    if (bytes < 1024 * 1024) return `${(bytes / 1024).toFixed(1)} KB`;
-    return `${(bytes / 1024 / 1024).toFixed(2)} MB`;
+    setError("");
+    setProgress(0);
   }
 
   const savings = originalSize > 0 && compressedSize > 0
@@ -132,6 +102,27 @@ export function CompressImage() {
             />
           </div>
 
+          {/* Error */}
+          {error && (
+            <div className="rounded-md border border-red-500/30 bg-red-500/10 p-3 text-sm text-red-500">{error}</div>
+          )}
+
+          {/* Progress bar */}
+          {processing && (
+            <div className="space-y-1">
+              <div className="flex items-center justify-between text-xs text-muted-foreground">
+                <span>{t("processing")}</span>
+                <span>{progress}%</span>
+              </div>
+              <div className="h-2 w-full overflow-hidden rounded-full bg-muted">
+                <div
+                  className="h-full rounded-full bg-primary transition-all duration-300"
+                  style={{ width: `${progress}%` }}
+                />
+              </div>
+            </div>
+          )}
+
           {/* Actions */}
           <div className="flex flex-wrap gap-3">
             <button onClick={compress} disabled={processing} className="rounded-md bg-primary px-4 py-2 text-sm font-medium text-primary-foreground transition-colors hover:bg-primary/90 disabled:opacity-50">
@@ -151,11 +142,11 @@ export function CompressImage() {
           {compressedSize > 0 && (
             <div className="grid grid-cols-3 gap-3">
               <div className="rounded-lg border border-border bg-card p-4 text-center">
-                <p className="text-lg font-bold">{formatSize(originalSize)}</p>
+                <p className="text-lg font-bold">{formatFileSize(originalSize)}</p>
                 <p className="text-xs text-muted-foreground">{t("originalSize")}</p>
               </div>
               <div className="rounded-lg border border-border bg-card p-4 text-center">
-                <p className="text-lg font-bold text-primary">{formatSize(compressedSize)}</p>
+                <p className="text-lg font-bold text-primary">{formatFileSize(compressedSize)}</p>
                 <p className="text-xs text-muted-foreground">{t("compressedSize")}</p>
               </div>
               <div className="rounded-lg border border-border bg-card p-4 text-center">
