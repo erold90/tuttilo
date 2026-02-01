@@ -37,10 +37,27 @@
 - **Progress UX**: Tutti i tool mostrano progresso % durante elaborazione PDF complessi
 - **Piano completo**: `docs/PDF_SYSTEM_PLAN.md` — Fasi 1-3 COMPLETATE, Fase 4 (mupdf) opzionale
 
+## Sistema Immagini Robusto (2026-02-01) — COMPLETO
+- **Obiettivo**: Rendere gli 8 image tool veloci, stabili e potenti
+- **Fase 1**: Creato `src/lib/image-utils.ts` (shared utility), refactored tutti 8 tool con error handling, fix critico crop-image toDataURL→canvasToBlob, deduplicazione 4 converter
+- **Fase 2**: Installato jSquash WASM (@jsquash/jpeg+png+webp), rimosso browser-image-compression, webpack asyncWebAssembly+layers, Canvas fallback
+- **Fase 3**: Creato `src/hooks/use-batch-image.ts` + `src/components/tools/batch-image-list.tsx`, batch multi-file su 5 converter (png-to-jpg, jpg-to-png, webp-to-png, webp-to-jpg, heic-to-jpg)
+- **Fase 4**: Quality sliders su resize/crop/heic, file size display su tutti, progress indicators su compress/heic/batch
+- **Traduzioni**: error/quality/size/batch keys in tutte 8 lingue
+- **Build OK** — zero errori
+
 ## Cosa resta da fare
 - Sprint 7 (SEO & Performance): Core Web Vitals, sitemap dinamica, structured data
 - Sprint 8 (Footer Pages): About, Contact, Privacy, Terms
 - Vedere docs/ROADMAP.md per piano sprint completo
+
+## Deploy Automatico (2026-02-01)
+- **GitHub Actions** configurato: `.github/workflows/deploy.yml`
+- Ogni push su `main` (incluso MCP) → build automatica → deploy su Cloudflare Pages
+- Secrets GitHub: `CLOUDFLARE_API_TOKEN` + `CLOUDFLARE_ACCOUNT_ID` configurati
+- NON serve più wrangler login locale o deploy manuale
+- Monitoraggio: https://github.com/erold90/tuttilo/actions
+- Tempo medio: ~2:30 minuti
 
 ## Decisioni prese
 1. Dominio: tuttilo.com
@@ -60,11 +77,28 @@
 15. mammoth: dynamic import per DOCX→HTML (browser-side)
 16. docx: client-side DOCX creation via Packer.toBlob()
 17. FFmpeg.wasm: single-threaded mode, WASM da unpkg CDN, client wrapper pattern
+18. Deploy automatico via GitHub Actions (non più wrangler manuale)
 
 ## Problemi aperti
 - git push locale non funziona (SSH key mismatch witerose ≠ erold90) — usare MCP GitHub
 - HTTPS push fallisce ("could not read Username") — usare MCP GitHub
 - @cloudflare/next-on-pages è deprecated, migrare a OpenNext in futuro
+
+## File creati/modificati — Sistema Immagini Robusto
+- `src/lib/image-utils.ts` — CREATE. Shared utility (loadImage, canvasToBlob, cleanupCanvas, formatFileSize, triggerDownload, revokeUrls, convertImageFormat, compressImage + jSquash WASM)
+- `src/hooks/use-batch-image.ts` — CREATE. Batch processing hook (sequential processing, per-file status, abort support)
+- `src/components/tools/batch-image-list.tsx` — CREATE. Reusable batch file list UI component
+- `src/components/tools/compress-image.tsx` — MODIFY (jSquash compressImage + progress bar)
+- `src/components/tools/resize-image.tsx` — MODIFY (error handling, quality slider, file size display)
+- `src/components/tools/crop-image.tsx` — MODIFY (toDataURL→canvasToBlob fix, quality slider, error handling)
+- `src/components/tools/png-to-jpg.tsx` — MODIFY (convertImageFormat + batch)
+- `src/components/tools/jpg-to-png.tsx` — MODIFY (convertImageFormat + batch)
+- `src/components/tools/webp-to-png.tsx` — MODIFY (convertImageFormat + batch)
+- `src/components/tools/webp-to-jpg.tsx` — MODIFY (convertImageFormat + batch)
+- `src/components/tools/heic-to-jpg.tsx` — MODIFY (quality slider + batch + file size)
+- `next.config.ts` — MODIFY (webpack asyncWebAssembly + layers experiments)
+- `package.json` — MODIFY (+@jsquash/jpeg+png+webp, -browser-image-compression)
+- `src/messages/*.json` (x8) — MODIFY (error/quality/size/batch translation keys)
 
 ## File creati/modificati in Sprint 6
 - `src/lib/ffmpeg.ts` — Shared FFmpeg utility (lazy load, singleton, progress callback)

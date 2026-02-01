@@ -1,27 +1,27 @@
-# Sprint Corrente: Post-QA — Sistema PDF Robusto
+# Sprint Corrente: Post-QA — Sistema Immagini Robusto
 
 ## Obiettivo
-Completare il sistema PDF robusto con fallback pdfjs-dist, memory leak fix, e UX improvements.
-
-## Stato QA
-**QA COMPLETATO** — 36/36 tool testati, 11 bug trovati e fixati (vedi docs/TESTING_ROADMAP.md)
+Rendere gli 8 image tool veloci, stabili e potenti — come fatto per i PDF.
 
 ## Task
 
 | # | Task | Status | Note |
 |---|------|--------|------|
-| PDF.1 | Fase 1: Fallback loadPdfRobust | DONE | pdf-utils.ts + 5 tool aggiornati |
-| PDF.2 | Fase 2: Memory leak fix pdfjs-dist | DONE | doc.destroy() su 3 tool + canvas cleanup |
-| PDF.3 | Fase 3: Progress UX fallback | DONE | onProgress callback + progress % su 5 tool |
-| PDF.4 | Fase 4: Migrazione mupdf (opzionale) | DEFERRED | 13.7MB WASM, non necessario ora |
+| IMG.1 | Fase 1: image-utils.ts shared utility | DONE | loadImage, canvasToBlob, cleanupCanvas, formatFileSize, triggerDownload, revokeUrls, convertImageFormat |
+| IMG.2 | Fase 1: Refactor 8 tool con error handling | DONE | try/catch + error state su tutti, fix crop-image toDataURL→canvasToBlob |
+| IMG.3 | Fase 1: Traduzioni error/quality 8 lingue | DONE | error key + quality/size keys in EN/IT/ES/FR/DE/PT/JA/KO |
+| IMG.4 | Fase 2: jSquash WASM + remove browser-image-compression | DONE | @jsquash/jpeg+png+webp, Canvas fallback, webpack asyncWebAssembly |
+| IMG.5 | Fase 3: Batch processing 5 converter tools | DONE | use-batch-image hook + BatchImageList component + multi-file su 5 tool |
+| IMG.6 | Fase 3: Traduzioni batch 8 lingue | DONE | common.batch keys in tutte 8 lingue |
+| IMG.7 | Fase 4: Quality sliders + file size + progress | DONE | Completato durante Fase 1 (quality su resize/crop/heic, size display, progress) |
+| IMG.8 | Build verification | DONE | npm run build OK — zero errori |
 
 ## Progresso
-- Completati: 3/4
-- Deferred: 1/4 (mupdf — non necessario)
+- Completati: 8/8
 
 ## Prossimi Sprint
 - Sprint 7 (SEO & Performance): Core Web Vitals, sitemap dinamica, structured data
 - Sprint 8 (Footer Pages): About, Contact, Privacy, Terms
 
 ## Ultimo aggiornamento
-2026-02-01 — Fasi 1-3 sistema PDF completate. Build OK.
+2026-02-01 — Sistema Immagini Robusto completato (4 fasi). Build OK.
