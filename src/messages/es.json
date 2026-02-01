@@ -1,1 +1,1191 @@
-PLACEHOLDER
+{
+  "common": {
+    "siteName": "Tuttilo",
+    "tagline": "Todas las herramientas online en un solo lugar",
+    "searchPlaceholder": "Buscar una herramienta...",
+    "darkMode": "Modo oscuro",
+    "lightMode": "Modo claro",
+    "systemMode": "Tema del sistema",
+    "toggleTheme": "Cambiar tema",
+    "switchLanguage": "Cambiar idioma",
+    "languages": {
+      "it": "Italiano",
+      "en": "English",
+      "es": "Español",
+      "fr": "Français",
+      "de": "Deutsch",
+      "pt": "Português",
+      "ja": "日本語",
+      "ko": "한국어"
+    },
+    "privacyBadge": "Tus archivos nunca salen del navegador",
+    "free": "Gratuito",
+    "noRegistration": "Sin registro",
+    "noLimits": "Sin límites",
+    "faq": "Preguntas Frecuentes",
+    "relatedTools": "Herramientas Relacionadas",
+    "tryNow": "Probar ahora",
+    "home": "Inicio",
+    "batch": {
+      "processing": "Procesando...",
+      "done": "¡Hecho!",
+      "convertAll": "Convertir Todos",
+      "downloadAll": "Descargar Todos",
+      "reset": "Empezar de nuevo",
+      "download": "Descargar"
+    }
+  },
+  "nav": {
+    "pdf": "PDF",
+    "image": "Imágenes",
+    "video": "Vídeo",
+    "audio": "Audio",
+    "text": "Texto",
+    "developer": "Desarrolladores",
+    "youtube": "YouTube",
+    "allTools": "Todas las herramientas",
+    "home": "Inicio",
+    "openMenu": "Abrir menú"
+  },
+  "home": {
+    "title": "Todas las herramientas online que necesitas",
+    "subtitle": "Gratis, sin registro, directamente en tu navegador. Edita PDF, imágenes, vídeos, audio y mucho más.",
+    "searchPlaceholder": "¿Qué quieres hacer? Busca entre más de 45 herramientas...",
+    "privacyNote": "Tus archivos nunca salen del navegador",
+    "categories": "Categorías",
+    "categoryDesc": {
+      "pdf": "Combina, divide, comprime y convierte PDF",
+      "image": "Comprime, redimensiona y convierte imágenes",
+      "video": "Comprime, recorta y convierte vídeos",
+      "audio": "Corta, convierte y graba audio",
+      "text": "Cuenta palabras, compara textos y más",
+      "developer": "JSON, Base64, Regex, QR Code y más",
+      "youtube": "Miniaturas y transcripciones de YouTube"
+    },
+    "popularTools": "Herramientas más populares",
+    "allTools": "Todas las herramientas",
+    "stats": {
+      "tools": "45+ herramientas",
+      "filesProcessed": "Archivos procesados",
+      "noUpload": "100% en el navegador"
+    },
+    "features": {
+      "privacy": {
+        "title": "Privacidad garantizada",
+        "desc": "Tus archivos se procesan directamente en tu navegador. Sin subidas a servidores externos."
+      },
+      "fast": {
+        "title": "Rápido y gratuito",
+        "desc": "Todas las herramientas son gratuitas y funcionan al instante, sin esperas."
+      },
+      "free": {
+        "title": "Sin registro",
+        "desc": "No se necesita cuenta. Usa cualquier herramienta de inmediato, sin límites."
+      }
+    }
+  },
+  "search": {
+    "openSearch": "Buscar",
+    "title": "Buscar herramientas",
+    "placeholder": "Buscar entre las herramientas...",
+    "noResults": "No se encontraron resultados",
+    "hint": "Usa las teclas de flecha para navegar"
+  },
+  "tools": {
+    "merge-pdf": {
+      "name": "Combinar PDF",
+      "description": "Combina varios archivos PDF en un solo documento",
+      "seo": {
+        "title": "Combinar archivos PDF online gratis",
+        "content": "Une varios archivos PDF en un solo documento de forma rápida y sencilla. Reorganiza las páginas como prefieras. Totalmente gratuito, sin registro y procesado directamente en tu navegador."
+      },
+      "faq": {
+        "q1": "¿Cuántos archivos PDF puedo combinar a la vez?",
+        "a1": "Puedes combinar tantos archivos PDF como necesites. Simplemente arrastra todos los documentos a la zona de carga y ordénalos como quieras antes de fusionarlos.",
+        "q2": "¿Puedo cambiar el orden de los archivos antes de combinarlos?",
+        "a2": "Sí, puedes reorganizar los archivos con los botones de mover arriba y abajo, o arrastrándolos a la posición deseada antes de iniciar la combinación.",
+        "q3": "¿Se mantiene la calidad de los PDF originales?",
+        "a3": "Sí, la combinación preserva la calidad original de cada documento. Las páginas, fuentes, imágenes y formato se mantienen exactamente como en los archivos originales."
+      },
+      "ui": {
+        "dropzone": "Arrastra archivos PDF aquí o haz clic para seleccionar",
+        "dropzoneHint": "Puedes seleccionar varios archivos PDF",
+        "files": "Archivos",
+        "pages": "páginas",
+        "moveUp": "Mover arriba",
+        "moveDown": "Mover abajo",
+        "remove": "Eliminar",
+        "merge": "Combinar PDF",
+        "processing": "Combinando...",
+        "done": "¡Combinación completada!",
+        "download": "Descargar PDF",
+        "reset": "Reiniciar",
+        "invalidPdf": "Archivo PDF no válido",
+        "mergeError": "Error al combinar los archivos. Inténtalo de nuevo."
+      }
+    },
+    "split-pdf": {
+      "name": "Dividir PDF",
+      "description": "Divide un PDF en varios archivos separados",
+      "seo": {
+        "title": "Dividir archivos PDF online gratis",
+        "content": "Divide documentos PDF en archivos individuales por página o por rango personalizado. Extrae solo las páginas que necesitas. Gratuito, sin registro y procesado en tu navegador."
+      },
+      "faq": {
+        "q1": "¿Puedo extraer páginas específicas de un PDF?",
+        "a1": "Sí, puedes dividir todas las páginas individualmente o especificar un rango personalizado (por ejemplo, 1-3, 5, 7-10) para extraer solo las páginas que necesitas.",
+        "q2": "¿Qué formato tiene el rango de páginas?",
+        "a2": "Usa números separados por comas para páginas individuales y guiones para rangos. Por ejemplo: 1,3,5-8 extraerá las páginas 1, 3, y de la 5 a la 8.",
+        "q3": "¿Se mantiene la calidad al dividir?",
+        "a3": "Sí, la división no afecta la calidad del contenido. Cada página extraída mantiene exactamente la misma calidad, fuentes e imágenes que el documento original."
+      },
+      "ui": {
+        "dropzone": "Arrastra un archivo PDF aquí o haz clic para seleccionar",
+        "dropzoneHint": "Selecciona un archivo PDF para dividir",
+        "pages": "páginas",
+        "splitAll": "Dividir todas las páginas",
+        "splitRange": "Dividir por rango",
+        "rangeLabel": "Rango de páginas",
+        "rangePlaceholder": "ej. 1-3, 5, 7-10",
+        "rangeHint": "Usa comas y guiones para definir el rango",
+        "split": "Dividir PDF",
+        "processing": "Dividiendo...",
+        "results": "Resultados",
+        "download": "Descargar",
+        "reset": "Reiniciar",
+        "invalidPdf": "Archivo PDF no válido",
+        "splitError": "Error al dividir el archivo. Inténtalo de nuevo.",
+        "invalidRange": "Rango de páginas no válido"
+      }
+    },
+    "compress-pdf": {
+      "name": "Comprimir PDF",
+      "description": "Reduce el tamaño de archivos PDF manteniendo la calidad",
+      "seo": {
+        "title": "Comprimir archivos PDF online gratis",
+        "content": "Reduce el tamaño de tus archivos PDF sin perder calidad significativa. Ideal para enviar por correo electrónico o subir a plataformas con límite de tamaño. Gratuito y procesado en tu navegador."
+      },
+      "faq": {
+        "q1": "¿Cuánto se puede reducir el tamaño del PDF?",
+        "a1": "La reducción depende del contenido del PDF. Los documentos con muchas imágenes pueden reducirse significativamente, mientras que los PDF con solo texto ya son bastante compactos.",
+        "q2": "¿La compresión afecta la calidad del documento?",
+        "a2": "La compresión optimiza las imágenes y los recursos del PDF de forma inteligente. El resultado mantiene una buena calidad visual con un tamaño de archivo mucho menor.",
+        "q3": "¿Puedo comprimir un PDF protegido con contraseña?",
+        "a3": "Los PDF protegidos deben desbloquearse primero. Puedes usar nuestra herramienta Desbloquear PDF y luego comprimir el archivo resultante."
+      },
+      "ui": {
+        "dropzone": "Arrastra un archivo PDF aquí o haz clic para seleccionar",
+        "dropzoneHint": "Selecciona un archivo PDF para comprimir",
+        "compress": "Comprimir PDF",
+        "processing": "Comprimiendo...",
+        "done": "¡Compresión completada!",
+        "original": "Original",
+        "compressed": "Comprimido",
+        "reduction": "Reducción",
+        "noReduction": "El archivo ya está optimizado",
+        "download": "Descargar PDF",
+        "reset": "Reiniciar",
+        "invalidPdf": "Archivo PDF no válido",
+        "compressError": "Error al comprimir el archivo. Inténtalo de nuevo."
+      }
+    },
+    "pdf-to-jpg": {
+      "name": "PDF a JPG",
+      "description": "Convierte páginas PDF en imágenes JPG",
+      "seo": {
+        "title": "Convertir PDF a JPG online gratis",
+        "content": "Convierte cada página de un PDF en una imagen JPG de alta calidad. Ajusta la calidad de salida según tus necesidades. Gratuito, sin registro y completamente privado."
+      },
+      "faq": {
+        "q1": "¿Se convierten todas las páginas del PDF?",
+        "a1": "Sí, cada página del documento PDF se convierte en una imagen JPG individual. Puedes descargar todas las imágenes o solo las que necesites.",
+        "q2": "¿Puedo ajustar la calidad de las imágenes?",
+        "a2": "Sí, puedes ajustar la calidad de salida con un control deslizante. Mayor calidad produce imágenes más nítidas pero con mayor tamaño de archivo.",
+        "q3": "¿Qué resolución tienen las imágenes resultantes?",
+        "a3": "Las imágenes se generan a una resolución que mantiene la nitidez del documento original. La calidad final depende del ajuste seleccionado y del contenido del PDF."
+      },
+      "ui": {
+        "dropzone": "Arrastra un archivo PDF aquí o haz clic para seleccionar",
+        "dropzoneHint": "Selecciona un archivo PDF para convertir",
+        "quality": "Calidad",
+        "convert": "Convertir a JPG",
+        "processing": "Convirtiendo...",
+        "results": "Resultados",
+        "downloadAll": "Descargar todo",
+        "download": "Descargar",
+        "reset": "Reiniciar",
+        "convertError": "Error al convertir el archivo. Inténtalo de nuevo."
+      }
+    },
+    "jpg-to-pdf": {
+      "name": "JPG a PDF",
+      "description": "Convierte imágenes JPG en un documento PDF",
+      "seo": {
+        "title": "Convertir JPG a PDF online gratis",
+        "content": "Convierte una o varias imágenes JPG en un documento PDF. Organiza las imágenes en el orden que prefieras. Gratuito, sin registro y procesado directamente en tu navegador."
+      },
+      "faq": {
+        "q1": "¿Puedo convertir varias imágenes en un solo PDF?",
+        "a1": "Sí, puedes seleccionar múltiples imágenes JPG y se combinarán en un único documento PDF, con cada imagen en una página separada.",
+        "q2": "¿Se mantiene la calidad de las imágenes?",
+        "a2": "Sí, las imágenes se integran en el PDF manteniendo su resolución y calidad original. No se aplica compresión adicional durante la conversión.",
+        "q3": "¿Puedo cambiar el orden de las imágenes?",
+        "a3": "Sí, puedes reorganizar las imágenes antes de la conversión para que aparezcan en el orden deseado en el documento PDF final."
+      },
+      "ui": {
+        "dropzone": "Arrastra imágenes JPG aquí o haz clic para seleccionar",
+        "dropzoneHint": "Puedes seleccionar varias imágenes JPG",
+        "images": "Imágenes",
+        "convert": "Convertir a PDF",
+        "processing": "Convirtiendo...",
+        "done": "¡Conversión completada!",
+        "download": "Descargar PDF",
+        "reset": "Reiniciar",
+        "convertError": "Error al convertir las imágenes. Inténtalo de nuevo."
+      }
+    },
+    "rotate-pdf": {
+      "name": "Rotar PDF",
+      "description": "Rota las páginas de un documento PDF",
+      "seo": {
+        "title": "Rotar páginas de PDF online gratis",
+        "content": "Rota las páginas de tus documentos PDF en 90, 180 o 270 grados. Aplica la rotación a todas las páginas o solo a las que elijas. Gratuito, sin registro y procesado en tu navegador."
+      },
+      "faq": {
+        "q1": "¿Puedo rotar solo algunas páginas del PDF?",
+        "a1": "Sí, puedes elegir entre rotar todas las páginas del documento o especificar páginas concretas introduciendo los números de página que deseas rotar.",
+        "q2": "¿Qué ángulos de rotación están disponibles?",
+        "a2": "Puedes rotar las páginas 90 grados (un cuarto de vuelta a la derecha), 180 grados (media vuelta) o 270 grados (un cuarto de vuelta a la izquierda).",
+        "q3": "¿La rotación afecta la calidad del PDF?",
+        "a3": "No, la rotación simplemente cambia la orientación de las páginas sin modificar ni recomprimir el contenido. La calidad se mantiene idéntica al original."
+      },
+      "ui": {
+        "dropzone": "Arrastra un archivo PDF aquí o haz clic para seleccionar",
+        "dropzoneHint": "Selecciona un archivo PDF para rotar",
+        "pages": "páginas",
+        "rotationAngle": "Ángulo de rotación",
+        "applyTo": "Aplicar a",
+        "allPages": "Todas las páginas",
+        "customPages": "Páginas específicas",
+        "pagesPlaceholder": "ej. 1, 3, 5-8",
+        "pagesHint": "Usa comas y guiones para definir las páginas",
+        "rotate": "Rotar PDF",
+        "processing": "Rotando...",
+        "done": "¡Rotación completada!",
+        "download": "Descargar PDF",
+        "reset": "Reiniciar",
+        "invalidPdf": "Archivo PDF no válido",
+        "rotateError": "Error al rotar el archivo. Inténtalo de nuevo.",
+        "invalidRange": "Rango de páginas no válido"
+      }
+    },
+    "pdf-to-word": {
+      "name": "PDF a Word",
+      "description": "Convierte documentos PDF en archivos Word editables",
+      "seo": {
+        "title": "Convertidor de PDF a Word online gratuito",
+        "content": "Convierte documentos PDF en archivos Word (DOCX) editables directamente en tu navegador. Extrae el texto preservando la estructura. Gratuito, privado, sin necesidad de subir archivos."
+      },
+      "faq": {
+        "q1": "¿Se conserva el formato del documento?",
+        "a1": "El texto y la estructura básica (párrafos, encabezados) se conservan. Los diseños complejos pueden requerir ajustes manuales tras la conversión.",
+        "q2": "¿Funciona con PDF escaneados?",
+        "a2": "No, la herramienta extrae texto digital del PDF. Los PDF escaneados (imágenes) no contienen texto extraíble y necesitan software de OCR.",
+        "q3": "¿Hay un límite de páginas?",
+        "a3": "No hay límite de páginas. El progreso de conversión se muestra durante el procesamiento. Todo ocurre en tu navegador."
+      },
+      "ui": {
+        "dropzone": "Arrastra un archivo PDF aquí o haz clic para seleccionar",
+        "dropzoneHint": "Archivos PDF de hasta 50 MB",
+        "convert": "Convertir a Word",
+        "processing": "Convirtiendo página {current} de {total}...",
+        "done": "¡Conversión completada!",
+        "download": "Descargar DOCX",
+        "reset": "Reiniciar",
+        "convertError": "Se produjo un error durante la conversión. Inténtalo de nuevo."
+      }
+    },
+    "word-to-pdf": {
+      "name": "Word a PDF",
+      "description": "Convierte documentos Word en PDF",
+      "seo": {
+        "title": "Convertidor de Word a PDF online gratuito",
+        "content": "Convierte documentos Word (DOCX, DOC) a PDF directamente en tu navegador. Conserva el formato y la maquetación. Gratuito, privado, sin necesidad de subir archivos."
+      },
+      "faq": {
+        "q1": "¿Qué formatos de Word son compatibles?",
+        "a1": "La herramienta es compatible con archivos DOCX (Microsoft Word 2007+). Los archivos DOC (formato antiguo) tienen compatibilidad limitada. Para mejores resultados, usa formato DOCX.",
+        "q2": "¿Se conserva el formato del documento?",
+        "a2": "El texto, encabezados, párrafos, listas y tablas se convierten correctamente. Algunos formatos complejos como fuentes personalizadas u objetos incrustados pueden aparecer de forma diferente.",
+        "q3": "¿Hay un límite de tamaño de archivo?",
+        "a3": "La herramienta soporta archivos Word de hasta 50 MB. Todo el procesamiento ocurre en tu navegador — tus archivos nunca se suben a ningún servidor."
+      },
+      "ui": {
+        "dropzone": "Arrastra un archivo Word aquí o haz clic para seleccionar",
+        "dropzoneHint": "Archivos DOCX y DOC de hasta 50 MB",
+        "convert": "Convertir a PDF",
+        "processing": "Convirtiendo...",
+        "done": "¡Conversión completada!",
+        "download": "Descargar PDF",
+        "reset": "Reiniciar",
+        "convertError": "Se produjo un error durante la conversión. Inténtalo de nuevo.",
+        "printHint": "Haz clic en Descargar PDF y selecciona 'Guardar como PDF' en el diálogo de impresión.",
+        "preview": "Vista previa"
+      }
+    },
+    "pdf-to-png": {
+      "name": "PDF a PNG",
+      "description": "Convierte páginas PDF en imágenes PNG",
+      "seo": {
+        "title": "Convertidor de PDF a PNG online gratuito",
+        "content": "Convierte páginas PDF en imágenes PNG de alta calidad directamente en tu navegador. Resolución ajustable con soporte de fondo transparente. Gratuito, privado, sin necesidad de subir archivos."
+      },
+      "faq": {
+        "q1": "¿Qué resolución tienen las imágenes PNG resultantes?",
+        "a1": "Puedes elegir entre escala 1x y 4x. A 2x (predeterminado), una página A4 estándar produce imágenes de aproximadamente 1654x2339 píxeles. Mayor escala significa mejor calidad pero archivos más grandes.",
+        "q2": "¿Puedo obtener fondos transparentes?",
+        "a2": "¡Sí! Activa la opción de transparencia para obtener imágenes PNG con fondo transparente en lugar de blanco. Útil para superponer contenido PDF sobre otros diseños.",
+        "q3": "¿Hay un límite de páginas?",
+        "a3": "No hay límite de páginas. Todas las páginas de tu PDF se convertirán en imágenes PNG individuales y se descargarán como ZIP. El procesamiento ocurre en tu navegador."
+      },
+      "ui": {
+        "dropzone": "Arrastra un archivo PDF aquí o haz clic para seleccionar",
+        "dropzoneHint": "Archivos PDF de hasta 100 MB",
+        "scale": "Resolución",
+        "transparent": "Fondo transparente",
+        "convert": "Convertir a PNG",
+        "processing": "Convirtiendo página {current} de {total}...",
+        "results": "Resultados",
+        "downloadAll": "Descargar todo",
+        "done": "¡Conversión completada!",
+        "download": "Descargar ZIP",
+        "reset": "Reiniciar",
+        "convertError": "Se produjo un error durante la conversión. Inténtalo de nuevo."
+      }
+    },
+    "unlock-pdf": {
+      "name": "Desbloquear PDF",
+      "description": "Elimina la contraseña de protección de archivos PDF",
+      "seo": {
+        "title": "Desbloqueador de PDF online gratuito",
+        "content": "Elimina la protección por contraseña y las restricciones de archivos PDF directamente en tu navegador. Desbloquea la impresión, copia y edición. Gratuito, privado, sin necesidad de subir archivos."
+      },
+      "faq": {
+        "q1": "¿Qué tipos de protección se pueden eliminar?",
+        "a1": "La herramienta puede eliminar contraseñas de propietario (que restringen edición, impresión o copia) y contraseñas de usuario (necesarias para abrir el PDF). Debes conocer la contraseña para desbloquear el archivo.",
+        "q2": "¿Necesito conocer la contraseña?",
+        "a2": "Para restricciones de permisos (edición, impresión, copia), no siempre es necesario. Para contraseñas de apertura (usuario), sí debes introducir la contraseña correcta.",
+        "q3": "¿Es legal usar esta herramienta?",
+        "a3": "Sí, siempre que tengas derecho a acceder al PDF. Esta herramienta está diseñada para usuarios que desean eliminar la protección de sus propios documentos por comodidad."
+      },
+      "ui": {
+        "dropzone": "Arrastra un archivo PDF aquí o haz clic para seleccionar",
+        "dropzoneHint": "Archivos PDF de hasta 100 MB",
+        "password": "Contraseña (si es necesaria)",
+        "passwordPlaceholder": "Introduce la contraseña del PDF...",
+        "passwordHint": "Deja vacío si el PDF solo tiene restricciones de permisos",
+        "unlock": "Desbloquear PDF",
+        "processing": "Desbloqueando...",
+        "done": "¡PDF desbloqueado!",
+        "download": "Descargar",
+        "reset": "Reiniciar",
+        "unlockError": "No se pudo desbloquear el PDF. Inténtalo de nuevo.",
+        "wrongPassword": "Contraseña incorrecta. Inténtalo de nuevo."
+      }
+    },
+    "images-to-pdf": {
+      "name": "Imágenes a PDF",
+      "description": "Combina varias imágenes en un solo documento PDF",
+      "seo": {
+        "title": "Convertidor de imágenes a PDF online gratuito",
+        "content": "Combina varias imágenes (JPG, PNG, WebP) en un solo documento PDF. Elige el tamaño de página y los márgenes. Reordena las imágenes fácilmente. Gratuito, privado, sin necesidad de subir archivos."
+      },
+      "faq": {
+        "q1": "¿Qué formatos de imagen son compatibles?",
+        "a1": "Puedes usar imágenes JPG, PNG y WebP. Todos los formatos son compatibles y se pueden mezclar en el mismo documento PDF.",
+        "q2": "¿Puedo reordenar las imágenes?",
+        "a2": "¡Sí! Después de cargarlas, puedes reordenar las imágenes usando las flechas de arriba/abajo. El PDF final seguirá el orden que establezcas.",
+        "q3": "¿Qué tamaños de página están disponibles?",
+        "a3": "Elige entre Ajustar a imagen (cada página se adapta al tamaño de la imagen), A4 o Carta. También puedes añadir márgenes (ninguno, pequeño, mediano, grande)."
+      },
+      "ui": {
+        "dropzone": "Arrastra imágenes aquí o haz clic para seleccionar",
+        "dropzoneHint": "JPG, PNG, WebP de hasta 50 MB cada una",
+        "images": "Imágenes",
+        "pageSizeFit": "Ajustar a imagen",
+        "convert": "Crear PDF",
+        "convertError": "Ocurrió un error. Intenta de nuevo.",
+        "pageSize": "Tamaño de página",
+        "fitToImage": "Ajustar a imagen",
+        "margin": "Margen",
+        "marginNone": "Ninguno",
+        "marginSmall": "Pequeño",
+        "marginMedium": "Mediano",
+        "marginLarge": "Grande",
+        "imagesCount": "{count} imágenes seleccionadas",
+        "moveUp": "Mover arriba",
+        "moveDown": "Mover abajo",
+        "removeImage": "Eliminar",
+        "addMore": "Añadir más imágenes",
+        "create": "Crear PDF",
+        "processing": "Creando PDF...",
+        "done": "¡PDF creado!",
+        "download": "Descargar PDF",
+        "reset": "Reiniciar",
+        "createError": "Se produjo un error al crear el PDF. Inténtalo de nuevo."
+      }
+    },
+    "pdf-editor": {
+      "name": "Editor PDF",
+      "description": "Edita, anota y firma tus documentos PDF"
+    },
+    "compress-image": {
+      "name": "Comprimir imagen",
+      "description": "Reduce el tamaño de las imágenes sin perder calidad",
+      "seo": {
+        "title": "Compresor de imágenes online gratuito",
+        "content": "Comprime imágenes JPG, PNG y WebP directamente en tu navegador. Reduce el tamaño manteniendo la calidad visual. Gratuito, sin subidas — tus archivos permanecen privados."
+      },
+      "faq": {
+        "q1": "¿Qué formatos de imagen puedo comprimir?",
+        "a1": "Puedes comprimir imágenes JPG, PNG y WebP. La herramienta procesa los archivos directamente en tu navegador usando algoritmos de compresión avanzados.",
+        "q2": "¿La compresión reduce la calidad de la imagen?",
+        "a2": "Puedes controlar la calidad con un deslizador. Mayor calidad significa archivos más grandes, menor calidad archivos más pequeños. El ajuste predeterminado ofrece un excelente equilibrio.",
+        "q3": "¿Hay un límite de tamaño de archivo?",
+        "a3": "La herramienta soporta imágenes de hasta 50 MB. Todo el procesamiento ocurre en tu navegador, por lo que archivos más grandes pueden tardar más en dispositivos lentos."
+      },
+      "ui": {
+        "dropzone": "Arrastra una imagen aquí o haz clic para seleccionar",
+        "quality": "Calidad",
+        "processing": "Comprimiendo...",
+        "compress": "Comprimir",
+        "download": "Descargar",
+        "reset": "Reiniciar",
+        "originalSize": "Tamaño original",
+        "compressedSize": "Tamaño comprimido",
+        "savings": "Ahorro",
+        "original": "Original",
+        "compressed": "Comprimida",
+        "error": "Error al comprimir. Intenta de nuevo con otra imagen."
+      }
+    },
+    "resize-image": {
+      "name": "Redimensionar imagen",
+      "description": "Cambia las dimensiones de tus imágenes",
+      "seo": {
+        "title": "Redimensionador de imágenes online gratuito",
+        "content": "Redimensiona imágenes JPG, PNG y WebP a cualquier tamaño. Bloquea la relación de aspecto, usa presets de porcentaje o introduce medidas personalizadas. Gratuito, todo en el navegador."
+      },
+      "faq": {
+        "q1": "¿Puedo mantener la relación de aspecto al redimensionar?",
+        "a1": "Sí, el bloqueo de relación de aspecto está activado por defecto. Cuando cambias el ancho o alto, la otra dimensión se ajusta automáticamente para mantener las proporciones.",
+        "q2": "¿Qué son los presets de porcentaje?",
+        "a2": "Los presets rápidos te permiten redimensionar al 25%, 50%, 75%, 150% o 200% del tamaño original con un solo clic.",
+        "q3": "¿El redimensionado afecta la calidad?",
+        "a3": "La herramienta usa interpolación bicúbica de alta calidad. Ampliar más allá del tamaño original puede reducir la nitidez, mientras que reducir mantiene la calidad."
+      },
+      "ui": {
+        "dropzone": "Arrastra una imagen aquí o haz clic para seleccionar",
+        "width": "Ancho",
+        "height": "Alto",
+        "lockAspectRatio": "Bloquear proporción",
+        "processing": "Redimensionando...",
+        "resize": "Redimensionar",
+        "download": "Descargar",
+        "reset": "Reiniciar",
+        "original": "Original",
+        "resized": "Redimensionada",
+        "originalDimensions": "Dimensiones originales",
+        "quality": "Calidad",
+        "originalSize": "Tamaño original",
+        "resultSize": "Tamaño resultado",
+        "error": "Error al redimensionar. Intenta de nuevo con otra imagen."
+      }
+    },
+    "crop-image": {
+      "name": "Recortar imagen",
+      "description": "Recorta tus imágenes con precisión",
+      "seo": {
+        "title": "Recortador de imágenes online gratuito",
+        "content": "Recorta imágenes JPG, PNG y WebP con un editor visual. Elige entre proporciones predefinidas o recorta libremente. Sin subidas — funciona completamente en tu navegador."
+      },
+      "faq": {
+        "q1": "¿Qué proporciones predefinidas están disponibles?",
+        "a1": "Puedes recortar con selección libre o usar presets: 1:1 (cuadrado), 16:9 (panorámico), 4:3 (estándar) y 3:2 (foto).",
+        "q2": "¿Puedo recortar con un tamaño de píxel exacto?",
+        "a2": "El editor visual te permite arrastrar para seleccionar cualquier área. Para tamaños exactos, combina con la herramienta Redimensionar después del recorte.",
+        "q3": "¿El recorte reduce la calidad?",
+        "a3": "No. El recorte simplemente extrae el área seleccionada a su resolución original. No se aplica recompresión a la región recortada."
+      },
+      "ui": {
+        "dropzone": "Arrastra una imagen aquí o haz clic para seleccionar",
+        "crop": "Recortar",
+        "download": "Descargar",
+        "reset": "Reiniciar",
+        "result": "Resultado",
+        "freeform": "Libre",
+        "quality": "Calidad",
+        "processing": "Recortando...",
+        "originalSize": "Tamaño original",
+        "resultSize": "Tamaño resultado",
+        "error": "Error al recortar. Intenta de nuevo con otra imagen."
+      }
+    },
+    "png-to-jpg": {
+      "name": "PNG a JPG",
+      "description": "Convierte imágenes PNG a formato JPG",
+      "seo": {
+        "title": "Convertidor PNG a JPG online gratuito",
+        "content": "Convierte imágenes PNG a formato JPG instantáneamente en tu navegador. Calidad ajustable, áreas transparentes rellenas de blanco. Sin subidas — completamente privado."
+      },
+      "faq": {
+        "q1": "¿Qué pasa con las áreas transparentes?",
+        "a1": "JPG no soporta transparencia. Las áreas transparentes del PNG se rellenarán con un fondo blanco durante la conversión.",
+        "q2": "¿Puedo controlar la calidad de salida?",
+        "a2": "Sí, usa el deslizador de calidad para equilibrar entre tamaño de archivo y calidad de imagen. Valores más altos producen mejores JPG pero más grandes.",
+        "q3": "¿Hay un límite de tamaño?",
+        "a3": "Se soportan imágenes de hasta 50 MB. La conversión ocurre completamente en tu navegador, así que tus archivos permanecen privados."
+      },
+      "ui": {
+        "dropzone": "Arrastra una imagen PNG aquí o haz clic para seleccionar",
+        "quality": "Calidad",
+        "processing": "Convirtiendo...",
+        "convert": "Convertir",
+        "download": "Descargar",
+        "reset": "Reiniciar",
+        "error": "Error en la conversión. Intenta de nuevo con otra imagen."
+      }
+    },
+    "jpg-to-png": {
+      "name": "JPG a PNG",
+      "description": "Convierte imágenes JPG a formato PNG con transparencia",
+      "seo": {
+        "title": "Convertidor JPG a PNG online gratuito",
+        "content": "Convierte imágenes JPG a formato PNG instantáneamente en tu navegador. PNG soporta transparencia y compresión sin pérdida. Gratuito, privado, sin registro."
+      },
+      "faq": {
+        "q1": "¿Por qué convertir JPG a PNG?",
+        "a1": "PNG soporta transparencia y compresión sin pérdida, ideal para logotipos, gráficos e imágenes que necesitan bordes nítidos sin artefactos de compresión.",
+        "q2": "¿Aumentará el tamaño del archivo?",
+        "a2": "Los archivos PNG son típicamente más grandes que los JPG porque PNG usa compresión sin pérdida. La ventaja es mayor calidad sin artefactos.",
+        "q3": "¿La conversión añade transparencia?",
+        "a3": "Convertir JPG a PNG no añade transparencia automáticamente. La imagen mantiene su contenido original, pero ahora está en un formato que soporta transparencia para ediciones futuras."
+      },
+      "ui": {
+        "dropzone": "Arrastra una imagen JPG aquí o haz clic para seleccionar",
+        "processing": "Convirtiendo...",
+        "convert": "Convertir",
+        "download": "Descargar",
+        "reset": "Reiniciar",
+        "error": "Error en la conversión. Intenta de nuevo con otra imagen."
+      }
+    },
+    "webp-to-png": {
+      "name": "WebP a PNG",
+      "description": "Convierte imágenes WebP a formato PNG",
+      "seo": {
+        "title": "Convertidor WebP a PNG online gratuito",
+        "content": "Convierte imágenes WebP a formato PNG instantáneamente en tu navegador. Mantiene transparencia y calidad. Sin subidas — tus archivos permanecen en tu dispositivo."
+      },
+      "faq": {
+        "q1": "¿Por qué convertir WebP a PNG?",
+        "a1": "Aunque WebP es excelente para la web, PNG es más ampliamente compatible con aplicaciones, editores de imagen y plataformas. La conversión garantiza máxima compatibilidad.",
+        "q2": "¿Se preserva la transparencia?",
+        "a2": "Sí. Si tu imagen WebP tiene áreas transparentes, se preservarán en la salida PNG.",
+        "q3": "¿Cambiará el tamaño del archivo?",
+        "a3": "Los archivos PNG pueden ser más grandes que los WebP ya que WebP usa compresión más agresiva. La calidad permanece idéntica."
+      },
+      "ui": {
+        "dropzone": "Arrastra una imagen WebP aquí o haz clic para seleccionar",
+        "processing": "Convirtiendo...",
+        "convert": "Convertir",
+        "download": "Descargar",
+        "reset": "Reiniciar",
+        "error": "Error en la conversión. Intenta de nuevo con otra imagen."
+      }
+    },
+    "webp-to-jpg": {
+      "name": "WebP a JPG",
+      "description": "Convierte imágenes WebP a formato JPG",
+      "seo": {
+        "title": "Convertidor WebP a JPG online gratuito",
+        "content": "Convierte imágenes WebP a formato JPG instantáneamente en tu navegador. Calidad ajustable con fondo blanco para transparencia. Gratuito, privado, sin registro."
+      },
+      "faq": {
+        "q1": "¿Qué pasa con las áreas transparentes en WebP?",
+        "a1": "JPG no soporta transparencia. Cualquier área transparente en la imagen WebP se rellenará con un fondo blanco.",
+        "q2": "¿Puedo ajustar la calidad del JPG?",
+        "a2": "Sí, usa el deslizador de calidad para ajustar la calidad de salida del 10% al 100%. Valores más altos significan mejor calidad pero archivos más grandes.",
+        "q3": "¿Es gratuita esta herramienta?",
+        "a3": "Sí, completamente gratuita y sin límites. La conversión se ejecuta en tu navegador, así que ningún dato se sube a ningún servidor."
+      },
+      "ui": {
+        "dropzone": "Arrastra una imagen WebP aquí o haz clic para seleccionar",
+        "quality": "Calidad",
+        "processing": "Convirtiendo...",
+        "convert": "Convertir",
+        "download": "Descargar",
+        "reset": "Reiniciar",
+        "error": "Error en la conversión. Intenta de nuevo con otra imagen."
+      }
+    },
+    "heic-to-jpg": {
+      "name": "HEIC a JPG",
+      "description": "Convierte fotos HEIC de iPhone a formato JPG",
+      "seo": {
+        "title": "Convertidor HEIC a JPG online gratuito",
+        "content": "Convierte fotos HEIC y HEIF de iPhone a formato JPG. Funciona directamente en tu navegador sin subidas. Gratuito, rápido y completamente privado."
+      },
+      "faq": {
+        "q1": "¿Qué es el formato HEIC?",
+        "a1": "HEIC (High Efficiency Image Container) es el formato de foto predeterminado de Apple en iPhone. Ofrece mejor compresión que JPG pero no es universalmente compatible.",
+        "q2": "¿Por qué convertir HEIC a JPG?",
+        "a2": "JPG es universalmente compatible con todos los dispositivos, aplicaciones y plataformas. Convertir HEIC a JPG garantiza que tus fotos se puedan abrir y compartir en cualquier lugar.",
+        "q3": "¿La conversión pierde calidad?",
+        "a3": "La conversión usa ajustes de alta calidad (92%) para minimizar la pérdida. El resultado es visualmente idéntico al original en la mayoría de los casos."
+      },
+      "ui": {
+        "dropzone": "Arrastra un archivo HEIC/HEIF aquí o haz clic para seleccionar",
+        "processing": "Convirtiendo...",
+        "convert": "Convertir",
+        "download": "Descargar",
+        "reset": "Reiniciar",
+        "result": "Resultado",
+        "quality": "Calidad",
+        "error": "La conversión ha fallado. Asegúrate de que el archivo sea una imagen HEIC válida."
+      }
+    },
+    "svg-to-png": {
+      "name": "SVG a PNG",
+      "description": "Convierte gráficos vectoriales SVG en imágenes PNG",
+      "seo": {
+        "title": "Convertidor de SVG a PNG Online Gratuito",
+        "content": "Convierte gráficos vectoriales SVG en imágenes PNG de alta calidad en tu navegador. Elige la escala (1x, 2x, 3x, 4x) para obtener un resultado nítido a cualquier resolución. Gratuito, privado, sin subidas."
+      },
+      "faq": {
+        "q1": "¿Por qué convertir SVG a PNG?",
+        "a1": "Aunque SVG es ideal para la web, PNG es compatible universalmente con todas las aplicaciones, redes sociales y apps de mensajería. La conversión garantiza que tus gráficos se muestren correctamente en cualquier lugar.",
+        "q2": "¿Qué significan las opciones de escala?",
+        "a2": "La escala multiplica las dimensiones del SVG. 1x mantiene el tamaño original, 2x lo duplica para pantallas retina y 4x crea una salida de muy alta resolución para impresión o formatos grandes.",
+        "q3": "¿Se conserva la transparencia?",
+        "a3": "Sí, las áreas transparentes del SVG se conservan como transparencia en la imagen PNG resultante."
+      },
+      "ui": {
+        "dropzone": "Arrastra un archivo SVG aquí o haz clic para seleccionar",
+        "dropzoneHint": "Selecciona un SVG para convertir a PNG",
+        "scale": "Escala de salida",
+        "convert": "Convertir a PNG",
+        "processing": "Convirtiendo...",
+        "download": "Descargar",
+        "reset": "Reiniciar",
+        "convertError": "No se pudo convertir el SVG. Asegúrate de que el archivo sea un SVG válido."
+      }
+    },
+    "remove-bg": {
+      "name": "Eliminar fondo",
+      "description": "Elimina automáticamente el fondo de las imágenes"
+    },
+    "compress-video": {
+      "name": "Comprimir vídeo",
+      "description": "Reduce el tamaño de archivos de vídeo manteniendo la calidad",
+      "seo": {
+        "title": "Compresor de vídeo online gratuito",
+        "content": "Comprime archivos de vídeo directamente en tu navegador con FFmpeg. Reduce el tamaño manteniendo buena calidad visual. Compatible con MP4, WebM, AVI y más. Gratuito, privado, sin subidas a servidores."
+      },
+      "faq": {
+        "q1": "¿Qué formatos de vídeo son compatibles?",
+        "a1": "La herramienta soporta MP4, WebM, AVI, MOV y la mayoría de formatos de vídeo comunes. El vídeo comprimido se exporta en formato MP4 para máxima compatibilidad.",
+        "q2": "¿Cuánta calidad pierdo al comprimir?",
+        "a2": "Puedes elegir entre alta, media y baja calidad. La calidad alta reduce el tamaño con pérdida mínima de calidad visual, media equilibra tamaño y calidad, y baja produce archivos muy pequeños con calidad reducida.",
+        "q3": "¿Cuánto tarda la compresión?",
+        "a3": "El tiempo depende del tamaño del vídeo, la configuración de calidad y la potencia de tu dispositivo. La compresión ocurre completamente en tu navegador usando WebAssembly FFmpeg."
+      },
+      "ui": {
+        "dropzone": "Arrastra un archivo de vídeo aquí o haz clic para seleccionar",
+        "dropzoneHint": "Compatible con MP4, WebM, AVI, MOV y más",
+        "quality": "Calidad",
+        "quality_high": "Alta (tamaño menor, calidad óptima)",
+        "quality_medium": "Media (equilibrio entre tamaño y calidad)",
+        "quality_low": "Baja (archivo muy pequeño, calidad reducida)",
+        "compress": "Comprimir vídeo",
+        "loadingFfmpeg": "Cargando FFmpeg...",
+        "compressing": "Comprimiendo...",
+        "done": "¡Compresión completada!",
+        "original": "Original",
+        "compressed": "Comprimido",
+        "download": "Descargar",
+        "reset": "Reiniciar",
+        "compressError": "Error al comprimir el vídeo. Inténtalo de nuevo."
+      }
+    },
+    "trim-video": {
+      "name": "Recortar vídeo",
+      "description": "Corta y recorta tus vídeos con precisión",
+      "seo": {
+        "title": "Recortador de vídeo online gratuito",
+        "content": "Recorta y corta vídeos directamente en tu navegador con FFmpeg. Selecciona punto de inicio y fin con vista previa en tiempo real. Compatible con MP4, WebM, AVI. Gratuito, privado, sin subidas."
+      },
+      "faq": {
+        "q1": "¿Cómo selecciono la parte del vídeo a recortar?",
+        "a1": "Usa los deslizadores o introduce los tiempos exactos de inicio y fin. Puedes previsualizar el fragmento seleccionado antes de recortar para asegurarte de que capturas exactamente lo que necesitas.",
+        "q2": "¿Qué formatos de vídeo son compatibles?",
+        "a2": "La herramienta es compatible con MP4, WebM, AVI, MOV y la mayoría de formatos de vídeo comunes. El vídeo recortado se exporta en formato MP4.",
+        "q3": "¿El recorte afecta la calidad del vídeo?",
+        "a3": "No, el recorte extrae el segmento seleccionado sin recodificar, preservando la calidad original del vídeo. Solo se corta la línea de tiempo, sin pérdida de calidad."
+      },
+      "ui": {
+        "dropzone": "Arrastra un archivo de vídeo aquí o haz clic para seleccionar",
+        "dropzoneHint": "Compatible con MP4, WebM, AVI, MOV y más",
+        "start": "Inicio",
+        "end": "Fin",
+        "selection": "Duración de la selección",
+        "trim": "Recortar vídeo",
+        "loadingFfmpeg": "Cargando FFmpeg...",
+        "trimming": "Recortando...",
+        "done": "¡Recorte completado!",
+        "download": "Descargar",
+        "reset": "Reiniciar",
+        "preview": "Vista previa",
+        "trimError": "Error al recortar el vídeo. Inténtalo de nuevo."
+      }
+    },
+    "video-to-gif": {
+      "name": "Vídeo a GIF",
+      "description": "Convierte vídeos en GIF animados",
+      "seo": {
+        "title": "Convertidor de vídeo a GIF online gratuito",
+        "content": "Convierte vídeos a GIF animados directamente en tu navegador con FFmpeg. Ajusta FPS, ancho y segmento de tiempo. Compatible con MP4, WebM, AVI. Gratuito, privado, sin subidas."
+      },
+      "faq": {
+        "q1": "¿Puedo controlar el tamaño del GIF resultante?",
+        "a1": "Sí, puedes ajustar el ancho (el alto se escala automáticamente) y los FPS (fotogramas por segundo). Menor ancho y FPS producen archivos GIF más pequeños pero con menos calidad.",
+        "q2": "¿Puedo convertir solo una parte del vídeo?",
+        "a2": "Sí, puedes seleccionar el punto de inicio y fin exactos del vídeo que deseas convertir en GIF. Esto te permite extraer solo el momento que necesitas.",
+        "q3": "¿Qué son los FPS y cómo afectan al GIF?",
+        "a3": "FPS (fotogramas por segundo) controla la fluidez de la animación. Valores más altos (20-30) producen GIFs suaves pero más grandes, mientras que valores bajos (10-15) crean archivos más pequeños pero menos fluidos."
+      },
+      "ui": {
+        "dropzone": "Arrastra un archivo de vídeo aquí o haz clic para seleccionar",
+        "dropzoneHint": "Compatible con MP4, WebM, AVI, MOV y más",
+        "start": "Inicio",
+        "end": "Fin",
+        "selection": "Duración de la selección",
+        "fps": "FPS (fotogramas por segundo)",
+        "width": "Ancho (px)",
+        "convert": "Convertir a GIF",
+        "loadingFfmpeg": "Cargando FFmpeg...",
+        "converting": "Convirtiendo...",
+        "done": "¡Conversión completada!",
+        "download": "Descargar",
+        "reset": "Reiniciar",
+        "preview": "Vista previa",
+        "convertError": "Error al convertir el vídeo. Inténtalo de nuevo."
+      }
+    },
+    "video-to-mp3": {
+      "name": "Vídeo a MP3",
+      "description": "Extrae el audio de los vídeos en formato MP3",
+      "seo": {
+        "title": "Convertidor de Vídeo a Audio Online Gratuito",
+        "content": "Extrae el audio de archivos de vídeo directamente en tu navegador. Sube MP4, WebM u otros formatos de vídeo y descarga la pista de audio. Gratuito, privado, sin subidas a servidores externos."
+      },
+      "faq": {
+        "q1": "¿Qué formatos de vídeo son compatibles?",
+        "a1": "La herramienta es compatible con MP4, WebM y la mayoría de formatos de vídeo habituales que tu navegador puede reproducir. Simplemente arrastra y suelta tu archivo de vídeo para empezar.",
+        "q2": "¿En qué formato se extrae el audio?",
+        "a2": "El audio se extrae como archivo WAV, un formato sin compresión y sin pérdida de calidad. Los archivos WAV son universalmente compatibles con todos los reproductores y editores de audio.",
+        "q3": "¿Hay un límite de tamaño de archivo?",
+        "a3": "La herramienta admite vídeos de hasta 500 MB. El procesamiento ocurre íntegramente en tu navegador, por lo que archivos más grandes pueden tardar más dependiendo de tu dispositivo."
+      },
+      "ui": {
+        "dropzone": "Arrastra un archivo de vídeo aquí o haz clic para seleccionar",
+        "dropzoneHint": "Compatible con MP4, WebM y otros formatos de vídeo",
+        "extract": "Extraer audio",
+        "processing": "Extrayendo...",
+        "download": "Descargar",
+        "reset": "Reiniciar",
+        "extractError": "No se pudo extraer el audio. Asegúrate de que el archivo sea un vídeo válido con pista de audio."
+      }
+    },
+    "screen-recorder": {
+      "name": "Grabador de pantalla",
+      "description": "Graba tu pantalla directamente desde el navegador",
+      "seo": {
+        "title": "Grabador de Pantalla Online Gratuito",
+        "content": "Graba tu pantalla directamente desde el navegador. Captura toda la pantalla, una ventana o una pestaña con audio opcional. Sin software que instalar, sin registro necesario."
+      },
+      "faq": {
+        "q1": "¿Necesito instalar algo?",
+        "a1": "No. El grabador de pantalla utiliza la API de captura de pantalla integrada en el navegador. Funciona directamente sin descargas ni extensiones.",
+        "q2": "¿Puedo grabar audio junto con la pantalla?",
+        "a2": "Sí, puedes activar la grabación de audio para capturar los sonidos del sistema junto con la pantalla. Activa la opción Incluir audio antes de comenzar.",
+        "q3": "¿En qué formato se guarda la grabación?",
+        "a3": "Las grabaciones se guardan en formato WebM, compatible con todos los navegadores modernos y reproductores de vídeo. Puedes convertirlas a otros formatos con herramientas de conversión de vídeo."
+      },
+      "ui": {
+        "startRecording": "Iniciar grabación",
+        "pause": "Pausa",
+        "resume": "Reanudar",
+        "stop": "Detener",
+        "download": "Descargar",
+        "newRecording": "Nueva grabación",
+        "includeAudio": "Incluir audio del sistema",
+        "screenError": "No se pudo acceder a la pantalla. Permite la compartición de pantalla cuando se solicite."
+      }
+    },
+    "audio-cutter": {
+      "name": "Cortador de audio",
+      "description": "Corta y recorta archivos de audio con precisión",
+      "seo": {
+        "title": "Cortador de Audio Online Gratuito",
+        "content": "Corta y recorta archivos de audio directamente en tu navegador. Editor visual con forma de onda y selección precisa de inicio y fin. Compatible con MP3, WAV, OGG y más. Gratuito, privado, sin subidas."
+      },
+      "faq": {
+        "q1": "¿Qué formatos de audio son compatibles?",
+        "a1": "La herramienta es compatible con MP3, WAV, OGG, FLAC, AAC y cualquier formato de audio que tu navegador pueda decodificar. El resultado se guarda como archivo WAV de alta calidad.",
+        "q2": "¿Puedo escuchar una vista previa antes de cortar?",
+        "a2": "Sí, usa el botón Vista previa para escuchar la porción seleccionada antes de cortar. Ajusta los puntos de inicio y fin con los deslizadores o introduciendo los tiempos exactos.",
+        "q3": "¿Por qué el resultado está en formato WAV?",
+        "a3": "WAV es un formato sin compresión y sin pérdida que preserva la calidad de audio completa. Garantiza que no haya pérdida de calidad durante el corte y es compatible con todos los reproductores de audio."
+      },
+      "ui": {
+        "dropzone": "Arrastra un archivo de audio aquí o haz clic para seleccionar",
+        "dropzoneHint": "Compatible con MP3, WAV, OGG, FLAC y más",
+        "start": "Inicio",
+        "end": "Fin",
+        "selection": "Duración de la selección",
+        "preview": "Vista previa",
+        "stopPreview": "Detener",
+        "cut": "Cortar audio",
+        "processing": "Cortando...",
+        "download": "Descargar",
+        "reset": "Reiniciar",
+        "loadError": "No se pudo cargar el archivo de audio. Asegúrate de que sea un archivo de audio válido.",
+        "cutError": "Se produjo un error durante el corte. Inténtalo de nuevo."
+      }
+    },
+    "audio-converter": {
+      "name": "Conversor de audio",
+      "description": "Convierte archivos de audio entre diferentes formatos",
+      "seo": {
+        "title": "Conversor de audio online gratuito",
+        "content": "Convierte archivos de audio entre MP3, WAV, OGG, FLAC y más formatos directamente en tu navegador con FFmpeg. Sin subidas, completamente privado. Gratuito, sin registro."
+      },
+      "faq": {
+        "q1": "¿Qué formatos de audio son compatibles?",
+        "a1": "La herramienta soporta entrada de MP3, WAV, OGG, FLAC, AAC, M4A y otros formatos comunes. Puedes convertir a MP3, WAV, OGG o FLAC según tus necesidades.",
+        "q2": "¿La conversión afecta la calidad del audio?",
+        "a2": "Convertir a formatos con pérdida como MP3 u OGG puede reducir ligeramente la calidad, mientras que formatos sin pérdida como WAV o FLAC preservan la calidad completa. Elige el formato según tu prioridad entre tamaño y calidad.",
+        "q3": "¿Cuánto tarda la conversión?",
+        "a3": "El tiempo depende del tamaño del archivo, el formato de destino y la potencia de tu dispositivo. La conversión ocurre completamente en tu navegador usando WebAssembly FFmpeg."
+      },
+      "ui": {
+        "dropzone": "Arrastra un archivo de audio aquí o haz clic para seleccionar",
+        "dropzoneHint": "Compatible con MP3, WAV, OGG, FLAC, AAC y más",
+        "outputFormat": "Formato de salida",
+        "convert": "Convertir",
+        "loadingFfmpeg": "Cargando FFmpeg...",
+        "converting": "Convirtiendo...",
+        "done": "¡Conversión completada!",
+        "download": "Descargar",
+        "reset": "Reiniciar",
+        "convertError": "Error al convertir el audio. Inténtalo de nuevo."
+      }
+    },
+    "voice-recorder": {
+      "name": "Grabadora de voz",
+      "description": "Graba tu voz directamente desde el navegador",
+      "seo": {
+        "title": "Grabadora de Voz Online Gratuita",
+        "content": "Graba tu voz directamente desde el navegador sin instalar ningún software. Visualiza la forma de onda en tiempo real mientras grabas. Pausa, reanuda y descarga tus grabaciones. Gratuito y privado."
+      },
+      "faq": {
+        "q1": "¿Necesito un micrófono?",
+        "a1": "Sí, necesitas un micrófono conectado a tu dispositivo. La mayoría de portátiles y smartphones tienen micrófono integrado. El navegador te pedirá permiso para acceder a él.",
+        "q2": "¿En qué formato se guardan las grabaciones?",
+        "a2": "Las grabaciones se guardan en formato de audio WebM, compatible con todos los navegadores modernos y la mayoría de reproductores de audio. Puedes convertirlas a otros formatos con herramientas de conversión de audio.",
+        "q3": "¿Mi grabación se almacena en algún lugar?",
+        "a3": "No. La grabación se procesa íntegramente en tu navegador y nunca se sube a ningún servidor. Solo tú tienes acceso a tus grabaciones."
+      },
+      "ui": {
+        "record": "Grabar",
+        "pause": "Pausa",
+        "resume": "Reanudar",
+        "stop": "Detener",
+        "download": "Descargar",
+        "newRecording": "Nueva grabación",
+        "micError": "No se pudo acceder al micrófono. Permite el acceso al micrófono cuando se solicite."
+      }
+    },
+    "word-counter": {
+      "name": "Contador de palabras",
+      "description": "Cuenta palabras, caracteres, frases y párrafos",
+      "seo": {
+        "title": "Contador de palabras online gratuito - Caracteres, frases y párrafos",
+        "content": "Cuenta al instante palabras, caracteres, frases y párrafos en tu texto. Herramienta gratuita online con tiempo de lectura y tiempo de discurso. Sin registro necesario."
+      },
+      "faq": {
+        "q1": "¿Cómo funciona el contador de palabras?",
+        "a1": "Simplemente escribe o pega tu texto en el campo de entrada. El contador analiza automáticamente el contenido en tiempo real y muestra el recuento de palabras, caracteres, frases y párrafos.",
+        "q2": "¿Mis datos son privados?",
+        "a2": "Sí, completamente. Todo el procesamiento se realiza directamente en tu navegador. Tu texto nunca se envía a ningún servidor externo.",
+        "q3": "¿En qué se basa el cálculo del tiempo de lectura?",
+        "a3": "El tiempo de lectura se calcula basándose en una velocidad media de 200 palabras por minuto, que es la velocidad de lectura estándar para un adulto."
+      },
+      "ui": {
+        "placeholder": "Escribe o pega tu texto aquí...",
+        "words": "Palabras",
+        "characters": "Caracteres",
+        "charactersNoSpaces": "Caracteres sin espacios",
+        "sentences": "Frases",
+        "paragraphs": "Párrafos",
+        "readingTime": "Tiempo de lectura",
+        "speakingTime": "Tiempo de discurso",
+        "clear": "Limpiar"
+      }
+    },
+    "lorem-ipsum": {
+      "name": "Generador Lorem Ipsum",
+      "description": "Genera texto de relleno Lorem Ipsum personalizado",
+      "seo": {
+        "title": "Generador Lorem Ipsum online gratuito - Texto de relleno personalizado",
+        "content": "Genera texto de relleno Lorem Ipsum personalizado para tus diseños y proyectos. Elige entre párrafos, frases o palabras. Herramienta gratuita online."
+      },
+      "faq": {
+        "q1": "¿Qué es Lorem Ipsum?",
+        "a1": "Lorem Ipsum es un texto de relleno estándar utilizado en diseño gráfico, tipografía y maquetación web desde el siglo XVI. Permite visualizar el diseño de un proyecto sin distraerse con el contenido real.",
+        "q2": "¿Puedo personalizar el texto generado?",
+        "a2": "Sí, puedes elegir la cantidad y el tipo de contenido a generar: párrafos, frases o palabras individuales, según tus necesidades.",
+        "q3": "¿El texto generado es siempre aleatorio?",
+        "a3": "El texto se basa en el clásico Lorem Ipsum pero incluye variaciones para que cada generación sea ligeramente diferente, manteniendo siempre una estructura natural."
+      },
+      "ui": {
+        "count": "Cantidad",
+        "type": "Tipo",
+        "paragraphs": "Párrafos",
+        "sentences": "Frases",
+        "words": "Palabras",
+        "generate": "Generar",
+        "copy": "Copiar",
+        "copied": "¡Copiado!",
+        "wordsCount": "palabras"
+      }
+    },
+    "case-converter": {
+      "name": "Conversor de mayúsculas/minúsculas",
+      "description": "Convierte texto entre mayúsculas, minúsculas y otros formatos"
+    },
+    "diff-checker": {
+      "name": "Comparador de textos",
+      "description": "Compara dos textos y encuentra las diferencias"
+    },
+    "markdown-editor": {
+      "name": "Editor Markdown",
+      "description": "Escribe y previsualiza Markdown en tiempo real"
+    },
+    "json-formatter": {
+      "name": "Formateador JSON",
+      "description": "Formatea, valida y minimiza código JSON",
+      "seo": {
+        "title": "Formateador y validador JSON online gratuito",
+        "content": "Formatea, valida y minimiza código JSON al instante. Resaltado de errores, indentación personalizable y copiar con un clic. Herramienta gratuita online sin registro."
+      },
+      "faq": {
+        "q1": "¿Qué pasa si mi JSON no es válido?",
+        "a1": "La herramienta detecta automáticamente los errores de sintaxis en tu JSON y muestra un mensaje de error indicando dónde está el problema, para que puedas corregirlo fácilmente.",
+        "q2": "¿Puedo cambiar el tamaño de la indentación?",
+        "a2": "Sí, puedes elegir el nivel de indentación que prefieras (2 o 4 espacios) para formatear tu JSON de la manera más legible.",
+        "q3": "¿Mis datos están seguros?",
+        "a3": "Totalmente. El procesamiento se realiza íntegramente en tu navegador. Tu código JSON nunca se envía a servidores externos."
+      },
+      "ui": {
+        "format": "Formatear",
+        "minify": "Minimizar",
+        "copy": "Copiar",
+        "copied": "¡Copiado!",
+        "indent": "Indentación",
+        "error": "Error",
+        "input": "Entrada",
+        "output": "Salida",
+        "inputPlaceholder": "Pega tu JSON aquí...",
+        "outputPlaceholder": "El JSON formateado aparecerá aquí..."
+      }
+    },
+    "base64": {
+      "name": "Codificador Base64",
+      "description": "Codifica y decodifica texto y archivos en Base64",
+      "seo": {
+        "title": "Codificador y decodificador Base64 online gratuito",
+        "content": "Codifica y decodifica texto en Base64 al instante. Compatible con Unicode y caracteres especiales. Herramienta gratuita online sin registro."
+      },
+      "faq": {
+        "q1": "¿Qué es Base64?",
+        "a1": "Base64 es un sistema de codificación que convierte datos binarios en texto ASCII. Se usa habitualmente para incrustar datos en HTML, CSS, correos electrónicos y transferencia de datos en la web.",
+        "q2": "¿Es compatible con caracteres Unicode?",
+        "a2": "Sí, la herramienta soporta completamente Unicode, incluyendo caracteres especiales, acentos, emojis y caracteres de idiomas como japonés, coreano o árabe.",
+        "q3": "¿Hay un límite de tamaño?",
+        "a3": "No hay un límite estricto, pero como todo se procesa en tu navegador, textos muy grandes podrían ralentizar el rendimiento. Para uso normal funciona perfectamente."
+      },
+      "ui": {
+        "encode": "Codificar",
+        "decode": "Decodificar",
+        "input": "Entrada",
+        "output": "Salida",
+        "copy": "Copiar",
+        "copied": "¡Copiado!",
+        "encodePlaceholder": "Escribe el texto a codificar en Base64...",
+        "decodePlaceholder": "Pega el texto Base64 a decodificar...",
+        "invalidInput": "Entrada no válida"
+      }
+    },
+    "regex-tester": {
+      "name": "Probador de Regex",
+      "description": "Prueba y depura expresiones regulares en tiempo real",
+      "seo": {
+        "title": "Probador de expresiones regulares online gratuito",
+        "content": "Prueba y depura expresiones regulares (regex) en tiempo real. Resaltado de coincidencias, soporte de banderas y resultados instantáneos. Herramienta gratuita online."
+      },
+      "faq": {
+        "q1": "¿Qué sintaxis de expresiones regulares se soporta?",
+        "a1": "Se utiliza la sintaxis de expresiones regulares de JavaScript, que es compatible con la mayoría de patrones regex comunes, incluyendo grupos de captura, cuantificadores, clases de caracteres y aserciones.",
+        "q2": "¿Qué significan las banderas (flags)?",
+        "a2": "Las banderas modifican el comportamiento de la regex: 'g' (global) busca todas las coincidencias, 'i' ignora mayúsculas/minúsculas, 'm' habilita el modo multilínea, y 's' permite que el punto coincida con saltos de línea.",
+        "q3": "¿Hay un límite de tamaño para el texto de prueba?",
+        "a3": "No hay un límite estricto, pero como el procesamiento se realiza en tu navegador, textos extremadamente grandes podrían afectar el rendimiento. Para uso habitual funciona sin problemas."
+      },
+      "ui": {
+        "pattern": "Patrón",
+        "patternPlaceholder": "Escribe tu expresión regular...",
+        "testString": "Texto de prueba",
+        "testPlaceholder": "Escribe el texto de prueba aquí...",
+        "result": "Resultado",
+        "matchesFound": "coincidencias encontradas",
+        "atIndex": "en posición",
+        "global": "Global",
+        "caseInsensitive": "Ignorar mayúsculas",
+        "multiline": "Multilínea",
+        "dotAll": "Punto incluye saltos"
+      }
+    },
+    "color-picker": {
+      "name": "Selector de color",
+      "description": "Selecciona colores y convierte entre HEX, RGB, HSL",
+      "seo": {
+        "title": "Selector de color online gratuito - HEX, RGB, HSL",
+        "content": "Selecciona colores y convierte entre formatos HEX, RGB y HSL al instante. Herramienta visual con copiar con un clic. Gratuita y sin registro."
+      },
+      "faq": {
+        "q1": "¿Qué formatos de color se soportan?",
+        "a1": "La herramienta soporta los formatos de color más utilizados: HEX (p. ej. #FF5733), RGB (p. ej. rgb(255, 87, 51)) y HSL (p. ej. hsl(11, 100%, 60%)). La conversión entre formatos es instantánea.",
+        "q2": "¿Puedo introducir un código HEX directamente?",
+        "a2": "Sí, puedes escribir o pegar directamente un código de color HEX, RGB o HSL, y la herramienta lo convertirá automáticamente a los demás formatos.",
+        "q3": "¿Funciona en dispositivos móviles?",
+        "a3": "Sí, la herramienta está completamente optimizada para dispositivos móviles. Puedes seleccionar colores y copiar valores cómodamente desde cualquier smartphone o tablet."
+      },
+      "ui": {
+        "pickColor": "Seleccionar color",
+        "copy": "Copiar",
+        "copied": "¡Copiado!"
+      }
+    },
+    "qr-code": {
+      "name": "Generador de QR Code",
+      "description": "Genera códigos QR personalizados desde texto o URL",
+      "seo": {
+        "title": "Generador de Códigos QR Online Gratuito",
+        "content": "Crea códigos QR personalizados a partir de cualquier texto o URL directamente en tu navegador. Personaliza colores, tamaño y nivel de corrección de errores. Descarga en formato PNG. Gratuito, sin registro."
+      },
+      "faq": {
+        "q1": "¿Qué puedo codificar en un código QR?",
+        "a1": "Puedes codificar cualquier texto, URL, dirección de correo electrónico, número de teléfono, credenciales WiFi o cualquier cadena de hasta unos 4.000 caracteres, dependiendo del nivel de corrección de errores.",
+        "q2": "¿Qué son los niveles de corrección de errores?",
+        "a2": "La corrección de errores permite leer códigos QR incluso si están parcialmente dañados. Bajo (7%), Medio (15%), Cuartil (25%) y Alto (30%) ofrecen niveles crecientes de redundancia.",
+        "q3": "¿Puedo personalizar los colores?",
+        "a3": "Sí, puedes configurar tanto el color del primer plano como el del fondo. Asegúrate de que haya suficiente contraste para que los escáneres puedan leer el código correctamente."
+      },
+      "ui": {
+        "textLabel": "Texto o URL",
+        "placeholder": "Introduce texto o URL...",
+        "size": "Tamaño",
+        "errorLevel": "Corrección de errores",
+        "fgColor": "Primer plano",
+        "bgColor": "Fondo",
+        "generate": "Generar QR Code",
+        "download": "Descargar PNG",
+        "reset": "Reiniciar",
+        "generateError": "No se pudo generar el código QR. Revisa tu entrada."
+      }
+    },
+    "hex-rgb": {
+      "name": "Conversor HEX/RGB",
+      "description": "Convierte colores entre formato HEX y RGB"
+    },
+    "url-encoder": {
+      "name": "Codificador URL",
+      "description": "Codifica y decodifica URL y parámetros"
+    },
+    "timestamp": {
+      "name": "Conversor de Timestamp",
+      "description": "Convierte timestamps Unix en fechas legibles y viceversa"
+    },
+    "youtube-thumbnail": {
+      "name": "Descargar miniatura YouTube",
+      "description": "Descarga las miniaturas de vídeos de YouTube en alta calidad",
+      "seo": {
+        "title": "Descargador de miniaturas de YouTube online gratuito",
+        "content": "Descarga miniaturas de vídeos de YouTube en la máxima calidad disponible. Simplemente pega la URL del vídeo y obtén la imagen de miniatura en HD. Gratuito, sin registro, instantáneo."
+      },
+      "faq": {
+        "q1": "¿Qué calidad de miniatura puedo descargar?",
+        "a1": "La herramienta descarga la miniatura de máxima calidad disponible del vídeo de YouTube, generalmente en resolución HD (1280x720) si el creador del vídeo la ha subido.",
+        "q2": "¿Necesito proporcionar la URL completa del vídeo?",
+        "a2": "Sí, pega la URL completa del vídeo de YouTube (por ejemplo: https://www.youtube.com/watch?v=...). La herramienta extraerá automáticamente el ID del vídeo.",
+        "q3": "¿Es legal descargar miniaturas de YouTube?",
+        "a3": "Las miniaturas son imágenes públicamente visibles. Descargarlas para uso personal, educativo o de referencia generalmente está permitido, pero debes respetar los derechos de autor para uso comercial."
+      },
+      "ui": {
+        "urlLabel": "URL del vídeo de YouTube",
+        "urlPlaceholder": "https://www.youtube.com/watch?v=...",
+        "fetch": "Obtener miniatura",
+        "download": "Descargar",
+        "reset": "Reiniciar",
+        "invalidUrl": "URL de YouTube no válida. Introduce una URL de vídeo válida."
+      }
+    },
+    "youtube-transcript": {
+      "name": "Transcripción YouTube",
+      "description": "Extrae los subtítulos y la transcripción de vídeos de YouTube"
+    }
+  },
+  "upload": {
+    "dragDrop": "Arrastra los archivos aquí",
+    "or": "o",
+    "clickToSelect": "Haz clic para seleccionar archivos",
+    "supportedFormats": "Formatos compatibles: {formats}",
+    "maxSize": "Tamaño máximo: {size}",
+    "processing": "Procesando...",
+    "done": "¡Completado!",
+    "download": "Descargar",
+    "downloadAll": "Descargar todo",
+    "error": {
+      "fileTooLarge": "El archivo es demasiado grande. Tamaño máximo: {size}",
+      "unsupportedFormat": "Formato no compatible. Formatos aceptados: {formats}",
+      "processingFailed": "El procesamiento ha fallado. Inténtalo de nuevo.",
+      "tooManyFiles": "Demasiados archivos. Máximo: {max}"
+    }
+  },
+  "footer": {
+    "tagline": "Todas las herramientas online que necesitas, gratis y sin registro.",
+    "privacyBadge": "Tus archivos nunca salen del navegador",
+    "tools": "Herramientas",
+    "company": "Empresa",
+    "about": "Quiénes somos",
+    "contact": "Contacto",
+    "privacy": "Privacy Policy",
+    "terms": "Términos de Servicio",
+    "settings": "Configuración",
+    "language": "Idioma",
+    "allRightsReserved": "Todos los derechos reservados",
+    "filesNeverLeave": "Tus archivos nunca salen del navegador"
+  }
+}
