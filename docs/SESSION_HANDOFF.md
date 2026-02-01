@@ -1,6 +1,6 @@
 # Session Handoff — Tuttilo
 
-## Ultimo aggiornamento: 2026-01-31
+## Ultimo aggiornamento: 2026-02-01
 
 ## Cosa è stato completato
 - **Sprint 0 COMPLETATO** (16/16 task) — Setup progetto, SEO, deploy
@@ -26,6 +26,14 @@
 - **Fix critici**: video-to-mp3 riscritto con FFmpeg, XSS fix su svg-to-png e word-to-pdf, memory leak fix su 8 image tools + audio-cutter
 - **i18n audit**: 43/45 tool perfetti, 2 fixati (images-to-pdf, pdf-to-png) — 6 chiavi aggiunte a 7 lingue
 - **Build OK** dopo tutti i fix
+
+## Sistema PDF Robusto (2026-02-01)
+- **Problema**: pdf-lib non parsifica PDF moderni (XRef Streams, Object Streams, PDF 1.6+)
+- **Soluzione**: Creato `src/lib/pdf-utils.ts` con fallback pdfjs-dist
+- **`loadPdfRobust()`**: Tenta pdf-lib, se fallisce ricostruisce via pdfjs-dist (render JPEG)
+- **`getPdfPageCount()`**: Conteggio pagine con fallback leggero
+- **Tool aggiornati**: compress, merge, split, rotate, unlock + MIME check permissivo su tutti 8
+- **Piano completo**: `docs/PDF_SYSTEM_PLAN.md`
 
 ## Cosa resta da fare
 - Sprint 7 (SEO & Performance): Core Web Vitals, sitemap dinamica, structured data
