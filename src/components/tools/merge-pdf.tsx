@@ -22,10 +22,10 @@ export function MergePdf() {
     setError("");
     const pdfFiles: PdfFile[] = [];
     for (const file of Array.from(newFiles)) {
-      if (file.type !== "application/pdf") continue;
+      if (file.type !== "application/pdf" && !file.name.toLowerCase().endsWith(".pdf")) continue;
       try {
         const bytes = await file.arrayBuffer();
-        const doc = await PDFDocument.load(bytes, { ignoreEncryption: true });
+        const doc = await PDFDocument.load(bytes, { ignoreEncryption: true, capNumbers: true });
         pdfFiles.push({ file, name: file.name, pages: doc.getPageCount() });
       } catch {
         setError(t("invalidPdf"));
@@ -61,7 +61,7 @@ export function MergePdf() {
       const merged = await PDFDocument.create();
       for (const pdfFile of files) {
         const bytes = await pdfFile.file.arrayBuffer();
-        const doc = await PDFDocument.load(bytes, { ignoreEncryption: true });
+        const doc = await PDFDocument.load(bytes, { ignoreEncryption: true, capNumbers: true });
         const pages = await merged.copyPages(doc, doc.getPageIndices());
         pages.forEach((page) => merged.addPage(page));
       }

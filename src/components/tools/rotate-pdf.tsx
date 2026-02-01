@@ -17,11 +17,12 @@ export function RotatePdf() {
   const [error, setError] = useState("");
 
   const loadPdf = useCallback(async (f: File) => {
+    if (f.type !== "application/pdf" && !f.name.toLowerCase().endsWith(".pdf")) return;
     setError("");
     setResultUrl("");
     try {
       const bytes = await f.arrayBuffer();
-      const doc = await PDFDocument.load(bytes, { ignoreEncryption: true });
+      const doc = await PDFDocument.load(bytes, { ignoreEncryption: true, capNumbers: true });
       setFile(f);
       setTotalPages(doc.getPageCount());
       setCustomPages(`1-${doc.getPageCount()}`);
@@ -54,7 +55,7 @@ export function RotatePdf() {
     setError("");
     try {
       const bytes = await file.arrayBuffer();
-      const doc = await PDFDocument.load(bytes, { ignoreEncryption: true });
+      const doc = await PDFDocument.load(bytes, { ignoreEncryption: true, capNumbers: true });
 
       const pagesToRotate = applyTo === "all"
         ? doc.getPageIndices()

@@ -14,11 +14,12 @@ export function CompressPdf() {
   const [error, setError] = useState("");
 
   const loadPdf = useCallback(async (f: File) => {
+    if (f.type !== "application/pdf" && !f.name.toLowerCase().endsWith(".pdf")) return;
     setError("");
     setResultUrl("");
     try {
       const bytes = await f.arrayBuffer();
-      await PDFDocument.load(bytes, { ignoreEncryption: true });
+      await PDFDocument.load(bytes, { ignoreEncryption: true, capNumbers: true });
       setFile(f);
       setOriginalSize(f.size);
     } catch {
@@ -32,7 +33,7 @@ export function CompressPdf() {
     setError("");
     try {
       const bytes = await file.arrayBuffer();
-      const doc = await PDFDocument.load(bytes, { ignoreEncryption: true });
+      const doc = await PDFDocument.load(bytes, { ignoreEncryption: true, capNumbers: true });
 
       // Strip metadata for compression
       doc.setTitle("");

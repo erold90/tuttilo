@@ -15,11 +15,12 @@ export function SplitPdf() {
   const [error, setError] = useState("");
 
   const loadPdf = useCallback(async (f: File) => {
+    if (f.type !== "application/pdf" && !f.name.toLowerCase().endsWith(".pdf")) return;
     setError("");
     setResults([]);
     try {
       const bytes = await f.arrayBuffer();
-      const doc = await PDFDocument.load(bytes, { ignoreEncryption: true });
+      const doc = await PDFDocument.load(bytes, { ignoreEncryption: true, capNumbers: true });
       setFile(f);
       setTotalPages(doc.getPageCount());
       setRangeInput(`1-${doc.getPageCount()}`);
@@ -52,7 +53,7 @@ export function SplitPdf() {
     setError("");
     try {
       const bytes = await file.arrayBuffer();
-      const src = await PDFDocument.load(bytes, { ignoreEncryption: true });
+      const src = await PDFDocument.load(bytes, { ignoreEncryption: true, capNumbers: true });
       const newResults: { url: string; name: string; size: number }[] = [];
       const baseName = file.name.replace(/\.pdf$/i, "");
 
