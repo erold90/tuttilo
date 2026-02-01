@@ -26,6 +26,20 @@
     "relatedTools": "Strumenti Correlati",
     "tryNow": "Prova ora",
     "home": "Home",
+    "howItWorks": {
+      "upload": {
+        "title": "Carica",
+        "desc": "Seleziona il tuo file"
+      },
+      "process": {
+        "title": "Elabora",
+        "desc": "Regola le impostazioni"
+      },
+      "download": {
+        "title": "Scarica",
+        "desc": "Ottieni il risultato"
+      }
+    },
     "batch": {
       "processing": "Elaborazione...",
       "done": "Completato!",
@@ -62,6 +76,8 @@
       "developer": "JSON, Base64, Regex, QR Code e altro",
       "youtube": "Thumbnail e trascrizioni YouTube"
     },
+    "favorites": "I Tuoi Preferiti",
+    "recents": "Usati di Recente",
     "popularTools": "Strumenti più popolari",
     "allTools": "Tutti gli strumenti",
     "stats": {
