@@ -1,0 +1,15 @@
+{
+  "hooks": {
+    "Stop": [
+      {
+        "matcher": "",
+        "hooks": [
+          {
+            "type": "command",
+            "command": "echo 'Prima di fermarti: aggiorna docs/SESSION_HANDOFF.md e docs/CURRENT_SPRINT.md con lo stato attuale del lavoro. Se hai file non pushati, elencali.'"
+          }
+        ]
+      }
+    ]
+  }
+}
