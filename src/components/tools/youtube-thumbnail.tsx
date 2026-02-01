@@ -4,10 +4,10 @@ import { useState, useCallback } from "react";
 import { useTranslations } from "next-intl";
 
 const RESOLUTIONS = [
-  { key: "maxres", label: "HD (1280\u00d7720)", file: "maxresdefault.jpg" },
-  { key: "sd", label: "SD (640\u00d7480)", file: "sddefault.jpg" },
-  { key: "hq", label: "HQ (480\u00d7360)", file: "hqdefault.jpg" },
-  { key: "mq", label: "MQ (320\u00d7180)", file: "mqdefault.jpg" },
+  { key: "maxres", label: "HD (1280×720)", file: "maxresdefault.jpg" },
+  { key: "sd", label: "SD (640×480)", file: "sddefault.jpg" },
+  { key: "hq", label: "HQ (480×360)", file: "hqdefault.jpg" },
+  { key: "mq", label: "MQ (320×180)", file: "mqdefault.jpg" },
 ] as const;
 
 function extractVideoId(url: string): string | null {
