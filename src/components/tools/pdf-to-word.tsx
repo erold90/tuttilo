@@ -121,6 +121,8 @@ export function PdfToWord() {
         setProgress(Math.round((i / total) * 100));
       }
 
+      doc.destroy();
+
       const docx = new Document({
         sections: sections.length > 0
           ? [{ properties: {}, children: sections.flatMap((s) => s.children) }]

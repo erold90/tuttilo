@@ -18,7 +18,8 @@ async function getPdfjs() {
  * The fallback renders pages as JPEG images in a new PDF — text selectability is lost.
  */
 export async function loadPdfRobust(
-  bytes: ArrayBuffer | Uint8Array
+  bytes: ArrayBuffer | Uint8Array,
+  opts?: { onProgress?: (percent: number) => void }
 ): Promise<PDFDocument> {
   try {
     return await PDFDocument.load(bytes, {
@@ -26,7 +27,7 @@ export async function loadPdfRobust(
       capNumbers: true,
     });
   } catch {
-    return reconstructPdf(bytes);
+    return reconstructPdf(bytes, opts?.onProgress);
   }
 }
 
@@ -53,7 +54,8 @@ export async function getPdfPageCount(
 }
 
 async function reconstructPdf(
-  bytes: ArrayBuffer | Uint8Array
+  bytes: ArrayBuffer | Uint8Array,
+  onProgress?: (percent: number) => void
 ): Promise<PDFDocument> {
   const pdfjsLib = await getPdfjs();
   const srcDoc = await pdfjsLib.getDocument({ data: bytes }).promise;
@@ -91,6 +93,12 @@ async function reconstructPdf(
       width: origViewport.width,
       height: origViewport.height,
     });
+
+    // Free canvas memory
+    canvas.width = 0;
+    canvas.height = 0;
+
+    onProgress?.(Math.round((i / srcDoc.numPages) * 100));
   }
 
   srcDoc.destroy();

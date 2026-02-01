@@ -66,6 +66,7 @@ export function PdfToPng() {
         });
         setProgress(Math.round((i / total) * 100));
       }
+      doc.destroy();
       setResults(newResults);
     } catch {
       setError(t("convertError"));
