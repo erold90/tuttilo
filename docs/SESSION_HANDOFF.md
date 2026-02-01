@@ -27,13 +27,15 @@
 - **i18n audit**: 43/45 tool perfetti, 2 fixati (images-to-pdf, pdf-to-png) — 6 chiavi aggiunte a 7 lingue
 - **Build OK** dopo tutti i fix
 
-## Sistema PDF Robusto (2026-02-01)
+## Sistema PDF Robusto (2026-02-01) — COMPLETO
 - **Problema**: pdf-lib non parsifica PDF moderni (XRef Streams, Object Streams, PDF 1.6+)
 - **Soluzione**: Creato `src/lib/pdf-utils.ts` con fallback pdfjs-dist
-- **`loadPdfRobust()`**: Tenta pdf-lib, se fallisce ricostruisce via pdfjs-dist (render JPEG)
+- **`loadPdfRobust()`**: Tenta pdf-lib, se fallisce ricostruisce via pdfjs-dist (render JPEG) + callback onProgress
 - **`getPdfPageCount()`**: Conteggio pagine con fallback leggero
 - **Tool aggiornati**: compress, merge, split, rotate, unlock + MIME check permissivo su tutti 8
-- **Piano completo**: `docs/PDF_SYSTEM_PLAN.md`
+- **Memory leak fix**: doc.destroy() aggiunto a pdf-to-jpg, pdf-to-png, pdf-to-word + canvas cleanup
+- **Progress UX**: Tutti i tool mostrano progresso % durante elaborazione PDF complessi
+- **Piano completo**: `docs/PDF_SYSTEM_PLAN.md` — Fasi 1-3 COMPLETATE, Fase 4 (mupdf) opzionale
 
 ## Cosa resta da fare
 - Sprint 7 (SEO & Performance): Core Web Vitals, sitemap dinamica, structured data

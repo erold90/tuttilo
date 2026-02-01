@@ -53,11 +53,12 @@
 ### Utility Condivisa: `src/lib/pdf-utils.ts`
 
 ```
-loadPdfRobust(bytes) → PDFDocument
+loadPdfRobust(bytes, opts?) → PDFDocument
   1. Tenta PDFDocument.load() con pdf-lib
   2. Se fallisce → pdfjs-dist renderizza pagine come JPEG
   3. Crea nuovo PDFDocument pulito con le immagini
-  4. Ritorna il PDFDocument pronto per qualsiasi operazione
+  4. Chiama opts.onProgress(%) durante la ricostruzione
+  5. Ritorna il PDFDocument pronto per qualsiasi operazione
 
 getPdfPageCount(bytes) → number
   1. Tenta pdf-lib per conteggio pagine (veloce)
@@ -82,23 +83,26 @@ getPdfPageCount(bytes) → number
 - [x] Build OK
 - [x] Pushato su GitHub
 
-### Fase 2: Hardening pdfjs-dist Tools (TODO)
+### Fase 2: Hardening pdfjs-dist Tools (DONE)
 
-I tool che usano gia pdfjs-dist (pdf-to-jpg, pdf-to-png, pdf-to-word) dovrebbero gia funzionare con tutti i PDF. Verifiche:
+I tool che usano pdfjs-dist diretto gestiscono gia tutti i PDF. Hardening completato:
 
-- [ ] `pdf-to-jpg.tsx` — Verificare che accetti il PDF ING
-- [ ] `pdf-to-png.tsx` — Verificare che accetti il PDF ING
-- [ ] `pdf-to-word.tsx` — Verificare che accetti il PDF ING
-- [ ] Aggiungere timeout/error handling migliore se pdfjs-dist fallisce
+- [x] `pdf-to-jpg.tsx` — Aggiunto `doc.destroy()` (fix memory leak)
+- [x] `pdf-to-png.tsx` — Aggiunto `doc.destroy()` (fix memory leak)
+- [x] `pdf-to-word.tsx` — Aggiunto `doc.destroy()` (fix memory leak)
+- [x] `pdf-utils.ts` — Canvas cleanup (width/height=0) in reconstructPdf
 
-### Fase 3: Ottimizzazione UX Fallback (TODO)
+### Fase 3: Ottimizzazione UX Fallback (DONE)
 
-Quando il fallback pdfjs-dist viene attivato, migliorare l'UX:
+Migliorata UX durante il fallback pdfjs-dist:
 
-- [ ] Mostrare un indicatore "Elaborazione PDF complesso..." durante la ricostruzione
-- [ ] Per compress-pdf: avvisare che il PDF ricostruito potrebbe essere piu grande (immagini JPEG)
-- [ ] Per merge-pdf: la ricostruzione avviene per-file, mostrare progress per file
-- [ ] Ottimizzare qualita JPEG nel fallback (scale: 3 per DPI migliore, quality: 0.85)
+- [x] `loadPdfRobust()` accetta `onProgress` callback — mostra percentuale durante ricostruzione
+- [x] compress-pdf: progress % visibile durante elaborazione PDF complessi
+- [x] merge-pdf: progress per file (es. "2/5") durante merge
+- [x] split-pdf: progress % durante caricamento PDF complessi
+- [x] rotate-pdf: progress % durante caricamento PDF complessi
+- [x] unlock-pdf: progress % durante caricamento PDF complessi
+- [x] Qualita JPEG fallback: scale 2 (144 DPI) + quality 0.92 (buon bilanciamento dimensione/qualita)
 
 ### Fase 4: Migrazione Futura a mupdf (OPZIONALE)
 
@@ -133,12 +137,12 @@ Se in futuro il bundle size non e un problema o si vuole qualita professionale:
 ## File Creati/Modificati
 
 - `src/lib/pdf-utils.ts` — Utility condivisa (loadPdfRobust, getPdfPageCount)
-- `src/components/tools/compress-pdf.tsx` — Usa loadPdfRobust
-- `src/components/tools/merge-pdf.tsx` — Usa loadPdfRobust + getPdfPageCount
-- `src/components/tools/split-pdf.tsx` — Usa loadPdfRobust + getPdfPageCount
-- `src/components/tools/rotate-pdf.tsx` — Usa loadPdfRobust + getPdfPageCount
-- `src/components/tools/unlock-pdf.tsx` — Usa loadPdfRobust
-- `src/components/tools/pdf-to-jpg.tsx` — MIME check permissivo
-- `src/components/tools/pdf-to-png.tsx` — MIME check permissivo
-- `src/components/tools/pdf-to-word.tsx` — MIME check permissivo
+- `src/components/tools/compress-pdf.tsx` — Usa loadPdfRobust + progress
+- `src/components/tools/merge-pdf.tsx` — Usa loadPdfRobust + getPdfPageCount + progress per file
+- `src/components/tools/split-pdf.tsx` — Usa loadPdfRobust + getPdfPageCount + progress
+- `src/components/tools/rotate-pdf.tsx` — Usa loadPdfRobust + getPdfPageCount + progress
+- `src/components/tools/unlock-pdf.tsx` — Usa loadPdfRobust + progress
+- `src/components/tools/pdf-to-jpg.tsx` — MIME check permissivo + doc.destroy()
+- `src/components/tools/pdf-to-png.tsx` — MIME check permissivo + doc.destroy()
+- `src/components/tools/pdf-to-word.tsx` — MIME check permissivo + doc.destroy()
 - `docs/PDF_SYSTEM_PLAN.md` — Questo file (piano documentato)

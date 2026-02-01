@@ -12,6 +12,7 @@ export function SplitPdf() {
   const [rangeInput, setRangeInput] = useState("");
   const [splitMode, setSplitMode] = useState<"all" | "range">("all");
   const [processing, setProcessing] = useState(false);
+  const [progress, setProgress] = useState(0);
   const [results, setResults] = useState<{ url: string; name: string; size: number }[]>([]);
   const [error, setError] = useState("");
 
@@ -52,9 +53,12 @@ export function SplitPdf() {
     if (!file) return;
     setProcessing(true);
     setError("");
+    setProgress(0);
     try {
       const bytes = await file.arrayBuffer();
-      const src = await loadPdfRobust(bytes);
+      const src = await loadPdfRobust(bytes, {
+        onProgress: (p) => setProgress(p),
+      });
       const newResults: { url: string; name: string; size: number }[] = [];
       const baseName = file.name.replace(/\.pdf$/i, "");
 
@@ -187,7 +191,7 @@ export function SplitPdf() {
             disabled={processing}
             className="w-full py-3 px-4 bg-primary text-primary-foreground rounded-lg font-medium hover:bg-primary/90 disabled:opacity-50 transition-colors"
           >
-            {processing ? t("processing") : t("split")}
+            {processing ? (progress > 0 ? `${t("processing")} ${progress}%` : t("processing")) : t("split")}
           </button>
         </div>
       )}

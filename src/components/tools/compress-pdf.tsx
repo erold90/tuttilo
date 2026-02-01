@@ -8,6 +8,7 @@ export function CompressPdf() {
   const t = useTranslations("tools.compress-pdf.ui");
   const [file, setFile] = useState<File | null>(null);
   const [processing, setProcessing] = useState(false);
+  const [progress, setProgress] = useState(0);
   const [resultUrl, setResultUrl] = useState("");
   const [originalSize, setOriginalSize] = useState(0);
   const [compressedSize, setCompressedSize] = useState(0);
@@ -25,9 +26,12 @@ export function CompressPdf() {
     if (!file) return;
     setProcessing(true);
     setError("");
+    setProgress(0);
     try {
       const bytes = await file.arrayBuffer();
-      const doc = await loadPdfRobust(bytes);
+      const doc = await loadPdfRobust(bytes, {
+        onProgress: (p) => setProgress(p),
+      });
 
       // Strip metadata for compression
       doc.setTitle("");
@@ -111,7 +115,7 @@ export function CompressPdf() {
           disabled={processing}
           className="w-full py-3 px-4 bg-primary text-primary-foreground rounded-lg font-medium hover:bg-primary/90 disabled:opacity-50 transition-colors"
         >
-          {processing ? t("processing") : t("compress")}
+          {processing ? (progress > 0 ? `${t("processing")} ${progress}%` : t("processing")) : t("compress")}
         </button>
       )}
 

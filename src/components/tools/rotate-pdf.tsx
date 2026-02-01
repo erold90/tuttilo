@@ -13,6 +13,7 @@ export function RotatePdf() {
   const [applyTo, setApplyTo] = useState<"all" | "custom">("all");
   const [customPages, setCustomPages] = useState("");
   const [processing, setProcessing] = useState(false);
+  const [progress, setProgress] = useState(0);
   const [resultUrl, setResultUrl] = useState("");
   const [resultSize, setResultSize] = useState(0);
   const [error, setError] = useState("");
@@ -54,9 +55,12 @@ export function RotatePdf() {
     if (!file) return;
     setProcessing(true);
     setError("");
+    setProgress(0);
     try {
       const bytes = await file.arrayBuffer();
-      const doc = await loadPdfRobust(bytes);
+      const doc = await loadPdfRobust(bytes, {
+        onProgress: (p) => setProgress(p),
+      });
 
       const pagesToRotate = applyTo === "all"
         ? doc.getPageIndices()
@@ -185,7 +189,7 @@ export function RotatePdf() {
             disabled={processing}
             className="w-full py-3 px-4 bg-primary text-primary-foreground rounded-lg font-medium hover:bg-primary/90 disabled:opacity-50 transition-colors"
           >
-            {processing ? t("processing") : t("rotate")}
+            {processing ? (progress > 0 ? `${t("processing")} ${progress}%` : t("processing")) : t("rotate")}
           </button>
         </div>
       ) : (

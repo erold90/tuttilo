@@ -10,6 +10,7 @@ export function UnlockPdf() {
   const [file, setFile] = useState<File | null>(null);
   const [password, setPassword] = useState("");
   const [processing, setProcessing] = useState(false);
+  const [progress, setProgress] = useState(0);
   const [resultUrl, setResultUrl] = useState("");
   const [resultSize, setResultSize] = useState(0);
   const [error, setError] = useState("");
@@ -33,12 +34,15 @@ export function UnlockPdf() {
     if (!file) return;
     setProcessing(true);
     setError("");
+    setProgress(0);
     try {
       const bytes = await file.arrayBuffer();
 
       // First try: pdf-lib with ignoreEncryption (handles owner-password / permission-only locks)
       try {
-        const doc = await loadPdfRobust(bytes);
+        const doc = await loadPdfRobust(bytes, {
+          onProgress: (p) => setProgress(p),
+        });
         const unlockedBytes = await doc.save();
         const blob = new Blob([unlockedBytes.buffer as ArrayBuffer], { type: "application/pdf" });
         if (resultUrl) URL.revokeObjectURL(resultUrl);
@@ -162,7 +166,7 @@ export function UnlockPdf() {
             disabled={processing || !pdfjsLib}
             className="w-full py-3 px-4 bg-primary text-primary-foreground rounded-lg font-medium hover:bg-primary/90 disabled:opacity-50 transition-colors"
           >
-            {processing ? t("processing") : t("unlock")}
+            {processing ? (progress > 0 ? `${t("processing")} ${progress}%` : t("processing")) : t("unlock")}
           </button>
         </div>
       ) : (

@@ -15,6 +15,7 @@ export function MergePdf() {
   const t = useTranslations("tools.merge-pdf.ui");
   const [files, setFiles] = useState<PdfFile[]>([]);
   const [processing, setProcessing] = useState(false);
+  const [progress, setProgress] = useState("");
   const [resultUrl, setResultUrl] = useState("");
   const [resultSize, setResultSize] = useState(0);
   const [error, setError] = useState("");
@@ -58,10 +59,12 @@ export function MergePdf() {
     if (files.length < 2) return;
     setProcessing(true);
     setError("");
+    setProgress("");
     try {
       const merged = await PDFDocument.create();
-      for (const pdfFile of files) {
-        const bytes = await pdfFile.file.arrayBuffer();
+      for (let i = 0; i < files.length; i++) {
+        setProgress(`${i + 1}/${files.length}`);
+        const bytes = await files[i].file.arrayBuffer();
         const doc = await loadPdfRobust(bytes);
         const pages = await merged.copyPages(doc, doc.getPageIndices());
         pages.forEach((page) => merged.addPage(page));
@@ -149,7 +152,7 @@ export function MergePdf() {
           disabled={processing}
           className="w-full py-3 px-4 bg-primary text-primary-foreground rounded-lg font-medium hover:bg-primary/90 disabled:opacity-50 transition-colors"
         >
-          {processing ? t("processing") : t("merge")}
+          {processing ? (progress ? `${t("processing")} ${progress}` : t("processing")) : t("merge")}
         </button>
       )}
 
