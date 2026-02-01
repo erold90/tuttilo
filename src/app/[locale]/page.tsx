@@ -1,6 +1,6 @@
 import { useTranslations } from "next-intl";
 import { Link } from "@/i18n/routing";
-import { Shield, Zap, Globe, ArrowRight } from "lucide-react";
+import { Shield, Zap, Globe, ArrowRight, Monitor, UserX, Lock } from "lucide-react";
 import { cn } from "@/lib/utils";
 import {
   categories,
@@ -15,8 +15,16 @@ export default function HomePage() {
   const t = useTranslations("home");
   const tNav = useTranslations("nav");
   const tTools = useTranslations("tools");
+  const tTrust = useTranslations("home.trust");
 
   const popularTools = getPopularTools();
+
+  const trustItems = [
+    { icon: Monitor, key: "browserOnly", color: "text-green-500 bg-green-500/10" },
+    { icon: UserX, key: "noRegistration", color: "text-indigo-500 bg-indigo-500/10" },
+    { icon: Zap, key: "alwaysFree", color: "text-yellow-500 bg-yellow-500/10" },
+    { icon: Lock, key: "secureByDesign", color: "text-red-500 bg-red-500/10" },
+  ];
 
   return (
     <div className="flex flex-col">
@@ -36,6 +44,29 @@ export default function HomePage() {
               <Shield className="h-4 w-4 text-green-500" />
               <span>{t("privacyNote")}</span>
             </div>
+          </div>
+        </div>
+      </section>
+
+      {/* Trust Signals */}
+      <section className="border-b bg-muted/20">
+        <div className="container mx-auto max-w-7xl px-4 py-10">
+          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4">
+            {trustItems.map(({ icon: Icon, key, color }) => (
+              <div key={key} className="flex items-start gap-3 p-3">
+                <div
+                  className={`flex h-9 w-9 shrink-0 items-center justify-center rounded-lg ${color}`}
+                >
+                  <Icon className="h-4.5 w-4.5" />
+                </div>
+                <div>
+                  <p className="font-medium text-sm">{tTrust(key)}</p>
+                  <p className="text-xs text-muted-foreground leading-relaxed">
+                    {tTrust(`${key}Desc`)}
+                  </p>
+                </div>
+              </div>
+            ))}
           </div>
         </div>
       </section>
