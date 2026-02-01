@@ -21,7 +21,7 @@ export function PdfToWord() {
   }, []);
 
   const loadFile = useCallback((f: File) => {
-    if (f.type !== "application/pdf") return;
+    if (f.type !== "application/pdf" && !f.name.toLowerCase().endsWith(".pdf")) return;
     setError("");
     setResultUrl("");
     setFile(f);

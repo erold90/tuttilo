@@ -21,7 +21,7 @@ export function PdfToJpg() {
   }, []);
 
   const loadPdf = useCallback((f: File) => {
-    if (f.type !== "application/pdf") return;
+    if (f.type !== "application/pdf" && !f.name.toLowerCase().endsWith(".pdf")) return;
     setError("");
     setResults([]);
     setFile(f);

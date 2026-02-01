@@ -22,7 +22,7 @@ export function UnlockPdf() {
   }, []);
 
   const loadFile = useCallback((f: File) => {
-    if (f.type !== "application/pdf") return;
+    if (f.type !== "application/pdf" && !f.name.toLowerCase().endsWith(".pdf")) return;
     setError("");
     setResultUrl("");
     setFile(f);
@@ -37,7 +37,7 @@ export function UnlockPdf() {
 
       // First try: pdf-lib with ignoreEncryption (handles owner-password / permission-only locks)
       try {
-        const doc = await PDFDocument.load(bytes, { ignoreEncryption: true });
+        const doc = await PDFDocument.load(bytes, { ignoreEncryption: true, capNumbers: true });
         const unlockedBytes = await doc.save();
         const blob = new Blob([unlockedBytes.buffer as ArrayBuffer], { type: "application/pdf" });
         if (resultUrl) URL.revokeObjectURL(resultUrl);
