@@ -126,6 +126,59 @@ export function getAllCategories(): ToolCategory[] {
 }
 
 export function getPopularTools(): Tool[] {
-  const popularIds = ['merge-pdf', 'compress-pdf', 'compress-image', 'remove-bg', 'video-to-mp3', 'word-counter', 'json-formatter', 'qr-code']
+  const popularIds = ['merge-pdf', 'compress-pdf', 'compress-image', 'resize-image', 'video-to-mp3', 'word-counter', 'json-formatter', 'qr-code']
   return popularIds.map((id) => tools.find((t) => t.id === id)).filter((t): t is Tool => t !== undefined)
+}
+
+// ============================================================================
+// Category Color Utilities — SINGLE SOURCE OF TRUTH
+// Use these instead of hardcoding colors in components
+// ============================================================================
+
+const categoryColorMap: Record<ToolCategoryId, string> = {
+  pdf: '#EF4444',
+  image: '#22C55E',
+  video: '#8B5CF6',
+  audio: '#F97316',
+  text: '#3B82F6',
+  developer: '#14B8A6',
+  youtube: '#EC4899',
+}
+
+export function getCategoryColor(id: ToolCategoryId): string {
+  return categoryColorMap[id] ?? '#6366F1'
+}
+
+const categoryClassesMap: Record<ToolCategoryId, { text: string; bg: string; border: string; hoverBorder: string; hoverText: string; card: string; cardHover: string }> = {
+  pdf:       { text: 'text-[#EF4444]', bg: 'bg-[#EF4444]/10', border: 'border-[#EF4444]/20', hoverBorder: 'hover:border-[#EF4444]/40', hoverText: 'hover:text-[#EF4444]', card: 'bg-[#EF4444]/10 text-[#EF4444] border-[#EF4444]/20', cardHover: 'hover:border-[#EF4444]/40' },
+  image:     { text: 'text-[#22C55E]', bg: 'bg-[#22C55E]/10', border: 'border-[#22C55E]/20', hoverBorder: 'hover:border-[#22C55E]/40', hoverText: 'hover:text-[#22C55E]', card: 'bg-[#22C55E]/10 text-[#22C55E] border-[#22C55E]/20', cardHover: 'hover:border-[#22C55E]/40' },
+  video:     { text: 'text-[#8B5CF6]', bg: 'bg-[#8B5CF6]/10', border: 'border-[#8B5CF6]/20', hoverBorder: 'hover:border-[#8B5CF6]/40', hoverText: 'hover:text-[#8B5CF6]', card: 'bg-[#8B5CF6]/10 text-[#8B5CF6] border-[#8B5CF6]/20', cardHover: 'hover:border-[#8B5CF6]/40' },
+  audio:     { text: 'text-[#F97316]', bg: 'bg-[#F97316]/10', border: 'border-[#F97316]/20', hoverBorder: 'hover:border-[#F97316]/40', hoverText: 'hover:text-[#F97316]', card: 'bg-[#F97316]/10 text-[#F97316] border-[#F97316]/20', cardHover: 'hover:border-[#F97316]/40' },
+  text:      { text: 'text-[#3B82F6]', bg: 'bg-[#3B82F6]/10', border: 'border-[#3B82F6]/20', hoverBorder: 'hover:border-[#3B82F6]/40', hoverText: 'hover:text-[#3B82F6]', card: 'bg-[#3B82F6]/10 text-[#3B82F6] border-[#3B82F6]/20', cardHover: 'hover:border-[#3B82F6]/40' },
+  developer: { text: 'text-[#14B8A6]', bg: 'bg-[#14B8A6]/10', border: 'border-[#14B8A6]/20', hoverBorder: 'hover:border-[#14B8A6]/40', hoverText: 'hover:text-[#14B8A6]', card: 'bg-[#14B8A6]/10 text-[#14B8A6] border-[#14B8A6]/20', cardHover: 'hover:border-[#14B8A6]/40' },
+  youtube:   { text: 'text-[#EC4899]', bg: 'bg-[#EC4899]/10', border: 'border-[#EC4899]/20', hoverBorder: 'hover:border-[#EC4899]/40', hoverText: 'hover:text-[#EC4899]', card: 'bg-[#EC4899]/10 text-[#EC4899] border-[#EC4899]/20', cardHover: 'hover:border-[#EC4899]/40' },
+}
+
+const defaultClasses = { text: 'text-[#6366F1]', bg: 'bg-[#6366F1]/10', border: 'border-[#6366F1]/20', hoverBorder: 'hover:border-[#6366F1]/40', hoverText: 'hover:text-[#6366F1]', card: 'bg-[#6366F1]/10 text-[#6366F1] border-[#6366F1]/20', cardHover: 'hover:border-[#6366F1]/40' }
+
+export function getCategoryClasses(id: ToolCategoryId) {
+  return categoryClassesMap[id] ?? defaultClasses
+}
+
+/** Navigation items derived from categories — for header, footer, mega-menu */
+export function getCategoryNavItems() {
+  return categories.map((cat) => {
+    const classes = getCategoryClasses(cat.id)
+    return {
+      key: cat.id,
+      href: `/${cat.slug}`,
+      icon: cat.icon,
+      color: getCategoryColor(cat.id),
+      hoverText: classes.hoverText,
+      classes,
+      tools: getToolsByCategory(cat.id).filter((tool) => tool.isAvailable),
+      totalTools: getToolsByCategory(cat.id).length,
+      availableTools: getToolsByCategory(cat.id).filter((tool) => tool.isAvailable).length,
+    }
+  })
 }

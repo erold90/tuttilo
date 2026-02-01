@@ -15,17 +15,10 @@ import {
 } from "@/components/ui/sheet";
 import { LanguageSwitcher } from "@/components/layout/language-switcher";
 import { SearchDialog } from "@/components/layout/search-dialog";
+import { getCategoryNavItems } from "@/lib/tools/registry";
 import { cn } from "@/lib/utils";
 
-const categories = [
-  { key: "pdf", href: "/pdf", color: "hover:text-[#EF4444]" },
-  { key: "image", href: "/image", color: "hover:text-[#22C55E]" },
-  { key: "video", href: "/video", color: "hover:text-[#8B5CF6]" },
-  { key: "audio", href: "/audio", color: "hover:text-[#F97316]" },
-  { key: "text", href: "/text", color: "hover:text-[#3B82F6]" },
-  { key: "developer", href: "/developer", color: "hover:text-[#14B8A6]" },
-  { key: "youtube", href: "/youtube", color: "hover:text-[#EC4899]" },
-] as const;
+const categories = getCategoryNavItems();
 
 function ThemeToggle() {
   const { setTheme, resolvedTheme } = useTheme();
@@ -69,7 +62,7 @@ export function Header() {
               href={cat.href}
               className={cn(
                 "px-3 py-1.5 text-sm font-medium rounded-md transition-colors",
-                cat.color,
+                cat.hoverText,
                 pathname.startsWith(cat.href)
                   ? "bg-accent text-accent-foreground"
                   : "text-muted-foreground"
@@ -112,7 +105,7 @@ export function Header() {
                     onClick={() => setMobileOpen(false)}
                     className={cn(
                       "px-3 py-2.5 text-sm font-medium rounded-md transition-colors",
-                      cat.color,
+                      cat.hoverText,
                       pathname.startsWith(cat.href)
                         ? "bg-accent text-accent-foreground"
                         : "text-muted-foreground hover:text-foreground"
