@@ -25,7 +25,15 @@
     "faq": "Frequently Asked Questions",
     "relatedTools": "Related Tools",
     "tryNow": "Try now",
-    "home": "Home"
+    "home": "Home",
+    "batch": {
+      "processing": "Processing...",
+      "done": "Done!",
+      "convertAll": "Convert All",
+      "downloadAll": "Download All",
+      "reset": "Start Over",
+      "download": "Download"
+    }
   },
   "nav": {
     "pdf": "PDF",
@@ -447,7 +455,8 @@
         "compressedSize": "Compressed size",
         "savings": "Savings",
         "original": "Original",
-        "compressed": "Compressed"
+        "compressed": "Compressed",
+        "error": "Compression failed. Please try again with a different image."
       }
     },
     "resize-image": {
@@ -476,7 +485,11 @@
         "reset": "Reset",
         "original": "Original",
         "resized": "Resized",
-        "originalDimensions": "Original dimensions"
+        "originalDimensions": "Original dimensions",
+        "quality": "Quality",
+        "originalSize": "Original size",
+        "resultSize": "Result size",
+        "error": "Resizing failed. Please try again with a different image."
       }
     },
     "crop-image": {
@@ -500,7 +513,12 @@
         "download": "Download",
         "reset": "Reset",
         "result": "Result",
-        "freeform": "Freeform"
+        "freeform": "Freeform",
+        "quality": "Quality",
+        "processing": "Cropping...",
+        "originalSize": "Original size",
+        "resultSize": "Result size",
+        "error": "Cropping failed. Please try again with a different image."
       }
     },
     "png-to-jpg": {
@@ -524,7 +542,8 @@
         "processing": "Converting...",
         "convert": "Convert",
         "download": "Download",
-        "reset": "Reset"
+        "reset": "Reset",
+        "error": "Conversion failed. Please try again with a different image."
       }
     },
     "jpg-to-png": {
@@ -547,7 +566,8 @@
         "processing": "Converting...",
         "convert": "Convert",
         "download": "Download",
-        "reset": "Reset"
+        "reset": "Reset",
+        "error": "Conversion failed. Please try again with a different image."
       }
     },
     "webp-to-png": {
@@ -570,7 +590,8 @@
         "processing": "Converting...",
         "convert": "Convert",
         "download": "Download",
-        "reset": "Reset"
+        "reset": "Reset",
+        "error": "Conversion failed. Please try again with a different image."
       }
     },
     "webp-to-jpg": {
@@ -594,7 +615,8 @@
         "processing": "Converting...",
         "convert": "Convert",
         "download": "Download",
-        "reset": "Reset"
+        "reset": "Reset",
+        "error": "Conversion failed. Please try again with a different image."
       }
     },
     "heic-to-jpg": {
@@ -619,6 +641,7 @@
         "download": "Download",
         "reset": "Reset",
         "result": "Result",
+        "quality": "Quality",
         "error": "Conversion failed. Please make sure the file is a valid HEIC image."
       }
     },
