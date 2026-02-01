@@ -16,7 +16,7 @@ export function PdfToPng() {
 
   useEffect(() => {
     import("pdfjs-dist").then((lib) => {
-      lib.GlobalWorkerOptions.workerSrc = `//cdnjs.cloudflare.com/ajax/libs/pdf.js/${lib.version}/pdf.worker.min.mjs`;
+      lib.GlobalWorkerOptions.workerSrc = `https://cdn.jsdelivr.net/npm/pdfjs-dist@${lib.version}/build/pdf.worker.min.mjs`;
       setPdfjsLib(lib);
     });
   }, []);
