@@ -54,6 +54,7 @@ export async function generateMetadata({
     icons: {
       icon: "/favicon.svg",
     },
+    manifest: "/manifest.json",
     openGraph: {
       type: "website",
       locale,

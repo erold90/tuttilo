@@ -1,5 +1,7 @@
+import type { Metadata } from "next";
 import { useTranslations } from "next-intl";
-import { Link } from "@/i18n/routing";
+import { getTranslations } from "next-intl/server";
+import { Link, locales } from "@/i18n/routing";
 import { Shield, Zap, Globe, ArrowRight, Monitor, UserX, Lock } from "lucide-react";
 import { cn } from "@/lib/utils";
 import {
@@ -11,6 +13,30 @@ import {
 import { ToolIcon } from "@/components/tool-icon";
 import { HomeSearchTrigger } from "@/components/home-search-trigger";
 import { HomeUserSections } from "@/components/home-user-sections";
+
+const BASE_URL = "https://tuttilo.com";
+
+export async function generateMetadata({
+  params,
+}: {
+  params: Promise<{ locale: string }>;
+}): Promise<Metadata> {
+  const { locale } = await params;
+  const t = await getTranslations({ locale, namespace: "home" });
+  const desc = t("subtitle");
+
+  return {
+    description: desc,
+    alternates: {
+      canonical: `${BASE_URL}/${locale}`,
+      languages: Object.fromEntries(
+        locales.map((l) => [l, `${BASE_URL}/${l}`])
+      ),
+    },
+    openGraph: { description: desc },
+    twitter: { description: desc },
+  };
+}
 
 export default function HomePage() {
   const t = useTranslations("home");

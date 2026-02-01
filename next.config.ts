@@ -25,6 +25,19 @@ const nextConfig: NextConfig = {
       { source: "/:locale/pdf/rotate", destination: "/:locale/pdf/organizer", permanent: true },
     ];
   },
+  async headers() {
+    return [
+      {
+        source: "/(.*)",
+        headers: [
+          { key: "X-Content-Type-Options", value: "nosniff" },
+          { key: "X-Frame-Options", value: "SAMEORIGIN" },
+          { key: "Referrer-Policy", value: "strict-origin-when-cross-origin" },
+          { key: "Permissions-Policy", value: "geolocation=(), payment=()" },
+        ],
+      },
+    ];
+  },
   webpack: (config) => {
     config.experiments = {
       ...config.experiments,

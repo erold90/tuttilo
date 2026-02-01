@@ -1,0 +1,16 @@
+{
+  "name": "Tuttilo — Free Online Tools",
+  "short_name": "Tuttilo",
+  "description": "Free all-in-one online tools for PDF, images, video, audio, text, and developer utilities.",
+  "start_url": "/",
+  "display": "standalone",
+  "background_color": "#ffffff",
+  "theme_color": "#6366F1",
+  "icons": [
+    {
+      "src": "/favicon.svg",
+      "sizes": "any",
+      "type": "image/svg+xml"
+    }
+  ]
+}

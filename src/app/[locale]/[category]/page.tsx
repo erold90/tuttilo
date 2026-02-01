@@ -71,8 +71,18 @@ export default async function CategoryPage({
 
   const classes = getCategoryClasses(cat.id);
 
+  const breadcrumbLd = {
+    "@context": "https://schema.org",
+    "@type": "BreadcrumbList",
+    itemListElement: [
+      { "@type": "ListItem", position: 1, name: tNav("home"), item: `${BASE_URL}/${locale}` },
+      { "@type": "ListItem", position: 2, name: tNav(cat.id), item: `${BASE_URL}/${locale}/${category}` },
+    ],
+  };
+
   return (
     <div className="container mx-auto max-w-7xl px-4 py-8">
+      <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(breadcrumbLd) }} />
       <div className="mb-8 flex items-center gap-3">
         <span
           className={cn(
