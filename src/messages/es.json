@@ -92,72 +92,6 @@
     "hint": "Usa las teclas de flecha para navegar"
   },
   "tools": {
-    "merge-pdf": {
-      "name": "Combinar PDF",
-      "description": "Combina varios archivos PDF en un solo documento",
-      "seo": {
-        "title": "Combinar archivos PDF online gratis",
-        "content": "Une varios archivos PDF en un solo documento de forma rápida y sencilla. Reorganiza las páginas como prefieras. Totalmente gratuito, sin registro y procesado directamente en tu navegador."
-      },
-      "faq": {
-        "q1": "¿Cuántos archivos PDF puedo combinar a la vez?",
-        "a1": "Puedes combinar tantos archivos PDF como necesites. Simplemente arrastra todos los documentos a la zona de carga y ordénalos como quieras antes de fusionarlos.",
-        "q2": "¿Puedo cambiar el orden de los archivos antes de combinarlos?",
-        "a2": "Sí, puedes reorganizar los archivos con los botones de mover arriba y abajo, o arrastrándolos a la posición deseada antes de iniciar la combinación.",
-        "q3": "¿Se mantiene la calidad de los PDF originales?",
-        "a3": "Sí, la combinación preserva la calidad original de cada documento. Las páginas, fuentes, imágenes y formato se mantienen exactamente como en los archivos originales."
-      },
-      "ui": {
-        "dropzone": "Arrastra archivos PDF aquí o haz clic para seleccionar",
-        "dropzoneHint": "Puedes seleccionar varios archivos PDF",
-        "files": "Archivos",
-        "pages": "páginas",
-        "moveUp": "Mover arriba",
-        "moveDown": "Mover abajo",
-        "remove": "Eliminar",
-        "merge": "Combinar PDF",
-        "processing": "Combinando...",
-        "done": "¡Combinación completada!",
-        "download": "Descargar PDF",
-        "reset": "Reiniciar",
-        "invalidPdf": "Archivo PDF no válido",
-        "mergeError": "Error al combinar los archivos. Inténtalo de nuevo."
-      }
-    },
-    "split-pdf": {
-      "name": "Dividir PDF",
-      "description": "Divide un PDF en varios archivos separados",
-      "seo": {
-        "title": "Dividir archivos PDF online gratis",
-        "content": "Divide documentos PDF en archivos individuales por página o por rango personalizado. Extrae solo las páginas que necesitas. Gratuito, sin registro y procesado en tu navegador."
-      },
-      "faq": {
-        "q1": "¿Puedo extraer páginas específicas de un PDF?",
-        "a1": "Sí, puedes dividir todas las páginas individualmente o especificar un rango personalizado (por ejemplo, 1-3, 5, 7-10) para extraer solo las páginas que necesitas.",
-        "q2": "¿Qué formato tiene el rango de páginas?",
-        "a2": "Usa números separados por comas para páginas individuales y guiones para rangos. Por ejemplo: 1,3,5-8 extraerá las páginas 1, 3, y de la 5 a la 8.",
-        "q3": "¿Se mantiene la calidad al dividir?",
-        "a3": "Sí, la división no afecta la calidad del contenido. Cada página extraída mantiene exactamente la misma calidad, fuentes e imágenes que el documento original."
-      },
-      "ui": {
-        "dropzone": "Arrastra un archivo PDF aquí o haz clic para seleccionar",
-        "dropzoneHint": "Selecciona un archivo PDF para dividir",
-        "pages": "páginas",
-        "splitAll": "Dividir todas las páginas",
-        "splitRange": "Dividir por rango",
-        "rangeLabel": "Rango de páginas",
-        "rangePlaceholder": "ej. 1-3, 5, 7-10",
-        "rangeHint": "Usa comas y guiones para definir el rango",
-        "split": "Dividir PDF",
-        "processing": "Dividiendo...",
-        "results": "Resultados",
-        "download": "Descargar",
-        "reset": "Reiniciar",
-        "invalidPdf": "Archivo PDF no válido",
-        "splitError": "Error al dividir el archivo. Inténtalo de nuevo.",
-        "invalidRange": "Rango de páginas no válido"
-      }
-    },
     "compress-pdf": {
       "name": "Comprimir PDF",
       "description": "Reduce el tamaño de archivos PDF manteniendo la calidad",
@@ -187,180 +121,6 @@
         "reset": "Reiniciar",
         "invalidPdf": "Archivo PDF no válido",
         "compressError": "Error al comprimir el archivo. Inténtalo de nuevo."
-      }
-    },
-    "pdf-to-jpg": {
-      "name": "PDF a JPG",
-      "description": "Convierte páginas PDF en imágenes JPG",
-      "seo": {
-        "title": "Convertir PDF a JPG online gratis",
-        "content": "Convierte cada página de un PDF en una imagen JPG de alta calidad. Ajusta la calidad de salida según tus necesidades. Gratuito, sin registro y completamente privado."
-      },
-      "faq": {
-        "q1": "¿Se convierten todas las páginas del PDF?",
-        "a1": "Sí, cada página del documento PDF se convierte en una imagen JPG individual. Puedes descargar todas las imágenes o solo las que necesites.",
-        "q2": "¿Puedo ajustar la calidad de las imágenes?",
-        "a2": "Sí, puedes ajustar la calidad de salida con un control deslizante. Mayor calidad produce imágenes más nítidas pero con mayor tamaño de archivo.",
-        "q3": "¿Qué resolución tienen las imágenes resultantes?",
-        "a3": "Las imágenes se generan a una resolución que mantiene la nitidez del documento original. La calidad final depende del ajuste seleccionado y del contenido del PDF."
-      },
-      "ui": {
-        "dropzone": "Arrastra un archivo PDF aquí o haz clic para seleccionar",
-        "dropzoneHint": "Selecciona un archivo PDF para convertir",
-        "quality": "Calidad",
-        "convert": "Convertir a JPG",
-        "processing": "Convirtiendo...",
-        "results": "Resultados",
-        "downloadAll": "Descargar todo",
-        "download": "Descargar",
-        "reset": "Reiniciar",
-        "convertError": "Error al convertir el archivo. Inténtalo de nuevo."
-      }
-    },
-    "jpg-to-pdf": {
-      "name": "JPG a PDF",
-      "description": "Convierte imágenes JPG en un documento PDF",
-      "seo": {
-        "title": "Convertir JPG a PDF online gratis",
-        "content": "Convierte una o varias imágenes JPG en un documento PDF. Organiza las imágenes en el orden que prefieras. Gratuito, sin registro y procesado directamente en tu navegador."
-      },
-      "faq": {
-        "q1": "¿Puedo convertir varias imágenes en un solo PDF?",
-        "a1": "Sí, puedes seleccionar múltiples imágenes JPG y se combinarán en un único documento PDF, con cada imagen en una página separada.",
-        "q2": "¿Se mantiene la calidad de las imágenes?",
-        "a2": "Sí, las imágenes se integran en el PDF manteniendo su resolución y calidad original. No se aplica compresión adicional durante la conversión.",
-        "q3": "¿Puedo cambiar el orden de las imágenes?",
-        "a3": "Sí, puedes reorganizar las imágenes antes de la conversión para que aparezcan en el orden deseado en el documento PDF final."
-      },
-      "ui": {
-        "dropzone": "Arrastra imágenes JPG aquí o haz clic para seleccionar",
-        "dropzoneHint": "Puedes seleccionar varias imágenes JPG",
-        "images": "Imágenes",
-        "convert": "Convertir a PDF",
-        "processing": "Convirtiendo...",
-        "done": "¡Conversión completada!",
-        "download": "Descargar PDF",
-        "reset": "Reiniciar",
-        "convertError": "Error al convertir las imágenes. Inténtalo de nuevo."
-      }
-    },
-    "rotate-pdf": {
-      "name": "Rotar PDF",
-      "description": "Rota las páginas de un documento PDF",
-      "seo": {
-        "title": "Rotar páginas de PDF online gratis",
-        "content": "Rota las páginas de tus documentos PDF en 90, 180 o 270 grados. Aplica la rotación a todas las páginas o solo a las que elijas. Gratuito, sin registro y procesado en tu navegador."
-      },
-      "faq": {
-        "q1": "¿Puedo rotar solo algunas páginas del PDF?",
-        "a1": "Sí, puedes elegir entre rotar todas las páginas del documento o especificar páginas concretas introduciendo los números de página que deseas rotar.",
-        "q2": "¿Qué ángulos de rotación están disponibles?",
-        "a2": "Puedes rotar las páginas 90 grados (un cuarto de vuelta a la derecha), 180 grados (media vuelta) o 270 grados (un cuarto de vuelta a la izquierda).",
-        "q3": "¿La rotación afecta la calidad del PDF?",
-        "a3": "No, la rotación simplemente cambia la orientación de las páginas sin modificar ni recomprimir el contenido. La calidad se mantiene idéntica al original."
-      },
-      "ui": {
-        "dropzone": "Arrastra un archivo PDF aquí o haz clic para seleccionar",
-        "dropzoneHint": "Selecciona un archivo PDF para rotar",
-        "pages": "páginas",
-        "rotationAngle": "Ángulo de rotación",
-        "applyTo": "Aplicar a",
-        "allPages": "Todas las páginas",
-        "customPages": "Páginas específicas",
-        "pagesPlaceholder": "ej. 1, 3, 5-8",
-        "pagesHint": "Usa comas y guiones para definir las páginas",
-        "rotate": "Rotar PDF",
-        "processing": "Rotando...",
-        "done": "¡Rotación completada!",
-        "download": "Descargar PDF",
-        "reset": "Reiniciar",
-        "invalidPdf": "Archivo PDF no válido",
-        "rotateError": "Error al rotar el archivo. Inténtalo de nuevo.",
-        "invalidRange": "Rango de páginas no válido"
-      }
-    },
-    "pdf-to-word": {
-      "name": "PDF a Word",
-      "description": "Convierte documentos PDF en archivos Word editables",
-      "seo": {
-        "title": "Convertidor de PDF a Word online gratuito",
-        "content": "Convierte documentos PDF en archivos Word (DOCX) editables directamente en tu navegador. Extrae el texto preservando la estructura. Gratuito, privado, sin necesidad de subir archivos."
-      },
-      "faq": {
-        "q1": "¿Se conserva el formato del documento?",
-        "a1": "El texto y la estructura básica (párrafos, encabezados) se conservan. Los diseños complejos pueden requerir ajustes manuales tras la conversión.",
-        "q2": "¿Funciona con PDF escaneados?",
-        "a2": "No, la herramienta extrae texto digital del PDF. Los PDF escaneados (imágenes) no contienen texto extraíble y necesitan software de OCR.",
-        "q3": "¿Hay un límite de páginas?",
-        "a3": "No hay límite de páginas. El progreso de conversión se muestra durante el procesamiento. Todo ocurre en tu navegador."
-      },
-      "ui": {
-        "dropzone": "Arrastra un archivo PDF aquí o haz clic para seleccionar",
-        "dropzoneHint": "Archivos PDF de hasta 50 MB",
-        "convert": "Convertir a Word",
-        "processing": "Convirtiendo página {current} de {total}...",
-        "done": "¡Conversión completada!",
-        "download": "Descargar DOCX",
-        "reset": "Reiniciar",
-        "convertError": "Se produjo un error durante la conversión. Inténtalo de nuevo."
-      }
-    },
-    "word-to-pdf": {
-      "name": "Word a PDF",
-      "description": "Convierte documentos Word en PDF",
-      "seo": {
-        "title": "Convertidor de Word a PDF online gratuito",
-        "content": "Convierte documentos Word (DOCX, DOC) a PDF directamente en tu navegador. Conserva el formato y la maquetación. Gratuito, privado, sin necesidad de subir archivos."
-      },
-      "faq": {
-        "q1": "¿Qué formatos de Word son compatibles?",
-        "a1": "La herramienta es compatible con archivos DOCX (Microsoft Word 2007+). Los archivos DOC (formato antiguo) tienen compatibilidad limitada. Para mejores resultados, usa formato DOCX.",
-        "q2": "¿Se conserva el formato del documento?",
-        "a2": "El texto, encabezados, párrafos, listas y tablas se convierten correctamente. Algunos formatos complejos como fuentes personalizadas u objetos incrustados pueden aparecer de forma diferente.",
-        "q3": "¿Hay un límite de tamaño de archivo?",
-        "a3": "La herramienta soporta archivos Word de hasta 50 MB. Todo el procesamiento ocurre en tu navegador — tus archivos nunca se suben a ningún servidor."
-      },
-      "ui": {
-        "dropzone": "Arrastra un archivo Word aquí o haz clic para seleccionar",
-        "dropzoneHint": "Archivos DOCX y DOC de hasta 50 MB",
-        "convert": "Convertir a PDF",
-        "processing": "Convirtiendo...",
-        "done": "¡Conversión completada!",
-        "download": "Descargar PDF",
-        "reset": "Reiniciar",
-        "convertError": "Se produjo un error durante la conversión. Inténtalo de nuevo.",
-        "printHint": "Haz clic en Descargar PDF y selecciona 'Guardar como PDF' en el diálogo de impresión.",
-        "preview": "Vista previa"
-      }
-    },
-    "pdf-to-png": {
-      "name": "PDF a PNG",
-      "description": "Convierte páginas PDF en imágenes PNG",
-      "seo": {
-        "title": "Convertidor de PDF a PNG online gratuito",
-        "content": "Convierte páginas PDF en imágenes PNG de alta calidad directamente en tu navegador. Resolución ajustable con soporte de fondo transparente. Gratuito, privado, sin necesidad de subir archivos."
-      },
-      "faq": {
-        "q1": "¿Qué resolución tienen las imágenes PNG resultantes?",
-        "a1": "Puedes elegir entre escala 1x y 4x. A 2x (predeterminado), una página A4 estándar produce imágenes de aproximadamente 1654x2339 píxeles. Mayor escala significa mejor calidad pero archivos más grandes.",
-        "q2": "¿Puedo obtener fondos transparentes?",
-        "a2": "¡Sí! Activa la opción de transparencia para obtener imágenes PNG con fondo transparente en lugar de blanco. Útil para superponer contenido PDF sobre otros diseños.",
-        "q3": "¿Hay un límite de páginas?",
-        "a3": "No hay límite de páginas. Todas las páginas de tu PDF se convertirán en imágenes PNG individuales y se descargarán como ZIP. El procesamiento ocurre en tu navegador."
-      },
-      "ui": {
-        "dropzone": "Arrastra un archivo PDF aquí o haz clic para seleccionar",
-        "dropzoneHint": "Archivos PDF de hasta 100 MB",
-        "scale": "Resolución",
-        "transparent": "Fondo transparente",
-        "convert": "Convertir a PNG",
-        "processing": "Convirtiendo página {current} de {total}...",
-        "results": "Resultados",
-        "downloadAll": "Descargar todo",
-        "done": "¡Conversión completada!",
-        "download": "Descargar ZIP",
-        "reset": "Reiniciar",
-        "convertError": "Se produjo un error durante la conversión. Inténtalo de nuevo."
       }
     },
     "unlock-pdf": {
@@ -1155,6 +915,135 @@
     "youtube-transcript": {
       "name": "Transcripción YouTube",
       "description": "Extrae los subtítulos y la transcripción de vídeos de YouTube"
+    },
+    "pdf-organizer": {
+      "name": "Organizador PDF",
+      "description": "Fusiona, divide y rota PDFs en una sola herramienta",
+      "seo": {
+        "title": "Organizador PDF Online Gratis",
+        "content": "Fusiona, divide y rota PDFs gratis en tu navegador."
+      },
+      "faq": [
+        {
+          "q": "¿Qué hace?",
+          "a": "Fusionar, dividir y rotar PDFs."
+        },
+        {
+          "q": "¿Es gratis?",
+          "a": "Sí, completamente gratis."
+        },
+        {
+          "q": "¿Puedo reordenar?",
+          "a": "Sí, en la pestaña Fusionar."
+        }
+      ],
+      "ui": {
+        "dropzone": "Arrastra archivos PDF aquí",
+        "dropzoneHint": "o haz clic para examinar",
+        "dropzoneHintMulti": "Arrastra varios PDFs o haz clic",
+        "merge": "Fusionar",
+        "split": "Dividir",
+        "rotate": "Rotar",
+        "files": "Archivos",
+        "pages": "páginas",
+        "moveUp": "Subir",
+        "moveDown": "Bajar",
+        "remove": "Eliminar",
+        "mergeBtn": "Fusionar PDFs",
+        "splitBtn": "Dividir PDF",
+        "rotateBtn": "Rotar PDF",
+        "splitAll": "Todas las páginas",
+        "splitRange": "Rango personalizado",
+        "rangeLabel": "Rangos de páginas",
+        "rangePlaceholder": "ej. 1-3, 5, 8-10",
+        "rangeHint": "Separa rangos con comas",
+        "rotationAngle": "Ángulo de rotación",
+        "applyTo": "Aplicar a",
+        "allPages": "Todas las páginas",
+        "customPages": "Páginas personalizadas",
+        "pagesPlaceholder": "ej. 1-3, 5, 8-10",
+        "pagesHint": "Separa páginas con comas",
+        "processing": "Procesando...",
+        "done": "¡Hecho!",
+        "download": "Descargar",
+        "reset": "Empezar de nuevo",
+        "results": "Resultados",
+        "invalidPdf": "Archivo PDF no válido",
+        "mergeError": "Error al fusionar",
+        "splitError": "Error al dividir",
+        "rotateError": "Error al rotar",
+        "invalidRange": "Rango no válido"
+      }
+    },
+    "pdf-to-images": {
+      "name": "PDF a Imágenes",
+      "description": "Convierte páginas PDF a imágenes JPG o PNG",
+      "seo": {
+        "title": "Convertidor PDF a Imágenes Gratis",
+        "content": "Convierte páginas PDF a JPG o PNG de alta calidad."
+      },
+      "faq": [
+        {
+          "q": "¿Qué formatos?",
+          "a": "JPG y PNG."
+        },
+        {
+          "q": "¿Puedo ajustar la calidad?",
+          "a": "Sí."
+        },
+        {
+          "q": "¿Es gratis?",
+          "a": "Sí."
+        }
+      ],
+      "ui": {
+        "dropzone": "Arrastra un PDF aquí",
+        "dropzoneHint": "o haz clic para examinar",
+        "format": "Formato de salida",
+        "quality": "Calidad",
+        "scale": "Escala",
+        "transparent": "Fondo transparente",
+        "convert": "Convertir",
+        "processing": "Convirtiendo...",
+        "results": "Resultados",
+        "downloadAll": "Descargar todo",
+        "reset": "Empezar de nuevo",
+        "convertError": "Error al convertir PDF"
+      }
+    },
+    "pdf-word": {
+      "name": "PDF ↔ Word",
+      "description": "Convierte entre PDF y documentos Word",
+      "seo": {
+        "title": "Convertidor PDF Word Gratis",
+        "content": "Convierte PDF a Word o Word a PDF."
+      },
+      "faq": [
+        {
+          "q": "¿Cómo funciona?",
+          "a": "Arrastra un archivo PDF o Word."
+        },
+        {
+          "q": "¿Se preserva el formato?",
+          "a": "Texto y títulos sí."
+        },
+        {
+          "q": "¿Es gratis?",
+          "a": "Sí."
+        }
+      ],
+      "ui": {
+        "dropzone": "Arrastra un archivo PDF o Word aquí",
+        "dropzoneHint": "Acepta .pdf, .docx, .doc",
+        "convert": "Convertir",
+        "processing": "Convirtiendo...",
+        "done": "¡Hecho!",
+        "download": "Descargar",
+        "reset": "Empezar de nuevo",
+        "printHint": "Usa el diálogo de impresión para guardar como PDF",
+        "preview": "Vista previa",
+        "convertError": "Error al convertir"
+      }
     }
   },
   "upload": {
