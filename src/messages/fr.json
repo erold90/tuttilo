@@ -26,6 +26,20 @@
     "relatedTools": "Outils Associés",
     "tryNow": "Essayer maintenant",
     "home": "Accueil",
+    "howItWorks": {
+      "upload": {
+        "title": "Importer",
+        "desc": "Sélectionnez votre fichier"
+      },
+      "process": {
+        "title": "Traiter",
+        "desc": "Ajustez les paramètres"
+      },
+      "download": {
+        "title": "Télécharger",
+        "desc": "Obtenez le résultat"
+      }
+    },
     "batch": {
       "processing": "Traitement...",
       "done": "Terminé !",
@@ -62,6 +76,8 @@
       "developer": "JSON, Base64, Regex, QR Code et plus",
       "youtube": "Miniatures et transcriptions YouTube"
     },
+    "favorites": "Vos Favoris",
+    "recents": "Récemment Utilisés",
     "popularTools": "Outils les plus populaires",
     "allTools": "Tous les outils",
     "stats": {
