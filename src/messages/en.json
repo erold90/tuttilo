@@ -26,6 +26,20 @@
     "relatedTools": "Related Tools",
     "tryNow": "Try now",
     "home": "Home",
+    "howItWorks": {
+      "upload": {
+        "title": "Upload",
+        "desc": "Select your file"
+      },
+      "process": {
+        "title": "Process",
+        "desc": "Adjust settings"
+      },
+      "download": {
+        "title": "Download",
+        "desc": "Get your result"
+      }
+    },
     "batch": {
       "processing": "Processing...",
       "done": "Done!",
@@ -62,6 +76,8 @@
       "developer": "JSON, Base64, Regex, QR Code and more",
       "youtube": "Thumbnails and YouTube transcripts"
     },
+    "favorites": "Your Favorites",
+    "recents": "Recently Used",
     "popularTools": "Most Popular Tools",
     "allTools": "All Tools",
     "stats": {
