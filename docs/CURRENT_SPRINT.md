@@ -36,10 +36,14 @@ Pattern universali: tool grid con icone, mega-menu, popular tools, 3-step flow, 
 - `src/components/layout/search-dialog.tsx` — getCategoryClasses + ToolIcon
 - `src/components/ads/ad-slot.tsx` — return null (no ads configured)
 
-## Fase 2 (Prossima): Trust + Legal
-- Privacy Policy, Terms, About, Contact pages
-- Trust signals (file deletion timer, badge sicurezza)
-- Social proof (contatore files, badge browser-only)
+## Fase 2 (COMPLETATA): Trust + Legal
+- Privacy Policy page — DONE (8 lingue)
+- Terms of Service page — DONE (8 lingue)
+- About page — DONE (8 lingue, features grid, tool categories)
+- Contact page — DONE (8 lingue, email/GitHub/FAQ/response cards)
+- Trust signals homepage — DONE (browser-only, no registration, always free, secure by design)
+- Tutte le traduzioni 8 lingue — DONE
+- Build OK, pushato su GitHub, deploy automatico
 
 ## Fase 3 (Dopo): Tool UX Consistency
 - Standardizzare tutti tool su shared components
@@ -55,5 +59,13 @@ Pattern universali: tool grid con icone, mega-menu, popular tools, 3-step flow, 
 - Traduzioni 8 lingue complete e pushate su GitHub
 - Build OK, deploy automatico attivo
 
+## File Creati in Fase 2
+- `src/app/[locale]/privacy/page.tsx` — NEW: Privacy Policy page (server component, edge runtime)
+- `src/app/[locale]/terms/page.tsx` — NEW: Terms of Service page
+- `src/app/[locale]/about/page.tsx` — NEW: About page con features grid e tool categories
+- `src/app/[locale]/contact/page.tsx` — NEW: Contact page con cards (email, GitHub, FAQ, response)
+- `src/app/[locale]/page.tsx` — MODIFY: Trust signals section tra hero e Popular Tools
+- `src/messages/*.json` (x8) — MODIFY: Chiavi pages.privacy/terms/about/contact + home.trust
+
 ## Ultimo aggiornamento
-2026-02-01 — Fase 1 completata (8/9 task) + consolidamento PDF (11→5 super-tool). Tutte le traduzioni pushate. Build OK. Deploy automatico attivo.
+2026-02-01 — Fase 1 (8/9) + Fase 2 (Trust+Legal) completate. 4 nuove pagine + trust signals homepage. Consolidamento PDF (11→5). Tutto tradotto 8 lingue, pushato, deployato.

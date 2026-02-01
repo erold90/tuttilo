@@ -60,12 +60,20 @@
 - **Build OK** — zero errori
 - **8 file orfani** (non importati, non causano problemi): merge-pdf.tsx, split-pdf.tsx, rotate-pdf.tsx, pdf-to-jpg.tsx, pdf-to-png.tsx, pdf-to-word.tsx, word-to-pdf.tsx, jpg-to-pdf.tsx
 
+## UX Redesign V2 Fase 2 (2026-02-01) — COMPLETO
+- **Privacy Policy**: `src/app/[locale]/privacy/page.tsx` — server component, edge runtime, 8 sezioni, SEO metadata
+- **Terms of Service**: `src/app/[locale]/terms/page.tsx` — 8 sezioni legali
+- **About**: `src/app/[locale]/about/page.tsx` — hero, mission, how it works, features grid (6 items), tool categories (7), open source
+- **Contact**: `src/app/[locale]/contact/page.tsx` — 4 cards (email, GitHub, FAQ, response time)
+- **Trust Signals Homepage**: Sezione tra hero e Popular Tools con 4 badge (browser-only, no registration, always free, secure by design)
+- **Traduzioni**: `pages.privacy/terms/about/contact` + `home.trust` in tutte 8 lingue
+- **Footer links**: Già funzionanti (erano placeholder, ora puntano a pagine reali)
+- **Build OK** — zero errori
+
 ## Cosa resta da fare
 - UX Redesign V2 Fase 1: F1.6 mega-menu (opzionale)
-- UX Redesign V2 Fase 2: Trust + Legal (Privacy, Terms, About, Contact)
 - UX Redesign V2 Fase 3: Tool UX Consistency
 - Sprint 7 (SEO & Performance): Core Web Vitals, sitemap dinamica, structured data
-- Sprint 8 (Footer Pages): About, Contact, Privacy, Terms
 - Vedere docs/ROADMAP.md per piano sprint completo
 
 ## Deploy Automatico (2026-02-01)
