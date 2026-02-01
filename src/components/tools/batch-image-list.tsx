@@ -44,10 +44,10 @@ export function BatchImageList({
 
   const statusIcon = (status: BatchFile["status"]) => {
     switch (status) {
-      case "pending": return "⏳";
-      case "processing": return "⚙️";
-      case "done": return "✅";
-      case "error": return "❌";
+      case "pending": return "\u23F3";
+      case "processing": return "\u2699\uFE0F";
+      case "done": return "\u2705";
+      case "error": return "\u274C";
     }
   };
 
@@ -66,7 +66,7 @@ export function BatchImageList({
               <p className="text-xs text-muted-foreground">
                 {formatFileSize(f.file.size)}
                 {f.resultSize > 0 && (
-                  <span className="text-primary"> → {formatFileSize(f.resultSize)}</span>
+                  <span className="text-primary"> \u2192 {formatFileSize(f.resultSize)}</span>
                 )}
               </p>
             </div>
@@ -86,7 +86,7 @@ export function BatchImageList({
                 onClick={() => onRemove(f.id)}
                 className="rounded-md p-1 text-xs text-muted-foreground hover:text-red-500"
               >
-                ✕
+                \u2715
               </button>
             )}
           </div>

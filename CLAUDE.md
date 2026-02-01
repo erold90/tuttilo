@@ -22,6 +22,15 @@ Quando compatti questa conversazione, PRESERVA SEMPRE:
 - `/end-session` — Salva stato, aggiorna file, crea session log
 - `/sprint-status` — Mostra progresso sprint corrente
 
+## Deploy Automatico (IMPORTANTE)
+- **Il deploy e AUTOMATICO**: ogni push su `main` (anche via MCP) triggera GitHub Actions che builda e deploya su Cloudflare Pages
+- Workflow: `.github/workflows/deploy.yml`
+- Secrets GitHub: `CLOUDFLARE_API_TOKEN` + `CLOUDFLARE_ACCOUNT_ID` (gia configurati)
+- Tempo build+deploy: ~2:30 minuti
+- Monitoraggio: https://github.com/erold90/tuttilo/actions
+- **NON serve** wrangler login locale o deploy manuale
+- Dopo ogni push MCP, il sito su tuttilo.com si aggiorna automaticamente
+
 ## File di Stato (LEGGILI SEMPRE)
 - `docs/ROADMAP.md` — Piano generale 7 sprint
 - `docs/CURRENT_SPRINT.md` — Task sprint corrente con checkbox
