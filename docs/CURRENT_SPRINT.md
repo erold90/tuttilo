@@ -47,5 +47,13 @@ Pattern universali: tool grid con icone, mega-menu, popular tools, 3-step flow, 
 - Favoriti/Recenti (localStorage)
 - Micro-animazioni
 
+## Extra: Consolidamento PDF (Completato)
+- 11 PDF tool → 5 super-tool (pdf-organizer, pdf-to-images, pdf-word, compress-pdf, unlock-pdf)
+- 8 redirect 301 configurati in next.config.ts
+- 3 nuovi componenti: pdf-organizer.tsx, pdf-to-images.tsx, pdf-word.tsx
+- Registry, page.tsx, tool-icon.tsx aggiornati
+- Traduzioni 8 lingue complete e pushate su GitHub
+- Build OK, deploy automatico attivo
+
 ## Ultimo aggiornamento
-2026-02-01 — Fase 1 completata (8/9 task). Homepage riscritta con Popular Tools, All Tools grid, search funzionante. Colori centralizzati, icone renderizzate, ad nascosti. Pushato e deployato.
+2026-02-01 — Fase 1 completata (8/9 task) + consolidamento PDF (11→5 super-tool). Tutte le traduzioni pushate. Build OK. Deploy automatico attivo.

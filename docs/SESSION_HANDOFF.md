@@ -46,7 +46,24 @@
 - **Traduzioni**: error/quality/size/batch keys in tutte 8 lingue
 - **Build OK** — zero errori
 
+## Consolidamento PDF (2026-02-01) — COMPLETO
+- **Obiettivo**: Ridurre 11 PDF tool a 5 super-tool (come iLovePDF)
+- **Super-tool creati**:
+  - `pdf-organizer` (slug: `organizer`) — merge + split + rotate in un unico tool con tab
+  - `pdf-to-images` (slug: `to-images`) — pdf-to-jpg + pdf-to-png con selector formato
+  - `pdf-word` (slug: `word`) — word-to-pdf + pdf-to-word bidirezionale
+  - `compress-pdf` (slug: `compress`) — mantenuto
+  - `unlock-pdf` (slug: `unlock`) — mantenuto
+- **Redirect 301** in `next.config.ts`: merge→organizer, split→organizer, rotate→organizer, to-jpg→to-images, to-png→to-images, from-jpg→from-images, to-word→word, from-word→word
+- **Registry**: 5 super-tool attivi, vecchi slug rimossi
+- **Traduzioni**: Tutte 8 lingue aggiornate con chiavi pdf-organizer/pdf-to-images/pdf-word
+- **Build OK** — zero errori
+- **8 file orfani** (non importati, non causano problemi): merge-pdf.tsx, split-pdf.tsx, rotate-pdf.tsx, pdf-to-jpg.tsx, pdf-to-png.tsx, pdf-to-word.tsx, word-to-pdf.tsx, jpg-to-pdf.tsx
+
 ## Cosa resta da fare
+- UX Redesign V2 Fase 1: F1.6 mega-menu (opzionale)
+- UX Redesign V2 Fase 2: Trust + Legal (Privacy, Terms, About, Contact)
+- UX Redesign V2 Fase 3: Tool UX Consistency
 - Sprint 7 (SEO & Performance): Core Web Vitals, sitemap dinamica, structured data
 - Sprint 8 (Footer Pages): About, Contact, Privacy, Terms
 - Vedere docs/ROADMAP.md per piano sprint completo
@@ -58,6 +75,16 @@
 - NON serve più wrangler login locale o deploy manuale
 - Monitoraggio: https://github.com/erold90/tuttilo/actions
 - Tempo medio: ~2:30 minuti
+
+## File creati/modificati — Consolidamento PDF
+- `src/components/tools/pdf-organizer.tsx` — CREATE. Super-tool merge+split+rotate con tab UI
+- `src/components/tools/pdf-to-images.tsx` — CREATE. Super-tool pdf-to-jpg+pdf-to-png con formato selector
+- `src/components/tools/pdf-word.tsx` — CREATE. Super-tool word-to-pdf+pdf-to-word bidirezionale
+- `src/lib/tools/registry.ts` — MODIFY. 5 super-tool, vecchi rimossi
+- `src/app/[locale]/[category]/[tool]/page.tsx` — MODIFY. Nuovi import + mapping
+- `src/components/tool-icon.tsx` — MODIFY. Nuove icone per super-tool
+- `next.config.ts` — MODIFY. 8 redirect 301 per vecchi slug
+- `src/messages/*.json` (x8) — MODIFY. Chiavi traduzione per 3 nuovi super-tool
 
 ## Decisioni prese
 1. Dominio: tuttilo.com
@@ -78,6 +105,7 @@
 16. docx: client-side DOCX creation via Packer.toBlob()
 17. FFmpeg.wasm: single-threaded mode, WASM da unpkg CDN, client wrapper pattern
 18. Deploy automatico via GitHub Actions (non più wrangler manuale)
+19. PDF consolidation: 11→5 super-tool, redirect 301 per SEO, tab UI per multi-funzione
 
 ## Problemi aperti
 - git push locale non funziona (SSH key mismatch witerose ≠ erold90) — usare MCP GitHub
