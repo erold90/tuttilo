@@ -156,9 +156,9 @@ export function JpgToPdf() {
                 <img src={img.url} alt={img.name} className="w-full aspect-[3/4] object-cover" />
                 <div className="absolute top-1 left-1 bg-black/60 text-white text-xs px-1.5 py-0.5 rounded">{i + 1}</div>
                 <div className="absolute top-1 right-1 flex gap-1 opacity-0 group-hover:opacity-100 transition-opacity">
-                  <button onClick={() => moveImage(i, -1)} disabled={i === 0} className="bg-black/60 text-white text-xs p-1 rounded disabled:opacity-30">\u2191</button>
-                  <button onClick={() => moveImage(i, 1)} disabled={i === images.length - 1} className="bg-black/60 text-white text-xs p-1 rounded disabled:opacity-30">\u2193</button>
-                  <button onClick={() => removeImage(i)} className="bg-red-600/80 text-white text-xs p-1 rounded">\u2715</button>
+                  <button onClick={() => moveImage(i, -1)} disabled={i === 0} className="bg-black/60 text-white text-xs p-1 rounded disabled:opacity-30">↑</button>
+                  <button onClick={() => moveImage(i, 1)} disabled={i === images.length - 1} className="bg-black/60 text-white text-xs p-1 rounded disabled:opacity-30">↓</button>
+                  <button onClick={() => removeImage(i)} className="bg-red-600/80 text-white text-xs p-1 rounded">✕</button>
                 </div>
                 <div className="p-2">
                   <p className="text-xs truncate">{img.name}</p>
@@ -180,10 +180,10 @@ export function JpgToPdf() {
       {/* Result */}
       {resultUrl && (
         <div className="bg-green-500/10 border border-green-500/20 rounded-xl p-6 text-center space-y-3">
-          <div className="text-3xl">\u2713</div>
+          <div className="text-3xl">✓</div>
           <p className="font-medium">{t("done")}</p>
           <p className="text-sm text-muted-foreground">
-            {images.length} {t("images")} \u00B7 {formatSize(resultSize)}
+            {images.length} {t("images")} · {formatSize(resultSize)}
           </p>
           <div className="flex gap-3 justify-center">
             <button onClick={download} className="py-2 px-6 bg-primary text-primary-foreground rounded-lg font-medium hover:bg-primary/90">{t("download")}</button>

@@ -132,13 +132,13 @@ export function MergePdf() {
               <div className="flex-1 min-w-0">
                 <p className="text-sm font-medium truncate">{f.name}</p>
                 <p className="text-xs text-muted-foreground">
-                  {f.pages} {t("pages")} \u00B7 {formatSize(f.file.size)}
+                  {f.pages} {t("pages")} · {formatSize(f.file.size)}
                 </p>
               </div>
               <div className="flex gap-1">
-                <button onClick={() => moveFile(i, -1)} disabled={i === 0} className="p-1.5 rounded hover:bg-muted disabled:opacity-30" title={t("moveUp")}>\u2191</button>
-                <button onClick={() => moveFile(i, 1)} disabled={i === files.length - 1} className="p-1.5 rounded hover:bg-muted disabled:opacity-30" title={t("moveDown")}>\u2193</button>
-                <button onClick={() => removeFile(i)} className="p-1.5 rounded hover:bg-destructive/10 text-destructive" title={t("remove")}>\u2715</button>
+                <button onClick={() => moveFile(i, -1)} disabled={i === 0} className="p-1.5 rounded hover:bg-muted disabled:opacity-30" title={t("moveUp")}>↑</button>
+                <button onClick={() => moveFile(i, 1)} disabled={i === files.length - 1} className="p-1.5 rounded hover:bg-muted disabled:opacity-30" title={t("moveDown")}>↓</button>
+                <button onClick={() => removeFile(i)} className="p-1.5 rounded hover:bg-destructive/10 text-destructive" title={t("remove")}>✕</button>
               </div>
             </div>
           ))}
@@ -159,10 +159,10 @@ export function MergePdf() {
       {/* Result */}
       {resultUrl && (
         <div className="bg-green-500/10 border border-green-500/20 rounded-xl p-6 text-center space-y-3">
-          <div className="text-3xl">\u2713</div>
+          <div className="text-3xl">✓</div>
           <p className="font-medium">{t("done")}</p>
           <p className="text-sm text-muted-foreground">
-            {files.reduce((sum, f) => sum + f.pages, 0)} {t("pages")} \u00B7 {formatSize(resultSize)}
+            {files.reduce((sum, f) => sum + f.pages, 0)} {t("pages")} · {formatSize(resultSize)}
           </p>
           <div className="flex gap-3 justify-center">
             <button onClick={download} className="py-2 px-6 bg-primary text-primary-foreground rounded-lg font-medium hover:bg-primary/90">{t("download")}</button>

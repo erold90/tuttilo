@@ -132,7 +132,7 @@ export function RotatePdf() {
           <div className="bg-muted/50 rounded-lg p-4">
             <p className="font-medium truncate">{file.name}</p>
             <p className="text-sm text-muted-foreground">
-              {totalPages} {t("pages")} \u00B7 {formatSize(file.size)}
+              {totalPages} {t("pages")} · {formatSize(file.size)}
             </p>
           </div>
 
@@ -146,7 +146,7 @@ export function RotatePdf() {
                   onClick={() => setRotation(deg)}
                   className={`py-2 px-4 rounded-lg font-medium transition-colors ${rotation === deg ? "bg-primary text-primary-foreground" : "bg-muted hover:bg-muted/80"}`}
                 >
-                  {deg}\u00B0
+                  {deg}°
                 </button>
               ))}
             </div>
@@ -194,7 +194,7 @@ export function RotatePdf() {
         </div>
       ) : (
         <div className="bg-green-500/10 border border-green-500/20 rounded-xl p-6 text-center space-y-3">
-          <div className="text-3xl">\u2713</div>
+          <div className="text-3xl">✓</div>
           <p className="font-medium">{t("done")}</p>
           <p className="text-sm text-muted-foreground">{formatSize(resultSize)}</p>
           <div className="flex gap-3 justify-center">

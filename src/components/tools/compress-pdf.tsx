@@ -122,7 +122,7 @@ export function CompressPdf() {
       {resultUrl && (
         <div className="bg-green-500/10 border border-green-500/20 rounded-xl p-6 space-y-4">
           <div className="text-center">
-            <div className="text-3xl mb-2">\u2713</div>
+            <div className="text-3xl mb-2">✓</div>
             <p className="font-medium">{t("done")}</p>
           </div>
 

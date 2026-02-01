@@ -146,7 +146,7 @@ export function SplitPdf() {
         <div className="bg-muted/50 rounded-lg p-4">
           <p className="font-medium truncate">{file.name}</p>
           <p className="text-sm text-muted-foreground">
-            {totalPages} {t("pages")} \u00B7 {formatSize(file.size)}
+            {totalPages} {t("pages")} · {formatSize(file.size)}
           </p>
         </div>
       )}
