@@ -2,7 +2,8 @@
 
 import { useState, useCallback } from "react";
 import { useTranslations } from "next-intl";
-import { PDFDocument, degrees } from "pdf-lib";
+import { degrees } from "pdf-lib";
+import { loadPdfRobust, getPdfPageCount } from "@/lib/pdf-utils";
 
 export function RotatePdf() {
   const t = useTranslations("tools.rotate-pdf.ui");
@@ -22,10 +23,10 @@ export function RotatePdf() {
     setResultUrl("");
     try {
       const bytes = await f.arrayBuffer();
-      const doc = await PDFDocument.load(bytes, { ignoreEncryption: true, capNumbers: true });
+      const pages = await getPdfPageCount(bytes);
       setFile(f);
-      setTotalPages(doc.getPageCount());
-      setCustomPages(`1-${doc.getPageCount()}`);
+      setTotalPages(pages);
+      setCustomPages(`1-${pages}`);
     } catch {
       setError(t("invalidPdf"));
     }
@@ -55,7 +56,7 @@ export function RotatePdf() {
     setError("");
     try {
       const bytes = await file.arrayBuffer();
-      const doc = await PDFDocument.load(bytes, { ignoreEncryption: true, capNumbers: true });
+      const doc = await loadPdfRobust(bytes);
 
       const pagesToRotate = applyTo === "all"
         ? doc.getPageIndices()

@@ -2,7 +2,7 @@
 
 import { useState, useCallback } from "react";
 import { useTranslations } from "next-intl";
-import { PDFDocument } from "pdf-lib";
+import { loadPdfRobust } from "@/lib/pdf-utils";
 
 export function CompressPdf() {
   const t = useTranslations("tools.compress-pdf.ui");
@@ -13,19 +13,13 @@ export function CompressPdf() {
   const [compressedSize, setCompressedSize] = useState(0);
   const [error, setError] = useState("");
 
-  const loadPdf = useCallback(async (f: File) => {
+  const loadPdf = useCallback((f: File) => {
     if (f.type !== "application/pdf" && !f.name.toLowerCase().endsWith(".pdf")) return;
     setError("");
     setResultUrl("");
-    try {
-      const bytes = await f.arrayBuffer();
-      await PDFDocument.load(bytes, { ignoreEncryption: true, capNumbers: true });
-      setFile(f);
-      setOriginalSize(f.size);
-    } catch {
-      setError(t("invalidPdf"));
-    }
-  }, [t]);
+    setFile(f);
+    setOriginalSize(f.size);
+  }, []);
 
   const compress = useCallback(async () => {
     if (!file) return;
@@ -33,7 +27,7 @@ export function CompressPdf() {
     setError("");
     try {
       const bytes = await file.arrayBuffer();
-      const doc = await PDFDocument.load(bytes, { ignoreEncryption: true, capNumbers: true });
+      const doc = await loadPdfRobust(bytes);
 
       // Strip metadata for compression
       doc.setTitle("");

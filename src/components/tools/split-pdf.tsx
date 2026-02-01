@@ -3,6 +3,7 @@
 import { useState, useCallback } from "react";
 import { useTranslations } from "next-intl";
 import { PDFDocument } from "pdf-lib";
+import { loadPdfRobust, getPdfPageCount } from "@/lib/pdf-utils";
 
 export function SplitPdf() {
   const t = useTranslations("tools.split-pdf.ui");
@@ -20,10 +21,10 @@ export function SplitPdf() {
     setResults([]);
     try {
       const bytes = await f.arrayBuffer();
-      const doc = await PDFDocument.load(bytes, { ignoreEncryption: true, capNumbers: true });
+      const pages = await getPdfPageCount(bytes);
       setFile(f);
-      setTotalPages(doc.getPageCount());
-      setRangeInput(`1-${doc.getPageCount()}`);
+      setTotalPages(pages);
+      setRangeInput(`1-${pages}`);
     } catch {
       setError(t("invalidPdf"));
     }
@@ -53,7 +54,7 @@ export function SplitPdf() {
     setError("");
     try {
       const bytes = await file.arrayBuffer();
-      const src = await PDFDocument.load(bytes, { ignoreEncryption: true, capNumbers: true });
+      const src = await loadPdfRobust(bytes);
       const newResults: { url: string; name: string; size: number }[] = [];
       const baseName = file.name.replace(/\.pdf$/i, "");
 

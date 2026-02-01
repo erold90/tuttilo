@@ -3,6 +3,7 @@
 import { useState, useCallback } from "react";
 import { useTranslations } from "next-intl";
 import { PDFDocument } from "pdf-lib";
+import { loadPdfRobust, getPdfPageCount } from "@/lib/pdf-utils";
 
 interface PdfFile {
   file: File;
@@ -25,8 +26,8 @@ export function MergePdf() {
       if (file.type !== "application/pdf" && !file.name.toLowerCase().endsWith(".pdf")) continue;
       try {
         const bytes = await file.arrayBuffer();
-        const doc = await PDFDocument.load(bytes, { ignoreEncryption: true, capNumbers: true });
-        pdfFiles.push({ file, name: file.name, pages: doc.getPageCount() });
+        const pages = await getPdfPageCount(bytes);
+        pdfFiles.push({ file, name: file.name, pages });
       } catch {
         setError(t("invalidPdf"));
       }
@@ -61,7 +62,7 @@ export function MergePdf() {
       const merged = await PDFDocument.create();
       for (const pdfFile of files) {
         const bytes = await pdfFile.file.arrayBuffer();
-        const doc = await PDFDocument.load(bytes, { ignoreEncryption: true, capNumbers: true });
+        const doc = await loadPdfRobust(bytes);
         const pages = await merged.copyPages(doc, doc.getPageIndices());
         pages.forEach((page) => merged.addPage(page));
       }

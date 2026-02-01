@@ -3,6 +3,7 @@
 import { useState, useCallback, useEffect } from "react";
 import { useTranslations } from "next-intl";
 import { PDFDocument } from "pdf-lib";
+import { loadPdfRobust } from "@/lib/pdf-utils";
 
 export function UnlockPdf() {
   const t = useTranslations("tools.unlock-pdf.ui");
@@ -37,7 +38,7 @@ export function UnlockPdf() {
 
       // First try: pdf-lib with ignoreEncryption (handles owner-password / permission-only locks)
       try {
-        const doc = await PDFDocument.load(bytes, { ignoreEncryption: true, capNumbers: true });
+        const doc = await loadPdfRobust(bytes);
         const unlockedBytes = await doc.save();
         const blob = new Blob([unlockedBytes.buffer as ArrayBuffer], { type: "application/pdf" });
         if (resultUrl) URL.revokeObjectURL(resultUrl);
