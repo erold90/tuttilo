@@ -53,12 +53,11 @@
 ### Utility Condivisa: `src/lib/pdf-utils.ts`
 
 ```
-loadPdfRobust(bytes, opts?) → PDFDocument
+loadPdfRobust(bytes) → PDFDocument
   1. Tenta PDFDocument.load() con pdf-lib
   2. Se fallisce → pdfjs-dist renderizza pagine come JPEG
   3. Crea nuovo PDFDocument pulito con le immagini
-  4. Chiama opts.onProgress(%) durante la ricostruzione
-  5. Ritorna il PDFDocument pronto per qualsiasi operazione
+  4. Ritorna il PDFDocument pronto per qualsiasi operazione
 
 getPdfPageCount(bytes) → number
   1. Tenta pdf-lib per conteggio pagine (veloce)
@@ -137,12 +136,12 @@ Se in futuro il bundle size non e un problema o si vuole qualita professionale:
 ## File Creati/Modificati
 
 - `src/lib/pdf-utils.ts` — Utility condivisa (loadPdfRobust, getPdfPageCount)
-- `src/components/tools/compress-pdf.tsx` — Usa loadPdfRobust + progress
-- `src/components/tools/merge-pdf.tsx` — Usa loadPdfRobust + getPdfPageCount + progress per file
-- `src/components/tools/split-pdf.tsx` — Usa loadPdfRobust + getPdfPageCount + progress
-- `src/components/tools/rotate-pdf.tsx` — Usa loadPdfRobust + getPdfPageCount + progress
-- `src/components/tools/unlock-pdf.tsx` — Usa loadPdfRobust + progress
-- `src/components/tools/pdf-to-jpg.tsx` — MIME check permissivo + doc.destroy()
-- `src/components/tools/pdf-to-png.tsx` — MIME check permissivo + doc.destroy()
-- `src/components/tools/pdf-to-word.tsx` — MIME check permissivo + doc.destroy()
+- `src/components/tools/compress-pdf.tsx` — Usa loadPdfRobust
+- `src/components/tools/merge-pdf.tsx` — Usa loadPdfRobust + getPdfPageCount
+- `src/components/tools/split-pdf.tsx` — Usa loadPdfRobust + getPdfPageCount
+- `src/components/tools/rotate-pdf.tsx` — Usa loadPdfRobust + getPdfPageCount
+- `src/components/tools/unlock-pdf.tsx` — Usa loadPdfRobust
+- `src/components/tools/pdf-to-jpg.tsx` — MIME check permissivo
+- `src/components/tools/pdf-to-png.tsx` — MIME check permissivo
+- `src/components/tools/pdf-to-word.tsx` — MIME check permissivo
 - `docs/PDF_SYSTEM_PLAN.md` — Questo file (piano documentato)
