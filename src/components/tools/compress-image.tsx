@@ -52,7 +52,7 @@ export function CompressImage() {
     if (!resultUrl || !file) return;
     const origExt = file.name.replace(/.*\./, "");
     // If PNG was converted to JPEG for compression, use .jpg extension
-    const isPngToJpeg = file.type === "image/png" && quality < 90;
+    const isPngToJpeg = file.type === "image/png";
     const outExt = isPngToJpeg ? "jpg" : origExt;
     const baseName = file.name.replace(/\.[^.]+$/, "");
     triggerDownload(resultUrl, `${baseName}-compressed.${outExt}`);

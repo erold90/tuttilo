@@ -148,13 +148,9 @@ export async function compressImage(
     let buffer: ArrayBuffer;
     let mime: string;
 
-    if (file.type === "image/png" && quality >= 0.9) {
-      // PNG at high quality: lossless OxiPNG optimization
-      buffer = await encodeWithJsquashPng(imageData);
-      mime = "image/png";
-    } else if (file.type === "image/png") {
-      // PNG at low quality: convert to JPEG for real lossy compression
-      // (PNG is lossless — quality slider has no effect on PNG encoding)
+    if (file.type === "image/png") {
+      // PNG is lossless — always convert to JPEG for real compression
+      // (OxiPNG re-encoding barely reduces file size)
       buffer = await encodeWithJsquashJpeg(imageData, quality);
       mime = "image/jpeg";
     } else if (file.type === "image/webp") {
@@ -179,11 +175,8 @@ export async function compressImage(
     canvas.height = img.height;
     const ctx = canvas.getContext("2d")!;
 
-    // White background for JPEG output (no transparency)
-    const outputMime = (file.type === "image/png" && quality < 0.9) ? "image/jpeg"
-      : file.type === "image/webp" ? "image/webp"
-      : file.type === "image/png" ? "image/png"
-      : "image/jpeg";
+    // PNG → always JPEG for real compression; WebP stays WebP
+    const outputMime = file.type === "image/webp" ? "image/webp" : "image/jpeg";
 
     if (outputMime === "image/jpeg") {
       ctx.fillStyle = "#FFFFFF";
