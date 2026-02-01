@@ -79,9 +79,20 @@
 - **Traduzioni**: `common.howItWorks.*` + `home.favorites` + `home.recents` in tutte 8 lingue
 - **Build OK** — zero errori
 
+## Sprint 7 SEO & Performance (2026-02-01) — COMPLETO
+- **BreadcrumbList JSON-LD**: Su tutte le tool pages (Home > Category > Tool) e category pages (Home > Category)
+- **SoftwareApplication JSON-LD**: Su tutte le tool pages (name, description, url, free offer)
+- **FAQPage JSON-LD**: Su tutte le tool pages (3 FAQ items da traduzioni esistenti)
+- **Homepage Metadata**: generateMetadata con `home.subtitle` tradotto come description (override del fallback inglese del layout)
+- **Security Headers**: X-Content-Type-Options: nosniff, X-Frame-Options: SAMEORIGIN, Referrer-Policy: strict-origin-when-cross-origin, Permissions-Policy: geolocation=(), payment=()
+- **Web App Manifest**: `public/manifest.json` con tema Indigo #6366F1
+- **Layout**: Aggiunto manifest link in metadata
+- **Nessuna nuova traduzione necessaria** — tutti i dati JSON-LD usano chiavi già esistenti
+- **Build OK** — zero errori
+
 ## Cosa resta da fare
 - UX Redesign V2 Fase 1: F1.6 mega-menu (opzionale)
-- Sprint 7 (SEO & Performance): Core Web Vitals, sitemap dinamica, structured data
+- Sprint AI/Server: Remove Background, OCR, PDF Editor, Excel→PDF, YT Transcript (richiede server-side)
 - Vedere docs/ROADMAP.md per piano sprint completo
 
 ## Deploy Automatico (2026-02-01)

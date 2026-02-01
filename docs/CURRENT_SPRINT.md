@@ -79,5 +79,23 @@ Pattern universali: tool grid con icone, mega-menu, popular tools, 3-step flow, 
 - `src/app/[locale]/page.tsx` — MODIFY: Aggiunto HomeUserSections tra trust signals e Popular Tools
 - `src/messages/*.json` (x8) — MODIFY: Chiavi common.howItWorks.*, home.favorites, home.recents
 
+## Sprint 7 (COMPLETATO): SEO & Performance
+- BreadcrumbList JSON-LD su tool pages e category pages — DONE
+- SoftwareApplication JSON-LD su tool pages (price: free) — DONE
+- FAQPage JSON-LD su tool pages (3 FAQ items) — DONE
+- Homepage generateMetadata con descrizione tradotta — DONE
+- Security headers (X-Content-Type-Options, X-Frame-Options, Referrer-Policy, Permissions-Policy) — DONE
+- Web App Manifest (manifest.json) — DONE
+- Layout manifest link — DONE
+- Build OK, pushato su GitHub, deploy automatico
+
+## File Creati/Modificati in Sprint 7
+- `src/app/[locale]/[category]/[tool]/page.tsx` — MODIFY: BreadcrumbList + SoftwareApplication + FAQPage JSON-LD
+- `src/app/[locale]/[category]/page.tsx` — MODIFY: BreadcrumbList JSON-LD
+- `src/app/[locale]/page.tsx` — MODIFY: generateMetadata con descrizione tradotta
+- `src/app/[locale]/layout.tsx` — MODIFY: manifest link
+- `next.config.ts` — MODIFY: Security headers
+- `public/manifest.json` — NEW: PWA manifest
+
 ## Ultimo aggiornamento
-2026-02-01 — Fase 1 (8/9) + Fase 2 (Trust+Legal) + Fase 3 (Tool UX) completate. How-it-works, favoriti, recenti. Consolidamento PDF (11→5). Tutto tradotto 8 lingue, pushato, deployato.
+2026-02-01 — Fase 1-3 + Sprint 7 SEO completati. Structured data JSON-LD, security headers, manifest. Tutto pushato e deployato.
