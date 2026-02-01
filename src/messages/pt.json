@@ -25,7 +25,15 @@
     "faq": "Perguntas Frequentes",
     "relatedTools": "Ferramentas Relacionadas",
     "tryNow": "Experimentar agora",
-    "home": "Início"
+    "home": "Início",
+    "batch": {
+      "processing": "Processando...",
+      "done": "Concluído!",
+      "convertAll": "Converter Todos",
+      "downloadAll": "Baixar Todos",
+      "reset": "Recomeçar",
+      "download": "Baixar"
+    }
   },
   "nav": {
     "pdf": "PDF",
@@ -457,7 +465,8 @@
         "compressedSize": "Tamanho comprimido",
         "savings": "Economia",
         "original": "Original",
-        "compressed": "Comprimida"
+        "compressed": "Comprimida",
+        "error": "Falha na compressão. Tente novamente com outra imagem."
       }
     },
     "resize-image": {
@@ -486,7 +495,11 @@
         "reset": "Reiniciar",
         "original": "Original",
         "resized": "Redimensionada",
-        "originalDimensions": "Dimensões originais"
+        "originalDimensions": "Dimensões originais",
+        "quality": "Qualidade",
+        "originalSize": "Tamanho original",
+        "resultSize": "Tamanho do resultado",
+        "error": "Falha no redimensionamento. Tente novamente com outra imagem."
       }
     },
     "crop-image": {
@@ -510,7 +523,12 @@
         "download": "Baixar",
         "reset": "Reiniciar",
         "result": "Resultado",
-        "freeform": "Livre"
+        "freeform": "Livre",
+        "quality": "Qualidade",
+        "processing": "Recortando...",
+        "originalSize": "Tamanho original",
+        "resultSize": "Tamanho do resultado",
+        "error": "Falha no recorte. Tente novamente com outra imagem."
       }
     },
     "png-to-jpg": {
@@ -534,7 +552,8 @@
         "processing": "Convertendo...",
         "convert": "Converter",
         "download": "Baixar",
-        "reset": "Reiniciar"
+        "reset": "Reiniciar",
+        "error": "Falha na conversão. Tente novamente com outra imagem."
       }
     },
     "jpg-to-png": {
@@ -557,7 +576,8 @@
         "processing": "Convertendo...",
         "convert": "Converter",
         "download": "Baixar",
-        "reset": "Reiniciar"
+        "reset": "Reiniciar",
+        "error": "Falha na conversão. Tente novamente com outra imagem."
       }
     },
     "webp-to-png": {
@@ -580,7 +600,8 @@
         "processing": "Convertendo...",
         "convert": "Converter",
         "download": "Baixar",
-        "reset": "Reiniciar"
+        "reset": "Reiniciar",
+        "error": "Falha na conversão. Tente novamente com outra imagem."
       }
     },
     "webp-to-jpg": {
@@ -604,7 +625,8 @@
         "processing": "Convertendo...",
         "convert": "Converter",
         "download": "Baixar",
-        "reset": "Reiniciar"
+        "reset": "Reiniciar",
+        "error": "Falha na conversão. Tente novamente com outra imagem."
       }
     },
     "heic-to-jpg": {
@@ -629,6 +651,7 @@
         "download": "Baixar",
         "reset": "Reiniciar",
         "result": "Resultado",
+        "quality": "Qualidade",
         "error": "A conversão falhou. Certifique-se de que o arquivo é uma imagem HEIC válida."
       }
     },
