@@ -65,9 +65,19 @@
     "popularTools": "Most Popular Tools",
     "allTools": "All Tools",
     "stats": {
-      "tools": "45+ tools",
+      "tools": "36+ tools",
       "filesProcessed": "Files processed",
       "noUpload": "100% in-browser"
+    },
+    "trust": {
+      "browserOnly": "Browser-Only Processing",
+      "browserOnlyDesc": "Your files never leave your device. All processing happens locally.",
+      "noRegistration": "No Registration Required",
+      "noRegistrationDesc": "Use any tool instantly. No account, no email, no limits.",
+      "alwaysFree": "Always Free",
+      "alwaysFreeDesc": "All tools are free forever. No hidden fees or subscriptions.",
+      "secureByDesign": "Secure by Design",
+      "secureByDesignDesc": "No server uploads means zero risk of data breaches."
     },
     "features": {
       "privacy": {
@@ -1053,6 +1063,143 @@
       "unsupportedFormat": "Unsupported format. Accepted formats: {formats}",
       "processingFailed": "Processing failed. Please try again.",
       "tooManyFiles": "Too many files. Maximum: {max}"
+    }
+  },
+  "pages": {
+    "privacy": {
+      "title": "Privacy Policy",
+      "description": "How Tuttilo protects your privacy and handles your data.",
+      "lastUpdated": "Last updated: February 2026",
+      "intro": "At Tuttilo, your privacy is our top priority. All file processing happens entirely in your browser — your files are never uploaded to our servers.",
+      "noDataCollection": {
+        "title": "We Don't Collect Your Files",
+        "content": "Tuttilo is a browser-based tool suite. When you process a PDF, image, video, or any other file, the processing happens locally on your device using JavaScript and WebAssembly. No file data is ever sent to our servers or any third party."
+      },
+      "analytics": {
+        "title": "Analytics",
+        "content": "We may use anonymous analytics (such as page views and tool usage counts) to improve our service. This data contains no personally identifiable information and cannot be linked to any individual user."
+      },
+      "cookies": {
+        "title": "Cookies",
+        "content": "Tuttilo uses only essential cookies for basic functionality such as language preference and theme selection. We do not use tracking cookies or advertising cookies."
+      },
+      "thirdParty": {
+        "title": "Third-Party Services",
+        "content": "Our website may load resources from content delivery networks (CDNs) for fonts and JavaScript libraries. These services may receive your IP address as part of standard web requests. We do not share any personal data or file content with third parties."
+      },
+      "retention": {
+        "title": "Data Retention",
+        "content": "Since we do not collect or store your files, there is no file data to retain. Any preferences stored in your browser (such as language or theme) remain on your device and can be cleared at any time through your browser settings."
+      },
+      "rights": {
+        "title": "Your Rights",
+        "content": "Under GDPR and other privacy regulations, you have the right to access, correct, or delete any personal data. Since Tuttilo does not collect personal data or files, these rights are inherently respected by our architecture."
+      },
+      "changes": {
+        "title": "Changes to This Policy",
+        "content": "We may update this privacy policy from time to time. Any changes will be posted on this page with an updated revision date."
+      },
+      "contact": {
+        "title": "Contact",
+        "content": "If you have questions about this privacy policy, please contact us at the address listed on our Contact page."
+      }
+    },
+    "terms": {
+      "title": "Terms of Service",
+      "description": "Terms and conditions for using Tuttilo tools.",
+      "lastUpdated": "Last updated: February 2026",
+      "intro": "By using Tuttilo, you agree to these terms. Please read them carefully.",
+      "service": {
+        "title": "Service Description",
+        "content": "Tuttilo provides free browser-based tools for processing PDFs, images, videos, audio, and text. All processing occurs locally in your browser. We do not guarantee uninterrupted or error-free operation."
+      },
+      "usage": {
+        "title": "Acceptable Use",
+        "content": "You agree to use Tuttilo only for lawful purposes. You are solely responsible for the content you process. You must not use the service to process illegal, harmful, or rights-infringing content."
+      },
+      "ip": {
+        "title": "Intellectual Property",
+        "content": "The Tuttilo name, logo, and website design are our property. The tools are provided for your personal and commercial use. You retain all rights to the files you process."
+      },
+      "liability": {
+        "title": "Limitation of Liability",
+        "content": "Tuttilo is provided \"as is\" without warranties of any kind. We are not liable for any damages arising from the use of our tools, including but not limited to data loss, file corruption, or processing errors."
+      },
+      "warranty": {
+        "title": "Disclaimer of Warranties",
+        "content": "We make no warranties about the accuracy, reliability, or completeness of our tools. Results may vary depending on your browser, device, and file format. Always keep backup copies of your original files."
+      },
+      "modifications": {
+        "title": "Modifications",
+        "content": "We reserve the right to modify or discontinue any tool or feature at any time without notice. We may also update these terms, with changes becoming effective upon posting."
+      },
+      "law": {
+        "title": "Governing Law",
+        "content": "These terms are governed by the laws of the European Union. Any disputes shall be resolved in the competent courts."
+      },
+      "contact": {
+        "title": "Contact",
+        "content": "For questions about these terms, please visit our Contact page."
+      }
+    },
+    "about": {
+      "title": "About Tuttilo",
+      "description": "Free browser-based tools for everyone.",
+      "intro": "Tuttilo is a free, all-in-one online tool suite that works entirely in your browser.",
+      "mission": {
+        "title": "Our Mission",
+        "content": "We believe powerful tools should be free and accessible to everyone. Tuttilo was built to give you professional-grade file processing without subscriptions, registrations, or uploads."
+      },
+      "howItWorks": {
+        "title": "How It Works",
+        "content": "Unlike traditional online tools, Tuttilo processes everything directly in your browser using JavaScript and WebAssembly. Your files never leave your device — there are no uploads, no servers involved, and no waiting in queues."
+      },
+      "features": {
+        "title": "Why Tuttilo",
+        "privacy": "100% Private — Files never leave your browser",
+        "free": "Completely Free — No subscriptions, no hidden costs",
+        "noReg": "No Registration — Use any tool instantly",
+        "fast": "Lightning Fast — No uploads, no server queues",
+        "languages": "8 Languages — Available in English, Italian, Spanish, French, German, Portuguese, Japanese, and Korean",
+        "tools": "36+ Tools — PDF, images, video, audio, text, and developer tools"
+      },
+      "categories": {
+        "title": "Our Tools",
+        "pdf": "Organize, compress, convert, and unlock PDF files.",
+        "image": "Compress, resize, crop, and convert images in any format.",
+        "video": "Compress, trim, and convert videos. Create GIFs.",
+        "audio": "Cut, convert, and record audio directly in your browser.",
+        "text": "Count words, compare text, and generate lorem ipsum.",
+        "developer": "JSON formatter, Base64 encoder, regex tester, QR code generator, and more.",
+        "youtube": "Download YouTube thumbnails in all resolutions."
+      },
+      "openSource": {
+        "title": "Open & Transparent",
+        "content": "Tuttilo is built with Next.js, React, and modern web technologies. All processing is client-side, which means you can verify our privacy claims by inspecting the network tab in your browser — no file data is ever transmitted."
+      }
+    },
+    "contact": {
+      "title": "Contact Us",
+      "description": "Get in touch with the Tuttilo team.",
+      "intro": "Have a question, suggestion, or found a bug? We'd love to hear from you.",
+      "email": {
+        "title": "Email",
+        "content": "For general inquiries and support:",
+        "address": "support@tuttilo.com"
+      },
+      "github": {
+        "title": "GitHub",
+        "content": "Report bugs or request features on our GitHub repository:",
+        "link": "github.com/erold90/tuttilo"
+      },
+      "faq": {
+        "title": "FAQ",
+        "content": "Before reaching out, check if your question is answered in our frequently asked questions on each tool page."
+      },
+      "response": {
+        "title": "Response Time",
+        "content": "We aim to respond to all inquiries within 48 hours."
+      }
     }
   },
   "footer": {
