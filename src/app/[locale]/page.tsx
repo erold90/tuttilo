@@ -10,6 +10,7 @@ import {
 } from "@/lib/tools/registry";
 import { ToolIcon } from "@/components/tool-icon";
 import { HomeSearchTrigger } from "@/components/home-search-trigger";
+import { HomeUserSections } from "@/components/home-user-sections";
 
 export default function HomePage() {
   const t = useTranslations("home");
@@ -70,6 +71,9 @@ export default function HomePage() {
           </div>
         </div>
       </section>
+
+      {/* Favorites & Recents (client-side, localStorage) */}
+      <HomeUserSections />
 
       {/* Popular Tools */}
       <section className="container mx-auto max-w-7xl px-4 py-16">

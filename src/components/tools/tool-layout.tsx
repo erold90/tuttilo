@@ -1,11 +1,15 @@
 "use client";
 
+import { useEffect } from "react";
 import { useTranslations } from "next-intl";
 import { Link } from "@/i18n/routing";
 import { ChevronRight, Home } from "lucide-react";
 import { SidebarAd } from "@/components/ads/sidebar-ad";
 import { LeaderboardAd } from "@/components/ads/leaderboard-ad";
 import { RelatedTools } from "@/components/tools/related-tools";
+import { HowItWorks } from "@/components/tools/how-it-works";
+import { FavoritesButton } from "@/components/tools/favorites-button";
+import { useRecents } from "@/hooks/use-recents";
 
 interface ToolLayoutProps {
   toolId: string;
@@ -15,10 +19,17 @@ interface ToolLayoutProps {
 
 export function ToolLayout({ toolId, category, children }: ToolLayoutProps) {
   const t = useTranslations();
+  const { addRecent } = useRecents();
 
   const toolName = t(`tools.${toolId}.name`);
   const toolDescription = t(`tools.${toolId}.description`);
   const categoryName = t(`nav.${category}`);
+
+  // Track recent tool usage
+  useEffect(() => {
+    const slug = toolId.replace(`${category}-`, "").replace(category, "");
+    addRecent(toolId, category, slug || toolId);
+  }, [toolId, category, addRecent]);
 
   return (
     <div className="w-full">
@@ -47,13 +58,21 @@ export function ToolLayout({ toolId, category, children }: ToolLayoutProps) {
 
       {/* Header */}
       <div className="mb-8">
-        <h1 className="mb-2 text-3xl font-bold tracking-tight md:text-4xl">
-          {toolName}
-        </h1>
-        <p className="max-w-2xl text-lg text-muted-foreground">
-          {toolDescription}
-        </p>
+        <div className="flex items-start justify-between gap-3">
+          <div>
+            <h1 className="mb-2 text-3xl font-bold tracking-tight md:text-4xl">
+              {toolName}
+            </h1>
+            <p className="max-w-2xl text-lg text-muted-foreground">
+              {toolDescription}
+            </p>
+          </div>
+          <FavoritesButton toolId={toolId} className="mt-1 shrink-0" />
+        </div>
       </div>
+
+      {/* How it works */}
+      <HowItWorks />
 
       {/* Main content + sidebar */}
       <div className="flex gap-8">
