@@ -25,7 +25,15 @@
     "faq": "Häufig gestellte Fragen",
     "relatedTools": "Verwandte Tools",
     "tryNow": "Jetzt ausprobieren",
-    "home": "Startseite"
+    "home": "Startseite",
+    "batch": {
+      "processing": "Verarbeitung...",
+      "done": "Fertig!",
+      "convertAll": "Alle konvertieren",
+      "downloadAll": "Alle herunterladen",
+      "reset": "Neu starten",
+      "download": "Herunterladen"
+    }
   },
   "nav": {
     "pdf": "PDF",
@@ -457,7 +465,8 @@
         "compressedSize": "Komprimierte Größe",
         "savings": "Ersparnis",
         "original": "Original",
-        "compressed": "Komprimiert"
+        "compressed": "Komprimiert",
+        "error": "Komprimierung fehlgeschlagen. Versuchen Sie es mit einem anderen Bild."
       }
     },
     "resize-image": {
@@ -486,7 +495,11 @@
         "reset": "Zurücksetzen",
         "original": "Original",
         "resized": "Skaliert",
-        "originalDimensions": "Originalmaße"
+        "originalDimensions": "Originalmaße",
+        "quality": "Qualität",
+        "originalSize": "Originalgröße",
+        "resultSize": "Ergebnisgröße",
+        "error": "Größenänderung fehlgeschlagen. Versuchen Sie es mit einem anderen Bild."
       }
     },
     "crop-image": {
@@ -510,7 +523,12 @@
         "download": "Herunterladen",
         "reset": "Zurücksetzen",
         "result": "Ergebnis",
-        "freeform": "Frei"
+        "freeform": "Frei",
+        "quality": "Qualität",
+        "processing": "Zuschneiden...",
+        "originalSize": "Originalgröße",
+        "resultSize": "Ergebnisgröße",
+        "error": "Zuschneiden fehlgeschlagen. Versuchen Sie es mit einem anderen Bild."
       }
     },
     "png-to-jpg": {
@@ -534,7 +552,8 @@
         "processing": "Konvertierung läuft...",
         "convert": "Konvertieren",
         "download": "Herunterladen",
-        "reset": "Zurücksetzen"
+        "reset": "Zurücksetzen",
+        "error": "Konvertierung fehlgeschlagen. Versuchen Sie es mit einem anderen Bild."
       }
     },
     "jpg-to-png": {
@@ -557,7 +576,8 @@
         "processing": "Konvertierung läuft...",
         "convert": "Konvertieren",
         "download": "Herunterladen",
-        "reset": "Zurücksetzen"
+        "reset": "Zurücksetzen",
+        "error": "Konvertierung fehlgeschlagen. Versuchen Sie es mit einem anderen Bild."
       }
     },
     "webp-to-png": {
@@ -580,7 +600,8 @@
         "processing": "Konvertierung läuft...",
         "convert": "Konvertieren",
         "download": "Herunterladen",
-        "reset": "Zurücksetzen"
+        "reset": "Zurücksetzen",
+        "error": "Konvertierung fehlgeschlagen. Versuchen Sie es mit einem anderen Bild."
       }
     },
     "webp-to-jpg": {
@@ -604,7 +625,8 @@
         "processing": "Konvertierung läuft...",
         "convert": "Konvertieren",
         "download": "Herunterladen",
-        "reset": "Zurücksetzen"
+        "reset": "Zurücksetzen",
+        "error": "Konvertierung fehlgeschlagen. Versuchen Sie es mit einem anderen Bild."
       }
     },
     "heic-to-jpg": {
@@ -629,6 +651,7 @@
         "download": "Herunterladen",
         "reset": "Zurücksetzen",
         "result": "Ergebnis",
+        "quality": "Qualität",
         "error": "Konvertierung fehlgeschlagen. Stellen Sie sicher, dass die Datei ein gültiges HEIC-Bild ist."
       }
     },
