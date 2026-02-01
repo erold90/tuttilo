@@ -65,9 +65,19 @@
     "popularTools": "Outils les plus populaires",
     "allTools": "Tous les outils",
     "stats": {
-      "tools": "45+ outils",
+      "tools": "36+ outils",
       "filesProcessed": "Fichiers traités",
       "noUpload": "100% dans le navigateur"
+    },
+    "trust": {
+      "browserOnly": "Traitement dans le Navigateur",
+      "browserOnlyDesc": "Vos fichiers ne quittent jamais votre appareil. Tout le traitement se fait localement.",
+      "noRegistration": "Sans Inscription",
+      "noRegistrationDesc": "Utilisez n'importe quel outil instantanément. Sans compte, sans email, sans limites.",
+      "alwaysFree": "Toujours Gratuit",
+      "alwaysFreeDesc": "Tous les outils sont gratuits pour toujours. Aucun frais caché.",
+      "secureByDesign": "Sécurisé par Conception",
+      "secureByDesignDesc": "Aucun téléversement signifie zéro risque de violation de données."
     },
     "features": {
       "privacy": {
@@ -1061,6 +1071,143 @@
       "unsupportedFormat": "Format non pris en charge. Formats acceptés : {formats}",
       "processingFailed": "Le traitement a échoué. Veuillez réessayer.",
       "tooManyFiles": "Trop de fichiers. Maximum : {max}"
+    }
+  },
+  "pages": {
+    "privacy": {
+      "title": "Politique de Confidentialité",
+      "description": "Comment Tuttilo protège votre vie privée et gère vos données.",
+      "lastUpdated": "Dernière mise à jour : Février 2026",
+      "intro": "Chez Tuttilo, votre vie privée est notre priorité absolue. Tout le traitement des fichiers se fait entièrement dans votre navigateur — vos fichiers ne sont jamais téléversés sur nos serveurs.",
+      "noDataCollection": {
+        "title": "Nous Ne Collectons Pas Vos Fichiers",
+        "content": "Tuttilo est une suite d'outils basée sur le navigateur. Lorsque vous traitez un PDF, une image, une vidéo ou tout autre fichier, le traitement se fait localement sur votre appareil en utilisant JavaScript et WebAssembly. Aucune donnée de fichier n'est jamais envoyée à nos serveurs ou à des tiers."
+      },
+      "analytics": {
+        "title": "Analytique",
+        "content": "Nous pouvons utiliser des analyses anonymes (comme les pages vues et les compteurs d'utilisation des outils) pour améliorer notre service. Ces données ne contiennent aucune information personnelle identifiable et ne peuvent être liées à aucun utilisateur individuel."
+      },
+      "cookies": {
+        "title": "Cookies",
+        "content": "Tuttilo n'utilise que des cookies essentiels pour les fonctionnalités de base comme la préférence de langue et la sélection du thème. Nous n'utilisons pas de cookies de suivi ni de cookies publicitaires."
+      },
+      "thirdParty": {
+        "title": "Services Tiers",
+        "content": "Notre site peut charger des ressources depuis des réseaux de distribution de contenu (CDN) pour les polices et les bibliothèques JavaScript. Ces services peuvent recevoir votre adresse IP dans le cadre des requêtes web standard. Nous ne partageons aucune donnée personnelle ni contenu de fichier avec des tiers."
+      },
+      "retention": {
+        "title": "Conservation des Données",
+        "content": "Puisque nous ne collectons ni ne stockons vos fichiers, il n'y a aucune donnée de fichier à conserver. Les préférences stockées dans votre navigateur (comme la langue ou le thème) restent sur votre appareil et peuvent être effacées à tout moment via les paramètres du navigateur."
+      },
+      "rights": {
+        "title": "Vos Droits",
+        "content": "En vertu du RGPD et d'autres réglementations sur la vie privée, vous avez le droit d'accéder, de corriger ou de supprimer toute donnée personnelle. Puisque Tuttilo ne collecte pas de données personnelles ni de fichiers, ces droits sont intrinsèquement respectés par notre architecture."
+      },
+      "changes": {
+        "title": "Modifications de Cette Politique",
+        "content": "Nous pouvons mettre à jour cette politique de confidentialité de temps en temps. Tout changement sera publié sur cette page avec une date de révision mise à jour."
+      },
+      "contact": {
+        "title": "Contact",
+        "content": "Si vous avez des questions concernant cette politique de confidentialité, veuillez nous contacter à l'adresse indiquée sur notre page Contact."
+      }
+    },
+    "terms": {
+      "title": "Conditions d'Utilisation",
+      "description": "Termes et conditions d'utilisation des outils Tuttilo.",
+      "lastUpdated": "Dernière mise à jour : Février 2026",
+      "intro": "En utilisant Tuttilo, vous acceptez ces conditions. Veuillez les lire attentivement.",
+      "service": {
+        "title": "Description du Service",
+        "content": "Tuttilo fournit des outils gratuits basés sur le navigateur pour traiter des PDF, images, vidéos, audio et texte. Tout le traitement se fait localement dans votre navigateur. Nous ne garantissons pas un fonctionnement ininterrompu ou sans erreur."
+      },
+      "usage": {
+        "title": "Utilisation Acceptable",
+        "content": "Vous acceptez d'utiliser Tuttilo uniquement à des fins légales. Vous êtes seul responsable du contenu que vous traitez. Vous ne devez pas utiliser le service pour traiter du contenu illégal, nuisible ou portant atteinte aux droits d'autrui."
+      },
+      "ip": {
+        "title": "Propriété Intellectuelle",
+        "content": "Le nom Tuttilo, le logo et le design du site sont notre propriété. Les outils sont fournis pour votre usage personnel et commercial. Vous conservez tous les droits sur les fichiers que vous traitez."
+      },
+      "liability": {
+        "title": "Limitation de Responsabilité",
+        "content": "Tuttilo est fourni \"tel quel\" sans garantie d'aucune sorte. Nous ne sommes pas responsables des dommages résultant de l'utilisation de nos outils, y compris mais sans s'y limiter, la perte de données, la corruption de fichiers ou les erreurs de traitement."
+      },
+      "warranty": {
+        "title": "Exclusion de Garanties",
+        "content": "Nous ne faisons aucune garantie quant à l'exactitude, la fiabilité ou l'exhaustivité de nos outils. Les résultats peuvent varier selon votre navigateur, appareil et format de fichier. Conservez toujours des copies de sauvegarde de vos fichiers originaux."
+      },
+      "modifications": {
+        "title": "Modifications",
+        "content": "Nous nous réservons le droit de modifier ou d'interrompre tout outil ou fonctionnalité à tout moment sans préavis. Nous pouvons également mettre à jour ces conditions, les modifications prenant effet dès leur publication."
+      },
+      "law": {
+        "title": "Droit Applicable",
+        "content": "Ces conditions sont régies par les lois de l'Union européenne. Tout litige sera résolu devant les tribunaux compétents."
+      },
+      "contact": {
+        "title": "Contact",
+        "content": "Pour toute question concernant ces conditions, veuillez visiter notre page Contact."
+      }
+    },
+    "about": {
+      "title": "À Propos de Tuttilo",
+      "description": "Outils gratuits basés sur le navigateur pour tous.",
+      "intro": "Tuttilo est une suite d'outils en ligne gratuite et complète qui fonctionne entièrement dans votre navigateur.",
+      "mission": {
+        "title": "Notre Mission",
+        "content": "Nous croyons que les outils puissants doivent être gratuits et accessibles à tous. Tuttilo a été créé pour vous offrir un traitement de fichiers de niveau professionnel sans abonnements, inscriptions ni téléversements."
+      },
+      "howItWorks": {
+        "title": "Comment Ça Marche",
+        "content": "Contrairement aux outils en ligne traditionnels, Tuttilo traite tout directement dans votre navigateur en utilisant JavaScript et WebAssembly. Vos fichiers ne quittent jamais votre appareil — il n'y a pas de téléversements, pas de serveurs impliqués et pas de files d'attente."
+      },
+      "features": {
+        "title": "Pourquoi Tuttilo",
+        "privacy": "100% Privé — Les fichiers ne quittent jamais le navigateur",
+        "free": "Entièrement Gratuit — Sans abonnements, sans frais cachés",
+        "noReg": "Sans Inscription — Utilisez n'importe quel outil instantanément",
+        "fast": "Ultra Rapide — Pas de téléversements, pas de files d'attente",
+        "languages": "8 Langues — Disponible en anglais, italien, espagnol, français, allemand, portugais, japonais et coréen",
+        "tools": "36+ Outils — PDF, images, vidéo, audio, texte et outils développeur"
+      },
+      "categories": {
+        "title": "Nos Outils",
+        "pdf": "Organisez, compressez, convertissez et déverrouillez des fichiers PDF.",
+        "image": "Compressez, redimensionnez, recadrez et convertissez des images dans n'importe quel format.",
+        "video": "Compressez, découpez et convertissez des vidéos. Créez des GIF.",
+        "audio": "Coupez, convertissez et enregistrez de l'audio directement dans le navigateur.",
+        "text": "Comptez les mots, comparez les textes et générez du lorem ipsum.",
+        "developer": "Formateur JSON, encodeur Base64, testeur regex, générateur QR et plus.",
+        "youtube": "Téléchargez les miniatures YouTube dans toutes les résolutions."
+      },
+      "openSource": {
+        "title": "Ouvert et Transparent",
+        "content": "Tuttilo est construit avec Next.js, React et des technologies web modernes. Tout le traitement est côté client, ce qui signifie que vous pouvez vérifier nos affirmations de confidentialité en inspectant l'onglet réseau de votre navigateur — aucune donnée de fichier n'est jamais transmise."
+      }
+    },
+    "contact": {
+      "title": "Contactez-nous",
+      "description": "Prenez contact avec l'équipe Tuttilo.",
+      "intro": "Vous avez une question, une suggestion ou trouvé un bug ? Nous serions ravis de vous entendre.",
+      "email": {
+        "title": "Email",
+        "content": "Pour les demandes générales et le support :",
+        "address": "support@tuttilo.com"
+      },
+      "github": {
+        "title": "GitHub",
+        "content": "Signalez des bugs ou demandez des fonctionnalités sur notre dépôt GitHub :",
+        "link": "github.com/erold90/tuttilo"
+      },
+      "faq": {
+        "title": "FAQ",
+        "content": "Avant de nous contacter, vérifiez si votre question a déjà une réponse dans les questions fréquentes de chaque page d'outil."
+      },
+      "response": {
+        "title": "Délai de Réponse",
+        "content": "Nous nous efforçons de répondre à toutes les demandes dans un délai de 48 heures."
+      }
     }
   },
   "footer": {
