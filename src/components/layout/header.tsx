@@ -3,8 +3,7 @@
 import { useState } from "react";
 import { useTranslations } from "next-intl";
 import { Link, usePathname } from "@/i18n/routing";
-import { Menu, Sun, Moon, X } from "lucide-react";
-import { useTheme } from "next-themes";
+import { Menu, X } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import {
   Sheet,
@@ -19,24 +18,6 @@ import { getCategoryNavItems } from "@/lib/tools/registry";
 import { cn } from "@/lib/utils";
 
 const categories = getCategoryNavItems();
-
-function ThemeToggle() {
-  const { setTheme, resolvedTheme } = useTheme();
-  const t = useTranslations("common");
-
-  return (
-    <Button
-      variant="ghost"
-      size="icon"
-      className="h-9 w-9"
-      onClick={() => setTheme(resolvedTheme === "dark" ? "light" : "dark")}
-    >
-      <Sun className="h-4 w-4 rotate-0 scale-100 transition-all dark:-rotate-90 dark:scale-0" />
-      <Moon className="absolute h-4 w-4 rotate-90 scale-0 transition-all dark:rotate-0 dark:scale-100" />
-      <span className="sr-only">{t("toggleTheme")}</span>
-    </Button>
-  );
-}
 
 export function Header() {
   const [mobileOpen, setMobileOpen] = useState(false);
@@ -76,7 +57,6 @@ export function Header() {
         {/* Right: Actions */}
         <div className="flex items-center gap-1">
           <SearchDialog />
-          <ThemeToggle />
           <LanguageSwitcher />
 
           {/* Mobile hamburger */}
