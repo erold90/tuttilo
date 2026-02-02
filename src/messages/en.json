@@ -1,1 +1,1318 @@
-{"common":{"siteName":"Tuttilo","tagline":"All online tools in one place","searchPlaceholder":"Search for a tool...","darkMode":"Dark mode","lightMode":"Light mode","systemMode":"System theme","toggleTheme":"Toggle theme","switchLanguage":"Switch language","languages":{"it":"Italiano","en":"English","es":"Español","fr":"Français","de":"Deutsch","pt":"Português","ja":"日本語","ko":"한국어"},"privacyBadge":"Your files never leave your browser","free":"Free","noRegistration":"No registration","noLimits":"No limits","faq":"Frequently Asked Questions","relatedTools":"Related Tools","tryNow":"Try now","home":"Home","howItWorks":{"upload":{"title":"Upload","desc":"Select your file"},"process":{"title":"Process","desc":"Adjust settings"},"download":{"title":"Download","desc":"Get your result"}},"batch":{"processing":"Processing...","done":"Done!","convertAll":"Convert All","downloadAll":"Download All","reset":"Start Over","download":"Download"}},"nav":{"pdf":"PDF","image":"Images","video":"Video","audio":"Audio","text":"Text","developer":"Developer","youtube":"YouTube","allTools":"All Tools","home":"Home","openMenu":"Open menu"},"home":{"title":"All the online tools you need","subtitle":"Free, no registration, right in your browser. Edit PDFs, images, videos, audio and much more.","searchPlaceholder":"What do you want to do? Search among 45+ tools...","privacyNote":"Your files never leave your browser","categories":"Categories","categoryDesc":{"pdf":"Merge, split, compress and convert PDFs","image":"Compress, resize and convert images","video":"Compress, trim and convert videos","audio":"Cut, convert and record audio","text":"Word count, text compare and more","developer":"JSON, Base64, Regex, QR Code and more","youtube":"Thumbnails and YouTube transcripts"},"favorites":"Your Favorites","recents":"Recently Used","popularTools":"Most Popular Tools","allTools":"All Tools","stats":{"tools":"36+ tools","filesProcessed":"Files processed","noUpload":"100% in-browser"},"trust":{"browserOnly":"Browser-Only Processing","browserOnlyDesc":"Your files never leave your device. All processing happens locally.","noRegistration":"No Registration Required","noRegistrationDesc":"Use any tool instantly. No account, no email, no limits.","alwaysFree":"Always Free","alwaysFreeDesc":"All tools are free forever. No hidden fees or subscriptions.","secureByDesign":"Secure by Design","secureByDesignDesc":"No server uploads means zero risk of data breaches."},"features":{"privacy":{"title":"Privacy guaranteed","desc":"Your files are processed directly in your browser. No uploads to external servers."},"fast":{"title":"Fast and free","desc":"All tools are free and work instantly with no waiting."},"free":{"title":"No registration","desc":"No account required. Use any tool immediately, with no limits."}}},"search":{"openSearch":"Search","title":"Search tools","placeholder":"Search among tools...","noResults":"No results found","hint":"Use arrow keys to navigate"},"tools":{"compress-pdf":{"name":"Compress PDF","description":"Reduce PDF file size while maintaining quality","seo":{"title":"Free Online PDF Compressor","content":"Compress PDF files to reduce their size while preserving quality. Perfect for email attachments and uploads. Works entirely in your browser — no data is sent to any server."},"faq":{"q1":"How much can the file size be reduced?","a1":"Compression results vary depending on the PDF content. Documents with many images typically see the largest reductions, often 50-80% smaller. Text-heavy PDFs may see smaller reductions.","q2":"Does compression reduce the quality of my PDF?","a2":"The tool uses smart compression that targets embedded images while preserving text sharpness. The result is visually very close to the original in most cases.","q3":"Can I compress password-protected PDFs?","a3":"Password-protected PDFs need to be unlocked first. Use our Unlock PDF tool to remove the protection, then compress the file."},"ui":{"dropzone":"Drop a PDF file here or click to select","dropzoneHint":"Select a PDF to compress","compress":"Compress PDF","processing":"Compressing...","done":"Compression complete!","original":"Original","compressed":"Compressed","reduction":"Reduction","noReduction":"File is already optimized, no further reduction possible.","download":"Download","reset":"Reset","invalidPdf":"Invalid PDF file. Please select a valid PDF.","compressError":"An error occurred while compressing. Please try again."}},"unlock-pdf":{"name":"Unlock PDF","description":"Remove password protection from PDF files","seo":{"title":"Free Online PDF Unlocker","content":"Remove password protection from PDF files directly in your browser. Unlock PDFs to enable editing, printing, and copying. Free, private, no upload needed."},"faq":{"q1":"What types of PDF protection can be removed?","a1":"The tool can remove both user passwords (required to open the PDF) and owner passwords (that restrict editing, printing, or copying). You must know the password to unlock the file.","q2":"Is this legal to use?","a2":"Yes, as long as you have the right to access the PDF. This tool is designed for users who know the password but want to remove it for convenience. Never use it on files you do not own.","q3":"Will the PDF content be changed?","a3":"No. The tool only removes the password protection. All content, formatting, images, and metadata remain exactly the same."},"ui":{"dropzone":"Drop a protected PDF here or click to select","dropzoneHint":"PDF files up to 100 MB","password":"PDF password","passwordPlaceholder":"Enter the PDF password","passwordHint":"Leave empty if the PDF only has editing restrictions","unlock":"Unlock PDF","processing":"Unlocking...","done":"PDF unlocked!","download":"Download","reset":"Reset","wrongPassword":"Incorrect password. Please check and try again.","unlockError":"An error occurred while unlocking. Please try again."}},"pdf-fill-sign":{"name":"Fill & Sign PDF","description":"Fill PDF forms and add your signature online for free","seo":{"title":"Free Online PDF Fill & Sign Tool","content":"Fill out PDF forms and add your signature directly in the browser. No upload, no account needed. Completely free and private — your files never leave your device."},"faq":{"q1":"Can I fill out any PDF form?","a1":"Yes, the tool detects all standard PDF form fields (text fields, checkboxes, dropdowns) automatically. If your PDF has interactive form fields, they will appear in the Fill Form tab for you to complete.","q2":"Is my signature legally valid?","a2":"This tool creates a visual signature (an image placed on the PDF). For most informal purposes and many business documents, this is sufficient. For legally binding electronic signatures that meet eIDAS or ESIGN standards, you may need a qualified digital signature service.","q3":"Are my files safe?","a3":"Absolutely. All processing happens directly in your browser. Your PDF and signature never leave your device — nothing is uploaded to any server."},"ui":{"dropzone":"Drop a PDF here or click to select","dropzoneHint":"PDF files up to 100 MB","tabFill":"Fill Form","tabSign":"Sign","noFields":"No form fields detected in this PDF","signDraw":"Draw","signType":"Type","signUpload":"Upload","signPlaceholder":"Type your signature","signSave":"Use Signature","signClear":"Clear","signUploadHint":"Click to upload a signature image","signInstruction":"Click on the PDF preview to place your signature","signPlaced":"Signature placed on PDF","apply":"Apply & Download","processing":"Processing...","done":"PDF ready!","download":"Download","reset":"Start Over","error":"An error occurred. Please try again.","prev":"Previous","next":"Next","page":"Page","of":"of","flatten":"Flatten form fields","flattenHint":"Makes fields permanent and non-editable"}},"images-to-pdf":{"name":"Images to PDF","description":"Convert multiple images into a single PDF document","seo":{"title":"Free Online Images to PDF Converter","content":"Convert multiple images (JPG, PNG, WebP) into a single PDF document. Reorder pages, choose page size, add margins. Free, private, no upload needed."},"faq":{"q1":"What image formats are supported?","a1":"You can use JPG, PNG, and WebP images. All formats are supported and can be mixed in the same PDF document.","q2":"Can I reorder the images?","a2":"Yes! After uploading, you can reorder images using the up/down arrows. The final PDF will follow the order you set.","q3":"What page sizes are available?","a3":"Choose from Fit to Image (each page matches the image size), A4, or Letter. You can also add margins (none, small, medium, large)."},"ui":{"dropzone":"Drop images here or click to select","dropzoneHint":"JPG, PNG, WebP — multiple files supported","images":"Images","pageSize":"Page size","pageSizeFit":"Fit to image","margin":"Margin","marginNone":"None","marginSmall":"Small","marginMedium":"Medium","marginLarge":"Large","convert":"Create PDF","processing":"Creating PDF...","done":"PDF created!","download":"Download PDF","reset":"Reset","convertError":"An error occurred. Please try again."}},"pdf-editor":{"name":"PDF Editor","description":"Edit text, draw, and annotate your PDF documents","seo":{"title":"Free Online PDF Editor with Text Editing","content":"Edit PDF text directly in your browser with automatic font and size detection. Add text, draw, annotate. Free, private, no upload needed — your files never leave your device."},"faq":{"q1":"Can I edit existing text in a PDF?","a1":"Yes. Click on any text in the PDF and the editor will detect the original font family, weight, and size. You can then modify the text and it will be rendered with a matching standard font at the same position.","q2":"What fonts are used for edited text?","a2":"The editor detects whether the original font is serif, sans-serif, or monospace, and whether it is bold or italic. It then uses the closest matching standard PDF font (Helvetica, Times, or Courier family) to redraw edited text.","q3":"Are my files safe?","a3":"Absolutely. All processing happens directly in your browser using pdf-lib and pdfjs-dist. Your PDF never leaves your device — nothing is uploaded to any server."},"ui":{"dropzone":"Drop a PDF here or click to select","dropzoneHint":"PDF files up to 100 MB","modeSelect":"Select Text","modeText":"Add Text","modeDraw":"Draw","selectHint":"Click on any text in the PDF to edit it","textHint":"Click on the PDF to place new text","drawHint":"Draw freely on the PDF","editPlaceholder":"Edit text...","fontSize":"Size","fontDetected":"Detected font","applyEdit":"Apply","cancelEdit":"Done","addText":"Add","undo":"Undo","apply":"Save PDF","processing":"Processing...","done":"PDF edited!","download":"Download","reset":"Start Over","error":"An error occurred. Please try again.","prev":"Previous","next":"Next","page":"Page","of":"of"}},"compress-image":{"name":"Compress Image","description":"Reduce image file size without losing quality","seo":{"title":"Free Online Image Compressor","content":"Compress JPG, PNG and WebP images directly in your browser. Reduce file size while maintaining visual quality. Free, no upload needed — your files stay private."},"faq":{"q1":"What image formats can I compress?","a1":"You can compress JPG, PNG and WebP images. The tool processes files directly in your browser using advanced compression algorithms.","q2":"Will compression reduce image quality?","a2":"You control the quality with a slider. Higher quality means larger files, lower quality means smaller files. The default setting provides an excellent balance.","q3":"Is there a file size limit?","a3":"The tool supports images up to 50 MB. All processing happens in your browser, so larger files may take longer on slower devices."},"ui":{"dropzone":"Drop an image here or click to select","quality":"Quality","processing":"Compressing...","compress":"Compress","download":"Download","reset":"Reset","originalSize":"Original size","compressedSize":"Compressed size","savings":"Savings","original":"Original","compressed":"Compressed","error":"Compression failed. Please try again with a different image."}},"resize-image":{"name":"Resize Image","description":"Change the dimensions of your images","seo":{"title":"Free Online Image Resizer","content":"Resize JPG, PNG and WebP images to any dimension. Lock aspect ratio, use percentage presets, or enter custom sizes. Free and processed entirely in your browser."},"faq":{"q1":"Can I maintain the aspect ratio while resizing?","a1":"Yes, the aspect ratio lock is enabled by default. When you change width or height, the other dimension adjusts automatically to keep proportions.","q2":"What are the percentage presets?","a2":"Quick presets let you resize to 25%, 50%, 75%, 150% or 200% of the original size with one click.","q3":"Does resizing affect image quality?","a3":"The tool uses high-quality bicubic interpolation. Enlarging images beyond the original size may reduce sharpness, while reducing size maintains quality."},"ui":{"dropzone":"Drop an image here or click to select","width":"Width","height":"Height","lockAspectRatio":"Lock aspect ratio","processing":"Resizing...","resize":"Resize","download":"Download","reset":"Reset","original":"Original","resized":"Resized","originalDimensions":"Original dimensions","quality":"Quality","originalSize":"Original size","resultSize":"Result size","error":"Resizing failed. Please try again with a different image."}},"crop-image":{"name":"Crop Image","description":"Crop your images with precision","seo":{"title":"Free Online Image Cropper","content":"Crop JPG, PNG and WebP images with a visual editor. Choose from preset aspect ratios or crop freely. No upload required — works entirely in your browser."},"faq":{"q1":"What aspect ratio presets are available?","a1":"You can crop with freeform selection, or use presets: 1:1 (square), 16:9 (widescreen), 4:3 (standard), and 3:2 (photo).","q2":"Can I crop to an exact pixel size?","a2":"The visual cropper lets you drag to select any area. For exact sizes, combine this with the Resize Image tool after cropping.","q3":"Does cropping reduce quality?","a3":"No. The crop simply extracts the selected area at its original resolution. No recompression is applied to the cropped region."},"ui":{"dropzone":"Drop an image here or click to select","crop":"Crop","download":"Download","reset":"Reset","result":"Result","freeform":"Freeform","quality":"Quality","processing":"Cropping...","originalSize":"Original size","resultSize":"Result size","error":"Cropping failed. Please try again with a different image."}},"png-to-jpg":{"name":"PNG to JPG","description":"Convert PNG images to JPG format","seo":{"title":"Free PNG to JPG Converter Online","content":"Convert PNG images to JPG format instantly in your browser. Adjustable quality, transparent areas filled with white. No upload needed — completely private."},"faq":{"q1":"What happens to transparent areas?","a1":"JPG does not support transparency. Transparent areas in your PNG will be filled with a white background during conversion.","q2":"Can I control the output quality?","a2":"Yes, use the quality slider to balance between file size and image quality. Higher values produce better-looking but larger JPG files.","q3":"Is there a size limit?","a3":"Images up to 50 MB are supported. The conversion happens entirely in your browser, so your files remain private."},"ui":{"dropzone":"Drop a PNG image here or click to select","quality":"Quality","processing":"Converting...","convert":"Convert","download":"Download","reset":"Reset","error":"Conversion failed. Please try again with a different image."}},"jpg-to-png":{"name":"JPG to PNG","description":"Convert JPG images to PNG format with transparency","seo":{"title":"Free JPG to PNG Converter Online","content":"Convert JPG images to PNG format instantly in your browser. PNG supports transparency and lossless compression. Free, private, no registration needed."},"faq":{"q1":"Why convert JPG to PNG?","a1":"PNG supports transparency and lossless compression, making it ideal for logos, graphics, and images that need sharp edges without compression artifacts.","q2":"Will the file size increase?","a2":"PNG files are typically larger than JPG because PNG uses lossless compression. The trade-off is higher quality with no compression artifacts.","q3":"Does the conversion add transparency?","a3":"Converting JPG to PNG does not automatically add transparency. The image keeps its original content, but is now in a format that supports transparency for future edits."},"ui":{"dropzone":"Drop a JPG image here or click to select","processing":"Converting...","convert":"Convert","download":"Download","reset":"Reset","error":"Conversion failed. Please try again with a different image."}},"webp-to-png":{"name":"WebP to PNG","description":"Convert WebP images to PNG format","seo":{"title":"Free WebP to PNG Converter Online","content":"Convert WebP images to PNG format instantly in your browser. Maintain transparency and quality. No upload required — your files stay on your device."},"faq":{"q1":"Why convert WebP to PNG?","a1":"While WebP is great for the web, PNG is more widely supported across applications, image editors, and platforms. Converting ensures maximum compatibility.","q2":"Is transparency preserved?","a2":"Yes. If your WebP image has transparent areas, they will be preserved in the PNG output.","q3":"Will the file size change?","a3":"PNG files may be larger than WebP since WebP uses more aggressive compression. The quality remains identical."},"ui":{"dropzone":"Drop a WebP image here or click to select","processing":"Converting...","convert":"Convert","download":"Download","reset":"Reset","error":"Conversion failed. Please try again with a different image."}},"webp-to-jpg":{"name":"WebP to JPG","description":"Convert WebP images to JPG format","seo":{"title":"Free WebP to JPG Converter Online","content":"Convert WebP images to JPG format instantly in your browser. Adjustable quality with white background fill for transparency. Free, private, no registration."},"faq":{"q1":"What happens to transparent areas in WebP?","a1":"JPG does not support transparency. Any transparent areas in the WebP image will be filled with a white background.","q2":"Can I adjust the JPG quality?","a2":"Yes, use the quality slider to set output quality from 10% to 100%. Higher values mean better quality but larger file size.","q3":"Is this tool free?","a3":"Yes, completely free with no limits. The conversion runs in your browser, so no data is uploaded to any server."},"ui":{"dropzone":"Drop a WebP image here or click to select","quality":"Quality","processing":"Converting...","convert":"Convert","download":"Download","reset":"Reset","error":"Conversion failed. Please try again with a different image."}},"heic-to-jpg":{"name":"HEIC to JPG","description":"Convert iPhone HEIC photos to JPG format","seo":{"title":"Free HEIC to JPG Converter Online","content":"Convert HEIC and HEIF photos from iPhone to JPG format. Works directly in your browser with no upload needed. Free, fast and completely private."},"faq":{"q1":"What is HEIC format?","a1":"HEIC (High Efficiency Image Container) is Apple's default photo format on iPhone. It offers better compression than JPG but is not universally supported.","q2":"Why convert HEIC to JPG?","a2":"JPG is universally supported across all devices, apps and platforms. Converting HEIC to JPG ensures your photos can be opened and shared everywhere.","q3":"Does conversion lose quality?","a3":"The conversion uses high quality settings (92%) to minimize quality loss. The result is visually identical to the original in most cases."},"ui":{"dropzone":"Drop a HEIC/HEIF file here or click to select","processing":"Converting...","convert":"Convert","download":"Download","reset":"Reset","result":"Result","quality":"Quality","error":"Conversion failed. Please make sure the file is a valid HEIC image."}},"svg-to-png":{"name":"SVG to PNG","description":"Convert SVG vector graphics to PNG images","seo":{"title":"Free Online SVG to PNG Converter","content":"Convert SVG vector graphics to high-quality PNG images in your browser. Choose scale (1x, 2x, 3x, 4x) for crisp output at any resolution. Free, private, no upload needed."},"faq":{"q1":"Why convert SVG to PNG?","a1":"While SVG is ideal for web, PNG is universally supported across all applications, social media platforms, and messaging apps. Converting ensures your graphics display correctly everywhere.","q2":"What do the scale options mean?","a2":"Scale multiplies the SVG dimensions. 1x gives the original size, 2x doubles it for retina displays, and 4x creates very high-resolution output for print or large formats.","q3":"Is transparency preserved?","a3":"Yes, transparent areas in the SVG are preserved as transparency in the PNG output."},"ui":{"dropzone":"Drop an SVG file here or click to select","dropzoneHint":"Select an SVG to convert to PNG","scale":"Output scale","convert":"Convert to PNG","processing":"Converting...","download":"Download","reset":"Reset","convertError":"Failed to convert SVG. Please make sure the file is a valid SVG."}},"remove-bg":{"name":"Remove Background","description":"Automatically remove background from images"},"compress-video":{"name":"Compress Video","description":"Reduce video file size while maintaining quality","seo":{"title":"Free Online Video Compressor","content":"Compress video files directly in your browser. Reduce file size with adjustable quality settings using H.264 encoding. Free, private, no upload to external servers."},"faq":{"q1":"What video formats are supported?","a1":"The tool supports MP4, WebM, MOV and most common video formats. The output is always MP4 (H.264) for maximum compatibility across devices and platforms.","q2":"How much can the file size be reduced?","a2":"Results vary depending on the original video. Typically you can expect 30-70% size reduction at medium quality. Higher quality preserves more detail with less compression.","q3":"Does compression reduce video quality?","a3":"The tool offers three quality levels. High quality preserves most detail, medium offers a good balance, and low creates the smallest files. You choose the best tradeoff for your needs."},"ui":{"dropzone":"Drop a video file here or click to select","dropzoneHint":"MP4, WebM, MOV up to 500 MB","quality":"Quality","quality_high":"High","quality_medium":"Medium","quality_low":"Low","compress":"Compress Video","loadingFfmpeg":"Loading encoder...","compressing":"Compressing...","done":"Compression complete!","original":"Original","compressed":"Compressed","download":"Download","reset":"Reset","compressError":"An error occurred during compression. Please try again."}},"trim-video":{"name":"Trim Video","description":"Cut and trim your videos with precision","seo":{"title":"Free Online Video Trimmer","content":"Trim and cut video files directly in your browser. Set precise start and end points with a visual preview. Free, private, no upload needed."},"faq":{"q1":"What video formats are supported?","a1":"The tool supports MP4, WebM, MOV and most common video formats playable by your browser. The output is MP4 for maximum compatibility.","q2":"Can I preview before trimming?","a2":"Yes, the built-in video player lets you preview the entire video. Adjust the start and end sliders to select the portion you want to keep, and the player follows your selection.","q3":"Is there a length limit?","a3":"There is no length limit. The tool supports videos up to 500 MB. Processing happens in your browser, so longer videos may take more time depending on your device."},"ui":{"dropzone":"Drop a video file here or click to select","dropzoneHint":"MP4, WebM, MOV up to 500 MB","start":"Start","end":"End","selection":"Selection","trim":"Trim Video","loadingFfmpeg":"Loading encoder...","trimming":"Trimming...","done":"Trim complete!","download":"Download","reset":"Reset","preview":"Preview","trimError":"An error occurred during trimming. Please try again."}},"video-to-gif":{"name":"Video to GIF","description":"Convert videos to animated GIFs","seo":{"title":"Free Online Video to GIF Converter","content":"Convert video clips to animated GIFs directly in your browser. Adjust FPS, width, and select the portion to convert. High-quality palette optimization. Free, private, no upload."},"faq":{"q1":"What video formats are supported?","a1":"The tool supports MP4, WebM and most common video formats. Simply upload your video and select the portion you want to convert to GIF.","q2":"How can I control the GIF file size?","a2":"Use the FPS and width controls. Lower FPS (5-10) and smaller width (320px) create smaller files. Higher FPS (15-20) and larger width (640px) produce smoother, larger GIFs.","q3":"Is there a duration limit?","a3":"There is no hard limit, but GIFs are best for short clips (3-15 seconds). Longer clips create very large files. The tool supports videos up to 200 MB."},"ui":{"dropzone":"Drop a video file here or click to select","dropzoneHint":"MP4, WebM up to 200 MB","start":"Start","end":"End","selection":"Selection","fps":"FPS","width":"Width","convert":"Convert to GIF","loadingFfmpeg":"Loading encoder...","converting":"Converting...","done":"Conversion complete!","download":"Download GIF","reset":"Reset","preview":"Preview","convertError":"An error occurred during conversion. Please try again."}},"video-to-mp3":{"name":"Video to MP3","description":"Extract audio from videos in MP3 format","seo":{"title":"Free Online Video to Audio Converter","content":"Extract audio from video files directly in your browser. Upload MP4, WebM, or other video formats and download the audio track. Free, private, no upload to external servers."},"faq":{"q1":"What video formats are supported?","a1":"The tool supports MP4, WebM, and most common video formats that your browser can play. Simply drag and drop your video file to get started.","q2":"What format is the extracted audio?","a2":"The audio is extracted as a WAV file, which is a lossless uncompressed format. WAV files are universally compatible with all audio players and editors.","q3":"Is there a file size limit?","a3":"The tool supports videos up to 500 MB. Processing happens entirely in your browser, so larger files may take longer depending on your device."},"ui":{"dropzone":"Drop a video file here or click to select","dropzoneHint":"Supports MP4, WebM and other video formats","extract":"Extract Audio","processing":"Extracting...","download":"Download","reset":"Reset","extractError":"Failed to extract audio. Please make sure the file is a valid video with an audio track."}},"screen-recorder":{"name":"Screen Recorder","description":"Record your screen directly from the browser","seo":{"title":"Free Online Screen Recorder","content":"Record your screen directly from your browser. Capture your entire screen, a window, or a tab with optional audio. No software to install, no registration required."},"faq":{"q1":"Do I need to install anything?","a1":"No. The screen recorder uses your browsers built-in screen capture API. It works directly in the browser without any downloads or extensions.","q2":"Can I record audio along with the screen?","a2":"Yes, you can enable audio recording to capture system sounds along with your screen. Toggle the Include audio option before starting.","q3":"What format is the recording?","a3":"Recordings are saved in WebM format, which is supported by all modern browsers and video players. You can convert to other formats using video conversion tools."},"ui":{"startRecording":"Start Recording","pause":"Pause","resume":"Resume","stop":"Stop","download":"Download","newRecording":"New Recording","includeAudio":"Include system audio","screenError":"Could not access screen. Please allow screen sharing when prompted."}},"audio-cutter":{"name":"Audio Cutter","description":"Cut and trim audio files with precision","seo":{"title":"Free Online Audio Cutter","content":"Cut and trim audio files directly in your browser. Visual waveform editor with precise start and end selection. Supports MP3, WAV, OGG, and more. Free, private, no upload needed."},"faq":{"q1":"What audio formats are supported?","a1":"The tool supports MP3, WAV, OGG, FLAC, AAC, and any audio format your browser can decode. The output is saved as a high-quality WAV file.","q2":"Can I preview before cutting?","a2":"Yes, use the Preview button to listen to the selected portion before cutting. Adjust the start and end points using the sliders or by typing exact times.","q3":"Why is the output in WAV format?","a3":"WAV is a lossless uncompressed format that preserves full audio quality. It ensures no quality loss during the cutting process and is compatible with all audio players."},"ui":{"dropzone":"Drop an audio file here or click to select","dropzoneHint":"Supports MP3, WAV, OGG, FLAC and more","start":"Start","end":"End","selection":"Selection duration","preview":"Preview","stopPreview":"Stop","cut":"Cut Audio","processing":"Cutting...","download":"Download","reset":"Reset","loadError":"Failed to load audio file. Please make sure the file is a valid audio file.","cutError":"An error occurred while cutting. Please try again."}},"audio-converter":{"name":"Audio Converter","description":"Convert audio files between different formats","seo":{"title":"Free Online Audio Converter","content":"Convert audio files between MP3, WAV, OGG, FLAC, and AAC formats directly in your browser. High-quality conversion powered by FFmpeg. Free, private, no upload needed."},"faq":{"q1":"What audio formats are supported?","a1":"You can convert between MP3, WAV, OGG, FLAC, and AAC. The tool accepts any audio format your browser can read and outputs in your chosen format.","q2":"Does conversion affect audio quality?","a2":"Converting to lossless formats (WAV, FLAC) preserves full quality. Converting to lossy formats (MP3, OGG, AAC) uses high-quality settings to minimize any loss.","q3":"Is there a file size limit?","a3":"The tool supports audio files up to 100 MB. All processing happens in your browser using FFmpeg WebAssembly — your files are never uploaded."},"ui":{"dropzone":"Drop an audio file here or click to select","dropzoneHint":"MP3, WAV, OGG, FLAC, AAC and more","outputFormat":"Output Format","convert":"Convert","loadingFfmpeg":"Loading encoder...","converting":"Converting...","done":"Conversion complete!","download":"Download","reset":"Reset","convertError":"An error occurred during conversion. Please try again."}},"voice-recorder":{"name":"Voice Recorder","description":"Record your voice directly from the browser","seo":{"title":"Free Online Voice Recorder","content":"Record your voice directly from your browser with no software to install. See a real-time waveform while recording. Pause, resume, and download your recordings. Free and private."},"faq":{"q1":"Do I need a microphone?","a1":"Yes, you need a microphone connected to your device. Most laptops and smartphones have built-in microphones. The browser will ask for permission to access it.","q2":"What format are recordings saved in?","a2":"Recordings are saved in WebM audio format, which is supported by all modern browsers and most audio players. You can convert to other formats using audio conversion tools.","q3":"Is my recording stored anywhere?","a3":"No. The recording is processed entirely in your browser and is never uploaded to any server. Only you have access to your recordings."},"ui":{"record":"Record","pause":"Pause","resume":"Resume","stop":"Stop","download":"Download","newRecording":"New Recording","micError":"Could not access microphone. Please allow microphone access when prompted."}},"word-counter":{"name":"Word Counter","description":"Count words, characters, sentences and paragraphs","seo":{"title":"Free Online Word Counter Tool","content":"Count words, characters, sentences and paragraphs in your text instantly. Our free word counter works directly in your browser with no uploads needed. Perfect for essays, articles, social media posts and any text content."},"faq":{"q1":"How does the word counter work?","a1":"Simply paste or type your text in the input area. The counter instantly analyzes your text and shows the number of words, characters, sentences, paragraphs, and estimated reading/speaking time.","q2":"Is my text stored on any server?","a2":"No. All processing happens directly in your browser. Your text is never uploaded or stored anywhere.","q3":"What is the reading time based on?","a3":"Reading time is estimated at 200 words per minute (average adult reading speed). Speaking time uses 130 words per minute."},"ui":{"placeholder":"Type or paste your text here...","words":"Words","characters":"Characters","charactersNoSpaces":"Characters (no spaces)","sentences":"Sentences","paragraphs":"Paragraphs","readingTime":"Reading time","speakingTime":"Speaking time","clear":"Clear"}},"lorem-ipsum":{"name":"Lorem Ipsum Generator","description":"Generate customizable Lorem Ipsum placeholder text","seo":{"title":"Free Lorem Ipsum Generator","content":"Generate customizable Lorem Ipsum placeholder text for your designs and projects. Choose between paragraphs, sentences, or words. Copy with one click. No registration needed."},"faq":{"q1":"What is Lorem Ipsum?","a1":"Lorem Ipsum is placeholder text used in the printing and typesetting industry since the 1500s. It helps designers visualize how content will look without being distracted by readable text.","q2":"Can I customize the output?","a2":"Yes, you can choose the number and type of content to generate: paragraphs, sentences, or individual words.","q3":"Is the generated text random?","a3":"The text uses standard Lorem Ipsum vocabulary arranged in random combinations, ensuring realistic-looking placeholder content every time."},"ui":{"count":"Count","type":"Type","paragraphs":"Paragraphs","sentences":"Sentences","words":"Words","generate":"Generate","copy":"Copy","copied":"Copied!","wordsCount":"words"}},"case-converter":{"name":"Case Converter","description":"Convert text between uppercase, lowercase and other formats"},"diff-checker":{"name":"Diff Checker","description":"Compare two texts and find the differences"},"markdown-editor":{"name":"Markdown Editor","description":"Write and preview Markdown in real time"},"json-formatter":{"name":"JSON Formatter","description":"Format, validate and minify JSON code","seo":{"title":"Free Online JSON Formatter & Validator","content":"Format, validate and minify JSON data instantly in your browser. Our free JSON formatter beautifies messy JSON, validates syntax, and can minify your code. No data leaves your browser."},"faq":{"q1":"Can I format invalid JSON?","a1":"The tool will show you the exact error message if your JSON is invalid, helping you quickly find and fix syntax issues.","q2":"What indent sizes are supported?","a2":"You can choose between 2, 4, or 8 spaces for indentation when formatting your JSON.","q3":"Is my JSON data safe?","a3":"Absolutely. All processing happens in your browser. Your JSON data is never sent to any server."},"ui":{"format":"Format","minify":"Minify","copy":"Copy","copied":"Copied!","indent":"Indent","error":"Error","input":"Input","output":"Output","inputPlaceholder":"Paste your JSON here...","outputPlaceholder":"Formatted output will appear here..."}},"base64":{"name":"Base64 Encoder","description":"Encode and decode text and files to Base64","seo":{"title":"Free Online Base64 Encoder & Decoder","content":"Encode and decode Base64 strings instantly in your browser. Convert text to Base64 and back with our free tool. Perfect for developers working with APIs, data URIs, and encoded content."},"faq":{"q1":"What is Base64 encoding?","a1":"Base64 is a binary-to-text encoding scheme that converts binary data into ASCII characters. It's commonly used in data URIs, email attachments, and API payloads.","q2":"Does it support Unicode?","a2":"Yes, our encoder handles Unicode characters including emojis, accented letters, and non-Latin scripts correctly.","q3":"Is there a size limit?","a3":"There's no practical limit for text encoding/decoding. The tool works entirely in your browser."},"ui":{"encode":"Encode","decode":"Decode","input":"Input","output":"Output","copy":"Copy","copied":"Copied!","encodePlaceholder":"Enter text to encode...","decodePlaceholder":"Enter Base64 to decode...","invalidInput":"Invalid input for decoding"}},"regex-tester":{"name":"Regex Tester","description":"Test and debug regular expressions in real time","seo":{"title":"Free Online Regex Tester & Debugger","content":"Test and debug regular expressions in real-time. See matches highlighted, capture groups, and match positions. Supports JavaScript regex syntax with global, case-insensitive, multiline, and dotAll flags."},"faq":{"q1":"What regex syntax is supported?","a1":"The tool uses JavaScript's native RegExp engine, supporting all standard regex features including lookaheads, lookbehinds, capture groups, and named groups.","q2":"What do the flags mean?","a2":"g = global (find all matches), i = case-insensitive, m = multiline (^ and $ match line boundaries), s = dotAll (. matches newlines).","q3":"Is there a limit on text size?","a3":"There's no hard limit. Processing happens in your browser, so performance depends on your device. Complex patterns on very large texts may be slower."},"ui":{"pattern":"Regular Expression","patternPlaceholder":"Enter regex pattern...","testString":"Test String","testPlaceholder":"Enter test string...","result":"Result","matchesFound":"matches found","atIndex":"at index","global":"Global","caseInsensitive":"Case Insensitive","multiline":"Multiline","dotAll":"Dot All"}},"color-picker":{"name":"Color Picker","description":"Pick colors and convert between HEX, RGB, HSL","seo":{"title":"Free Online Color Picker — HEX, RGB, HSL","content":"Pick any color and instantly get HEX, RGB, HSL and CSS values. Our free color picker works in your browser and lets you copy color codes with one click. Perfect for designers and developers."},"faq":{"q1":"What color formats are supported?","a1":"The tool supports HEX, RGB, HSL, and CSS rgba() formats. All values update in real-time as you pick a color.","q2":"Can I enter a specific HEX code?","a2":"Yes, you can type a HEX code directly in the input field and all other formats will update automatically.","q3":"Does it work on mobile?","a3":"Yes, the color picker is fully responsive and works on mobile devices with touch-friendly controls."},"ui":{"pickColor":"Pick a color","copy":"Copy","copied":"Copied!"}},"qr-code":{"name":"QR Code Generator","description":"Generate custom QR codes from text or URLs","seo":{"title":"Free Online QR Code Generator","content":"Generate custom QR codes from any text or URL directly in your browser. Customize colors, size, and error correction level. Download as PNG. Free, no registration required."},"faq":{"q1":"What can I encode in a QR code?","a1":"You can encode any text, URL, email address, phone number, WiFi credentials, or any string up to about 4,000 characters depending on the error correction level.","q2":"What are the error correction levels?","a2":"Error correction allows QR codes to be read even if partially damaged. Low (7%), Medium (15%), Quartile (25%), and High (30%) offer increasing levels of redundancy.","q3":"Can I customize the colors?","a3":"Yes, you can set both foreground and background colors. Make sure there is enough contrast for scanners to read the code reliably."},"ui":{"textLabel":"Text or URL","placeholder":"Enter text or URL...","size":"Size","errorLevel":"Error correction","fgColor":"Foreground","bgColor":"Background","generate":"Generate QR Code","download":"Download PNG","reset":"Reset","generateError":"Failed to generate QR code. Please check your input."}},"hex-rgb":{"name":"HEX/RGB Converter","description":"Convert colors between HEX and RGB formats"},"url-encoder":{"name":"URL Encoder","description":"Encode and decode URLs and parameters"},"timestamp":{"name":"Timestamp Converter","description":"Convert Unix timestamps to readable dates and vice versa"},"youtube-thumbnail":{"name":"YouTube Thumbnail Downloader","description":"Download YouTube video thumbnails in high quality","seo":{"title":"Free YouTube Thumbnail Downloader","content":"Download YouTube video thumbnails in all available resolutions. Paste a YouTube URL and save HD, SD, HQ or MQ thumbnails. Free, instant, no registration needed."},"faq":{"q1":"What resolutions are available?","a1":"Thumbnails are available in HD (1280x720), SD (640x480), HQ (480x360), and MQ (320x180). Not all resolutions may be available for every video.","q2":"Do I need to be logged in to YouTube?","a2":"No. Thumbnails are publicly accessible for all YouTube videos. Simply paste the video URL and download the resolution you need.","q3":"What YouTube URL formats are supported?","a3":"The tool supports standard youtube.com/watch URLs, youtu.be short links, YouTube Shorts URLs, and embed URLs. You can also paste just the video ID."},"ui":{"urlLabel":"YouTube URL","urlPlaceholder":"Paste YouTube video URL...","fetch":"Get Thumbnails","download":"Download","reset":"Reset","invalidUrl":"Please enter a valid YouTube URL or video ID."}},"youtube-transcript":{"name":"YouTube Transcript","description":"Extract subtitles and transcripts from YouTube videos"},"pdf-organizer":{"name":"PDF Organizer","description":"Merge, split, and rotate PDFs in one powerful tool","seo":{"title":"Free Online PDF Organizer — Merge, Split & Rotate","content":"Merge multiple PDFs, split pages, and rotate pages — all in one free tool. Works directly in your browser, no upload required."},"faq":[{"q":"What can PDF Organizer do?","a":"PDF Organizer combines three tools in one: merge multiple PDFs, split a PDF into individual pages or custom ranges, and rotate pages by 90, 180, or 270 degrees."},{"q":"Is it free?","a":"Yes, completely free with no registration or file limits. Everything is processed in your browser."},{"q":"Can I reorder pages before merging?","a":"Yes! In the Merge tab, use the up/down arrows to reorder your PDF files before merging them."}],"ui":{"dropzone":"Drop PDF files here","dropzoneHint":"or click to browse","dropzoneHintMulti":"Drop multiple PDFs or click to browse","merge":"Merge","split":"Split","rotate":"Rotate","files":"Files","pages":"pages","moveUp":"Move up","moveDown":"Move down","remove":"Remove","mergeBtn":"Merge PDFs","splitBtn":"Split PDF","rotateBtn":"Rotate PDF","splitAll":"All pages","splitRange":"Custom range","rangeLabel":"Page ranges","rangePlaceholder":"e.g. 1-3, 5, 8-10","rangeHint":"Separate ranges with commas","rotationAngle":"Rotation angle","applyTo":"Apply to","allPages":"All pages","customPages":"Custom pages","pagesPlaceholder":"e.g. 1-3, 5, 8-10","pagesHint":"Separate pages with commas","processing":"Processing...","done":"Done!","download":"Download","reset":"Start over","results":"Results","invalidPdf":"Invalid PDF file","mergeError":"Error merging PDFs","splitError":"Error splitting PDF","rotateError":"Error rotating PDF","invalidRange":"Invalid page range"}},"pdf-to-images":{"name":"PDF to Images","description":"Convert PDF pages to JPG or PNG images","seo":{"title":"Free PDF to Images Converter — JPG & PNG","content":"Convert PDF pages to high-quality JPG or PNG images. Choose format, quality, and scale. Free, private, no registration."},"faq":[{"q":"What formats are supported?","a":"You can convert PDF pages to either JPG or PNG format. JPG offers smaller file sizes with adjustable quality, while PNG supports transparency and lossless quality."},{"q":"Can I adjust the image quality?","a":"Yes! For JPG, use the quality slider (10%-100%). For PNG, choose the rendering scale (1x-4x) and enable transparency if needed."},{"q":"Is it free?","a":"Yes, completely free with no registration. All processing happens in your browser."}],"ui":{"dropzone":"Drop a PDF here","dropzoneHint":"or click to browse","format":"Output format","quality":"Quality","scale":"Scale","transparent":"Transparent background","convert":"Convert","processing":"Converting...","results":"Results","downloadAll":"Download all","reset":"Start over","convertError":"Error converting PDF"}},"pdf-word":{"name":"PDF ↔ Word","description":"Convert between PDF and Word documents","seo":{"title":"Free PDF to Word & Word to PDF Converter","content":"Convert PDF to editable Word documents or Word files to PDF. Auto-detects file type. Free, private, no registration."},"faq":[{"q":"How does it work?","a":"Simply drop a PDF or Word file. The tool automatically detects the format and converts it."},{"q":"Will the formatting be preserved?","a":"The tool preserves text, headings, and basic formatting. Complex layouts may vary slightly."},{"q":"Is it free?","a":"Yes, completely free with no registration. All processing happens in your browser."}],"ui":{"dropzone":"Drop a PDF or Word file here","dropzoneHint":"Accepts .pdf, .docx, .doc","convert":"Convert","processing":"Converting...","done":"Done!","download":"Download","reset":"Start over","printHint":"Use the browser print dialog to save as PDF","preview":"Preview","convertError":"Error converting file"}}},"upload":{"dragDrop":"Drag and drop files here","or":"or","clickToSelect":"Click to select files","supportedFormats":"Supported formats: {formats}","maxSize":"Maximum size: {size}","processing":"Processing...","done":"Done!","download":"Download","downloadAll":"Download all","error":{"fileTooLarge":"File is too large. Maximum size: {size}","unsupportedFormat":"Unsupported format. Accepted formats: {formats}","processingFailed":"Processing failed. Please try again.","tooManyFiles":"Too many files. Maximum: {max}"}},"pages":{"privacy":{"title":"Privacy Policy","description":"How Tuttilo protects your privacy and handles your data.","lastUpdated":"Last updated: February 2026","intro":"At Tuttilo, your privacy is our top priority. All file processing happens entirely in your browser — your files are never uploaded to our servers.","noDataCollection":{"title":"We Don't Collect Your Files","content":"Tuttilo is a browser-based tool suite. When you process a PDF, image, video, or any other file, the processing happens locally on your device using JavaScript and WebAssembly. No file data is ever sent to our servers or any third party."},"analytics":{"title":"Analytics","content":"We may use anonymous analytics (such as page views and tool usage counts) to improve our service. This data contains no personally identifiable information and cannot be linked to any individual user."},"cookies":{"title":"Cookies","content":"Tuttilo uses only essential cookies for basic functionality such as language preference and theme selection. We do not use tracking cookies or advertising cookies."},"thirdParty":{"title":"Third-Party Services","content":"Our website may load resources from content delivery networks (CDNs) for fonts and JavaScript libraries. These services may receive your IP address as part of standard web requests. We do not share any personal data or file content with third parties."},"retention":{"title":"Data Retention","content":"Since we do not collect or store your files, there is no file data to retain. Any preferences stored in your browser (such as language or theme) remain on your device and can be cleared at any time through your browser settings."},"rights":{"title":"Your Rights","content":"Under GDPR and other privacy regulations, you have the right to access, correct, or delete any personal data. Since Tuttilo does not collect personal data or files, these rights are inherently respected by our architecture."},"changes":{"title":"Changes to This Policy","content":"We may update this privacy policy from time to time. Any changes will be posted on this page with an updated revision date."},"contact":{"title":"Contact","content":"If you have questions about this privacy policy, please contact us at the address listed on our Contact page."}},"terms":{"title":"Terms of Service","description":"Terms and conditions for using Tuttilo tools.","lastUpdated":"Last updated: February 2026","intro":"By using Tuttilo, you agree to these terms. Please read them carefully.","service":{"title":"Service Description","content":"Tuttilo provides free browser-based tools for processing PDFs, images, videos, audio, and text. All processing occurs locally in your browser. We do not guarantee uninterrupted or error-free operation."},"usage":{"title":"Acceptable Use","content":"You agree to use Tuttilo only for lawful purposes. You are solely responsible for the content you process. You must not use the service to process illegal, harmful, or rights-infringing content."},"ip":{"title":"Intellectual Property","content":"The Tuttilo name, logo, and website design are our property. The tools are provided for your personal and commercial use. You retain all rights to the files you process."},"liability":{"title":"Limitation of Liability","content":"Tuttilo is provided \"as is\" without warranties of any kind. We are not liable for any damages arising from the use of our tools, including but not limited to data loss, file corruption, or processing errors."},"warranty":{"title":"Disclaimer of Warranties","content":"We make no warranties about the accuracy, reliability, or completeness of our tools. Results may vary depending on your browser, device, and file format. Always keep backup copies of your original files."},"modifications":{"title":"Modifications","content":"We reserve the right to modify or discontinue any tool or feature at any time without notice. We may also update these terms, with changes becoming effective upon posting."},"law":{"title":"Governing Law","content":"These terms are governed by the laws of the European Union. Any disputes shall be resolved in the competent courts."},"contact":{"title":"Contact","content":"For questions about these terms, please visit our Contact page."}},"about":{"title":"About Tuttilo","description":"Free browser-based tools for everyone.","intro":"Tuttilo is a free, all-in-one online tool suite that works entirely in your browser.","mission":{"title":"Our Mission","content":"We believe powerful tools should be free and accessible to everyone. Tuttilo was built to give you professional-grade file processing without subscriptions, registrations, or uploads."},"howItWorks":{"title":"How It Works","content":"Unlike traditional online tools, Tuttilo processes everything directly in your browser using JavaScript and WebAssembly. Your files never leave your device — there are no uploads, no servers involved, and no waiting in queues."},"features":{"title":"Why Tuttilo","privacy":"100% Private — Files never leave your browser","free":"Completely Free — No subscriptions, no hidden costs","noReg":"No Registration — Use any tool instantly","fast":"Lightning Fast — No uploads, no server queues","languages":"8 Languages — Available in English, Italian, Spanish, French, German, Portuguese, Japanese, and Korean","tools":"36+ Tools — PDF, images, video, audio, text, and developer tools"},"categories":{"title":"Our Tools","pdf":"Organize, compress, convert, and unlock PDF files.","image":"Compress, resize, crop, and convert images in any format.","video":"Compress, trim, and convert videos. Create GIFs.","audio":"Cut, convert, and record audio directly in your browser.","text":"Count words, compare text, and generate lorem ipsum.","developer":"JSON formatter, Base64 encoder, regex tester, QR code generator, and more.","youtube":"Download YouTube thumbnails in all resolutions."},"openSource":{"title":"Open & Transparent","content":"Tuttilo is built with Next.js, React, and modern web technologies. All processing is client-side, which means you can verify our privacy claims by inspecting the network tab in your browser — no file data is ever transmitted."}},"contact":{"title":"Contact Us","description":"Get in touch with the Tuttilo team.","intro":"Have a question, suggestion, or found a bug? We'd love to hear from you.","email":{"title":"Email","content":"For general inquiries and support:","address":"support@tuttilo.com"},"github":{"title":"GitHub","content":"Report bugs or request features on our GitHub repository:","link":"github.com/erold90/tuttilo"},"faq":{"title":"FAQ","content":"Before reaching out, check if your question is answered in our frequently asked questions on each tool page."},"response":{"title":"Response Time","content":"We aim to respond to all inquiries within 48 hours."}}},"footer":{"tagline":"All the online tools you need, free and without registration.","privacyBadge":"Your files never leave your browser","tools":"Tools","company":"Company","about":"About Us","contact":"Contact","privacy":"Privacy Policy","terms":"Terms of Service","settings":"Settings","language":"Language","allRightsReserved":"All rights reserved","filesNeverLeave":"Your files never leave your browser"}}
+{
+  "common": {
+    "siteName": "Tuttilo",
+    "tagline": "All online tools in one place",
+    "searchPlaceholder": "Search for a tool...",
+    "darkMode": "Dark mode",
+    "lightMode": "Light mode",
+    "systemMode": "System theme",
+    "toggleTheme": "Toggle theme",
+    "switchLanguage": "Switch language",
+    "languages": {
+      "it": "Italiano",
+      "en": "English",
+      "es": "Español",
+      "fr": "Français",
+      "de": "Deutsch",
+      "pt": "Português",
+      "ja": "日本語",
+      "ko": "한국어"
+    },
+    "privacyBadge": "Your files never leave your browser",
+    "free": "Free",
+    "noRegistration": "No registration",
+    "noLimits": "No limits",
+    "faq": "Frequently Asked Questions",
+    "relatedTools": "Related Tools",
+    "tryNow": "Try now",
+    "home": "Home",
+    "howItWorks": {
+      "upload": {
+        "title": "Upload",
+        "desc": "Select your file"
+      },
+      "process": {
+        "title": "Process",
+        "desc": "Adjust settings"
+      },
+      "download": {
+        "title": "Download",
+        "desc": "Get your result"
+      }
+    },
+    "batch": {
+      "processing": "Processing...",
+      "done": "Done!",
+      "convertAll": "Convert All",
+      "downloadAll": "Download All",
+      "reset": "Start Over",
+      "download": "Download"
+    }
+  },
+  "nav": {
+    "pdf": "PDF",
+    "image": "Images",
+    "video": "Video",
+    "audio": "Audio",
+    "text": "Text",
+    "developer": "Developer",
+    "youtube": "YouTube",
+    "allTools": "All Tools",
+    "home": "Home",
+    "openMenu": "Open menu"
+  },
+  "home": {
+    "title": "All the online tools you need",
+    "subtitle": "Free, no registration, right in your browser. Edit PDFs, images, videos, audio and much more.",
+    "searchPlaceholder": "What do you want to do? Search among 45+ tools...",
+    "privacyNote": "Your files never leave your browser",
+    "categories": "Categories",
+    "categoryDesc": {
+      "pdf": "Merge, split, compress and convert PDFs",
+      "image": "Compress, resize and convert images",
+      "video": "Compress, trim and convert videos",
+      "audio": "Cut, convert and record audio",
+      "text": "Word count, text compare and more",
+      "developer": "JSON, Base64, Regex, QR Code and more",
+      "youtube": "Thumbnails and YouTube transcripts"
+    },
+    "favorites": "Your Favorites",
+    "recents": "Recently Used",
+    "popularTools": "Most Popular Tools",
+    "allTools": "All Tools",
+    "stats": {
+      "tools": "36+ tools",
+      "filesProcessed": "Files processed",
+      "noUpload": "100% in-browser"
+    },
+    "trust": {
+      "browserOnly": "Browser-Only Processing",
+      "browserOnlyDesc": "Your files never leave your device. All processing happens locally.",
+      "noRegistration": "No Registration Required",
+      "noRegistrationDesc": "Use any tool instantly. No account, no email, no limits.",
+      "alwaysFree": "Always Free",
+      "alwaysFreeDesc": "All tools are free forever. No hidden fees or subscriptions.",
+      "secureByDesign": "Secure by Design",
+      "secureByDesignDesc": "No server uploads means zero risk of data breaches."
+    },
+    "features": {
+      "privacy": {
+        "title": "Privacy guaranteed",
+        "desc": "Your files are processed directly in your browser. No uploads to external servers."
+      },
+      "fast": {
+        "title": "Fast and free",
+        "desc": "All tools are free and work instantly with no waiting."
+      },
+      "free": {
+        "title": "No registration",
+        "desc": "No account required. Use any tool immediately, with no limits."
+      }
+    }
+  },
+  "search": {
+    "openSearch": "Search",
+    "title": "Search tools",
+    "placeholder": "Search among tools...",
+    "noResults": "No results found",
+    "hint": "Use arrow keys to navigate"
+  },
+  "tools": {
+    "compress-pdf": {
+      "name": "Compress PDF",
+      "description": "Reduce PDF file size while maintaining quality",
+      "seo": {
+        "title": "Free Online PDF Compressor",
+        "content": "Compress PDF files to reduce their size while preserving quality. Perfect for email attachments and uploads. Works entirely in your browser — no data is sent to any server."
+      },
+      "faq": {
+        "q1": "How much can the file size be reduced?",
+        "a1": "Compression results vary depending on the PDF content. Documents with many images typically see the largest reductions, often 50-80% smaller. Text-heavy PDFs may see smaller reductions.",
+        "q2": "Does compression reduce the quality of my PDF?",
+        "a2": "The tool uses smart compression that targets embedded images while preserving text sharpness. The result is visually very close to the original in most cases.",
+        "q3": "Can I compress password-protected PDFs?",
+        "a3": "Password-protected PDFs need to be unlocked first. Use our Unlock PDF tool to remove the protection, then compress the file."
+      },
+      "ui": {
+        "dropzone": "Drop a PDF file here or click to select",
+        "dropzoneHint": "Select a PDF to compress",
+        "compress": "Compress PDF",
+        "processing": "Compressing...",
+        "done": "Compression complete!",
+        "original": "Original",
+        "compressed": "Compressed",
+        "reduction": "Reduction",
+        "noReduction": "File is already optimized, no further reduction possible.",
+        "download": "Download",
+        "reset": "Reset",
+        "invalidPdf": "Invalid PDF file. Please select a valid PDF.",
+        "compressError": "An error occurred while compressing. Please try again."
+      }
+    },
+    "unlock-pdf": {
+      "name": "Unlock PDF",
+      "description": "Remove password protection from PDF files",
+      "seo": {
+        "title": "Free Online PDF Unlocker",
+        "content": "Remove password protection from PDF files directly in your browser. Unlock PDFs to enable editing, printing, and copying. Free, private, no upload needed."
+      },
+      "faq": {
+        "q1": "What types of PDF protection can be removed?",
+        "a1": "The tool can remove both user passwords (required to open the PDF) and owner passwords (that restrict editing, printing, or copying). You must know the password to unlock the file.",
+        "q2": "Is this legal to use?",
+        "a2": "Yes, as long as you have the right to access the PDF. This tool is designed for users who know the password but want to remove it for convenience. Never use it on files you do not own.",
+        "q3": "Will the PDF content be changed?",
+        "a3": "No. The tool only removes the password protection. All content, formatting, images, and metadata remain exactly the same."
+      },
+      "ui": {
+        "dropzone": "Drop a protected PDF here or click to select",
+        "dropzoneHint": "PDF files up to 100 MB",
+        "password": "PDF password",
+        "passwordPlaceholder": "Enter the PDF password",
+        "passwordHint": "Leave empty if the PDF only has editing restrictions",
+        "unlock": "Unlock PDF",
+        "processing": "Unlocking...",
+        "done": "PDF unlocked!",
+        "download": "Download",
+        "reset": "Reset",
+        "wrongPassword": "Incorrect password. Please check and try again.",
+        "unlockError": "An error occurred while unlocking. Please try again."
+      }
+    },
+    "pdf-fill-sign": {
+      "name": "Fill & Sign PDF",
+      "description": "Fill PDF forms and add your signature online for free",
+      "seo": {
+        "title": "Free Online PDF Fill & Sign Tool",
+        "content": "Fill out PDF forms and add your signature directly in the browser. No upload, no account needed. Completely free and private — your files never leave your device."
+      },
+      "faq": {
+        "q1": "Can I fill out any PDF form?",
+        "a1": "Yes, the tool detects all standard PDF form fields (text fields, checkboxes, dropdowns) automatically. If your PDF has interactive form fields, they will appear in the Fill Form tab for you to complete.",
+        "q2": "Is my signature legally valid?",
+        "a2": "This tool creates a visual signature (an image placed on the PDF). For most informal purposes and many business documents, this is sufficient. For legally binding electronic signatures that meet eIDAS or ESIGN standards, you may need a qualified digital signature service.",
+        "q3": "Are my files safe?",
+        "a3": "Absolutely. All processing happens directly in your browser. Your PDF and signature never leave your device — nothing is uploaded to any server."
+      },
+      "ui": {
+        "dropzone": "Drop a PDF here or click to select",
+        "dropzoneHint": "PDF files up to 100 MB",
+        "tabFill": "Fill Form",
+        "tabSign": "Sign",
+        "noFields": "No form fields detected in this PDF",
+        "signDraw": "Draw",
+        "signType": "Type",
+        "signUpload": "Upload",
+        "signPlaceholder": "Type your signature",
+        "signSave": "Use Signature",
+        "signClear": "Clear",
+        "signUploadHint": "Click to upload a signature image",
+        "signInstruction": "Click on the PDF preview to place your signature",
+        "signPlaced": "Signature placed on PDF",
+        "apply": "Apply & Download",
+        "processing": "Processing...",
+        "done": "PDF ready!",
+        "download": "Download",
+        "reset": "Start Over",
+        "error": "An error occurred. Please try again.",
+        "prev": "Previous",
+        "next": "Next",
+        "page": "Page",
+        "of": "of",
+        "flatten": "Flatten form fields",
+        "flattenHint": "Makes fields permanent and non-editable"
+      }
+    },
+    "images-to-pdf": {
+      "name": "Images to PDF",
+      "description": "Convert multiple images into a single PDF document",
+      "seo": {
+        "title": "Free Online Images to PDF Converter",
+        "content": "Convert multiple images (JPG, PNG, WebP) into a single PDF document. Reorder pages, choose page size, add margins. Free, private, no upload needed."
+      },
+      "faq": {
+        "q1": "What image formats are supported?",
+        "a1": "You can use JPG, PNG, and WebP images. All formats are supported and can be mixed in the same PDF document.",
+        "q2": "Can I reorder the images?",
+        "a2": "Yes! After uploading, you can reorder images using the up/down arrows. The final PDF will follow the order you set.",
+        "q3": "What page sizes are available?",
+        "a3": "Choose from Fit to Image (each page matches the image size), A4, or Letter. You can also add margins (none, small, medium, large)."
+      },
+      "ui": {
+        "dropzone": "Drop images here or click to select",
+        "dropzoneHint": "JPG, PNG, WebP — multiple files supported",
+        "images": "Images",
+        "pageSize": "Page size",
+        "pageSizeFit": "Fit to image",
+        "margin": "Margin",
+        "marginNone": "None",
+        "marginSmall": "Small",
+        "marginMedium": "Medium",
+        "marginLarge": "Large",
+        "convert": "Create PDF",
+        "processing": "Creating PDF...",
+        "done": "PDF created!",
+        "download": "Download PDF",
+        "reset": "Reset",
+        "convertError": "An error occurred. Please try again."
+      }
+    },
+    "pdf-editor": {
+      "name": "PDF Editor",
+      "description": "Edit text, draw, and annotate your PDF documents",
+      "seo": {
+        "title": "Free Online PDF Editor with Text Editing",
+        "content": "Edit PDF text directly in your browser with automatic font and size detection. Add text, draw, annotate. Free, private, no upload needed — your files never leave your device."
+      },
+      "faq": {
+        "q1": "Can I edit existing text in a PDF?",
+        "a1": "Yes. Click on any text in the PDF and the editor will detect the original font family, weight, and size. You can then modify the text and it will be rendered with a matching standard font at the same position.",
+        "q2": "What fonts are used for edited text?",
+        "a2": "The editor detects whether the original font is serif, sans-serif, or monospace, and whether it is bold or italic. It then uses the closest matching standard PDF font (Helvetica, Times, or Courier family) to redraw edited text.",
+        "q3": "Are my files safe?",
+        "a3": "Absolutely. All processing happens directly in your browser using pdf-lib and pdfjs-dist. Your PDF never leaves your device — nothing is uploaded to any server."
+      },
+      "ui": {
+        "dropzone": "Drop a PDF here or click to select",
+        "dropzoneHint": "PDF files up to 100 MB",
+        "modeSelect": "Select Text",
+        "modeText": "Add Text",
+        "modeDraw": "Draw",
+        "selectHint": "Click on any text in the PDF to edit it",
+        "textHint": "Click on the PDF to place new text",
+        "drawHint": "Draw freely on the PDF",
+        "editPlaceholder": "Edit text...",
+        "fontSize": "Size",
+        "fontDetected": "Detected font",
+        "applyEdit": "Apply",
+        "cancelEdit": "Done",
+        "addText": "Add",
+        "undo": "Undo",
+        "apply": "Save PDF",
+        "processing": "Processing...",
+        "done": "PDF edited!",
+        "download": "Download",
+        "reset": "Start Over",
+        "error": "An error occurred. Please try again.",
+        "prev": "Previous",
+        "next": "Next",
+        "page": "Page",
+        "of": "of"
+      }
+    },
+    "compress-image": {
+      "name": "Compress Image",
+      "description": "Reduce image file size without losing quality",
+      "seo": {
+        "title": "Free Online Image Compressor",
+        "content": "Compress JPG, PNG and WebP images directly in your browser. Reduce file size while maintaining visual quality. Free, no upload needed — your files stay private."
+      },
+      "faq": {
+        "q1": "What image formats can I compress?",
+        "a1": "You can compress JPG, PNG and WebP images. The tool processes files directly in your browser using advanced compression algorithms.",
+        "q2": "Will compression reduce image quality?",
+        "a2": "You control the quality with a slider. Higher quality means larger files, lower quality means smaller files. The default setting provides an excellent balance.",
+        "q3": "Is there a file size limit?",
+        "a3": "The tool supports images up to 50 MB. All processing happens in your browser, so larger files may take longer on slower devices."
+      },
+      "ui": {
+        "dropzone": "Drop an image here or click to select",
+        "quality": "Quality",
+        "processing": "Compressing...",
+        "compress": "Compress",
+        "download": "Download",
+        "reset": "Reset",
+        "originalSize": "Original size",
+        "compressedSize": "Compressed size",
+        "savings": "Savings",
+        "original": "Original",
+        "compressed": "Compressed",
+        "error": "Compression failed. Please try again with a different image."
+      }
+    },
+    "resize-image": {
+      "name": "Resize Image",
+      "description": "Change the dimensions of your images",
+      "seo": {
+        "title": "Free Online Image Resizer",
+        "content": "Resize JPG, PNG and WebP images to any dimension. Lock aspect ratio, use percentage presets, or enter custom sizes. Free and processed entirely in your browser."
+      },
+      "faq": {
+        "q1": "Can I maintain the aspect ratio while resizing?",
+        "a1": "Yes, the aspect ratio lock is enabled by default. When you change width or height, the other dimension adjusts automatically to keep proportions.",
+        "q2": "What are the percentage presets?",
+        "a2": "Quick presets let you resize to 25%, 50%, 75%, 150% or 200% of the original size with one click.",
+        "q3": "Does resizing affect image quality?",
+        "a3": "The tool uses high-quality bicubic interpolation. Enlarging images beyond the original size may reduce sharpness, while reducing size maintains quality."
+      },
+      "ui": {
+        "dropzone": "Drop an image here or click to select",
+        "width": "Width",
+        "height": "Height",
+        "lockAspectRatio": "Lock aspect ratio",
+        "processing": "Resizing...",
+        "resize": "Resize",
+        "download": "Download",
+        "reset": "Reset",
+        "original": "Original",
+        "resized": "Resized",
+        "originalDimensions": "Original dimensions",
+        "quality": "Quality",
+        "originalSize": "Original size",
+        "resultSize": "Result size",
+        "error": "Resizing failed. Please try again with a different image."
+      }
+    },
+    "crop-image": {
+      "name": "Crop Image",
+      "description": "Crop your images with precision",
+      "seo": {
+        "title": "Free Online Image Cropper",
+        "content": "Crop JPG, PNG and WebP images with a visual editor. Choose from preset aspect ratios or crop freely. No upload required — works entirely in your browser."
+      },
+      "faq": {
+        "q1": "What aspect ratio presets are available?",
+        "a1": "You can crop with freeform selection, or use presets: 1:1 (square), 16:9 (widescreen), 4:3 (standard), and 3:2 (photo).",
+        "q2": "Can I crop to an exact pixel size?",
+        "a2": "The visual cropper lets you drag to select any area. For exact sizes, combine this with the Resize Image tool after cropping.",
+        "q3": "Does cropping reduce quality?",
+        "a3": "No. The crop simply extracts the selected area at its original resolution. No recompression is applied to the cropped region."
+      },
+      "ui": {
+        "dropzone": "Drop an image here or click to select",
+        "crop": "Crop",
+        "download": "Download",
+        "reset": "Reset",
+        "result": "Result",
+        "freeform": "Freeform",
+        "quality": "Quality",
+        "processing": "Cropping...",
+        "originalSize": "Original size",
+        "resultSize": "Result size",
+        "error": "Cropping failed. Please try again with a different image."
+      }
+    },
+    "png-to-jpg": {
+      "name": "PNG to JPG",
+      "description": "Convert PNG images to JPG format",
+      "seo": {
+        "title": "Free PNG to JPG Converter Online",
+        "content": "Convert PNG images to JPG format instantly in your browser. Adjustable quality, transparent areas filled with white. No upload needed — completely private."
+      },
+      "faq": {
+        "q1": "What happens to transparent areas?",
+        "a1": "JPG does not support transparency. Transparent areas in your PNG will be filled with a white background during conversion.",
+        "q2": "Can I control the output quality?",
+        "a2": "Yes, use the quality slider to balance between file size and image quality. Higher values produce better-looking but larger JPG files.",
+        "q3": "Is there a size limit?",
+        "a3": "Images up to 50 MB are supported. The conversion happens entirely in your browser, so your files remain private."
+      },
+      "ui": {
+        "dropzone": "Drop a PNG image here or click to select",
+        "quality": "Quality",
+        "processing": "Converting...",
+        "convert": "Convert",
+        "download": "Download",
+        "reset": "Reset",
+        "error": "Conversion failed. Please try again with a different image."
+      }
+    },
+    "jpg-to-png": {
+      "name": "JPG to PNG",
+      "description": "Convert JPG images to PNG format with transparency",
+      "seo": {
+        "title": "Free JPG to PNG Converter Online",
+        "content": "Convert JPG images to PNG format instantly in your browser. PNG supports transparency and lossless compression. Free, private, no registration needed."
+      },
+      "faq": {
+        "q1": "Why convert JPG to PNG?",
+        "a1": "PNG supports transparency and lossless compression, making it ideal for logos, graphics, and images that need sharp edges without compression artifacts.",
+        "q2": "Will the file size increase?",
+        "a2": "PNG files are typically larger than JPG because PNG uses lossless compression. The trade-off is higher quality with no compression artifacts.",
+        "q3": "Does the conversion add transparency?",
+        "a3": "Converting JPG to PNG does not automatically add transparency. The image keeps its original content, but is now in a format that supports transparency for future edits."
+      },
+      "ui": {
+        "dropzone": "Drop a JPG image here or click to select",
+        "processing": "Converting...",
+        "convert": "Convert",
+        "download": "Download",
+        "reset": "Reset",
+        "error": "Conversion failed. Please try again with a different image."
+      }
+    },
+    "webp-to-png": {
+      "name": "WebP to PNG",
+      "description": "Convert WebP images to PNG format",
+      "seo": {
+        "title": "Free WebP to PNG Converter Online",
+        "content": "Convert WebP images to PNG format instantly in your browser. Maintain transparency and quality. No upload required — your files stay on your device."
+      },
+      "faq": {
+        "q1": "Why convert WebP to PNG?",
+        "a1": "While WebP is great for the web, PNG is more widely supported across applications, image editors, and platforms. Converting ensures maximum compatibility.",
+        "q2": "Is transparency preserved?",
+        "a2": "Yes. If your WebP image has transparent areas, they will be preserved in the PNG output.",
+        "q3": "Will the file size change?",
+        "a3": "PNG files may be larger than WebP since WebP uses more aggressive compression. The quality remains identical."
+      },
+      "ui": {
+        "dropzone": "Drop a WebP image here or click to select",
+        "processing": "Converting...",
+        "convert": "Convert",
+        "download": "Download",
+        "reset": "Reset",
+        "error": "Conversion failed. Please try again with a different image."
+      }
+    },
+    "webp-to-jpg": {
+      "name": "WebP to JPG",
+      "description": "Convert WebP images to JPG format",
+      "seo": {
+        "title": "Free WebP to JPG Converter Online",
+        "content": "Convert WebP images to JPG format instantly in your browser. Adjustable quality with white background fill for transparency. Free, private, no registration."
+      },
+      "faq": {
+        "q1": "What happens to transparent areas in WebP?",
+        "a1": "JPG does not support transparency. Any transparent areas in the WebP image will be filled with a white background.",
+        "q2": "Can I adjust the JPG quality?",
+        "a2": "Yes, use the quality slider to set output quality from 10% to 100%. Higher values mean better quality but larger file size.",
+        "q3": "Is this tool free?",
+        "a3": "Yes, completely free with no limits. The conversion runs in your browser, so no data is uploaded to any server."
+      },
+      "ui": {
+        "dropzone": "Drop a WebP image here or click to select",
+        "quality": "Quality",
+        "processing": "Converting...",
+        "convert": "Convert",
+        "download": "Download",
+        "reset": "Reset",
+        "error": "Conversion failed. Please try again with a different image."
+      }
+    },
+    "heic-to-jpg": {
+      "name": "HEIC to JPG",
+      "description": "Convert iPhone HEIC photos to JPG format",
+      "seo": {
+        "title": "Free HEIC to JPG Converter Online",
+        "content": "Convert HEIC and HEIF photos from iPhone to JPG format. Works directly in your browser with no upload needed. Free, fast and completely private."
+      },
+      "faq": {
+        "q1": "What is HEIC format?",
+        "a1": "HEIC (High Efficiency Image Container) is Apple's default photo format on iPhone. It offers better compression than JPG but is not universally supported.",
+        "q2": "Why convert HEIC to JPG?",
+        "a2": "JPG is universally supported across all devices, apps and platforms. Converting HEIC to JPG ensures your photos can be opened and shared everywhere.",
+        "q3": "Does conversion lose quality?",
+        "a3": "The conversion uses high quality settings (92%) to minimize quality loss. The result is visually identical to the original in most cases."
+      },
+      "ui": {
+        "dropzone": "Drop a HEIC/HEIF file here or click to select",
+        "processing": "Converting...",
+        "convert": "Convert",
+        "download": "Download",
+        "reset": "Reset",
+        "result": "Result",
+        "quality": "Quality",
+        "error": "Conversion failed. Please make sure the file is a valid HEIC image."
+      }
+    },
+    "svg-to-png": {
+      "name": "SVG to PNG",
+      "description": "Convert SVG vector graphics to PNG images",
+      "seo": {
+        "title": "Free Online SVG to PNG Converter",
+        "content": "Convert SVG vector graphics to high-quality PNG images in your browser. Choose scale (1x, 2x, 3x, 4x) for crisp output at any resolution. Free, private, no upload needed."
+      },
+      "faq": {
+        "q1": "Why convert SVG to PNG?",
+        "a1": "While SVG is ideal for web, PNG is universally supported across all applications, social media platforms, and messaging apps. Converting ensures your graphics display correctly everywhere.",
+        "q2": "What do the scale options mean?",
+        "a2": "Scale multiplies the SVG dimensions. 1x gives the original size, 2x doubles it for retina displays, and 4x creates very high-resolution output for print or large formats.",
+        "q3": "Is transparency preserved?",
+        "a3": "Yes, transparent areas in the SVG are preserved as transparency in the PNG output."
+      },
+      "ui": {
+        "dropzone": "Drop an SVG file here or click to select",
+        "dropzoneHint": "Select an SVG to convert to PNG",
+        "scale": "Output scale",
+        "convert": "Convert to PNG",
+        "processing": "Converting...",
+        "download": "Download",
+        "reset": "Reset",
+        "convertError": "Failed to convert SVG. Please make sure the file is a valid SVG."
+      }
+    },
+    "remove-bg": {
+      "name": "Remove Background",
+      "description": "Automatically remove background from images"
+    },
+    "compress-video": {
+      "name": "Compress Video",
+      "description": "Reduce video file size while maintaining quality",
+      "seo": {
+        "title": "Free Online Video Compressor",
+        "content": "Compress video files directly in your browser. Reduce file size with adjustable quality settings using H.264 encoding. Free, private, no upload to external servers."
+      },
+      "faq": {
+        "q1": "What video formats are supported?",
+        "a1": "The tool supports MP4, WebM, MOV and most common video formats. The output is always MP4 (H.264) for maximum compatibility across devices and platforms.",
+        "q2": "How much can the file size be reduced?",
+        "a2": "Results vary depending on the original video. Typically you can expect 30-70% size reduction at medium quality. Higher quality preserves more detail with less compression.",
+        "q3": "Does compression reduce video quality?",
+        "a3": "The tool offers three quality levels. High quality preserves most detail, medium offers a good balance, and low creates the smallest files. You choose the best tradeoff for your needs."
+      },
+      "ui": {
+        "dropzone": "Drop a video file here or click to select",
+        "dropzoneHint": "MP4, WebM, MOV up to 500 MB",
+        "quality": "Quality",
+        "quality_high": "High",
+        "quality_medium": "Medium",
+        "quality_low": "Low",
+        "compress": "Compress Video",
+        "loadingFfmpeg": "Loading encoder...",
+        "compressing": "Compressing...",
+        "done": "Compression complete!",
+        "original": "Original",
+        "compressed": "Compressed",
+        "download": "Download",
+        "reset": "Reset",
+        "compressError": "An error occurred during compression. Please try again."
+      }
+    },
+    "trim-video": {
+      "name": "Trim Video",
+      "description": "Cut and trim your videos with precision",
+      "seo": {
+        "title": "Free Online Video Trimmer",
+        "content": "Trim and cut video files directly in your browser. Set precise start and end points with a visual preview. Free, private, no upload needed."
+      },
+      "faq": {
+        "q1": "What video formats are supported?",
+        "a1": "The tool supports MP4, WebM, MOV and most common video formats playable by your browser. The output is MP4 for maximum compatibility.",
+        "q2": "Can I preview before trimming?",
+        "a2": "Yes, the built-in video player lets you preview the entire video. Adjust the start and end sliders to select the portion you want to keep, and the player follows your selection.",
+        "q3": "Is there a length limit?",
+        "a3": "There is no length limit. The tool supports videos up to 500 MB. Processing happens in your browser, so longer videos may take more time depending on your device."
+      },
+      "ui": {
+        "dropzone": "Drop a video file here or click to select",
+        "dropzoneHint": "MP4, WebM, MOV up to 500 MB",
+        "start": "Start",
+        "end": "End",
+        "selection": "Selection",
+        "trim": "Trim Video",
+        "loadingFfmpeg": "Loading encoder...",
+        "trimming": "Trimming...",
+        "done": "Trim complete!",
+        "download": "Download",
+        "reset": "Reset",
+        "preview": "Preview",
+        "trimError": "An error occurred during trimming. Please try again."
+      }
+    },
+    "video-to-gif": {
+      "name": "Video to GIF",
+      "description": "Convert videos to animated GIFs",
+      "seo": {
+        "title": "Free Online Video to GIF Converter",
+        "content": "Convert video clips to animated GIFs directly in your browser. Adjust FPS, width, and select the portion to convert. High-quality palette optimization. Free, private, no upload."
+      },
+      "faq": {
+        "q1": "What video formats are supported?",
+        "a1": "The tool supports MP4, WebM and most common video formats. Simply upload your video and select the portion you want to convert to GIF.",
+        "q2": "How can I control the GIF file size?",
+        "a2": "Use the FPS and width controls. Lower FPS (5-10) and smaller width (320px) create smaller files. Higher FPS (15-20) and larger width (640px) produce smoother, larger GIFs.",
+        "q3": "Is there a duration limit?",
+        "a3": "There is no hard limit, but GIFs are best for short clips (3-15 seconds). Longer clips create very large files. The tool supports videos up to 200 MB."
+      },
+      "ui": {
+        "dropzone": "Drop a video file here or click to select",
+        "dropzoneHint": "MP4, WebM up to 200 MB",
+        "start": "Start",
+        "end": "End",
+        "selection": "Selection",
+        "fps": "FPS",
+        "width": "Width",
+        "convert": "Convert to GIF",
+        "loadingFfmpeg": "Loading encoder...",
+        "converting": "Converting...",
+        "done": "Conversion complete!",
+        "download": "Download GIF",
+        "reset": "Reset",
+        "preview": "Preview",
+        "convertError": "An error occurred during conversion. Please try again."
+      }
+    },
+    "video-to-mp3": {
+      "name": "Video to MP3",
+      "description": "Extract audio from videos in MP3 format",
+      "seo": {
+        "title": "Free Online Video to Audio Converter",
+        "content": "Extract audio from video files directly in your browser. Upload MP4, WebM, or other video formats and download the audio track. Free, private, no upload to external servers."
+      },
+      "faq": {
+        "q1": "What video formats are supported?",
+        "a1": "The tool supports MP4, WebM, and most common video formats that your browser can play. Simply drag and drop your video file to get started.",
+        "q2": "What format is the extracted audio?",
+        "a2": "The audio is extracted as a WAV file, which is a lossless uncompressed format. WAV files are universally compatible with all audio players and editors.",
+        "q3": "Is there a file size limit?",
+        "a3": "The tool supports videos up to 500 MB. Processing happens entirely in your browser, so larger files may take longer depending on your device."
+      },
+      "ui": {
+        "dropzone": "Drop a video file here or click to select",
+        "dropzoneHint": "Supports MP4, WebM and other video formats",
+        "extract": "Extract Audio",
+        "processing": "Extracting...",
+        "download": "Download",
+        "reset": "Reset",
+        "extractError": "Failed to extract audio. Please make sure the file is a valid video with an audio track."
+      }
+    },
+    "screen-recorder": {
+      "name": "Screen Recorder",
+      "description": "Record your screen directly from the browser",
+      "seo": {
+        "title": "Free Online Screen Recorder",
+        "content": "Record your screen directly from your browser. Capture your entire screen, a window, or a tab with optional audio. No software to install, no registration required."
+      },
+      "faq": {
+        "q1": "Do I need to install anything?",
+        "a1": "No. The screen recorder uses your browsers built-in screen capture API. It works directly in the browser without any downloads or extensions.",
+        "q2": "Can I record audio along with the screen?",
+        "a2": "Yes, you can enable audio recording to capture system sounds along with your screen. Toggle the Include audio option before starting.",
+        "q3": "What format is the recording?",
+        "a3": "Recordings are saved in WebM format, which is supported by all modern browsers and video players. You can convert to other formats using video conversion tools."
+      },
+      "ui": {
+        "startRecording": "Start Recording",
+        "pause": "Pause",
+        "resume": "Resume",
+        "stop": "Stop",
+        "download": "Download",
+        "newRecording": "New Recording",
+        "includeAudio": "Include system audio",
+        "screenError": "Could not access screen. Please allow screen sharing when prompted."
+      }
+    },
+    "audio-cutter": {
+      "name": "Audio Cutter",
+      "description": "Cut and trim audio files with precision",
+      "seo": {
+        "title": "Free Online Audio Cutter",
+        "content": "Cut and trim audio files directly in your browser. Visual waveform editor with precise start and end selection. Supports MP3, WAV, OGG, and more. Free, private, no upload needed."
+      },
+      "faq": {
+        "q1": "What audio formats are supported?",
+        "a1": "The tool supports MP3, WAV, OGG, FLAC, AAC, and any audio format your browser can decode. The output is saved as a high-quality WAV file.",
+        "q2": "Can I preview before cutting?",
+        "a2": "Yes, use the Preview button to listen to the selected portion before cutting. Adjust the start and end points using the sliders or by typing exact times.",
+        "q3": "Why is the output in WAV format?",
+        "a3": "WAV is a lossless uncompressed format that preserves full audio quality. It ensures no quality loss during the cutting process and is compatible with all audio players."
+      },
+      "ui": {
+        "dropzone": "Drop an audio file here or click to select",
+        "dropzoneHint": "Supports MP3, WAV, OGG, FLAC and more",
+        "start": "Start",
+        "end": "End",
+        "selection": "Selection duration",
+        "preview": "Preview",
+        "stopPreview": "Stop",
+        "cut": "Cut Audio",
+        "processing": "Cutting...",
+        "download": "Download",
+        "reset": "Reset",
+        "loadError": "Failed to load audio file. Please make sure the file is a valid audio file.",
+        "cutError": "An error occurred while cutting. Please try again."
+      }
+    },
+    "audio-converter": {
+      "name": "Audio Converter",
+      "description": "Convert audio files between different formats",
+      "seo": {
+        "title": "Free Online Audio Converter",
+        "content": "Convert audio files between MP3, WAV, OGG, FLAC, and AAC formats directly in your browser. High-quality conversion powered by FFmpeg. Free, private, no upload needed."
+      },
+      "faq": {
+        "q1": "What audio formats are supported?",
+        "a1": "You can convert between MP3, WAV, OGG, FLAC, and AAC. The tool accepts any audio format your browser can read and outputs in your chosen format.",
+        "q2": "Does conversion affect audio quality?",
+        "a2": "Converting to lossless formats (WAV, FLAC) preserves full quality. Converting to lossy formats (MP3, OGG, AAC) uses high-quality settings to minimize any loss.",
+        "q3": "Is there a file size limit?",
+        "a3": "The tool supports audio files up to 100 MB. All processing happens in your browser using FFmpeg WebAssembly — your files are never uploaded."
+      },
+      "ui": {
+        "dropzone": "Drop an audio file here or click to select",
+        "dropzoneHint": "MP3, WAV, OGG, FLAC, AAC and more",
+        "outputFormat": "Output Format",
+        "convert": "Convert",
+        "loadingFfmpeg": "Loading encoder...",
+        "converting": "Converting...",
+        "done": "Conversion complete!",
+        "download": "Download",
+        "reset": "Reset",
+        "convertError": "An error occurred during conversion. Please try again."
+      }
+    },
+    "voice-recorder": {
+      "name": "Voice Recorder",
+      "description": "Record your voice directly from the browser",
+      "seo": {
+        "title": "Free Online Voice Recorder",
+        "content": "Record your voice directly from your browser with no software to install. See a real-time waveform while recording. Pause, resume, and download your recordings. Free and private."
+      },
+      "faq": {
+        "q1": "Do I need a microphone?",
+        "a1": "Yes, you need a microphone connected to your device. Most laptops and smartphones have built-in microphones. The browser will ask for permission to access it.",
+        "q2": "What format are recordings saved in?",
+        "a2": "Recordings are saved in WebM audio format, which is supported by all modern browsers and most audio players. You can convert to other formats using audio conversion tools.",
+        "q3": "Is my recording stored anywhere?",
+        "a3": "No. The recording is processed entirely in your browser and is never uploaded to any server. Only you have access to your recordings."
+      },
+      "ui": {
+        "record": "Record",
+        "pause": "Pause",
+        "resume": "Resume",
+        "stop": "Stop",
+        "download": "Download",
+        "newRecording": "New Recording",
+        "micError": "Could not access microphone. Please allow microphone access when prompted."
+      }
+    },
+    "word-counter": {
+      "name": "Word Counter",
+      "description": "Count words, characters, sentences and paragraphs",
+      "seo": {
+        "title": "Free Online Word Counter Tool",
+        "content": "Count words, characters, sentences and paragraphs in your text instantly. Our free word counter works directly in your browser with no uploads needed. Perfect for essays, articles, social media posts and any text content."
+      },
+      "faq": {
+        "q1": "How does the word counter work?",
+        "a1": "Simply paste or type your text in the input area. The counter instantly analyzes your text and shows the number of words, characters, sentences, paragraphs, and estimated reading/speaking time.",
+        "q2": "Is my text stored on any server?",
+        "a2": "No. All processing happens directly in your browser. Your text is never uploaded or stored anywhere.",
+        "q3": "What is the reading time based on?",
+        "a3": "Reading time is estimated at 200 words per minute (average adult reading speed). Speaking time uses 130 words per minute."
+      },
+      "ui": {
+        "placeholder": "Type or paste your text here...",
+        "words": "Words",
+        "characters": "Characters",
+        "charactersNoSpaces": "Characters (no spaces)",
+        "sentences": "Sentences",
+        "paragraphs": "Paragraphs",
+        "readingTime": "Reading time",
+        "speakingTime": "Speaking time",
+        "clear": "Clear"
+      }
+    },
+    "lorem-ipsum": {
+      "name": "Lorem Ipsum Generator",
+      "description": "Generate customizable Lorem Ipsum placeholder text",
+      "seo": {
+        "title": "Free Lorem Ipsum Generator",
+        "content": "Generate customizable Lorem Ipsum placeholder text for your designs and projects. Choose between paragraphs, sentences, or words. Copy with one click. No registration needed."
+      },
+      "faq": {
+        "q1": "What is Lorem Ipsum?",
+        "a1": "Lorem Ipsum is placeholder text used in the printing and typesetting industry since the 1500s. It helps designers visualize how content will look without being distracted by readable text.",
+        "q2": "Can I customize the output?",
+        "a2": "Yes, you can choose the number and type of content to generate: paragraphs, sentences, or individual words.",
+        "q3": "Is the generated text random?",
+        "a3": "The text uses standard Lorem Ipsum vocabulary arranged in random combinations, ensuring realistic-looking placeholder content every time."
+      },
+      "ui": {
+        "count": "Count",
+        "type": "Type",
+        "paragraphs": "Paragraphs",
+        "sentences": "Sentences",
+        "words": "Words",
+        "generate": "Generate",
+        "copy": "Copy",
+        "copied": "Copied!",
+        "wordsCount": "words"
+      }
+    },
+    "case-converter": {
+      "name": "Case Converter",
+      "description": "Convert text between uppercase, lowercase and other formats"
+    },
+    "diff-checker": {
+      "name": "Diff Checker",
+      "description": "Compare two texts and find the differences"
+    },
+    "markdown-editor": {
+      "name": "Markdown Editor",
+      "description": "Write and preview Markdown in real time"
+    },
+    "json-formatter": {
+      "name": "JSON Formatter",
+      "description": "Format, validate and minify JSON code",
+      "seo": {
+        "title": "Free Online JSON Formatter & Validator",
+        "content": "Format, validate and minify JSON data instantly in your browser. Our free JSON formatter beautifies messy JSON, validates syntax, and can minify your code. No data leaves your browser."
+      },
+      "faq": {
+        "q1": "Can I format invalid JSON?",
+        "a1": "The tool will show you the exact error message if your JSON is invalid, helping you quickly find and fix syntax issues.",
+        "q2": "What indent sizes are supported?",
+        "a2": "You can choose between 2, 4, or 8 spaces for indentation when formatting your JSON.",
+        "q3": "Is my JSON data safe?",
+        "a3": "Absolutely. All processing happens in your browser. Your JSON data is never sent to any server."
+      },
+      "ui": {
+        "format": "Format",
+        "minify": "Minify",
+        "copy": "Copy",
+        "copied": "Copied!",
+        "indent": "Indent",
+        "error": "Error",
+        "input": "Input",
+        "output": "Output",
+        "inputPlaceholder": "Paste your JSON here...",
+        "outputPlaceholder": "Formatted output will appear here..."
+      }
+    },
+    "base64": {
+      "name": "Base64 Encoder",
+      "description": "Encode and decode text and files to Base64",
+      "seo": {
+        "title": "Free Online Base64 Encoder & Decoder",
+        "content": "Encode and decode Base64 strings instantly in your browser. Convert text to Base64 and back with our free tool. Perfect for developers working with APIs, data URIs, and encoded content."
+      },
+      "faq": {
+        "q1": "What is Base64 encoding?",
+        "a1": "Base64 is a binary-to-text encoding scheme that converts binary data into ASCII characters. It's commonly used in data URIs, email attachments, and API payloads.",
+        "q2": "Does it support Unicode?",
+        "a2": "Yes, our encoder handles Unicode characters including emojis, accented letters, and non-Latin scripts correctly.",
+        "q3": "Is there a size limit?",
+        "a3": "There's no practical limit for text encoding/decoding. The tool works entirely in your browser."
+      },
+      "ui": {
+        "encode": "Encode",
+        "decode": "Decode",
+        "input": "Input",
+        "output": "Output",
+        "copy": "Copy",
+        "copied": "Copied!",
+        "encodePlaceholder": "Enter text to encode...",
+        "decodePlaceholder": "Enter Base64 to decode...",
+        "invalidInput": "Invalid input for decoding"
+      }
+    },
+    "regex-tester": {
+      "name": "Regex Tester",
+      "description": "Test and debug regular expressions in real time",
+      "seo": {
+        "title": "Free Online Regex Tester & Debugger",
+        "content": "Test and debug regular expressions in real-time. See matches highlighted, capture groups, and match positions. Supports JavaScript regex syntax with global, case-insensitive, multiline, and dotAll flags."
+      },
+      "faq": {
+        "q1": "What regex syntax is supported?",
+        "a1": "The tool uses JavaScript's native RegExp engine, supporting all standard regex features including lookaheads, lookbehinds, capture groups, and named groups.",
+        "q2": "What do the flags mean?",
+        "a2": "g = global (find all matches), i = case-insensitive, m = multiline (^ and $ match line boundaries), s = dotAll (. matches newlines).",
+        "q3": "Is there a limit on text size?",
+        "a3": "There's no hard limit. Processing happens in your browser, so performance depends on your device. Complex patterns on very large texts may be slower."
+      },
+      "ui": {
+        "pattern": "Regular Expression",
+        "patternPlaceholder": "Enter regex pattern...",
+        "testString": "Test String",
+        "testPlaceholder": "Enter test string...",
+        "result": "Result",
+        "matchesFound": "matches found",
+        "atIndex": "at index",
+        "global": "Global",
+        "caseInsensitive": "Case Insensitive",
+        "multiline": "Multiline",
+        "dotAll": "Dot All"
+      }
+    },
+    "color-picker": {
+      "name": "Color Picker",
+      "description": "Pick colors and convert between HEX, RGB, HSL",
+      "seo": {
+        "title": "Free Online Color Picker — HEX, RGB, HSL",
+        "content": "Pick any color and instantly get HEX, RGB, HSL and CSS values. Our free color picker works in your browser and lets you copy color codes with one click. Perfect for designers and developers."
+      },
+      "faq": {
+        "q1": "What color formats are supported?",
+        "a1": "The tool supports HEX, RGB, HSL, and CSS rgba() formats. All values update in real-time as you pick a color.",
+        "q2": "Can I enter a specific HEX code?",
+        "a2": "Yes, you can type a HEX code directly in the input field and all other formats will update automatically.",
+        "q3": "Does it work on mobile?",
+        "a3": "Yes, the color picker is fully responsive and works on mobile devices with touch-friendly controls."
+      },
+      "ui": {
+        "pickColor": "Pick a color",
+        "copy": "Copy",
+        "copied": "Copied!"
+      }
+    },
+    "qr-code": {
+      "name": "QR Code Generator",
+      "description": "Generate custom QR codes from text or URLs",
+      "seo": {
+        "title": "Free Online QR Code Generator",
+        "content": "Generate custom QR codes from any text or URL directly in your browser. Customize colors, size, and error correction level. Download as PNG. Free, no registration required."
+      },
+      "faq": {
+        "q1": "What can I encode in a QR code?",
+        "a1": "You can encode any text, URL, email address, phone number, WiFi credentials, or any string up to about 4,000 characters depending on the error correction level.",
+        "q2": "What are the error correction levels?",
+        "a2": "Error correction allows QR codes to be read even if partially damaged. Low (7%), Medium (15%), Quartile (25%), and High (30%) offer increasing levels of redundancy.",
+        "q3": "Can I customize the colors?",
+        "a3": "Yes, you can set both foreground and background colors. Make sure there is enough contrast for scanners to read the code reliably."
+      },
+      "ui": {
+        "textLabel": "Text or URL",
+        "placeholder": "Enter text or URL...",
+        "size": "Size",
+        "errorLevel": "Error correction",
+        "fgColor": "Foreground",
+        "bgColor": "Background",
+        "generate": "Generate QR Code",
+        "download": "Download PNG",
+        "reset": "Reset",
+        "generateError": "Failed to generate QR code. Please check your input."
+      }
+    },
+    "hex-rgb": {
+      "name": "HEX/RGB Converter",
+      "description": "Convert colors between HEX and RGB formats"
+    },
+    "url-encoder": {
+      "name": "URL Encoder",
+      "description": "Encode and decode URLs and parameters"
+    },
+    "timestamp": {
+      "name": "Timestamp Converter",
+      "description": "Convert Unix timestamps to readable dates and vice versa"
+    },
+    "youtube-thumbnail": {
+      "name": "YouTube Thumbnail Downloader",
+      "description": "Download YouTube video thumbnails in high quality",
+      "seo": {
+        "title": "Free YouTube Thumbnail Downloader",
+        "content": "Download YouTube video thumbnails in all available resolutions. Paste a YouTube URL and save HD, SD, HQ or MQ thumbnails. Free, instant, no registration needed."
+      },
+      "faq": {
+        "q1": "What resolutions are available?",
+        "a1": "Thumbnails are available in HD (1280x720), SD (640x480), HQ (480x360), and MQ (320x180). Not all resolutions may be available for every video.",
+        "q2": "Do I need to be logged in to YouTube?",
+        "a2": "No. Thumbnails are publicly accessible for all YouTube videos. Simply paste the video URL and download the resolution you need.",
+        "q3": "What YouTube URL formats are supported?",
+        "a3": "The tool supports standard youtube.com/watch URLs, youtu.be short links, YouTube Shorts URLs, and embed URLs. You can also paste just the video ID."
+      },
+      "ui": {
+        "urlLabel": "YouTube URL",
+        "urlPlaceholder": "Paste YouTube video URL...",
+        "fetch": "Get Thumbnails",
+        "download": "Download",
+        "reset": "Reset",
+        "invalidUrl": "Please enter a valid YouTube URL or video ID."
+      }
+    },
+    "youtube-transcript": {
+      "name": "YouTube Transcript",
+      "description": "Extract subtitles and transcripts from YouTube videos"
+    },
+    "pdf-organizer": {
+      "name": "PDF Organizer",
+      "description": "Merge, split, and rotate PDFs in one powerful tool",
+      "seo": {
+        "title": "Free Online PDF Organizer — Merge, Split & Rotate",
+        "content": "Merge multiple PDFs, split pages, and rotate pages — all in one free tool. Works directly in your browser, no upload required."
+      },
+      "faq": [
+        {
+          "q": "What can PDF Organizer do?",
+          "a": "PDF Organizer combines three tools in one: merge multiple PDFs, split a PDF into individual pages or custom ranges, and rotate pages by 90, 180, or 270 degrees."
+        },
+        {
+          "q": "Is it free?",
+          "a": "Yes, completely free with no registration or file limits. Everything is processed in your browser."
+        },
+        {
+          "q": "Can I reorder pages before merging?",
+          "a": "Yes! In the Merge tab, use the up/down arrows to reorder your PDF files before merging them."
+        }
+      ],
+      "ui": {
+        "dropzone": "Drop PDF files here",
+        "dropzoneHint": "or click to browse",
+        "dropzoneHintMulti": "Drop multiple PDFs or click to browse",
+        "merge": "Merge",
+        "split": "Split",
+        "rotate": "Rotate",
+        "files": "Files",
+        "pages": "pages",
+        "moveUp": "Move up",
+        "moveDown": "Move down",
+        "remove": "Remove",
+        "mergeBtn": "Merge PDFs",
+        "splitBtn": "Split PDF",
+        "rotateBtn": "Rotate PDF",
+        "splitAll": "All pages",
+        "splitRange": "Custom range",
+        "rangeLabel": "Page ranges",
+        "rangePlaceholder": "e.g. 1-3, 5, 8-10",
+        "rangeHint": "Separate ranges with commas",
+        "rotationAngle": "Rotation angle",
+        "applyTo": "Apply to",
+        "allPages": "All pages",
+        "customPages": "Custom pages",
+        "pagesPlaceholder": "e.g. 1-3, 5, 8-10",
+        "pagesHint": "Separate pages with commas",
+        "processing": "Processing...",
+        "done": "Done!",
+        "download": "Download",
+        "reset": "Start over",
+        "results": "Results",
+        "invalidPdf": "Invalid PDF file",
+        "mergeError": "Error merging PDFs",
+        "splitError": "Error splitting PDF",
+        "rotateError": "Error rotating PDF",
+        "invalidRange": "Invalid page range"
+      }
+    },
+    "pdf-to-images": {
+      "name": "PDF to Images",
+      "description": "Convert PDF pages to JPG or PNG images",
+      "seo": {
+        "title": "Free PDF to Images Converter — JPG & PNG",
+        "content": "Convert PDF pages to high-quality JPG or PNG images. Choose format, quality, and scale. Free, private, no registration."
+      },
+      "faq": [
+        {
+          "q": "What formats are supported?",
+          "a": "You can convert PDF pages to either JPG or PNG format. JPG offers smaller file sizes with adjustable quality, while PNG supports transparency and lossless quality."
+        },
+        {
+          "q": "Can I adjust the image quality?",
+          "a": "Yes! For JPG, use the quality slider (10%-100%). For PNG, choose the rendering scale (1x-4x) and enable transparency if needed."
+        },
+        {
+          "q": "Is it free?",
+          "a": "Yes, completely free with no registration. All processing happens in your browser."
+        }
+      ],
+      "ui": {
+        "dropzone": "Drop a PDF here",
+        "dropzoneHint": "or click to browse",
+        "format": "Output format",
+        "quality": "Quality",
+        "scale": "Scale",
+        "transparent": "Transparent background",
+        "convert": "Convert",
+        "processing": "Converting...",
+        "results": "Results",
+        "downloadAll": "Download all",
+        "reset": "Start over",
+        "convertError": "Error converting PDF"
+      }
+    },
+    "pdf-word": {
+      "name": "PDF ↔ Word",
+      "description": "Convert between PDF and Word documents",
+      "seo": {
+        "title": "Free PDF to Word & Word to PDF Converter",
+        "content": "Convert PDF to editable Word documents or Word files to PDF. Auto-detects file type. Free, private, no registration."
+      },
+      "faq": [
+        {
+          "q": "How does it work?",
+          "a": "Simply drop a PDF or Word file. The tool automatically detects the format and converts it."
+        },
+        {
+          "q": "Will the formatting be preserved?",
+          "a": "The tool preserves text, headings, and basic formatting. Complex layouts may vary slightly."
+        },
+        {
+          "q": "Is it free?",
+          "a": "Yes, completely free with no registration. All processing happens in your browser."
+        }
+      ],
+      "ui": {
+        "dropzone": "Drop a PDF or Word file here",
+        "dropzoneHint": "Accepts .pdf, .docx, .doc",
+        "convert": "Convert",
+        "processing": "Converting...",
+        "done": "Done!",
+        "download": "Download",
+        "reset": "Start over",
+        "printHint": "Use the browser print dialog to save as PDF",
+        "preview": "Preview",
+        "convertError": "Error converting file"
+      }
+    }
+  },
+  "upload": {
+    "dragDrop": "Drag and drop files here",
+    "or": "or",
+    "clickToSelect": "Click to select files",
+    "supportedFormats": "Supported formats: {formats}",
+    "maxSize": "Maximum size: {size}",
+    "processing": "Processing...",
+    "done": "Done!",
+    "download": "Download",
+    "downloadAll": "Download all",
+    "error": {
+      "fileTooLarge": "File is too large. Maximum size: {size}",
+      "unsupportedFormat": "Unsupported format. Accepted formats: {formats}",
+      "processingFailed": "Processing failed. Please try again.",
+      "tooManyFiles": "Too many files. Maximum: {max}"
+    }
+  },
+  "pages": {
+    "privacy": {
+      "title": "Privacy Policy",
+      "description": "How Tuttilo protects your privacy and handles your data.",
+      "lastUpdated": "Last updated: February 2026",
+      "intro": "At Tuttilo, your privacy is our top priority. All file processing happens entirely in your browser — your files are never uploaded to our servers.",
+      "noDataCollection": {
+        "title": "We Don't Collect Your Files",
+        "content": "Tuttilo is a browser-based tool suite. When you process a PDF, image, video, or any other file, the processing happens locally on your device using JavaScript and WebAssembly. No file data is ever sent to our servers or any third party."
+      },
+      "analytics": {
+        "title": "Analytics",
+        "content": "We may use anonymous analytics (such as page views and tool usage counts) to improve our service. This data contains no personally identifiable information and cannot be linked to any individual user."
+      },
+      "cookies": {
+        "title": "Cookies",
+        "content": "Tuttilo uses only essential cookies for basic functionality such as language preference and theme selection. We do not use tracking cookies or advertising cookies."
+      },
+      "thirdParty": {
+        "title": "Third-Party Services",
+        "content": "Our website may load resources from content delivery networks (CDNs) for fonts and JavaScript libraries. These services may receive your IP address as part of standard web requests. We do not share any personal data or file content with third parties."
+      },
+      "retention": {
+        "title": "Data Retention",
+        "content": "Since we do not collect or store your files, there is no file data to retain. Any preferences stored in your browser (such as language or theme) remain on your device and can be cleared at any time through your browser settings."
+      },
+      "rights": {
+        "title": "Your Rights",
+        "content": "Under GDPR and other privacy regulations, you have the right to access, correct, or delete any personal data. Since Tuttilo does not collect personal data or files, these rights are inherently respected by our architecture."
+      },
+      "changes": {
+        "title": "Changes to This Policy",
+        "content": "We may update this privacy policy from time to time. Any changes will be posted on this page with an updated revision date."
+      },
+      "contact": {
+        "title": "Contact",
+        "content": "If you have questions about this privacy policy, please contact us at the address listed on our Contact page."
+      }
+    },
+    "terms": {
+      "title": "Terms of Service",
+      "description": "Terms and conditions for using Tuttilo tools.",
+      "lastUpdated": "Last updated: February 2026",
+      "intro": "By using Tuttilo, you agree to these terms. Please read them carefully.",
+      "service": {
+        "title": "Service Description",
+        "content": "Tuttilo provides free browser-based tools for processing PDFs, images, videos, audio, and text. All processing occurs locally in your browser. We do not guarantee uninterrupted or error-free operation."
+      },
+      "usage": {
+        "title": "Acceptable Use",
+        "content": "You agree to use Tuttilo only for lawful purposes. You are solely responsible for the content you process. You must not use the service to process illegal, harmful, or rights-infringing content."
+      },
+      "ip": {
+        "title": "Intellectual Property",
+        "content": "The Tuttilo name, logo, and website design are our property. The tools are provided for your personal and commercial use. You retain all rights to the files you process."
+      },
+      "liability": {
+        "title": "Limitation of Liability",
+        "content": "Tuttilo is provided \"as is\" without warranties of any kind. We are not liable for any damages arising from the use of our tools, including but not limited to data loss, file corruption, or processing errors."
+      },
+      "warranty": {
+        "title": "Disclaimer of Warranties",
+        "content": "We make no warranties about the accuracy, reliability, or completeness of our tools. Results may vary depending on your browser, device, and file format. Always keep backup copies of your original files."
+      },
+      "modifications": {
+        "title": "Modifications",
+        "content": "We reserve the right to modify or discontinue any tool or feature at any time without notice. We may also update these terms, with changes becoming effective upon posting."
+      },
+      "law": {
+        "title": "Governing Law",
+        "content": "These terms are governed by the laws of the European Union. Any disputes shall be resolved in the competent courts."
+      },
+      "contact": {
+        "title": "Contact",
+        "content": "For questions about these terms, please visit our Contact page."
+      }
+    },
+    "about": {
+      "title": "About Tuttilo",
+      "description": "Free browser-based tools for everyone.",
+      "intro": "Tuttilo is a free, all-in-one online tool suite that works entirely in your browser.",
+      "mission": {
+        "title": "Our Mission",
+        "content": "We believe powerful tools should be free and accessible to everyone. Tuttilo was built to give you professional-grade file processing without subscriptions, registrations, or uploads."
+      },
+      "howItWorks": {
+        "title": "How It Works",
+        "content": "Unlike traditional online tools, Tuttilo processes everything directly in your browser using JavaScript and WebAssembly. Your files never leave your device — there are no uploads, no servers involved, and no waiting in queues."
+      },
+      "features": {
+        "title": "Why Tuttilo",
+        "privacy": "100% Private — Files never leave your browser",
+        "free": "Completely Free — No subscriptions, no hidden costs",
+        "noReg": "No Registration — Use any tool instantly",
+        "fast": "Lightning Fast — No uploads, no server queues",
+        "languages": "8 Languages — Available in English, Italian, Spanish, French, German, Portuguese, Japanese, and Korean",
+        "tools": "36+ Tools — PDF, images, video, audio, text, and developer tools"
+      },
+      "categories": {
+        "title": "Our Tools",
+        "pdf": "Organize, compress, convert, and unlock PDF files.",
+        "image": "Compress, resize, crop, and convert images in any format.",
+        "video": "Compress, trim, and convert videos. Create GIFs.",
+        "audio": "Cut, convert, and record audio directly in your browser.",
+        "text": "Count words, compare text, and generate lorem ipsum.",
+        "developer": "JSON formatter, Base64 encoder, regex tester, QR code generator, and more.",
+        "youtube": "Download YouTube thumbnails in all resolutions."
+      },
+      "openSource": {
+        "title": "Open & Transparent",
+        "content": "Tuttilo is built with Next.js, React, and modern web technologies. All processing is client-side, which means you can verify our privacy claims by inspecting the network tab in your browser — no file data is ever transmitted."
+      }
+    },
+    "contact": {
+      "title": "Contact Us",
+      "description": "Get in touch with the Tuttilo team.",
+      "intro": "Have a question, suggestion, or found a bug? We'd love to hear from you.",
+      "email": {
+        "title": "Email",
+        "content": "For general inquiries and support:",
+        "address": "support@tuttilo.com"
+      },
+      "github": {
+        "title": "GitHub",
+        "content": "Report bugs or request features on our GitHub repository:",
+        "link": "github.com/erold90/tuttilo"
+      },
+      "faq": {
+        "title": "FAQ",
+        "content": "Before reaching out, check if your question is answered in our frequently asked questions on each tool page."
+      },
+      "response": {
+        "title": "Response Time",
+        "content": "We aim to respond to all inquiries within 48 hours."
+      }
+    }
+  },
+  "footer": {
+    "tagline": "All the online tools you need, free and without registration.",
+    "privacyBadge": "Your files never leave your browser",
+    "tools": "Tools",
+    "company": "Company",
+    "about": "About Us",
+    "contact": "Contact",
+    "privacy": "Privacy Policy",
+    "terms": "Terms of Service",
+    "settings": "Settings",
+    "language": "Language",
+    "allRightsReserved": "All rights reserved",
+    "filesNeverLeave": "Your files never leave your browser"
+  }
+}
