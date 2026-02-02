@@ -68,8 +68,8 @@ export default function HomePage() {
           <source src="/hero-bg.webm" type="video/webm" />
           <source src="/hero-bg.mp4" type="video/mp4" />
         </video>
-        <div className="absolute inset-0 bg-black/55" />
-        <div className="absolute inset-0 bg-gradient-to-b from-indigo-500/10 via-transparent to-black/20" />
+        <div className="absolute inset-0 bg-black/30" />
+        <div className="absolute inset-0 bg-gradient-to-b from-black/40 via-transparent to-black/50" />
         <div className="container mx-auto max-w-7xl px-4 py-16 md:py-24 relative">
           <div className="mx-auto max-w-3xl text-center space-y-6">
             <h1 className="text-4xl font-bold tracking-tight sm:text-5xl md:text-6xl text-white">
