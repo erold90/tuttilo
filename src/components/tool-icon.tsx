@@ -25,6 +25,7 @@ const iconMap: Record<string, LucideIcons.LucideIcon> = {
   Unlock: LucideIcons.Unlock,
   Images: LucideIcons.Images,
   PenTool: LucideIcons.PenTool,
+  PenLine: LucideIcons.PenLine,
   Crop: LucideIcons.Crop,
   ArrowRightLeft: LucideIcons.ArrowRightLeft,
   Smartphone: LucideIcons.Smartphone,

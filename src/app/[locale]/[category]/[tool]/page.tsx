@@ -42,6 +42,8 @@ import { PdfToImages } from "@/components/tools/pdf-to-images";
 import { ImagesToPdf } from "@/components/tools/images-to-pdf";
 import { UnlockPdf } from "@/components/tools/unlock-pdf";
 import { PdfWord } from "@/components/tools/pdf-word";
+import { PdfFillSign } from "@/components/tools/pdf-fill-sign";
+import { PdfEditor } from "@/components/tools/pdf-editor";
 // Sprint 6 (Video) — via client wrapper for ssr:false (FFmpeg references document)
 import { CompressVideo, TrimVideo, VideoToGif, AudioConverter, VideoToMp3 } from "@/components/tools/ffmpeg-tools";
 import { YoutubeThumbnail } from "@/components/tools/youtube-thumbnail";
@@ -75,6 +77,8 @@ const toolComponents: Record<string, React.ComponentType> = {
   "images-to-pdf": ImagesToPdf,
   "unlock-pdf": UnlockPdf,
   "pdf-word": PdfWord,
+  "pdf-fill-sign": PdfFillSign,
+  "pdf-editor": PdfEditor,
   "compress-video": CompressVideo,
   "trim-video": TrimVideo,
   "video-to-gif": VideoToGif,

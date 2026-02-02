@@ -52,7 +52,8 @@ export const tools: Tool[] = [
   { id: 'pdf-word', slug: 'word', category: 'pdf', icon: 'FileText', isAvailable: true, isPremium: false, maxFileSize: 50 * 1024 * 1024, acceptedFormats: ['application/pdf', 'application/vnd.openxmlformats-officedocument.wordprocessingml.document', 'application/msword'], processingType: 'client' },
   { id: 'compress-pdf', slug: 'compress', category: 'pdf', icon: 'Minimize2', isAvailable: true, isPremium: false, maxFileSize: 100 * 1024 * 1024, acceptedFormats: ['application/pdf'], processingType: 'client' },
   { id: 'unlock-pdf', slug: 'unlock', category: 'pdf', icon: 'Unlock', isAvailable: true, isPremium: false, maxFileSize: 100 * 1024 * 1024, acceptedFormats: ['application/pdf'], processingType: 'client' },
-  { id: 'pdf-editor', slug: 'editor', category: 'pdf', icon: 'PenTool', isAvailable: false, isPremium: false, maxFileSize: 100 * 1024 * 1024, acceptedFormats: ['application/pdf'], processingType: 'client' },
+  { id: 'pdf-fill-sign', slug: 'fill-sign', category: 'pdf', icon: 'PenLine', isAvailable: true, isPremium: false, maxFileSize: 100 * 1024 * 1024, acceptedFormats: ['application/pdf'], processingType: 'client' },
+  { id: 'pdf-editor', slug: 'editor', category: 'pdf', icon: 'PenTool', isAvailable: true, isPremium: false, maxFileSize: 100 * 1024 * 1024, acceptedFormats: ['application/pdf'], processingType: 'client' },
 
   // ---------- Image (10 tools) ----------
   { id: 'compress-image', slug: 'compress', category: 'image', icon: 'Minimize2', isAvailable: true, isPremium: false, maxFileSize: 50 * 1024 * 1024, acceptedFormats: ['image/jpeg', 'image/png', 'image/webp'], processingType: 'client' },
