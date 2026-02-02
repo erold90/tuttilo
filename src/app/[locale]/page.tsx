@@ -57,18 +57,30 @@ export default function HomePage() {
     <div className="flex flex-col">
       {/* Hero */}
       <section className="relative overflow-hidden border-b">
-        <div className="absolute inset-0 bg-gradient-to-b from-indigo-500/5 via-transparent to-transparent" />
+        <video
+          autoPlay
+          muted
+          loop
+          playsInline
+          poster="/hero-poster.jpg"
+          className="absolute inset-0 h-full w-full object-cover"
+        >
+          <source src="/hero-bg.webm" type="video/webm" />
+          <source src="/hero-bg.mp4" type="video/mp4" />
+        </video>
+        <div className="absolute inset-0 bg-black/55" />
+        <div className="absolute inset-0 bg-gradient-to-b from-indigo-500/10 via-transparent to-black/20" />
         <div className="container mx-auto max-w-7xl px-4 py-16 md:py-24 relative">
           <div className="mx-auto max-w-3xl text-center space-y-6">
-            <h1 className="text-4xl font-bold tracking-tight sm:text-5xl md:text-6xl">
+            <h1 className="text-4xl font-bold tracking-tight sm:text-5xl md:text-6xl text-white">
               {t("title")}
             </h1>
-            <p className="text-lg text-muted-foreground md:text-xl leading-relaxed">
+            <p className="text-lg text-white/80 md:text-xl leading-relaxed">
               {t("subtitle")}
             </p>
             <HomeSearchTrigger />
-            <div className="flex items-center justify-center gap-2 text-sm text-muted-foreground">
-              <Shield className="h-4 w-4 text-green-500" />
+            <div className="flex items-center justify-center gap-2 text-sm text-white/70">
+              <Shield className="h-4 w-4 text-green-400" />
               <span>{t("privacyNote")}</span>
             </div>
           </div>
