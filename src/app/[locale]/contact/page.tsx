@@ -50,7 +50,7 @@ export default async function ContactPage({
     {
       key: "email",
       icon: Mail,
-      color: "text-indigo-500 bg-indigo-500/10",
+      color: "text-cyan-500 bg-cyan-500/10",
       link: "mailto:support@tuttilo.com",
       linkText: t("email.address"),
     },
@@ -77,7 +77,7 @@ export default async function ContactPage({
     <div className="flex flex-col">
       {/* Hero */}
       <section className="relative overflow-hidden border-b">
-        <div className="absolute inset-0 bg-gradient-to-b from-indigo-500/5 via-transparent to-transparent" />
+        <div className="absolute inset-0 bg-gradient-to-b from-cyan-500/5 via-transparent to-transparent" />
         <div className="container mx-auto max-w-4xl px-4 py-16 md:py-20 relative text-center">
           <h1 className="text-4xl font-bold tracking-tight sm:text-5xl mb-4">
             {t("title")}
@@ -112,7 +112,7 @@ export default async function ContactPage({
                   href={link}
                   target={link.startsWith("http") ? "_blank" : undefined}
                   rel={link.startsWith("http") ? "noopener noreferrer" : undefined}
-                  className="inline-block text-sm font-medium text-indigo-500 hover:text-indigo-600 transition-colors"
+                  className="inline-block text-sm font-medium text-cyan-500 hover:text-cyan-600 transition-colors"
                 >
                   {linkText}
                 </a>

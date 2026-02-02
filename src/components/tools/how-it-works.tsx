@@ -18,7 +18,7 @@ export function HowItWorks() {
         {steps.map(({ icon: Icon, key }, i) => (
           <div key={key} className="flex flex-1 items-center gap-2">
             <div className="flex items-center gap-2.5 flex-1">
-              <div className="flex h-8 w-8 shrink-0 items-center justify-center rounded-full bg-indigo-500/10 text-indigo-500 text-sm font-bold">
+              <div className="flex h-8 w-8 shrink-0 items-center justify-center rounded-full bg-cyan-500/10 text-cyan-500 text-sm font-bold">
                 {i + 1}
               </div>
               <div className="min-w-0">

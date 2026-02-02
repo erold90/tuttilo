@@ -1,6 +1,9 @@
 @import "tailwindcss";
 
 @theme {
+  --font-sans: var(--font-exo2), ui-sans-serif, system-ui, sans-serif;
+  --font-heading: var(--font-orbitron), var(--font-exo2), ui-sans-serif, sans-serif;
+
   --color-background: hsl(var(--background));
   --color-foreground: hsl(var(--foreground));
   --color-border: hsl(var(--border));
@@ -21,7 +24,7 @@
   --color-card: hsl(var(--card));
   --color-card-foreground: hsl(var(--card-foreground));
 
-  --color-brand: #6366F1;
+  --color-brand: #06B6D4;
   --color-tool-pdf: #EF4444;
   --color-tool-image: #22C55E;
   --color-tool-video: #8B5CF6;
@@ -86,5 +89,8 @@
   }
   body {
     @apply bg-background text-foreground;
+  }
+  h1, h2, h3, h4, h5, h6 {
+    font-family: var(--font-heading);
   }
 }

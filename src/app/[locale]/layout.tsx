@@ -1,7 +1,7 @@
 export const runtime = "edge";
 
 import type { Metadata } from "next";
-import { Inter, JetBrains_Mono } from "next/font/google";
+import { Exo_2, Orbitron, JetBrains_Mono } from "next/font/google";
 import { NextIntlClientProvider } from "next-intl";
 import { getMessages, getTranslations } from "next-intl/server";
 import { notFound } from "next/navigation";
@@ -14,9 +14,15 @@ import "@/styles/globals.css";
 
 const BASE_URL = "https://tuttilo.com";
 
-const inter = Inter({
+const exo2 = Exo_2({
   subsets: ["latin"],
-  variable: "--font-inter",
+  variable: "--font-exo2",
+  display: "swap",
+});
+
+const orbitron = Orbitron({
+  subsets: ["latin"],
+  variable: "--font-orbitron",
   display: "swap",
 });
 
@@ -127,7 +133,7 @@ export default async function LocaleLayout({
   return (
     <html
       lang={locale}
-      className={`${inter.variable} ${jetbrainsMono.variable}`}
+      className={`${exo2.variable} ${orbitron.variable} ${jetbrainsMono.variable}`}
       suppressHydrationWarning
     >
       <head>

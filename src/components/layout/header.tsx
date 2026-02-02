@@ -32,7 +32,7 @@ export function Header() {
           href="/"
           className="flex items-center gap-2 font-bold text-lg tracking-tight"
         >
-          <span className="text-indigo-500">Tuttilo</span>
+          <span className="text-cyan-500">Tuttilo</span>
         </Link>
 
         {/* Center: Category nav (desktop) */}
@@ -74,7 +74,7 @@ export function Header() {
             <SheetContent side="right" className="w-[280px] sm:w-[320px]">
               <SheetHeader>
                 <SheetTitle className="text-left">
-                  <span className="text-indigo-500 font-bold">Tuttilo</span>
+                  <span className="text-cyan-500 font-bold">Tuttilo</span>
                 </SheetTitle>
               </SheetHeader>
               <nav className="mt-6 flex flex-col gap-1">

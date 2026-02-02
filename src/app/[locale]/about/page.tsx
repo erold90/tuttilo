@@ -50,7 +50,7 @@ export default async function AboutPage({
 
   const features = [
     { icon: Shield, key: "privacy", color: "text-green-500 bg-green-500/10" },
-    { icon: DollarSign, key: "free", color: "text-indigo-500 bg-indigo-500/10" },
+    { icon: DollarSign, key: "free", color: "text-cyan-500 bg-cyan-500/10" },
     { icon: UserX, key: "noReg", color: "text-orange-500 bg-orange-500/10" },
     { icon: Zap, key: "fast", color: "text-yellow-500 bg-yellow-500/10" },
     { icon: Globe, key: "languages", color: "text-blue-500 bg-blue-500/10" },
@@ -71,7 +71,7 @@ export default async function AboutPage({
     <div className="flex flex-col">
       {/* Hero */}
       <section className="relative overflow-hidden border-b">
-        <div className="absolute inset-0 bg-gradient-to-b from-indigo-500/5 via-transparent to-transparent" />
+        <div className="absolute inset-0 bg-gradient-to-b from-cyan-500/5 via-transparent to-transparent" />
         <div className="container mx-auto max-w-4xl px-4 py-16 md:py-20 relative text-center">
           <h1 className="text-4xl font-bold tracking-tight sm:text-5xl mb-4">
             {t("title")}

@@ -48,7 +48,7 @@ export default function HomePage() {
 
   const trustItems = [
     { icon: Monitor, key: "browserOnly", color: "text-green-500 bg-green-500/10" },
-    { icon: UserX, key: "noRegistration", color: "text-indigo-500 bg-indigo-500/10" },
+    { icon: UserX, key: "noRegistration", color: "text-cyan-500 bg-cyan-500/10" },
     { icon: Zap, key: "alwaysFree", color: "text-yellow-500 bg-yellow-500/10" },
     { icon: Lock, key: "secureByDesign", color: "text-red-500 bg-red-500/10" },
   ];
@@ -229,8 +229,8 @@ export default function HomePage() {
       <section className="container mx-auto max-w-7xl px-4 py-16">
         <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
           <div className="text-center space-y-3">
-            <div className="mx-auto flex h-12 w-12 items-center justify-center rounded-full bg-indigo-500/10">
-              <Shield className="h-6 w-6 text-indigo-500" />
+            <div className="mx-auto flex h-12 w-12 items-center justify-center rounded-full bg-cyan-500/10">
+              <Shield className="h-6 w-6 text-cyan-500" />
             </div>
             <h3 className="font-semibold">{t("features.privacy.title")}</h3>
             <p className="text-sm text-muted-foreground">
@@ -238,8 +238,8 @@ export default function HomePage() {
             </p>
           </div>
           <div className="text-center space-y-3">
-            <div className="mx-auto flex h-12 w-12 items-center justify-center rounded-full bg-indigo-500/10">
-              <Zap className="h-6 w-6 text-indigo-500" />
+            <div className="mx-auto flex h-12 w-12 items-center justify-center rounded-full bg-cyan-500/10">
+              <Zap className="h-6 w-6 text-cyan-500" />
             </div>
             <h3 className="font-semibold">{t("features.fast.title")}</h3>
             <p className="text-sm text-muted-foreground">
@@ -247,8 +247,8 @@ export default function HomePage() {
             </p>
           </div>
           <div className="text-center space-y-3">
-            <div className="mx-auto flex h-12 w-12 items-center justify-center rounded-full bg-indigo-500/10">
-              <Globe className="h-6 w-6 text-indigo-500" />
+            <div className="mx-auto flex h-12 w-12 items-center justify-center rounded-full bg-cyan-500/10">
+              <Globe className="h-6 w-6 text-cyan-500" />
             </div>
             <h3 className="font-semibold">{t("features.free.title")}</h3>
             <p className="text-sm text-muted-foreground">

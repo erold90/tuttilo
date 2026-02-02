@@ -4,8 +4,8 @@
   "description": "Free all-in-one online tools for PDF, images, video, audio, text, and developer utilities.",
   "start_url": "/",
   "display": "standalone",
-  "background_color": "#ffffff",
-  "theme_color": "#6366F1",
+  "background_color": "#0a0f1a",
+  "theme_color": "#06B6D4",
   "icons": [
     {
       "src": "/favicon.svg",

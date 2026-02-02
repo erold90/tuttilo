@@ -27,7 +27,7 @@ export function Footer() {
           {/* Column 1: Brand */}
           <div className="space-y-4">
             <Link href="/" className="inline-block">
-              <span className="text-xl font-bold text-indigo-500">Tuttilo</span>
+              <span className="text-xl font-bold text-cyan-500">Tuttilo</span>
             </Link>
             <p className="text-sm text-muted-foreground leading-relaxed">
               {t("tagline")}
