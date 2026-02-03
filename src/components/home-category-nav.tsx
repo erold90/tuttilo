@@ -17,38 +17,27 @@ interface HomeCategoryNavProps {
 }
 
 export function HomeCategoryNav({ categories }: HomeCategoryNavProps) {
-  const [isSticky, setIsSticky] = useState(false);
   const [activeId, setActiveId] = useState<string | null>(null);
   const navRef = useRef<HTMLElement>(null);
 
   const scrollToCategory = useCallback((slug: string) => {
     const el = document.getElementById(`category-${slug}`);
     if (el) {
-      const offset = 120; // account for sticky nav + header
+      const offset = 80; // account for sticky header
       const top = el.getBoundingClientRect().top + window.scrollY - offset;
       window.scrollTo({ top, behavior: "smooth" });
     }
   }, []);
 
   useEffect(() => {
-    const heroEl = document.getElementById("hero-section");
     const animatedSections = document.querySelectorAll(".animate-on-scroll");
     const categoryEls = categories
       .map((c) => document.getElementById(`category-${c.slug}`))
       .filter(Boolean) as HTMLElement[];
 
-    // Single observer for all purposes
     const observer = new IntersectionObserver(
       (entries) => {
         entries.forEach((entry) => {
-          const id = entry.target.id;
-
-          // Sticky trigger: hero out of view → show sticky nav
-          if (id === "hero-section") {
-            setIsSticky(!entry.isIntersecting);
-            return;
-          }
-
           // Scroll animations
           if (entry.target.classList.contains("animate-on-scroll")) {
             if (entry.isIntersecting) {
@@ -57,6 +46,7 @@ export function HomeCategoryNav({ categories }: HomeCategoryNavProps) {
           }
 
           // Active category tracking
+          const id = entry.target.id;
           if (id.startsWith("category-") && entry.isIntersecting) {
             setActiveId(id.replace("category-", ""));
           }
@@ -68,7 +58,6 @@ export function HomeCategoryNav({ categories }: HomeCategoryNavProps) {
       }
     );
 
-    if (heroEl) observer.observe(heroEl);
     animatedSections.forEach((el) => observer.observe(el));
     categoryEls.forEach((el) => observer.observe(el));
 
@@ -78,12 +67,7 @@ export function HomeCategoryNav({ categories }: HomeCategoryNavProps) {
   return (
     <nav
       ref={navRef}
-      className={cn(
-        "z-30 transition-all duration-300",
-        isSticky
-          ? "sticky top-14 bg-slate-950/90 backdrop-blur-md border-b border-white/5 shadow-lg"
-          : "bg-transparent"
-      )}
+      className="z-30 bg-transparent"
     >
       <div className="container mx-auto max-w-7xl px-4 py-3">
         <div className="flex gap-2 overflow-x-auto scrollbar-hide">
