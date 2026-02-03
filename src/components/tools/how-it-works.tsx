@@ -1,7 +1,7 @@
 "use client";
 
 import { useTranslations } from "next-intl";
-import { Upload, Settings, Download } from "lucide-react";
+import { Upload, GearSix as Settings, Download } from "@phosphor-icons/react";
 
 const steps = [
   { icon: Upload, key: "upload" },

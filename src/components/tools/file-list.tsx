@@ -3,7 +3,7 @@
 import { useCallback } from "react";
 import { useTranslations } from "next-intl";
 import { cn } from "@/lib/utils";
-import { X, FileText, FileImage, FileAudio, FileVideo, File as FileIcon, GripVertical } from "lucide-react";
+import { X, FileText, FileImage, FileAudio, FileVideo, File as FileIcon, DotsSixVertical as GripVertical } from "@phosphor-icons/react";
 import { formatFileSize } from "@/lib/utils/file";
 import { Button } from "@/components/ui/button";
 

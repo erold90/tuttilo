@@ -2,7 +2,7 @@ import type { Metadata } from "next";
 import { useTranslations } from "next-intl";
 import { getTranslations } from "next-intl/server";
 import { Link, locales } from "@/i18n/routing";
-import { Shield, Zap, Globe, ArrowRight, Monitor, UserX, Lock } from "lucide-react";
+import { ShieldCheck as Shield, Lightning as Zap, Globe, ArrowRight, Monitor, UserMinus as UserX, Lock } from "@/components/icons";
 import { cn } from "@/lib/utils";
 import {
   categories,
@@ -96,7 +96,7 @@ export default function HomePage() {
                 <div
                   className={`flex h-9 w-9 shrink-0 items-center justify-center rounded-lg ${color}`}
                 >
-                  <Icon className="h-4.5 w-4.5" />
+                  <Icon weight="duotone" className="h-4.5 w-4.5" />
                 </div>
                 <div>
                   <p className="font-medium text-sm">{tTrust(key)}</p>
@@ -230,7 +230,7 @@ export default function HomePage() {
         <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
           <div className="text-center space-y-3">
             <div className="mx-auto flex h-12 w-12 items-center justify-center rounded-full bg-cyan-500/10">
-              <Shield className="h-6 w-6 text-cyan-500" />
+              <Shield weight="duotone" className="h-6 w-6 text-cyan-500" />
             </div>
             <h3 className="font-semibold">{t("features.privacy.title")}</h3>
             <p className="text-sm text-muted-foreground">
@@ -239,7 +239,7 @@ export default function HomePage() {
           </div>
           <div className="text-center space-y-3">
             <div className="mx-auto flex h-12 w-12 items-center justify-center rounded-full bg-cyan-500/10">
-              <Zap className="h-6 w-6 text-cyan-500" />
+              <Zap weight="duotone" className="h-6 w-6 text-cyan-500" />
             </div>
             <h3 className="font-semibold">{t("features.fast.title")}</h3>
             <p className="text-sm text-muted-foreground">
@@ -248,7 +248,7 @@ export default function HomePage() {
           </div>
           <div className="text-center space-y-3">
             <div className="mx-auto flex h-12 w-12 items-center justify-center rounded-full bg-cyan-500/10">
-              <Globe className="h-6 w-6 text-cyan-500" />
+              <Globe weight="duotone" className="h-6 w-6 text-cyan-500" />
             </div>
             <h3 className="font-semibold">{t("features.free.title")}</h3>
             <p className="text-sm text-muted-foreground">

@@ -4,13 +4,13 @@ import type { Metadata } from "next";
 import { getTranslations } from "next-intl/server";
 import { locales } from "@/i18n/routing";
 import {
-  Shield,
-  Zap,
-  UserX,
+  ShieldCheck as Shield,
+  Lightning as Zap,
+  UserMinus as UserX,
   Globe,
   Wrench,
-  DollarSign,
-} from "lucide-react";
+  CurrencyDollar as DollarSign,
+} from "@/components/icons";
 
 const BASE_URL = "https://tuttilo.com";
 

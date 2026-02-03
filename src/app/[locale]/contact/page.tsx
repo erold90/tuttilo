@@ -3,7 +3,7 @@ export const runtime = "edge";
 import type { Metadata } from "next";
 import { getTranslations } from "next-intl/server";
 import { locales } from "@/i18n/routing";
-import { Mail, Github, HelpCircle, Clock } from "lucide-react";
+import { Envelope as Mail, GithubLogo as Github, Question as HelpCircle, Clock } from "@/components/icons";
 
 const BASE_URL = "https://tuttilo.com";
 

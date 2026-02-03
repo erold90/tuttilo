@@ -3,7 +3,7 @@
 import { useCallback, useRef, useState } from "react";
 import { useTranslations } from "next-intl";
 import { cn } from "@/lib/utils";
-import { Upload, AlertCircle } from "lucide-react";
+import { Upload, WarningCircle as AlertCircle } from "@phosphor-icons/react";
 import { isValidFileType, isValidFileSize, formatFileSize } from "@/lib/utils/file";
 
 interface FileUploaderProps {

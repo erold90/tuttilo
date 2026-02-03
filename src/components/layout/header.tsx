@@ -3,7 +3,7 @@
 import { useState } from "react";
 import { useTranslations } from "next-intl";
 import { Link, usePathname } from "@/i18n/routing";
-import { Menu, X } from "lucide-react";
+import { List as Menu } from "@phosphor-icons/react";
 import { Button } from "@/components/ui/button";
 import {
   Sheet,

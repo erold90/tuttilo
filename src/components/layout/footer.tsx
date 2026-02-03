@@ -2,7 +2,7 @@
 
 import { useTranslations } from "next-intl";
 import { Link } from "@/i18n/routing";
-import { Shield } from "lucide-react";
+import { ShieldCheck as Shield } from "@phosphor-icons/react";
 import { LanguageSwitcher } from "@/components/layout/language-switcher";
 import { cn } from "@/lib/utils";
 import { getCategoryNavItems } from "@/lib/tools/registry";
