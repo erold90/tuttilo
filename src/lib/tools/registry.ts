@@ -65,6 +65,7 @@ export const tools: Tool[] = [
   { id: 'webp-to-jpg', slug: 'webp-to-jpg', category: 'image', icon: 'ArrowRightLeft', isAvailable: true, isPremium: false, maxFileSize: 50 * 1024 * 1024, acceptedFormats: ['image/webp'], processingType: 'client' },
   { id: 'heic-to-jpg', slug: 'heic-to-jpg', category: 'image', icon: 'Smartphone', isAvailable: true, isPremium: false, maxFileSize: 50 * 1024 * 1024, acceptedFormats: ['image/heic', 'image/heif'], processingType: 'client' },
   { id: 'svg-to-png', slug: 'svg-to-png', category: 'image', icon: 'ArrowRightLeft', isAvailable: true, isPremium: false, maxFileSize: 10 * 1024 * 1024, acceptedFormats: ['image/svg+xml'], processingType: 'client' },
+  { id: 'image-converter', slug: 'converter', category: 'image', icon: 'ArrowRightLeft', isAvailable: true, isPremium: false, maxFileSize: 50 * 1024 * 1024, acceptedFormats: ['image/jpeg', 'image/png', 'image/webp', 'image/gif', 'image/bmp', 'image/svg+xml', 'image/heic', 'image/heif', 'image/avif', 'image/tiff'], processingType: 'client' },
   { id: 'remove-bg', slug: 'remove-bg', category: 'image', icon: 'Eraser', isAvailable: false, isPremium: false, maxFileSize: 25 * 1024 * 1024, acceptedFormats: ['image/jpeg', 'image/png', 'image/webp'], processingType: 'client' },
 
   // ---------- Video (5 tools) ----------

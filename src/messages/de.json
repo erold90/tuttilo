@@ -550,6 +550,36 @@
         "convertError": "SVG konnte nicht konvertiert werden. Bitte stellen Sie sicher, dass die Datei ein gueltiges SVG ist."
       }
     },
+    "image-converter": {
+      "name": "Bildkonverter",
+      "description": "Konvertieren Sie jedes Bild sofort in JPG, PNG oder WebP",
+      "seo": {
+        "title": "Kostenloser Universeller Online-Bildkonverter",
+        "content": "Konvertieren Sie jedes Bildformat direkt im Browser in JPG, PNG oder WebP. Unterstützt JPEG, PNG, WebP, GIF, BMP, SVG, HEIC, AVIF, TIFF und ICO. Automatische Formaterkennung, einstellbare Qualität. 100% privat — kein Upload nötig."
+      },
+      "faq": {
+        "q1": "Welche Bildformate kann ich konvertieren?",
+        "a1": "Sie können Bilder in den Formaten JPEG, PNG, WebP, GIF, BMP, SVG, HEIC (iPhone-Fotos), AVIF, TIFF und ICO hochladen. Das Tool erkennt das Format automatisch anhand der tatsächlichen Dateidaten, nicht nur der Dateierweiterung.",
+        "q2": "Welche Ausgabeformate sind verfügbar?",
+        "a2": "Sie können in JPG (ideal für Fotos, kleinste Größe), PNG (verlustfrei, unterstützt Transparenz) oder WebP (modernes Format, hervorragende Komprimierung mit Transparenz) konvertieren. Alle Konvertierungen erfolgen in Ihrem Browser.",
+        "q3": "Kann ich HEIC-Fotos von meinem iPhone konvertieren?",
+        "a3": "Ja! Laden Sie einfach Ihre .heic-Dateien hoch und konvertieren Sie sie in JPG, PNG oder WebP. Die Konvertierung erfolgt vollständig in Ihrem Browser — Ihre Fotos werden nie auf einen Server hochgeladen."
+      },
+      "ui": {
+        "dropzone": "Bild hierher ziehen oder klicken zum Auswählen",
+        "detected": "Erkanntes Format",
+        "outputFormat": "Konvertieren in",
+        "quality": "Qualität",
+        "lossy": "Verlustbehaftet",
+        "lossless": "Verlustfrei",
+        "same": "gleich",
+        "convert": "Konvertieren",
+        "processing": "Wird konvertiert...",
+        "download": "Herunterladen",
+        "reset": "Neues Bild",
+        "error": "Konvertierung fehlgeschlagen. Bitte versuchen Sie ein anderes Bild oder Ausgabeformat."
+      }
+    },
     "remove-bg": {
       "name": "Hintergrund entfernen",
       "description": "Hintergrund automatisch aus Bildern entfernen"

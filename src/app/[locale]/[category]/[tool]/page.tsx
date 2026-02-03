@@ -37,6 +37,7 @@ import { JpgToPng } from "@/components/tools/jpg-to-png";
 import { WebpToPng } from "@/components/tools/webp-to-png";
 import { WebpToJpg } from "@/components/tools/webp-to-jpg";
 import { HeicToJpg } from "@/components/tools/heic-to-jpg";
+import { ImageConverter } from "@/components/tools/image-converter";
 // Sprint 5 (PDF Advanced — consolidated)
 import { PdfToImages } from "@/components/tools/pdf-to-images";
 import { ImagesToPdf } from "@/components/tools/images-to-pdf";
@@ -65,6 +66,7 @@ const toolComponents: Record<string, React.ComponentType> = {
   "webp-to-png": WebpToPng,
   "webp-to-jpg": WebpToJpg,
   "heic-to-jpg": HeicToJpg,
+  "image-converter": ImageConverter,
   "pdf-organizer": PdfOrganizer,
   "compress-pdf": CompressPdf,
   "qr-code": QrCode,

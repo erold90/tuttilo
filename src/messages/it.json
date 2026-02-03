@@ -550,6 +550,36 @@
         "convertError": "Impossibile convertire l'SVG. Assicurati che il file sia un SVG valido."
       }
     },
+    "image-converter": {
+      "name": "Convertitore Immagini",
+      "description": "Converti qualsiasi immagine in JPG, PNG o WebP istantaneamente",
+      "seo": {
+        "title": "Convertitore Universale Immagini Online Gratuito",
+        "content": "Converti qualsiasi formato immagine in JPG, PNG o WebP direttamente nel browser. Supporta JPEG, PNG, WebP, GIF, BMP, SVG, HEIC, AVIF, TIFF e ICO. Rileva automaticamente il formato, qualità regolabile. 100% privato — nessun upload necessario."
+      },
+      "faq": {
+        "q1": "Quali formati immagine posso convertire?",
+        "a1": "Puoi caricare immagini in formato JPEG, PNG, WebP, GIF, BMP, SVG, HEIC (foto iPhone), AVIF, TIFF e ICO. Lo strumento rileva automaticamente il formato dai dati reali del file, non solo dall'estensione.",
+        "q2": "Quali formati di output sono disponibili?",
+        "a2": "Puoi convertire in JPG (ideale per foto, dimensioni ridotte), PNG (lossless, supporta la trasparenza) o WebP (formato moderno, ottima compressione con trasparenza). Tutte le conversioni avvengono nel tuo browser.",
+        "q3": "Posso convertire le foto HEIC dal mio iPhone?",
+        "a3": "Sì! Carica semplicemente i tuoi file .heic e convertili in JPG, PNG o WebP. La conversione avviene interamente nel tuo browser — le tue foto non vengono mai caricate su nessun server."
+      },
+      "ui": {
+        "dropzone": "Trascina un'immagine qui o clicca per selezionare",
+        "detected": "Formato rilevato",
+        "outputFormat": "Converti in",
+        "quality": "Qualità",
+        "lossy": "Con perdita",
+        "lossless": "Senza perdita",
+        "same": "stesso",
+        "convert": "Converti",
+        "processing": "Conversione in corso...",
+        "download": "Scarica",
+        "reset": "Nuova immagine",
+        "error": "Conversione fallita. Prova un'immagine diversa o un altro formato di output."
+      }
+    },
     "remove-bg": {
       "name": "Rimuovi sfondo",
       "description": "Rimuovi automaticamente lo sfondo dalle immagini"

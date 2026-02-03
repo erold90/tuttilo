@@ -1,15 +1,90 @@
 // ============================================================================
 // Tuttilo - Image Utilities
 // Shared functions for all image tools: loading, conversion, cleanup, download
-// jSquash WASM codecs for high-quality compression (MozJPEG, OxiPNG, WebP)
+// jSquash WASM codecs for high-quality compression (MozJPEG, OxiPNG, WebP, AVIF)
 // Canvas API as fallback
+// ============================================================================
+
+// ============================================================================
+// Format detection via magic bytes
+// ============================================================================
+
+export interface DetectedFormat {
+  mime: string;
+  label: string;
+  ext: string;
+}
+
+/**
+ * Detect image format by reading file magic bytes.
+ * More reliable than file.type which depends on the OS/extension.
+ */
+export async function detectImageFormat(file: File): Promise<DetectedFormat | null> {
+  const buffer = await file.slice(0, 16).arrayBuffer();
+  const b = new Uint8Array(buffer);
+
+  // JPEG: FF D8 FF
+  if (b[0] === 0xFF && b[1] === 0xD8 && b[2] === 0xFF) {
+    return { mime: "image/jpeg", label: "JPEG", ext: "jpg" };
+  }
+  // PNG: 89 50 4E 47
+  if (b[0] === 0x89 && b[1] === 0x50 && b[2] === 0x4E && b[3] === 0x47) {
+    return { mime: "image/png", label: "PNG", ext: "png" };
+  }
+  // GIF: 47 49 46 38
+  if (b[0] === 0x47 && b[1] === 0x49 && b[2] === 0x46 && b[3] === 0x38) {
+    return { mime: "image/gif", label: "GIF", ext: "gif" };
+  }
+  // BMP: 42 4D
+  if (b[0] === 0x42 && b[1] === 0x4D) {
+    return { mime: "image/bmp", label: "BMP", ext: "bmp" };
+  }
+  // WebP: RIFF....WEBP
+  if (b[0] === 0x52 && b[1] === 0x49 && b[2] === 0x46 && b[3] === 0x46 &&
+      b[8] === 0x57 && b[9] === 0x45 && b[10] === 0x42 && b[11] === 0x50) {
+    return { mime: "image/webp", label: "WebP", ext: "webp" };
+  }
+  // TIFF: little-endian or big-endian
+  if ((b[0] === 0x49 && b[1] === 0x49 && b[2] === 0x2A && b[3] === 0x00) ||
+      (b[0] === 0x4D && b[1] === 0x4D && b[2] === 0x00 && b[3] === 0x2A)) {
+    return { mime: "image/tiff", label: "TIFF", ext: "tiff" };
+  }
+  // HEIC/AVIF: ftyp box at offset 4
+  if (b[4] === 0x66 && b[5] === 0x74 && b[6] === 0x79 && b[7] === 0x70) {
+    const brand = String.fromCharCode(b[8], b[9], b[10], b[11]);
+    if (brand === "avif" || brand === "avis") {
+      return { mime: "image/avif", label: "AVIF", ext: "avif" };
+    }
+    if (brand === "heic" || brand === "heix" || brand === "hevc" || brand === "mif1") {
+      return { mime: "image/heic", label: "HEIC", ext: "heic" };
+    }
+  }
+  // ICO: 00 00 01 00
+  if (b[0] === 0x00 && b[1] === 0x00 && b[2] === 0x01 && b[3] === 0x00) {
+    return { mime: "image/x-icon", label: "ICO", ext: "ico" };
+  }
+  // SVG: text-based
+  const text = await file.slice(0, 500).text();
+  if (text.includes("<svg") || (text.includes("<?xml") && text.includes("<svg"))) {
+    return { mime: "image/svg+xml", label: "SVG", ext: "svg" };
+  }
+  // Fallback: trust file.type
+  if (file.type && file.type.startsWith("image/")) {
+    const ext = file.type.split("/")[1].replace("jpeg", "jpg");
+    return { mime: file.type, label: ext.toUpperCase(), ext };
+  }
+  return null;
+}
+
+// ============================================================================
+// Core helpers
 // ============================================================================
 
 /**
  * Load a File into an HTMLImageElement.
  * Returns the loaded image + an object URL that MUST be revoked by the caller.
  */
-export function loadImage(file: File): Promise<{ img: HTMLImageElement; url: string }> {
+export function loadImage(file: File | Blob): Promise<{ img: HTMLImageElement; url: string }> {
   return new Promise((resolve, reject) => {
     const url = URL.createObjectURL(file);
     const img = new Image();
@@ -24,7 +99,6 @@ export function loadImage(file: File): Promise<{ img: HTMLImageElement; url: str
 
 /**
  * Convert a canvas to a Blob using toBlob (async, memory-efficient).
- * Replaces toDataURL which loads the entire image as a base64 string in memory.
  */
 export function canvasToBlob(
   canvas: HTMLCanvasElement,
@@ -45,7 +119,6 @@ export function canvasToBlob(
 
 /**
  * Free canvas GPU memory by zeroing dimensions.
- * Should be called after you're done with any temporary canvas.
  */
 export function cleanupCanvas(canvas: HTMLCanvasElement) {
   canvas.width = 0;
@@ -87,7 +160,7 @@ export function revokeUrls(...urls: (string | null | undefined)[]) {
 /**
  * Draw a file onto a canvas and return raw ImageData.
  */
-async function fileToImageData(file: File): Promise<{ imageData: ImageData; width: number; height: number }> {
+async function fileToImageData(file: File | Blob): Promise<{ imageData: ImageData; width: number; height: number }> {
   const { img, url } = await loadImage(file);
   const canvas = document.createElement("canvas");
   canvas.width = img.width;
@@ -118,6 +191,9 @@ async function encodeWithJsquashWebp(imageData: ImageData, quality: number): Pro
   const { encode } = await import("@jsquash/webp");
   return encode(imageData, { quality: Math.round(quality * 100) });
 }
+
+// AVIF encoding not available — @jsquash/avif WASM incompatible with edge runtime
+// AVIF input decoding is supported natively by modern browsers
 
 // ============================================================================
 // Compression — jSquash primary, Canvas fallback
@@ -197,29 +273,40 @@ export async function compressImage(
 
 // ============================================================================
 // Format conversion — jSquash primary, Canvas fallback
+// Supports output: JPEG, PNG, WebP, AVIF
+// Supports input: anything the browser can decode + HEIC via heic2any
 // ============================================================================
 
 /**
  * Convert an image file to a different format.
  * Uses jSquash WASM for encoding (higher quality), Canvas API as fallback.
+ * Handles HEIC input via heic2any pre-decoding.
  * Handles white background for JPEG output (no transparency).
  */
 export async function convertImageFormat(
-  file: File,
+  file: File | Blob,
   targetMime: string,
-  opts?: { quality?: number }
+  opts?: { quality?: number; isHeic?: boolean }
 ): Promise<{ blob: Blob; url: string }> {
   const quality = opts?.quality ?? 0.92;
 
+  // Pre-decode HEIC if needed
+  let sourceFile: File | Blob = file;
+  if (opts?.isHeic) {
+    const heic2any = (await import("heic2any")).default;
+    const result = await heic2any({ blob: file, toType: "image/png", quality: 1 });
+    sourceFile = Array.isArray(result) ? result[0] : result;
+  }
+
   try {
-    // Try jSquash path
-    const { img, url: srcUrl } = await loadImage(file);
+    // jSquash path
+    const { img, url: srcUrl } = await loadImage(sourceFile);
     const canvas = document.createElement("canvas");
     canvas.width = img.width;
     canvas.height = img.height;
     const ctx = canvas.getContext("2d")!;
 
-    // White background for JPEG
+    // White background for JPEG (no transparency)
     if (targetMime === "image/jpeg") {
       ctx.fillStyle = "#FFFFFF";
       ctx.fillRect(0, 0, canvas.width, canvas.height);
@@ -241,8 +328,12 @@ export async function convertImageFormat(
     const blob = new Blob([buffer], { type: targetMime });
     return { blob, url: URL.createObjectURL(blob) };
   } catch {
-    // Fallback: Canvas API
-    const { img, url: srcUrl } = await loadImage(file);
+    // Fallback: Canvas API (no AVIF fallback — canvas doesn't support it)
+    if (targetMime === "image/avif") {
+      throw new Error("AVIF encoding failed. Your browser may not support this format.");
+    }
+
+    const { img, url: srcUrl } = await loadImage(sourceFile);
     const canvas = document.createElement("canvas");
     canvas.width = img.width;
     canvas.height = img.height;

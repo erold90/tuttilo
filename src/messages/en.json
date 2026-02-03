@@ -542,6 +542,36 @@
         "convertError": "Failed to convert SVG. Please make sure the file is a valid SVG."
       }
     },
+    "image-converter": {
+      "name": "Image Converter",
+      "description": "Convert any image to JPG, PNG, or WebP instantly",
+      "seo": {
+        "title": "Free Universal Image Converter Online",
+        "content": "Convert any image format to JPG, PNG, or WebP instantly in your browser. Supports JPEG, PNG, WebP, GIF, BMP, SVG, HEIC, AVIF, TIFF, and ICO input. Auto-detects format, adjustable quality. 100% private — no upload needed."
+      },
+      "faq": {
+        "q1": "What image formats can I convert?",
+        "a1": "You can upload images in JPEG, PNG, WebP, GIF, BMP, SVG, HEIC (iPhone photos), AVIF, TIFF, and ICO formats. The tool auto-detects the format from the file's actual data, not just the extension.",
+        "q2": "What output formats are available?",
+        "a2": "You can convert to JPG (best for photos, smallest size), PNG (lossless, supports transparency), or WebP (modern format, great compression with transparency). All conversions happen in your browser.",
+        "q3": "Can I convert HEIC photos from my iPhone?",
+        "a3": "Yes! Simply upload your .heic files and convert them to JPG, PNG, or WebP. The conversion happens entirely in your browser — your photos are never uploaded to any server."
+      },
+      "ui": {
+        "dropzone": "Drop any image here or click to select",
+        "detected": "Detected format",
+        "outputFormat": "Convert to",
+        "quality": "Quality",
+        "lossy": "Lossy",
+        "lossless": "Lossless",
+        "same": "same",
+        "convert": "Convert",
+        "processing": "Converting...",
+        "download": "Download",
+        "reset": "New image",
+        "error": "Conversion failed. Please try a different image or output format."
+      }
+    },
     "remove-bg": {
       "name": "Remove Background",
       "description": "Automatically remove background from images"
