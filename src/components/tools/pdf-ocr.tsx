@@ -78,7 +78,7 @@ export function PdfOcr() {
 
           setStatusMsg(`OCR ${t("page")} ${i}/${doc.numPages}`);
           const { data } = await worker.recognize(canvas);
-          allText += (allText ? "\n\n--- " + `Page ${i}` + " ---\n\n" : "") + data.text;
+          allText += (allText ? `\n\n--- ${t("page")} ${i} ---\n\n` : "") + data.text;
 
           canvas.width = 0; canvas.height = 0;
           setProgress(Math.round((i / doc.numPages) * 100));
