@@ -1114,20 +1114,14 @@
         "title": "Kostenloser PDF Organizer",
         "content": "PDFs zusammenführen, teilen und drehen — kostenlos im Browser."
       },
-      "faq": [
-        {
-          "q": "Was kann es?",
-          "a": "Zusammenführen, teilen und drehen."
-        },
-        {
-          "q": "Kostenlos?",
-          "a": "Ja."
-        },
-        {
-          "q": "Umsortieren?",
-          "a": "Ja, im Tab Zusammenführen."
-        }
-      ],
+      "faq": {
+        "q1": "Was kann es?",
+        "a1": "Zusammenführen, teilen und drehen.",
+        "q2": "Kostenlos?",
+        "a2": "Ja.",
+        "q3": "Umsortieren?",
+        "a3": "Ja, im Tab Zusammenführen."
+      },
       "ui": {
         "dropzone": "PDF-Dateien hierher ziehen",
         "dropzoneHint": "oder klicken zum Durchsuchen",
@@ -1173,20 +1167,14 @@
         "title": "Kostenloser PDF zu Bilder Konverter",
         "content": "PDF-Seiten in JPG oder PNG konvertieren."
       },
-      "faq": [
-        {
-          "q": "Welche Formate?",
-          "a": "JPG und PNG."
-        },
-        {
-          "q": "Qualität anpassen?",
-          "a": "Ja."
-        },
-        {
-          "q": "Kostenlos?",
-          "a": "Ja."
-        }
-      ],
+      "faq": {
+        "q1": "Welche Formate?",
+        "a1": "JPG und PNG.",
+        "q2": "Qualität anpassen?",
+        "a2": "Ja.",
+        "q3": "Kostenlos?",
+        "a3": "Ja."
+      },
       "ui": {
         "dropzone": "PDF hierher ziehen",
         "dropzoneHint": "oder klicken",
@@ -1209,20 +1197,14 @@
         "title": "Kostenloser PDF Word Konverter",
         "content": "PDF zu Word oder Word zu PDF konvertieren."
       },
-      "faq": [
-        {
-          "q": "Wie funktioniert es?",
-          "a": "PDF oder Word-Datei ziehen."
-        },
-        {
-          "q": "Formatierung erhalten?",
-          "a": "Text und Überschriften ja."
-        },
-        {
-          "q": "Kostenlos?",
-          "a": "Ja."
-        }
-      ],
+      "faq": {
+        "q1": "Wie funktioniert es?",
+        "a1": "PDF oder Word-Datei ziehen.",
+        "q2": "Formatierung erhalten?",
+        "a2": "Text und Überschriften ja.",
+        "q3": "Kostenlos?",
+        "a3": "Ja."
+      },
       "ui": {
         "dropzone": "PDF oder Word-Datei hierher ziehen",
         "dropzoneHint": "Akzeptiert .pdf, .docx, .doc",
