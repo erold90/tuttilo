@@ -1114,20 +1114,14 @@
         "title": "Organizador PDF Online Grátis",
         "content": "Junte, divida e gire PDFs grátis no navegador."
       },
-      "faq": [
-        {
-          "q": "O que faz?",
-          "a": "Juntar, dividir e girar PDFs."
-        },
-        {
-          "q": "É grátis?",
-          "a": "Sim."
-        },
-        {
-          "q": "Reordenar?",
-          "a": "Sim, na aba Juntar."
-        }
-      ],
+      "faq": {
+        "q1": "O que faz?",
+        "a1": "Juntar, dividir e girar PDFs.",
+        "q2": "É grátis?",
+        "a2": "Sim.",
+        "q3": "Reordenar?",
+        "a3": "Sim, na aba Juntar."
+      },
       "ui": {
         "dropzone": "Arraste arquivos PDF aqui",
         "dropzoneHint": "ou clique para procurar",
@@ -1173,20 +1167,14 @@
         "title": "Conversor PDF para Imagens Grátis",
         "content": "Converta páginas PDF em JPG ou PNG."
       },
-      "faq": [
-        {
-          "q": "Quais formatos?",
-          "a": "JPG e PNG."
-        },
-        {
-          "q": "Ajustar qualidade?",
-          "a": "Sim."
-        },
-        {
-          "q": "É grátis?",
-          "a": "Sim."
-        }
-      ],
+      "faq": {
+        "q1": "Quais formatos?",
+        "a1": "JPG e PNG.",
+        "q2": "Ajustar qualidade?",
+        "a2": "Sim.",
+        "q3": "É grátis?",
+        "a3": "Sim."
+      },
       "ui": {
         "dropzone": "Arraste um PDF aqui",
         "dropzoneHint": "ou clique para procurar",
@@ -1209,20 +1197,14 @@
         "title": "Conversor PDF Word Grátis",
         "content": "Converta PDF para Word ou Word para PDF."
       },
-      "faq": [
-        {
-          "q": "Como funciona?",
-          "a": "Arraste um arquivo PDF ou Word."
-        },
-        {
-          "q": "Formatação preservada?",
-          "a": "Texto e títulos sim."
-        },
-        {
-          "q": "É grátis?",
-          "a": "Sim."
-        }
-      ],
+      "faq": {
+        "q1": "Como funciona?",
+        "a1": "Arraste um arquivo PDF ou Word.",
+        "q2": "Formatação preservada?",
+        "a2": "Texto e títulos sim.",
+        "q3": "É grátis?",
+        "a3": "Sim."
+      },
       "ui": {
         "dropzone": "Arraste um arquivo PDF ou Word aqui",
         "dropzoneHint": "Aceita .pdf, .docx, .doc",
