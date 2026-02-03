@@ -3,7 +3,7 @@
 import { useEffect } from "react";
 import { useTranslations } from "next-intl";
 import { Link } from "@/i18n/routing";
-import { ChevronRight, Home } from "lucide-react";
+import { CaretRight as ChevronRight, House as Home } from "@phosphor-icons/react";
 import { SidebarAd } from "@/components/ads/sidebar-ad";
 import { LeaderboardAd } from "@/components/ads/leaderboard-ad";
 import { RelatedTools } from "@/components/tools/related-tools";

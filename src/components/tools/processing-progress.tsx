@@ -2,7 +2,7 @@
 
 import { cn } from "@/lib/utils";
 import { Progress } from "@/components/ui/progress";
-import { Loader2 } from "lucide-react";
+import { CircleNotch as Loader2 } from "@phosphor-icons/react";
 
 interface ProcessingProgressProps {
   progress: number;

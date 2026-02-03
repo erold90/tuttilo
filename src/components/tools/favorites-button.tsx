@@ -1,6 +1,6 @@
 "use client";
 
-import { Heart } from "lucide-react";
+import { Heart } from "@phosphor-icons/react";
 import { cn } from "@/lib/utils";
 import { useFavorites } from "@/hooks/use-favorites";
 
@@ -24,10 +24,11 @@ export function FavoritesButton({ toolId, className }: FavoritesButtonProps) {
       aria-label={active ? "Remove from favorites" : "Add to favorites"}
     >
       <Heart
+        weight={active ? "fill" : "regular"}
         className={cn(
           "h-4.5 w-4.5 transition-colors",
           active
-            ? "fill-red-500 text-red-500"
+            ? "text-red-500"
             : "text-muted-foreground"
         )}
       />

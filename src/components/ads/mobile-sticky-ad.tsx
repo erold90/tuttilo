@@ -2,7 +2,7 @@
 
 import { useState, useEffect, useCallback } from "react";
 import { cn } from "@/lib/utils";
-import { X } from "lucide-react";
+import { X } from "@phosphor-icons/react";
 import { AdSlot } from "@/components/ads/ad-slot";
 
 const DISMISS_KEY = "tuttilo_mobile_ad_dismissed";

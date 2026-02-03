@@ -2,7 +2,7 @@
 
 import { useTranslations } from "next-intl";
 import { Link } from "@/i18n/routing";
-import { Heart, Clock } from "lucide-react";
+import { Heart, Clock } from "@phosphor-icons/react";
 import { cn } from "@/lib/utils";
 import { useFavorites } from "@/hooks/use-favorites";
 import { useRecents } from "@/hooks/use-recents";
@@ -40,7 +40,7 @@ export function HomeUserSections() {
         {favoriteTools.length > 0 && (
           <div>
             <div className="flex items-center gap-2 mb-4">
-              <Heart className="h-5 w-5 fill-red-500 text-red-500" />
+              <Heart weight="fill" className="h-5 w-5 text-red-500" />
               <h2 className="text-lg font-semibold">{t("home.favorites")}</h2>
             </div>
             <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-3">

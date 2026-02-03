@@ -3,7 +3,7 @@
 import { useEffect, useRef, useCallback } from "react";
 import { useTranslations } from "next-intl";
 import { cn } from "@/lib/utils";
-import { Download, RotateCcw, Package } from "lucide-react";
+import { Download, ArrowCounterClockwise as RotateCcw, Package } from "@phosphor-icons/react";
 import { Button } from "@/components/ui/button";
 import { formatFileSize } from "@/lib/utils/file";
 import { downloadBlob, downloadMultiple } from "@/lib/utils/download";
