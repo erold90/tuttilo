@@ -1,5 +1,6 @@
 import createNextIntlPlugin from "next-intl/plugin";
 import type { NextConfig } from "next";
+// pptxgenjs loaded via script tag — see pdf-to-pptx.tsx
 
 const withNextIntl = createNextIntlPlugin("./src/i18n/request.ts");
 
@@ -23,6 +24,10 @@ const nextConfig: NextConfig = {
       { source: "/:locale/pdf/merge", destination: "/:locale/pdf/organizer", permanent: true },
       { source: "/:locale/pdf/split", destination: "/:locale/pdf/organizer", permanent: true },
       { source: "/:locale/pdf/rotate", destination: "/:locale/pdf/organizer", permanent: true },
+      // Old PDF tool URLs → merged tools
+      { source: "/:locale/pdf/fill-sign", destination: "/:locale/pdf/editor", permanent: true },
+      { source: "/:locale/pdf/to-images", destination: "/:locale/pdf/images", permanent: true },
+      { source: "/:locale/pdf/from-images", destination: "/:locale/pdf/images", permanent: true },
     ];
   },
   async headers() {
@@ -38,12 +43,21 @@ const nextConfig: NextConfig = {
       },
     ];
   },
-  webpack: (config) => {
+  webpack: (config, { isServer }) => {
     config.experiments = {
       ...config.experiments,
       asyncWebAssembly: true,
       layers: true,
     };
+    if (!isServer) {
+      // Fallbacks for any Node.js modules referenced by client libs
+      config.resolve!.fallback = {
+        ...config.resolve!.fallback,
+        fs: false,
+        stream: false,
+        crypto: false,
+      };
+    }
     return config;
   },
 };

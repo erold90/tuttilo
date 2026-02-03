@@ -10,6 +10,8 @@ import {
   ArrowsDownUp, GitDiff, FileJs, BracketsCurly, Binary,
   Terminal, Palette, QrCode, Eyedropper, Link as LinkIcon,
   Clock, ClosedCaptioning, SquaresFour, SlidersHorizontal,
+  ShieldCheck, ListNumbers, Drop, Table, PresentationChart,
+  Scan, Wrench, Certificate,
 } from "@phosphor-icons/react";
 
 interface ToolIconProps {
@@ -61,6 +63,14 @@ const iconMap: Record<string, Icon> = {
   Subtitles: ClosedCaptioning,
   LayoutDashboard: SquaresFour,
   Sliders: SlidersHorizontal,
+  ShieldCheck,
+  ListNumbers,
+  Drop,
+  Table,
+  Presentation: PresentationChart,
+  Scan,
+  Wrench,
+  Certificate,
 };
 
 export function ToolIcon({ name, ...props }: ToolIconProps) {

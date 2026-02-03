@@ -45,15 +45,21 @@ export const categories: ToolCategory[] = [
 // ============================================================================
 
 export const tools: Tool[] = [
-  // ---------- PDF (7 tools: 6 available + 1 coming soon) ----------
+  // ---------- PDF (14 tools) ----------
   { id: 'pdf-organizer', slug: 'organizer', category: 'pdf', icon: 'LayoutDashboard', isAvailable: true, isPremium: false, maxFileSize: 100 * 1024 * 1024, acceptedFormats: ['application/pdf'], processingType: 'client' },
-  { id: 'pdf-to-images', slug: 'to-images', category: 'pdf', icon: 'FileImage', isAvailable: true, isPremium: false, maxFileSize: 100 * 1024 * 1024, acceptedFormats: ['application/pdf'], processingType: 'client' },
-  { id: 'images-to-pdf', slug: 'from-images', category: 'pdf', icon: 'Images', isAvailable: true, isPremium: false, maxFileSize: 50 * 1024 * 1024, acceptedFormats: ['image/jpeg', 'image/png', 'image/webp'], processingType: 'client' },
+  { id: 'pdf-editor', slug: 'editor', category: 'pdf', icon: 'PenTool', isAvailable: true, isPremium: false, maxFileSize: 100 * 1024 * 1024, acceptedFormats: ['application/pdf'], processingType: 'client' },
+  { id: 'pdf-images', slug: 'images', category: 'pdf', icon: 'FileImage', isAvailable: true, isPremium: false, maxFileSize: 100 * 1024 * 1024, acceptedFormats: ['application/pdf', 'image/jpeg', 'image/png', 'image/webp'], processingType: 'client' },
   { id: 'pdf-word', slug: 'word', category: 'pdf', icon: 'FileText', isAvailable: true, isPremium: false, maxFileSize: 50 * 1024 * 1024, acceptedFormats: ['application/pdf', 'application/vnd.openxmlformats-officedocument.wordprocessingml.document', 'application/msword'], processingType: 'client' },
+  { id: 'pdf-to-excel', slug: 'to-excel', category: 'pdf', icon: 'Table', isAvailable: true, isPremium: false, maxFileSize: 100 * 1024 * 1024, acceptedFormats: ['application/pdf'], processingType: 'client' },
+  { id: 'pdf-to-pptx', slug: 'to-pptx', category: 'pdf', icon: 'Presentation', isAvailable: true, isPremium: false, maxFileSize: 100 * 1024 * 1024, acceptedFormats: ['application/pdf'], processingType: 'client' },
   { id: 'compress-pdf', slug: 'compress', category: 'pdf', icon: 'Minimize2', isAvailable: true, isPremium: false, maxFileSize: 100 * 1024 * 1024, acceptedFormats: ['application/pdf'], processingType: 'client' },
   { id: 'unlock-pdf', slug: 'unlock', category: 'pdf', icon: 'Unlock', isAvailable: true, isPremium: false, maxFileSize: 100 * 1024 * 1024, acceptedFormats: ['application/pdf'], processingType: 'client' },
-  { id: 'pdf-fill-sign', slug: 'fill-sign', category: 'pdf', icon: 'PenLine', isAvailable: true, isPremium: false, maxFileSize: 100 * 1024 * 1024, acceptedFormats: ['application/pdf'], processingType: 'client' },
-  { id: 'pdf-editor', slug: 'editor', category: 'pdf', icon: 'PenTool', isAvailable: true, isPremium: false, maxFileSize: 100 * 1024 * 1024, acceptedFormats: ['application/pdf'], processingType: 'client' },
+  { id: 'pdf-protect', slug: 'protect', category: 'pdf', icon: 'ShieldCheck', isAvailable: true, isPremium: false, maxFileSize: 100 * 1024 * 1024, acceptedFormats: ['application/pdf'], processingType: 'client' },
+  { id: 'pdf-page-numbers', slug: 'page-numbers', category: 'pdf', icon: 'ListNumbers', isAvailable: true, isPremium: false, maxFileSize: 100 * 1024 * 1024, acceptedFormats: ['application/pdf'], processingType: 'client' },
+  { id: 'pdf-watermark', slug: 'watermark', category: 'pdf', icon: 'Drop', isAvailable: true, isPremium: false, maxFileSize: 100 * 1024 * 1024, acceptedFormats: ['application/pdf'], processingType: 'client' },
+  { id: 'pdf-ocr', slug: 'ocr', category: 'pdf', icon: 'Scan', isAvailable: true, isPremium: false, maxFileSize: 100 * 1024 * 1024, acceptedFormats: ['application/pdf', 'image/jpeg', 'image/png', 'image/webp', 'image/bmp', 'image/tiff'], processingType: 'client' },
+  { id: 'pdf-repair', slug: 'repair', category: 'pdf', icon: 'Wrench', isAvailable: true, isPremium: false, maxFileSize: 100 * 1024 * 1024, acceptedFormats: ['application/pdf'], processingType: 'client' },
+  { id: 'pdf-to-pdfa', slug: 'to-pdfa', category: 'pdf', icon: 'Certificate', isAvailable: true, isPremium: false, maxFileSize: 100 * 1024 * 1024, acceptedFormats: ['application/pdf'], processingType: 'client' },
 
   // ---------- Image (3 tools: converter + editor + remove-bg) ----------
   { id: 'image-converter', slug: 'converter', category: 'image', icon: 'ArrowRightLeft', isAvailable: true, isPremium: false, maxFileSize: 50 * 1024 * 1024, acceptedFormats: ['image/jpeg', 'image/png', 'image/webp', 'image/gif', 'image/bmp', 'image/svg+xml', 'image/heic', 'image/heif', 'image/avif', 'image/tiff'], processingType: 'client' },
