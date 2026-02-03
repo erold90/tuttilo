@@ -580,6 +580,56 @@
         "error": "Konvertierung fehlgeschlagen. Bitte versuchen Sie ein anderes Bild oder Ausgabeformat."
       }
     },
+    "image-editor": {
+      "name": "Bildbearbeitung",
+      "description": "Zuschneiden, skalieren, drehen, anpassen und komprimieren — alles in einem Tool",
+      "seo": {
+        "title": "Kostenloser Online-Bildeditor — Zuschneiden, Skalieren, Drehen & Komprimieren",
+        "content": "Bearbeiten Sie Ihre Bilder direkt im Browser. Zuschneiden, skalieren, drehen, spiegeln, Helligkeit/Kontrast/Sättigung anpassen und komprimieren. Kein Upload nötig — alles läuft lokal auf Ihrem Gerät."
+      },
+      "faq": {
+        "q1": "Welche Operationen kann ich durchführen?",
+        "a1": "Sie können Bilder zuschneiden, skalieren, drehen, spiegeln, Helligkeit/Kontrast/Sättigung anpassen und komprimieren. Operationen können nacheinander angewendet werden — z.B. erst zuschneiden, dann skalieren, dann das Ergebnis komprimieren.",
+        "q2": "Welche Bildformate werden unterstützt?",
+        "a2": "Sie können JPG, PNG, WebP, GIF, BMP, SVG, HEIC und AVIF Bilder bearbeiten. Beim Download können Sie zwischen JPG, PNG und WebP mit einstellbarer Qualität wählen.",
+        "q3": "Wird mein Bild auf einen Server hochgeladen?",
+        "a3": "Nein. Die gesamte Verarbeitung erfolgt direkt in Ihrem Browser über Canvas API und WebAssembly-Codecs. Ihre Bilder verlassen niemals Ihr Gerät."
+      },
+      "ui": {
+        "dropzone": "Bild hierher ziehen oder klicken zum Auswählen",
+        "tabCrop": "Zuschneiden",
+        "tabResize": "Skalieren",
+        "tabRotate": "Drehen",
+        "tabAdjust": "Anpassen",
+        "tabCompress": "Exportieren",
+        "applyCrop": "Zuschnitt anwenden",
+        "applyResize": "Skalierung anwenden",
+        "applyAdjust": "Anpassungen anwenden",
+        "resetAdjust": "Zurücksetzen",
+        "freeform": "Frei",
+        "quality": "Qualität",
+        "width": "Breite",
+        "height": "Höhe",
+        "rotateCw": "90° rechts",
+        "rotateCcw": "90° links",
+        "flipH": "Spiegeln H",
+        "flipV": "Spiegeln V",
+        "brightness": "Helligkeit",
+        "contrast": "Kontrast",
+        "saturation": "Sättigung",
+        "originalSize": "Original",
+        "resultSize": "Ergebnis",
+        "operationsApplied": "Operationen angewendet",
+        "processing": "Verarbeitung...",
+        "error": "Ein Fehler ist aufgetreten. Versuchen Sie ein anderes Bild.",
+        "formatOutput": "Ausgabeformat",
+        "applied": "Angewendet!",
+        "compress": "Komprimieren",
+        "download": "Herunterladen",
+        "undo": "Rückgängig",
+        "reset": "Neues Bild"
+      }
+    },
     "remove-bg": {
       "name": "Hintergrund entfernen",
       "description": "Hintergrund automatisch aus Bildern entfernen"

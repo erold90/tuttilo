@@ -19,25 +19,17 @@ import { LoremIpsum } from "@/components/tools/lorem-ipsum";
 import { ColorPicker } from "@/components/tools/color-picker";
 import { RegexTester } from "@/components/tools/regex-tester";
 // Sprint 2 (Image)
-import { CompressImage } from "@/components/tools/compress-image";
+import { ImageConverter } from "@/components/tools/image-converter";
+import { ImageEditor } from "@/components/tools/image-editor";
 // Sprint 3 (PDF)
 import { PdfOrganizer } from "@/components/tools/pdf-organizer";
 // Sprint 4 (Audio/Media)
 import { QrCode } from "@/components/tools/qr-code";
-import { SvgToPng } from "@/components/tools/svg-to-png";
 import { VoiceRecorder } from "@/components/tools/voice-recorder";
 import { ScreenRecorder } from "@/components/tools/screen-recorder";
 // VideoToMp3 moved to ffmpeg-tools.tsx (uses FFmpeg)
 import { AudioCutter } from "@/components/tools/audio-cutter";
 import { CompressPdf } from "@/components/tools/compress-pdf";
-import { ResizeImage } from "@/components/tools/resize-image";
-import { CropImage } from "@/components/tools/crop-image";
-import { PngToJpg } from "@/components/tools/png-to-jpg";
-import { JpgToPng } from "@/components/tools/jpg-to-png";
-import { WebpToPng } from "@/components/tools/webp-to-png";
-import { WebpToJpg } from "@/components/tools/webp-to-jpg";
-import { HeicToJpg } from "@/components/tools/heic-to-jpg";
-import { ImageConverter } from "@/components/tools/image-converter";
 // Sprint 5 (PDF Advanced — consolidated)
 import { PdfToImages } from "@/components/tools/pdf-to-images";
 import { ImagesToPdf } from "@/components/tools/images-to-pdf";
@@ -58,19 +50,11 @@ const toolComponents: Record<string, React.ComponentType> = {
   "lorem-ipsum": LoremIpsum,
   "color-picker": ColorPicker,
   "regex-tester": RegexTester,
-  "compress-image": CompressImage,
-  "resize-image": ResizeImage,
-  "crop-image": CropImage,
-  "png-to-jpg": PngToJpg,
-  "jpg-to-png": JpgToPng,
-  "webp-to-png": WebpToPng,
-  "webp-to-jpg": WebpToJpg,
-  "heic-to-jpg": HeicToJpg,
   "image-converter": ImageConverter,
+  "image-editor": ImageEditor,
   "pdf-organizer": PdfOrganizer,
   "compress-pdf": CompressPdf,
   "qr-code": QrCode,
-  "svg-to-png": SvgToPng,
   "voice-recorder": VoiceRecorder,
   "screen-recorder": ScreenRecorder,
   "video-to-mp3": VideoToMp3,

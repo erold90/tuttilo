@@ -196,6 +196,60 @@ async function encodeWithJsquashWebp(imageData: ImageData, quality: number): Pro
 // AVIF input decoding is supported natively by modern browsers
 
 // ============================================================================
+// BMP encoding — manual encoding for BMP output format
+// ============================================================================
+
+/**
+ * Encode ImageData as a BMP file (24-bit, uncompressed).
+ * BMP is a simple format: 14-byte file header + 40-byte info header + raw BGR pixels.
+ */
+export function encodeBmp(imageData: ImageData): Blob {
+  const { width, height, data } = imageData;
+  const rowSize = Math.ceil((width * 3) / 4) * 4; // rows padded to 4-byte boundary
+  const pixelDataSize = rowSize * height;
+  const fileSize = 54 + pixelDataSize;
+
+  const buffer = new ArrayBuffer(fileSize);
+  const view = new DataView(buffer);
+
+  // File header (14 bytes)
+  view.setUint8(0, 0x42); // 'B'
+  view.setUint8(1, 0x4D); // 'M'
+  view.setUint32(2, fileSize, true);
+  view.setUint32(6, 0, true); // reserved
+  view.setUint32(10, 54, true); // pixel data offset
+
+  // Info header — BITMAPINFOHEADER (40 bytes)
+  view.setUint32(14, 40, true); // header size
+  view.setInt32(18, width, true);
+  view.setInt32(22, height, true);
+  view.setUint16(26, 1, true); // color planes
+  view.setUint16(28, 24, true); // bits per pixel
+  view.setUint32(30, 0, true); // compression (BI_RGB = none)
+  view.setUint32(34, pixelDataSize, true);
+  view.setUint32(38, 2835, true); // horizontal resolution (72 DPI)
+  view.setUint32(42, 2835, true); // vertical resolution (72 DPI)
+  view.setUint32(46, 0, true); // colors in palette
+  view.setUint32(50, 0, true); // important colors
+
+  // Pixel data (BGR, bottom-to-top row order)
+  const bytes = new Uint8Array(buffer);
+  for (let y = 0; y < height; y++) {
+    const srcRow = (height - 1 - y) * width * 4; // BMP is bottom-up
+    const dstRow = 54 + y * rowSize;
+    for (let x = 0; x < width; x++) {
+      const si = srcRow + x * 4;
+      const di = dstRow + x * 3;
+      bytes[di] = data[si + 2];     // B
+      bytes[di + 1] = data[si + 1]; // G
+      bytes[di + 2] = data[si];     // R
+    }
+  }
+
+  return new Blob([buffer], { type: "image/bmp" });
+}
+
+// ============================================================================
 // Compression — jSquash primary, Canvas fallback
 // ============================================================================
 
@@ -296,6 +350,21 @@ export async function convertImageFormat(
     const heic2any = (await import("heic2any")).default;
     const result = await heic2any({ blob: file, toType: "image/png", quality: 1 });
     sourceFile = Array.isArray(result) ? result[0] : result;
+  }
+
+  // BMP output — custom encoder (Canvas doesn't support BMP)
+  if (targetMime === "image/bmp") {
+    const { img, url: srcUrl } = await loadImage(sourceFile);
+    const canvas = document.createElement("canvas");
+    canvas.width = img.width;
+    canvas.height = img.height;
+    const ctx = canvas.getContext("2d")!;
+    ctx.drawImage(img, 0, 0);
+    const imageData = ctx.getImageData(0, 0, canvas.width, canvas.height);
+    cleanupCanvas(canvas);
+    URL.revokeObjectURL(srcUrl);
+    const blob = encodeBmp(imageData);
+    return { blob, url: URL.createObjectURL(blob) };
   }
 
   try {

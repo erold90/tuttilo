@@ -580,6 +580,56 @@
         "error": "A conversão falhou. Tente uma imagem diferente ou outro formato de saída."
       }
     },
+    "image-editor": {
+      "name": "Editor de Imagens",
+      "description": "Corte, redimensione, gire, ajuste e comprima suas imagens — tudo em um",
+      "seo": {
+        "title": "Editor de Imagens Online Grátis — Cortar, Redimensionar, Girar e Comprimir",
+        "content": "Edite suas imagens diretamente no navegador. Corte, redimensione, gire, espelhe, ajuste brilho/contraste/saturação e comprima. Sem upload necessário — tudo é processado localmente no seu dispositivo."
+      },
+      "faq": {
+        "q1": "Quais operações posso realizar?",
+        "a1": "Você pode cortar, redimensionar, girar, espelhar, ajustar brilho/contraste/saturação e comprimir suas imagens. As operações podem ser aplicadas em sequência — por exemplo, primeiro cortar, depois redimensionar e então comprimir o resultado.",
+        "q2": "Quais formatos de imagem são suportados?",
+        "a2": "Você pode editar imagens JPG, PNG, WebP, GIF, BMP, SVG, HEIC e AVIF. Ao baixar, escolha entre JPG, PNG e WebP com qualidade ajustável.",
+        "q3": "Minha imagem é enviada para um servidor?",
+        "a3": "Não. Todo o processamento acontece diretamente no seu navegador usando Canvas API e codecs WebAssembly. Suas imagens nunca saem do seu dispositivo."
+      },
+      "ui": {
+        "dropzone": "Arraste uma imagem aqui ou clique para selecionar",
+        "tabCrop": "Cortar",
+        "tabResize": "Redimensionar",
+        "tabRotate": "Girar",
+        "tabAdjust": "Ajustar",
+        "tabCompress": "Exportar",
+        "applyCrop": "Aplicar corte",
+        "applyResize": "Aplicar redimensionamento",
+        "applyAdjust": "Aplicar ajustes",
+        "resetAdjust": "Redefinir",
+        "freeform": "Livre",
+        "quality": "Qualidade",
+        "width": "Largura",
+        "height": "Altura",
+        "rotateCw": "90° horário",
+        "rotateCcw": "90° anti-horário",
+        "flipH": "Espelhar H",
+        "flipV": "Espelhar V",
+        "brightness": "Brilho",
+        "contrast": "Contraste",
+        "saturation": "Saturação",
+        "originalSize": "Original",
+        "resultSize": "Resultado",
+        "operationsApplied": "operações aplicadas",
+        "processing": "Processando...",
+        "error": "Ocorreu um erro. Tente uma imagem diferente.",
+        "formatOutput": "Formato de saída",
+        "applied": "Aplicado!",
+        "compress": "Comprimir",
+        "download": "Baixar",
+        "undo": "Desfazer",
+        "reset": "Nova imagem"
+      }
+    },
     "remove-bg": {
       "name": "Remover fundo",
       "description": "Remova automaticamente o fundo das imagens"

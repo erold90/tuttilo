@@ -5,6 +5,9 @@ import { useTranslations } from "next-intl";
 import {
   detectImageFormat,
   convertImageFormat,
+  encodeBmp,
+  loadImage,
+  cleanupCanvas,
   formatFileSize,
   triggerDownload,
   revokeUrls,
@@ -13,7 +16,7 @@ import {
 import { useBatchImage } from "@/hooks/use-batch-image";
 import { BatchImageList } from "@/components/tools/batch-image-list";
 
-type OutputFormatId = "jpeg" | "png" | "webp" | "avif";
+type OutputFormatId = "jpeg" | "png" | "webp" | "avif" | "bmp";
 
 interface OutputFormat {
   id: OutputFormatId;
@@ -28,6 +31,7 @@ const OUTPUT_FORMATS: OutputFormat[] = [
   { id: "jpeg", mime: "image/jpeg", ext: "jpg", label: "JPG", lossy: true, color: "#F97316" },
   { id: "png", mime: "image/png", ext: "png", label: "PNG", lossy: false, color: "#22C55E" },
   { id: "webp", mime: "image/webp", ext: "webp", label: "WebP", lossy: true, color: "#3B82F6" },
+  { id: "bmp", mime: "image/bmp", ext: "bmp", label: "BMP", lossy: false, color: "#A855F7" },
 ];
 
 const ACCEPTED_TYPES = "image/jpeg,image/png,image/webp,image/gif,image/bmp,image/svg+xml,image/heic,image/heif,image/avif,image/tiff,image/x-icon,.heic,.heif,.avif";

@@ -536,6 +536,56 @@
         "error": "La conversion a échoué. Essayez une image différente ou un autre format de sortie."
       }
     },
+    "image-editor": {
+      "name": "Éditeur d'images",
+      "description": "Recadrez, redimensionnez, pivotez, ajustez et compressez vos images — tout en un",
+      "seo": {
+        "title": "Éditeur d'images en ligne gratuit — Recadrer, Redimensionner, Pivoter et Compresser",
+        "content": "Modifiez vos images directement dans le navigateur. Recadrez, redimensionnez, pivotez, retournez, ajustez luminosité/contraste/saturation et compressez. Aucun téléversement nécessaire — tout se fait localement sur votre appareil."
+      },
+      "faq": {
+        "q1": "Quelles opérations puis-je effectuer ?",
+        "a1": "Vous pouvez recadrer, redimensionner, pivoter, retourner, ajuster luminosité/contraste/saturation et compresser vos images. Les opérations peuvent être appliquées en séquence — par exemple, recadrer d'abord, puis redimensionner, puis compresser le résultat.",
+        "q2": "Quels formats d'image sont pris en charge ?",
+        "a2": "Vous pouvez éditer des images JPG, PNG, WebP, GIF, BMP, SVG, HEIC et AVIF. Lors du téléchargement, choisissez entre JPG, PNG et WebP avec qualité réglable.",
+        "q3": "Mon image est-elle envoyée sur un serveur ?",
+        "a3": "Non. Tout le traitement se fait directement dans votre navigateur via Canvas API et codecs WebAssembly. Vos images ne quittent jamais votre appareil."
+      },
+      "ui": {
+        "dropzone": "Déposez une image ici ou cliquez pour sélectionner",
+        "tabCrop": "Recadrer",
+        "tabResize": "Redimensionner",
+        "tabRotate": "Pivoter",
+        "tabAdjust": "Ajuster",
+        "tabCompress": "Exporter",
+        "applyCrop": "Appliquer le recadrage",
+        "applyResize": "Appliquer le redimensionnement",
+        "applyAdjust": "Appliquer les ajustements",
+        "resetAdjust": "Réinitialiser",
+        "freeform": "Libre",
+        "quality": "Qualité",
+        "width": "Largeur",
+        "height": "Hauteur",
+        "rotateCw": "90° horaire",
+        "rotateCcw": "90° antihoraire",
+        "flipH": "Retourner H",
+        "flipV": "Retourner V",
+        "brightness": "Luminosité",
+        "contrast": "Contraste",
+        "saturation": "Saturation",
+        "originalSize": "Original",
+        "resultSize": "Résultat",
+        "operationsApplied": "opérations appliquées",
+        "processing": "Traitement...",
+        "error": "Une erreur est survenue. Essayez une image différente.",
+        "formatOutput": "Format de sortie",
+        "applied": "Appliqué !",
+        "compress": "Compresser",
+        "download": "Télécharger",
+        "undo": "Annuler",
+        "reset": "Nouvelle image"
+      }
+    },
     "remove-bg": {
       "name": "Supprimer l'arrière-plan",
       "description": "Supprimez automatiquement l'arrière-plan des images"

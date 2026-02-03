@@ -536,6 +536,56 @@
         "error": "La conversión falló. Prueba con una imagen diferente o un formato de salida distinto."
       }
     },
+    "image-editor": {
+      "name": "Editor de Imágenes",
+      "description": "Recorta, redimensiona, rota, ajusta y comprime tus imágenes — todo en uno",
+      "seo": {
+        "title": "Editor de Imágenes Online Gratis — Recortar, Redimensionar, Rotar y Comprimir",
+        "content": "Edita tus imágenes directamente en el navegador. Recorta, redimensiona, rota, voltea, ajusta brillo/contraste/saturación y comprime. Sin subidas — todo se procesa localmente en tu dispositivo."
+      },
+      "faq": {
+        "q1": "¿Qué operaciones puedo realizar?",
+        "a1": "Puedes recortar, redimensionar, rotar, voltear, ajustar brillo/contraste/saturación y comprimir tus imágenes. Las operaciones se pueden aplicar en secuencia — por ejemplo, primero recortar, luego redimensionar y después comprimir el resultado.",
+        "q2": "¿Qué formatos de imagen son compatibles?",
+        "a2": "Puedes editar imágenes JPG, PNG, WebP, GIF, BMP, SVG, HEIC y AVIF. Al descargar puedes elegir entre JPG, PNG y WebP con calidad ajustable.",
+        "q3": "¿Mi imagen se sube a un servidor?",
+        "a3": "No. Todo el procesamiento ocurre directamente en tu navegador usando Canvas API y códecs WebAssembly. Tus imágenes nunca salen de tu dispositivo."
+      },
+      "ui": {
+        "dropzone": "Arrastra una imagen aquí o haz clic para seleccionar",
+        "tabCrop": "Recortar",
+        "tabResize": "Redimensionar",
+        "tabRotate": "Rotar",
+        "tabAdjust": "Ajustar",
+        "tabCompress": "Exportar",
+        "applyCrop": "Aplicar recorte",
+        "applyResize": "Aplicar redimensionado",
+        "applyAdjust": "Aplicar ajustes",
+        "resetAdjust": "Restablecer",
+        "freeform": "Libre",
+        "quality": "Calidad",
+        "width": "Ancho",
+        "height": "Alto",
+        "rotateCw": "90° horario",
+        "rotateCcw": "90° antihorario",
+        "flipH": "Voltear H",
+        "flipV": "Voltear V",
+        "brightness": "Brillo",
+        "contrast": "Contraste",
+        "saturation": "Saturación",
+        "originalSize": "Original",
+        "resultSize": "Resultado",
+        "operationsApplied": "operaciones aplicadas",
+        "processing": "Procesando...",
+        "error": "Ocurrió un error. Prueba con una imagen diferente.",
+        "formatOutput": "Formato de salida",
+        "applied": "¡Aplicado!",
+        "compress": "Comprimir",
+        "download": "Descargar",
+        "undo": "Deshacer",
+        "reset": "Nueva imagen"
+      }
+    },
     "remove-bg": {
       "name": "Eliminar fondo",
       "description": "Elimina automáticamente el fondo de las imágenes"

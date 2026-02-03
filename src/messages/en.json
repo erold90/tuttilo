@@ -572,6 +572,56 @@
         "error": "Conversion failed. Please try a different image or output format."
       }
     },
+    "image-editor": {
+      "name": "Image Editor",
+      "description": "Crop, resize, rotate, adjust and compress your images — all in one tool",
+      "seo": {
+        "title": "Free Online Image Editor — Crop, Resize, Rotate & Compress",
+        "content": "Edit your images directly in the browser. Crop, resize, rotate, flip, adjust brightness/contrast/saturation, and compress. No upload needed — everything runs locally on your device."
+      },
+      "faq": {
+        "q1": "What operations can I perform?",
+        "a1": "You can crop, resize, rotate, flip, adjust brightness/contrast/saturation, and compress your images. Operations can be applied in sequence — for example, crop first, then resize, then compress the result.",
+        "q2": "What image formats are supported?",
+        "a2": "You can edit JPG, PNG, WebP, GIF, BMP, SVG, HEIC and AVIF images. When downloading, choose between JPG, PNG and WebP output formats with adjustable quality.",
+        "q3": "Is my image uploaded to a server?",
+        "a3": "No. All processing happens directly in your browser using Canvas API and WebAssembly codecs. Your images never leave your device."
+      },
+      "ui": {
+        "dropzone": "Drop an image here or click to select",
+        "tabCrop": "Crop",
+        "tabResize": "Resize",
+        "tabRotate": "Rotate",
+        "tabAdjust": "Adjust",
+        "tabCompress": "Export",
+        "applyCrop": "Apply Crop",
+        "applyResize": "Apply Resize",
+        "applyAdjust": "Apply Adjustments",
+        "resetAdjust": "Reset",
+        "freeform": "Free",
+        "quality": "Quality",
+        "width": "Width",
+        "height": "Height",
+        "rotateCw": "90° CW",
+        "rotateCcw": "90° CCW",
+        "flipH": "Flip H",
+        "flipV": "Flip V",
+        "brightness": "Brightness",
+        "contrast": "Contrast",
+        "saturation": "Saturation",
+        "originalSize": "Original",
+        "resultSize": "Result",
+        "operationsApplied": "operations applied",
+        "processing": "Processing...",
+        "error": "An error occurred. Please try a different image.",
+        "formatOutput": "Output Format",
+        "applied": "Applied!",
+        "compress": "Compress",
+        "download": "Download",
+        "undo": "Undo",
+        "reset": "New image"
+      }
+    },
     "remove-bg": {
       "name": "Remove Background",
       "description": "Automatically remove background from images"

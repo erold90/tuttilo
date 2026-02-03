@@ -9,7 +9,7 @@ import {
   FilmStrip, Monitor, Microphone, Hash, TextAlignLeft,
   ArrowsDownUp, GitDiff, FileJs, BracketsCurly, Binary,
   Terminal, Palette, QrCode, Eyedropper, Link as LinkIcon,
-  Clock, ClosedCaptioning, SquaresFour,
+  Clock, ClosedCaptioning, SquaresFour, SlidersHorizontal,
 } from "@phosphor-icons/react";
 
 interface ToolIconProps {
@@ -60,6 +60,7 @@ const iconMap: Record<string, Icon> = {
   Clock,
   Subtitles: ClosedCaptioning,
   LayoutDashboard: SquaresFour,
+  Sliders: SlidersHorizontal,
 };
 
 export function ToolIcon({ name, ...props }: ToolIconProps) {

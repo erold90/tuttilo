@@ -580,6 +580,56 @@
         "error": "변환에 실패했습니다. 다른 이미지 또는 출력 형식을 시도해 주세요."
       }
     },
+    "image-editor": {
+      "name": "이미지 편집기",
+      "description": "자르기, 크기 조정, 회전, 조정 및 압축 — 올인원 도구",
+      "seo": {
+        "title": "무료 온라인 이미지 편집기 — 자르기, 크기 조정, 회전 & 압축",
+        "content": "브라우저에서 직접 이미지를 편집하세요. 자르기, 크기 조정, 회전, 뒤집기, 밝기/대비/채도 조정, 압축이 가능합니다. 업로드 불필요 — 모든 처리가 기기에서 로컬로 수행됩니다."
+      },
+      "faq": {
+        "q1": "어떤 작업을 수행할 수 있나요?",
+        "a1": "이미지 자르기, 크기 조정, 회전, 뒤집기, 밝기/대비/채도 조정, 압축이 가능합니다. 작업은 순차적으로 적용할 수 있습니다 — 예를 들어, 먼저 자르고, 크기를 조정한 후 결과를 압축할 수 있습니다.",
+        "q2": "어떤 이미지 형식을 지원하나요?",
+        "a2": "JPG, PNG, WebP, GIF, BMP, SVG, HEIC, AVIF 이미지를 편집할 수 있습니다. 다운로드 시 JPG, PNG, WebP 중 선택할 수 있으며 품질도 조절 가능합니다.",
+        "q3": "이미지가 서버에 업로드되나요?",
+        "a3": "아닙니다. 모든 처리는 Canvas API와 WebAssembly 코덱을 사용하여 브라우저에서 직접 수행됩니다. 이미지가 기기를 떠나지 않습니다."
+      },
+      "ui": {
+        "dropzone": "이미지를 여기에 드래그하거나 클릭하여 선택",
+        "tabCrop": "자르기",
+        "tabResize": "크기 조정",
+        "tabRotate": "회전",
+        "tabAdjust": "조정",
+        "tabCompress": "내보내기",
+        "applyCrop": "자르기 적용",
+        "applyResize": "크기 조정 적용",
+        "applyAdjust": "조정 적용",
+        "resetAdjust": "초기화",
+        "freeform": "자유",
+        "quality": "품질",
+        "width": "너비",
+        "height": "높이",
+        "rotateCw": "90° 시계방향",
+        "rotateCcw": "90° 반시계방향",
+        "flipH": "좌우 반전",
+        "flipV": "상하 반전",
+        "brightness": "밝기",
+        "contrast": "대비",
+        "saturation": "채도",
+        "originalSize": "원본",
+        "resultSize": "결과",
+        "operationsApplied": "작업 적용됨",
+        "processing": "처리 중...",
+        "error": "오류가 발생했습니다. 다른 이미지를 시도해 주세요.",
+        "formatOutput": "출력 형식",
+        "applied": "적용 완료!",
+        "compress": "압축",
+        "download": "다운로드",
+        "undo": "실행 취소",
+        "reset": "새 이미지"
+      }
+    },
     "remove-bg": {
       "name": "배경 제거",
       "description": "이미지에서 배경을 자동으로 제거"

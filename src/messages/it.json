@@ -580,6 +580,56 @@
         "error": "Conversione fallita. Prova un'immagine diversa o un altro formato di output."
       }
     },
+    "image-editor": {
+      "name": "Editor Immagini",
+      "description": "Ritaglia, ridimensiona, ruota, regola e comprimi le tue immagini — tutto in uno",
+      "seo": {
+        "title": "Editor Immagini Online Gratis — Ritaglia, Ridimensiona, Ruota e Comprimi",
+        "content": "Modifica le tue immagini direttamente nel browser. Ritaglia, ridimensiona, ruota, capovolgi, regola luminosità/contrasto/saturazione e comprimi. Nessun upload necessario — tutto avviene localmente sul tuo dispositivo."
+      },
+      "faq": {
+        "q1": "Quali operazioni posso eseguire?",
+        "a1": "Puoi ritagliare, ridimensionare, ruotare, capovolgere, regolare luminosità/contrasto/saturazione e comprimere le tue immagini. Le operazioni possono essere applicate in sequenza — ad esempio, prima ritaglia, poi ridimensiona, poi comprimi il risultato.",
+        "q2": "Quali formati di immagine sono supportati?",
+        "a2": "Puoi modificare immagini JPG, PNG, WebP, GIF, BMP, SVG, HEIC e AVIF. Al momento del download puoi scegliere tra JPG, PNG e WebP con qualità regolabile.",
+        "q3": "La mia immagine viene caricata su un server?",
+        "a3": "No. Tutta l'elaborazione avviene direttamente nel tuo browser usando Canvas API e codec WebAssembly. Le tue immagini non lasciano mai il tuo dispositivo."
+      },
+      "ui": {
+        "dropzone": "Trascina un'immagine qui o clicca per selezionare",
+        "tabCrop": "Ritaglia",
+        "tabResize": "Ridimensiona",
+        "tabRotate": "Ruota",
+        "tabAdjust": "Regola",
+        "tabCompress": "Esporta",
+        "applyCrop": "Applica ritaglio",
+        "applyResize": "Applica ridimensionamento",
+        "applyAdjust": "Applica regolazioni",
+        "resetAdjust": "Ripristina",
+        "freeform": "Libero",
+        "quality": "Qualità",
+        "width": "Larghezza",
+        "height": "Altezza",
+        "rotateCw": "90° orario",
+        "rotateCcw": "90° antiorario",
+        "flipH": "Capovolgi H",
+        "flipV": "Capovolgi V",
+        "brightness": "Luminosità",
+        "contrast": "Contrasto",
+        "saturation": "Saturazione",
+        "originalSize": "Originale",
+        "resultSize": "Risultato",
+        "operationsApplied": "operazioni applicate",
+        "processing": "Elaborazione...",
+        "error": "Si è verificato un errore. Prova un'immagine diversa.",
+        "formatOutput": "Formato di output",
+        "applied": "Applicato!",
+        "compress": "Comprimi",
+        "download": "Scarica",
+        "undo": "Annulla",
+        "reset": "Nuova immagine"
+      }
+    },
     "remove-bg": {
       "name": "Rimuovi sfondo",
       "description": "Rimuovi automaticamente lo sfondo dalle immagini"

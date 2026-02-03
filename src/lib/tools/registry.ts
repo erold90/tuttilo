@@ -55,17 +55,9 @@ export const tools: Tool[] = [
   { id: 'pdf-fill-sign', slug: 'fill-sign', category: 'pdf', icon: 'PenLine', isAvailable: true, isPremium: false, maxFileSize: 100 * 1024 * 1024, acceptedFormats: ['application/pdf'], processingType: 'client' },
   { id: 'pdf-editor', slug: 'editor', category: 'pdf', icon: 'PenTool', isAvailable: true, isPremium: false, maxFileSize: 100 * 1024 * 1024, acceptedFormats: ['application/pdf'], processingType: 'client' },
 
-  // ---------- Image (10 tools) ----------
-  { id: 'compress-image', slug: 'compress', category: 'image', icon: 'Minimize2', isAvailable: true, isPremium: false, maxFileSize: 50 * 1024 * 1024, acceptedFormats: ['image/jpeg', 'image/png', 'image/webp'], processingType: 'client' },
-  { id: 'resize-image', slug: 'resize', category: 'image', icon: 'Maximize2', isAvailable: true, isPremium: false, maxFileSize: 50 * 1024 * 1024, acceptedFormats: ['image/jpeg', 'image/png', 'image/webp'], processingType: 'client' },
-  { id: 'crop-image', slug: 'crop', category: 'image', icon: 'Crop', isAvailable: true, isPremium: false, maxFileSize: 50 * 1024 * 1024, acceptedFormats: ['image/jpeg', 'image/png', 'image/webp'], processingType: 'client' },
-  { id: 'png-to-jpg', slug: 'png-to-jpg', category: 'image', icon: 'ArrowRightLeft', isAvailable: true, isPremium: false, maxFileSize: 50 * 1024 * 1024, acceptedFormats: ['image/png'], processingType: 'client' },
-  { id: 'jpg-to-png', slug: 'jpg-to-png', category: 'image', icon: 'ArrowRightLeft', isAvailable: true, isPremium: false, maxFileSize: 50 * 1024 * 1024, acceptedFormats: ['image/jpeg'], processingType: 'client' },
-  { id: 'webp-to-png', slug: 'webp-to-png', category: 'image', icon: 'ArrowRightLeft', isAvailable: true, isPremium: false, maxFileSize: 50 * 1024 * 1024, acceptedFormats: ['image/webp'], processingType: 'client' },
-  { id: 'webp-to-jpg', slug: 'webp-to-jpg', category: 'image', icon: 'ArrowRightLeft', isAvailable: true, isPremium: false, maxFileSize: 50 * 1024 * 1024, acceptedFormats: ['image/webp'], processingType: 'client' },
-  { id: 'heic-to-jpg', slug: 'heic-to-jpg', category: 'image', icon: 'Smartphone', isAvailable: true, isPremium: false, maxFileSize: 50 * 1024 * 1024, acceptedFormats: ['image/heic', 'image/heif'], processingType: 'client' },
-  { id: 'svg-to-png', slug: 'svg-to-png', category: 'image', icon: 'ArrowRightLeft', isAvailable: true, isPremium: false, maxFileSize: 10 * 1024 * 1024, acceptedFormats: ['image/svg+xml'], processingType: 'client' },
+  // ---------- Image (3 tools: converter + editor + remove-bg) ----------
   { id: 'image-converter', slug: 'converter', category: 'image', icon: 'ArrowRightLeft', isAvailable: true, isPremium: false, maxFileSize: 50 * 1024 * 1024, acceptedFormats: ['image/jpeg', 'image/png', 'image/webp', 'image/gif', 'image/bmp', 'image/svg+xml', 'image/heic', 'image/heif', 'image/avif', 'image/tiff'], processingType: 'client' },
+  { id: 'image-editor', slug: 'editor', category: 'image', icon: 'Sliders', isAvailable: true, isPremium: false, maxFileSize: 50 * 1024 * 1024, acceptedFormats: ['image/jpeg', 'image/png', 'image/webp', 'image/gif', 'image/bmp', 'image/svg+xml', 'image/heic', 'image/heif', 'image/avif'], processingType: 'client' },
   { id: 'remove-bg', slug: 'remove-bg', category: 'image', icon: 'Eraser', isAvailable: false, isPremium: false, maxFileSize: 25 * 1024 * 1024, acceptedFormats: ['image/jpeg', 'image/png', 'image/webp'], processingType: 'client' },
 
   // ---------- Video (5 tools) ----------
@@ -123,7 +115,7 @@ export function getAllCategories(): ToolCategory[] {
 }
 
 export function getPopularTools(): Tool[] {
-  const popularIds = ['pdf-organizer', 'compress-pdf', 'compress-image', 'resize-image', 'video-to-mp3', 'word-counter', 'json-formatter', 'qr-code']
+  const popularIds = ['pdf-organizer', 'compress-pdf', 'image-converter', 'image-editor', 'video-to-mp3', 'word-counter', 'json-formatter', 'qr-code']
   return popularIds.map((id) => tools.find((t) => t.id === id)).filter((t): t is Tool => t !== undefined)
 }
 
