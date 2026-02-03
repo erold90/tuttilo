@@ -297,7 +297,9 @@
         "prev": "Previous",
         "next": "Next",
         "page": "Page",
-        "of": "of"
+        "of": "of",
+        "tabEdit": "Edit PDF",
+        "tabFillSign": "Fill & Sign"
       }
     },
     "compress-image": {
@@ -1224,6 +1226,273 @@
         "printHint": "Use the browser print dialog to save as PDF",
         "preview": "Preview",
         "convertError": "Error converting file"
+      }
+    },
+    "pdf-images": {
+      "name": "PDF & Images",
+      "description": "Convert between PDF and images in both directions",
+      "seo": {
+        "title": "Free PDF to Images & Images to PDF Converter",
+        "content": "Convert PDF pages to JPG/PNG images or combine images into a PDF. Two-way conversion, free, private, works in your browser."
+      },
+      "faq": {
+        "q1": "Can I convert both ways?",
+        "a1": "Yes! Use the 'PDF to Images' tab to extract pages as images, or the 'Images to PDF' tab to combine multiple images into a single PDF document.",
+        "q2": "What image formats are supported?",
+        "a2": "For PDF to Images: JPG and PNG output. For Images to PDF: JPG, PNG, and WebP input. You can mix different image formats when creating a PDF.",
+        "q3": "Are my files safe?",
+        "a3": "All processing happens in your browser. Your files never leave your device — nothing is uploaded to any server."
+      },
+      "ui": {
+        "tabToImages": "PDF to Images",
+        "tabFromImages": "Images to PDF"
+      }
+    },
+    "pdf-protect": {
+      "name": "Protect PDF",
+      "description": "Add password protection and permissions to your PDF",
+      "seo": {
+        "title": "Free Online PDF Password Protection",
+        "content": "Add password protection to your PDF files. Set user and owner passwords, control print/copy/modify permissions. Free, private, in-browser."
+      },
+      "faq": {
+        "q1": "What type of encryption is used?",
+        "a1": "The tool uses standard PDF encryption with user and owner passwords. The user password is required to open the file, while the owner password controls editing permissions.",
+        "q2": "Can I control what users can do?",
+        "a2": "Yes! You can allow or restrict printing, copying text, and modifying the document. Set these permissions before protecting your PDF.",
+        "q3": "Are my files safe?",
+        "a3": "All processing happens in your browser. Your PDF and passwords never leave your device — nothing is sent to any server."
+      },
+      "ui": {
+        "dropzone": "Drop a PDF here or click to select",
+        "dropzoneHint": "PDF files up to 100 MB",
+        "password": "User Password (required to open)",
+        "passwordPlaceholder": "Enter password...",
+        "ownerPassword": "Owner Password (optional)",
+        "ownerPasswordPlaceholder": "Enter owner password...",
+        "ownerPasswordHint": "If empty, same as user password",
+        "permissions": "Allowed Permissions",
+        "perm_print": "Allow Printing",
+        "perm_copy": "Allow Copying Text",
+        "perm_modify": "Allow Modifying",
+        "protect": "Protect PDF",
+        "processing": "Protecting...",
+        "done": "PDF protected!",
+        "download": "Download",
+        "reset": "Start Over",
+        "error": "An error occurred. Please try again."
+      }
+    },
+    "pdf-page-numbers": {
+      "name": "Add Page Numbers",
+      "description": "Add page numbers to your PDF documents",
+      "seo": {
+        "title": "Free Online PDF Page Number Tool",
+        "content": "Add page numbers to any PDF. Choose position, format, font size, and starting number. Free, private, works entirely in your browser."
+      },
+      "faq": {
+        "q1": "Where can I place the page numbers?",
+        "a1": "You can place page numbers in six positions: bottom center, bottom left, bottom right, top center, top left, or top right.",
+        "q2": "Can I customize the format?",
+        "a2": "Yes! Choose from simple numbers (1, 2, 3), fraction format (1/N), or 'Page X' and 'Page X of N' formats. You can also set the starting number and font size.",
+        "q3": "Are my files safe?",
+        "a3": "All processing happens in your browser using pdf-lib. Your files never leave your device."
+      },
+      "ui": {
+        "dropzone": "Drop a PDF here or click to select",
+        "dropzoneHint": "PDF files up to 100 MB",
+        "position": "Position",
+        "posBottomCenter": "Bottom Center",
+        "posBottomLeft": "Bottom Left",
+        "posBottomRight": "Bottom Right",
+        "posTopCenter": "Top Center",
+        "posTopLeft": "Top Left",
+        "posTopRight": "Top Right",
+        "format": "Format",
+        "fontSize": "Font Size",
+        "startFrom": "Start From",
+        "apply": "Add Page Numbers",
+        "processing": "Processing...",
+        "done": "Page numbers added!",
+        "download": "Download",
+        "reset": "Start Over",
+        "error": "An error occurred. Please try again."
+      }
+    },
+    "pdf-watermark": {
+      "name": "PDF Watermark",
+      "description": "Add text watermarks to your PDF documents",
+      "seo": {
+        "title": "Free Online PDF Watermark Tool",
+        "content": "Add custom text watermarks to PDF files. Control font size, opacity, rotation angle. Free, private, processed entirely in your browser."
+      },
+      "faq": {
+        "q1": "Can I customize the watermark appearance?",
+        "a1": "Yes! You can set the watermark text, font size (12-120px), opacity (5-80%), and rotation angle (-90° to 90°). The watermark is centered on each page.",
+        "q2": "Is the watermark added to all pages?",
+        "a2": "Yes, the watermark is applied to every page of the PDF document automatically.",
+        "q3": "Are my files safe?",
+        "a3": "All processing happens in your browser. Your files never leave your device."
+      },
+      "ui": {
+        "dropzone": "Drop a PDF here or click to select",
+        "dropzoneHint": "PDF files up to 100 MB",
+        "text": "Watermark Text",
+        "textPlaceholder": "Enter watermark text...",
+        "fontSize": "Font Size",
+        "opacity": "Opacity",
+        "rotation": "Rotation",
+        "apply": "Add Watermark",
+        "processing": "Processing...",
+        "done": "Watermark added!",
+        "download": "Download",
+        "reset": "Start Over",
+        "error": "An error occurred. Please try again."
+      }
+    },
+    "pdf-to-excel": {
+      "name": "PDF to Excel",
+      "description": "Extract tables and data from PDF to Excel spreadsheets",
+      "seo": {
+        "title": "Free PDF to Excel Converter Online",
+        "content": "Convert PDF tables to Excel (XLSX) spreadsheets. Automatic table detection with column alignment. Free, private, in-browser processing."
+      },
+      "faq": {
+        "q1": "How does table detection work?",
+        "a1": "The tool extracts text from each PDF page with position data, then uses coordinate-based heuristics to detect rows (by Y position) and columns (by X position) to reconstruct the table structure.",
+        "q2": "Does it work with scanned PDFs?",
+        "a2": "The tool works best with text-based PDFs. For scanned PDFs, use the OCR tool first to extract text, then convert to Excel.",
+        "q3": "Are my files safe?",
+        "a3": "All processing happens in your browser. Your files never leave your device."
+      },
+      "ui": {
+        "dropzone": "Drop a PDF here or click to select",
+        "dropzoneHint": "PDF files up to 100 MB",
+        "extract": "Convert to Excel",
+        "processing": "Extracting...",
+        "done": "Excel file ready!",
+        "download": "Download XLSX",
+        "reset": "Start Over",
+        "error": "An error occurred. Please try again.",
+        "noTables": "No text data found in this PDF."
+      }
+    },
+    "pdf-to-pptx": {
+      "name": "PDF to PowerPoint",
+      "description": "Convert PDF pages to PowerPoint presentations",
+      "seo": {
+        "title": "Free PDF to PowerPoint Converter Online",
+        "content": "Convert PDF files to PowerPoint (PPTX) presentations. Each page becomes a slide. Choose quality level. Free, private, in-browser."
+      },
+      "faq": {
+        "q1": "How does the conversion work?",
+        "a1": "Each PDF page is rendered as a high-quality image and placed as a full-page slide in the PowerPoint file. The slide dimensions match the original page size.",
+        "q2": "Can I edit the slides after conversion?",
+        "a2": "The slides contain page images, so you can move, resize, or add new elements on top. For text editing, you would need to add new text boxes in PowerPoint.",
+        "q3": "Are my files safe?",
+        "a3": "All processing happens in your browser. Your files never leave your device."
+      },
+      "ui": {
+        "dropzone": "Drop a PDF here or click to select",
+        "dropzoneHint": "PDF files up to 100 MB",
+        "quality": "Quality",
+        "qualityNormal": "Normal",
+        "qualityHigh": "High",
+        "qualityMax": "Maximum",
+        "convert": "Convert to PPTX",
+        "processing": "Converting...",
+        "done": "PowerPoint ready!",
+        "download": "Download PPTX",
+        "reset": "Start Over",
+        "error": "An error occurred. Please try again."
+      }
+    },
+    "pdf-ocr": {
+      "name": "OCR - Text Recognition",
+      "description": "Extract text from scanned PDFs and images using OCR",
+      "seo": {
+        "title": "Free Online OCR — PDF & Image Text Recognition",
+        "content": "Extract text from scanned PDFs and images using OCR. Supports 8 languages. Free, private, processed in your browser with Tesseract.js."
+      },
+      "faq": {
+        "q1": "What languages are supported?",
+        "a1": "The OCR engine supports English, Italian, Spanish, French, German, Portuguese, Japanese, and Korean. Select the appropriate language for best results.",
+        "q2": "Can I OCR both PDFs and images?",
+        "a2": "Yes! You can process PDF files (each page is rendered and analyzed) or image files directly (JPG, PNG, WebP, BMP, TIFF).",
+        "q3": "Are my files safe?",
+        "a3": "All processing happens in your browser using Tesseract.js. Your files never leave your device."
+      },
+      "ui": {
+        "dropzone": "Drop a PDF or image here",
+        "dropzoneHint": "PDF, JPG, PNG, WebP, BMP, TIFF",
+        "language": "OCR Language",
+        "recognize": "Extract Text",
+        "processing": "Processing...",
+        "recognizing": "Recognizing text...",
+        "renderingPage": "Rendering page",
+        "page": "page",
+        "done": "Text extracted!",
+        "downloadTxt": "Download TXT",
+        "copy": "Copy",
+        "reset": "Start Over",
+        "error": "An error occurred. Please try again.",
+        "noText": "No text found in this document."
+      }
+    },
+    "pdf-repair": {
+      "name": "Repair PDF",
+      "description": "Fix corrupted or damaged PDF files",
+      "seo": {
+        "title": "Free Online PDF Repair Tool",
+        "content": "Repair corrupted or damaged PDF files. Two-stage recovery with pdf-lib and pdfjs-dist. Free, private, works in your browser."
+      },
+      "faq": {
+        "q1": "How does PDF repair work?",
+        "a1": "The tool uses a two-stage approach: first, it tries to parse and re-save the PDF directly. If that fails, it renders each page as a high-quality image and rebuilds a clean PDF.",
+        "q2": "Will I lose any content?",
+        "a2": "Stage 1 preserves all content including text and images. Stage 2 (image reconstruction) preserves visual appearance but text won't be selectable.",
+        "q3": "Are my files safe?",
+        "a3": "All processing happens in your browser. Your files never leave your device."
+      },
+      "ui": {
+        "dropzone": "Drop a damaged PDF here",
+        "dropzoneHint": "PDF files up to 100 MB",
+        "repair": "Repair PDF",
+        "processing": "Repairing...",
+        "done": "PDF repaired!",
+        "pages": "pages recovered",
+        "download": "Download",
+        "reset": "Start Over",
+        "cantRepair": "Unable to repair this file. The PDF may be too damaged.",
+        "error": "An error occurred. Please try again."
+      }
+    },
+    "pdf-to-pdfa": {
+      "name": "Convert to PDF/A",
+      "description": "Convert PDF files to PDF/A archive format",
+      "seo": {
+        "title": "Free PDF to PDF/A Converter Online",
+        "content": "Convert PDF files to PDF/A-1b archive format for long-term preservation. Embeds all content and adds conformance metadata. Free, in-browser."
+      },
+      "faq": {
+        "q1": "What is PDF/A?",
+        "a1": "PDF/A is an ISO-standardized format for long-term digital preservation. It ensures the document can be reproduced exactly the same way in the future by embedding all required resources.",
+        "q2": "What conformance level is used?",
+        "a2": "The tool produces PDF/A-1b (basic conformance) which ensures visual appearance preservation. All content is embedded as images with XMP metadata marking conformance.",
+        "q3": "Are my files safe?",
+        "a3": "All processing happens in your browser. Your files never leave your device."
+      },
+      "ui": {
+        "dropzone": "Drop a PDF here or click to select",
+        "dropzoneHint": "PDF files up to 100 MB",
+        "info": "Your PDF will be converted to PDF/A-1b format for long-term archival. All pages are re-rendered and embedded with conformance metadata.",
+        "convert": "Convert to PDF/A",
+        "processing": "Converting...",
+        "done": "PDF/A ready!",
+        "conformance": "PDF/A-1b conformance",
+        "download": "Download",
+        "reset": "Start Over",
+        "error": "An error occurred. Please try again."
       }
     }
   },
