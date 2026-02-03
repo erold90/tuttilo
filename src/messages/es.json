@@ -1,1 +1,168 @@
-{"content":"replace_with_file"}
+{
+  "common": {
+    "siteName": "Tuttilo",
+    "tagline": "Todas las herramientas online en un solo lugar",
+    "searchPlaceholder": "Buscar una herramienta...",
+    "darkMode": "Modo oscuro",
+    "lightMode": "Modo claro",
+    "systemMode": "Tema del sistema",
+    "toggleTheme": "Cambiar tema",
+    "switchLanguage": "Cambiar idioma",
+    "languages": {
+      "it": "Italiano",
+      "en": "English",
+      "es": "Español",
+      "fr": "Français",
+      "de": "Deutsch",
+      "pt": "Português",
+      "ja": "日本語",
+      "ko": "한국어"
+    },
+    "privacyBadge": "Tus archivos nunca salen del navegador",
+    "free": "Gratuito",
+    "noRegistration": "Sin registro",
+    "noLimits": "Sin límites",
+    "faq": "Preguntas Frecuentes",
+    "relatedTools": "Herramientas Relacionadas",
+    "tryNow": "Probar ahora",
+    "home": "Inicio",
+    "howItWorks": {
+      "upload": {
+        "title": "Subir",
+        "desc": "Selecciona tu archivo"
+      },
+      "process": {
+        "title": "Procesar",
+        "desc": "Ajusta la configuración"
+      },
+      "download": {
+        "title": "Descargar",
+        "desc": "Obtén el resultado"
+      }
+    },
+    "batch": {
+      "processing": "Procesando...",
+      "done": "¡Hecho!",
+      "convertAll": "Convertir Todos",
+      "downloadAll": "Descargar Todos",
+      "reset": "Empezar de nuevo",
+      "download": "Descargar"
+    }
+  },
+  "nav": {
+    "pdf": "PDF",
+    "image": "Imágenes",
+    "video": "Vídeo",
+    "audio": "Audio",
+    "text": "Texto",
+    "developer": "Desarrolladores",
+    "youtube": "YouTube",
+    "allTools": "Todas las herramientas",
+    "home": "Inicio",
+    "openMenu": "Abrir menú"
+  },
+  "home": {
+    "title": "Todas las herramientas online que necesitas",
+    "subtitle": "Gratis, sin registro, directamente en tu navegador. Edita PDF, imágenes, vídeos, audio y mucho más.",
+    "searchPlaceholder": "¿Qué quieres hacer? Busca entre más de 45 herramientas...",
+    "privacyNote": "Tus archivos nunca salen del navegador",
+    "categories": "Categorías",
+    "categoryDesc": {
+      "pdf": "Combina, divide, comprime y convierte PDF",
+      "image": "Comprime, redimensiona y convierte imágenes",
+      "video": "Comprime, recorta y convierte vídeos",
+      "audio": "Corta, convierte y graba audio",
+      "text": "Cuenta palabras, compara textos y más",
+      "developer": "JSON, Base64, Regex, QR Code y más",
+      "youtube": "Miniaturas y transcripciones de YouTube"
+    },
+    "favorites": "Tus Favoritos",
+    "recents": "Usados Recientemente",
+    "popularTools": "Herramientas más populares",
+    "allTools": "Todas las herramientas",
+    "stats": {
+      "tools": "36+ herramientas",
+      "filesProcessed": "Archivos procesados",
+      "noUpload": "100% en el navegador"
+    },
+    "trust": {
+      "browserOnly": "Procesamiento en el Navegador",
+      "browserOnlyDesc": "Tus archivos nunca salen de tu dispositivo. Todo el procesamiento ocurre localmente.",
+      "noRegistration": "Sin Registro",
+      "noRegistrationDesc": "Usa cualquier herramienta al instante. Sin cuenta, sin email, sin límites.",
+      "alwaysFree": "Siempre Gratis",
+      "alwaysFreeDesc": "Todas las herramientas son gratis para siempre. Sin costos ocultos.",
+      "secureByDesign": "Seguro por Diseño",
+      "secureByDesignDesc": "Sin subidas al servidor significa cero riesgo de violación de datos."
+    },
+    "features": {
+      "privacy": {
+        "title": "Privacidad garantizada",
+        "desc": "Tus archivos se procesan directamente en tu navegador. Sin subidas a servidores externos."
+      },
+      "fast": {
+        "title": "Rápido y gratuito",
+        "desc": "Todas las herramientas son gratuitas y funcionan al instante, sin esperas."
+      },
+      "free": {
+        "title": "Sin registro",
+        "desc": "No se necesita cuenta. Usa cualquier herramienta de inmediato, sin límites."
+      }
+    }
+  },
+  "search": {
+    "openSearch": "Buscar",
+    "title": "Buscar herramientas",
+    "placeholder": "Buscar entre las herramientas...",
+    "noResults": "No se encontraron resultados",
+    "hint": "Usa las teclas de flecha para navegar"
+  },
+  "tools": {
+    "placeholder": "PLACEHOLDER"
+  },
+  "upload": {
+    "dragDrop": "Arrastra los archivos aquí",
+    "or": "o",
+    "clickToSelect": "Haz clic para seleccionar archivos",
+    "supportedFormats": "Formatos compatibles: {formats}",
+    "maxSize": "Tamaño máximo: {size}",
+    "processing": "Procesando...",
+    "done": "¡Completado!",
+    "download": "Descargar",
+    "downloadAll": "Descargar todo",
+    "error": {
+      "fileTooLarge": "El archivo es demasiado grande. Tamaño máximo: {size}",
+      "unsupportedFormat": "Formato no compatible. Formatos aceptados: {formats}",
+      "processingFailed": "El procesamiento ha fallado. Inténtalo de nuevo.",
+      "tooManyFiles": "Demasiados archivos. Máximo: {max}"
+    }
+  },
+  "pages": {
+    "privacy": {
+      "title": "Política de Privacidad"
+    },
+    "terms": {
+      "title": "Términos de Servicio"
+    },
+    "about": {
+      "title": "Sobre Tuttilo"
+    },
+    "contact": {
+      "title": "Contáctanos"
+    }
+  },
+  "footer": {
+    "tagline": "Todas las herramientas online que necesitas, gratis y sin registro.",
+    "privacyBadge": "Tus archivos nunca salen del navegador",
+    "tools": "Herramientas",
+    "company": "Empresa",
+    "about": "Quiénes somos",
+    "contact": "Contacto",
+    "privacy": "Privacy Policy",
+    "terms": "Términos de Servicio",
+    "settings": "Configuración",
+    "language": "Idioma",
+    "allRightsReserved": "Todos los derechos reservados",
+    "filesNeverLeave": "Tus archivos nunca salen del navegador"
+  }
+}
