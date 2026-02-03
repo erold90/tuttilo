@@ -31,12 +31,18 @@ import { ScreenRecorder } from "@/components/tools/screen-recorder";
 import { AudioCutter } from "@/components/tools/audio-cutter";
 import { CompressPdf } from "@/components/tools/compress-pdf";
 // Sprint 5 (PDF Advanced — consolidated)
-import { PdfToImages } from "@/components/tools/pdf-to-images";
-import { ImagesToPdf } from "@/components/tools/images-to-pdf";
+import { PdfEditorUnified } from "@/components/tools/pdf-editor-unified";
+import { PdfImages } from "@/components/tools/pdf-images";
 import { UnlockPdf } from "@/components/tools/unlock-pdf";
 import { PdfWord } from "@/components/tools/pdf-word";
-import { PdfFillSign } from "@/components/tools/pdf-fill-sign";
-import { PdfEditor } from "@/components/tools/pdf-editor";
+import { PdfProtect } from "@/components/tools/pdf-protect";
+import { PdfPageNumbers } from "@/components/tools/pdf-page-numbers";
+import { PdfWatermark } from "@/components/tools/pdf-watermark";
+import { PdfToExcel } from "@/components/tools/pdf-to-excel";
+import { PdfToPptx } from "@/components/tools/pdf-to-pptx";
+import { PdfOcr } from "@/components/tools/pdf-ocr";
+import { PdfRepair } from "@/components/tools/pdf-repair";
+import { PdfToPdfa } from "@/components/tools/pdf-to-pdfa";
 // Sprint 6 (Video) — via client wrapper for ssr:false (FFmpeg references document)
 import { CompressVideo, TrimVideo, VideoToGif, AudioConverter, VideoToMp3 } from "@/components/tools/ffmpeg-tools";
 import { YoutubeThumbnail } from "@/components/tools/youtube-thumbnail";
@@ -59,12 +65,18 @@ const toolComponents: Record<string, React.ComponentType> = {
   "screen-recorder": ScreenRecorder,
   "video-to-mp3": VideoToMp3,
   "audio-cutter": AudioCutter,
-  "pdf-to-images": PdfToImages,
-  "images-to-pdf": ImagesToPdf,
+  "pdf-editor": PdfEditorUnified,
+  "pdf-images": PdfImages,
   "unlock-pdf": UnlockPdf,
   "pdf-word": PdfWord,
-  "pdf-fill-sign": PdfFillSign,
-  "pdf-editor": PdfEditor,
+  "pdf-to-excel": PdfToExcel,
+  "pdf-to-pptx": PdfToPptx,
+  "pdf-protect": PdfProtect,
+  "pdf-page-numbers": PdfPageNumbers,
+  "pdf-watermark": PdfWatermark,
+  "pdf-ocr": PdfOcr,
+  "pdf-repair": PdfRepair,
+  "pdf-to-pdfa": PdfToPdfa,
   "compress-video": CompressVideo,
   "trim-video": TrimVideo,
   "video-to-gif": VideoToGif,
