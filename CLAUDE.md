@@ -63,12 +63,13 @@ Usa MCP Memory per salvare stato tra sessioni:
 
 ### Step 1: Deploy su Cloudflare via Wrangler (OBBLIGATORIO)
 ```bash
-npm run build && npx @cloudflare/next-on-pages && npx wrangler pages deploy .vercel/output/static --project-name tuttilo --branch main --commit-dirty=true
+npm run build && npx @cloudflare/next-on-pages && rm -f .vercel/output/static/_worker.js/__next-on-pages-dist__/assets/*.wasm.bin && npx wrangler pages deploy .vercel/output/static --project-name tuttilo --branch main --commit-dirty=true
 ```
 - Account Cloudflare: erold90@gmail.com
 - Progetto Pages: tuttilo
 - URL produzione: https://tuttilo.com
 - Wrangler autenticato localmente (OAuth token in ~/.wrangler/)
+- **WASM FIX**: Il `rm -f *.wasm.bin` rimuove i binari jSquash dal Worker (usati solo client-side). Senza questo step il Worker supera il limite 3 MiB del piano free Cloudflare. I WASM restano disponibili in `_next/static/media/` per il client.
 
 ### Step 2: Push su GitHub via MCP (OBBLIGATORIO)
 ```
@@ -94,7 +95,7 @@ mcp__github__push_files(owner="erold90", repo="tuttilo", branch="main", files=[.
 ## Pattern per Nuovo Tool (Checklist Rapida)
 1. Crea componente in `src/components/tools/{id}.tsx` ("use client", useTranslations)
 2. Registra in `src/lib/tools/registry.ts` (isAvailable: true)
-3. Aggiungi import + mapping in `src/app/[locale]/[category]/[tool]/page.tsx`
+3. Aggiungi dynamic import in `src/components/tools/tool-loader.tsx` + ID in `implementedToolIds` in `src/app/[locale]/[category]/[tool]/page.tsx`
 4. Aggiungi icona in `src/components/tool-icon.tsx` (se nuova, Phosphor Icons duotone)
 5. Aggiungi traduzioni EN in `src/messages/en.json` (name, description, seo, faq, ui)
 6. Traduci in 7 lingue con `/translate-tool {id}` o subagent paralleli
