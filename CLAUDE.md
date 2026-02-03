@@ -2,6 +2,7 @@
 
 ## Compact Instructions
 Quando compatti questa conversazione, PRESERVA SEMPRE:
+- **DEPLOY OBBLIGATORIO**: SEMPRE deploy via wrangler su Cloudflare + push GitHub via MCP. MAI saltare nessuno dei due.
 - Sprint corrente e quale task stai facendo (leggi docs/CURRENT_SPRINT.md)
 - Lista COMPLETA file creati/modificati nella sessione con percorsi ASSOLUTI
 - Decisioni architetturali prese (leggi docs/ARCHITECTURE.md)
@@ -9,7 +10,7 @@ Quando compatti questa conversazione, PRESERVA SEMPRE:
 - Stato del task in corso (completato? a metà? bloccato?)
 - Il contenuto di docs/SESSION_HANDOFF.md
 - **LINGUE**: 8 lingue: EN (default), IT, ES, FR, DE, PT, JA, KO. OGNI tool DEVE essere tradotto in TUTTE le 8 lingue
-- **TOOL IN CORSO**: Se stai implementando un tool, preserva: ID tool, quali fasi sono complete (componente/registry/traduzioni EN/traduzioni 7 lingue/build/push), e quali chiavi di traduzione sono state aggiunte
+- **TOOL IN CORSO**: Se stai implementando un tool, preserva: ID tool, quali fasi sono complete (componente/registry/traduzioni EN/traduzioni 7 lingue/build/push/deploy-wrangler), e quali chiavi di traduzione sono state aggiunte
 - **DIPENDENZE**: Se hai installato nuove dipendenze npm, elencale
 - **MEMORIA MCP**: Cerca entità "Tuttilo_PDFEditTools" per contesto sui PDF tool in sviluppo
 
@@ -56,14 +57,33 @@ Usa MCP Memory per salvare stato tra sessioni:
 - `mcp__memory__add_observations` — salva nuove info
 - Entità chiave: `Tuttilo_Progetto`, `Tuttilo_PDFEditTools`
 
-## Deploy Automatico (IMPORTANTE)
-- **Il deploy e AUTOMATICO**: ogni push su `main` (anche via MCP) triggera GitHub Actions che builda e deploya su Cloudflare Pages
-- Workflow: `.github/workflows/deploy.yml`
-- Secrets GitHub: `CLOUDFLARE_API_TOKEN` + `CLOUDFLARE_ACCOUNT_ID` (gia configurati)
-- Tempo build+deploy: ~2:30 minuti
-- Monitoraggio: https://github.com/erold90/tuttilo/actions
-- **NON serve** wrangler login locale o deploy manuale
-- Dopo ogni push MCP, il sito su tuttilo.com si aggiorna automaticamente
+## Deploy (REGOLA CRITICA — NON IGNORARE MAI)
+
+**DOPO OGNI MODIFICA devi SEMPRE fare ENTRAMBI questi step:**
+
+### Step 1: Deploy su Cloudflare via Wrangler (OBBLIGATORIO)
+```bash
+npm run build && npx @cloudflare/next-on-pages && npx wrangler pages deploy .vercel/output/static --project-name tuttilo --branch main --commit-dirty=true
+```
+- Account Cloudflare: erold90@gmail.com
+- Progetto Pages: tuttilo
+- URL produzione: https://tuttilo.com
+- Wrangler autenticato localmente (OAuth token in ~/.wrangler/)
+
+### Step 2: Push su GitHub via MCP (OBBLIGATORIO)
+```
+mcp__github__push_files(owner="erold90", repo="tuttilo", branch="main", files=[...])
+```
+- SSH/HTTPS push locale NON funziona (witerose ≠ erold90)
+- Batch: max 10-14 file per push, traduzioni JSON una alla volta
+- GitHub Actions auto-deploy parte dopo il push (backup del deploy wrangler)
+
+### Regole INVIOLABILI
+- **MAI** fare solo push senza deploy wrangler
+- **MAI** fare solo deploy senza push GitHub
+- **MAI** considerare il lavoro finito senza aver fatto ENTRAMBI
+- **SEMPRE** verificare che il build passi PRIMA di deployare
+- Questa regola vale per OGNI sessione, OGNI compaction, OGNI contesto nuovo
 
 ## File di Stato (LEGGILI SEMPRE)
 - `docs/ROADMAP.md` — Piano generale 7 sprint
@@ -75,9 +95,10 @@ Usa MCP Memory per salvare stato tra sessioni:
 1. Crea componente in `src/components/tools/{id}.tsx` ("use client", useTranslations)
 2. Registra in `src/lib/tools/registry.ts` (isAvailable: true)
 3. Aggiungi import + mapping in `src/app/[locale]/[category]/[tool]/page.tsx`
-4. Aggiungi icona in `src/components/tool-icon.tsx` (se nuova)
+4. Aggiungi icona in `src/components/tool-icon.tsx` (se nuova, Phosphor Icons duotone)
 5. Aggiungi traduzioni EN in `src/messages/en.json` (name, description, seo, faq, ui)
 6. Traduci in 7 lingue con `/translate-tool {id}` o subagent paralleli
-7. Build test: `npx next build`
-8. Push GitHub via MCP
-9. Aggiorna docs (CURRENT_SPRINT.md, SESSION_HANDOFF.md)
+7. Build test: `npm run build`
+8. **DEPLOY Cloudflare via wrangler** (vedi sezione Deploy sopra)
+9. **PUSH GitHub via MCP** (vedi sezione Deploy sopra)
+10. Aggiorna docs (CURRENT_SPRINT.md, SESSION_HANDOFF.md)
