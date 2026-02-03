@@ -1106,20 +1106,14 @@
         "title": "Free Online PDF Organizer — Merge, Split & Rotate",
         "content": "Merge multiple PDFs, split pages, and rotate pages — all in one free tool. Works directly in your browser, no upload required."
       },
-      "faq": [
-        {
-          "q": "What can PDF Organizer do?",
-          "a": "PDF Organizer combines three tools in one: merge multiple PDFs, split a PDF into individual pages or custom ranges, and rotate pages by 90, 180, or 270 degrees."
-        },
-        {
-          "q": "Is it free?",
-          "a": "Yes, completely free with no registration or file limits. Everything is processed in your browser."
-        },
-        {
-          "q": "Can I reorder pages before merging?",
-          "a": "Yes! In the Merge tab, use the up/down arrows to reorder your PDF files before merging them."
-        }
-      ],
+      "faq": {
+        "q1": "What can PDF Organizer do?",
+        "a1": "PDF Organizer combines three tools in one: merge multiple PDFs, split a PDF into individual pages or custom ranges, and rotate pages by 90, 180, or 270 degrees.",
+        "q2": "Is it free?",
+        "a2": "Yes, completely free with no registration or file limits. Everything is processed in your browser.",
+        "q3": "Can I reorder pages before merging?",
+        "a3": "Yes! In the Merge tab, use the up/down arrows to reorder your PDF files before merging them."
+      },
       "ui": {
         "dropzone": "Drop PDF files here",
         "dropzoneHint": "or click to browse",
@@ -1165,20 +1159,14 @@
         "title": "Free PDF to Images Converter — JPG & PNG",
         "content": "Convert PDF pages to high-quality JPG or PNG images. Choose format, quality, and scale. Free, private, no registration."
       },
-      "faq": [
-        {
-          "q": "What formats are supported?",
-          "a": "You can convert PDF pages to either JPG or PNG format. JPG offers smaller file sizes with adjustable quality, while PNG supports transparency and lossless quality."
-        },
-        {
-          "q": "Can I adjust the image quality?",
-          "a": "Yes! For JPG, use the quality slider (10%-100%). For PNG, choose the rendering scale (1x-4x) and enable transparency if needed."
-        },
-        {
-          "q": "Is it free?",
-          "a": "Yes, completely free with no registration. All processing happens in your browser."
-        }
-      ],
+      "faq": {
+        "q1": "What formats are supported?",
+        "a1": "You can convert PDF pages to either JPG or PNG format. JPG offers smaller file sizes with adjustable quality, while PNG supports transparency and lossless quality.",
+        "q2": "Can I adjust the image quality?",
+        "a2": "Yes! For JPG, use the quality slider (10%-100%). For PNG, choose the rendering scale (1x-4x) and enable transparency if needed.",
+        "q3": "Is it free?",
+        "a3": "Yes, completely free with no registration. All processing happens in your browser."
+      },
       "ui": {
         "dropzone": "Drop a PDF here",
         "dropzoneHint": "or click to browse",
@@ -1201,20 +1189,14 @@
         "title": "Free PDF to Word & Word to PDF Converter",
         "content": "Convert PDF to editable Word documents or Word files to PDF. Auto-detects file type. Free, private, no registration."
       },
-      "faq": [
-        {
-          "q": "How does it work?",
-          "a": "Simply drop a PDF or Word file. The tool automatically detects the format and converts it."
-        },
-        {
-          "q": "Will the formatting be preserved?",
-          "a": "The tool preserves text, headings, and basic formatting. Complex layouts may vary slightly."
-        },
-        {
-          "q": "Is it free?",
-          "a": "Yes, completely free with no registration. All processing happens in your browser."
-        }
-      ],
+      "faq": {
+        "q1": "How does it work?",
+        "a1": "Simply drop a PDF or Word file. The tool automatically detects the format and converts it.",
+        "q2": "Will the formatting be preserved?",
+        "a2": "The tool preserves text, headings, and basic formatting. Complex layouts may vary slightly.",
+        "q3": "Is it free?",
+        "a3": "Yes, completely free with no registration. All processing happens in your browser."
+      },
       "ui": {
         "dropzone": "Drop a PDF or Word file here",
         "dropzoneHint": "Accepts .pdf, .docx, .doc",
