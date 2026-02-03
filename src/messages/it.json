@@ -305,7 +305,9 @@
         "prev": "Precedente",
         "next": "Successiva",
         "page": "Pagina",
-        "of": "di"
+        "of": "di",
+        "tabEdit": "Modifica PDF",
+        "tabFillSign": "Compila e Firma"
       }
     },
     "compress-image": {
@@ -1232,6 +1234,273 @@
         "printHint": "Usa la finestra di stampa per salvare come PDF",
         "preview": "Anteprima",
         "convertError": "Errore conversione file"
+      }
+    },
+    "pdf-images": {
+      "name": "PDF e Immagini",
+      "description": "Converti tra PDF e immagini in entrambe le direzioni",
+      "seo": {
+        "title": "Convertitore Gratuito PDF in Immagini e Immagini in PDF",
+        "content": "Converti pagine PDF in immagini JPG/PNG o combina immagini in un PDF. Conversione bidirezionale, gratuita, privata, funziona nel tuo browser."
+      },
+      "faq": {
+        "q1": "Posso convertire in entrambe le direzioni?",
+        "a1": "Sì! Usa la scheda 'PDF in Immagini' per estrarre le pagine come immagini, oppure la scheda 'Immagini in PDF' per combinare più immagini in un unico documento PDF.",
+        "q2": "Quali formati immagine sono supportati?",
+        "a2": "Per PDF in Immagini: output JPG e PNG. Per Immagini in PDF: input JPG, PNG e WebP. Puoi combinare formati diversi quando crei un PDF.",
+        "q3": "I miei file sono al sicuro?",
+        "a3": "Tutta l'elaborazione avviene nel tuo browser. I tuoi file non lasciano mai il dispositivo — nulla viene caricato su alcun server."
+      },
+      "ui": {
+        "tabToImages": "PDF in Immagini",
+        "tabFromImages": "Immagini in PDF"
+      }
+    },
+    "pdf-protect": {
+      "name": "Proteggi PDF",
+      "description": "Aggiungi protezione con password e permessi al tuo PDF",
+      "seo": {
+        "title": "Protezione PDF con Password Online Gratuita",
+        "content": "Aggiungi protezione con password ai tuoi file PDF. Imposta password utente e proprietario, controlla i permessi di stampa/copia/modifica. Gratuito, privato, nel browser."
+      },
+      "faq": {
+        "q1": "Quale tipo di crittografia viene usato?",
+        "a1": "Lo strumento usa la crittografia PDF standard con password utente e proprietario. La password utente è necessaria per aprire il file, mentre la password proprietario controlla i permessi di modifica.",
+        "q2": "Posso controllare cosa possono fare gli utenti?",
+        "a2": "Sì! Puoi consentire o limitare la stampa, la copia del testo e la modifica del documento. Imposta questi permessi prima di proteggere il PDF.",
+        "q3": "I miei file sono al sicuro?",
+        "a3": "Tutta l'elaborazione avviene nel tuo browser. Il tuo PDF e le password non lasciano mai il dispositivo — nulla viene inviato a nessun server."
+      },
+      "ui": {
+        "dropzone": "Trascina un PDF qui o clicca per selezionare",
+        "dropzoneHint": "File PDF fino a 100 MB",
+        "password": "Password Utente (necessaria per aprire)",
+        "passwordPlaceholder": "Inserisci password...",
+        "ownerPassword": "Password Proprietario (opzionale)",
+        "ownerPasswordPlaceholder": "Inserisci password proprietario...",
+        "ownerPasswordHint": "Se vuota, uguale alla password utente",
+        "permissions": "Permessi Consentiti",
+        "perm_print": "Consenti Stampa",
+        "perm_copy": "Consenti Copia Testo",
+        "perm_modify": "Consenti Modifica",
+        "protect": "Proteggi PDF",
+        "processing": "Protezione in corso...",
+        "done": "PDF protetto!",
+        "download": "Scarica",
+        "reset": "Ricomincia",
+        "error": "Si è verificato un errore. Riprova."
+      }
+    },
+    "pdf-page-numbers": {
+      "name": "Aggiungi Numeri di Pagina",
+      "description": "Aggiungi numeri di pagina ai tuoi documenti PDF",
+      "seo": {
+        "title": "Strumento Numeri di Pagina PDF Online Gratuito",
+        "content": "Aggiungi numeri di pagina a qualsiasi PDF. Scegli posizione, formato, dimensione del font e numero iniziale. Gratuito, privato, funziona interamente nel browser."
+      },
+      "faq": {
+        "q1": "Dove posso posizionare i numeri di pagina?",
+        "a1": "Puoi posizionare i numeri di pagina in sei posizioni: centro in basso, sinistra in basso, destra in basso, centro in alto, sinistra in alto o destra in alto.",
+        "q2": "Posso personalizzare il formato?",
+        "a2": "Sì! Scegli tra numeri semplici (1, 2, 3), formato frazione (1/N) o formati 'Pagina X' e 'Pagina X di N'. Puoi anche impostare il numero iniziale e la dimensione del font.",
+        "q3": "I miei file sono al sicuro?",
+        "a3": "Tutta l'elaborazione avviene nel tuo browser usando pdf-lib. I tuoi file non lasciano mai il dispositivo."
+      },
+      "ui": {
+        "dropzone": "Trascina un PDF qui o clicca per selezionare",
+        "dropzoneHint": "File PDF fino a 100 MB",
+        "position": "Posizione",
+        "posBottomCenter": "Centro in Basso",
+        "posBottomLeft": "Sinistra in Basso",
+        "posBottomRight": "Destra in Basso",
+        "posTopCenter": "Centro in Alto",
+        "posTopLeft": "Sinistra in Alto",
+        "posTopRight": "Destra in Alto",
+        "format": "Formato",
+        "fontSize": "Dimensione Font",
+        "startFrom": "Inizia Da",
+        "apply": "Aggiungi Numeri di Pagina",
+        "processing": "Elaborazione...",
+        "done": "Numeri di pagina aggiunti!",
+        "download": "Scarica",
+        "reset": "Ricomincia",
+        "error": "Si è verificato un errore. Riprova."
+      }
+    },
+    "pdf-watermark": {
+      "name": "Filigrana PDF",
+      "description": "Aggiungi filigrane di testo ai tuoi documenti PDF",
+      "seo": {
+        "title": "Strumento Filigrana PDF Online Gratuito",
+        "content": "Aggiungi filigrane di testo personalizzate ai file PDF. Controlla dimensione del font, opacità, angolo di rotazione. Gratuito, privato, elaborato interamente nel browser."
+      },
+      "faq": {
+        "q1": "Posso personalizzare l'aspetto della filigrana?",
+        "a1": "Sì! Puoi impostare il testo della filigrana, la dimensione del font (12-120px), l'opacità (5-80%) e l'angolo di rotazione (da -90° a 90°). La filigrana è centrata su ogni pagina.",
+        "q2": "La filigrana viene aggiunta a tutte le pagine?",
+        "a2": "Sì, la filigrana viene applicata automaticamente a ogni pagina del documento PDF.",
+        "q3": "I miei file sono al sicuro?",
+        "a3": "Tutta l'elaborazione avviene nel tuo browser. I tuoi file non lasciano mai il dispositivo."
+      },
+      "ui": {
+        "dropzone": "Trascina un PDF qui o clicca per selezionare",
+        "dropzoneHint": "File PDF fino a 100 MB",
+        "text": "Testo Filigrana",
+        "textPlaceholder": "Inserisci il testo della filigrana...",
+        "fontSize": "Dimensione Font",
+        "opacity": "Opacità",
+        "rotation": "Rotazione",
+        "apply": "Aggiungi Filigrana",
+        "processing": "Elaborazione...",
+        "done": "Filigrana aggiunta!",
+        "download": "Scarica",
+        "reset": "Ricomincia",
+        "error": "Si è verificato un errore. Riprova."
+      }
+    },
+    "pdf-to-excel": {
+      "name": "PDF in Excel",
+      "description": "Estrai tabelle e dati dal PDF in fogli di calcolo Excel",
+      "seo": {
+        "title": "Convertitore PDF in Excel Online Gratuito",
+        "content": "Converti tabelle PDF in fogli di calcolo Excel (XLSX). Rilevamento automatico delle tabelle con allineamento colonne. Gratuito, privato, elaborazione nel browser."
+      },
+      "faq": {
+        "q1": "Come funziona il rilevamento delle tabelle?",
+        "a1": "Lo strumento estrae il testo da ogni pagina PDF con dati di posizione, poi usa euristiche basate sulle coordinate per rilevare righe (per posizione Y) e colonne (per posizione X) per ricostruire la struttura della tabella.",
+        "q2": "Funziona con PDF scansionati?",
+        "a2": "Lo strumento funziona meglio con PDF basati su testo. Per PDF scansionati, usa prima lo strumento OCR per estrarre il testo, poi converti in Excel.",
+        "q3": "I miei file sono al sicuro?",
+        "a3": "Tutta l'elaborazione avviene nel tuo browser. I tuoi file non lasciano mai il dispositivo."
+      },
+      "ui": {
+        "dropzone": "Trascina un PDF qui o clicca per selezionare",
+        "dropzoneHint": "File PDF fino a 100 MB",
+        "extract": "Converti in Excel",
+        "processing": "Estrazione in corso...",
+        "done": "File Excel pronto!",
+        "download": "Scarica XLSX",
+        "reset": "Ricomincia",
+        "error": "Si è verificato un errore. Riprova.",
+        "noTables": "Nessun dato testuale trovato in questo PDF."
+      }
+    },
+    "pdf-to-pptx": {
+      "name": "PDF in PowerPoint",
+      "description": "Converti pagine PDF in presentazioni PowerPoint",
+      "seo": {
+        "title": "Convertitore PDF in PowerPoint Online Gratuito",
+        "content": "Converti file PDF in presentazioni PowerPoint (PPTX). Ogni pagina diventa una diapositiva. Scegli il livello di qualità. Gratuito, privato, nel browser."
+      },
+      "faq": {
+        "q1": "Come funziona la conversione?",
+        "a1": "Ogni pagina PDF viene renderizzata come immagine di alta qualità e inserita come diapositiva a pagina intera nel file PowerPoint. Le dimensioni della diapositiva corrispondono alla pagina originale.",
+        "q2": "Posso modificare le diapositive dopo la conversione?",
+        "a2": "Le diapositive contengono immagini delle pagine, quindi puoi spostare, ridimensionare o aggiungere nuovi elementi sopra. Per modificare il testo, dovrai aggiungere nuove caselle di testo in PowerPoint.",
+        "q3": "I miei file sono al sicuro?",
+        "a3": "Tutta l'elaborazione avviene nel tuo browser. I tuoi file non lasciano mai il dispositivo."
+      },
+      "ui": {
+        "dropzone": "Trascina un PDF qui o clicca per selezionare",
+        "dropzoneHint": "File PDF fino a 100 MB",
+        "quality": "Qualità",
+        "qualityNormal": "Normale",
+        "qualityHigh": "Alta",
+        "qualityMax": "Massima",
+        "convert": "Converti in PPTX",
+        "processing": "Conversione in corso...",
+        "done": "PowerPoint pronto!",
+        "download": "Scarica PPTX",
+        "reset": "Ricomincia",
+        "error": "Si è verificato un errore. Riprova."
+      }
+    },
+    "pdf-ocr": {
+      "name": "OCR - Riconoscimento Testo",
+      "description": "Estrai testo da PDF scansionati e immagini tramite OCR",
+      "seo": {
+        "title": "OCR Online Gratuito — Riconoscimento Testo da PDF e Immagini",
+        "content": "Estrai testo da PDF scansionati e immagini tramite OCR. Supporta 8 lingue. Gratuito, privato, elaborato nel browser con Tesseract.js."
+      },
+      "faq": {
+        "q1": "Quali lingue sono supportate?",
+        "a1": "Il motore OCR supporta inglese, italiano, spagnolo, francese, tedesco, portoghese, giapponese e coreano. Seleziona la lingua appropriata per risultati migliori.",
+        "q2": "Posso eseguire l'OCR sia su PDF che su immagini?",
+        "a2": "Sì! Puoi elaborare file PDF (ogni pagina viene renderizzata e analizzata) o file immagine direttamente (JPG, PNG, WebP, BMP, TIFF).",
+        "q3": "I miei file sono al sicuro?",
+        "a3": "Tutta l'elaborazione avviene nel tuo browser usando Tesseract.js. I tuoi file non lasciano mai il dispositivo."
+      },
+      "ui": {
+        "dropzone": "Trascina un PDF o un'immagine qui",
+        "dropzoneHint": "PDF, JPG, PNG, WebP, BMP, TIFF",
+        "language": "Lingua OCR",
+        "recognize": "Estrai Testo",
+        "processing": "Elaborazione...",
+        "recognizing": "Riconoscimento testo...",
+        "renderingPage": "Renderizzazione pagina",
+        "page": "pagina",
+        "done": "Testo estratto!",
+        "downloadTxt": "Scarica TXT",
+        "copy": "Copia",
+        "reset": "Ricomincia",
+        "error": "Si è verificato un errore. Riprova.",
+        "noText": "Nessun testo trovato in questo documento."
+      }
+    },
+    "pdf-repair": {
+      "name": "Ripara PDF",
+      "description": "Ripara file PDF corrotti o danneggiati",
+      "seo": {
+        "title": "Strumento di Riparazione PDF Online Gratuito",
+        "content": "Ripara file PDF corrotti o danneggiati. Recupero a due fasi con pdf-lib e pdfjs-dist. Gratuito, privato, funziona nel browser."
+      },
+      "faq": {
+        "q1": "Come funziona la riparazione PDF?",
+        "a1": "Lo strumento usa un approccio a due fasi: prima tenta di analizzare e risalvare il PDF direttamente. Se fallisce, renderizza ogni pagina come immagine di alta qualità e ricostruisce un PDF pulito.",
+        "q2": "Perderò dei contenuti?",
+        "a2": "La fase 1 preserva tutti i contenuti inclusi testo e immagini. La fase 2 (ricostruzione tramite immagini) preserva l'aspetto visivo ma il testo non sarà selezionabile.",
+        "q3": "I miei file sono al sicuro?",
+        "a3": "Tutta l'elaborazione avviene nel tuo browser. I tuoi file non lasciano mai il dispositivo."
+      },
+      "ui": {
+        "dropzone": "Trascina un PDF danneggiato qui",
+        "dropzoneHint": "File PDF fino a 100 MB",
+        "repair": "Ripara PDF",
+        "processing": "Riparazione in corso...",
+        "done": "PDF riparato!",
+        "pages": "pagine recuperate",
+        "download": "Scarica",
+        "reset": "Ricomincia",
+        "cantRepair": "Impossibile riparare questo file. Il PDF potrebbe essere troppo danneggiato.",
+        "error": "Si è verificato un errore. Riprova."
+      }
+    },
+    "pdf-to-pdfa": {
+      "name": "Converti in PDF/A",
+      "description": "Converti file PDF nel formato di archiviazione PDF/A",
+      "seo": {
+        "title": "Convertitore PDF in PDF/A Online Gratuito",
+        "content": "Converti file PDF nel formato di archiviazione PDF/A-1b per la conservazione a lungo termine. Incorpora tutti i contenuti e aggiunge metadati di conformità. Gratuito, nel browser."
+      },
+      "faq": {
+        "q1": "Cos'è il PDF/A?",
+        "a1": "PDF/A è un formato standardizzato ISO per la conservazione digitale a lungo termine. Garantisce che il documento possa essere riprodotto esattamente allo stesso modo in futuro incorporando tutte le risorse necessarie.",
+        "q2": "Quale livello di conformità viene utilizzato?",
+        "a2": "Lo strumento produce PDF/A-1b (conformità di base) che garantisce la preservazione dell'aspetto visivo. Tutti i contenuti vengono incorporati come immagini con metadati XMP che indicano la conformità.",
+        "q3": "I miei file sono al sicuro?",
+        "a3": "Tutta l'elaborazione avviene nel tuo browser. I tuoi file non lasciano mai il dispositivo."
+      },
+      "ui": {
+        "dropzone": "Trascina un PDF qui o clicca per selezionare",
+        "dropzoneHint": "File PDF fino a 100 MB",
+        "info": "Il tuo PDF verrà convertito nel formato PDF/A-1b per l'archiviazione a lungo termine. Tutte le pagine vengono ri-renderizzate e incorporate con metadati di conformità.",
+        "convert": "Converti in PDF/A",
+        "processing": "Conversione in corso...",
+        "done": "PDF/A pronto!",
+        "conformance": "Conformità PDF/A-1b",
+        "download": "Scarica",
+        "reset": "Ricomincia",
+        "error": "Si è verificato un errore. Riprova."
       }
     }
   },
