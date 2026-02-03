@@ -81,7 +81,7 @@ export function ImageEditor() {
   const [compressedSize, setCompressedSize] = useState(0);
   const [compressedUrl, setCompressedUrl] = useState("");
 
-  // ─── File handling ───────────────────────────────────
+  // ─── File handling ─────────────────────────────────────────
   async function handleFile(f: File) {
     let blob: Blob = f;
     const ext = f.name.toLowerCase();
@@ -232,7 +232,7 @@ export function ImageEditor() {
     setProcessing(false);
   }
 
-  // ─── Rotate & Flip ──────────────────────────────────
+  // ─── Rotate & Flip ────────────────────────────────────
   async function applyRotate(degrees: number) {
     if (!workingBlob) return;
     setProcessing(true);
