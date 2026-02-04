@@ -56,6 +56,7 @@ export function PdfEditorCore({ file, rawBytes, onReset }: PdfEditorProps) {
   const [penColor, setPenColor] = useState("#000000");
 
   const [hoverIdx, setHoverIdx] = useState<number | null>(null);
+  const [zoom, setZoom] = useState(1);
   const [, forceRender] = useState(0);
 
   const previewRef = useRef<HTMLCanvasElement>(null);
@@ -268,9 +269,10 @@ export function PdfEditorCore({ file, rawBytes, onReset }: PdfEditorProps) {
 
     const containerW = wrapperRef.current?.clientWidth ?? 700;
     const vp = page.getViewport({ scale: 1 });
-    let scale = (containerW - 32) / vp.width;
-    if (vp.height * scale > 800) scale = 800 / vp.height;
-    scale = Math.min(scale, 2);
+    let baseScale = (containerW - 32) / vp.width;
+    if (vp.height * baseScale > 800) baseScale = 800 / vp.height;
+    baseScale = Math.min(baseScale, 2);
+    const scale = baseScale * zoom;
 
     scaleRef.current = scale;
     pageDimsRef.current = { w: vp.width, h: vp.height };
@@ -295,7 +297,7 @@ export function PdfEditorCore({ file, rawBytes, onReset }: PdfEditorProps) {
     try { await extractText(currentPage, scale); } catch (err) {
       console.warn("PdfEditor extractText failed:", err);
     }
-  }, [rawBytes, currentPage, pageCount, extractText]);
+  }, [rawBytes, currentPage, pageCount, extractText, zoom]);
 
   useEffect(() => {
     if (pageCount > 0 && !resultUrl) {
@@ -315,6 +317,41 @@ export function PdfEditorCore({ file, rawBytes, onReset }: PdfEditorProps) {
     ctx.clearRect(0, 0, canvas.width, canvas.height);
     const scale = scaleRef.current;
 
+    // Always render edited text replacements (regardless of current mode)
+    for (const item of textItems) {
+      const key = `${currentPage}-${item.idx}`;
+      const isEdited = key in editedTexts && editedTexts[key] !== item.str;
+      const w = Math.max(item.vw, 20);
+
+      if (isEdited && !(mode === "select" && selectedIdx === item.idx)) {
+        // LIVE PREVIEW: white rect over original text + draw new text
+        const editedSize = editedSizes[key] ?? item.fontSize;
+        const scaledFs = editedSize * scale;
+        const fontFamily = item.fontFamily === "serif" ? "serif" : item.fontFamily === "monospace" ? "monospace" : "sans-serif";
+        const fontWeight = item.isBold ? "bold" : "normal";
+        const fontStyle = item.isItalic ? "italic" : "normal";
+
+        // White rect to cover original text
+        ctx.fillStyle = "#ffffff";
+        const pad = 2;
+        ctx.fillRect(item.vx - pad, item.vy - pad, w + pad * 2 + 60, item.vh + pad * 2);
+
+        // Draw new text
+        ctx.font = `${fontStyle} ${fontWeight} ${scaledFs}px ${fontFamily}`;
+        const editedColor = editedColors[key] ?? "#000000";
+        ctx.fillStyle = editedColor;
+        const baseline = item.vy + item.vh * (item.ascent / (item.ascent + Math.abs(item.descent)));
+        ctx.fillText(editedTexts[key], item.vx, baseline);
+
+        // Green indicator border
+        const newW = ctx.measureText(editedTexts[key]).width;
+        ctx.strokeStyle = "rgba(34, 197, 94, 0.6)";
+        ctx.lineWidth = 1.5;
+        ctx.strokeRect(item.vx - 1, item.vy - 1, Math.max(newW, w) + 2, item.vh + 2);
+      }
+    }
+
+    // Select mode: show interactive highlights for non-edited items
     if (mode === "select") {
       for (const item of textItems) {
         const key = `${currentPage}-${item.idx}`;
@@ -324,7 +361,6 @@ export function PdfEditorCore({ file, rawBytes, onReset }: PdfEditorProps) {
         const w = Math.max(item.vw, 20);
 
         if (isSelected && inlineEditing) {
-          // Currently editing inline — just a subtle border, the DOM editor is on top
           ctx.strokeStyle = "#6366F1";
           ctx.lineWidth = 2;
           ctx.strokeRect(item.vx, item.vy, w, item.vh);
@@ -334,36 +370,11 @@ export function PdfEditorCore({ file, rawBytes, onReset }: PdfEditorProps) {
           ctx.lineWidth = 2;
           ctx.fillRect(item.vx, item.vy, w, item.vh);
           ctx.strokeRect(item.vx, item.vy, w, item.vh);
-        } else if (isEdited) {
-          // LIVE PREVIEW: white rect over original text + draw new text
-          const editedSize = editedSizes[key] ?? item.fontSize;
-          const scaledFs = editedSize * scale;
-          const fontFamily = item.fontFamily === "serif" ? "serif" : item.fontFamily === "monospace" ? "monospace" : "sans-serif";
-          const fontWeight = item.isBold ? "bold" : "normal";
-          const fontStyle = item.isItalic ? "italic" : "normal";
-
-          // White rect to cover original text
-          ctx.fillStyle = "#ffffff";
-          const pad = 2;
-          ctx.fillRect(item.vx - pad, item.vy - pad, w + pad * 2 + 60, item.vh + pad * 2);
-
-          // Draw new text
-          ctx.font = `${fontStyle} ${fontWeight} ${scaledFs}px ${fontFamily}`;
-          const editedColor = editedColors[key] ?? "#000000";
-          ctx.fillStyle = editedColor;
-          const baseline = item.vy + item.vh * (item.ascent / (item.ascent + Math.abs(item.descent)));
-          ctx.fillText(editedTexts[key], item.vx, baseline);
-
-          // Green indicator border
-          const newW = ctx.measureText(editedTexts[key]).width;
-          ctx.strokeStyle = "rgba(34, 197, 94, 0.6)";
-          ctx.lineWidth = 1.5;
-          ctx.strokeRect(item.vx - 1, item.vy - 1, Math.max(newW, w) + 2, item.vh + 2);
-        } else if (isHovered) {
+        } else if (!isEdited && isHovered) {
           ctx.strokeStyle = "rgba(59, 130, 246, 0.5)";
           ctx.lineWidth = 1;
           ctx.strokeRect(item.vx, item.vy, w, item.vh);
-        } else {
+        } else if (!isEdited) {
           ctx.fillStyle = "rgba(99, 102, 241, 0.05)";
           ctx.fillRect(item.vx, item.vy, w, item.vh);
         }
@@ -1129,27 +1140,52 @@ export function PdfEditorCore({ file, rawBytes, onReset }: PdfEditorProps) {
           </div>
         </div>
 
-        {pageCount > 1 && (
-          <div className="flex items-center justify-center gap-3 mt-3">
+        <div className="flex items-center justify-center gap-3 mt-3 flex-wrap">
+          {pageCount > 1 && (
+            <>
+              <button
+                onClick={() => { setCurrentPage((p) => Math.max(1, p - 1)); setSelectedIdx(null); setInlineEditing(false); }}
+                disabled={currentPage <= 1}
+                className="px-3 py-1 rounded bg-muted hover:bg-muted/80 disabled:opacity-40 text-sm"
+              >
+                {t("prev")}
+              </button>
+              <span className="text-sm text-muted-foreground">
+                {t("page")} {currentPage} {t("of")} {pageCount}
+              </span>
+              <button
+                onClick={() => { setCurrentPage((p) => Math.min(pageCount, p + 1)); setSelectedIdx(null); setInlineEditing(false); }}
+                disabled={currentPage >= pageCount}
+                className="px-3 py-1 rounded bg-muted hover:bg-muted/80 disabled:opacity-40 text-sm"
+              >
+                {t("next")}
+              </button>
+              <div className="w-px h-5 bg-border mx-1" />
+            </>
+          )}
+          <div className="flex items-center gap-1">
             <button
-              onClick={() => { setCurrentPage((p) => Math.max(1, p - 1)); setSelectedIdx(null); setInlineEditing(false); }}
-              disabled={currentPage <= 1}
-              className="px-3 py-1 rounded bg-muted hover:bg-muted/80 disabled:opacity-40 text-sm"
+              onClick={() => setZoom((z) => Math.max(0.5, +(z - 0.25).toFixed(2)))}
+              disabled={zoom <= 0.5}
+              className="w-8 h-8 flex items-center justify-center rounded bg-muted hover:bg-muted/80 disabled:opacity-40 text-sm font-bold"
             >
-              {t("prev")}
+              −
             </button>
-            <span className="text-sm text-muted-foreground">
-              {t("page")} {currentPage} {t("of")} {pageCount}
-            </span>
             <button
-              onClick={() => { setCurrentPage((p) => Math.min(pageCount, p + 1)); setSelectedIdx(null); setInlineEditing(false); }}
-              disabled={currentPage >= pageCount}
-              className="px-3 py-1 rounded bg-muted hover:bg-muted/80 disabled:opacity-40 text-sm"
+              onClick={() => setZoom(1)}
+              className="px-2 py-1 rounded hover:bg-muted text-xs tabular-nums min-w-[48px] text-center"
             >
-              {t("next")}
+              {Math.round(zoom * 100)}%
+            </button>
+            <button
+              onClick={() => setZoom((z) => Math.min(3, +(z + 0.25).toFixed(2)))}
+              disabled={zoom >= 3}
+              className="w-8 h-8 flex items-center justify-center rounded bg-muted hover:bg-muted/80 disabled:opacity-40 text-sm font-bold"
+            >
+              +
             </button>
           </div>
-        )}
+        </div>
       </div>
 
       {/* Add text panel (text mode) */}
