@@ -318,27 +318,48 @@ export function PdfEditorCore({ file, rawBytes, onReset }: PdfEditorProps) {
     if (mode === "select") {
       for (const item of textItems) {
         const key = `${currentPage}-${item.idx}`;
-        const isEdited = key in editedTexts;
+        const isEdited = key in editedTexts && editedTexts[key] !== item.str;
         const isSelected = selectedIdx === item.idx;
         const isHovered = hoverIdx === item.idx && !isSelected;
         const w = Math.max(item.vw, 20);
 
-        if (isSelected) {
-          // Selected: strong indigo (but inline editor is on top)
+        if (isSelected && inlineEditing) {
+          // Currently editing inline — just a subtle border, the DOM editor is on top
+          ctx.strokeStyle = "#6366F1";
+          ctx.lineWidth = 2;
+          ctx.strokeRect(item.vx, item.vy, w, item.vh);
+        } else if (isSelected) {
           ctx.fillStyle = "rgba(99, 102, 241, 0.25)";
           ctx.strokeStyle = "#6366F1";
           ctx.lineWidth = 2;
           ctx.fillRect(item.vx, item.vy, w, item.vh);
           ctx.strokeRect(item.vx, item.vy, w, item.vh);
         } else if (isEdited) {
-          // Edited: green
-          ctx.fillStyle = "rgba(34, 197, 94, 0.2)";
-          ctx.strokeStyle = "rgba(34, 197, 94, 0.5)";
-          ctx.lineWidth = 1;
-          ctx.fillRect(item.vx, item.vy, w, item.vh);
-          ctx.strokeRect(item.vx, item.vy, w, item.vh);
+          // LIVE PREVIEW: white rect over original text + draw new text
+          const editedSize = editedSizes[key] ?? item.fontSize;
+          const scaledFs = editedSize * scale;
+          const fontFamily = item.fontFamily === "serif" ? "serif" : item.fontFamily === "monospace" ? "monospace" : "sans-serif";
+          const fontWeight = item.isBold ? "bold" : "normal";
+          const fontStyle = item.isItalic ? "italic" : "normal";
+
+          // White rect to cover original text
+          ctx.fillStyle = "#ffffff";
+          const pad = 2;
+          ctx.fillRect(item.vx - pad, item.vy - pad, w + pad * 2 + 60, item.vh + pad * 2);
+
+          // Draw new text
+          ctx.font = `${fontStyle} ${fontWeight} ${scaledFs}px ${fontFamily}`;
+          const editedColor = editedColors[key] ?? "#000000";
+          ctx.fillStyle = editedColor;
+          const baseline = item.vy + item.vh * (item.ascent / (item.ascent + Math.abs(item.descent)));
+          ctx.fillText(editedTexts[key], item.vx, baseline);
+
+          // Green indicator border
+          const newW = ctx.measureText(editedTexts[key]).width;
+          ctx.strokeStyle = "rgba(34, 197, 94, 0.6)";
+          ctx.lineWidth = 1.5;
+          ctx.strokeRect(item.vx - 1, item.vy - 1, Math.max(newW, w) + 2, item.vh + 2);
         } else if (isHovered) {
-          // Hovered: light blue outline
           ctx.strokeStyle = "rgba(59, 130, 246, 0.5)";
           ctx.lineWidth = 1;
           ctx.strokeRect(item.vx, item.vy, w, item.vh);
@@ -409,7 +430,7 @@ export function PdfEditorCore({ file, rawBytes, onReset }: PdfEditorProps) {
       }
       ctx.stroke();
     }
-  }, [textItems, selectedIdx, hoverIdx, editedTexts, currentPage, strokes, activeStroke, mode, newTextPos, newTextSize, newTextInput, newTextColor, dims, pendingImage]);
+  }, [textItems, selectedIdx, hoverIdx, editedTexts, editedSizes, editedColors, inlineEditing, currentPage, strokes, activeStroke, mode, newTextPos, newTextSize, newTextInput, newTextColor, dims, pendingImage]);
 
   useEffect(() => { renderOverlay(); }, [renderOverlay]);
 
