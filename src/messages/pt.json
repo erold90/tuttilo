@@ -307,7 +307,15 @@
         "page": "Página",
         "of": "de",
         "tabEdit": "Editar PDF",
-        "tabFillSign": "Preencher e Assinar"
+        "tabFillSign": "Preencher e Assinar",
+        "modeImage": "Imagem",
+        "imageHint": "Clique no PDF para posicionar a imagem carregada",
+        "uploadImage": "Carregar imagem",
+        "deleteAnnotation": "Excluir",
+        "undoAction": "Desfazer",
+        "redoAction": "Refazer",
+        "color": "Cor",
+        "dragToMove": "Arraste para mover"
       }
     },
     "compress-image": {
@@ -1306,6 +1314,8 @@
         "done": "Números de página adicionados!",
         "download": "Baixar",
         "reset": "Recomeçar",
+        "pageLabel": "Página",
+        "ofLabel": "de",
         "error": "Ocorreu um erro. Tente novamente."
       }
     },
@@ -1426,7 +1436,8 @@
         "copy": "Copiar",
         "reset": "Recomeçar",
         "error": "Ocorreu um erro. Tente novamente.",
-        "noText": "Nenhum texto encontrado neste documento."
+        "noText": "Nenhum texto encontrado neste documento.",
+        "chars": "caracteres"
       }
     },
     "pdf-repair": {

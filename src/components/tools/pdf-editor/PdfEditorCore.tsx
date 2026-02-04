@@ -1,0 +1,1193 @@
+"use client";
+
+import { useState, useCallback, useRef, useEffect } from "react";
+import { useTranslations } from "next-intl";
+import type {
+  TextInfo,
+  TextAnnotation,
+  DrawStroke,
+  ImageAnnotation as ImageAnnotationType,
+  EditorMode,
+  EditorAction,
+  PdfEditorProps,
+} from "./types";
+import { getPdfjs, hexToRgb, canvasToPdf, uid } from "./utils";
+import { useEditorHistory } from "./useEditorHistory";
+import { InlineTextEditor } from "./InlineTextEditor";
+import { FloatingToolbar } from "./FloatingToolbar";
+import { DraggableAnnotation } from "./DraggableAnnotation";
+import { ImageAnnotationEl } from "./ImageAnnotation";
+
+export function PdfEditorCore({ file, rawBytes, onReset }: PdfEditorProps) {
+  const t = useTranslations("tools.pdf-editor.ui");
+  const history = useEditorHistory();
+
+  const [processing, setProcessing] = useState(false);
+  const [resultUrl, setResultUrl] = useState("");
+  const [error, setError] = useState("");
+
+  const [pageCount, setPageCount] = useState(0);
+  const [currentPage, setCurrentPage] = useState(1);
+  const [dims, setDims] = useState({ w: 0, h: 0 });
+
+  const [textItems, setTextItems] = useState<TextInfo[]>([]);
+  const [mode, setMode] = useState<EditorMode>("select");
+
+  const [selectedIdx, setSelectedIdx] = useState<number | null>(null);
+  const [editedTexts, setEditedTexts] = useState<Record<string, string>>({});
+  const [editedSizes, setEditedSizes] = useState<Record<string, number>>({});
+  const [editedColors, setEditedColors] = useState<Record<string, string>>({});
+  const [inlineEditing, setInlineEditing] = useState(false);
+
+  const [textAnnotations, setTextAnnotations] = useState<TextAnnotation[]>([]);
+  const [selectedAnnotationId, setSelectedAnnotationId] = useState<string | null>(null);
+  const [newTextInput, setNewTextInput] = useState("");
+  const [newTextPos, setNewTextPos] = useState<{ x: number; y: number } | null>(null);
+  const [newTextSize, setNewTextSize] = useState(14);
+  const [newTextColor, setNewTextColor] = useState("#000000");
+
+  const [imageAnnotations, setImageAnnotations] = useState<ImageAnnotationType[]>([]);
+  const [selectedImageId, setSelectedImageId] = useState<string | null>(null);
+  const [pendingImage, setPendingImage] = useState<{ dataUrl: string; w: number; h: number } | null>(null);
+
+  const [strokes, setStrokes] = useState<DrawStroke[]>([]);
+  const [activeStroke, setActiveStroke] = useState<DrawStroke | null>(null);
+  const [penWidth, setPenWidth] = useState(2);
+  const [penColor, setPenColor] = useState("#000000");
+
+  const [hoverIdx, setHoverIdx] = useState<number | null>(null);
+  const [, forceRender] = useState(0);
+
+  const previewRef = useRef<HTMLCanvasElement>(null);
+  const overlayRef = useRef<HTMLCanvasElement>(null);
+  const wrapperRef = useRef<HTMLDivElement>(null);
+  const scaleRef = useRef(1);
+  const pageDimsRef = useRef({ w: 612, h: 792 });
+  const isDrawingRef = useRef(false);
+
+  /* ---------- undo/redo ---------- */
+
+  const applyAction = useCallback(
+    (action: EditorAction, reverse: boolean) => {
+      switch (action.type) {
+        case "editText": {
+          const text = reverse ? action.oldText : action.newText;
+          setEditedTexts((prev) => ({ ...prev, [action.key]: text }));
+          break;
+        }
+        case "editSize": {
+          const size = reverse ? action.oldSize : action.newSize;
+          setEditedSizes((prev) => ({ ...prev, [action.key]: size }));
+          break;
+        }
+        case "addAnnotation":
+          if (reverse) setTextAnnotations((a) => a.filter((x) => x.id !== action.annotation.id));
+          else setTextAnnotations((a) => [...a, action.annotation]);
+          break;
+        case "removeAnnotation":
+          if (reverse) setTextAnnotations((a) => [...a, action.annotation]);
+          else setTextAnnotations((a) => a.filter((x) => x.id !== action.id));
+          break;
+        case "moveAnnotation":
+          setTextAnnotations((a) =>
+            a.map((x) =>
+              x.id === action.id
+                ? { ...x, pdfX: reverse ? action.oldX : action.newX, pdfY: reverse ? action.oldY : action.newY }
+                : x
+            )
+          );
+          break;
+        case "addStroke":
+          if (reverse) setStrokes((s) => s.slice(0, -1));
+          else setStrokes((s) => [...s, action.stroke]);
+          break;
+        case "removeStroke":
+          if (reverse) setStrokes((s) => { const n = [...s]; n.splice(action.index, 0, action.stroke); return n; });
+          else setStrokes((s) => s.filter((_, i) => i !== action.index));
+          break;
+        case "addImage":
+          if (reverse) setImageAnnotations((a) => a.filter((x) => x.id !== action.image.id));
+          else setImageAnnotations((a) => [...a, action.image]);
+          break;
+        case "removeImage":
+          if (reverse) setImageAnnotations((a) => [...a, action.image]);
+          else setImageAnnotations((a) => a.filter((x) => x.id !== action.id));
+          break;
+        case "moveImage":
+          setImageAnnotations((a) =>
+            a.map((x) =>
+              x.id === action.id
+                ? { ...x, pdfX: reverse ? action.oldX : action.newX, pdfY: reverse ? action.oldY : action.newY }
+                : x
+            )
+          );
+          break;
+        case "resizeImage":
+          setImageAnnotations((a) =>
+            a.map((x) =>
+              x.id === action.id
+                ? { ...x, width: reverse ? action.oldW : action.newW, height: reverse ? action.oldH : action.newH }
+                : x
+            )
+          );
+          break;
+      }
+    },
+    []
+  );
+
+  const doUndo = useCallback(() => {
+    const action = history.undo();
+    if (action) applyAction(action, true);
+    forceRender((n) => n + 1);
+  }, [history, applyAction]);
+
+  const doRedo = useCallback(() => {
+    const action = history.redo();
+    if (action) applyAction(action, false);
+    forceRender((n) => n + 1);
+  }, [history, applyAction]);
+
+  /* ---------- keyboard shortcuts ---------- */
+
+  useEffect(() => {
+    const handler = (e: KeyboardEvent) => {
+      const mod = e.metaKey || e.ctrlKey;
+      if (mod && e.key === "z" && !e.shiftKey) { e.preventDefault(); doUndo(); }
+      if (mod && (e.key === "y" || (e.key === "z" && e.shiftKey))) { e.preventDefault(); doRedo(); }
+      if (e.key === "Escape") {
+        setSelectedIdx(null);
+        setSelectedAnnotationId(null);
+        setSelectedImageId(null);
+        setInlineEditing(false);
+        setNewTextPos(null);
+      }
+      if ((e.key === "Delete" || e.key === "Backspace") && !inlineEditing) {
+        if (selectedAnnotationId) {
+          e.preventDefault();
+          const ann = textAnnotations.find((a) => a.id === selectedAnnotationId);
+          if (ann) {
+            history.push({ type: "removeAnnotation", id: ann.id, annotation: ann });
+            setTextAnnotations((a) => a.filter((x) => x.id !== ann.id));
+            setSelectedAnnotationId(null);
+          }
+        }
+        if (selectedImageId) {
+          e.preventDefault();
+          const img = imageAnnotations.find((a) => a.id === selectedImageId);
+          if (img) {
+            history.push({ type: "removeImage", id: img.id, image: img });
+            setImageAnnotations((a) => a.filter((x) => x.id !== img.id));
+            setSelectedImageId(null);
+          }
+        }
+      }
+    };
+    window.addEventListener("keydown", handler);
+    return () => window.removeEventListener("keydown", handler);
+  }, [doUndo, doRedo, selectedAnnotationId, selectedImageId, textAnnotations, imageAnnotations, history, inlineEditing]);
+
+  /* ---------- init ---------- */
+
+  useEffect(() => {
+    let cancelled = false;
+    getPdfjs()
+      .then(async (pdfjs) => {
+        if (cancelled) return;
+        const doc = await pdfjs.getDocument({ data: rawBytes.slice(0) }).promise;
+        setPageCount(doc.numPages);
+        doc.destroy();
+      })
+      .catch((err) => {
+        console.error("PdfEditor init error:", err);
+        if (!cancelled) setError(t("error"));
+      });
+    return () => { cancelled = true; };
+  }, [rawBytes, t]);
+
+  /* ---------- extract text ---------- */
+
+  const extractText = useCallback(
+    async (pageNum: number, viewportScale: number) => {
+      const pdfjs = await getPdfjs();
+      const doc = await pdfjs.getDocument({ data: rawBytes.slice(0) }).promise;
+      const page = await doc.getPage(pageNum);
+      const viewport = page.getViewport({ scale: viewportScale });
+
+      await page.getOperatorList();
+      const tc = await page.getTextContent();
+      const items: TextInfo[] = [];
+
+      for (let i = 0; i < tc.items.length; i++) {
+        const item = tc.items[i];
+        if (!("str" in item) || !item.str.trim()) continue;
+
+        const style = tc.styles[item.fontName] || { fontFamily: "sans-serif", ascent: 0.8, descent: -0.2 };
+        const [a, b, c, d, tx, ty] = item.transform;
+        const fontSize = b === 0 && c === 0 ? Math.abs(d) : Math.sqrt(a * a + b * b);
+        const ascent = isNaN(style.ascent) ? 0.8 : style.ascent;
+        const descent = isNaN(style.descent) ? -0.2 : style.descent;
+
+        let isBold = false;
+        let isItalic = false;
+        try {
+          const fontObj = page.commonObjs.get(item.fontName);
+          if (fontObj?.name) {
+            isBold = /bold/i.test(fontObj.name);
+            isItalic = /italic|oblique/i.test(fontObj.name);
+          }
+        } catch {}
+
+        const [vx, vy] = viewport.convertToViewportPoint(tx, ty);
+        const canvasFontH = fontSize * viewportScale;
+        const topY = vy - canvasFontH * ascent;
+        const fullH = canvasFontH * (ascent + Math.abs(descent));
+
+        items.push({
+          idx: i, str: item.str, x: tx, y: ty,
+          fontSize, fontFamily: style.fontFamily, isBold, isItalic,
+          ascent, descent, width: item.width, height: item.height,
+          vx, vy: topY, vw: item.width * viewportScale, vh: fullH,
+        });
+      }
+
+      setTextItems(items);
+      doc.destroy();
+    },
+    [rawBytes]
+  );
+
+  /* ---------- render preview ---------- */
+
+  const renderPreview = useCallback(async () => {
+    if (!previewRef.current || pageCount === 0) return;
+    const canvas = previewRef.current;
+    const pdfjs = await getPdfjs();
+    const doc = await pdfjs.getDocument({ data: rawBytes.slice(0) }).promise;
+    const page = await doc.getPage(currentPage);
+
+    const containerW = wrapperRef.current?.clientWidth ?? 700;
+    const vp = page.getViewport({ scale: 1 });
+    let scale = (containerW - 32) / vp.width;
+    if (vp.height * scale > 800) scale = 800 / vp.height;
+    scale = Math.min(scale, 2);
+
+    scaleRef.current = scale;
+    pageDimsRef.current = { w: vp.width, h: vp.height };
+    const svp = page.getViewport({ scale });
+    const w = Math.round(svp.width);
+    const h = Math.round(svp.height);
+
+    canvas.width = w;
+    canvas.height = h;
+    if (overlayRef.current) {
+      overlayRef.current.width = w;
+      overlayRef.current.height = h;
+    }
+    setDims({ w, h });
+
+    const ctx = canvas.getContext("2d")!;
+    ctx.fillStyle = "#fff";
+    ctx.fillRect(0, 0, w, h);
+    await page.render({ canvasContext: ctx, viewport: svp, canvas } as Parameters<typeof page.render>[0]).promise;
+    doc.destroy();
+
+    try { await extractText(currentPage, scale); } catch (err) {
+      console.warn("PdfEditor extractText failed:", err);
+    }
+  }, [rawBytes, currentPage, pageCount, extractText]);
+
+  useEffect(() => {
+    if (pageCount > 0 && !resultUrl) {
+      renderPreview().catch((err) => {
+        console.error("PdfEditor renderPreview error:", err);
+        setError(`${t("error")} — ${err instanceof Error ? err.message : String(err)}`);
+      });
+    }
+  }, [pageCount, currentPage, renderPreview, resultUrl, t]);
+
+  /* ---------- render overlay ---------- */
+
+  const renderOverlay = useCallback(() => {
+    const canvas = overlayRef.current;
+    if (!canvas || dims.w === 0) return;
+    const ctx = canvas.getContext("2d")!;
+    ctx.clearRect(0, 0, canvas.width, canvas.height);
+    const scale = scaleRef.current;
+
+    if (mode === "select") {
+      for (const item of textItems) {
+        const key = `${currentPage}-${item.idx}`;
+        const isEdited = key in editedTexts;
+        const isSelected = selectedIdx === item.idx;
+        const isHovered = hoverIdx === item.idx && !isSelected;
+        const w = Math.max(item.vw, 20);
+
+        if (isSelected) {
+          // Selected: strong indigo (but inline editor is on top)
+          ctx.fillStyle = "rgba(99, 102, 241, 0.25)";
+          ctx.strokeStyle = "#6366F1";
+          ctx.lineWidth = 2;
+          ctx.fillRect(item.vx, item.vy, w, item.vh);
+          ctx.strokeRect(item.vx, item.vy, w, item.vh);
+        } else if (isEdited) {
+          // Edited: green
+          ctx.fillStyle = "rgba(34, 197, 94, 0.2)";
+          ctx.strokeStyle = "rgba(34, 197, 94, 0.5)";
+          ctx.lineWidth = 1;
+          ctx.fillRect(item.vx, item.vy, w, item.vh);
+          ctx.strokeRect(item.vx, item.vy, w, item.vh);
+        } else if (isHovered) {
+          // Hovered: light blue outline
+          ctx.strokeStyle = "rgba(59, 130, 246, 0.5)";
+          ctx.lineWidth = 1;
+          ctx.strokeRect(item.vx, item.vy, w, item.vh);
+        } else {
+          ctx.fillStyle = "rgba(99, 102, 241, 0.05)";
+          ctx.fillRect(item.vx, item.vy, w, item.vh);
+        }
+      }
+    }
+
+    // Real-time text preview for text mode
+    if (mode === "text" && newTextPos) {
+      const cx = newTextPos.x * scale;
+      const cy = (pageDimsRef.current.h - newTextPos.y) * scale;
+      if (newTextInput) {
+        ctx.font = `${newTextSize * scale}px sans-serif`;
+        ctx.globalAlpha = 0.6;
+        ctx.fillStyle = newTextColor;
+        ctx.fillText(newTextInput, cx, cy);
+        ctx.globalAlpha = 1;
+      }
+      ctx.strokeStyle = "#6366F1";
+      ctx.lineWidth = 2;
+      ctx.setLineDash([4, 4]);
+      ctx.beginPath();
+      ctx.moveTo(cx, cy - newTextSize * scale);
+      ctx.lineTo(cx, cy + 2);
+      ctx.stroke();
+      ctx.setLineDash([]);
+    }
+
+    // Image placement cursor
+    if (mode === "image" && pendingImage) {
+      ctx.strokeStyle = "#6366F1";
+      ctx.setLineDash([6, 4]);
+      ctx.lineWidth = 2;
+      ctx.strokeRect(10, 10, 60, 60);
+      ctx.setLineDash([]);
+    }
+
+    // Committed strokes
+    for (const stroke of strokes) {
+      if (stroke.page !== currentPage || stroke.points.length < 2) continue;
+      ctx.beginPath();
+      ctx.strokeStyle = stroke.color;
+      ctx.lineWidth = stroke.width * scale;
+      ctx.lineCap = "round";
+      ctx.lineJoin = "round";
+      for (let i = 0; i < stroke.points.length; i++) {
+        const px = stroke.points[i].pdfX * scale;
+        const py = (pageDimsRef.current.h - stroke.points[i].pdfY) * scale;
+        if (i === 0) ctx.moveTo(px, py); else ctx.lineTo(px, py);
+      }
+      ctx.stroke();
+    }
+
+    // Active stroke
+    if (activeStroke && activeStroke.points.length >= 2) {
+      ctx.beginPath();
+      ctx.strokeStyle = activeStroke.color;
+      ctx.lineWidth = activeStroke.width * scale;
+      ctx.lineCap = "round";
+      ctx.lineJoin = "round";
+      for (let i = 0; i < activeStroke.points.length; i++) {
+        const px = activeStroke.points[i].pdfX * scale;
+        const py = (pageDimsRef.current.h - activeStroke.points[i].pdfY) * scale;
+        if (i === 0) ctx.moveTo(px, py); else ctx.lineTo(px, py);
+      }
+      ctx.stroke();
+    }
+  }, [textItems, selectedIdx, hoverIdx, editedTexts, currentPage, strokes, activeStroke, mode, newTextPos, newTextSize, newTextInput, newTextColor, dims, pendingImage]);
+
+  useEffect(() => { renderOverlay(); }, [renderOverlay]);
+
+  /* ---------- hover tracking ---------- */
+
+  const onOverlayMove = useCallback(
+    (e: React.PointerEvent) => {
+      if (mode !== "select" || isDrawingRef.current) return;
+      const canvas = overlayRef.current;
+      if (!canvas) return;
+      const { cx, cy } = canvasToPdf(e.clientX, e.clientY, canvas, scaleRef.current, pageDimsRef.current.h);
+      let found: number | null = null;
+      for (const item of textItems) {
+        const w = Math.max(item.vw, 20);
+        if (cx >= item.vx && cx <= item.vx + w && cy >= item.vy && cy <= item.vy + item.vh) {
+          found = item.idx;
+          break;
+        }
+      }
+      setHoverIdx(found);
+    },
+    [mode, textItems]
+  );
+
+  /* ---------- event handlers ---------- */
+
+  const onOverlayClick = useCallback(
+    (e: React.PointerEvent) => {
+      if (mode === "draw") return;
+      const canvas = overlayRef.current;
+      if (!canvas) return;
+      const { cx, cy, pdfX, pdfY } = canvasToPdf(e.clientX, e.clientY, canvas, scaleRef.current, pageDimsRef.current.h);
+
+      // Deselect annotations/images when clicking canvas
+      setSelectedAnnotationId(null);
+      setSelectedImageId(null);
+
+      if (mode === "select") {
+        let found: TextInfo | null = null;
+        for (const item of textItems) {
+          const w = Math.max(item.vw, 20);
+          if (cx >= item.vx && cx <= item.vx + w && cy >= item.vy && cy <= item.vy + item.vh) {
+            found = item;
+            break;
+          }
+        }
+        if (found) {
+          setSelectedIdx(found.idx);
+          const key = `${currentPage}-${found.idx}`;
+          if (!(key in editedTexts)) {
+            setEditedTexts((prev) => ({ ...prev, [key]: found!.str }));
+            setEditedSizes((prev) => ({ ...prev, [key]: found!.fontSize }));
+          }
+          setInlineEditing(true);
+        } else {
+          setSelectedIdx(null);
+          setInlineEditing(false);
+        }
+      } else if (mode === "text") {
+        setNewTextPos({ x: pdfX, y: pdfY });
+        setNewTextInput("");
+      } else if (mode === "image" && pendingImage) {
+        const imgAnn: ImageAnnotationType = {
+          id: uid(),
+          dataUrl: pendingImage.dataUrl,
+          pdfX,
+          pdfY,
+          width: pendingImage.w,
+          height: pendingImage.h,
+          page: currentPage,
+          naturalW: pendingImage.w,
+          naturalH: pendingImage.h,
+        };
+        history.push({ type: "addImage", image: imgAnn });
+        setImageAnnotations((a) => [...a, imgAnn]);
+        setPendingImage(null);
+      }
+    },
+    [mode, textItems, currentPage, editedTexts, pendingImage, history]
+  );
+
+  const onDrawStart = useCallback(
+    (e: React.PointerEvent) => {
+      if (mode !== "draw") return;
+      isDrawingRef.current = true;
+      const canvas = overlayRef.current;
+      if (!canvas) return;
+      const { pdfX, pdfY } = canvasToPdf(e.clientX, e.clientY, canvas, scaleRef.current, pageDimsRef.current.h);
+      setActiveStroke({ points: [{ pdfX, pdfY }], width: penWidth, color: penColor, page: currentPage });
+    },
+    [mode, penWidth, penColor, currentPage]
+  );
+
+  const onDrawMove = useCallback(
+    (e: React.PointerEvent) => {
+      if (!isDrawingRef.current || mode !== "draw") return;
+      const canvas = overlayRef.current;
+      if (!canvas) return;
+      const { pdfX, pdfY } = canvasToPdf(e.clientX, e.clientY, canvas, scaleRef.current, pageDimsRef.current.h);
+      setActiveStroke((prev) => prev ? { ...prev, points: [...prev.points, { pdfX, pdfY }] } : prev);
+    },
+    [mode]
+  );
+
+  const onDrawEnd = useCallback(() => {
+    if (!isDrawingRef.current) return;
+    isDrawingRef.current = false;
+    setActiveStroke((prev) => {
+      if (prev && prev.points.length >= 2) {
+        history.push({ type: "addStroke", stroke: prev });
+        setStrokes((s) => [...s, prev]);
+      }
+      return null;
+    });
+  }, [history]);
+
+  const addTextAnnotation = useCallback(() => {
+    if (!newTextPos || !newTextInput.trim()) return;
+    const ann: TextAnnotation = {
+      id: uid(),
+      text: newTextInput,
+      pdfX: newTextPos.x,
+      pdfY: newTextPos.y,
+      fontSize: newTextSize,
+      color: newTextColor,
+      page: currentPage,
+    };
+    history.push({ type: "addAnnotation", annotation: ann });
+    setTextAnnotations((prev) => [...prev, ann]);
+    setNewTextPos(null);
+    setNewTextInput("");
+  }, [newTextPos, newTextInput, newTextSize, newTextColor, currentPage, history]);
+
+  /* ---------- image upload ---------- */
+
+  const onImageUpload = useCallback(() => {
+    const input = document.createElement("input");
+    input.type = "file";
+    input.accept = "image/*";
+    input.onchange = () => {
+      const f = input.files?.[0];
+      if (!f) return;
+      const reader = new FileReader();
+      reader.onload = () => {
+        const img = new Image();
+        img.onload = () => {
+          // Scale down if too large (max 200pt in PDF units)
+          let w = img.naturalWidth;
+          let h = img.naturalHeight;
+          const maxDim = 200;
+          if (w > maxDim || h > maxDim) {
+            const ratio = Math.min(maxDim / w, maxDim / h);
+            w = Math.round(w * ratio);
+            h = Math.round(h * ratio);
+          }
+          setPendingImage({ dataUrl: reader.result as string, w, h });
+        };
+        img.src = reader.result as string;
+      };
+      reader.readAsDataURL(f);
+    };
+    input.click();
+  }, []);
+
+  /* ---------- annotation handlers ---------- */
+
+  const onAnnotationMove = useCallback(
+    (id: string, pdfX: number, pdfY: number) => {
+      const ann = textAnnotations.find((a) => a.id === id);
+      if (ann) {
+        history.push({ type: "moveAnnotation", id, oldX: ann.pdfX, oldY: ann.pdfY, newX: pdfX, newY: pdfY });
+        setTextAnnotations((a) => a.map((x) => (x.id === id ? { ...x, pdfX, pdfY } : x)));
+      }
+    },
+    [textAnnotations, history]
+  );
+
+  const onAnnotationEdit = useCallback((id: string, text: string) => {
+    setTextAnnotations((a) => a.map((x) => (x.id === id ? { ...x, text } : x)));
+  }, []);
+
+  const onAnnotationSizeChange = useCallback((id: string, size: number) => {
+    setTextAnnotations((a) => a.map((x) => (x.id === id ? { ...x, fontSize: size } : x)));
+  }, []);
+
+  const onImageMove = useCallback(
+    (id: string, pdfX: number, pdfY: number) => {
+      const img = imageAnnotations.find((a) => a.id === id);
+      if (img) {
+        history.push({ type: "moveImage", id, oldX: img.pdfX, oldY: img.pdfY, newX: pdfX, newY: pdfY });
+        setImageAnnotations((a) => a.map((x) => (x.id === id ? { ...x, pdfX, pdfY } : x)));
+      }
+    },
+    [imageAnnotations, history]
+  );
+
+  const onImageResize = useCallback(
+    (id: string, width: number, height: number) => {
+      const img = imageAnnotations.find((a) => a.id === id);
+      if (img) {
+        history.push({ type: "resizeImage", id, oldW: img.width, oldH: img.height, newW: width, newH: height });
+        setImageAnnotations((a) => a.map((x) => (x.id === id ? { ...x, width, height } : x)));
+      }
+    },
+    [imageAnnotations, history]
+  );
+
+  /* ---------- inline text editing handlers ---------- */
+
+  const onInlineTextChange = useCallback(
+    (text: string) => {
+      if (selectedIdx === null) return;
+      const key = `${currentPage}-${selectedIdx}`;
+      const oldText = editedTexts[key] ?? textItems.find((ti) => ti.idx === selectedIdx)?.str ?? "";
+      setEditedTexts((prev) => ({ ...prev, [key]: text }));
+      // We push to history on close, not on every keystroke
+    },
+    [selectedIdx, currentPage, editedTexts, textItems]
+  );
+
+  const onInlineSizeChange = useCallback(
+    (size: number) => {
+      if (selectedIdx === null) return;
+      const key = `${currentPage}-${selectedIdx}`;
+      setEditedSizes((prev) => ({ ...prev, [key]: size }));
+    },
+    [selectedIdx, currentPage]
+  );
+
+  const onInlineColorChange = useCallback(
+    (color: string) => {
+      if (selectedIdx === null) return;
+      const key = `${currentPage}-${selectedIdx}`;
+      setEditedColors((prev) => ({ ...prev, [key]: color }));
+    },
+    [selectedIdx, currentPage]
+  );
+
+  const onInlineClose = useCallback(() => {
+    if (selectedIdx === null) return;
+    const key = `${currentPage}-${selectedIdx}`;
+    const item = textItems.find((ti) => ti.idx === selectedIdx);
+    const newText = editedTexts[key] ?? item?.str ?? "";
+    const oldText = item?.str ?? "";
+    if (newText !== oldText) {
+      history.push({ type: "editText", key, oldText, newText });
+    }
+    setInlineEditing(false);
+    // Keep selectedIdx so highlight remains until clicking elsewhere
+  }, [selectedIdx, currentPage, editedTexts, textItems, history]);
+
+  /* ---------- apply / save ---------- */
+
+  const apply = useCallback(async () => {
+    if (!rawBytes) return;
+    setProcessing(true);
+    setError("");
+    try {
+      const { PDFDocument, rgb, StandardFonts } = await import("pdf-lib");
+      const pdfLib = await import("@pdf-lib/fontkit");
+      let doc: Awaited<ReturnType<typeof PDFDocument.load>>;
+      try {
+        doc = await PDFDocument.load(rawBytes.slice(0), { ignoreEncryption: true });
+      } catch {
+        doc = await PDFDocument.create();
+        const pdfjs = await getPdfjs();
+        const src = await pdfjs.getDocument({ data: rawBytes.slice(0) }).promise;
+        for (let i = 1; i <= src.numPages; i++) {
+          const pg = await src.getPage(i);
+          const vp = pg.getViewport({ scale: 2 });
+          const c = document.createElement("canvas");
+          c.width = vp.width;
+          c.height = vp.height;
+          const ctx = c.getContext("2d")!;
+          await (pg.render({ canvasContext: ctx, viewport: vp, canvas: c } as Parameters<typeof pg.render>[0]).promise);
+          const blob = await new Promise<Blob>((r) => c.toBlob((b) => r(b!), "image/jpeg", 0.92));
+          const img = await doc.embedJpg(await blob.arrayBuffer());
+          const origVp = pg.getViewport({ scale: 1 });
+          doc.addPage([origVp.width, origVp.height]).drawImage(img, { x: 0, y: 0, width: origVp.width, height: origVp.height });
+          c.width = 0; c.height = 0;
+        }
+        src.destroy();
+      }
+
+      doc.registerFontkit(pdfLib.default);
+
+      const fonts: Record<string, Awaited<ReturnType<typeof doc.embedFont>>> = {
+        "sans-serif": await doc.embedFont(StandardFonts.Helvetica),
+        "sans-serif-bold": await doc.embedFont(StandardFonts.HelveticaBold),
+        "sans-serif-italic": await doc.embedFont(StandardFonts.HelveticaOblique),
+        "sans-serif-bolditalic": await doc.embedFont(StandardFonts.HelveticaBoldOblique),
+        serif: await doc.embedFont(StandardFonts.TimesRoman),
+        "serif-bold": await doc.embedFont(StandardFonts.TimesRomanBold),
+        "serif-italic": await doc.embedFont(StandardFonts.TimesRomanItalic),
+        "serif-bolditalic": await doc.embedFont(StandardFonts.TimesRomanBoldItalic),
+        monospace: await doc.embedFont(StandardFonts.Courier),
+        "monospace-bold": await doc.embedFont(StandardFonts.CourierBold),
+        "monospace-italic": await doc.embedFont(StandardFonts.CourierOblique),
+        "monospace-bolditalic": await doc.embedFont(StandardFonts.CourierBoldOblique),
+      };
+
+      function pickFont(family: string, bold: boolean, italic: boolean) {
+        const base = family === "serif" ? "serif" : family === "monospace" ? "monospace" : "sans-serif";
+        const suffix = bold && italic ? "-bolditalic" : bold ? "-bold" : italic ? "-italic" : "";
+        return fonts[base + suffix] || fonts["sans-serif"];
+      }
+
+      const editedPages = new Set<number>();
+      for (const key of Object.keys(editedTexts)) editedPages.add(parseInt(key.split("-")[0]));
+      for (const ann of textAnnotations) editedPages.add(ann.page);
+      for (const s of strokes) editedPages.add(s.page);
+      for (const img of imageAnnotations) editedPages.add(img.page);
+
+      for (const pageNum of editedPages) {
+        const page = doc.getPage(pageNum - 1);
+        const { width: pw, height: ph } = page.getSize();
+
+        const pdfjs = await getPdfjs();
+        const srcDoc = await pdfjs.getDocument({ data: rawBytes.slice(0) }).promise;
+        const srcPage = await srcDoc.getPage(pageNum);
+        const tc = await srcPage.getTextContent();
+
+        for (let i = 0; i < tc.items.length; i++) {
+          const item = tc.items[i];
+          if (!("str" in item) || !item.str.trim()) continue;
+          const key = `${pageNum}-${i}`;
+          if (!(key in editedTexts)) continue;
+
+          const newText = editedTexts[key];
+          const style = tc.styles[item.fontName] || { fontFamily: "sans-serif", ascent: 0.8, descent: -0.2 };
+          const [a, b, c, d, tx, ty] = item.transform;
+          const origFontSize = b === 0 && c === 0 ? Math.abs(d) : Math.sqrt(a * a + b * b);
+          const newFontSize = editedSizes[key] ?? origFontSize;
+          const ascent = isNaN(style.ascent) ? 0.8 : style.ascent;
+          const descent = isNaN(style.descent) ? -0.2 : style.descent;
+
+          let isBold = false, isItalic = false;
+          try {
+            await srcPage.getOperatorList();
+            const fontObj = srcPage.commonObjs.get(item.fontName);
+            if (fontObj?.name) {
+              isBold = /bold/i.test(fontObj.name);
+              isItalic = /italic|oblique/i.test(fontObj.name);
+            }
+          } catch {}
+
+          const font = pickFont(style.fontFamily, isBold, isItalic);
+          const pad = 2;
+          const origW = item.width;
+          const newW = font.widthOfTextAtSize(newText, newFontSize);
+          const rectW = Math.max(origW, newW) + pad * 2;
+          const rectH = origFontSize * (ascent + Math.abs(descent)) + pad * 2;
+          const rectX = tx - pad;
+          const rectY = ty + descent * origFontSize - pad;
+
+          page.drawRectangle({ x: rectX, y: rectY, width: rectW, height: rectH, color: rgb(1, 1, 1), borderWidth: 0 });
+
+          const textColor = editedColors[key];
+          const { r: cr, g: cg, b: cb } = textColor ? hexToRgb(textColor) : { r: 0, g: 0, b: 0 };
+          page.drawText(newText, { x: tx, y: ty, size: newFontSize, font, color: rgb(cr, cg, cb) });
+        }
+
+        for (const ann of textAnnotations) {
+          if (ann.page !== pageNum) continue;
+          const font = fonts["sans-serif"];
+          const { r, g, b: bl } = hexToRgb(ann.color || "#000000");
+          page.drawText(ann.text, { x: ann.pdfX, y: ann.pdfY, size: ann.fontSize, font, color: rgb(r, g, bl) });
+        }
+
+        // Drawing strokes
+        const pageStrokes = strokes.filter((s) => s.page === pageNum);
+        if (pageStrokes.length > 0) {
+          const dpr = 2;
+          const drawCanvas = document.createElement("canvas");
+          drawCanvas.width = pw * dpr;
+          drawCanvas.height = ph * dpr;
+          const dctx = drawCanvas.getContext("2d")!;
+          dctx.scale(dpr, dpr);
+          for (const stroke of pageStrokes) {
+            if (stroke.points.length < 2) continue;
+            dctx.beginPath();
+            dctx.strokeStyle = stroke.color;
+            dctx.lineWidth = stroke.width;
+            dctx.lineCap = "round";
+            dctx.lineJoin = "round";
+            for (let j = 0; j < stroke.points.length; j++) {
+              const cx = stroke.points[j].pdfX;
+              const cy = ph - stroke.points[j].pdfY;
+              if (j === 0) dctx.moveTo(cx, cy); else dctx.lineTo(cx, cy);
+            }
+            dctx.stroke();
+          }
+          const drawBlob = await new Promise<Blob>((r) => drawCanvas.toBlob((b) => r(b!), "image/png"));
+          const drawImg = await doc.embedPng(await drawBlob.arrayBuffer());
+          page.drawImage(drawImg, { x: 0, y: 0, width: pw, height: ph });
+          drawCanvas.width = 0; drawCanvas.height = 0;
+        }
+
+        // Image annotations
+        const pageImages = imageAnnotations.filter((im) => im.page === pageNum);
+        for (const imgAnn of pageImages) {
+          const dataUrl = imgAnn.dataUrl;
+          const res = await fetch(dataUrl);
+          const arrBuf = await res.arrayBuffer();
+          const isPng = dataUrl.includes("image/png");
+          const embeddedImg = isPng ? await doc.embedPng(arrBuf) : await doc.embedJpg(arrBuf);
+          page.drawImage(embeddedImg, {
+            x: imgAnn.pdfX,
+            y: imgAnn.pdfY - imgAnn.height,
+            width: imgAnn.width,
+            height: imgAnn.height,
+          });
+        }
+
+        srcDoc.destroy();
+      }
+
+      const saved = await doc.save();
+      const blob = new Blob([saved.buffer as ArrayBuffer], { type: "application/pdf" });
+      if (resultUrl) URL.revokeObjectURL(resultUrl);
+      setResultUrl(URL.createObjectURL(blob));
+    } catch (err) {
+      console.error("PdfEditor apply error:", err);
+      setError(t("error"));
+    } finally {
+      setProcessing(false);
+    }
+  }, [rawBytes, editedTexts, editedSizes, editedColors, textAnnotations, strokes, imageAnnotations, resultUrl, t]);
+
+  const download = useCallback(() => {
+    if (!resultUrl) return;
+    const a = document.createElement("a");
+    a.href = resultUrl;
+    a.download = file.name.replace(/\.pdf$/i, "-edited.pdf");
+    a.click();
+  }, [resultUrl, file]);
+
+  const resetAll = useCallback(() => {
+    if (resultUrl) URL.revokeObjectURL(resultUrl);
+    onReset();
+  }, [resultUrl, onReset]);
+
+  /* ---------- computed ---------- */
+
+  const changeCount =
+    Object.keys(editedTexts).filter((k) => {
+      const [, idxStr] = k.split("-");
+      const item = textItems.find((ti) => ti.idx === parseInt(idxStr));
+      return item ? editedTexts[k] !== item.str : true;
+    }).length +
+    textAnnotations.length +
+    strokes.length +
+    imageAnnotations.length;
+
+  const selectedItem = selectedIdx !== null ? textItems.find((ti) => ti.idx === selectedIdx) : null;
+  const selectedKey = selectedItem ? `${currentPage}-${selectedItem.idx}` : null;
+
+  const selectedAnnotation = selectedAnnotationId ? textAnnotations.find((a) => a.id === selectedAnnotationId) : null;
+  const selectedImage = selectedImageId ? imageAnnotations.find((a) => a.id === selectedImageId) : null;
+
+  // Toolbar position for selected text
+  const toolbarTarget = selectedItem
+    ? { x: selectedItem.vx + Math.max(selectedItem.vw, 20) / 2, y: selectedItem.vy }
+    : selectedAnnotation
+      ? { x: selectedAnnotation.pdfX * scaleRef.current, y: (pageDimsRef.current.h - selectedAnnotation.pdfY) * scaleRef.current - selectedAnnotation.fontSize * scaleRef.current }
+      : selectedImage
+        ? { x: selectedImage.pdfX * scaleRef.current + (selectedImage.width * scaleRef.current) / 2, y: (pageDimsRef.current.h - selectedImage.pdfY) * scaleRef.current - selectedImage.height * scaleRef.current }
+        : null;
+
+  /* ---------- result screen ---------- */
+
+  if (resultUrl) {
+    return (
+      <div className="bg-green-500/10 border border-green-500/20 rounded-xl p-6 space-y-4">
+        <div className="text-center">
+          <div className="text-3xl mb-2">&#10003;</div>
+          <p className="font-medium">{t("done")}</p>
+        </div>
+        <div className="flex gap-3 justify-center">
+          <button onClick={download} className="py-2 px-6 bg-primary text-primary-foreground rounded-lg font-medium hover:bg-primary/90">
+            {t("download")}
+          </button>
+          <button onClick={resetAll} className="py-2 px-6 bg-muted rounded-lg font-medium hover:bg-muted/80">
+            {t("reset")}
+          </button>
+        </div>
+      </div>
+    );
+  }
+
+  /* ---------- editor ---------- */
+
+  return (
+    <div className="space-y-4">
+      {/* Toolbar */}
+      <div className="flex flex-wrap gap-2 items-center">
+        <div className="flex gap-1 bg-muted rounded-lg p-1">
+          {(["select", "text", "draw", "image"] as const).map((m) => (
+            <button
+              key={m}
+              onClick={() => {
+                setMode(m);
+                setSelectedIdx(null);
+                setSelectedAnnotationId(null);
+                setSelectedImageId(null);
+                setInlineEditing(false);
+                setNewTextPos(null);
+                if (m === "image") onImageUpload();
+              }}
+              className={`px-3 py-1.5 rounded-md text-sm font-medium transition-colors ${
+                mode === m ? "bg-background shadow-sm" : "hover:bg-background/50"
+              }`}
+            >
+              {t(`mode${m.charAt(0).toUpperCase() + m.slice(1)}` as "modeSelect" | "modeText" | "modeDraw" | "modeImage")}
+            </button>
+          ))}
+        </div>
+
+        {mode === "draw" && (
+          <div className="flex items-center gap-2">
+            <input type="color" value={penColor} onChange={(e) => setPenColor(e.target.value)} className="h-8 w-8 rounded cursor-pointer" />
+            <input type="range" min={1} max={10} value={penWidth} onChange={(e) => setPenWidth(Number(e.target.value))} className="w-20 accent-primary" />
+            <span className="text-xs text-muted-foreground">{penWidth}px</span>
+          </div>
+        )}
+
+        {mode === "text" && (
+          <div className="flex items-center gap-2">
+            <input type="color" value={newTextColor} onChange={(e) => setNewTextColor(e.target.value)} className="h-8 w-8 rounded cursor-pointer" />
+          </div>
+        )}
+
+        {mode === "image" && (
+          <button onClick={onImageUpload} className="px-3 py-1.5 bg-muted rounded-lg text-sm hover:bg-muted/80">
+            {t("uploadImage")}
+          </button>
+        )}
+
+        <div className="flex gap-1 ml-auto">
+          <button
+            onClick={doUndo}
+            disabled={!history.canUndo()}
+            className="px-3 py-1.5 bg-muted rounded-lg text-sm hover:bg-muted/80 disabled:opacity-40"
+            title="Ctrl+Z"
+          >
+            {t("undoAction")}
+          </button>
+          <button
+            onClick={doRedo}
+            disabled={!history.canRedo()}
+            className="px-3 py-1.5 bg-muted rounded-lg text-sm hover:bg-muted/80 disabled:opacity-40"
+            title="Ctrl+Y"
+          >
+            {t("redoAction")}
+          </button>
+        </div>
+      </div>
+
+      {/* Hint */}
+      <p className="text-xs text-muted-foreground">
+        {mode === "select" && t("selectHint")}
+        {mode === "text" && t("textHint")}
+        {mode === "draw" && t("drawHint")}
+        {mode === "image" && t("imageHint")}
+      </p>
+
+      {/* Canvas area */}
+      <div ref={wrapperRef}>
+        <div className="bg-muted/30 rounded-lg p-2 overflow-auto flex justify-center">
+          <div
+            className="relative"
+            style={dims.w > 0 ? { width: dims.w, height: dims.h } : { width: "100%", minHeight: 200 }}
+          >
+            <canvas ref={previewRef} className="block rounded shadow-lg" />
+            <canvas
+              ref={overlayRef}
+              className="absolute inset-0 rounded"
+              style={{ cursor: mode === "select" ? (hoverIdx !== null ? "text" : "default") : mode === "image" ? "crosshair" : mode === "draw" ? "crosshair" : "crosshair" }}
+              onPointerDown={mode === "draw" ? onDrawStart : undefined}
+              onPointerMove={mode === "draw" ? onDrawMove : onOverlayMove}
+              onPointerUp={mode === "draw" ? onDrawEnd : onOverlayClick}
+              onPointerLeave={mode === "draw" ? onDrawEnd : () => setHoverIdx(null)}
+            />
+
+            {/* Inline text editor */}
+            {mode === "select" && inlineEditing && selectedItem && selectedKey && (
+              <InlineTextEditor
+                item={selectedItem}
+                value={editedTexts[selectedKey] ?? selectedItem.str}
+                fontSize={editedSizes[selectedKey] ?? selectedItem.fontSize}
+                onChange={onInlineTextChange}
+                onSizeChange={onInlineSizeChange}
+                onClose={onInlineClose}
+                scale={scaleRef.current}
+              />
+            )}
+
+            {/* Floating toolbar */}
+            {toolbarTarget && (selectedItem || selectedAnnotation || selectedImage) && (
+              <FloatingToolbar
+                x={toolbarTarget.x}
+                y={toolbarTarget.y}
+                containerRect={wrapperRef.current?.getBoundingClientRect() ? { width: dims.w, height: dims.h, x: 0, y: 0, top: 0, left: 0, right: dims.w, bottom: dims.h, toJSON: () => ({}) } as DOMRect : null}
+                fontSize={
+                  selectedItem ? (editedSizes[selectedKey!] ?? selectedItem.fontSize) :
+                  selectedAnnotation ? selectedAnnotation.fontSize :
+                  selectedImage ? selectedImage.width : 14
+                }
+                color={
+                  selectedItem ? (editedColors[selectedKey!] ?? "#000000") :
+                  selectedAnnotation ? selectedAnnotation.color :
+                  "#000000"
+                }
+                showDelete={!!selectedAnnotation || !!selectedImage}
+                onFontSizeChange={(size) => {
+                  if (selectedItem && selectedKey) {
+                    const oldSize = editedSizes[selectedKey] ?? selectedItem.fontSize;
+                    history.push({ type: "editSize", key: selectedKey, oldSize, newSize: size });
+                    setEditedSizes((prev) => ({ ...prev, [selectedKey]: size }));
+                  } else if (selectedAnnotation) {
+                    onAnnotationSizeChange(selectedAnnotation.id, size);
+                  }
+                }}
+                onColorChange={(color) => {
+                  if (selectedItem && selectedKey) {
+                    onInlineColorChange(color);
+                  } else if (selectedAnnotation) {
+                    setTextAnnotations((a) => a.map((x) => (x.id === selectedAnnotation.id ? { ...x, color } : x)));
+                  }
+                }}
+                onDelete={() => {
+                  if (selectedAnnotation) {
+                    history.push({ type: "removeAnnotation", id: selectedAnnotation.id, annotation: selectedAnnotation });
+                    setTextAnnotations((a) => a.filter((x) => x.id !== selectedAnnotation.id));
+                    setSelectedAnnotationId(null);
+                  } else if (selectedImage) {
+                    history.push({ type: "removeImage", id: selectedImage.id, image: selectedImage });
+                    setImageAnnotations((a) => a.filter((x) => x.id !== selectedImage.id));
+                    setSelectedImageId(null);
+                  }
+                }}
+                t={(key: string) => {
+                  try { return t(key as "fontSize"); } catch { return key; }
+                }}
+              />
+            )}
+
+            {/* Draggable text annotations */}
+            {textAnnotations
+              .filter((a) => a.page === currentPage)
+              .map((ann) => (
+                <DraggableAnnotation
+                  key={ann.id}
+                  annotation={ann}
+                  scale={scaleRef.current}
+                  pageH={pageDimsRef.current.h}
+                  isSelected={selectedAnnotationId === ann.id}
+                  onSelect={() => {
+                    setSelectedAnnotationId(ann.id);
+                    setSelectedIdx(null);
+                    setSelectedImageId(null);
+                    setInlineEditing(false);
+                  }}
+                  onMove={onAnnotationMove}
+                  onEdit={onAnnotationEdit}
+                  onSizeChange={onAnnotationSizeChange}
+                />
+              ))}
+
+            {/* Image annotations */}
+            {imageAnnotations
+              .filter((im) => im.page === currentPage)
+              .map((img) => (
+                <ImageAnnotationEl
+                  key={img.id}
+                  image={img}
+                  scale={scaleRef.current}
+                  pageH={pageDimsRef.current.h}
+                  isSelected={selectedImageId === img.id}
+                  onSelect={() => {
+                    setSelectedImageId(img.id);
+                    setSelectedIdx(null);
+                    setSelectedAnnotationId(null);
+                    setInlineEditing(false);
+                  }}
+                  onMove={onImageMove}
+                  onResize={onImageResize}
+                />
+              ))}
+
+            {dims.w === 0 && (
+              <div className="absolute inset-0 flex items-center justify-center bg-muted/30 text-muted-foreground text-sm rounded">
+                {t("processing")}
+              </div>
+            )}
+          </div>
+        </div>
+
+        {pageCount > 1 && (
+          <div className="flex items-center justify-center gap-3 mt-3">
+            <button
+              onClick={() => { setCurrentPage((p) => Math.max(1, p - 1)); setSelectedIdx(null); setInlineEditing(false); }}
+              disabled={currentPage <= 1}
+              className="px-3 py-1 rounded bg-muted hover:bg-muted/80 disabled:opacity-40 text-sm"
+            >
+              {t("prev")}
+            </button>
+            <span className="text-sm text-muted-foreground">
+              {t("page")} {currentPage} {t("of")} {pageCount}
+            </span>
+            <button
+              onClick={() => { setCurrentPage((p) => Math.min(pageCount, p + 1)); setSelectedIdx(null); setInlineEditing(false); }}
+              disabled={currentPage >= pageCount}
+              className="px-3 py-1 rounded bg-muted hover:bg-muted/80 disabled:opacity-40 text-sm"
+            >
+              {t("next")}
+            </button>
+          </div>
+        )}
+      </div>
+
+      {/* Add text panel (text mode) */}
+      {mode === "text" && newTextPos && (
+        <div className="bg-muted/50 rounded-lg p-4 space-y-3">
+          <input
+            type="text"
+            value={newTextInput}
+            onChange={(e) => setNewTextInput(e.target.value)}
+            className="w-full px-3 py-2 rounded-lg border bg-background text-sm"
+            placeholder={t("editPlaceholder")}
+            onKeyDown={(e) => e.key === "Enter" && addTextAnnotation()}
+            autoFocus
+          />
+          <div className="flex items-center gap-3">
+            <label className="text-xs text-muted-foreground">{t("fontSize")}:</label>
+            <input
+              type="number"
+              min={6}
+              max={72}
+              value={newTextSize}
+              onChange={(e) => setNewTextSize(Number(e.target.value))}
+              className="w-20 px-2 py-1 rounded border bg-background text-sm"
+            />
+            <input
+              type="color"
+              value={newTextColor}
+              onChange={(e) => setNewTextColor(e.target.value)}
+              className="h-7 w-7 rounded cursor-pointer"
+            />
+            <button
+              onClick={addTextAnnotation}
+              disabled={!newTextInput.trim()}
+              className="px-4 py-1.5 bg-primary text-primary-foreground rounded-lg text-sm font-medium hover:bg-primary/90 disabled:opacity-50"
+            >
+              {t("addText")}
+            </button>
+          </div>
+        </div>
+      )}
+
+      {/* Pending image hint */}
+      {mode === "image" && pendingImage && (
+        <div className="bg-indigo-500/10 border border-indigo-500/20 rounded-lg p-3 text-sm text-center">
+          {t("imageHint")}
+        </div>
+      )}
+
+      {error && (
+        <div className="bg-destructive/10 text-destructive rounded-lg p-3 text-sm">{error}</div>
+      )}
+
+      <button
+        onClick={apply}
+        disabled={processing || changeCount === 0}
+        className="w-full py-3 px-4 bg-primary text-primary-foreground rounded-lg font-medium hover:bg-primary/90 disabled:opacity-50 transition-colors"
+      >
+        {processing ? t("processing") : changeCount > 0 ? `${t("apply")} (${changeCount})` : t("apply")}
+      </button>
+    </div>
+  );
+}

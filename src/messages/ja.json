@@ -98,6 +98,16 @@
         "title": "登録不要",
         "desc": "アカウント不要。どのツールもすぐに、制限なしで使えます。"
       }
+    },
+    "trust": {
+      "browserOnly": "ブラウザのみで処理",
+      "browserOnlyDesc": "すべてのファイルはブラウザ内で処理されます。サーバーへのアップロードはありません。",
+      "noRegistration": "登録不要",
+      "noRegistrationDesc": "アカウント作成なし。メールアドレスも不要。すぐに使えます。",
+      "alwaysFree": "完全無料",
+      "alwaysFreeDesc": "隠れた料金やプレミアムプランはありません。すべてのツールが無料です。",
+      "secureByDesign": "設計レベルの安全性",
+      "secureByDesignDesc": "ファイルがデバイスから離れることはありません。100%プライベートです。"
     }
   },
   "search": {
@@ -297,7 +307,15 @@
         "page": "ページ",
         "of": "の",
         "tabEdit": "PDF編集",
-        "tabFillSign": "記入と署名"
+        "tabFillSign": "記入と署名",
+        "modeImage": "画像",
+        "imageHint": "PDFをクリックしてアップロードした画像を配置",
+        "uploadImage": "画像をアップロード",
+        "deleteAnnotation": "削除",
+        "undoAction": "元に戻す",
+        "redoAction": "やり直し",
+        "color": "色",
+        "dragToMove": "ドラッグで移動"
       }
     },
     "compress-image": {
@@ -1296,6 +1314,8 @@
         "done": "ページ番号追加完了！",
         "download": "ダウンロード",
         "reset": "やり直す",
+        "pageLabel": "ページ",
+        "ofLabel": "/",
         "error": "エラーが発生しました。もう一度お試しください。"
       }
     },
@@ -1416,7 +1436,8 @@
         "copy": "コピー",
         "reset": "やり直す",
         "error": "エラーが発生しました。もう一度お試しください。",
-        "noText": "このドキュメントにテキストが見つかりませんでした。"
+        "noText": "このドキュメントにテキストが見つかりませんでした。",
+        "chars": "文字"
       }
     },
     "pdf-repair": {
@@ -1506,5 +1527,82 @@
     "language": "言語",
     "allRightsReserved": "全著作権所有",
     "filesNeverLeave": "ファイルがブラウザの外に出ることはありません"
+  },
+  "pages": {
+    "about": {
+      "title": "Tuttiloについて",
+      "subtitle": "すべての人のための無料オンラインツール",
+      "heroTitle": "ウェブツールを\nもっとシンプルに",
+      "heroDescription": "Tuttiloは無料のオールインワンオンラインツールプラットフォームです。PDF、画像、動画、音声、テキスト、開発者ツールをすべてブラウザ内で処理します。",
+      "missionTitle": "私たちのミッション",
+      "missionDescription": "日常的なデジタルタスクに、高価なソフトウェアやアカウント登録が必要であるべきではないと考えています。Tuttiloはすべてのツールを無料で、プライベートに、誰でも利用できるようにします。",
+      "whyTitle": "Tuttiloを選ぶ理由",
+      "feature1Title": "100%ブラウザ処理",
+      "feature1Desc": "すべてのファイルはブラウザ内で処理されます。サーバーへのアップロードは一切ありません。",
+      "feature2Title": "登録不要",
+      "feature2Desc": "アカウント作成なし。メールアドレスも不要。ツールを開いてすぐに使えます。",
+      "feature3Title": "完全無料",
+      "feature3Desc": "隠れた料金、ウォーターマーク、制限なし。すべてのツールが完全に無料です。",
+      "feature4Title": "プライバシー優先",
+      "feature4Desc": "ファイルがデバイスから離れることはありません。サーバーサイド処理もトラッキングもありません。",
+      "techTitle": "技術スタック",
+      "techDescription": "Tuttiloは最新のウェブ技術で構築されています。",
+      "ctaTitle": "今すぐ始めましょう",
+      "ctaDescription": "何千もの人々が毎日の作業にTuttiloを信頼しています。",
+      "ctaButton": "ツールを探す"
+    },
+    "contact": {
+      "title": "お問い合わせ",
+      "subtitle": "ご質問やフィードバックをお寄せください",
+      "nameLabel": "お名前",
+      "namePlaceholder": "お名前を入力",
+      "emailLabel": "メールアドレス",
+      "emailPlaceholder": "メールアドレスを入力",
+      "subjectLabel": "件名",
+      "subjectPlaceholder": "件名を入力",
+      "messageLabel": "メッセージ",
+      "messagePlaceholder": "メッセージを入力...",
+      "sendButton": "メッセージを送信",
+      "sending": "送信中...",
+      "successTitle": "送信完了！",
+      "successMessage": "お問い合わせいただきありがとうございます。できるだけ早くご返信いたします。",
+      "sendAnother": "別のメッセージを送信",
+      "emailDirect": "または直接メール",
+      "responseTime": "通常24〜48時間以内に返信いたします"
+    },
+    "privacy": {
+      "title": "プライバシーポリシー",
+      "lastUpdated": "最終更新",
+      "intro": "Tuttiloでは、お客様のプライバシーを重視しています。このプライバシーポリシーは、当社のウェブサイト利用時に情報がどのように取り扱われるかを説明しています。",
+      "section1Title": "情報の収集",
+      "section1Text": "Tuttiloは個人データを一切収集しません。すべてのファイル処理はブラウザ内で行われ、データがサーバーに送信されることはありません。",
+      "section2Title": "Cookie",
+      "section2Text": "当社では、言語設定やテーマなどのユーザー設定を記憶するために、必要最小限のCookieのみを使用しています。",
+      "section3Title": "分析",
+      "section3Text": "サービス向上のために匿名の利用統計情報を収集する場合があります。この情報に個人を特定できるデータは含まれません。",
+      "section4Title": "第三者サービス",
+      "section4Text": "コンテンツ配信やフォント表示に第三者のCDNを使用する場合があります。これらのサービスには独自のプライバシーポリシーがあります。",
+      "section5Title": "変更",
+      "section5Text": "このプライバシーポリシーは随時更新される場合があります。変更があった場合はこのページで通知いたします。",
+      "section6Title": "お問い合わせ",
+      "section6Text": "プライバシーに関するご質問は、お問い合わせページからご連絡ください。"
+    },
+    "terms": {
+      "title": "利用規約",
+      "lastUpdated": "最終更新",
+      "intro": "Tuttiloをご利用いただくことで、以下の利用規約に同意したものとみなされます。",
+      "section1Title": "サービスの説明",
+      "section1Text": "Tuttiloは無料のオンラインツールプラットフォームで、ファイルの変換、編集、その他のユーティリティ機能を提供しています。すべての処理はブラウザ内で行われます。",
+      "section2Title": "利用条件",
+      "section2Text": "お客様は、合法的な目的のみにTuttiloを使用することに同意するものとします。違法な活動や第三者の権利を侵害する使用は禁止されています。",
+      "section3Title": "免責事項",
+      "section3Text": "Tuttiloは「現状有姿」で提供され、いかなる保証も行いません。当社は処理結果やデータの損失について責任を負いません。",
+      "section4Title": "知的財産権",
+      "section4Text": "Tuttiloのコンテンツとブランドは著作権法で保護されています。お客様が処理するファイルの所有権はお客様に帰属します。",
+      "section5Title": "変更",
+      "section5Text": "当社はこれらの規約を随時変更する権利を留保します。継続的な使用により、変更後の規約に同意したものとみなされます。",
+      "section6Title": "お問い合わせ",
+      "section6Text": "これらの規約に関するご質問は、お問い合わせページからご連絡ください。"
+    }
   }
 }

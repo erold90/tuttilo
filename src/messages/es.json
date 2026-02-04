@@ -261,7 +261,17 @@
         "prev": "Anterior",
         "next": "Siguiente",
         "page": "Página",
-        "of": "de"
+        "of": "de",
+        "tabEdit": "Editar PDF",
+        "tabFillSign": "Rellenar y firmar",
+        "modeImage": "Imagen",
+        "imageHint": "Haz clic en el PDF para colocar la imagen cargada",
+        "uploadImage": "Subir imagen",
+        "deleteAnnotation": "Eliminar",
+        "undoAction": "Deshacer",
+        "redoAction": "Rehacer",
+        "color": "Color",
+        "dragToMove": "Arrastra para mover"
       }
     },
     "compress-image": {
@@ -1361,6 +1371,8 @@
         "done": "¡Números de página añadidos!",
         "download": "Descargar",
         "reset": "Empezar de nuevo",
+        "pageLabel": "Página",
+        "ofLabel": "de",
         "error": "Ocurrió un error. Inténtalo de nuevo."
       }
     },
@@ -1424,7 +1436,8 @@
         "copy": "Copiar",
         "reset": "Empezar de nuevo",
         "error": "Ocurrió un error. Inténtalo de nuevo.",
-        "noText": "No se encontró texto en este documento."
+        "noText": "No se encontró texto en este documento.",
+        "chars": "caracteres"
       }
     },
     "pdf-repair": {

@@ -307,7 +307,15 @@
         "page": "페이지",
         "of": "/",
         "tabEdit": "PDF 편집",
-        "tabFillSign": "작성 및 서명"
+        "tabFillSign": "작성 및 서명",
+        "modeImage": "이미지",
+        "imageHint": "PDF를 클릭하여 업로드한 이미지를 배치하세요",
+        "uploadImage": "이미지 업로드",
+        "deleteAnnotation": "삭제",
+        "undoAction": "실행 취소",
+        "redoAction": "다시 실행",
+        "color": "색상",
+        "dragToMove": "드래그하여 이동"
       }
     },
     "compress-image": {
@@ -1306,6 +1314,8 @@
         "done": "페이지 번호가 추가되었습니다!",
         "download": "다운로드",
         "reset": "다시 시작",
+        "pageLabel": "페이지",
+        "ofLabel": "/",
         "error": "오류가 발생했습니다. 다시 시도해 주세요."
       }
     },
@@ -1426,7 +1436,8 @@
         "copy": "복사",
         "reset": "다시 시작",
         "error": "오류가 발생했습니다. 다시 시도해 주세요.",
-        "noText": "이 문서에서 텍스트를 찾을 수 없습니다."
+        "noText": "이 문서에서 텍스트를 찾을 수 없습니다.",
+        "chars": "문자"
       }
     },
     "pdf-repair": {

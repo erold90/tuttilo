@@ -307,7 +307,15 @@
         "page": "Seite",
         "of": "von",
         "tabEdit": "PDF bearbeiten",
-        "tabFillSign": "Ausfüllen und Unterschreiben"
+        "tabFillSign": "Ausfüllen und Unterschreiben",
+        "modeImage": "Bild",
+        "imageHint": "Klicken Sie auf das PDF, um das hochgeladene Bild zu platzieren",
+        "uploadImage": "Bild hochladen",
+        "deleteAnnotation": "Löschen",
+        "undoAction": "Rückgängig",
+        "redoAction": "Wiederherstellen",
+        "color": "Farbe",
+        "dragToMove": "Ziehen zum Verschieben"
       }
     },
     "compress-image": {
@@ -1306,6 +1314,8 @@
         "done": "Seitenzahlen hinzugefügt!",
         "download": "Herunterladen",
         "reset": "Neu starten",
+        "pageLabel": "Seite",
+        "ofLabel": "von",
         "error": "Ein Fehler ist aufgetreten. Bitte versuchen Sie es erneut."
       }
     },
@@ -1426,7 +1436,8 @@
         "copy": "Kopieren",
         "reset": "Neu starten",
         "error": "Ein Fehler ist aufgetreten. Bitte versuchen Sie es erneut.",
-        "noText": "Kein Text in diesem Dokument gefunden."
+        "noText": "Kein Text in diesem Dokument gefunden.",
+        "chars": "Zeichen"
       }
     },
     "pdf-repair": {

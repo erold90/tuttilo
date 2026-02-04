@@ -299,7 +299,15 @@
         "page": "Page",
         "of": "of",
         "tabEdit": "Edit PDF",
-        "tabFillSign": "Fill & Sign"
+        "tabFillSign": "Fill & Sign",
+        "modeImage": "Image",
+        "imageHint": "Click on the PDF to place the uploaded image",
+        "uploadImage": "Upload Image",
+        "deleteAnnotation": "Delete",
+        "undoAction": "Undo",
+        "redoAction": "Redo",
+        "color": "Color",
+        "dragToMove": "Drag to move"
       }
     },
     "compress-image": {
@@ -1298,7 +1306,9 @@
         "done": "Page numbers added!",
         "download": "Download",
         "reset": "Start Over",
-        "error": "An error occurred. Please try again."
+        "error": "An error occurred. Please try again.",
+        "pageLabel": "Page",
+        "ofLabel": "of"
       }
     },
     "pdf-watermark": {
@@ -1418,7 +1428,8 @@
         "copy": "Copy",
         "reset": "Start Over",
         "error": "An error occurred. Please try again.",
-        "noText": "No text found in this document."
+        "noText": "No text found in this document.",
+        "chars": "chars"
       }
     },
     "pdf-repair": {

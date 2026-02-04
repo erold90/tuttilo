@@ -307,7 +307,15 @@
         "page": "Pagina",
         "of": "di",
         "tabEdit": "Modifica PDF",
-        "tabFillSign": "Compila e Firma"
+        "tabFillSign": "Compila e Firma",
+        "modeImage": "Immagine",
+        "imageHint": "Clicca sul PDF per posizionare l'immagine caricata",
+        "uploadImage": "Carica Immagine",
+        "deleteAnnotation": "Elimina",
+        "undoAction": "Annulla",
+        "redoAction": "Ripeti",
+        "color": "Colore",
+        "dragToMove": "Trascina per spostare"
       }
     },
     "compress-image": {
@@ -1306,6 +1314,8 @@
         "done": "Numeri di pagina aggiunti!",
         "download": "Scarica",
         "reset": "Ricomincia",
+        "pageLabel": "Pagina",
+        "ofLabel": "di",
         "error": "Si è verificato un errore. Riprova."
       }
     },
@@ -1426,7 +1436,8 @@
         "copy": "Copia",
         "reset": "Ricomincia",
         "error": "Si è verificato un errore. Riprova.",
-        "noText": "Nessun testo trovato in questo documento."
+        "noText": "Nessun testo trovato in questo documento.",
+        "chars": "caratteri"
       }
     },
     "pdf-repair": {

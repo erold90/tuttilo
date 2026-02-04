@@ -263,7 +263,15 @@
         "page": "Page",
         "of": "sur",
         "tabEdit": "Modifier le PDF",
-        "tabFillSign": "Remplir et Signer"
+        "tabFillSign": "Remplir et Signer",
+        "modeImage": "Image",
+        "imageHint": "Cliquez sur le PDF pour placer l'image importée",
+        "uploadImage": "Importer une image",
+        "deleteAnnotation": "Supprimer",
+        "undoAction": "Annuler",
+        "redoAction": "Rétablir",
+        "color": "Couleur",
+        "dragToMove": "Glisser pour déplacer"
       }
     },
     "compress-image": {
@@ -1306,6 +1314,8 @@
         "done": "Numéros de page ajoutés !",
         "download": "Télécharger",
         "reset": "Recommencer",
+        "pageLabel": "Page",
+        "ofLabel": "de",
         "error": "Une erreur s'est produite. Veuillez réessayer."
       }
     },
@@ -1426,7 +1436,8 @@
         "copy": "Copier",
         "reset": "Recommencer",
         "error": "Une erreur s'est produite. Veuillez réessayer.",
-        "noText": "Aucun texte trouvé dans ce document."
+        "noText": "Aucun texte trouvé dans ce document.",
+        "chars": "caractères"
       }
     },
     "pdf-repair": {
