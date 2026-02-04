@@ -315,7 +315,23 @@
         "undoAction": "실행 취소",
         "redoAction": "다시 실행",
         "color": "색상",
-        "dragToMove": "드래그하여 이동"
+        "dragToMove": "드래그하여 이동",
+        "modeFill": "양식 작성",
+        "modeSign": "서명",
+        "fillHint": "아래에서 감지된 양식 필드를 작성하세요",
+        "signHint": "서명을 만든 후 PDF를 클릭하여 배치하세요",
+        "noFields": "이 PDF에서 양식 필드가 감지되지 않았습니다",
+        "flatten": "양식 필드 병합",
+        "flattenHint": "필드를 영구적이고 편집 불가능하게 만듭니다",
+        "signDraw": "그리기",
+        "signType": "입력",
+        "signUpload": "업로드",
+        "signPlaceholder": "서명을 입력하세요",
+        "signSave": "서명 사용",
+        "signClear": "지우기",
+        "signUploadHint": "클릭하여 서명 이미지를 업로드",
+        "signInstruction": "PDF를 클릭하여 서명을 배치하세요",
+        "signPlaced": "PDF에 서명이 배치되었습니다"
       }
     },
     "compress-image": {

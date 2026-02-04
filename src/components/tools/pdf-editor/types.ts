@@ -46,7 +46,19 @@ export interface ImageAnnotation {
   naturalH: number;
 }
 
-export type EditorMode = "select" | "text" | "draw" | "image";
+export type EditorMode = "select" | "text" | "draw" | "image" | "fill" | "sign";
+
+export interface FieldInfo {
+  name: string;
+  type: "text" | "checkbox" | "dropdown";
+  options?: string[];
+}
+
+export interface SignPos {
+  page: number;
+  xRatio: number;
+  yRatio: number;
+}
 
 export type EditorAction =
   | { type: "editText"; key: string; oldText: string; newText: string }

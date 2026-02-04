@@ -315,7 +315,23 @@
         "undoAction": "Desfazer",
         "redoAction": "Refazer",
         "color": "Cor",
-        "dragToMove": "Arraste para mover"
+        "dragToMove": "Arraste para mover",
+        "modeFill": "Formulário",
+        "modeSign": "Assinar",
+        "fillHint": "Preencha os campos do formulário detectados abaixo",
+        "signHint": "Crie sua assinatura e clique no PDF para posicioná-la",
+        "noFields": "Nenhum campo de formulário detectado neste PDF",
+        "flatten": "Incorporar campos",
+        "flattenHint": "Torna os campos permanentes e não editáveis",
+        "signDraw": "Desenhar",
+        "signType": "Digitar",
+        "signUpload": "Carregar",
+        "signPlaceholder": "Digite sua assinatura",
+        "signSave": "Usar assinatura",
+        "signClear": "Limpar",
+        "signUploadHint": "Clique para carregar uma imagem de assinatura",
+        "signInstruction": "Clique no PDF para posicionar sua assinatura",
+        "signPlaced": "Assinatura posicionada no PDF"
       }
     },
     "compress-image": {

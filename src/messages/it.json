@@ -315,7 +315,23 @@
         "undoAction": "Annulla",
         "redoAction": "Ripeti",
         "color": "Colore",
-        "dragToMove": "Trascina per spostare"
+        "dragToMove": "Trascina per spostare",
+        "modeFill": "Compila Campi",
+        "modeSign": "Firma",
+        "fillHint": "Compila i campi del modulo rilevati qui sotto",
+        "signHint": "Crea la tua firma, poi clicca sul PDF per posizionarla",
+        "noFields": "Nessun campo modulo rilevato in questo PDF",
+        "flatten": "Appiattisci campi modulo",
+        "flattenHint": "Rende i campi permanenti e non modificabili",
+        "signDraw": "Disegna",
+        "signType": "Digita",
+        "signUpload": "Carica",
+        "signPlaceholder": "Digita la tua firma",
+        "signSave": "Usa Firma",
+        "signClear": "Cancella",
+        "signUploadHint": "Clicca per caricare un'immagine della firma",
+        "signInstruction": "Clicca sul PDF per posizionare la firma",
+        "signPlaced": "Firma posizionata sul PDF"
       }
     },
     "compress-image": {

@@ -315,7 +315,23 @@
         "undoAction": "Rückgängig",
         "redoAction": "Wiederherstellen",
         "color": "Farbe",
-        "dragToMove": "Ziehen zum Verschieben"
+        "dragToMove": "Ziehen zum Verschieben",
+        "modeFill": "Formular",
+        "modeSign": "Signieren",
+        "fillHint": "Füllen Sie die erkannten Formularfelder unten aus",
+        "signHint": "Erstellen Sie Ihre Unterschrift und klicken Sie auf das PDF, um sie zu platzieren",
+        "noFields": "Keine Formularfelder in diesem PDF erkannt",
+        "flatten": "Formularfelder einbetten",
+        "flattenHint": "Macht Felder dauerhaft und nicht bearbeitbar",
+        "signDraw": "Zeichnen",
+        "signType": "Eingeben",
+        "signUpload": "Hochladen",
+        "signPlaceholder": "Geben Sie Ihre Unterschrift ein",
+        "signSave": "Unterschrift verwenden",
+        "signClear": "Löschen",
+        "signUploadHint": "Klicken Sie, um ein Unterschriftsbild hochzuladen",
+        "signInstruction": "Klicken Sie auf das PDF, um Ihre Unterschrift zu platzieren",
+        "signPlaced": "Unterschrift im PDF platziert"
       }
     },
     "compress-image": {

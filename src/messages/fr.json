@@ -271,7 +271,23 @@
         "undoAction": "Annuler",
         "redoAction": "Rétablir",
         "color": "Couleur",
-        "dragToMove": "Glisser pour déplacer"
+        "dragToMove": "Glisser pour déplacer",
+        "modeFill": "Formulaire",
+        "modeSign": "Signer",
+        "fillHint": "Remplissez les champs du formulaire détectés ci-dessous",
+        "signHint": "Créez votre signature, puis cliquez sur le PDF pour la placer",
+        "noFields": "Aucun champ de formulaire détecté dans ce PDF",
+        "flatten": "Aplatir les champs",
+        "flattenHint": "Rend les champs permanents et non modifiables",
+        "signDraw": "Dessiner",
+        "signType": "Taper",
+        "signUpload": "Importer",
+        "signPlaceholder": "Tapez votre signature",
+        "signSave": "Utiliser la signature",
+        "signClear": "Effacer",
+        "signUploadHint": "Cliquez pour importer une image de signature",
+        "signInstruction": "Cliquez sur le PDF pour placer votre signature",
+        "signPlaced": "Signature placée sur le PDF"
       }
     },
     "compress-image": {

@@ -307,7 +307,23 @@
         "undoAction": "Undo",
         "redoAction": "Redo",
         "color": "Color",
-        "dragToMove": "Drag to move"
+        "dragToMove": "Drag to move",
+        "modeFill": "Fill Form",
+        "modeSign": "Sign",
+        "fillHint": "Fill detected form fields below",
+        "signHint": "Create your signature, then click on the PDF to place it",
+        "noFields": "No form fields detected in this PDF",
+        "flatten": "Flatten form fields",
+        "flattenHint": "Makes fields permanent and non-editable",
+        "signDraw": "Draw",
+        "signType": "Type",
+        "signUpload": "Upload",
+        "signPlaceholder": "Type your signature",
+        "signSave": "Use Signature",
+        "signClear": "Clear",
+        "signUploadHint": "Click to upload a signature image",
+        "signInstruction": "Click on the PDF to place your signature",
+        "signPlaced": "Signature placed on PDF"
       }
     },
     "compress-image": {

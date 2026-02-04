@@ -10,6 +10,8 @@ import type {
   EditorMode,
   EditorAction,
   PdfEditorProps,
+  FieldInfo,
+  SignPos,
 } from "./types";
 import { getPdfjs, hexToRgb, canvasToPdf, uid } from "./utils";
 import { useEditorHistory } from "./useEditorHistory";
@@ -59,9 +61,25 @@ export function PdfEditorCore({ file, rawBytes, onReset }: PdfEditorProps) {
   const [zoom, setZoom] = useState(1);
   const [, forceRender] = useState(0);
 
+  // Fill & Sign state
+  const [fields, setFields] = useState<FieldInfo[]>([]);
+  const [textVals, setTextVals] = useState<Record<string, string>>({});
+  const [checkVals, setCheckVals] = useState<Record<string, boolean>>({});
+  const [flatten, setFlatten] = useState(false);
+
+  const [signMode, setSignMode] = useState<"draw" | "type" | "upload">("draw");
+  const [signDataUrl, setSignDataUrl] = useState("");
+  const [typedName, setTypedName] = useState("");
+  const [signPos, setSignPos] = useState<SignPos | null>(null);
+  const [signAspect, setSignAspect] = useState(2.5);
+  const [signSize, setSignSize] = useState(200);
+  const signImgRef = useRef<HTMLImageElement | null>(null);
+
   const previewRef = useRef<HTMLCanvasElement>(null);
   const overlayRef = useRef<HTMLCanvasElement>(null);
   const wrapperRef = useRef<HTMLDivElement>(null);
+  const signCanvasRef = useRef<HTMLCanvasElement>(null);
+  const padRef = useRef<any>(null);
   const scaleRef = useRef(1);
   const pageDimsRef = useRef({ w: 612, h: 792 });
   const isDrawingRef = useRef(false);
@@ -188,21 +206,58 @@ export function PdfEditorCore({ file, rawBytes, onReset }: PdfEditorProps) {
     return () => window.removeEventListener("keydown", handler);
   }, [doUndo, doRedo, selectedAnnotationId, selectedImageId, textAnnotations, imageAnnotations, history, inlineEditing]);
 
-  /* ---------- init ---------- */
+  /* ---------- init + detect form fields ---------- */
 
   useEffect(() => {
     let cancelled = false;
-    getPdfjs()
-      .then(async (pdfjs) => {
-        if (cancelled) return;
+    (async () => {
+      // Page count via pdfjs
+      try {
+        const pdfjs = await getPdfjs();
         const doc = await pdfjs.getDocument({ data: rawBytes.slice(0) }).promise;
-        setPageCount(doc.numPages);
+        if (!cancelled) setPageCount(doc.numPages);
         doc.destroy();
-      })
-      .catch((err) => {
+      } catch (err) {
         console.error("PdfEditor init error:", err);
         if (!cancelled) setError(t("error"));
-      });
+        return;
+      }
+      // Detect form fields via pdf-lib
+      try {
+        const { PDFDocument } = await import("pdf-lib");
+        const doc = await PDFDocument.load(rawBytes.slice(0), { ignoreEncryption: true });
+        if (cancelled) return;
+        try {
+          const form = doc.getForm();
+          const allFields = form.getFields();
+          const detected: FieldInfo[] = [];
+          const tv: Record<string, string> = {};
+          const cv: Record<string, boolean> = {};
+          for (const field of allFields) {
+            const name = field.getName();
+            const kind = field.constructor.name;
+            if (kind === "PDFTextField") {
+              detected.push({ name, type: "text" });
+              const val = (field as any).getText?.() ?? "";
+              if (val) tv[name] = val;
+            } else if (kind === "PDFCheckBox") {
+              detected.push({ name, type: "checkbox" });
+              cv[name] = !!(field as any).isChecked?.();
+            } else if (kind === "PDFDropdown") {
+              const opts = (field as any).getOptions?.() ?? [];
+              detected.push({ name, type: "dropdown", options: opts });
+              const sel = (field as any).getSelected?.()?.[0] ?? "";
+              if (sel) tv[name] = sel;
+            }
+          }
+          if (!cancelled) {
+            setFields(detected);
+            setTextVals(tv);
+            setCheckVals(cv);
+          }
+        } catch { /* No form fields */ }
+      } catch { /* pdf-lib can't parse - no form fields */ }
+    })();
     return () => { cancelled = true; };
   }, [rawBytes, t]);
 
@@ -441,7 +496,22 @@ export function PdfEditorCore({ file, rawBytes, onReset }: PdfEditorProps) {
       }
       ctx.stroke();
     }
-  }, [textItems, selectedIdx, hoverIdx, editedTexts, editedSizes, editedColors, inlineEditing, currentPage, strokes, activeStroke, mode, newTextPos, newTextSize, newTextInput, newTextColor, dims, pendingImage]);
+
+    // Signature preview
+    if (signPos?.page === currentPage && signImgRef.current) {
+      const simg = signImgRef.current;
+      const sw = signSize * scale;
+      const sh = sw / signAspect;
+      const sx = signPos.xRatio * canvas.width - sw / 2;
+      const sy = signPos.yRatio * canvas.height - sh / 2;
+      ctx.drawImage(simg, sx, sy, sw, sh);
+      ctx.strokeStyle = "#6366F1";
+      ctx.lineWidth = 1.5;
+      ctx.setLineDash([4, 4]);
+      ctx.strokeRect(sx, sy, sw, sh);
+      ctx.setLineDash([]);
+    }
+  }, [textItems, selectedIdx, hoverIdx, editedTexts, editedSizes, editedColors, inlineEditing, currentPage, strokes, activeStroke, mode, newTextPos, newTextSize, newTextInput, newTextColor, dims, pendingImage, signPos, signDataUrl, signSize, signAspect]);
 
   useEffect(() => { renderOverlay(); }, [renderOverlay]);
 
@@ -518,9 +588,16 @@ export function PdfEditorCore({ file, rawBytes, onReset }: PdfEditorProps) {
         history.push({ type: "addImage", image: imgAnn });
         setImageAnnotations((a) => [...a, imgAnn]);
         setPendingImage(null);
+      } else if (mode === "sign" && signDataUrl) {
+        const rect = canvas.getBoundingClientRect();
+        setSignPos({
+          page: currentPage,
+          xRatio: (e.clientX - rect.left) / rect.width,
+          yRatio: (e.clientY - rect.top) / rect.height,
+        });
       }
     },
-    [mode, textItems, currentPage, editedTexts, pendingImage, history]
+    [mode, textItems, currentPage, editedTexts, pendingImage, history, signDataUrl]
   );
 
   const onDrawStart = useCallback(
@@ -604,6 +681,90 @@ export function PdfEditorCore({ file, rawBytes, onReset }: PdfEditorProps) {
       reader.readAsDataURL(f);
     };
     input.click();
+  }, []);
+
+  /* ---------- signature pad ---------- */
+
+  useEffect(() => {
+    if (mode !== "sign" || signMode !== "draw" || !signCanvasRef.current) return;
+    let cancelled = false;
+    import("signature_pad").then(({ default: SP }) => {
+      if (cancelled || !signCanvasRef.current) return;
+      const c = signCanvasRef.current;
+      const dpr = window.devicePixelRatio || 1;
+      const rect = c.getBoundingClientRect();
+      c.width = rect.width * dpr;
+      c.height = rect.height * dpr;
+      const ctx = c.getContext("2d")!;
+      ctx.scale(dpr, dpr);
+      padRef.current = new SP(c, {
+        backgroundColor: "rgba(255,255,255,0)",
+        penColor: "#000",
+        minWidth: 1,
+        maxWidth: 3,
+      });
+    });
+    return () => {
+      cancelled = true;
+      padRef.current?.off();
+      padRef.current = null;
+    };
+  }, [mode, signMode]);
+
+  // Preload signature image for overlay rendering
+  useEffect(() => {
+    if (!signDataUrl) { signImgRef.current = null; return; }
+    const img = new Image();
+    img.onload = () => { signImgRef.current = img; renderOverlay(); };
+    img.src = signDataUrl;
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [signDataUrl]);
+
+  const saveDrawnSig = useCallback(() => {
+    if (!padRef.current || padRef.current.isEmpty()) return;
+    const url = padRef.current.toDataURL("image/png");
+    setSignDataUrl(url);
+    const img = new Image();
+    img.onload = () => { if (img.naturalWidth > 0) setSignAspect(img.naturalWidth / img.naturalHeight); };
+    img.src = url;
+  }, []);
+
+  const clearSig = useCallback(() => {
+    padRef.current?.clear();
+    setSignDataUrl("");
+    setSignPos(null);
+  }, []);
+
+  const genTypedSig = useCallback(() => {
+    if (!typedName.trim()) return;
+    const c = document.createElement("canvas");
+    c.width = 600; c.height = 200;
+    const ctx = c.getContext("2d")!;
+    ctx.font = "italic 64px Georgia, 'Times New Roman', serif";
+    ctx.fillStyle = "#000";
+    ctx.textBaseline = "middle";
+    const metrics = ctx.measureText(typedName);
+    c.width = Math.max(Math.ceil(metrics.width) + 32, 200);
+    ctx.font = "italic 64px Georgia, 'Times New Roman', serif";
+    ctx.fillStyle = "#000";
+    ctx.textBaseline = "middle";
+    ctx.fillText(typedName, 16, 100);
+    const url = c.toDataURL("image/png");
+    setSignDataUrl(url);
+    setSignAspect(c.width / c.height);
+  }, [typedName]);
+
+  const uploadSig = useCallback((f: File) => {
+    if (!f.type.startsWith("image/")) return;
+    const reader = new FileReader();
+    reader.onload = () => {
+      const url = reader.result as string;
+      setSignDataUrl(url);
+      const img = new Image();
+      img.onload = () => { if (img.naturalWidth > 0) setSignAspect(img.naturalWidth / img.naturalHeight); };
+      img.src = url;
+    };
+    reader.readAsDataURL(f);
   }, []);
 
   /* ---------- annotation handlers ---------- */
@@ -859,6 +1020,41 @@ export function PdfEditorCore({ file, rawBytes, onReset }: PdfEditorProps) {
         srcDoc.destroy();
       }
 
+      // Fill form fields
+      if (fields.length > 0) {
+        try {
+          const form = doc.getForm();
+          for (const f of fields) {
+            try {
+              if (f.type === "text") form.getTextField(f.name).setText(textVals[f.name] || "");
+              else if (f.type === "checkbox") {
+                if (checkVals[f.name]) form.getCheckBox(f.name).check();
+                else form.getCheckBox(f.name).uncheck();
+              } else if (f.type === "dropdown" && textVals[f.name])
+                form.getDropdown(f.name).select(textVals[f.name]);
+            } catch {}
+          }
+          if (flatten) form.flatten();
+        } catch {}
+      }
+
+      // Embed signature
+      if (signPos && signDataUrl) {
+        const sigBytes = await fetch(signDataUrl).then((r) => r.arrayBuffer());
+        const isPng = signDataUrl.startsWith("data:image/png");
+        const sigImg = isPng ? await doc.embedPng(sigBytes) : await doc.embedJpg(sigBytes);
+        const pg = doc.getPage(signPos.page - 1);
+        const { width: pw, height: ph } = pg.getSize();
+        const sigW = signSize;
+        const sigH = sigW / signAspect;
+        pg.drawImage(sigImg, {
+          x: signPos.xRatio * pw - sigW / 2,
+          y: (1 - signPos.yRatio) * ph - sigH / 2,
+          width: sigW,
+          height: sigH,
+        });
+      }
+
       const saved = await doc.save();
       const blob = new Blob([saved.buffer as ArrayBuffer], { type: "application/pdf" });
       if (resultUrl) URL.revokeObjectURL(resultUrl);
@@ -869,7 +1065,7 @@ export function PdfEditorCore({ file, rawBytes, onReset }: PdfEditorProps) {
     } finally {
       setProcessing(false);
     }
-  }, [rawBytes, editedTexts, editedSizes, editedColors, textAnnotations, strokes, imageAnnotations, resultUrl, t]);
+  }, [rawBytes, editedTexts, editedSizes, editedColors, textAnnotations, strokes, imageAnnotations, fields, textVals, checkVals, flatten, signPos, signDataUrl, signAspect, signSize, resultUrl, t]);
 
   const download = useCallback(() => {
     if (!resultUrl) return;
@@ -886,6 +1082,13 @@ export function PdfEditorCore({ file, rawBytes, onReset }: PdfEditorProps) {
 
   /* ---------- computed ---------- */
 
+  const fillCount = fields.filter((f) =>
+    (f.type === "text" && !!textVals[f.name]?.trim()) ||
+    (f.type === "checkbox" && checkVals[f.name]) ||
+    (f.type === "dropdown" && !!textVals[f.name])
+  ).length;
+  const hasSignature = !!signPos && !!signDataUrl;
+
   const changeCount =
     Object.keys(editedTexts).filter((k) => {
       const [, idxStr] = k.split("-");
@@ -894,7 +1097,10 @@ export function PdfEditorCore({ file, rawBytes, onReset }: PdfEditorProps) {
     }).length +
     textAnnotations.length +
     strokes.length +
-    imageAnnotations.length;
+    imageAnnotations.length +
+    fillCount +
+    (hasSignature ? 1 : 0) +
+    (flatten && fields.length > 0 ? 1 : 0);
 
   const selectedItem = selectedIdx !== null ? textItems.find((ti) => ti.idx === selectedIdx) : null;
   const selectedKey = selectedItem ? `${currentPage}-${selectedItem.idx}` : null;
@@ -938,8 +1144,8 @@ export function PdfEditorCore({ file, rawBytes, onReset }: PdfEditorProps) {
     <div className="space-y-4">
       {/* Toolbar */}
       <div className="flex flex-wrap gap-2 items-center">
-        <div className="flex gap-1 bg-muted rounded-lg p-1">
-          {(["select", "text", "draw", "image"] as const).map((m) => (
+        <div className="flex gap-1 bg-muted rounded-lg p-1 flex-wrap">
+          {(["select", "text", "draw", "image", "fill", "sign"] as EditorMode[]).map((m) => (
             <button
               key={m}
               onClick={() => {
@@ -955,7 +1161,8 @@ export function PdfEditorCore({ file, rawBytes, onReset }: PdfEditorProps) {
                 mode === m ? "bg-background shadow-sm" : "hover:bg-background/50"
               }`}
             >
-              {t(`mode${m.charAt(0).toUpperCase() + m.slice(1)}` as "modeSelect" | "modeText" | "modeDraw" | "modeImage")}
+              {t(`mode${m.charAt(0).toUpperCase() + m.slice(1)}` as any)}
+              {m === "fill" && fields.length > 0 && <span className="ml-1 text-xs opacity-60">({fields.length})</span>}
             </button>
           ))}
         </div>
@@ -1006,6 +1213,8 @@ export function PdfEditorCore({ file, rawBytes, onReset }: PdfEditorProps) {
         {mode === "text" && t("textHint")}
         {mode === "draw" && t("drawHint")}
         {mode === "image" && t("imageHint")}
+        {mode === "fill" && t("fillHint")}
+        {mode === "sign" && t("signHint")}
       </p>
 
       {/* Canvas area */}
@@ -1231,6 +1440,99 @@ export function PdfEditorCore({ file, rawBytes, onReset }: PdfEditorProps) {
       {mode === "image" && pendingImage && (
         <div className="bg-indigo-500/10 border border-indigo-500/20 rounded-lg p-3 text-sm text-center">
           {t("imageHint")}
+        </div>
+      )}
+
+      {/* Fill form panel */}
+      {mode === "fill" && (
+        <div className="bg-muted/50 rounded-lg p-4 space-y-3">
+          {fields.length === 0 ? (
+            <p className="text-sm text-muted-foreground text-center py-4">{t("noFields")}</p>
+          ) : (
+            <>
+              {fields.map((f) => (
+                <div key={f.name} className="space-y-1">
+                  <label className="text-sm font-medium">{f.name}</label>
+                  {f.type === "text" && (
+                    <input type="text" value={textVals[f.name] ?? ""} onChange={(e) => setTextVals((v) => ({ ...v, [f.name]: e.target.value }))} className="w-full px-3 py-2 rounded-lg border bg-background text-sm" placeholder={f.name} />
+                  )}
+                  {f.type === "checkbox" && (
+                    <div className="pt-1"><input type="checkbox" checked={checkVals[f.name] ?? false} onChange={(e) => setCheckVals((v) => ({ ...v, [f.name]: e.target.checked }))} className="h-4 w-4" /></div>
+                  )}
+                  {f.type === "dropdown" && (
+                    <select value={textVals[f.name] ?? ""} onChange={(e) => setTextVals((v) => ({ ...v, [f.name]: e.target.value }))} className="w-full px-3 py-2 rounded-lg border bg-background text-sm">
+                      <option value="">—</option>
+                      {f.options?.map((o) => <option key={o} value={o}>{o}</option>)}
+                    </select>
+                  )}
+                </div>
+              ))}
+              <label className="flex items-center gap-2 pt-2 text-sm">
+                <input type="checkbox" checked={flatten} onChange={(e) => setFlatten(e.target.checked)} className="h-4 w-4" />
+                <span>{t("flatten")}</span>
+                <span className="text-xs text-muted-foreground">— {t("flattenHint")}</span>
+              </label>
+            </>
+          )}
+        </div>
+      )}
+
+      {/* Sign panel */}
+      {mode === "sign" && (
+        <div className="bg-muted/50 rounded-lg p-4 space-y-4">
+          <div className="flex gap-2">
+            {(["draw", "type", "upload"] as const).map((m) => (
+              <button key={m} onClick={() => { setSignMode(m); setSignDataUrl(""); setSignPos(null); }} className={`px-4 py-2 rounded-lg text-sm font-medium transition-colors ${signMode === m ? "bg-primary text-primary-foreground" : "bg-muted hover:bg-muted/80"}`}>
+                {t(`sign${m.charAt(0).toUpperCase() + m.slice(1)}` as any)}
+              </button>
+            ))}
+          </div>
+
+          {signMode === "draw" && (
+            <div>
+              <div className="border-2 border-muted rounded-lg bg-white overflow-hidden" style={{ height: "150px" }}>
+                <canvas ref={signCanvasRef} style={{ width: "100%", height: "100%" }} />
+              </div>
+              <div className="flex gap-2 mt-2">
+                <button onClick={saveDrawnSig} className="px-4 py-1.5 bg-primary text-primary-foreground rounded-lg text-sm font-medium hover:bg-primary/90">{t("signSave")}</button>
+                <button onClick={clearSig} className="px-4 py-1.5 bg-muted rounded-lg text-sm font-medium hover:bg-muted/80">{t("signClear")}</button>
+              </div>
+            </div>
+          )}
+
+          {signMode === "type" && (
+            <div className="space-y-3">
+              <input type="text" value={typedName} onChange={(e) => setTypedName(e.target.value)} placeholder={t("signPlaceholder")} className="w-full px-3 py-2 rounded-lg border bg-background text-sm" />
+              {typedName && (
+                <div className="bg-white border rounded-lg p-4">
+                  <p className="text-3xl italic" style={{ fontFamily: "Georgia, 'Times New Roman', serif" }}>{typedName}</p>
+                </div>
+              )}
+              <button onClick={genTypedSig} disabled={!typedName.trim()} className="px-4 py-1.5 bg-primary text-primary-foreground rounded-lg text-sm font-medium hover:bg-primary/90 disabled:opacity-50">{t("signSave")}</button>
+            </div>
+          )}
+
+          {signMode === "upload" && (
+            <div onClick={() => { const i = document.createElement("input"); i.type = "file"; i.accept = "image/*"; i.onchange = () => i.files?.[0] && uploadSig(i.files[0]); i.click(); }} className="border-2 border-dashed border-muted-foreground/25 rounded-lg p-6 text-center cursor-pointer hover:border-primary/50 transition-colors">
+              <p className="text-sm font-medium">{t("signUploadHint")}</p>
+            </div>
+          )}
+
+          {signDataUrl && (
+            <div className="space-y-3">
+              <div className="flex items-center gap-3 p-3 bg-background rounded-lg">
+                {/* eslint-disable-next-line @next/next/no-img-element */}
+                <img src={signDataUrl} alt="Signature" className="max-h-16 border rounded bg-white p-1" />
+                <p className="text-sm text-muted-foreground flex-1">{signPos ? t("signPlaced") : t("signInstruction")}</p>
+                <button onClick={clearSig} className="text-xs text-muted-foreground hover:text-foreground">&#10005;</button>
+              </div>
+              <div className="flex items-center gap-3">
+                <label className="text-xs text-muted-foreground whitespace-nowrap">{t("fontSize")}:</label>
+                <input type="range" min={80} max={400} value={signSize} onChange={(e) => setSignSize(Number(e.target.value))} className="flex-1 accent-primary" />
+                <span className="text-xs text-muted-foreground tabular-nums w-10 text-right">{signSize}px</span>
+              </div>
+            </div>
+          )}
         </div>
       )}
 

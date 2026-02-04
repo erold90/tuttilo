@@ -315,7 +315,23 @@
         "undoAction": "元に戻す",
         "redoAction": "やり直し",
         "color": "色",
-        "dragToMove": "ドラッグで移動"
+        "dragToMove": "ドラッグで移動",
+        "modeFill": "フォーム入力",
+        "modeSign": "署名",
+        "fillHint": "検出されたフォームフィールドを以下に入力してください",
+        "signHint": "署名を作成し、PDFをクリックして配置してください",
+        "noFields": "このPDFにフォームフィールドは検出されませんでした",
+        "flatten": "フォームフィールドを統合",
+        "flattenHint": "フィールドを永続的で編集不可にします",
+        "signDraw": "描く",
+        "signType": "入力",
+        "signUpload": "アップロード",
+        "signPlaceholder": "署名を入力",
+        "signSave": "署名を使用",
+        "signClear": "消去",
+        "signUploadHint": "クリックして署名画像をアップロード",
+        "signInstruction": "PDFをクリックして署名を配置",
+        "signPlaced": "署名をPDFに配置しました"
       }
     },
     "compress-image": {

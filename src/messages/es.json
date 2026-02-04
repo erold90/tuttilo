@@ -271,7 +271,23 @@
         "undoAction": "Deshacer",
         "redoAction": "Rehacer",
         "color": "Color",
-        "dragToMove": "Arrastra para mover"
+        "dragToMove": "Arrastra para mover",
+        "modeFill": "Rellenar",
+        "modeSign": "Firmar",
+        "fillHint": "Rellena los campos del formulario detectados abajo",
+        "signHint": "Crea tu firma, luego haz clic en el PDF para colocarla",
+        "noFields": "No se detectaron campos de formulario en este PDF",
+        "flatten": "Aplanar campos del formulario",
+        "flattenHint": "Hace los campos permanentes y no editables",
+        "signDraw": "Dibujar",
+        "signType": "Escribir",
+        "signUpload": "Subir",
+        "signPlaceholder": "Escribe tu firma",
+        "signSave": "Usar firma",
+        "signClear": "Borrar",
+        "signUploadHint": "Haz clic para subir una imagen de firma",
+        "signInstruction": "Haz clic en el PDF para colocar tu firma",
+        "signPlaced": "Firma colocada en el PDF"
       }
     },
     "compress-image": {
