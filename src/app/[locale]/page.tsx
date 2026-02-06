@@ -32,9 +32,12 @@ export async function generateMetadata({
     description: desc,
     alternates: {
       canonical: `${BASE_URL}/${locale}`,
-      languages: Object.fromEntries(
-        locales.map((l) => [l, `${BASE_URL}/${l}`])
-      ),
+      languages: {
+        ...Object.fromEntries(
+          locales.map((l) => [l, `${BASE_URL}/${l}`])
+        ),
+        "x-default": `${BASE_URL}/en`,
+      },
     },
     openGraph: { description: desc },
     twitter: { description: desc },

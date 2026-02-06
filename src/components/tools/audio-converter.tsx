@@ -64,7 +64,8 @@ export function AudioConverter() {
 
       await ffmpeg.deleteFile(inputName);
       await ffmpeg.deleteFile(outputName);
-    } catch {
+    } catch (err) {
+      console.error("AudioConverter error:", err);
       setError(t("convertError"));
     } finally {
       setLoading(false);

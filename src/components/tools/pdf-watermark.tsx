@@ -50,7 +50,8 @@ export function PdfWatermark() {
       const blob = new Blob([pdfBytes.buffer as ArrayBuffer], { type: "application/pdf" });
       if (resultUrl) URL.revokeObjectURL(resultUrl);
       setResultUrl(URL.createObjectURL(blob));
-    } catch {
+    } catch (err) {
+      console.error("PDF Watermark error:", err);
       setError(t("error"));
     } finally {
       setProcessing(false);

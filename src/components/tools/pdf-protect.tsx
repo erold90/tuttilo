@@ -19,6 +19,8 @@ export function PdfProtect() {
     import("pdfjs-dist").then((lib) => {
       lib.GlobalWorkerOptions.workerSrc = `https://cdn.jsdelivr.net/npm/pdfjs-dist@${lib.version}/build/pdf.worker.min.mjs`;
       setPdfjsLib(lib);
+    }).catch((err) => {
+      console.error("Failed to load pdfjs-dist:", err);
     });
   }, []);
 
@@ -86,7 +88,8 @@ export function PdfProtect() {
       const blob = pdf.output("blob");
       if (resultUrl) URL.revokeObjectURL(resultUrl);
       setResultUrl(URL.createObjectURL(blob));
-    } catch {
+    } catch (err) {
+      console.error("PDF Protect error:", err);
       setError(t("error"));
     } finally {
       setProcessing(false);

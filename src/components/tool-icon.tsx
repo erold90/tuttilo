@@ -11,7 +11,7 @@ import {
   Terminal, Palette, QrCode, Eyedropper, Link as LinkIcon,
   Clock, ClosedCaptioning, SquaresFour, SlidersHorizontal,
   ShieldCheck, ListNumbers, Drop, Table, PresentationChart,
-  Scan, Wrench, Certificate,
+  Scan, Wrench, Certificate, Rows,
 } from "@phosphor-icons/react";
 
 interface ToolIconProps {
@@ -71,6 +71,7 @@ const iconMap: Record<string, Icon> = {
   Scan,
   Wrench,
   Certificate,
+  Rows,
 };
 
 export function ToolIcon({ name, ...props }: ToolIconProps) {

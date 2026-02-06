@@ -35,9 +35,12 @@ export async function generateMetadata({
     description,
     alternates: {
       canonical: `${BASE_URL}/${locale}/${category}`,
-      languages: Object.fromEntries(
-        locales.map((l) => [l, `${BASE_URL}/${l}/${category}`])
-      ),
+      languages: {
+        ...Object.fromEntries(
+          locales.map((l) => [l, `${BASE_URL}/${l}/${category}`])
+        ),
+        "x-default": `${BASE_URL}/en/${category}`,
+      },
     },
     openGraph: {
       title: `${name} | Tuttilo`,
@@ -46,6 +49,20 @@ export async function generateMetadata({
       siteName: "Tuttilo",
       locale,
       type: "website",
+      images: [
+        {
+          url: `${BASE_URL}/og-image.svg`,
+          width: 1200,
+          height: 630,
+          alt: `${name} | Tuttilo`,
+        },
+      ],
+    },
+    twitter: {
+      card: "summary_large_image",
+      title: `${name} | Tuttilo`,
+      description,
+      images: [`${BASE_URL}/og-image.svg`],
     },
   };
 }
@@ -133,7 +150,7 @@ export default async function CategoryPage({
                 {tTools(`${tool.id}.description`)}
               </p>
               <span className={cn("text-xs font-medium mt-auto", classes.text)}>
-                {tCommon("tryNow")} \u2192
+                {tCommon("tryNow")} {"\u2192"}
               </span>
             </Link>
           ))}

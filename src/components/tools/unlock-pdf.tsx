@@ -20,6 +20,8 @@ export function UnlockPdf() {
     import("pdfjs-dist").then((lib) => {
       lib.GlobalWorkerOptions.workerSrc = `https://cdn.jsdelivr.net/npm/pdfjs-dist@${lib.version}/build/pdf.worker.min.mjs`;
       setPdfjsLib(lib);
+    }).catch((err) => {
+      console.error("Failed to load pdfjs-dist:", err);
     });
   }, []);
 
@@ -30,6 +32,46 @@ export function UnlockPdf() {
     setFile(f);
   }, []);
 
+  const reconstructWithPdfjs = useCallback(async (
+    bytes: ArrayBuffer,
+    pw?: string,
+  ): Promise<{ url: string; size: number } | null> => {
+    if (!pdfjsLib) return null;
+    const pdfDoc = await pdfjsLib.getDocument({ data: bytes, password: pw || undefined }).promise;
+    const total = pdfDoc.numPages;
+    const newDoc = await PDFDocument.create();
+
+    for (let i = 1; i <= total; i++) {
+      const page = await pdfDoc.getPage(i);
+      const viewport = page.getViewport({ scale: 2 });
+      const canvas = document.createElement("canvas");
+      canvas.width = viewport.width;
+      canvas.height = viewport.height;
+      const ctx = canvas.getContext("2d")!;
+      ctx.fillStyle = "#ffffff";
+      ctx.fillRect(0, 0, canvas.width, canvas.height);
+      await (page.render({ canvasContext: ctx, viewport, canvas } as Parameters<typeof page.render>[0]).promise);
+
+      const jpgBlob = await new Promise<Blob>((res) =>
+        canvas.toBlob((b) => res(b!), "image/jpeg", 0.92)
+      );
+      const jpgBytes = await jpgBlob.arrayBuffer();
+      const img = await newDoc.embedJpg(jpgBytes);
+
+      const origViewport = page.getViewport({ scale: 1 });
+      const newPage = newDoc.addPage([origViewport.width, origViewport.height]);
+      newPage.drawImage(img, { x: 0, y: 0, width: origViewport.width, height: origViewport.height });
+
+      canvas.width = 0; canvas.height = 0;
+      setProgress(Math.round((i / total) * 100));
+    }
+
+    pdfDoc.destroy();
+    const unlockedBytes = await newDoc.save();
+    const blob = new Blob([unlockedBytes.buffer as ArrayBuffer], { type: "application/pdf" });
+    return { url: URL.createObjectURL(blob), size: blob.size };
+  }, [pdfjsLib]);
+
   const unlock = useCallback(async () => {
     if (!file) return;
     setProcessing(true);
@@ -38,7 +80,27 @@ export function UnlockPdf() {
     try {
       const bytes = await file.arrayBuffer();
 
-      // First try: pdf-lib with ignoreEncryption (handles owner-password / permission-only locks)
+      // If user provided a password, go directly to pdfjs-dist decryption
+      if (password) {
+        if (!pdfjsLib) {
+          setError(t("unlockError"));
+          return;
+        }
+        try {
+          const result = await reconstructWithPdfjs(bytes, password);
+          if (result) {
+            if (resultUrl) URL.revokeObjectURL(resultUrl);
+            setResultUrl(result.url);
+            setResultSize(result.size);
+          }
+        } catch (err) {
+          console.error("UnlockPDF password error:", err);
+          setError(t("wrongPassword"));
+        }
+        return;
+      }
+
+      // No password: try pdf-lib ignoreEncryption (handles owner-password / permission-only locks)
       try {
         const doc = await loadPdfRobust(bytes, {
           onProgress: (p) => setProgress(p),
@@ -50,59 +112,28 @@ export function UnlockPdf() {
         setResultSize(blob.size);
         return;
       } catch {
-        // If pdf-lib fails, try pdfjs-dist with password
+        // pdf-lib failed
       }
 
-      // Second try: pdfjs-dist with user password, then reconstruct via pdf-lib
-      if (!pdfjsLib) {
-        setError(t("unlockError"));
-        return;
-      }
-
+      // Fallback: try pdfjs-dist without password
       try {
-        const pdfDoc = await pdfjsLib.getDocument({ data: bytes, password: password || undefined }).promise;
-        const total = pdfDoc.numPages;
-
-        // Render each page to canvas, then embed as images in a new PDF
-        const newDoc = await PDFDocument.create();
-
-        for (let i = 1; i <= total; i++) {
-          const page = await pdfDoc.getPage(i);
-          const viewport = page.getViewport({ scale: 2 });
-          const canvas = document.createElement("canvas");
-          canvas.width = viewport.width;
-          canvas.height = viewport.height;
-          const ctx = canvas.getContext("2d")!;
-          ctx.fillStyle = "#ffffff";
-          ctx.fillRect(0, 0, canvas.width, canvas.height);
-          await (page.render({ canvasContext: ctx, viewport, canvas } as Parameters<typeof page.render>[0]).promise);
-
-          const jpgBlob = await new Promise<Blob>((res) =>
-            canvas.toBlob((b) => res(b!), "image/jpeg", 0.92)
-          );
-          const jpgBytes = await jpgBlob.arrayBuffer();
-          const img = await newDoc.embedJpg(jpgBytes);
-
-          // Use original page dimensions (in points)
-          const origViewport = page.getViewport({ scale: 1 });
-          const newPage = newDoc.addPage([origViewport.width, origViewport.height]);
-          newPage.drawImage(img, { x: 0, y: 0, width: origViewport.width, height: origViewport.height });
+        const result = await reconstructWithPdfjs(bytes);
+        if (result) {
+          if (resultUrl) URL.revokeObjectURL(resultUrl);
+          setResultUrl(result.url);
+          setResultSize(result.size);
         }
-
-        const unlockedBytes = await newDoc.save();
-        const blob = new Blob([unlockedBytes.buffer as ArrayBuffer], { type: "application/pdf" });
-        if (resultUrl) URL.revokeObjectURL(resultUrl);
-        setResultUrl(URL.createObjectURL(blob));
-        setResultSize(blob.size);
-      } catch {
-        setError(t("wrongPassword"));
+      } catch (err) {
+        console.error("UnlockPDF error:", err);
+        setError(t("unlockError"));
       }
-    } catch {
+    } catch (err) {
+      console.error("UnlockPDF error:", err);
       setError(t("unlockError"));
     } finally {
       setProcessing(false);
     }
-  }, [file, password, pdfjsLib, resultUrl, t]);
+  }, [file, password, pdfjsLib, resultUrl, t, reconstructWithPdfjs]);
 
   const download = useCallback(() => {
     if (!resultUrl) return;

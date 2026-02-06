@@ -1,52 +1,43 @@
-# Sprint Corrente: PDF Tools Avanzati — Fill & Sign + Editor
+# Sprint Corrente: SEO & Indicizzazione Google (2026-02-06) — COMPLETATO
 
 ## Obiettivo
-Aggiungere tool professionali per compilare moduli PDF, firmare documenti e modificare testo con rilevamento automatico del font.
+Implementare SEO completo per massimizzare indicizzazione Google: structured data, hreflang, contenuti espansi, GA4, GSC.
 
 ## Task
 
-| # | Task | Status | Note |
-|---|------|--------|------|
-| P1 | Creare componente pdf-fill-sign.tsx | DONE | Form filling AcroForm + 3 modalità firma |
-| P2 | Aggiungere pdf-fill-sign a registry + routing + icon | DONE | PenLine icon, slug: fill-sign |
-| P3 | Traduzioni EN + IT per pdf-fill-sign | DONE | Tutte chiavi seo+faq+ui |
-| P4 | Traduzioni 6 lingue rimanenti pdf-fill-sign | DONE | ES, FR, DE, PT, JA, KO in parallelo |
-| P5 | Creare componente pdf-editor.tsx | DONE | Text editing + add text + freehand drawing |
-| P6 | Abilitare pdf-editor in registry + routing | DONE | isAvailable: true |
-| P7 | Traduzioni EN + IT per pdf-editor (full seo+faq+ui) | DONE | Sostituite placeholder con traduzioni complete |
-| P8 | Traduzioni 6 lingue rimanenti pdf-editor | DONE | ES, FR, DE, PT, JA, KO in parallelo |
-| P9 | Build verification | DONE | npx next build OK, zero errori |
-| P10 | Push su GitHub | DONE | 3 batch push via MCP |
+| # | Task | Fase | Status | Note |
+|---|------|------|--------|------|
+| 1 | Google Search Console verification meta tag | F1 | DONE | Placeholder in layout.tsx |
+| 2 | x-default hreflang (layout, tool, category, home, sitemap) | F1 | DONE | Tutte le pagine |
+| 3 | og:image 1200x630 + OG/Twitter meta | F1 | DONE | SVG branded |
+| 4 | HowTo schema JSON-LD su tool pages | F1 | DONE | 3 step × 8 lingue |
+| 5 | IndexNow per Bing/Yandex | F1 | DONE | API route + 360 URL |
+| 6 | Build + Deploy F1 | F1 | DONE | https://61854202.tuttilo.pages.dev |
+| 7 | Expanded SEO paragraphs (seo.p2) per tool | F2 | DONE | 38 tool × 8 lingue |
+| 8 | Expanded FAQ (q4-q5) per tool | F2 | DONE | 38 tool × 8 lingue |
+| 9 | Cross-category related tools | F2 | DONE | 25+ workflow suggestions |
+| 10 | Build + Deploy F2 | F2 | DONE | https://dc9436b2.tuttilo.pages.dev |
+| 11 | Google Analytics 4 | F3 | DONE | Componente + env var |
+| 12 | Google Search Console setup | F3 | DONE | Infrastruttura pronta |
+| 13 | Build + Deploy finale | F3 | DONE | https://8bc8d081.tuttilo.pages.dev |
 
 ## Progresso
-- Completati: 10/10
-- **38 tool totali live su tuttilo.com** (36 precedenti + pdf-fill-sign + pdf-editor)
+- Completati: 13/13 (tutte e 3 le fasi)
+- **42 tool totali live su tuttilo.com**
 
-## Dipendenze installate
-- `signature_pad@5.1.3` — Smooth signature drawing con Bezier curves
-- `@pdf-lib/fontkit@1.1.1` — Custom font embedding per Unicode
-- `fabric@7.1.0` — Canvas object model (disponibile per future features)
+## Step manuali richiesti dall'utente
+1. Creare proprietà GA4 su https://analytics.google.com per tuttilo.com
+2. Ottenere Measurement ID (G-XXXXXXX) e impostare `NEXT_PUBLIC_GA_ID` in Cloudflare Pages env vars
+3. Andare su https://search.google.com/search-console, aggiungere tuttilo.com
+4. Ottenere token verifica e sostituire `google-site-verification-token` in layout.tsx
+5. Inviare sitemap https://tuttilo.com/sitemap.xml da dashboard GSC
 
-## Dettagli Tecnici
-
-### pdf-fill-sign
-- Rileva campi AcroForm: PDFTextField, PDFCheckBox, PDFDropdown
-- Pre-popola valori esistenti dai campi
-- Tre modalità firma: Draw (signature_pad), Type (Georgia italic canvas), Upload (immagine)
-- Click-to-place su anteprima PDF con overlay indicatore
-- Aspect ratio firma preservato (calcolato da immagine naturale)
-- Flatten opzionale per rendere campi non-editabili
-- Fallback pdfjs-dist per PDF che pdf-lib non parsifica
-
-### pdf-editor
-- **Text extraction**: pdfjs-dist getTextContent() → TextItem con str, transform[6], fontName, width, height
-- **Font detection**: textContent.styles[fontName] → fontFamily (serif/sans/mono), ascent, descent
-- **Bold/Italic**: page.commonObjs.get(fontName) → nome font reale → regex /bold/i, /italic|oblique/i
-- **Font size**: transform[3] (abs) per testo non-ruotato, sqrt(a²+b²) per testo ruotato
-- **Font matching**: 12 standard PDF fonts (Helvetica/HelveticaBold/HelveticaOblique/... TimesRoman/... Courier/...)
-- **Overlay technique**: drawRectangle(white, x-pad, y+descent-pad, maxW, fontH+2pad) + drawText(newText, x, y, fontSize, font)
-- **Drawing**: Strokes in PDF coordinates, render to transparent canvas 2x DPI, embedPng full-page overlay
-- **Two-canvas UX**: Preview canvas (pdfjs render) + overlay canvas (highlights, annotations, strokes)
+## Dettagli tecnici
+- Worker bundle: 10558 KiB (sotto limite 3 MiB compresso Cloudflare free)
+- JSON traduzioni: minificati (single-line) per ridurre bundle size
+- seo.p3 rimosso (privacy generico), sostituito con common.seoPrivacy condiviso
+- IndexNow key: a1fd1ae7e759405497c1deaf450ae405
+- crossCategoryMap: 25+ suggerimenti workflow-based in related-tools.tsx
 
 ## Sprint Precedenti (Completati)
 - Sprint 0-6: 36 tool live
@@ -54,6 +45,8 @@ Aggiungere tool professionali per compilare moduli PDF, firmare documenti e modi
 - Sprint 7: SEO & Performance (JSON-LD, security headers, manifest)
 - PDF Consolidation: 11→5 super-tool
 - Agent Loop System: hooks, skills, ralph-loop
+- PDF Tools Enhancement: 6 nuovi tool PDF, pdf-fill-sign attivato
+- PDF Editor Redesign: Canvas alignment, text highlights, signature sizing
 
 ## Ultimo aggiornamento
-2026-02-02 — pdf-fill-sign + pdf-editor completati con traduzioni 8 lingue. Build OK. Push GitHub in corso.
+2026-02-06 — Sprint SEO completato (3 fasi). GA4 configurato, GSC pronto, IndexNow attivo, contenuti SEO espansi per 38 tool × 8 lingue. Deploy Cloudflare OK.

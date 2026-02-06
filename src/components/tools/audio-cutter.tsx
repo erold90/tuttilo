@@ -125,7 +125,8 @@ export function AudioCutter() {
       setStartTime(0);
       setEndTime(buffer.duration);
       requestAnimationFrame(() => drawWaveform(buffer, 0, buffer.duration));
-    } catch {
+    } catch (err) {
+      console.error("AudioCutter error:", err);
       setError(t("loadError"));
     }
   }, [drawWaveform, t]);
@@ -181,7 +182,8 @@ export function AudioCutter() {
         name: `${baseName}_cut.wav`,
         size: wavBlob.size,
       });
-    } catch {
+    } catch (err) {
+      console.error("AudioCutter error:", err);
       setError(t("cutError"));
     } finally {
       setProcessing(false);

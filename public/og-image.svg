@@ -1,0 +1,27 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1200" height="630" viewBox="0 0 1200 630">
+  <defs>
+    <linearGradient id="bg" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" style="stop-color:#0f172a"/>
+      <stop offset="50%" style="stop-color:#1e1b4b"/>
+      <stop offset="100%" style="stop-color:#0f172a"/>
+    </linearGradient>
+    <linearGradient id="accent" x1="0%" y1="0%" x2="100%" y2="0%">
+      <stop offset="0%" style="stop-color:#6366f1"/>
+      <stop offset="100%" style="stop-color:#8b5cf6"/>
+    </linearGradient>
+  </defs>
+  <rect width="1200" height="630" fill="url(#bg)"/>
+  <rect x="0" y="590" width="1200" height="40" fill="url(#accent)" opacity="0.3"/>
+  <rect x="80" y="180" width="64" height="64" rx="16" fill="#6366f1"/>
+  <text x="112" y="225" font-family="system-ui, -apple-system, sans-serif" font-size="36" font-weight="700" fill="white" text-anchor="middle">T</text>
+  <text x="160" y="224" font-family="system-ui, -apple-system, sans-serif" font-size="48" font-weight="700" fill="white">Tuttilo</text>
+  <text x="80" y="300" font-family="system-ui, -apple-system, sans-serif" font-size="28" fill="#94a3b8">Free All-in-One Online Tools</text>
+  <text x="80" y="370" font-family="system-ui, -apple-system, sans-serif" font-size="20" fill="#64748b">PDF  |  Images  |  Video  |  Audio  |  Text  |  Developer</text>
+  <rect x="80" y="420" width="200" height="4" rx="2" fill="#6366f1"/>
+  <text x="80" y="480" font-family="system-ui, -apple-system, sans-serif" font-size="18" fill="#475569">42+ tools  -  100% browser-based  -  No upload needed</text>
+  <text x="80" y="560" font-family="system-ui, -apple-system, sans-serif" font-size="22" fill="#6366f1" font-weight="600">tuttilo.com</text>
+  <!-- Decorative circles -->
+  <circle cx="1050" cy="200" r="120" fill="#6366f1" opacity="0.08"/>
+  <circle cx="1100" cy="350" r="80" fill="#8b5cf6" opacity="0.06"/>
+  <circle cx="980" cy="420" r="60" fill="#6366f1" opacity="0.05"/>
+</svg>

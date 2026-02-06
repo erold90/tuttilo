@@ -10,6 +10,7 @@ import { ThemeProvider } from "@/components/layout/theme-provider";
 import { Header } from "@/components/layout/header";
 import { Footer } from "@/components/layout/footer";
 import { routing, locales } from "@/i18n/routing";
+import { GoogleAnalytics } from "@/components/analytics/google-analytics";
 import "@/styles/globals.css";
 
 const BASE_URL = "https://tuttilo.com";
@@ -53,9 +54,15 @@ export async function generateMetadata({
     metadataBase: new URL(BASE_URL),
     alternates: {
       canonical: `${BASE_URL}/${locale}`,
-      languages: Object.fromEntries(
-        locales.map((l) => [l, `${BASE_URL}/${l}`])
-      ),
+      languages: {
+        ...Object.fromEntries(
+          locales.map((l) => [l, `${BASE_URL}/${l}`])
+        ),
+        "x-default": `${BASE_URL}/en`,
+      },
+    },
+    verification: {
+      google: "google-site-verification-token",
     },
     icons: {
       icon: "/favicon.svg",
@@ -68,11 +75,20 @@ export async function generateMetadata({
       siteName: t("siteName"),
       title,
       description,
+      images: [
+        {
+          url: `${BASE_URL}/og-image.svg`,
+          width: 1200,
+          height: 630,
+          alt: `${t("siteName")} — Free All-in-One Online Tools`,
+        },
+      ],
     },
     twitter: {
       card: "summary_large_image",
       title,
       description,
+      images: [`${BASE_URL}/og-image.svg`],
     },
     robots: {
       index: true,
@@ -140,6 +156,7 @@ export default async function LocaleLayout({
         <JsonLd locale={locale} />
       </head>
       <body className="min-h-screen bg-background font-sans antialiased">
+        <GoogleAnalytics />
         <NextIntlClientProvider messages={messages}>
           <ThemeProvider
             attribute="class"

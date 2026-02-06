@@ -93,7 +93,8 @@ export function VideoToGif() {
       await ffmpeg.deleteFile(inputName);
       await ffmpeg.deleteFile("palette.png");
       await ffmpeg.deleteFile("output.gif");
-    } catch {
+    } catch (err) {
+      console.error("VideoToGif error:", err);
       setError(t("convertError"));
     } finally {
       setLoading(false);

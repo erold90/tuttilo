@@ -18,6 +18,8 @@ export function PdfRepair() {
     import("pdfjs-dist").then((lib) => {
       lib.GlobalWorkerOptions.workerSrc = `https://cdn.jsdelivr.net/npm/pdfjs-dist@${lib.version}/build/pdf.worker.min.mjs`;
       setPdfjsLib(lib);
+    }).catch((err) => {
+      console.error("Failed to load pdfjs-dist:", err);
     });
   }, []);
 
@@ -41,7 +43,8 @@ export function PdfRepair() {
         setResultUrl(URL.createObjectURL(blob));
         setPageCount(doc.getPageCount());
         return;
-      } catch {
+      } catch (err) {
+        console.error("PDF Repair error:", err);
         // Strategy 1 failed, try pdfjs-dist reconstruction
       }
 
@@ -80,10 +83,12 @@ export function PdfRepair() {
         if (resultUrl) URL.revokeObjectURL(resultUrl);
         setResultUrl(URL.createObjectURL(blob));
         setPageCount(total);
-      } catch {
+      } catch (err) {
+        console.error("PDF Repair error:", err);
         setError(t("cantRepair"));
       }
-    } catch {
+    } catch (err) {
+      console.error("PDF Repair error:", err);
       setError(t("cantRepair"));
     } finally {
       setProcessing(false);

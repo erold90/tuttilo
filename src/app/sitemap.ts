@@ -15,9 +15,12 @@ export default function sitemap(): MetadataRoute.Sitemap {
       changeFrequency: "daily",
       priority: 1.0,
       alternates: {
-        languages: Object.fromEntries(
-          locales.map((l) => [l, `${BASE_URL}/${l}`])
-        ),
+        languages: {
+          ...Object.fromEntries(
+            locales.map((l) => [l, `${BASE_URL}/${l}`])
+          ),
+          "x-default": `${BASE_URL}/en`,
+        },
       },
     });
   }
@@ -31,9 +34,12 @@ export default function sitemap(): MetadataRoute.Sitemap {
         changeFrequency: "weekly",
         priority: 0.8,
         alternates: {
-          languages: Object.fromEntries(
-            locales.map((l) => [l, `${BASE_URL}/${l}/${category.slug}`])
-          ),
+          languages: {
+            ...Object.fromEntries(
+              locales.map((l) => [l, `${BASE_URL}/${l}/${category.slug}`])
+            ),
+            "x-default": `${BASE_URL}/en/${category.slug}`,
+          },
         },
       });
     }
@@ -51,12 +57,15 @@ export default function sitemap(): MetadataRoute.Sitemap {
         changeFrequency: "weekly",
         priority: 0.7,
         alternates: {
-          languages: Object.fromEntries(
-            locales.map((l) => [
-              l,
-              `${BASE_URL}/${l}/${category.slug}/${tool.slug}`,
-            ])
-          ),
+          languages: {
+            ...Object.fromEntries(
+              locales.map((l) => [
+                l,
+                `${BASE_URL}/${l}/${category.slug}/${tool.slug}`,
+              ])
+            ),
+            "x-default": `${BASE_URL}/en/${category.slug}/${tool.slug}`,
+          },
         },
       });
     }

@@ -65,7 +65,8 @@ export function CompressVideo() {
 
       await ffmpeg.deleteFile(inputName);
       await ffmpeg.deleteFile(outputName);
-    } catch {
+    } catch (err) {
+      console.error("CompressVideo error:", err);
       setError(t("compressError"));
     } finally {
       setLoading(false);

@@ -43,8 +43,8 @@ export function PdfPageNumbers() {
         switch (format) {
           case "num": text = `${num}`; break;
           case "numOf": text = `${num} / ${total + startFrom - 1}`; break;
-          case "pageNum": text = `Page ${num}`; break;
-          case "pageNumOf": text = `Page ${num} of ${total + startFrom - 1}`; break;
+          case "pageNum": text = `${t("pageLabel")} ${num}`; break;
+          case "pageNumOf": text = `${t("pageLabel")} ${num} ${t("ofLabel")} ${total + startFrom - 1}`; break;
         }
 
         const tw = font.widthOfTextAtSize(text, fontSize);
@@ -67,7 +67,8 @@ export function PdfPageNumbers() {
       const blob = new Blob([pdfBytes.buffer as ArrayBuffer], { type: "application/pdf" });
       if (resultUrl) URL.revokeObjectURL(resultUrl);
       setResultUrl(URL.createObjectURL(blob));
-    } catch {
+    } catch (err) {
+      console.error("PDF PageNumbers error:", err);
       setError(t("error"));
     } finally {
       setProcessing(false);
@@ -97,8 +98,8 @@ export function PdfPageNumbers() {
   const formats: { value: Format; label: string }[] = [
     { value: "num", label: "1, 2, 3..." },
     { value: "numOf", label: "1 / N" },
-    { value: "pageNum", label: "Page 1" },
-    { value: "pageNumOf", label: "Page 1 of N" },
+    { value: "pageNum", label: `${t("pageLabel")} 1` },
+    { value: "pageNumOf", label: `${t("pageLabel")} 1 ${t("ofLabel")} N` },
   ];
 
   return (

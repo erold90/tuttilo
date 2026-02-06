@@ -17,6 +17,8 @@ export function PdfToPdfa() {
     import("pdfjs-dist").then((lib) => {
       lib.GlobalWorkerOptions.workerSrc = `https://cdn.jsdelivr.net/npm/pdfjs-dist@${lib.version}/build/pdf.worker.min.mjs`;
       setPdfjsLib(lib);
+    }).catch((err) => {
+      console.error("Failed to load pdfjs-dist:", err);
     });
   }, []);
 
@@ -109,7 +111,8 @@ export function PdfToPdfa() {
       const blob = new Blob([pdfBytes.buffer as ArrayBuffer], { type: "application/pdf" });
       if (resultUrl) URL.revokeObjectURL(resultUrl);
       setResultUrl(URL.createObjectURL(blob));
-    } catch {
+    } catch (err) {
+      console.error("PDF→PDFA error:", err);
       setError(t("error"));
     } finally {
       setProcessing(false);

@@ -28,7 +28,8 @@ export function QrCode() {
         errorCorrectionLevel: errorLevel,
       });
       setDataUrl(canvas.toDataURL("image/png"));
-    } catch {
+    } catch (err) {
+      console.error("QRCode error:", err);
       setError(t("generateError"));
     }
   }, [text, size, fgColor, bgColor, errorLevel, t]);

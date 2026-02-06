@@ -50,7 +50,8 @@ export function CompressPdf() {
       if (resultUrl) URL.revokeObjectURL(resultUrl);
       setResultUrl(URL.createObjectURL(blob));
       setCompressedSize(blob.size);
-    } catch {
+    } catch (err) {
+      console.error("CompressPDF error:", err);
       setError(t("compressError"));
     } finally {
       setProcessing(false);

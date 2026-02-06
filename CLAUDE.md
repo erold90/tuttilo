@@ -2,7 +2,7 @@
 
 ## Compact Instructions
 Quando compatti questa conversazione, PRESERVA SEMPRE:
-- **DEPLOY OBBLIGATORIO**: SEMPRE deploy via wrangler su Cloudflare + push GitHub via MCP. MAI saltare nessuno dei due.
+- **DEPLOY**: Solo deploy via wrangler su Cloudflare. Push GitHub solo a progetto finito.
 - Sprint corrente e quale task stai facendo (leggi docs/CURRENT_SPRINT.md)
 - Lista COMPLETA file creati/modificati nella sessione con percorsi ASSOLUTI
 - Decisioni architetturali prese (leggi docs/ARCHITECTURE.md)
@@ -10,7 +10,7 @@ Quando compatti questa conversazione, PRESERVA SEMPRE:
 - Stato del task in corso (completato? a metà? bloccato?)
 - Il contenuto di docs/SESSION_HANDOFF.md
 - **LINGUE**: 8 lingue: EN (default), IT, ES, FR, DE, PT, JA, KO. OGNI tool DEVE essere tradotto in TUTTE le 8 lingue
-- **TOOL IN CORSO**: Se stai implementando un tool, preserva: ID tool, quali fasi sono complete (componente/registry/traduzioni EN/traduzioni 7 lingue/build/push/deploy-wrangler), e quali chiavi di traduzione sono state aggiunte
+- **TOOL IN CORSO**: Se stai implementando un tool, preserva: ID tool, quali fasi sono complete (componente/registry/traduzioni EN/traduzioni 7 lingue/build/deploy-wrangler), e quali chiavi di traduzione sono state aggiunte
 - **DIPENDENZE**: Se hai installato nuove dipendenze npm, elencale
 - **MEMORIA MCP**: Cerca entità "Tuttilo_PDFEditTools" per contesto sui PDF tool in sviluppo
 
@@ -57,13 +57,13 @@ Usa MCP Memory per salvare stato tra sessioni:
 - `mcp__memory__add_observations` — salva nuove info
 - Entità chiave: `Tuttilo_Progetto`, `Tuttilo_PDFEditTools`
 
-## Deploy (REGOLA CRITICA — NON IGNORARE MAI)
+## Deploy
 
-**DOPO OGNI MODIFICA devi SEMPRE fare ENTRAMBI questi step:**
+**DOPO OGNI MODIFICA: deploy locale via Wrangler su Cloudflare.**
 
-### Step 1: Deploy su Cloudflare via Wrangler (OBBLIGATORIO)
+### Deploy su Cloudflare via Wrangler
 ```bash
-npm run build && npx @cloudflare/next-on-pages && rm -f .vercel/output/static/_worker.js/__next-on-pages-dist__/assets/*.wasm.bin && npx wrangler pages deploy .vercel/output/static --project-name tuttilo --branch main --commit-dirty=true
+npm run build && npx @cloudflare/next-on-pages && rm -f .vercel/output/static/_worker.js/__next-on-pages-dist__/assets/*.wasm.bin && rm -f .vercel/output/static/_worker.js/nop-build-log.json && npx wrangler pages deploy .vercel/output/static --project-name tuttilo --branch main --commit-dirty=true
 ```
 - Account Cloudflare: erold90@gmail.com
 - Progetto Pages: tuttilo
@@ -71,20 +71,17 @@ npm run build && npx @cloudflare/next-on-pages && rm -f .vercel/output/static/_w
 - Wrangler autenticato localmente (OAuth token in ~/.wrangler/)
 - **WASM FIX**: Il `rm -f *.wasm.bin` rimuove i binari jSquash dal Worker (usati solo client-side). Senza questo step il Worker supera il limite 3 MiB del piano free Cloudflare. I WASM restano disponibili in `_next/static/media/` per il client.
 
-### Step 2: Push su GitHub via MCP (OBBLIGATORIO)
-```
-mcp__github__push_files(owner="erold90", repo="tuttilo", branch="main", files=[...])
-```
+### Push GitHub (SOLO A PROGETTO FINITO)
+Il push su GitHub si fa solo quando il progetto è completo o a milestone importanti.
+NON pushare dopo ogni singola modifica — lavoriamo in locale e deployiamo su Cloudflare.
 - SSH/HTTPS push locale NON funziona (witerose ≠ erold90)
-- Batch: max 10-14 file per push, traduzioni JSON una alla volta
-- GitHub Actions auto-deploy parte dopo il push (backup del deploy wrangler)
+- Per pushare: usa GitHub API con token dal processo MCP (`ps eww` per estrarlo)
+- Oppure: `mcp__github__push_files` per file piccoli
 
-### Regole INVIOLABILI
-- **MAI** fare solo push senza deploy wrangler
-- **MAI** fare solo deploy senza push GitHub
-- **MAI** considerare il lavoro finito senza aver fatto ENTRAMBI
+### Regole Deploy
 - **SEMPRE** verificare che il build passi PRIMA di deployare
-- Questa regola vale per OGNI sessione, OGNI compaction, OGNI contesto nuovo
+- **SEMPRE** deploy su Cloudflare dopo modifiche
+- Push GitHub NON è richiesto per ogni sessione
 
 ## File di Stato (LEGGILI SEMPRE)
 - `docs/ROADMAP.md` — Piano generale 7 sprint
@@ -101,5 +98,4 @@ mcp__github__push_files(owner="erold90", repo="tuttilo", branch="main", files=[.
 6. Traduci in 7 lingue con `/translate-tool {id}` o subagent paralleli
 7. Build test: `npm run build`
 8. **DEPLOY Cloudflare via wrangler** (vedi sezione Deploy sopra)
-9. **PUSH GitHub via MCP** (vedi sezione Deploy sopra)
-10. Aggiorna docs (CURRENT_SPRINT.md, SESSION_HANDOFF.md)
+9. Aggiorna docs (CURRENT_SPRINT.md, SESSION_HANDOFF.md)

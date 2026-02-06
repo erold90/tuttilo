@@ -5,9 +5,6 @@ import { useTranslations } from "next-intl";
 import {
   detectImageFormat,
   convertImageFormat,
-  encodeBmp,
-  loadImage,
-  cleanupCanvas,
   formatFileSize,
   triggerDownload,
   revokeUrls,
@@ -96,7 +93,8 @@ export function ImageConverter() {
           const result = await heic2any({ blob: f, toType: "image/png", quality: 0.8 });
           const blob = Array.isArray(result) ? result[0] : result;
           setPreview(URL.createObjectURL(blob));
-        } catch {
+        } catch (err) {
+          console.error("ImageConverter error:", err);
           setPreview("");
         }
       } else {
@@ -128,7 +126,8 @@ export function ImageConverter() {
       revokeUrls(resultUrl);
       setResultUrl(url);
       setResultSize(blob.size);
-    } catch {
+    } catch (err) {
+      console.error("ImageConverter error:", err);
       setError(t("error"));
     }
     setProcessing(false);

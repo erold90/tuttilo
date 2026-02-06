@@ -1,0 +1,458 @@
+{
+  "compress-pdf": {
+    "seo": {
+      "p2": "Nossa ferramenta de compressão de PDF usa algoritmos avançados para reduzir inteligentemente o tamanho dos arquivos sem comprometer a qualidade visual. Seja para comprimir documentos grandes para anexos de e-mail, reduzir espaço de armazenamento ou acelerar transferências de arquivos, esta ferramenta analisa automaticamente seu PDF e aplica técnicas de compressão ideais. Ela lida com documentos com muito texto, arquivos ricos em imagens e PDFs com conteúdo misto com facilidade. O processo de compressão preserva a formatação do documento, hiperlinks e metadados, reduzindo significativamente o tamanho do arquivo.",
+      "p3": "Esta ferramenta processa tudo diretamente no seu navegador usando bibliotecas JavaScript do lado do cliente. Seus arquivos PDF nunca saem do seu dispositivo, garantindo total privacidade e segurança. Nenhum upload para servidor significa que seus documentos confidenciais permanecem sigilosos, e você pode comprimir arquivos mesmo sem conexão com a internet. A ferramenta funciona em todos os navegadores modernos sem exigir instalações ou plug-ins, e não há limites de tamanho de arquivo ou restrições de uso."
+    },
+    "faq": {
+      "q4": "Comprimir um PDF reduzirá sua qualidade?",
+      "a4": "O algoritmo de compressão foi projetado para minimizar a perda de qualidade enquanto maximiza a redução do tamanho do arquivo. Para PDFs baseados em texto, a compressão normalmente não tem impacto visível na qualidade. Para PDFs com muitas imagens, você pode notar uma leve redução de qualidade em níveis de compressão mais altos, mas a ferramenta equilibra inteligentemente compressão e qualidade para manter a legibilidade.",
+      "q5": "Posso comprimir PDFs protegidos por senha ou criptografados?",
+      "a5": "Não, PDFs protegidos por senha ou criptografados devem ser desbloqueados antes da compressão. Use nossa ferramenta Desbloquear PDF primeiro para remover a proteção por senha fornecendo a senha correta, depois comprima o arquivo desbloqueado."
+    }
+  },
+  "unlock-pdf": {
+    "seo": {
+      "p2": "Remova a proteção por senha de arquivos PDF de forma rápida e segura quando você tiver a senha correta. Esta ferramenta é essencial quando você precisa editar, imprimir ou processar PDFs que foram previamente protegidos, mas agora estão sob sua propriedade ou autorização. Simplesmente carregue seu PDF protegido por senha, digite a senha e receba uma versão desbloqueada que remove todas as restrições. A ferramenta lida tanto com senhas de usuário (necessárias para abrir o arquivo) quanto senhas de proprietário (que restringem impressão, edição ou cópia).",
+      "p3": "Toda a descriptografia acontece no lado do cliente usando bibliotecas JavaScript de processamento de PDF. Seu PDF original e a senha que você digita nunca saem do seu navegador, fornecendo máxima segurança para documentos confidenciais. A ferramenta suporta métodos padrão de criptografia de PDF e funciona offline assim que a página é carregada. Após o desbloqueio, o arquivo processado fica imediatamente disponível para download, e todos os dados do arquivo são apagados da memória quando você fecha a aba."
+    },
+    "faq": {
+      "q4": "E se eu não souber a senha do PDF?",
+      "a4": "Esta ferramenta requer que você forneça a senha correta para desbloquear o PDF. Ela não pode quebrar, contornar ou recuperar senhas perdidas. Se você esqueceu a senha, precisará entrar em contato com o proprietário ou criador do documento para obtê-la.",
+      "q5": "O PDF desbloqueado manterá todo o conteúdo e formatação originais?",
+      "a5": "Sim, desbloquear um PDF apenas remove a senha e as restrições de segurança sem alterar qualquer conteúdo, formatação, imagens, hiperlinks ou metadados. O arquivo desbloqueado é funcionalmente idêntico ao original, exceto que não requer mais uma senha para abrir."
+    }
+  },
+  "pdf-fill-sign": {
+    "seo": {
+      "p2": "Preencha formulários PDF e adicione assinaturas legalmente vinculantes sem imprimir ou escanear documentos. Esta ferramenta suporta formulários PDF interativos (AcroForms) com campos preenchíveis como caixas de texto, caixas de seleção, botões de opção e menus suspensos. Você pode digitar diretamente nos campos do formulário, marcar caixas, selecionar opções e adicionar assinaturas usando três métodos convenientes: desenhar com o mouse ou tela sensível ao toque, digitar seu nome em várias fontes de assinatura ou carregar uma imagem de sua assinatura manuscrita. Perfeito para contratos, aplicações, formulários fiscais e quaisquer documentos oficiais que exijam sua assinatura.",
+      "p3": "Todo o preenchimento de formulários e geração de assinatura ocorre inteiramente no seu navegador usando bibliotecas de manipulação de PDF do lado do cliente. Suas informações pessoais, assinaturas e conteúdo de documentos nunca tocam em nenhum servidor, garantindo total confidencialidade para formulários sensíveis como NDAs, documentos financeiros ou registros médicos. A ferramenta funciona offline e não impõe limites ao número de formulários que você pode preencher ou assinaturas que pode adicionar."
+    },
+    "faq": {
+      "q4": "As assinaturas que crio são legalmente válidas?",
+      "a4": "Assinaturas digitais criadas com esta ferramenta podem servir como assinaturas eletrônicas legalmente válidas em muitas jurisdições, particularmente para acordos onde as partes consentem com a assinatura eletrônica. No entanto, a validade legal depende das leis locais. Para documentos que exigem assinaturas digitais certificadas com verificação criptográfica, você precisará de software especializado.",
+      "q5": "Posso salvar um formulário parcialmente preenchido e completá-lo depois?",
+      "a5": "Sim, você pode baixar o PDF em qualquer estágio com as informações que já inseriu. Os campos preenchidos e quaisquer assinaturas que você adicionou serão salvos no PDF. Você pode então recarregar este PDF parcialmente completado mais tarde para continuar preenchendo os campos restantes."
+    }
+  },
+  "pdf-images": {
+    "seo": {
+      "p2": "Converta entre PDF e formatos de imagem em ambas as direções com flexibilidade completa. Mescle várias imagens (JPG, PNG, WebP e mais) em um único documento PDF, perfeito para criar álbuns de fotos, combinar páginas digitalizadas ou montar relatórios visuais. Alternativamente, extraia todas as imagens de PDFs existentes ou converta páginas inteiras de PDF em arquivos de imagem individuais. A ferramenta oferece controle sobre qualidade de imagem, resolução e layout de página ao criar PDFs, e suporta processamento em lote para lidar com vários arquivos de uma vez.",
+      "p3": "Todo o processamento de imagem e geração de PDF acontece localmente no seu navegador usando bibliotecas JavaScript como PDF.js e renderização baseada em canvas. Suas imagens e PDFs nunca são enviados para servidores externos, protegendo a privacidade de fotos pessoais, documentos confidenciais ou materiais proprietários. A ferramenta suporta todos os formatos de imagem comuns e funciona offline assim que carregada. Não há restrições de contagem de arquivos, marcas d'água ou degradação de qualidade."
+    },
+    "faq": {
+      "q4": "Quais formatos de imagem são suportados para conversão em PDF?",
+      "a4": "A ferramenta suporta todos os principais formatos de imagem, incluindo JPG/JPEG, PNG, WebP, GIF, BMP, TIFF e SVG. Ao mesclar imagens em um PDF, você pode misturar diferentes formatos em um único documento, e a ferramenta lidará automaticamente com a conversão e otimização de formato.",
+      "q5": "Posso controlar o tamanho e layout da página ao converter imagens para PDF?",
+      "a5": "Sim, a ferramenta fornece opções para definir dimensões de página (A4, Carta, tamanhos personalizados), escolher orientação de página (retrato ou paisagem) e controlar como as imagens se ajustam nas páginas. Você também pode definir margens e decidir se cada imagem deve estar em uma página separada."
+    }
+  },
+  "pdf-editor": {
+    "seo": {
+      "p2": "Edite conteúdo PDF diretamente no seu navegador com poderosos recursos de edição de texto, anotação e desenho. Adicione novo texto em qualquer lugar da página com fontes, tamanhos, cores e estilos personalizáveis. Edite texto existente em PDFs suportados ou sobreponha novo conteúdo de texto em documentos digitalizados. Desenhe anotações à mão livre, formas e destaques para marcar documentos, fornecer feedback ou enfatizar seções importantes. O editor fornece funcionalidade de desfazer/refazer e controles de posicionamento precisos para resultados profissionais.",
+      "p3": "Todo o mecanismo de edição roda do lado do cliente no seu navegador usando bibliotecas avançadas de manipulação de PDF. Seus documentos nunca saem do seu dispositivo, garantindo total privacidade para edições confidenciais, anotações de documentos legais ou adições de informações pessoais. A ferramenta funciona offline e suporta sessões de edição ilimitadas sem restrições de tamanho de arquivo. Todas as alterações são renderizadas diretamente na estrutura do PDF, criando arquivos PDF padrão compatíveis com qualquer leitor de PDF."
+    },
+    "faq": {
+      "q4": "Posso editar o texto original em um PDF ou apenas adicionar novo texto por cima?",
+      "a4": "A ferramenta pode adicionar sobreposições de novo texto em qualquer PDF com controle total de fonte e formatação. Para PDFs gerados nativamente, você pode ser capaz de selecionar e modificar algum texto existente. Para PDFs digitalizados ou documentos baseados em imagem, você só pode sobrepor novo texto sobre o conteúdo existente.",
+      "q5": "As fontes que uso na edição serão incorporadas no PDF final?",
+      "a5": "Sim, as fontes usadas para novo texto são incorporadas no PDF para garantir que o documento seja exibido corretamente em qualquer dispositivo, mesmo que o destinatário não tenha essas fontes instaladas. A ferramenta inclui uma seleção de fontes PDF padrão que renderizam de forma confiável em todas as plataformas."
+    }
+  },
+  "pdf-organizer": {
+    "seo": {
+      "p2": "Ferramenta abrangente de gerenciamento de páginas PDF para mesclar, dividir, reordenar, girar e excluir páginas com controles intuitivos de arrastar e soltar. Combine vários arquivos PDF em um único documento, divida PDFs grandes em arquivos separados, reorganize páginas em qualquer ordem, gire páginas para corrigir a orientação e remova páginas indesejadas. A visualização visual de páginas permite que você veja miniaturas de todas as páginas enquanto trabalha, facilitando a identificação e manipulação de conteúdo específico.",
+      "p3": "Toda a manipulação de PDF acontece inteiramente no seu navegador usando bibliotecas JavaScript de processamento de PDF do lado do cliente. Seus documentos nunca são enviados para servidores, garantindo confidencialidade para documentos legais, registros financeiros, documentos médicos ou quaisquer materiais confidenciais. A ferramenta funciona offline e lida com PDFs grandes de várias páginas com eficiência, sem limites de tamanho de arquivo ou contagem de páginas."
+    },
+    "faq": {
+      "q4": "Posso mesclar PDFs que têm tamanhos ou orientações de página diferentes?",
+      "a4": "Sim, a ferramenta pode mesclar PDFs com tamanhos de página mistos (A4, Carta, Ofício, personalizados) e orientações (retrato e paisagem). O PDF mesclado resultante preserva as dimensões e orientação originais de cada página.",
+      "q5": "Há um limite de quantas páginas ou arquivos posso processar de uma vez?",
+      "a5": "Não há limites artificiais impostos pela ferramenta. O limite prático depende da memória disponível do seu dispositivo e das capacidades do navegador. A maioria dos computadores modernos pode facilmente lidar com centenas de páginas ou dezenas de arquivos."
+    }
+  },
+  "pdf-to-images": {
+    "seo": {
+      "p2": "Nosso conversor de PDF para Imagens oferece controle preciso sobre suas configurações de exportação. Escolha entre o formato JPG para tamanhos de arquivo menores ou PNG para qualidade sem perda, ajuste os níveis de compressão e selecione páginas específicas ou converta documentos inteiros de uma vez. A ferramenta preserva a resolução e formatação originais das páginas do seu PDF. O suporte à conversão em lote permite processar documentos de várias páginas com eficiência, enquanto o recurso de visualização ajuda a verificar a qualidade de saída antes de baixar.",
+      "p3": "Toda a conversão acontece localmente no seu navegador usando tecnologia JavaScript e API Canvas. Seus arquivos PDF nunca saem do seu dispositivo, e nenhum dado é transmitido para servidores externos. A ferramenta funciona completamente offline assim que carregada, tornando-a ideal para processar documentos confidenciais. Sem registro, sem limites de tamanho de arquivo e sem rastreamento. Compatível com todos os navegadores modernos."
+    },
+    "faq": {
+      "q4": "Posso converter páginas específicas em vez do PDF inteiro?",
+      "a4": "Sim, a ferramenta suporta conversão seletiva de páginas. Você pode escolher páginas individuais, intervalos de páginas ou páginas não consecutivas. Isso é particularmente útil para documentos grandes onde você precisa apenas de certas seções como imagens.",
+      "q5": "Qual é a diferença entre saída JPG e PNG?",
+      "a5": "JPG produz arquivos menores com compressão com perda, ideal para fotos e documentos onde uma pequena perda de qualidade é aceitável. PNG cria arquivos maiores com compressão sem perda, perfeito para páginas com muito texto ou diagramas. Escolha JPG para compartilhamento na web e PNG para impressão ou fins de arquivo."
+    }
+  },
+  "pdf-word": {
+    "seo": {
+      "p2": "Converta entre formatos PDF e Word sem esforço, mantendo a estrutura, formatação e layout do documento. Ao converter PDF para Word, a ferramenta preserva inteligentemente a formatação de texto, tabelas, imagens, cabeçalhos, rodapés e quebras de página. A conversão reversa de Word para PDF gera documentos PDF de qualidade profissional com fontes incorporadas e layouts preservados. A detecção avançada de formatação garante que documentos complexos com várias colunas e tipos de conteúdo mistos sejam convertidos com precisão.",
+      "p3": "Ambas as direções de conversão rodam inteiramente no seu navegador usando bibliotecas avançadas de análise de PDF e geração de documentos. Nenhum upload de arquivo para servidores externos significa que seus documentos comerciais, contratos legais e relatórios confidenciais permanecem completamente privados. A ferramenta lida com PDFs protegidos por senha e preserva metadados de documentos. O processamento acontece na memória local e todos os arquivos são descartados quando você fecha a aba do navegador."
+    },
+    "faq": {
+      "q4": "O documento Word convertido será editável?",
+      "a4": "Sim, a conversão de PDF para Word cria arquivos DOCX totalmente editáveis. O texto pode ser modificado, a formatação pode ser alterada e as imagens podem ser movidas ou excluídas. No entanto, layouts complexos com posicionamento preciso podem exigir pequenos ajustes após a conversão.",
+      "q5": "A conversão de Word para PDF preserva hiperlinks e marcadores?",
+      "a5": "Sim, hiperlinks, referências cruzadas internas e entradas do índice são preservados durante a conversão de Word para PDF. O PDF resultante mantém links clicáveis e recursos de navegação."
+    }
+  },
+  "pdf-protect": {
+    "seo": {
+      "p2": "Proteja seus documentos PDF com criptografia forte e controles de acesso personalizáveis. Adicione proteção por senha para evitar acesso não autorizado, restrinja a impressão para proteger material protegido por direitos autorais, desabilite a cópia para evitar roubo de conteúdo e impeça a edição para manter a integridade do documento. A ferramenta suporta tanto senhas de usuário (necessárias para abrir o arquivo) quanto senhas de proprietário (necessárias para alterar permissões), oferecendo controle granular sobre a segurança do documento.",
+      "p3": "Toda a criptografia ocorre localmente no seu navegador usando algoritmos AES padrão da indústria implementados em JavaScript. Seu PDF original e as senhas escolhidas nunca saem do seu dispositivo, garantindo total confidencialidade. Nenhum processamento no servidor significa nenhum log de segurança, nenhum armazenamento de senha e nenhum risco de interceptação. Os arquivos são criptografados na memória e o PDF protegido é entregue diretamente para sua pasta de downloads."
+    },
+    "faq": {
+      "q4": "Qual é a diferença entre senha de usuário e senha de proprietário?",
+      "a4": "Uma senha de usuário é necessária para visualizar o PDF—sem ela, o arquivo não pode ser aberto. Uma senha de proprietário controla restrições de edição, impressão e cópia. Você pode definir apenas uma senha de usuário para proteção básica, ou usar ambas para controle máximo.",
+      "q5": "PDFs protegidos podem ser abertos em dispositivos móveis?",
+      "a5": "Sim, PDFs protegidos por senha funcionam em todos os dispositivos que suportam criptografia PDF padrão, incluindo iOS, Android, Windows e macOS. Aplicativos populares como Adobe Acrobat Reader, Apple Books e Google Drive podem todos abrir PDFs criptografados."
+    }
+  },
+  "pdf-page-numbers": {
+    "seo": {
+      "p2": "Adicione números de página profissionais aos seus documentos PDF com controle total sobre posição, formato e estilo. Escolha entre vários formatos de numeração, incluindo numerais padrão, numerais romanos ou padrões de texto personalizados. Posicione números de página no topo ou na parte inferior das páginas, alinhados às margens esquerda, central ou direita. Opções avançadas incluem começar a partir de um número de página específico, excluir a primeira página para páginas de capa e usar formatos diferentes para páginas ímpares e pares.",
+      "p3": "A inserção de números de página acontece inteiramente no seu navegador usando bibliotecas de manipulação de PDF escritas em JavaScript. Seus documentos são processados localmente sem uploads para servidor, preservando a confidencialidade de relatórios confidenciais. A ferramenta mantém todo o conteúdo PDF existente enquanto adiciona a camada de número de página. O PDF numerado é gerado na memória e entregue como um novo arquivo, compatível com todos os leitores de PDF."
+    },
+    "faq": {
+      "q4": "Posso pular números de página em certas páginas?",
+      "a4": "Sim, você pode excluir páginas específicas da numeração. Casos de uso comuns incluem pular a página de capa, índice ou divisores de seção. A sequência de numeração continua logicamente mesmo quando páginas são puladas.",
+      "q5": "Posso usar texto personalizado com números de página?",
+      "a5": "Sim, você pode adicionar texto personalizado antes ou depois do número de página, como 'Página 1 de 10' ou 'Seção A - Página 5'. A ferramenta suporta espaços reservados dinâmicos para página atual e total de páginas."
+    }
+  },
+  "pdf-watermark": {
+    "seo": {
+      "p2": "Proteja sua propriedade intelectual e identidade de marca adicionando marcas d'água personalizadas a documentos PDF. Adicione marcas d'água de texto com conteúdo personalizável, fonte, tamanho, cor e opacidade—perfeito para marcar documentos como 'CONFIDENCIAL', 'RASCUNHO' ou adicionar avisos de direitos autorais. Carregue marcas d'água de imagem para incorporar logotipos ou gráficos personalizados com transparência ajustável. Controle o posicionamento da marca d'água com posicionamento preciso e ângulo de rotação para marcas d'água diagonais que se estendem pela página sem obscurecer o conteúdo.",
+      "p3": "A incorporação de marca d'água ocorre inteiramente no seu navegador usando JavaScript do lado do cliente e bibliotecas de renderização de PDF. Seus documentos e imagens de marca d'água nunca saem do seu dispositivo, tornando esta ferramenta segura para contratos confidenciais ou designs proprietários. As marcas d'água são incorporadas diretamente na estrutura do PDF, tornando-as permanentes e difíceis de remover. Todo o processamento acontece na memória local sem comunicação com o servidor."
+    },
+    "faq": {
+      "q4": "As marcas d'água podem ser removidas do PDF posteriormente?",
+      "a4": "Marcas d'água adicionadas por esta ferramenta são incorporadas na camada de conteúdo do PDF, tornando-as partes permanentes do documento. Embora software especializado de edição de PDF possa removê-las, elas não podem ser excluídas por visualizadores casuais ou leitores de PDF padrão.",
+      "q5": "Adicionar marca d'água reduz a qualidade do PDF?",
+      "a5": "Não, adicionar marca d'água não recomprime ou degrada o conteúdo original do PDF. O texto permanece nítido, as imagens mantêm sua resolução e os gráficos vetoriais permanecem afiados. A marca d'água é adicionada como uma nova camada sem alterar o conteúdo existente."
+    }
+  },
+  "pdf-excel": {
+    "seo": {
+      "p2": "Converta perfeitamente entre formatos PDF e Excel, preservando a estrutura e formatação de dados. Ao converter PDF para Excel, a ferramenta detecta inteligentemente tabelas, colunas e linhas, reconstruindo planilhas com células editáveis. O reconhecimento avançado de tabelas lida com células mescladas, cabeçalhos e documentos com várias tabelas. A conversão reversa de Excel para PDF cria relatórios profissionais com formatação de célula preservada, bordas, cores e gráficos.",
+      "p3": "Ambas as direções de conversão processam arquivos inteiramente no seu navegador usando bibliotecas avançadas de análise e geração de planilhas. Nenhum upload de dados para servidores externos significa que seus relatórios financeiros, dados de vendas e análises de negócios permanecem completamente confidenciais. A ferramenta lida com planilhas complexas com milhares de linhas e várias folhas. Compatível com formatos Excel 2007+ e versões PDF até 2.0."
+    },
+    "faq": {
+      "q4": "As fórmulas serão preservadas ao converter Excel para PDF?",
+      "a4": "A conversão de Excel para PDF preserva a aparência visual das células, incluindo resultados de fórmulas, mas as fórmulas em si tornam-se valores estáticos no PDF. Gráficos, formatação condicional e estilos de célula são mantidos.",
+      "q5": "Posso converter tabelas PDF digitalizadas para Excel?",
+      "a5": "Esta ferramenta funciona com PDFs baseados em texto contendo tabelas selecionáveis. Para PDFs digitalizados ou imagens de tabelas, você precisará primeiro de OCR. Use nossa ferramenta PDF OCR para converter documentos digitalizados em PDFs pesquisáveis, depois use este conversor Excel para extrair os dados."
+    }
+  },
+  "pdf-pptx": {
+    "seo": {
+      "p2": "Transforme seus documentos perfeitamente com nosso conversor bidirecional de PDF para PowerPoint. Converta apresentações PDF de volta para formato PPTX editável para modificar slides, atualizar conteúdo ou reutilizar layouts. Ou converta arquivos PowerPoint para PDF para compatibilidade universal. Nossa ferramenta preserva formatação, imagens, layouts de texto e estrutura de slides durante a conversão. Perfeito para apresentações de negócios, materiais educacionais, decks de vendas e material de marketing.",
+      "p3": "Todas as conversões acontecem inteiramente no seu navegador usando tecnologia avançada de processamento do lado do cliente. Seus arquivos PowerPoint e PDF nunca saem do seu dispositivo—sem uploads para servidores externos, sem armazenamento em nuvem, sem retenção de dados. A ferramenta funciona offline assim que carregada, tornando-a perfeita para apresentações de negócios confidenciais ou materiais sensíveis. Sem registro, e-mail ou conta necessários."
+    },
+    "faq": {
+      "q4": "O conversor preserva animações e transições do PowerPoint?",
+      "a4": "Ao converter PowerPoint para PDF, animações e transições não são preservadas, pois PDF é um formato estático. O conversor captura o estado final de cada slide. Ao converter PDF para PowerPoint, a ferramenta reconstrói layouts de slides como objetos editáveis, mas as animações originais devem ser adicionadas novamente manualmente.",
+      "q5": "Posso converter arquivos PowerPoint ou PDF protegidos por senha?",
+      "a5": "Para arquivos PowerPoint protegidos por senha, você precisará remover a proteção por senha no PowerPoint antes da conversão. Para PDFs criptografados, use nossa ferramenta Desbloquear PDF primeiro para remover a senha, depois converta para PowerPoint."
+    }
+  },
+  "pdf-ocr": {
+    "seo": {
+      "p2": "Extraia texto de documentos digitalizados, imagens e PDFs não pesquisáveis com nossa poderosa ferramenta OCR. Alimentado por Tesseract.js, ele reconhece com precisão texto em vários idiomas e converte PDFs baseados em imagem em texto pesquisável, selecionável e copiável. Perfeito para digitalizar documentos em papel, arquivos digitalizados antigos, recibos, faturas, contratos e notas manuscritas. A ferramenta lida com várias fontes, tamanhos, layouts e qualidades de documento.",
+      "p3": "O processamento OCR roda inteiramente no seu navegador usando Tesseract.js, um mecanismo OCR de código aberto compilado para WebAssembly para máximo desempenho e privacidade. Seus PDFs digitalizados nunca saem do seu dispositivo—todo o reconhecimento de texto acontece localmente. A ferramenta baixa modelos de idioma sob demanda e os armazena em cache no seu navegador para processamento subsequente mais rápido. Suporta mais de 100 idiomas com pacotes de idioma para download."
+    },
+    "faq": {
+      "q4": "Quais idiomas são suportados para reconhecimento de texto OCR?",
+      "a4": "A ferramenta suporta mais de 100 idiomas, incluindo inglês, espanhol, francês, alemão, italiano, português, chinês, japonês, coreano, árabe, russo e muitos mais. Você pode selecionar o idioma do documento antes do processamento para melhorar a precisão.",
+      "q5": "Quão preciso é o reconhecimento de texto OCR?",
+      "a5": "A precisão depende da qualidade da digitalização, clareza da fonte, resolução e idioma. Digitalizações de alta qualidade (300 DPI ou mais) com fontes claras alcançam precisão de 95-99%. Digitalizações de qualidade inferior ou escrita à mão podem ter precisão reduzida. Você pode melhorar os resultados digitalizando em resolução mais alta e garantindo bom contraste."
+    }
+  },
+  "pdf-repair": {
+    "seo": {
+      "p2": "Recupere e corrija arquivos PDF corrompidos, danificados ou ilegíveis com nossa ferramenta de reparo avançada. Detecta e resolve automaticamente erros comuns de PDF, incluindo tabelas de referência cruzada quebradas, objetos inválidos, cabeçalhos corrompidos e inconsistências estruturais. Perfeito para resgatar documentos importantes que não abrem, exibem erros ou travam leitores de PDF. A ferramenta reconstrói estruturas de arquivo danificadas, repara metadados e restaura a legibilidade.",
+      "p3": "As operações de reparo são executadas inteiramente no seu navegador usando PDF.js e algoritmos de recuperação especializados. Seus arquivos corrompidos nunca saem do seu dispositivo—sem uploads, sem processamento em nuvem, sem exposição de dados. A ferramenta tenta várias estratégias de reparo, incluindo reconstrução de estrutura, validação de objetos e correção de metadados. Todo o processamento acontece na memória temporária do navegador com limpeza automática."
+    },
+    "faq": {
+      "q4": "Que tipos de corrupção de PDF esta ferramenta pode corrigir?",
+      "a4": "A ferramenta pode reparar muitos problemas comuns, incluindo tabelas de referência cruzada quebradas, referências de objetos inválidas, cabeçalhos corrompidos, marcadores EOF ausentes, erros de codificação e inconsistências estruturais. Ela não pode recuperar PDFs com danos físicos graves ou perda completa de dados.",
+      "q5": "O PDF reparado ficará exatamente como o original?",
+      "a5": "Na maioria dos casos, sim. A ferramenta preserva todo o conteúdo recuperável, incluindo texto, imagens, formatação e layout. No entanto, seções severamente corrompidas que não podem ser reconstruídas podem ser omitidas. Sempre verifique a saída reparada."
+    }
+  },
+  "pdf-to-pdfa": {
+    "seo": {
+      "p2": "Converta arquivos PDF padrão para formato de arquivo PDF/A para preservação a longo prazo e conformidade com padrões de arquivo. PDF/A é um formato padronizado ISO projetado para preservação de documentos eletrônicos, garantindo que os arquivos permaneçam legíveis décadas no futuro. A ferramenta incorpora todas as fontes, converte cores para espaços de cores independentes de dispositivo e impõe requisitos estruturais rigorosos. Suporta padrões PDF/A-1b, PDF/A-2b e PDF/A-3b.",
+      "p3": "A conversão para PDF/A acontece inteiramente no seu navegador usando bibliotecas especializadas de processamento de PDF. Seus arquivos nunca saem do seu dispositivo—sem uploads, sem armazenamento em nuvem. A ferramenta valida a conformidade com PDF/A, incorpora metadados necessários, normaliza fluxos de conteúdo e garante conformidade de formato. Todo o processamento ocorre na memória temporária do navegador. Sem registro ou conta necessários."
+    },
+    "faq": {
+      "q4": "Qual é a diferença entre PDF/A-1b, PDF/A-2b e PDF/A-3b?",
+      "a4": "PDF/A-1b (2005) é o mais restritivo e amplamente suportado. PDF/A-2b (2011) permite compressão JPEG 2000, transparência e assinaturas digitais. PDF/A-3b (2012) permite incorporar arquivos de qualquer formato dentro do contêiner. Escolha com base nos requisitos da sua instituição de arquivo.",
+      "q5": "Converter para PDF/A aumentará o tamanho do meu arquivo?",
+      "a5": "Normalmente sim, porque PDF/A incorpora todas as fontes, perfis de cores e remove compressão que depende de recursos externos. O aumento é tipicamente de 10-30%. Esse trade-off garante que o documento permaneça autocontido e legível indefinidamente."
+    }
+  },
+  "html-to-pdf": {
+    "seo": {
+      "p2": "Converta conteúdo HTML, páginas da web e documentos estilizados em arquivos PDF profissionais com renderização perfeita. Cole código HTML para gerar PDFs que preservam estilos CSS, layout, fontes, imagens, tabelas e formatação. Perfeito para criar relatórios de painéis web, arquivar artigos, gerar faturas a partir de modelos HTML ou converter documentação para formatos imprimíveis. A ferramenta lida com HTML5 moderno, CSS3 e estruturas de página complexas.",
+      "p3": "A conversão de HTML para PDF roda inteiramente no seu navegador usando mecanismos de renderização do lado do cliente—sem uploads para servidor, sem chamadas de API externas. Seu conteúdo HTML permanece completamente privado no seu dispositivo. A ferramenta renderiza HTML usando mecanismos de navegador modernos e converte para PDF usando bibliotecas de código aberto. Todo o processamento acontece na memória temporária e é limpo automaticamente. Sem registro ou conta necessários."
+    },
+    "faq": {
+      "q4": "Posso converter páginas da web diretamente por URL ou apenas código HTML?",
+      "a4": "Atualmente, a ferramenta funciona colando código HTML diretamente. Para converter uma página da web ao vivo, você pode usar o 'Ver Código Fonte da Página' do seu navegador para copiar o HTML, depois colá-lo na ferramenta. Para melhores resultados, garanta que CSS e imagens externas usem URLs absolutas.",
+      "q5": "O conversor suporta JavaScript e elementos interativos?",
+      "a5": "A ferramenta renderiza a saída HTML e CSS estática. JavaScript não é executado durante a conversão—apenas a estrutura HTML final e estilos CSS são capturados. Elementos interativos aparecerão como elementos estáticos no PDF."
+    }
+  },
+  "pdf-flatten": {
+    "seo": {
+      "p2": "Achate campos de formulário PDF, anotações, comentários e elementos interativos em conteúdo permanente e não editável. Converta formulários PDF preenchíveis em documentos estáticos onde todos os valores de campo se tornam parte do conteúdo da página e não podem ser modificados. Perfeito para finalizar formulários preenchidos, arquivar documentos enviados, evitar edições adicionais ou preparar PDFs para impressão. A ferramenta mescla campos de formulário, caixas de texto, caixas de seleção, assinaturas, carimbos e comentários na camada base do PDF.",
+      "p3": "O achatamento de PDF ocorre inteiramente no seu navegador usando bibliotecas avançadas de manipulação de PDF. Seus arquivos nunca saem do seu dispositivo—sem uploads, sem processamento em nuvem. A ferramenta mescla todas as camadas e campos de formulário na camada de conteúdo estático, mantendo a aparência visual e a qualidade de impressão. Todo o processamento acontece na memória temporária do navegador. Sem registro ou conta necessários."
+    },
+    "faq": {
+      "q4": "Posso desfazer o achatamento de um PDF depois de usar esta ferramenta?",
+      "a4": "Não, o achatamento é irreversível. Uma vez que campos de formulário e anotações são mesclados em conteúdo estático, eles não podem ser separados de volta em campos editáveis. Sempre mantenha uma cópia do PDF preenchível original se você puder precisar editá-lo mais tarde.",
+      "q5": "Achatar reduzirá o tamanho do meu arquivo PDF?",
+      "a5": "Normalmente sim, especialmente para formulários complexos com muitos campos e JavaScript. O achatamento remove dados de camada interativa, estrutura de formulário e scripts. A redução de tamanho de arquivo varia de 10-40%, dependendo da complexidade do formulário."
+    }
+  },
+  "pdf-compare": {
+    "seo": {
+      "p2": "Compare dois documentos PDF lado a lado com detecção avançada de diferenças visuais destacando cada mudança, adição e exclusão. Perfeito para revisar revisões de documentos, rastrear modificações de contratos, verificar versões editadas e controle de qualidade. A ferramenta analisa PDFs pixel por pixel para identificar diferenças em conteúdo, formatação, imagens, layout e estrutura. Destaca adições em verde, exclusões em vermelho e modificações em amarelo para feedback visual instantâneo.",
+      "p3": "A comparação de PDF roda inteiramente no seu navegador usando renderização local e algoritmos de diferença. Ambos os arquivos PDF permanecem completamente privados no seu dispositivo—sem uploads, sem processamento em nuvem. A ferramenta renderiza cada página PDF, executa comparação de pixels e gera sobreposições de diferença visual em tempo real. Todo o processamento acontece na memória temporária do navegador. Sem registro ou conta necessários."
+    },
+    "faq": {
+      "q4": "A ferramenta compara conteúdo de texto ou apenas aparência visual?",
+      "a4": "A ferramenta realiza comparação visual em nível de pixel e detecta mudanças no conteúdo de texto, formatação, fontes, cores, posições, imagens e layout. Essa abordagem dupla garante que tanto mudanças visuais sutis quanto modificações de conteúdo sejam identificadas.",
+      "q5": "Posso comparar PDFs com contagens de páginas ou layouts diferentes?",
+      "a5": "Sim, a ferramenta lida com PDFs com diferentes números de páginas ou layouts. Ela compara páginas correspondentes lado a lado e indica páginas adicionadas ou removidas. A ferramenta funciona melhor ao comparar versões de documentos semelhantes."
+    }
+  },
+  "pdf-crop": {
+    "seo": {
+      "p2": "Corte páginas PDF ajustando margens e removendo espaços em branco indesejados, bordas, cabeçalhos, rodapés ou conteúdo de borda. Personalize margens superiores, inferiores, esquerdas e direitas para aparar páginas PDF com precisão. Perfeito para remover margens de scanner, eliminar espaços em branco, focar no conteúdo central ou preparar PDFs para impressão com tamanhos de papel personalizados. A ferramenta mantém a qualidade e resolução do conteúdo ao ajustar a área de página visível.",
+      "p3": "O corte de PDF acontece inteiramente no seu navegador usando bibliotecas de manipulação de PDF do lado do cliente. Seus arquivos nunca saem do seu dispositivo. A ferramenta ajusta os parâmetros MediaBox e CropBox de cada página PDF para definir novos limites visíveis sem re-renderização ou perda de qualidade. Todo o processamento ocorre na memória temporária do navegador. Sem registro ou conta necessários."
+    },
+    "faq": {
+      "q4": "Cortar reduz o tamanho do arquivo PDF?",
+      "a4": "Cortar ajusta a área de página visível, mas normalmente não reduz o tamanho do arquivo significativamente porque os dados de conteúdo subjacentes permanecem no arquivo. Para redução real de tamanho de arquivo, combine corte com compressão.",
+      "q5": "Posso cortar quantidades diferentes de páginas diferentes no mesmo PDF?",
+      "a5": "Atualmente, a ferramenta aplica margens de corte uniformes a todas as páginas para consistência. Para configurações de corte diferentes por página, divida o PDF em seções, corte cada uma separadamente e depois mescle-as novamente."
+    }
+  },
+  "image-converter": {
+    "seo": {
+      "p2": "Nosso conversor de imagem suporta processamento em lote, permitindo que você converta vários arquivos simultaneamente sem perda de qualidade. Seja para converter fotos HEIC do seu iPhone para JPG, transformar arquivos PNG em WebP leve para sites mais rápidos ou preparar gráficos SVG para impressão em formato de alta resolução, nossa ferramenta lida com tudo. O conversor preserva metadados EXIF quando possível, mantém perfis de cores e usa codecs WebAssembly avançados para resultados de nível profissional.",
+      "p3": "Todas as conversões de imagem acontecem inteiramente no seu navegador usando tecnologia WebAssembly—nenhum arquivo sai do seu dispositivo. Usamos codecs jSquash padrão da indústria para qualidade e velocidade de compressão ideais, com suporte para formatos modernos como AVIF e WebP que podem reduzir tamanhos de arquivo em até 50%. A ferramenta funciona completamente offline assim que carregada, não requer registro de conta e não deixa rastros de seus arquivos em nenhum servidor."
+    },
+    "faq": {
+      "q4": "Posso converter fotos HEIC do meu iPhone para JPG?",
+      "a4": "Sim, nosso conversor suporta totalmente a conversão de HEIC para JPG. Basta selecionar suas fotos HEIC, escolher JPG como formato de saída e converter. A ferramenta preserva a qualidade da imagem e dados EXIF, incluindo data, localização e configurações da câmera.",
+      "q5": "Qual é a diferença entre WebP e JPG?",
+      "a5": "WebP é um formato moderno do Google que normalmente produz arquivos 25-35% menores que JPG em qualidade equivalente. WebP suporta compressão com e sem perda, transparência (como PNG) e animação (como GIF). Embora JPG seja mais universalmente compatível, WebP oferece compressão superior para uso na web."
+    }
+  },
+  "image-editor": {
+    "seo": {
+      "p2": "Edite imagens diretamente no seu navegador com ferramentas de nível profissional. Redimensione fotos para dimensões ou porcentagens exatas, corte para proporções personalizadas e comprima imagens para reduzir tamanhos de arquivo sem perda de qualidade visível. Gire imagens em qualquer ângulo, inverta horizontal ou verticalmente e ajuste a aparência com controles de brilho, contraste e saturação. O editor lida com todos os formatos comuns, incluindo JPG, PNG, WebP e GIF. A visualização em tempo real permite que você veja as mudanças instantaneamente antes de baixar.",
+      "p3": "Suas imagens são processadas inteiramente do lado do cliente usando API Canvas e algoritmos de compressão alimentados por WebAssembly—nada é enviado para nossos servidores. Todas as operações de edição acontecem em tempo real dentro da memória do seu navegador, garantindo máxima privacidade e segurança. A ferramenta funciona offline após o carregamento inicial da página, suporta imagens de até 50 MB e preserva automaticamente metadados EXIF quando aplicável."
+    },
+    "faq": {
+      "q4": "Editar reduzirá a qualidade da minha imagem?",
+      "a4": "Operações como redimensionar, cortar, girar e inverter são processadas sem perdas. Compressão e conversão de formato podem reduzir o tamanho do arquivo com impacto visual mínimo, dependendo das configurações de qualidade. Você sempre pode visualizar as mudanças antes de baixar para garantir que o resultado atenda aos seus padrões.",
+      "q5": "Posso editar várias imagens de uma vez?",
+      "a5": "O editor de imagem processa uma imagem por vez para edição interativa com visualizações instantâneas. Para operações em lote, como converter ou comprimir várias imagens, use nossa ferramenta Conversor de Imagem que suporta processamento em lote."
+    }
+  },
+  "compress-video": {
+    "seo": {
+      "p2": "Nosso compressor de vídeo usa codificação FFmpeg avançada para reduzir tamanhos de arquivo, preservando a qualidade visual. Escolha entre várias predefinições de compressão otimizadas para diferentes casos de uso. Suporte para formatos populares, incluindo MP4, WebM e MOV, garante compatibilidade em todos os dispositivos. Ajuste taxa de bits, resolução e configurações de codec para encontrar o equilíbrio perfeito entre tamanho de arquivo e qualidade de vídeo. Perfeito para reduzir custos de armazenamento, acelerar uploads ou otimizar vídeos para anexos de e-mail.",
+      "p3": "Toda a compressão de vídeo acontece inteiramente no seu navegador usando tecnologia FFmpeg WebAssembly. Seus arquivos originais nunca saem do seu dispositivo—sem uploads para servidor, sem processamento em nuvem, sem retenção de dados. O mecanismo de compressão roda localmente na sua CPU, garantindo total privacidade. Funciona offline assim que a página é carregada. Sem criação de conta, sem limites de tamanho de arquivo além da memória do seu dispositivo e completamente grátis."
+    },
+    "faq": {
+      "q4": "Comprimir reduzirá a qualidade do vídeo?",
+      "a4": "A compressão envolve algum trade-off de qualidade, mas nossa ferramenta usa codificação inteligente para minimizar a degradação visível. Para a maioria dos vídeos, a perda de qualidade é imperceptível. Você pode visualizar a saída e ajustar as configurações antes de salvar.",
+      "q5": "Qual é o tamanho máximo de arquivo que posso comprimir?",
+      "a5": "Como o processamento acontece no seu navegador, o limite depende da RAM disponível do seu dispositivo. A maioria dos computadores modernos pode lidar com arquivos de até 2-4 GB. Arquivos maiores podem exigir mais tempo de processamento em dispositivos mais antigos."
+    }
+  },
+  "trim-video": {
+    "seo": {
+      "p2": "Corte e apare arquivos de vídeo com precisão com controles precisos de quadro e visualização em tempo real. Arraste as alças da linha do tempo ou insira carimbos de data/hora exatos para selecionar o segmento perfeito. O player de vídeo integrado permite que você percorra a filmagem para encontrar pontos de corte exatos. Suporta todos os principais formatos, incluindo MP4, WebM, MOV e AVI. Ideal para remover introduções indesejadas, criar clipes para mídias sociais ou aparar gravações.",
+      "p3": "Seus arquivos de vídeo são processados inteiramente dentro do seu navegador usando FFmpeg WebAssembly. Nenhum upload para servidores externos significa que sua filmagem permanece completamente privada. A ferramenta funciona offline após o carregamento inicial da página. Sem registro necessário, sem restrições de tamanho de arquivo além da memória do seu navegador e custo zero."
+    },
+    "faq": {
+      "q4": "Aparar reduz a qualidade do vídeo?",
+      "a4": "Quando possível, usamos cópia de fluxo que extrai o segmento selecionado sem recodificação—preservando 100% da qualidade original. A recodificação só ocorre quando necessária para cortes precisos de quadro.",
+      "q5": "Posso aparar vários segmentos de um vídeo?",
+      "a5": "Atualmente, a ferramenta suporta aparar um único segmento por operação. Para extrair vários segmentos, você pode aparar cada um separadamente e salvá-los como arquivos individuais."
+    }
+  },
+  "video-to-gif": {
+    "seo": {
+      "p2": "Transforme clipes de vídeo em GIFs animados compartilháveis com controles personalizáveis de taxa de quadros, dimensões e duração. Perfeito para criar GIFs de reação, conteúdo de mídia social ou animações de site. Selecione qualquer parte do seu vídeo para converter, ajuste a velocidade de reprodução e otimize o tamanho do arquivo com predefinições de qualidade. O conversor lida com formatos populares como MP4, WebM e MOV. Visualize seu GIF antes de exportar para garantir resultados perfeitos.",
+      "p3": "Todo o processamento de conversão ocorre localmente no seu navegador usando tecnologia FFmpeg WebAssembly. Seus arquivos de vídeo nunca são enviados para nenhum servidor. Funciona offline assim que carregado, não requer conta e não tem limites de tamanho de arquivo além da memória do seu dispositivo. Perfeito para converter conteúdo de vídeo sensível ou pessoal com segurança."
+    },
+    "faq": {
+      "q4": "Por que os arquivos GIF às vezes são maiores que o vídeo original?",
+      "a4": "GIFs usam compressão sem perda e armazenam cada quadro como uma imagem completa, enquanto vídeos usam compressão temporal. Para clipes mais longos, considere reduzir resolução, taxa de quadros ou duração para minimizar o tamanho do arquivo.",
+      "q5": "Posso controlar a velocidade da animação?",
+      "a5": "Sim, você pode ajustar a taxa de quadros (FPS) para acelerar ou desacelerar a animação. FPS mais baixo cria reprodução mais lenta e arquivos menores, enquanto FPS mais alto produz movimento mais suave, mas arquivos maiores."
+    }
+  },
+  "video-to-mp3": {
+    "seo": {
+      "p2": "Extraia faixas de áudio de alta qualidade de arquivos de vídeo e salve como MP3 com configurações de taxa de bits personalizáveis. Perfeito para criar podcasts a partir de entrevistas em vídeo, extrair música de filmagens de shows ou converter webinars para formato de áudio. Suporta todos os principais formatos de vídeo, incluindo MP4, WebM, MOV, AVI e MKV. Escolha entre várias predefinições de qualidade MP3. O processo de extração preserva a qualidade de áudio original sem recodificação quando possível.",
+      "p3": "A extração de áudio acontece inteiramente no seu navegador usando FFmpeg WebAssembly—sem uploads de arquivo, sem processamento em nuvem, total privacidade. Seus arquivos de vídeo permanecem no seu dispositivo durante todo o processo. Funciona offline após o carregamento inicial, não requer conta e processa arquivos de qualquer tamanho dentro dos limites de memória do seu navegador."
+    },
+    "faq": {
+      "q4": "A qualidade do MP3 corresponderá ao áudio do vídeo original?",
+      "a4": "Se o vídeo de origem já contém áudio MP3, nós o extraímos diretamente sem recodificação para preservação de qualidade perfeita. Para outros formatos, transcodificamos para MP3 na taxa de bits escolhida—selecione 256kbps ou 320kbps para qualidade quase sem perda.",
+      "q5": "Posso extrair áudio de vários vídeos de uma vez?",
+      "a5": "Atualmente, a ferramenta processa um vídeo por vez. Você pode enfileirar várias extrações repetindo o processo para cada arquivo de vídeo."
+    }
+  },
+  "audio-cutter": {
+    "seo": {
+      "p2": "Corte e apare arquivos de áudio com controles precisos de linha do tempo e visualização de forma de onda. Arraste as alças de seleção ou insira carimbos de data/hora exatos para isolar o segmento perfeito. O player de áudio integrado com exibição de forma de onda ajuda a identificar segmentos para corte preciso. Suporta todos os principais formatos de áudio, incluindo MP3, WAV, OGG, AAC, FLAC e M4A. Perfeito para criar toques, extrair clipes de podcast ou aparar entrevistas gravadas.",
+      "p3": "Todo o processamento de áudio acontece localmente no seu navegador usando FFmpeg WebAssembly. Seus arquivos de áudio nunca são enviados para servidores externos. Funciona offline assim que carregado, garantindo total privacidade para mensagens de voz, música ou áudio confidencial. Sem conta necessária, sem limites de tamanho de arquivo e totalmente grátis."
+    },
+    "faq": {
+      "q4": "Cortar áudio reduz a qualidade?",
+      "a4": "Quando possível, usamos cópia de fluxo para extrair o segmento selecionado sem recodificação, preservando 100% da qualidade original. A recodificação só ocorre quando a conversão de formato é solicitada.",
+      "q5": "Posso cortar vários segmentos de um arquivo?",
+      "a5": "A ferramenta atualmente suporta extração de um único segmento por operação. Para extrair várias partes, repita o processo de corte para cada segmento e salve-os como arquivos separados."
+    }
+  },
+  "audio-converter": {
+    "seo": {
+      "p2": "Converta arquivos de áudio entre formatos populares, incluindo MP3, WAV, OGG, AAC, FLAC e M4A com configurações de qualidade personalizáveis. Perfeito para garantir compatibilidade entre dispositivos—converta FLAC sem perda para MP3 para celular, ou transcodifique OGG para AAC para ecossistemas Apple. Escolha entre várias predefinições de taxa de bits e qualidade. O conversor preserva metadados como artista, título e informações do álbum quando suportado.",
+      "p3": "Toda a conversão de áudio ocorre inteiramente no seu navegador usando tecnologia FFmpeg WebAssembly. Seus arquivos nunca saem do seu dispositivo—sem uploads para servidor, sem processamento em nuvem. Funciona offline após o carregamento inicial. Sem registro necessário, sem restrições de tamanho de arquivo e completamente grátis."
+    },
+    "faq": {
+      "q4": "Qual formato devo escolher para música?",
+      "a4": "Para qualidade máxima, use FLAC (sem perda) ou WAV. Para uso diário com arquivos menores, MP3 a 256-320kbps ou AAC a 192-256kbps oferecem excelente qualidade. OGG Vorbis fornece ótima qualidade em taxas de bits mais baixas.",
+      "q5": "Converter entre formatos reduzirá a qualidade?",
+      "a5": "Converter de sem perda (FLAC, WAV) para com perda (MP3, AAC) reduzirá a qualidade ligeiramente. Converter entre formatos com perda causa perda geracional e deve ser evitado—use o formato original ou converta de fontes sem perda."
+    }
+  },
+  "voice-recorder": {
+    "seo": {
+      "p2": "Grave áudio de alta qualidade diretamente do seu microfone usando tecnologia baseada em navegador. Perfeito para mensagens de voz, gravação de podcast, entrevistas ou notas de áudio rápidas. A visualização de forma de onda em tempo real mostra níveis de entrada. A funcionalidade de pausar e retomar permite criar gravações contínuas de vários segmentos. Escolha seu formato de saída e configurações de qualidade preferidos antes de começar. O gravador exibe dispositivos de entrada disponíveis para seleção.",
+      "p3": "Toda a gravação acontece inteiramente no seu navegador—o áudio é capturado localmente e nunca transmitido para nenhum servidor. Suas gravações permanecem completamente privadas. Funciona offline após o carregamento inicial. Sem criação de conta necessária, sem limites de armazenamento e totalmente grátis."
+    },
+    "faq": {
+      "q4": "Que qualidade de áudio posso esperar?",
+      "a4": "A qualidade depende do seu microfone e configurações. Para voz, MP3 de 64-128kbps é suficiente. Para música ou necessidades de alta fidelidade, use WAV ou MP3 de 256-320kbps. Usamos a API MediaRecorder do navegador para qualidade nativa ideal.",
+      "q5": "Posso gravar de microfones externos?",
+      "a5": "Sim! A ferramenta detecta todos os dispositivos de entrada de áudio disponíveis, incluindo microfones USB, interfaces de áudio e microfones de headset. Selecione seu dispositivo preferido no menu de entrada antes de gravar."
+    }
+  },
+  "screen-recorder": {
+    "seo": {
+      "p2": "Capture sua tela, aba do navegador ou janela de aplicativo com narração de áudio usando APIs de gravação integradas do navegador. Perfeito para criar tutoriais, gravar apresentações, documentar bugs ou salvar chamadas de vídeo. Escolha gravar a tela inteira, uma janela específica ou uma aba do navegador. Captura opcional de áudio do microfone e áudio do sistema. Visualização em tempo real, pausar/retomar e download instantâneo quando terminar.",
+      "p3": "Toda a gravação de tela acontece localmente no seu navegador usando a API nativa de Captura de Tela. Suas gravações nunca são enviadas para nenhum servidor. Funciona sem extensões de navegador ou software de desktop. Sem conta necessária, sem limites de tempo e absolutamente grátis."
+    },
+    "faq": {
+      "q4": "Posso gravar áudio do sistema junto com meu microfone?",
+      "a4": "Sim, a maioria dos navegadores modernos suporta captura de áudio do sistema ao gravar abas do navegador. O áudio completo do sistema de aplicativos de desktop depende do seu navegador e sistema operacional. Chrome e Edge oferecem as opções de captura de áudio mais abrangentes.",
+      "q5": "Por que minha gravação é salva como WebM em vez de MP4?",
+      "a5": "Os navegadores nativamente gravam em formato WebM para eficiência. Nossa ferramenta pode converter para MP4 após a gravação para compatibilidade mais ampla. Para downloads imediatos, WebM é mais rápido e reproduz em todos os navegadores modernos."
+    }
+  },
+  "word-counter": {
+    "seo": {
+      "p2": "Nosso contador de palavras fornece análise de texto abrangente com métricas em tempo real. Além da contagem básica de palavras, ele rastreia caracteres (com e sem espaços), frases, parágrafos e tempo de leitura estimado. Perfeito para escritores atendendo requisitos de comprimento de artigo, estudantes aderindo a limites de palavras de redação, gerentes de mídia social otimizando comprimento de postagem e criadores de conteúdo analisando legibilidade.",
+      "p3": "Esta ferramenta roda inteiramente no seu navegador usando análise de texto JavaScript. Seu conteúdo nunca sai do seu dispositivo—sem uploads para servidor, sem armazenamento de dados, sem preocupações com privacidade. Funciona offline assim que carregada, tornando-a ideal para processar documentos confidenciais ou escrita pessoal. Todos os cálculos são realizados do lado do cliente com latência zero."
+    },
+    "faq": {
+      "q4": "Como funciona o cálculo do tempo de leitura?",
+      "a4": "O tempo de leitura é estimado com base em velocidades médias de leitura de aproximadamente 200-250 palavras por minuto. A calculadora divide sua contagem total de palavras por essa taxa para fornecer uma estimativa de tempo realista.",
+      "q5": "O contador de palavras funciona para idiomas além do inglês?",
+      "a5": "Sim, o contador de palavras suporta todos os idiomas e conjuntos de caracteres, incluindo scripts não latinos como chinês, japonês, árabe e cirílico. Ele usa processamento de texto com reconhecimento de Unicode para contagens precisas, independentemente do idioma."
+    }
+  },
+  "json-formatter": {
+    "seo": {
+      "p2": "Formate e valide dados JSON com destaque de sintaxe profissional e detecção de erros. Esta ferramenta embeleza automaticamente JSON minificado com indentação adequada. Ela valida a sintaxe em tempo real, destacando erros com números de linha precisos. Alterne entre visualizações formatadas e minificadas instantaneamente. O destaque de sintaxe codifica por cores chaves, valores, strings, números e booleanos para fácil análise visual.",
+      "p3": "Todo o processamento JSON ocorre inteiramente no seu navegador usando análise JavaScript nativa. Seus dados nunca tocam em nossos servidores—cole respostas de API confidenciais ou arquivos de configuração sem preocupações com privacidade. O formatador funciona offline após o carregamento inicial. Sem limites de tamanho de arquivo, sem restrições de upload, sem retenção de dados."
+    },
+    "faq": {
+      "q4": "Posso minificar JSON para reduzir o tamanho do arquivo?",
+      "a4": "Sim, o formatador inclui uma opção de minificação que remove todos os espaços em branco desnecessários, quebras de linha e indentação. Isso reduz o tamanho do arquivo significativamente—útil para respostas de API ou quando você precisa de JSON compacto para entradas de linha única.",
+      "q5": "O que acontece se meu JSON tiver erros de sintaxe?",
+      "a5": "A ferramenta detecta e destaca erros de sintaxe imediatamente, mostrando o número exato da linha e uma descrição (vírgula ausente, colchete não fechado, caractere inválido). Isso torna a depuração de JSON malformado rápida e direta."
+    }
+  },
+  "base64": {
+    "seo": {
+      "p2": "Codifique e decodifique dados Base64 com suporte tanto para strings de texto quanto arquivos. Converta texto para Base64 para incorporar em URLs, JSON ou URIs de dados. Decodifique strings Base64 de volta para texto legível ou arquivos. A ferramenta lida com arquivos grandes com eficiência, suportando imagens, PDFs e quaisquer dados binários. Perfeito para desenvolvedores trabalhando com autenticação de API, incorporando imagens em HTML/CSS ou convertendo anexos de e-mail codificados.",
+      "p3": "Toda a codificação e decodificação acontece no seu navegador usando funções JavaScript nativas. Os arquivos que você processa nunca saem do seu dispositivo—sem uploads para servidor, sem armazenamento temporário. Isso é crucial ao trabalhar com documentos confidenciais, tokens de autenticação ou dados sigilosos. A ferramenta funciona completamente offline assim que carregada."
+    },
+    "faq": {
+      "q4": "Que tipos de arquivo posso codificar para Base64?",
+      "a4": "Você pode codificar qualquer tipo de arquivo—imagens (JPG, PNG, GIF), documentos (PDF, DOCX), arquivos de dados (JSON, XML, CSV) e muito mais. A ferramenta lê bytes de arquivo brutos e os converte em uma string Base64 para incorporar em URIs de dados ou payloads de API.",
+      "q5": "Por que minha saída Base64 é mais longa que o original?",
+      "a5": "A codificação Base64 aumenta o tamanho dos dados em aproximadamente 33% porque representa dados binários usando apenas 64 caracteres ASCII. Esse overhead é normal e necessário para transmitir com segurança dados binários através de sistemas baseados em texto."
+    }
+  },
+  "lorem-ipsum": {
+    "seo": {
+      "p2": "Gere texto de espaço reservado Lorem Ipsum instantaneamente para mockups, wireframes e protótipos de design. Escolha entre parágrafos, frases ou palavras para corresponder às suas necessidades de layout. Personalize a quantidade de texto—de uma única frase a dezenas de parágrafos. Copie o texto gerado com um clique e cole no Figma, Adobe XD, Sketch ou qualquer ferramenta de design. Ideal para desenvolvedores testando layouts responsivos ou designers criando mockups.",
+      "p3": "A geração de Lorem Ipsum roda inteiramente no seu navegador usando um algoritmo de geração de texto do lado do cliente. Nenhuma solicitação de servidor é feita—a ferramenta funciona instantaneamente offline. Como ela gera texto de espaço reservado aleatório, não há dados do usuário envolvidos. Uma ferramenta leve e focada em privacidade que você pode usar livremente."
+    },
+    "faq": {
+      "q4": "Por que Lorem Ipsum é usado em vez de conteúdo real?",
+      "a4": "Lorem Ipsum tem uma distribuição natural de letras e comprimentos de palavras semelhante à linguagem real, tornando-o ideal para visualizar como o conteúdo ficará em um design. Ao contrário de texto repetitivo, ele não distrai os espectadores do layout e design visual.",
+      "q5": "Posso personalizar a quantidade de texto gerado?",
+      "a5": "Sim, você pode especificar exatamente quantos parágrafos, frases ou palavras você precisa. Essa flexibilidade permite gerar a quantidade perfeita de texto de espaço reservado para qualquer elemento de design."
+    }
+  },
+  "color-picker": {
+    "seo": {
+      "p2": "Escolha e converta cores com um seletor de cores completo que suporta formatos HEX, RGB, HSL e HSV. Selecione cores visualmente usando uma roda de cores interativa e controle deslizante de brilho, ou insira valores específicos para correspondência precisa. A ferramenta converte instantaneamente entre todos os formatos. Perfeito para desenvolvedores web correspondendo cores de marca, designers criando paletas ou qualquer pessoa que precise de códigos de cores precisos. Copie valores com um clique. Suporta transparência via RGBA/HSLA.",
+      "p3": "O seletor de cores opera inteiramente no seu navegador usando canvas HTML5 e manipulação de cores CSS. Nenhum dado de cor é enviado para servidores—todas as conversões acontecem localmente usando JavaScript. Garante tempos de resposta instantâneos e total privacidade ao trabalhar com cores de marca proprietárias. Funciona offline após o carregamento inicial."
+    },
+    "faq": {
+      "q4": "Qual é a diferença entre HEX, RGB e HSL?",
+      "a4": "HEX usa seis dígitos hexadecimais (#FF5733) e é comum no desenvolvimento web. RGB define cores usando valores de Vermelho, Verde, Azul (0-255). HSL usa Matiz (0-360), Saturação e Luminosidade em porcentagens—mais fácil para criar variações de cores. Todos representam as mesmas cores em diferentes formatos.",
+      "q5": "Posso escolher cores com transparência?",
+      "a5": "Sim, a ferramenta suporta canais alfa. Você pode gerar códigos de cores RGBA e HSLA com valores de opacidade de 0 (transparente) a 1 (opaco). Útil para efeitos de sobreposição, sombras e elementos de interface semi-transparentes."
+    }
+  },
+  "regex-tester": {
+    "seo": {
+      "p2": "Teste expressões regulares com correspondência de padrões ao vivo e destaque de sintaxe. Insira seu padrão regex e string de teste para ver correspondências destacadas em tempo real. A ferramenta suporta todos os recursos regex padrão, incluindo classes de caracteres, quantificadores, grupos, lookaheads e flags. Perfeito para desenvolvedores depurando padrões, analistas de dados validando regras de extração ou qualquer pessoa aprendendo regex. Veja grupos de correspondência e grupos de captura separadamente para análise de padrões complexos.",
+      "p3": "O teste de regex acontece inteiramente no seu navegador usando o mecanismo RegExp nativo do JavaScript. Suas strings de teste e padrões nunca saem do seu dispositivo—ideal para testar contra dados confidenciais ou documentos sigilosos. Funciona offline assim que carregado, fornecendo feedback instantâneo sem viagens de ida e volta ao servidor."
+    },
+    "faq": {
+      "q4": "Quais flags regex são suportadas?",
+      "a4": "Todas as flags regex padrão do JavaScript: global (g), case-insensitive (i), multiline (m), dotAll (s) e sticky (y). Elas controlam o comportamento de correspondência para encontrar todas as correspondências, ignorar maiúsculas/minúsculas e tratar novas linhas como limites de linha.",
+      "q5": "Posso testar regex para diferentes linguagens de programação?",
+      "a5": "Esta ferramenta usa sintaxe regex JavaScript, semelhante à maioria das linguagens. Os padrões principais funcionam entre linguagens, mas alguns recursos podem se comportar de maneira diferente. É melhor para desenvolvimento geral de regex com teste final na sua linguagem-alvo."
+    }
+  },
+  "qr-code": {
+    "seo": {
+      "p2": "Gere códigos QR personalizáveis a partir de qualquer texto, URL ou dados com controle total sobre a aparência. Crie códigos QR para links de sites, informações de contato, credenciais WiFi ou texto simples. Personalize cores de primeiro e segundo plano. Ajuste o tamanho de pequenos ícones a grandes imagens prontas para impressão. Adicione um logotipo ao centro para códigos com marca. Baixe como PNG para uso em materiais impressos, sites, cartões de visita ou displays digitais.",
+      "p3": "A geração de código QR roda inteiramente no seu navegador usando uma biblioteca de codificação do lado do cliente. Os dados que você codifica nunca saem do seu dispositivo ou são enviados para qualquer servidor. Crítico ao criar códigos QR para senhas WiFi privadas ou links confidenciais. Funciona completamente offline após o carregamento inicial."
+    },
+    "faq": {
+      "q4": "Posso adicionar um logotipo ao meu código QR?",
+      "a4": "Sim, carregue um logotipo ou imagem para o centro do código QR. A ferramenta aumenta automaticamente a correção de erros para garantir a capacidade de leitura, apesar do logotipo cobrir parte do padrão. Perfeito para materiais de marketing com marca.",
+      "q5": "Qual é a quantidade máxima de dados que um código QR pode conter?",
+      "a5": "Códigos QR comportam até aproximadamente 4.000 caracteres alfanuméricos, dependendo do nível de correção de erros. Dados maiores criam códigos mais densos que podem ser mais difíceis de escanear. Mantenha URLs curtas e limite o texto a algumas centenas de caracteres para melhores resultados."
+    }
+  },
+  "youtube-thumbnail": {
+    "seo": {
+      "p2": "Baixe miniaturas de vídeos do YouTube em todas as resoluções disponíveis de qualquer vídeo público. Cole a URL ou ID do YouTube para recuperar instantaneamente todos os tamanhos—de pequenas visualizações (120x90) a imagens HD de resolução máxima (1280x720). Perfeito para criadores de conteúdo, designers criando compilações, educadores ou profissionais de marketing analisando designs de miniaturas. A ferramenta mostra visualizações de todos os tamanhos para que você possa escolher a resolução exata necessária.",
+      "p3": "A recuperação de miniaturas acontece no seu navegador construindo links diretos para o CDN do YouTube. Sem scraping, sem chaves de API, sem processamento de servidor. A URL do vídeo é processada localmente para extrair o ID. Nada é enviado ou armazenado em nossos servidores. Seus dados de navegação e escolhas de vídeo permanecem completamente privados."
+    },
+    "faq": {
+      "q4": "Quais resoluções de miniatura estão disponíveis?",
+      "a4": "O YouTube fornece vários tamanhos: padrão (120x90), médio (320x180), alto (480x360), standard (640x480) e máximo (1280x720). Nem todos os vídeos têm todos os tamanhos—vídeos mais antigos podem ter apenas resoluções mais baixas. A ferramenta mostra todas as opções disponíveis.",
+      "q5": "Posso baixar miniaturas de vídeos privados ou não listados?",
+      "a5": "Não, a ferramenta funciona apenas com vídeos públicos do YouTube. Vídeos privados e não listados têm acesso restrito a miniaturas. Para seus próprios vídeos não listados, acesse miniaturas através do YouTube Studio."
+    }
+  }
+}

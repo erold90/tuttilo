@@ -97,27 +97,40 @@ export function ToolLayout({ toolId, category, children }: ToolLayoutProps) {
         <div className="prose prose-gray max-w-none dark:prose-invert">
           <h2>{t(`tools.${toolId}.seo.title`)}</h2>
           <p>{t(`tools.${toolId}.seo.content`)}</p>
+          {/* Render additional paragraphs if they exist */}
+          {[2, 3, 4].map((i) => {
+            try {
+              const text = t(`tools.${toolId}.seo.p${i}`);
+              if (!text || text.startsWith("tools.")) return null;
+              return <p key={i}>{text}</p>;
+            } catch { return null; }
+          })}
+          {/* Shared privacy paragraph */}
+          <p>{t("common.seoPrivacy")}</p>
         </div>
 
-        {/* FAQ */}
+        {/* FAQ — dynamic up to 8 questions */}
         <div className="mt-8">
           <h2 className="mb-4 text-2xl font-bold">{t("common.faq")}</h2>
           <div className="space-y-4">
-            {[1, 2, 3].map((i) => {
-              const question = t(`tools.${toolId}.faq.q${i}`);
-              const answer = t(`tools.${toolId}.faq.a${i}`);
-              if (!question) return null;
-              return (
-                <details
-                  key={i}
-                  className="group rounded-lg border border-border bg-card p-4"
-                >
-                  <summary className="cursor-pointer font-medium">
-                    {question}
-                  </summary>
-                  <p className="mt-2 text-muted-foreground">{answer}</p>
-                </details>
-              );
+            {[1, 2, 3, 4, 5, 6, 7, 8].map((i) => {
+              try {
+                const question = t(`tools.${toolId}.faq.q${i}`);
+                const answer = t(`tools.${toolId}.faq.a${i}`);
+                if (!question || question.startsWith("tools.") || !answer || answer.startsWith("tools.")) return null;
+                return (
+                  <details
+                    key={i}
+                    className="group rounded-lg border border-border bg-card p-4"
+                    open={i === 1}
+                  >
+                    <summary className="cursor-pointer font-medium">
+                      {question}
+                    </summary>
+                    <p className="mt-2 text-muted-foreground">{answer}</p>
+                  </details>
+                );
+              } catch { return null; }
             })}
           </div>
         </div>

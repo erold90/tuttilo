@@ -45,16 +45,21 @@ export const categories: ToolCategory[] = [
 // ============================================================================
 
 export const tools: Tool[] = [
-  // ---------- PDF (14 tools) ----------
-  { id: 'pdf-organizer', slug: 'organizer', category: 'pdf', icon: 'LayoutDashboard', isAvailable: true, isPremium: false, maxFileSize: 100 * 1024 * 1024, acceptedFormats: ['application/pdf'], processingType: 'client' },
-  { id: 'pdf-editor', slug: 'editor', category: 'pdf', icon: 'PenTool', isAvailable: true, isPremium: false, maxFileSize: 100 * 1024 * 1024, acceptedFormats: ['application/pdf'], processingType: 'client' },
-  { id: 'pdf-images', slug: 'images', category: 'pdf', icon: 'FileImage', isAvailable: true, isPremium: false, maxFileSize: 100 * 1024 * 1024, acceptedFormats: ['application/pdf', 'image/jpeg', 'image/png', 'image/webp'], processingType: 'client' },
-  { id: 'pdf-word', slug: 'word', category: 'pdf', icon: 'FileText', isAvailable: true, isPremium: false, maxFileSize: 50 * 1024 * 1024, acceptedFormats: ['application/pdf', 'application/vnd.openxmlformats-officedocument.wordprocessingml.document', 'application/msword'], processingType: 'client' },
-  { id: 'pdf-to-excel', slug: 'to-excel', category: 'pdf', icon: 'Table', isAvailable: true, isPremium: false, maxFileSize: 100 * 1024 * 1024, acceptedFormats: ['application/pdf'], processingType: 'client' },
-  { id: 'pdf-to-pptx', slug: 'to-pptx', category: 'pdf', icon: 'Presentation', isAvailable: true, isPremium: false, maxFileSize: 100 * 1024 * 1024, acceptedFormats: ['application/pdf'], processingType: 'client' },
+  // ---------- PDF (19 tools — ordered by popularity) ----------
   { id: 'compress-pdf', slug: 'compress', category: 'pdf', icon: 'Minimize2', isAvailable: true, isPremium: false, maxFileSize: 100 * 1024 * 1024, acceptedFormats: ['application/pdf'], processingType: 'client' },
+  { id: 'pdf-organizer', slug: 'organizer', category: 'pdf', icon: 'LayoutDashboard', isAvailable: true, isPremium: false, maxFileSize: 100 * 1024 * 1024, acceptedFormats: ['application/pdf'], processingType: 'client' },
+  { id: 'pdf-word', slug: 'word', category: 'pdf', icon: 'FileText', isAvailable: true, isPremium: false, maxFileSize: 50 * 1024 * 1024, acceptedFormats: ['application/pdf', 'application/vnd.openxmlformats-officedocument.wordprocessingml.document', 'application/msword'], processingType: 'client' },
+  { id: 'pdf-editor', slug: 'editor', category: 'pdf', icon: 'PenTool', isAvailable: true, isPremium: false, maxFileSize: 100 * 1024 * 1024, acceptedFormats: ['application/pdf'], processingType: 'client' },
+  { id: 'pdf-fill-sign', slug: 'fill-sign', category: 'pdf', icon: 'PenLine', isAvailable: true, isPremium: false, maxFileSize: 100 * 1024 * 1024, acceptedFormats: ['application/pdf'], processingType: 'client' },
+  { id: 'pdf-images', slug: 'images', category: 'pdf', icon: 'FileImage', isAvailable: true, isPremium: false, maxFileSize: 100 * 1024 * 1024, acceptedFormats: ['application/pdf', 'image/jpeg', 'image/png', 'image/webp'], processingType: 'client' },
+  { id: 'pdf-excel', slug: 'excel', category: 'pdf', icon: 'Table', isAvailable: true, isPremium: false, maxFileSize: 100 * 1024 * 1024, acceptedFormats: ['application/pdf', 'application/vnd.openxmlformats-officedocument.spreadsheetml.sheet', 'application/vnd.ms-excel'], processingType: 'client' },
+  { id: 'pdf-pptx', slug: 'powerpoint', category: 'pdf', icon: 'Presentation', isAvailable: true, isPremium: false, maxFileSize: 100 * 1024 * 1024, acceptedFormats: ['application/pdf', 'application/vnd.openxmlformats-officedocument.presentationml.presentation'], processingType: 'client' },
+  { id: 'html-to-pdf', slug: 'from-html', category: 'pdf', icon: 'Code', isAvailable: true, isPremium: false, maxFileSize: 0, acceptedFormats: [], processingType: 'client' },
   { id: 'unlock-pdf', slug: 'unlock', category: 'pdf', icon: 'Unlock', isAvailable: true, isPremium: false, maxFileSize: 100 * 1024 * 1024, acceptedFormats: ['application/pdf'], processingType: 'client' },
   { id: 'pdf-protect', slug: 'protect', category: 'pdf', icon: 'ShieldCheck', isAvailable: true, isPremium: false, maxFileSize: 100 * 1024 * 1024, acceptedFormats: ['application/pdf'], processingType: 'client' },
+  { id: 'pdf-flatten', slug: 'flatten', category: 'pdf', icon: 'Rows', isAvailable: true, isPremium: false, maxFileSize: 100 * 1024 * 1024, acceptedFormats: ['application/pdf'], processingType: 'client' },
+  { id: 'pdf-crop', slug: 'crop', category: 'pdf', icon: 'Crop', isAvailable: true, isPremium: false, maxFileSize: 100 * 1024 * 1024, acceptedFormats: ['application/pdf'], processingType: 'client' },
+  { id: 'pdf-compare', slug: 'compare', category: 'pdf', icon: 'GitCompare', isAvailable: true, isPremium: false, maxFileSize: 100 * 1024 * 1024, acceptedFormats: ['application/pdf'], processingType: 'client' },
   { id: 'pdf-page-numbers', slug: 'page-numbers', category: 'pdf', icon: 'ListNumbers', isAvailable: true, isPremium: false, maxFileSize: 100 * 1024 * 1024, acceptedFormats: ['application/pdf'], processingType: 'client' },
   { id: 'pdf-watermark', slug: 'watermark', category: 'pdf', icon: 'Drop', isAvailable: true, isPremium: false, maxFileSize: 100 * 1024 * 1024, acceptedFormats: ['application/pdf'], processingType: 'client' },
   { id: 'pdf-ocr', slug: 'ocr', category: 'pdf', icon: 'Scan', isAvailable: true, isPremium: false, maxFileSize: 100 * 1024 * 1024, acceptedFormats: ['application/pdf', 'image/jpeg', 'image/png', 'image/webp', 'image/bmp', 'image/tiff'], processingType: 'client' },

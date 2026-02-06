@@ -50,7 +50,8 @@ export function VideoToMp3() {
 
       await ffmpeg.deleteFile(inputName);
       await ffmpeg.deleteFile(outputName);
-    } catch {
+    } catch (err) {
+      console.error("VideoToMp3 error:", err);
       setError(t("extractError"));
     } finally {
       setLoading(false);

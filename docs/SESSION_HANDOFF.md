@@ -1,6 +1,6 @@
 # Session Handoff — Tuttilo
 
-## Ultimo aggiornamento: 2026-02-02
+## Ultimo aggiornamento: 2026-02-06
 
 ## Cosa è stato completato
 - **Sprint 0 COMPLETATO** (16/16 task) — Setup progetto, SEO, deploy
@@ -51,11 +51,42 @@
 - `scripts/ralph-loop.sh` — Bash wrapper per loop multi-sessione con context fresco
 - `CLAUDE.md` — Enhanced con istruzioni compaction, agent loop docs, tool checklist
 
+## PDF Editor Redesign (2026-02-04) — COMPLETO
+- **Problema originale**: PDF content barely visible, text selection broken, UI non intuitiva
+- **Competitor research**: Smallpdf, Sejda, iLovePDF, DocHub patterns analyzed
+- **pdf-editor-unified.tsx** RISCRITTO: Shared file state wrapper, single dropzone, tab switcher
+- **pdf-editor.tsx** RISCRITTO: Fixed canvas overlay alignment (explicit container sizing), visible text highlights (blue/green), real-time text preview, color picker, change counter
+- **pdf-fill-sign.tsx** RISCRITTO: Props-based (no more self-contained file upload), signature size slider (80-400px)
+- **Root cause fix**: Canvas overlay misalignment caused by CSS maxWidth/maxHeight — replaced with explicit JS-driven container sizing via dims state
+- Build OK, deploy Cloudflare OK (https://tuttilo.com)
+
+## PDF Tools Enhancement (2026-02-06) — COMPLETO
+- **Session log**: docs/session-logs/001-pdf-tools-enhancement.md
+- **6 nuovi tool PDF creati**: excel-to-pdf, ppt-to-pdf, html-to-pdf, pdf-flatten, pdf-compare, pdf-crop
+- **1 tool attivato**: pdf-fill-sign (era implementato ma non registrato)
+- **Fix bug**: Unicode `\u2192` in JSX (category page + batch-image-list)
+- **Riordino PDF**: 21 tool ordinati per popolarità
+- **Traduzioni**: Tutti 6 nuovi tool tradotti in 8 lingue (subagent paralleli)
+- **Build OK** — **Deploy Cloudflare OK** (https://8afd91cb.tuttilo.pages.dev)
+- **Dipendenza aggiunta**: jszip (parsing PPTX)
+- **44 tool totali live su tuttilo.com** (21 PDF + 8 Image + 6 Text/Dev + 6 Audio/Media + 5 Video - consolidati)
+
+## SEO & Indicizzazione Google (2026-02-06) — COMPLETATO
+- **Session log**: docs/session-logs/002-seo-indexing.md
+- **Fase 1**: x-default hreflang, Google verification placeholder, og:image SVG, HowTo JSON-LD, IndexNow (360 URL)
+- **Fase 2**: seo.p2 + faq.q4-q5 per 38 tool × 8 lingue, cross-category related tools, JSON minificati
+- **Fase 3**: GA4 (componente + env var NEXT_PUBLIC_GA_ID), GSC infrastruttura pronta
+- **Deploy finale**: https://8bc8d081.tuttilo.pages.dev — Build OK, Worker 10558 KiB
+- **File creati**: src/components/analytics/google-analytics.tsx, src/app/api/indexnow/route.ts, public/og-image.svg
+- **Step manuali**: Utente deve creare GA4 property + GSC property + impostare token verifica
+
 ## Cosa resta da fare
+- **Step manuali SEO**: Creare GA4 property, impostare NEXT_PUBLIC_GA_ID, verificare GSC, inviare sitemap
+- Safari compatibility fix (`undefined is not a function` with pdfjs-dist v5 on macOS Ventura) — deferred
 - UX Redesign V2 Fase 1: F1.6 mega-menu (opzionale)
-- Sprint AI/Server: Remove Background, OCR, Excel→PDF, YT Transcript (richiede server-side)
+- Sprint AI/Server: Remove Background, OCR, YT Transcript (richiede server-side)
 - Vedere docs/ROADMAP.md per piano sprint completo
-- **38 tool totali live** (36 precedenti + pdf-fill-sign + pdf-editor)
+- **42 tool totali live** su tuttilo.com
 
 ## Deploy Automatico (2026-02-01)
 - **GitHub Actions** configurato: `.github/workflows/deploy.yml`
@@ -66,8 +97,9 @@
 - Tempo medio: ~2:30 minuti
 
 ## File creati/modificati — PDF Fill & Sign + Editor
-- `src/components/tools/pdf-fill-sign.tsx` — NEW. Form filling + visual signature (draw/type/upload)
-- `src/components/tools/pdf-editor.tsx` — NEW. Text editing con font detection + add text + freehand drawing
+- `src/components/tools/pdf-fill-sign.tsx` — NEW → REWRITTEN 2026-02-04. Props-based + signature size slider
+- `src/components/tools/pdf-editor.tsx` — NEW → REWRITTEN 2026-02-04. Fixed canvas alignment + text highlights + color picker
+- `src/components/tools/pdf-editor-unified.tsx` — REWRITTEN 2026-02-04. Shared file state wrapper
 - `src/lib/tools/registry.ts` — MODIFY. pdf-fill-sign (new, isAvailable: true), pdf-editor (isAvailable: true)
 - `src/components/tool-icon.tsx` — MODIFY. Aggiunto PenLine per pdf-fill-sign
 - `src/app/[locale]/[category]/[tool]/page.tsx` — MODIFY. Import + mapping PdfFillSign, PdfEditor

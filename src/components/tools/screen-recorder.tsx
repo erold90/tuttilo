@@ -60,7 +60,8 @@ export function ScreenRecorder() {
       setPaused(false);
       setDuration(0);
       timerRef.current = setInterval(() => setDuration((d) => d + 1), 1000);
-    } catch {
+    } catch (err) {
+      console.error("ScreenRecorder error:", err);
       setError(t("screenError"));
     }
   }, [includeAudio, t]);

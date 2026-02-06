@@ -66,7 +66,7 @@ export function BatchImageList({
               <p className="text-xs text-muted-foreground">
                 {formatFileSize(f.file.size)}
                 {f.resultSize > 0 && (
-                  <span className="text-primary"> \u2192 {formatFileSize(f.resultSize)}</span>
+                  <span className="text-primary"> {"\u2192"} {formatFileSize(f.resultSize)}</span>
                 )}
               </p>
             </div>

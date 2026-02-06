@@ -22,6 +22,8 @@ export function PdfWord() {
     import("pdfjs-dist").then((lib) => {
       lib.GlobalWorkerOptions.workerSrc = `https://cdn.jsdelivr.net/npm/pdfjs-dist@${lib.version}/build/pdf.worker.min.mjs`;
       setPdfjsLib(lib);
+    }).catch((err) => {
+      console.error("Failed to load pdfjs-dist:", err);
     });
   }, []);
 
@@ -45,16 +47,23 @@ export function PdfWord() {
     if (!file || !pdfjsLib) return;
     setProcessing(true);
     setProgress(0);
+    let step = "init";
     try {
+      step = "arrayBuffer";
       const bytes = await file.arrayBuffer();
+
+      step = "getDocument";
       const doc = await pdfjsLib.getDocument({ data: bytes }).promise;
       const total = doc.numPages;
 
+      step = "import-docx";
       const { Document, Packer, Paragraph, TextRun, HeadingLevel, PageBreak } = await import("docx");
 
+      step = "extract-text";
       const allChildren: InstanceType<typeof Paragraph>[] = [];
 
       for (let i = 1; i <= total; i++) {
+        step = `page-${i}-getText`;
         const page = await doc.getPage(i);
         const textContent = await page.getTextContent();
 
@@ -100,13 +109,18 @@ export function PdfWord() {
         allChildren.push(new Paragraph({ children: [new TextRun({ text: " " })] }));
       }
 
+      step = "create-docx";
       const docx = new Document({ sections: [{ properties: {}, children: allChildren }] });
+
+      step = "pack-blob";
       const blob = await Packer.toBlob(docx);
       if (resultUrl) URL.revokeObjectURL(resultUrl);
       setResultUrl(URL.createObjectURL(blob));
       setResultSize(blob.size);
-    } catch {
-      setError(t("convertError"));
+    } catch (err) {
+      console.error("PDF→Word error:", err);
+      const msg = err instanceof Error ? err.message : String(err);
+      setError(`${t("convertError")} [step:${step}] ${msg}`);
     } finally {
       setProcessing(false);
     }
@@ -146,7 +160,8 @@ export function PdfWord() {
 </html>`;
 
       setHtmlContent(fullHtml);
-    } catch {
+    } catch (err) {
+      console.error("Word→PDF error:", err);
       setError(t("convertError"));
     } finally {
       setProcessing(false);

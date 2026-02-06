@@ -29,6 +29,8 @@ export function PdfOcr() {
     import("pdfjs-dist").then((lib) => {
       lib.GlobalWorkerOptions.workerSrc = `https://cdn.jsdelivr.net/npm/pdfjs-dist@${lib.version}/build/pdf.worker.min.mjs`;
       setPdfjsLib(lib);
+    }).catch((err) => {
+      console.error("Failed to load pdfjs-dist:", err);
     });
   }, []);
 
@@ -93,7 +95,8 @@ export function PdfOcr() {
       } else {
         setResultText(allText);
       }
-    } catch {
+    } catch (err) {
+      console.error("PDF OCR error:", err);
       setError(t("error"));
     } finally {
       setProcessing(false);
@@ -157,7 +160,7 @@ export function PdfOcr() {
           <div className="bg-green-500/10 border border-green-500/20 rounded-xl p-4">
             <div className="flex items-center justify-between mb-2">
               <p className="font-medium">{t("done")}</p>
-              <span className="text-xs text-muted-foreground">{resultText.length} chars</span>
+              <span className="text-xs text-muted-foreground">{resultText.length} {t("chars")}</span>
             </div>
             <pre className="bg-background rounded-lg p-4 text-sm max-h-80 overflow-auto whitespace-pre-wrap break-words border border-border">
               {resultText}

@@ -90,7 +90,8 @@ export function ImageEditor() {
         const heic2any = (await import("heic2any")).default;
         const result = await heic2any({ blob: f, toType: "image/png", quality: 1 });
         blob = Array.isArray(result) ? result[0] : result;
-      } catch {
+      } catch (err) {
+        console.error("ImageEditor error:", err);
         setError(t("error"));
         return;
       }
@@ -192,7 +193,8 @@ export function ImageEditor() {
       const canvas = cropper.getCroppedCanvas() as HTMLCanvasElement;
       const blob = await canvasToBlob(canvas, "image/png", 1);
       pushResult(blob, canvas.width, canvas.height);
-    } catch {
+    } catch (err) {
+      console.error("ImageEditor error:", err);
       setError(t("error"));
     }
     setProcessing(false);
@@ -226,7 +228,8 @@ export function ImageEditor() {
       URL.revokeObjectURL(srcUrl);
       cleanupCanvas(canvas);
       pushResult(blob, resizeW, resizeH);
-    } catch {
+    } catch (err) {
+      console.error("ImageEditor error:", err);
       setError(t("error"));
     }
     setProcessing(false);
@@ -251,7 +254,8 @@ export function ImageEditor() {
       URL.revokeObjectURL(srcUrl);
       cleanupCanvas(canvas);
       pushResult(blob, canvas.width, canvas.height);
-    } catch {
+    } catch (err) {
+      console.error("ImageEditor error:", err);
       setError(t("error"));
     }
     setProcessing(false);
@@ -279,7 +283,8 @@ export function ImageEditor() {
       URL.revokeObjectURL(srcUrl);
       cleanupCanvas(canvas);
       pushResult(blob, img.width, img.height);
-    } catch {
+    } catch (err) {
+      console.error("ImageEditor error:", err);
       setError(t("error"));
     }
     setProcessing(false);
@@ -306,7 +311,8 @@ export function ImageEditor() {
       setBrightness(100);
       setContrast(100);
       setSaturation(100);
-    } catch {
+    } catch (err) {
+      console.error("ImageEditor error:", err);
       setError(t("error"));
     }
     setProcessing(false);
@@ -343,7 +349,8 @@ export function ImageEditor() {
           const { encode } = await import("@jsquash/png");
           blob = new Blob([await encode(imageData)], { type: fmt.mime });
         }
-      } catch {
+      } catch (err) {
+        console.error("ImageEditor error:", err);
         blob = await canvasToBlob(canvas, fmt.mime, quality / 100);
       }
 
@@ -352,7 +359,8 @@ export function ImageEditor() {
       setCompressedSize(blob.size);
       cleanupCanvas(canvas);
       URL.revokeObjectURL(srcUrl);
-    } catch {
+    } catch (err) {
+      console.error("ImageEditor error:", err);
       setError(t("error"));
     }
     setProcessing(false);

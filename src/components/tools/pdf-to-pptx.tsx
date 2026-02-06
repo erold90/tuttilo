@@ -39,6 +39,8 @@ export function PdfToPptx() {
     import("pdfjs-dist").then((lib) => {
       lib.GlobalWorkerOptions.workerSrc = `https://cdn.jsdelivr.net/npm/pdfjs-dist@${lib.version}/build/pdf.worker.min.mjs`;
       setPdfjsLib(lib);
+    }).catch((err) => {
+      console.error("Failed to load pdfjs-dist:", err);
     });
     loadPptxGenJS().then(() => { pptxReady.current = true; });
   }, []);
@@ -92,7 +94,8 @@ export function PdfToPptx() {
       const blob = await pptx.write({ outputType: "blob" }) as Blob;
       if (resultUrl) URL.revokeObjectURL(resultUrl);
       setResultUrl(URL.createObjectURL(blob));
-    } catch {
+    } catch (err) {
+      console.error("PDF→PPTX error:", err);
       setError(t("error"));
     } finally {
       setProcessing(false);

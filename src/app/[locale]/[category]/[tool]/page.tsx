@@ -20,10 +20,13 @@ const implementedToolIds = new Set([
   "word-counter", "json-formatter", "base64", "lorem-ipsum", "color-picker",
   "regex-tester", "image-converter", "image-editor", "pdf-organizer",
   "compress-pdf", "qr-code", "voice-recorder", "screen-recorder",
-  "video-to-mp3", "audio-cutter", "pdf-editor", "pdf-images", "unlock-pdf",
-  "pdf-word", "pdf-to-excel", "pdf-to-pptx", "pdf-protect", "pdf-page-numbers",
-  "pdf-watermark", "pdf-ocr", "pdf-repair", "pdf-to-pdfa", "compress-video",
-  "trim-video", "video-to-gif", "audio-converter", "youtube-thumbnail",
+  "video-to-mp3", "audio-cutter", "pdf-editor", "pdf-fill-sign", "pdf-images",
+  "unlock-pdf", "pdf-word", "pdf-excel", "pdf-pptx", "pdf-protect",
+  "pdf-page-numbers", "pdf-watermark", "pdf-ocr", "pdf-repair", "pdf-to-pdfa",
+  "html-to-pdf", "pdf-flatten", "pdf-compare",
+  "pdf-crop",
+  "compress-video", "trim-video", "video-to-gif", "audio-converter",
+  "youtube-thumbnail",
 ]);
 
 export async function generateMetadata({
@@ -45,12 +48,15 @@ export async function generateMetadata({
     description,
     alternates: {
       canonical: `${BASE_URL}/${locale}/${category}/${toolSlug}`,
-      languages: Object.fromEntries(
-        locales.map((l) => [
-          l,
-          `${BASE_URL}/${l}/${category}/${toolSlug}`,
-        ])
-      ),
+      languages: {
+        ...Object.fromEntries(
+          locales.map((l) => [
+            l,
+            `${BASE_URL}/${l}/${category}/${toolSlug}`,
+          ])
+        ),
+        "x-default": `${BASE_URL}/en/${category}/${toolSlug}`,
+      },
     },
     openGraph: {
       title: `${name} | Tuttilo`,
@@ -59,6 +65,20 @@ export async function generateMetadata({
       siteName: "Tuttilo",
       locale,
       type: "website",
+      images: [
+        {
+          url: `${BASE_URL}/og-image.svg`,
+          width: 1200,
+          height: 630,
+          alt: `${name} | Tuttilo`,
+        },
+      ],
+    },
+    twitter: {
+      card: "summary_large_image",
+      title: `${name} | Tuttilo`,
+      description,
+      images: [`${BASE_URL}/og-image.svg`],
     },
   };
 }
@@ -81,6 +101,7 @@ export default async function ToolPage({
   // Structured data
   const t = await getTranslations({ locale, namespace: "tools" });
   const tNav = await getTranslations({ locale, namespace: "nav" });
+  const tCommon = await getTranslations({ locale, namespace: "common" });
 
   const toolName = t(`${toolData.id}.name`);
   const toolDesc = t(`${toolData.id}.description`);
@@ -107,14 +128,57 @@ export default async function ToolPage({
     offers: { "@type": "Offer", price: "0", priceCurrency: "USD" },
   };
 
+  const faqEntries: Array<{ "@type": string; name: string; acceptedAnswer: { "@type": string; text: string } }> = [];
+  for (let i = 1; i <= 8; i++) {
+    try {
+      const q = t(`${toolData.id}.faq.q${i}`);
+      const a = t(`${toolData.id}.faq.a${i}`);
+      if (q && !q.startsWith("tools.") && a && !a.startsWith("tools.")) {
+        faqEntries.push({
+          "@type": "Question",
+          name: q,
+          acceptedAnswer: { "@type": "Answer", text: a },
+        });
+      }
+    } catch { break; }
+  }
+
   const faqLd = {
     "@context": "https://schema.org",
     "@type": "FAQPage",
-    mainEntity: [1, 2, 3].map((i) => ({
-      "@type": "Question",
-      name: t(`${toolData.id}.faq.q${i}`),
-      acceptedAnswer: { "@type": "Answer", text: t(`${toolData.id}.faq.a${i}`) },
-    })),
+    mainEntity: faqEntries,
+  };
+
+  const howToLd = {
+    "@context": "https://schema.org",
+    "@type": "HowTo",
+    name: tCommon("howToSchema.name", { toolName }),
+    description: toolDesc,
+    totalTime: "PT2M",
+    tool: { "@type": "HowToTool", name: "Web browser" },
+    step: [
+      {
+        "@type": "HowToStep",
+        position: 1,
+        name: tCommon("howItWorks.upload.title"),
+        text: tCommon("howToSchema.step1"),
+        url: `${toolUrl}#upload`,
+      },
+      {
+        "@type": "HowToStep",
+        position: 2,
+        name: tCommon("howItWorks.process.title"),
+        text: tCommon("howToSchema.step2"),
+        url: `${toolUrl}#settings`,
+      },
+      {
+        "@type": "HowToStep",
+        position: 3,
+        name: tCommon("howItWorks.download.title"),
+        text: tCommon("howToSchema.step3"),
+        url: `${toolUrl}#download`,
+      },
+    ],
   };
 
   return (
@@ -122,6 +186,7 @@ export default async function ToolPage({
       <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(breadcrumbLd) }} />
       <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(softwareLd) }} />
       <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(faqLd) }} />
+      <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(howToLd) }} />
       <ToolLayout toolId={toolData.id} category={category}>
         <ToolLoader toolId={toolData.id} />
       </ToolLayout>

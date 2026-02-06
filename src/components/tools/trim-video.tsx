@@ -84,7 +84,8 @@ export function TrimVideo() {
 
       await ffmpeg.deleteFile(inputName);
       await ffmpeg.deleteFile(outputName);
-    } catch {
+    } catch (err) {
+      console.error("TrimVideo error:", err);
       setError(t("trimError"));
     } finally {
       setLoading(false);

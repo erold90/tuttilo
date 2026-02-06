@@ -85,7 +85,8 @@ export function VoiceRecorder() {
       setDuration(0);
       timerRef.current = setInterval(() => setDuration((d) => d + 1), 1000);
       drawWaveform();
-    } catch {
+    } catch (err) {
+      console.error("VoiceRecorder error:", err);
       setError(t("micError"));
     }
   }, [drawWaveform, t]);

@@ -65,7 +65,8 @@ export function YoutubeThumbnail() {
         a.download = `${videoId}_${label}.jpg`;
         a.click();
         URL.revokeObjectURL(a.href);
-      } catch {
+      } catch (err) {
+        console.error("YoutubeThumbnail error:", err);
         // Fallback: open in new tab
         window.open(imgUrl, "_blank");
       }
