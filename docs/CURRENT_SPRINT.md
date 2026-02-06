@@ -50,3 +50,4 @@ Implementare SEO completo per massimizzare indicizzazione Google: structured dat
 
 ## Ultimo aggiornamento
 2026-02-06 — Sprint SEO completato (3 fasi). GA4 configurato, GSC pronto, IndexNow attivo, contenuti SEO espansi per 38 tool × 8 lingue. Deploy Cloudflare OK.
+**TASK AGGIUNTIVO**: Traduzioni giapponesi aggiunte per 6 image tool (image-compressor, image-resizer, image-cropper, image-to-text, meme-maker, add-text-to-image) in src/messages/ja.json (minificato).

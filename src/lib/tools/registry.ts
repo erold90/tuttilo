@@ -70,6 +70,12 @@ export const tools: Tool[] = [
   { id: 'image-converter', slug: 'converter', category: 'image', icon: 'ArrowRightLeft', isAvailable: true, isPremium: false, maxFileSize: 50 * 1024 * 1024, acceptedFormats: ['image/jpeg', 'image/png', 'image/webp', 'image/gif', 'image/bmp', 'image/svg+xml', 'image/heic', 'image/heif', 'image/avif', 'image/tiff'], processingType: 'client' },
   { id: 'image-editor', slug: 'editor', category: 'image', icon: 'Sliders', isAvailable: true, isPremium: false, maxFileSize: 50 * 1024 * 1024, acceptedFormats: ['image/jpeg', 'image/png', 'image/webp', 'image/gif', 'image/bmp', 'image/svg+xml', 'image/heic', 'image/heif', 'image/avif'], processingType: 'client' },
   { id: 'remove-bg', slug: 'remove-bg', category: 'image', icon: 'Eraser', isAvailable: false, isPremium: false, maxFileSize: 25 * 1024 * 1024, acceptedFormats: ['image/jpeg', 'image/png', 'image/webp'], processingType: 'client' },
+  { id: 'image-compressor', slug: 'compressor', category: 'image', icon: 'Minimize2', isAvailable: true, isPremium: false, maxFileSize: 50 * 1024 * 1024, acceptedFormats: ['image/jpeg', 'image/png', 'image/webp'], processingType: 'client' },
+  { id: 'image-resizer', slug: 'resizer', category: 'image', icon: 'Maximize2', isAvailable: true, isPremium: false, maxFileSize: 50 * 1024 * 1024, acceptedFormats: ['image/jpeg', 'image/png', 'image/webp', 'image/gif', 'image/bmp'], processingType: 'client' },
+  { id: 'image-cropper', slug: 'cropper', category: 'image', icon: 'Crop', isAvailable: true, isPremium: false, maxFileSize: 50 * 1024 * 1024, acceptedFormats: ['image/jpeg', 'image/png', 'image/webp', 'image/gif', 'image/bmp'], processingType: 'client' },
+  { id: 'image-to-text', slug: 'to-text', category: 'image', icon: 'Scan', isAvailable: true, isPremium: false, maxFileSize: 25 * 1024 * 1024, acceptedFormats: ['image/jpeg', 'image/png', 'image/webp', 'image/bmp', 'image/tiff'], processingType: 'client' },
+  { id: 'meme-maker', slug: 'meme-maker', category: 'image', icon: 'Laugh', isAvailable: true, isPremium: false, maxFileSize: 50 * 1024 * 1024, acceptedFormats: ['image/jpeg', 'image/png', 'image/webp'], processingType: 'client' },
+  { id: 'add-text-to-image', slug: 'add-text', category: 'image', icon: 'Type', isAvailable: true, isPremium: false, maxFileSize: 50 * 1024 * 1024, acceptedFormats: ['image/jpeg', 'image/png', 'image/webp'], processingType: 'client' },
 
   // ---------- Video (5 tools) ----------
   { id: 'compress-video', slug: 'compress', category: 'video', icon: 'Minimize2', isAvailable: true, isPremium: false, maxFileSize: 500 * 1024 * 1024, acceptedFormats: ['video/mp4', 'video/webm', 'video/quicktime'], processingType: 'client' },
@@ -86,9 +92,9 @@ export const tools: Tool[] = [
   // ---------- Text (5 tools) ----------
   { id: 'word-counter', slug: 'word-counter', category: 'text', icon: 'Hash', isAvailable: true, isPremium: false, maxFileSize: 0, acceptedFormats: [], processingType: 'none' },
   { id: 'lorem-ipsum', slug: 'lorem-ipsum', category: 'text', icon: 'AlignLeft', isAvailable: true, isPremium: false, maxFileSize: 0, acceptedFormats: [], processingType: 'none' },
-  { id: 'case-converter', slug: 'case-converter', category: 'text', icon: 'CaseSensitive', isAvailable: false, isPremium: false, maxFileSize: 0, acceptedFormats: [], processingType: 'none' },
-  { id: 'diff-checker', slug: 'diff-checker', category: 'text', icon: 'GitCompare', isAvailable: false, isPremium: false, maxFileSize: 0, acceptedFormats: [], processingType: 'none' },
-  { id: 'markdown-editor', slug: 'markdown-editor', category: 'text', icon: 'FileCode', isAvailable: false, isPremium: false, maxFileSize: 0, acceptedFormats: [], processingType: 'none' },
+  { id: 'case-converter', slug: 'case-converter', category: 'text', icon: 'CaseSensitive', isAvailable: true, isPremium: false, maxFileSize: 0, acceptedFormats: [], processingType: 'none' },
+  { id: 'diff-checker', slug: 'diff-checker', category: 'text', icon: 'GitCompare', isAvailable: true, isPremium: false, maxFileSize: 0, acceptedFormats: [], processingType: 'none' },
+  { id: 'markdown-editor', slug: 'markdown-editor', category: 'text', icon: 'FileCode', isAvailable: true, isPremium: false, maxFileSize: 0, acceptedFormats: [], processingType: 'none' },
 
   // ---------- Developer (8 tools) ----------
   { id: 'json-formatter', slug: 'json-formatter', category: 'developer', icon: 'Braces', isAvailable: true, isPremium: false, maxFileSize: 0, acceptedFormats: [], processingType: 'none' },
@@ -96,9 +102,15 @@ export const tools: Tool[] = [
   { id: 'regex-tester', slug: 'regex-tester', category: 'developer', icon: 'Regex', isAvailable: true, isPremium: false, maxFileSize: 0, acceptedFormats: [], processingType: 'none' },
   { id: 'color-picker', slug: 'color-picker', category: 'developer', icon: 'Palette', isAvailable: true, isPremium: false, maxFileSize: 0, acceptedFormats: [], processingType: 'none' },
   { id: 'qr-code', slug: 'qr-code', category: 'developer', icon: 'QrCode', isAvailable: true, isPremium: false, maxFileSize: 0, acceptedFormats: [], processingType: 'none' },
-  { id: 'hex-rgb', slug: 'hex-rgb', category: 'developer', icon: 'Pipette', isAvailable: false, isPremium: false, maxFileSize: 0, acceptedFormats: [], processingType: 'none' },
-  { id: 'url-encoder', slug: 'url-encoder', category: 'developer', icon: 'Link', isAvailable: false, isPremium: false, maxFileSize: 0, acceptedFormats: [], processingType: 'none' },
-  { id: 'timestamp', slug: 'timestamp', category: 'developer', icon: 'Clock', isAvailable: false, isPremium: false, maxFileSize: 0, acceptedFormats: [], processingType: 'none' },
+  { id: 'hex-rgb', slug: 'hex-rgb', category: 'developer', icon: 'Pipette', isAvailable: true, isPremium: false, maxFileSize: 0, acceptedFormats: [], processingType: 'none' },
+  { id: 'url-encoder', slug: 'url-encoder', category: 'developer', icon: 'Link', isAvailable: true, isPremium: false, maxFileSize: 0, acceptedFormats: [], processingType: 'none' },
+  { id: 'timestamp', slug: 'timestamp', category: 'developer', icon: 'Clock', isAvailable: true, isPremium: false, maxFileSize: 0, acceptedFormats: [], processingType: 'none' },
+  { id: 'password-generator', slug: 'password-generator', category: 'developer', icon: 'Key', isAvailable: true, isPremium: false, maxFileSize: 0, acceptedFormats: [], processingType: 'none' },
+  { id: 'hash-generator', slug: 'hash-generator', category: 'developer', icon: 'Fingerprint', isAvailable: true, isPremium: false, maxFileSize: 0, acceptedFormats: [], processingType: 'none' },
+  { id: 'uuid-generator', slug: 'uuid-generator', category: 'developer', icon: 'Shuffle', isAvailable: true, isPremium: false, maxFileSize: 0, acceptedFormats: [], processingType: 'none' },
+  { id: 'jwt-decoder', slug: 'jwt-decoder', category: 'developer', icon: 'ShieldCheck', isAvailable: true, isPremium: false, maxFileSize: 0, acceptedFormats: [], processingType: 'none' },
+  { id: 'css-minifier', slug: 'css-minifier', category: 'developer', icon: 'FileCode', isAvailable: true, isPremium: false, maxFileSize: 0, acceptedFormats: [], processingType: 'none' },
+  { id: 'sql-formatter', slug: 'sql-formatter', category: 'developer', icon: 'Database', isAvailable: true, isPremium: false, maxFileSize: 0, acceptedFormats: [], processingType: 'none' },
 
   // ---------- YouTube (2 tools) ----------
   { id: 'youtube-thumbnail', slug: 'thumbnail', category: 'youtube', icon: 'Image', isAvailable: true, isPremium: false, maxFileSize: 0, acceptedFormats: [], processingType: 'client' },

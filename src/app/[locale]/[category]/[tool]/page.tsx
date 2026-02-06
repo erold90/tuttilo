@@ -27,6 +27,12 @@ const implementedToolIds = new Set([
   "pdf-crop",
   "compress-video", "trim-video", "video-to-gif", "audio-converter",
   "youtube-thumbnail",
+  "case-converter", "diff-checker", "markdown-editor",
+  "hex-rgb", "url-encoder", "timestamp",
+  "password-generator", "hash-generator", "uuid-generator",
+  "jwt-decoder", "css-minifier", "sql-formatter",
+  "image-compressor", "image-resizer", "image-cropper",
+  "image-to-text", "meme-maker", "add-text-to-image",
 ]);
 
 export async function generateMetadata({

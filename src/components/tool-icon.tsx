@@ -12,6 +12,7 @@ import {
   Clock, ClosedCaptioning, SquaresFour, SlidersHorizontal,
   ShieldCheck, ListNumbers, Drop, Table, PresentationChart,
   Scan, Wrench, Certificate, Rows,
+  Key, Fingerprint, Shuffle, Database, Smiley,
 } from "@phosphor-icons/react";
 
 interface ToolIconProps {
@@ -72,6 +73,11 @@ const iconMap: Record<string, Icon> = {
   Wrench,
   Certificate,
   Rows,
+  Key,
+  Fingerprint,
+  Shuffle,
+  Database,
+  Laugh: Smiley,
 };
 
 export function ToolIcon({ name, ...props }: ToolIconProps) {

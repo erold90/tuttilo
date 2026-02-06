@@ -1,0 +1,16 @@
+{
+  "name": "m3relay-api",
+  "main": "src/index.js",
+  "workers_dev": true,
+  "preview_urls": true,
+  "compatibility_date": "2024-01-01",
+  "compatibility_flags": [
+    "nodejs_compat"
+  ],
+  "browser": {
+    "binding": "BROWSER"
+  },
+  "vars": {
+    "TELEGRAPH_URL": "https://telegra.ph/Link-Aggiornato-StreamingCommunity-09-29"
+  }
+}
