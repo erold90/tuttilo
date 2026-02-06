@@ -64,6 +64,27 @@ const toolComponents: Record<string, React.ComponentType> = {
   "image-to-text": dynamic(() => import("./image-to-text").then(m => m.ImageToText), { ssr }),
   "meme-maker": dynamic(() => import("./meme-maker").then(m => m.MemeMaker), { ssr }),
   "add-text-to-image": dynamic(() => import("./add-text-to-image").then(m => m.AddTextToImage), { ssr }),
+  // Batch 4-7: loaded via proxy to prevent edge runtime document leak
+  "video-converter": dynamic(() => import("./batch-tools").then(m => m.VideoConverter), { ssr }),
+  "rotate-video": dynamic(() => import("./batch-tools").then(m => m.RotateVideo), { ssr }),
+  "mute-video": dynamic(() => import("./batch-tools").then(m => m.MuteVideo), { ssr }),
+  "change-video-speed": dynamic(() => import("./batch-tools").then(m => m.ChangeVideoSpeed), { ssr }),
+  "resize-video": dynamic(() => import("./batch-tools").then(m => m.ResizeVideo), { ssr }),
+  "audio-joiner": dynamic(() => import("./batch-tools").then(m => m.AudioJoiner), { ssr }),
+  "change-audio-speed": dynamic(() => import("./batch-tools").then(m => m.ChangeAudioSpeed), { ssr }),
+  "text-to-speech": dynamic(() => import("./batch-tools").then(m => m.TextToSpeech), { ssr }),
+  "reverse-audio": dynamic(() => import("./batch-tools").then(m => m.ReverseAudio), { ssr }),
+  "change-audio-volume": dynamic(() => import("./batch-tools").then(m => m.ChangeAudioVolume), { ssr }),
+  "csv-json": dynamic(() => import("./batch-tools").then(m => m.CsvJson), { ssr }),
+  "text-formatter": dynamic(() => import("./batch-tools").then(m => m.TextFormatter), { ssr }),
+  "notepad": dynamic(() => import("./batch-tools").then(m => m.Notepad), { ssr }),
+  "markdown-to-html": dynamic(() => import("./batch-tools").then(m => m.MarkdownToHtml), { ssr }),
+  "find-replace": dynamic(() => import("./batch-tools").then(m => m.FindReplace), { ssr }),
+  "pdf-to-text": dynamic(() => import("./batch-tools").then(m => m.PdfToText), { ssr }),
+  "pdf-metadata": dynamic(() => import("./batch-tools").then(m => m.PdfMetadata), { ssr }),
+  "grayscale-pdf": dynamic(() => import("./batch-tools").then(m => m.GrayscalePdf), { ssr }),
+  "redact-pdf": dynamic(() => import("./batch-tools").then(m => m.RedactPdf), { ssr }),
+  "extract-pdf-images": dynamic(() => import("./batch-tools").then(m => m.ExtractPdfImages), { ssr }),
 };
 
 interface ToolLoaderProps {

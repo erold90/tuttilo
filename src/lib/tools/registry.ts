@@ -65,6 +65,11 @@ export const tools: Tool[] = [
   { id: 'pdf-ocr', slug: 'ocr', category: 'pdf', icon: 'Scan', isAvailable: true, isPremium: false, maxFileSize: 100 * 1024 * 1024, acceptedFormats: ['application/pdf', 'image/jpeg', 'image/png', 'image/webp', 'image/bmp', 'image/tiff'], processingType: 'client' },
   { id: 'pdf-repair', slug: 'repair', category: 'pdf', icon: 'Wrench', isAvailable: true, isPremium: false, maxFileSize: 100 * 1024 * 1024, acceptedFormats: ['application/pdf'], processingType: 'client' },
   { id: 'pdf-to-pdfa', slug: 'to-pdfa', category: 'pdf', icon: 'Certificate', isAvailable: true, isPremium: false, maxFileSize: 100 * 1024 * 1024, acceptedFormats: ['application/pdf'], processingType: 'client' },
+  { id: 'pdf-to-text', slug: 'to-text', category: 'pdf', icon: 'FileText', isAvailable: true, isPremium: false, maxFileSize: 100 * 1024 * 1024, acceptedFormats: ['application/pdf'], processingType: 'client' },
+  { id: 'pdf-metadata', slug: 'metadata', category: 'pdf', icon: 'Info', isAvailable: true, isPremium: false, maxFileSize: 100 * 1024 * 1024, acceptedFormats: ['application/pdf'], processingType: 'client' },
+  { id: 'grayscale-pdf', slug: 'grayscale', category: 'pdf', icon: 'CircleHalf', isAvailable: true, isPremium: false, maxFileSize: 100 * 1024 * 1024, acceptedFormats: ['application/pdf'], processingType: 'client' },
+  { id: 'redact-pdf', slug: 'redact', category: 'pdf', icon: 'EyeOff', isAvailable: true, isPremium: false, maxFileSize: 100 * 1024 * 1024, acceptedFormats: ['application/pdf'], processingType: 'client' },
+  { id: 'extract-pdf-images', slug: 'extract-images', category: 'pdf', icon: 'Images', isAvailable: true, isPremium: false, maxFileSize: 100 * 1024 * 1024, acceptedFormats: ['application/pdf'], processingType: 'client' },
 
   // ---------- Image (3 tools: converter + editor + remove-bg) ----------
   { id: 'image-converter', slug: 'converter', category: 'image', icon: 'ArrowRightLeft', isAvailable: true, isPremium: false, maxFileSize: 50 * 1024 * 1024, acceptedFormats: ['image/jpeg', 'image/png', 'image/webp', 'image/gif', 'image/bmp', 'image/svg+xml', 'image/heic', 'image/heif', 'image/avif', 'image/tiff'], processingType: 'client' },
@@ -88,6 +93,11 @@ export const tools: Tool[] = [
   { id: 'audio-cutter', slug: 'cutter', category: 'audio', icon: 'Scissors', isAvailable: true, isPremium: false, maxFileSize: 100 * 1024 * 1024, acceptedFormats: ['audio/mpeg', 'audio/wav', 'audio/ogg', 'audio/flac', 'audio/aac'], processingType: 'client' },
   { id: 'audio-converter', slug: 'converter', category: 'audio', icon: 'ArrowRightLeft', isAvailable: true, isPremium: false, maxFileSize: 100 * 1024 * 1024, acceptedFormats: ['audio/mpeg', 'audio/wav', 'audio/ogg', 'audio/flac', 'audio/aac'], processingType: 'client' },
   { id: 'voice-recorder', slug: 'voice-recorder', category: 'audio', icon: 'Mic', isAvailable: true, isPremium: false, maxFileSize: 0, acceptedFormats: [], processingType: 'none' },
+  { id: 'audio-joiner', slug: 'joiner', category: 'audio', icon: 'GitMerge2', isAvailable: true, isPremium: false, maxFileSize: 100 * 1024 * 1024, acceptedFormats: ['audio/mpeg', 'audio/wav', 'audio/ogg', 'audio/flac'], processingType: 'client' },
+  { id: 'change-audio-speed', slug: 'speed', category: 'audio', icon: 'FastForward', isAvailable: true, isPremium: false, maxFileSize: 100 * 1024 * 1024, acceptedFormats: ['audio/mpeg', 'audio/wav', 'audio/ogg', 'audio/flac'], processingType: 'client' },
+  { id: 'text-to-speech', slug: 'text-to-speech', category: 'audio', icon: 'Speaker', isAvailable: true, isPremium: false, maxFileSize: 0, acceptedFormats: [], processingType: 'none' },
+  { id: 'reverse-audio', slug: 'reverse', category: 'audio', icon: 'Rewind', isAvailable: true, isPremium: false, maxFileSize: 100 * 1024 * 1024, acceptedFormats: ['audio/mpeg', 'audio/wav', 'audio/ogg', 'audio/flac'], processingType: 'client' },
+  { id: 'change-audio-volume', slug: 'volume', category: 'audio', icon: 'Volume2', isAvailable: true, isPremium: false, maxFileSize: 100 * 1024 * 1024, acceptedFormats: ['audio/mpeg', 'audio/wav', 'audio/ogg', 'audio/flac'], processingType: 'client' },
 
   // ---------- Text (5 tools) ----------
   { id: 'word-counter', slug: 'word-counter', category: 'text', icon: 'Hash', isAvailable: true, isPremium: false, maxFileSize: 0, acceptedFormats: [], processingType: 'none' },
@@ -95,6 +105,11 @@ export const tools: Tool[] = [
   { id: 'case-converter', slug: 'case-converter', category: 'text', icon: 'CaseSensitive', isAvailable: true, isPremium: false, maxFileSize: 0, acceptedFormats: [], processingType: 'none' },
   { id: 'diff-checker', slug: 'diff-checker', category: 'text', icon: 'GitCompare', isAvailable: true, isPremium: false, maxFileSize: 0, acceptedFormats: [], processingType: 'none' },
   { id: 'markdown-editor', slug: 'markdown-editor', category: 'text', icon: 'FileCode', isAvailable: true, isPremium: false, maxFileSize: 0, acceptedFormats: [], processingType: 'none' },
+  { id: 'csv-json', slug: 'csv-json', category: 'text', icon: 'Table', isAvailable: true, isPremium: false, maxFileSize: 0, acceptedFormats: [], processingType: 'none' },
+  { id: 'text-formatter', slug: 'text-formatter', category: 'text', icon: 'AlignLeft', isAvailable: true, isPremium: false, maxFileSize: 0, acceptedFormats: [], processingType: 'none' },
+  { id: 'notepad', slug: 'notepad', category: 'text', icon: 'FileText', isAvailable: true, isPremium: false, maxFileSize: 0, acceptedFormats: [], processingType: 'none' },
+  { id: 'markdown-to-html', slug: 'markdown-to-html', category: 'text', icon: 'Code', isAvailable: true, isPremium: false, maxFileSize: 0, acceptedFormats: [], processingType: 'none' },
+  { id: 'find-replace', slug: 'find-replace', category: 'text', icon: 'Search', isAvailable: true, isPremium: false, maxFileSize: 0, acceptedFormats: [], processingType: 'none' },
 
   // ---------- Developer (8 tools) ----------
   { id: 'json-formatter', slug: 'json-formatter', category: 'developer', icon: 'Braces', isAvailable: true, isPremium: false, maxFileSize: 0, acceptedFormats: [], processingType: 'none' },

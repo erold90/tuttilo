@@ -13,6 +13,9 @@ import {
   ShieldCheck, ListNumbers, Drop, Table, PresentationChart,
   Scan, Wrench, Certificate, Rows,
   Key, Fingerprint, Shuffle, Database, Smiley,
+  SpeakerSlash, FastForward, Megaphone, Rewind,
+  SpeakerHigh, GitFork, MagnifyingGlass,
+  Info, CircleHalf, EyeSlash,
 } from "@phosphor-icons/react";
 
 interface ToolIconProps {
@@ -78,6 +81,16 @@ const iconMap: Record<string, Icon> = {
   Shuffle,
   Database,
   Laugh: Smiley,
+  VolumeX: SpeakerSlash,
+  FastForward,
+  Speaker: Megaphone,
+  Rewind,
+  Volume2: SpeakerHigh,
+  GitMerge2: GitFork,
+  Search: MagnifyingGlass,
+  Info,
+  CircleHalf,
+  EyeOff: EyeSlash,
 };
 
 export function ToolIcon({ name, ...props }: ToolIconProps) {
