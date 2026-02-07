@@ -2,6 +2,8 @@
 
 import { useState, useCallback, useRef, useEffect } from "react";
 import { useTranslations } from "next-intl";
+import { configurePdfjsWorker } from "@/lib/pdf-utils";
+import { FileText, CheckCircle } from "@phosphor-icons/react";
 
 export function PdfCompare() {
   const t = useTranslations("tools.pdf-compare.ui");
@@ -15,7 +17,7 @@ export function PdfCompare() {
 
   useEffect(() => {
     import("pdfjs-dist").then((lib) => {
-      lib.GlobalWorkerOptions.workerSrc = `https://cdn.jsdelivr.net/npm/pdfjs-dist@${lib.version}/build/pdf.worker.min.mjs`;
+      configurePdfjsWorker(lib);
       setPdfjsLib(lib);
     });
   }, []);
@@ -111,12 +113,12 @@ export function PdfCompare() {
           <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
             <div {...dropHandler("a")}
               className={`border-2 border-dashed rounded-xl p-6 text-center hover:border-primary/50 transition-colors cursor-pointer ${fileA ? "border-green-500/50 bg-green-500/5" : "border-muted-foreground/25"}`}>
-              <div className="text-3xl mb-2">{fileA ? "✓" : "📄"}</div>
+              {fileA ? <CheckCircle size={36} weight="duotone" className="mx-auto mb-2 text-green-500" /> : <FileText size={36} weight="duotone" className="mx-auto mb-2 text-muted-foreground" />}
               <p className="text-sm font-medium">{fileA ? fileA.name : t("dropzoneA")}</p>
             </div>
             <div {...dropHandler("b")}
               className={`border-2 border-dashed rounded-xl p-6 text-center hover:border-primary/50 transition-colors cursor-pointer ${fileB ? "border-green-500/50 bg-green-500/5" : "border-muted-foreground/25"}`}>
-              <div className="text-3xl mb-2">{fileB ? "✓" : "📄"}</div>
+              {fileB ? <CheckCircle size={36} weight="duotone" className="mx-auto mb-2 text-green-500" /> : <FileText size={36} weight="duotone" className="mx-auto mb-2 text-muted-foreground" />}
               <p className="text-sm font-medium">{fileB ? fileB.name : t("dropzoneB")}</p>
             </div>
           </div>

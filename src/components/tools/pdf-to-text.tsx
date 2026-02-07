@@ -2,6 +2,7 @@
 
 import { useState, useCallback, useRef } from "react";
 import { useTranslations } from "next-intl";
+import { configurePdfjsWorker } from "@/lib/pdf-utils";
 
 export function PdfToText() {
   const t = useTranslations("tools.pdf-to-text.ui");
@@ -15,7 +16,7 @@ export function PdfToText() {
     setFile(f); setText(""); setError(""); setLoading(true);
     try {
       const pdfjsLib = await import("pdfjs-dist");
-      pdfjsLib.GlobalWorkerOptions.workerSrc = "/pdf.worker.min.mjs";
+      configurePdfjsWorker(pdfjsLib);
       const arrayBuf = await f.arrayBuffer();
       const pdf = await pdfjsLib.getDocument({ data: arrayBuf }).promise;
       let fullText = "";

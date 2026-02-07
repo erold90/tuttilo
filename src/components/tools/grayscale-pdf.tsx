@@ -2,6 +2,7 @@
 
 import { useState, useCallback, useRef } from "react";
 import { useTranslations } from "next-intl";
+import { configurePdfjsWorker } from "@/lib/pdf-utils";
 
 export function GrayscalePdf() {
   const t = useTranslations("tools.grayscale-pdf.ui");
@@ -15,7 +16,7 @@ export function GrayscalePdf() {
     setFile(f); setResultUrl(""); setError(""); setLoading(true);
     try {
       const pdfjsLib = await import("pdfjs-dist");
-      pdfjsLib.GlobalWorkerOptions.workerSrc = "/pdf.worker.min.mjs";
+      configurePdfjsWorker(pdfjsLib);
       const { PDFDocument } = await import("pdf-lib");
 
       const arrayBuf = await f.arrayBuffer();

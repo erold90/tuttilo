@@ -2,6 +2,8 @@
 
 import { useState, useCallback, useEffect, useRef } from "react";
 import { useTranslations } from "next-intl";
+import { configurePdfjsWorker } from "@/lib/pdf-utils";
+import { Crop } from "@phosphor-icons/react";
 
 export function PdfCrop() {
   const t = useTranslations("tools.pdf-crop.ui");
@@ -17,7 +19,7 @@ export function PdfCrop() {
 
   useEffect(() => {
     import("pdfjs-dist").then((lib) => {
-      lib.GlobalWorkerOptions.workerSrc = `https://cdn.jsdelivr.net/npm/pdfjs-dist@${lib.version}/build/pdf.worker.min.mjs`;
+      configurePdfjsWorker(lib);
       setPdfjsLib(lib);
     });
   }, []);
@@ -121,7 +123,7 @@ export function PdfCrop() {
           onClick={() => { const input = document.createElement("input"); input.type = "file"; input.accept = ".pdf"; input.onchange = () => input.files?.[0] && loadFile(input.files[0]); input.click(); }}
           className="border-2 border-dashed border-muted-foreground/25 rounded-xl p-8 text-center hover:border-primary/50 transition-colors cursor-pointer"
         >
-          <div className="text-4xl mb-3">✂️</div>
+          <Crop size={48} weight="duotone" className="mx-auto mb-3 text-muted-foreground" />
           <p className="text-lg font-medium">{t("dropzone")}</p>
           <p className="text-sm text-muted-foreground mt-1">{t("dropzoneHint")}</p>
         </div>

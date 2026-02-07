@@ -1,9 +1,11 @@
+import { configurePdfjsWorker } from "@/lib/pdf-utils";
+
 let pdfjsReady: typeof import("pdfjs-dist") | null = null;
 
 export async function getPdfjs() {
   if (pdfjsReady) return pdfjsReady;
   const lib = await import("pdfjs-dist");
-  lib.GlobalWorkerOptions.workerSrc = `https://cdn.jsdelivr.net/npm/pdfjs-dist@${lib.version}/build/pdf.worker.min.mjs`;
+  configurePdfjsWorker(lib);
   pdfjsReady = lib;
   return lib;
 }

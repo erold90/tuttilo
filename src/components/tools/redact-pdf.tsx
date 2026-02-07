@@ -2,6 +2,7 @@
 
 import { useState, useCallback, useRef } from "react";
 import { useTranslations } from "next-intl";
+import { configurePdfjsWorker } from "@/lib/pdf-utils";
 
 export function RedactPdf() {
   const t = useTranslations("tools.redact-pdf.ui");
@@ -18,7 +19,7 @@ export function RedactPdf() {
     setLoading(true); setError(""); setRedactCount(0);
     try {
       const pdfjsLib = await import("pdfjs-dist");
-      pdfjsLib.GlobalWorkerOptions.workerSrc = "/pdf.worker.min.mjs";
+      configurePdfjsWorker(pdfjsLib);
       const { PDFDocument, rgb } = await import("pdf-lib");
 
       const terms = searchTerms.split(",").map((t) => t.trim()).filter(Boolean);

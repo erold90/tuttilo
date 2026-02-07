@@ -2,6 +2,7 @@
 
 import { useState, useCallback, useRef, useEffect } from "react";
 import { useTranslations } from "next-intl";
+import { configurePdfjsWorker } from "@/lib/pdf-utils";
 
 interface FieldInfo {
   name: string;
@@ -19,7 +20,7 @@ let pdfjsReady: typeof import("pdfjs-dist") | null = null;
 async function getPdfjs() {
   if (pdfjsReady) return pdfjsReady;
   const lib = await import("pdfjs-dist");
-  lib.GlobalWorkerOptions.workerSrc = `https://cdn.jsdelivr.net/npm/pdfjs-dist@${lib.version}/build/pdf.worker.min.mjs`;
+  configurePdfjsWorker(lib);
   pdfjsReady = lib;
   return lib;
 }
