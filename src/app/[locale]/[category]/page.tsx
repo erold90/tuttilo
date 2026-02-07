@@ -13,6 +13,7 @@ import {
 } from "@/lib/tools/registry";
 import { ToolIcon } from "@/components/tool-icon";
 import { cn } from "@/lib/utils";
+import { CheckCircle, Question } from "@phosphor-icons/react/dist/ssr";
 
 const BASE_URL = "https://tuttilo.com";
 
@@ -26,12 +27,13 @@ export async function generateMetadata({
   if (!cat) return {};
 
   const tNav = await getTranslations({ locale, namespace: "nav" });
-  const tHome = await getTranslations({ locale, namespace: "home" });
+  const tCat = await getTranslations({ locale, namespace: "categories" });
   const name = tNav(cat.id);
-  const description = tHome(`categoryDesc.${cat.id}`);
+  const description = tCat(`${cat.id}.description`);
+  const title = tCat(`${cat.id}.title`);
 
   return {
-    title: `${name} | Tuttilo`,
+    title: `${title} | Tuttilo`,
     description,
     alternates: {
       canonical: `${BASE_URL}/${locale}/${category}`,
@@ -43,7 +45,7 @@ export async function generateMetadata({
       },
     },
     openGraph: {
-      title: `${name} | Tuttilo`,
+      title: `${title} | Tuttilo`,
       description,
       url: `${BASE_URL}/${locale}/${category}`,
       siteName: "Tuttilo",
@@ -51,18 +53,18 @@ export async function generateMetadata({
       type: "website",
       images: [
         {
-          url: `${BASE_URL}/og-image.svg`,
+          url: `${BASE_URL}/og-image.png`,
           width: 1200,
           height: 630,
-          alt: `${name} | Tuttilo`,
+          alt: `${title} | Tuttilo`,
         },
       ],
     },
     twitter: {
       card: "summary_large_image",
-      title: `${name} | Tuttilo`,
+      title: `${title} | Tuttilo`,
       description,
-      images: [`${BASE_URL}/og-image.svg`],
+      images: [`${BASE_URL}/og-image.png`],
     },
   };
 }
@@ -85,8 +87,10 @@ export default async function CategoryPage({
   const tTools = await getTranslations({ locale, namespace: "tools" });
   const tHome = await getTranslations({ locale, namespace: "home" });
   const tCommon = await getTranslations({ locale, namespace: "common" });
+  const tCat = await getTranslations({ locale, namespace: "categories" });
 
   const classes = getCategoryClasses(cat.id);
+  const catKey = cat.id as ToolCategoryId;
 
   const breadcrumbLd = {
     "@context": "https://schema.org",
@@ -97,9 +101,44 @@ export default async function CategoryPage({
     ],
   };
 
+  const collectionLd = {
+    "@context": "https://schema.org",
+    "@type": "CollectionPage",
+    name: tCat(`${catKey}.title`),
+    description: tCat(`${catKey}.description`),
+    url: `${BASE_URL}/${locale}/${category}`,
+    mainEntity: {
+      "@type": "ItemList",
+      numberOfItems: availableTools.length,
+      itemListElement: availableTools.map((tool, i) => ({
+        "@type": "ListItem",
+        position: i + 1,
+        name: tTools(`${tool.id}.name`),
+        url: `${BASE_URL}/${locale}/${category}/${tool.slug}`,
+      })),
+    },
+  };
+
+  const faqLd = {
+    "@context": "https://schema.org",
+    "@type": "FAQPage",
+    mainEntity: [1, 2, 3].map((n) => ({
+      "@type": "Question",
+      name: tCat(`${catKey}.faq.q${n}`),
+      acceptedAnswer: {
+        "@type": "Answer",
+        text: tCat(`${catKey}.faq.a${n}`),
+      },
+    })),
+  };
+
   return (
     <div className="container mx-auto max-w-7xl px-4 py-8">
       <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(breadcrumbLd) }} />
+      <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(collectionLd) }} />
+      <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(faqLd) }} />
+
+      {/* Header */}
       <div className="mb-8 flex items-center gap-3">
         <span
           className={cn(
@@ -112,14 +151,15 @@ export default async function CategoryPage({
         </span>
         <div>
           <h1 className={cn("text-3xl font-bold", classes.text)}>
-            {tNav(cat.id)}
+            {tCat(`${catKey}.title`)}
           </h1>
           <p className="text-muted-foreground mt-1">
-            {tHome(`categoryDesc.${cat.id}`)}
+            {tCat(`${catKey}.description`)}
           </p>
         </div>
       </div>
 
+      {/* Tool grid */}
       {availableTools.length > 0 && (
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4 mb-12">
           {availableTools.map((tool) => (
@@ -157,10 +197,11 @@ export default async function CategoryPage({
         </div>
       )}
 
+      {/* Coming soon */}
       {comingSoonTools.length > 0 && (
-        <div>
+        <div className="mb-12">
           <h2 className="text-lg font-semibold text-muted-foreground mb-4">
-            Coming soon
+            {tCommon("comingSoon")}
           </h2>
           <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4 opacity-50">
             {comingSoonTools.map((tool) => (
@@ -185,6 +226,44 @@ export default async function CategoryPage({
           </div>
         </div>
       )}
+
+      {/* Why Use section */}
+      <section className="mb-12 rounded-2xl border bg-muted/30 p-6 sm:p-8">
+        <h2 className="text-xl font-bold mb-4">
+          {tCat(`${catKey}.whyTitle`)}
+        </h2>
+        <ul className="space-y-3">
+          {[1, 2, 3].map((n) => (
+            <li key={n} className="flex items-start gap-3">
+              <CheckCircle weight="fill" className={cn("mt-0.5 h-5 w-5 shrink-0", classes.text)} />
+              <span className="text-muted-foreground">
+                {tCat(`${catKey}.why${n}`)}
+              </span>
+            </li>
+          ))}
+        </ul>
+      </section>
+
+      {/* FAQ section */}
+      <section className="mb-8">
+        <h2 className="text-xl font-bold mb-4 flex items-center gap-2">
+          <Question weight="fill" className={cn("h-5 w-5", classes.text)} />
+          {tCommon("faqTitle")}
+        </h2>
+        <div className="space-y-3">
+          {[1, 2, 3].map((n) => (
+            <details key={n} className="group rounded-xl border p-4">
+              <summary className="cursor-pointer font-medium list-none flex items-center justify-between">
+                {tCat(`${catKey}.faq.q${n}`)}
+                <span className="ml-2 transition-transform group-open:rotate-45 text-muted-foreground">+</span>
+              </summary>
+              <p className="mt-3 text-sm text-muted-foreground leading-relaxed">
+                {tCat(`${catKey}.faq.a${n}`)}
+              </p>
+            </details>
+          ))}
+        </div>
+      </section>
     </div>
   );
 }

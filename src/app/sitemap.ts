@@ -6,7 +6,7 @@ import { conversions } from "@/lib/tools/conversions";
 const BASE_URL = "https://tuttilo.com";
 
 // Static date to avoid crawl budget waste — update when content changes
-const LAST_UPDATED = new Date("2026-02-06");
+const LAST_UPDATED = new Date("2026-02-07");
 
 export default function sitemap(): MetadataRoute.Sitemap {
   const entries: MetadataRoute.Sitemap = [];
@@ -44,6 +44,26 @@ export default function sitemap(): MetadataRoute.Sitemap {
               locales.map((l) => [l, `${BASE_URL}/${l}/${page}`])
             ),
             "x-default": `${BASE_URL}/en/${page}`,
+          },
+        },
+      });
+    }
+  }
+
+  // Category pages for each locale (7 categories × 8 locales = 56 URLs)
+  for (const cat of categories) {
+    for (const locale of locales) {
+      entries.push({
+        url: `${BASE_URL}/${locale}/${cat.slug}`,
+        lastModified: LAST_UPDATED,
+        changeFrequency: "weekly",
+        priority: 0.8,
+        alternates: {
+          languages: {
+            ...Object.fromEntries(
+              locales.map((l) => [l, `${BASE_URL}/${l}/${cat.slug}`])
+            ),
+            "x-default": `${BASE_URL}/en/${cat.slug}`,
           },
         },
       });
