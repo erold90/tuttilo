@@ -1,61 +1,63 @@
-# Session Handoff — 2026-02-06
+# Session Handoff — 2026-02-07 (Sessione SEO Audit & Fix)
 
-## Ultimo Stato
-- **72 tool attivi** su tuttilo.com (deploy Cloudflare Pages OK)
-- Build: npm run build OK + npm run pages:build OK + wrangler deploy OK
-- Worker Size: 10,750.53 KiB (sotto limite 10 MiB con WASM rimossi)
-- Traduzioni: 95 tool × 8 lingue (IT completate, EN pre-esistenti)
-- GitHub commit: `4d1d49d` feat(i18n): add Italian translations for 7 YouTube tools
+## Task Completato: SEO Audit Completo + Fix Critici
 
-## TRADUZIONE COMPLETATA — Session 005
-### File: `/Users/witerose/Desktop/Tuttilo-app/src/messages/it.json` (115,912 bytes)
-7 YouTube tool tradotti in ITALIANO (name, description, seo, faq, ui):
-1. [x] `youtube-money-calculator` — Calcolatore Guadagni YouTube
-2. [x] `youtube-embed-generator` — Generatore Codice Embed YouTube
-3. [x] `youtube-seo-generator` — Generatore SEO YouTube
-4. [x] `youtube-channel-name-generator` — Generatore Nomi Canale YouTube
-5. [x] `youtube-watch-time-calculator` — Calcolatore Tempo Visione YouTube
-6. [x] `youtube-video-analyzer` — Analizzatore Video YouTube
-7. [x] `youtube-channel-analyzer` — Analizzatore Canale YouTube
+### Audit SEO eseguito (4 audit paralleli)
+Score iniziale: **78/100 (B+)**, target post-fix: **90/100 (A)**
 
-Ogni tool contiene:
-- **name**: Nome italiano naturale
-- **description**: Descrizione italiana completa
-- **seo**: {title, content} ottimizzato
-- **faq**: 3 Q&A pair (q1-q3, a1-a3)
-- **ui**: Tutte le chiavi localizzate dell'interfaccia
+### Fix completati in questa sessione:
 
-### Deploy 2026-02-06
-- Commit: `4d1d49d` (feat: traduzione 7 YouTube tool in italiano)
-- Build: OK (no errors)
-- Pages Build: OK (10,750.53 KiB worker)
-- Deploy URL: `https://6e07a385.tuttilo.pages.dev`
-- Produzione: `https://tuttilo.com`
+| # | Fix | File Modificati | Stato |
+|---|-----|-----------------|-------|
+| P1 | OG image: SVG (0 byte) → PNG 1200x630 | public/og-image.png, layout.tsx, tool/page.tsx | DONE |
+| P2 | Sitemap: filtro `isAvailable` (rimosse 144 URL 404) | src/app/sitemap.ts | DONE |
+| P3 | Sitemap: aggiunte pagine legali (32 URL) | src/app/sitemap.ts | DONE |
+| P4 | seo.description: 79 tool × 8 lingue (632 descrizioni) | src/messages/*.json, tool/page.tsx | DONE |
+| P5 | Organization sameAs: aggiunto GitHub link | src/app/[locale]/layout.tsx | DONE |
+| P6 | x-default + OG completo su pagine legali | about/page.tsx, privacy/page.tsx, terms/page.tsx, contact/page.tsx | DONE |
+| P11 | manifest.json popolato (era 0 byte) | public/manifest.json | DONE |
+| P13 | IndexNow key file creato | public/a1fd1ae7e759405497c1deaf450ae405.txt | DONE |
+| P15 | "36+ tools" → "77+ tools" in 7 lingue | src/messages/{en,it,es,fr,de,pt,ko}.json | DONE |
+| P16 | Traduzioni giapponesi seo.description (79 tool) | src/messages/ja.json | DONE |
+| - | favicon.svg ricreato (era 0 byte) | public/favicon.svg | DONE |
 
-## Sprint YouTube COMPLETO (Dal 2026-02-06)
-Implementazione 7 nuovi tool YouTube + traduzione IT completata.
+### Sessione precedente (2026-02-06):
+- Rimosso FAQ q4-q6 da tutte le 8 lingue (-293 KB raw)
+- Rimosso 16 tool orfani dalle traduzioni
+- Spostato 30+ tool nel proxy batch-tools.tsx
+- Bundle ridotto da ~2990 KiB → 1170 KiB compresso
 
-### YouTube Tool Status:
-1. [x] `youtube-money-calculator` — Implementato, tradotto IT
-2. [x] `youtube-embed-generator` — Implementato, tradotto IT
-3. [x] `youtube-seo-generator` — Implementato, tradotto IT
-4. [x] `youtube-channel-name-generator` — Implementato, tradotto IT
-5. [x] `youtube-watch-time-calculator` — Implementato, tradotto IT
-6. [x] `youtube-video-analyzer` — Implementato, tradotto IT (API v3)
-7. [x] `youtube-channel-analyzer` — Implementato, tradotto IT (API v3)
+### Bundle Size attuale:
+- Worker compresso: **1.17 MiB** (limite 3 MiB, margine enorme)
 
-### Pattern Critico
-Tutti i nuovi tool DEVONO passare attraverso proxy file `batch-tools.tsx`:
+### File chiave modificati (percorsi assoluti):
+- `/Users/witerose/Desktop/Tuttilo-app/src/app/sitemap.ts`
+- `/Users/witerose/Desktop/Tuttilo-app/src/app/[locale]/layout.tsx`
+- `/Users/witerose/Desktop/Tuttilo-app/src/app/[locale]/[category]/[tool]/page.tsx`
+- `/Users/witerose/Desktop/Tuttilo-app/src/app/[locale]/about/page.tsx`
+- `/Users/witerose/Desktop/Tuttilo-app/src/app/[locale]/privacy/page.tsx`
+- `/Users/witerose/Desktop/Tuttilo-app/src/app/[locale]/terms/page.tsx`
+- `/Users/witerose/Desktop/Tuttilo-app/src/app/[locale]/contact/page.tsx`
+- `/Users/witerose/Desktop/Tuttilo-app/src/messages/en.json` (+ it, es, fr, de, pt, ja, ko)
+- `/Users/witerose/Desktop/Tuttilo-app/public/og-image.png` (NUOVO)
+- `/Users/witerose/Desktop/Tuttilo-app/public/manifest.json`
+- `/Users/witerose/Desktop/Tuttilo-app/public/favicon.svg`
+- `/Users/witerose/Desktop/Tuttilo-app/public/a1fd1ae7e759405497c1deaf450ae405.txt` (NUOVO)
+
+### Cosa resta da fare (futuro):
+- [ ] Aggiungere SoftwareApplication `author` e `aggregateRating` allo schema
+- [ ] Implementare GA Consent Mode integrato con cookie consent
+- [ ] Ripristinare FAQ Q4-Q6 se bundle lo permette
+- [ ] Aggiungere `generateStaticParams` per top 30 tool (pre-render)
+- [ ] Blog/content marketing per topical authority
+- [ ] OG image dinamiche per tool (attualmente tutte usano stessa immagine)
+
+### Architettura Ads (invariata):
+- EzoicProvider, AdSlot, LeaderboardAd, SidebarAd
+- GDPR CMP via gatekeeperconsent
+- Anti-adblock hard wall (support-notice.tsx)
+
+### Deploy:
+```bash
+npm run build && npx @cloudflare/next-on-pages && rm -f .vercel/output/static/_worker.js/__next-on-pages-dist__/assets/*.wasm.bin && rm -f .vercel/output/static/_worker.js/nop-build-log.json && npx wrangler pages deploy .vercel/output/static --project-name tuttilo --branch main --commit-dirty=true
 ```
-tool-loader.tsx → dynamic(batch-tools) → batch-tools.tsx → dynamic(actual-component)
-```
-
-### Bundle Size Warning
-- Compresso: ~2987 KiB su 3072 KiB limite (margine: ~85 KiB)
-- 12 tool aggiungono ~29 KB compressi (principalmente traduzioni JSON)
-
-## Cosa è stato fatto prima di questo sprint
-- Batch 1-7: 70 tool implementati e deployati
-- Fix edge runtime document leak (batch-tools.tsx proxy)
-- Fix traduzioni IT + audit completo 8 lingue
-- Text-to-speech migliorato
