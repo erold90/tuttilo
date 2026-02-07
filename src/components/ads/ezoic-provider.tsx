@@ -6,15 +6,27 @@ import { usePathname } from "next/navigation";
 export function EzoicProvider() {
   const pathname = usePathname();
 
-  // Call showAds on every route change (including initial mount)
   useEffect(() => {
     const ez = (window as any).ezstandalone;
     if (!ez?.cmd) return;
 
-    // Push showAds to the command queue — sa.min.js processes it when ready
-    ez.cmd.push(function () {
-      ez.showAds();
-    });
+    // Wait for Ezoic CMP consent before showing ads
+    // __cmp is the CMP API injected by gatekeeperconsent
+    const cmp = (window as any).__cmp;
+    if (cmp) {
+      cmp("getConsentData", null, (data: any) => {
+        if (data?.gdprApplies === false || data?.consentData) {
+          ez.cmd.push(function () {
+            ez.showAds();
+          });
+        }
+      });
+    } else {
+      // No CMP loaded (non-EU or script blocked) — show ads
+      ez.cmd.push(function () {
+        ez.showAds();
+      });
+    }
   }, [pathname]);
 
   return null;

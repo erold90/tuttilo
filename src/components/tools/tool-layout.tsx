@@ -6,6 +6,7 @@ import { Link } from "@/i18n/routing";
 import { CaretRight as ChevronRight, House as Home } from "@phosphor-icons/react";
 import { SidebarAd } from "@/components/ads/sidebar-ad";
 import { LeaderboardAd } from "@/components/ads/leaderboard-ad";
+import { MobileStickyAd } from "@/components/ads/mobile-sticky-ad";
 import { SupportNotice } from "@/components/ads/support-notice";
 import { RelatedTools } from "@/components/tools/related-tools";
 import { HowItWorks } from "@/components/tools/how-it-works";
@@ -89,6 +90,9 @@ export function ToolLayout({ toolId, category, children }: ToolLayoutProps) {
       <div className="mt-10">
         <LeaderboardAd />
       </div>
+
+      {/* Mobile sticky bottom ad */}
+      <MobileStickyAd />
 
       {/* Related tools */}
       <div className="mt-10">
