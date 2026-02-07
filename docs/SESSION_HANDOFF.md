@@ -1,14 +1,18 @@
-# Session Handoff — 2026-02-07 (Spanish Conversion Translations)
+# Session Handoff — 2026-02-07 (Italian Conversion Translations + Build Fix)
 
-## Task Completati: Spanish Conversion Translations (2026-02-07)
+## Task Completati: Italian Conversion Translations (2026-02-07 - Current Session)
 
-### Task: Translate 21 Conversions to Spanish (es.json)
+### Task: Translate 19 Conversions to Italian (it.json)
 
 #### Completamento
-- Lette tutte le 21 conversioni da `src/messages/en.json`
-- Tradotte in spagnolo professionale con titoli SEO ottimizzati
-- Inietate in `src/messages/es.json` con minificazione JSON
-- Commit creato: `a55865c` — "feat: translate 21 conversions to Spanish"
+- Lette tutte le 19 conversioni da `src/messages/en.json`
+- Tradotte in italiano professionale con titoli SEO ottimizzati
+- Inietate in `src/messages/it.json` con minificazione JSON
+- Build error fix: rimosso `runtime = "edge"` da conversion page e not-found page (incompatibile con generateStaticParams)
+- Fix middleware: aggiunto `export const runtime = "nodejs"`
+- Build: `npm run build` ✓ completato
+- Deploy: `wrangler pages deploy` ✓ completato su Cloudflare Pages
+- Commit creato: `5654047` — "feat: add Italian translations for all 19 conversions"
 
 #### Conversioni Tradotte (21 totali)
 1. pdf-to-word, word-to-pdf, pdf-to-excel
@@ -77,7 +81,8 @@
 
 ### Cosa resta da fare (futuro):
 - [x] Tradurre 21 conversioni in spagnolo (ES) — DONE 2026-02-07
-- [ ] Tradurre 21 conversioni nelle altre 4 lingue (IT, FR, DE, JA, KO) — attualmente solo PT e ES fatto
+- [x] Tradurre 19 conversioni in italiano (IT) — DONE 2026-02-07 (current session)
+- [ ] Tradurre 19 conversioni nelle altre 4 lingue (FR, DE, JA, KO) — attualmente solo PT, ES, IT fatto
 - [ ] Aggiungere SoftwareApplication `author` e `aggregateRating` allo schema
 - [ ] Implementare GA Consent Mode integrato con cookie consent
 - [ ] Ripristinare FAQ Q4-Q6 se bundle lo permette
