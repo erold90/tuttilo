@@ -20,14 +20,21 @@ export async function generateMetadata({
     description: t("description"),
     alternates: {
       canonical: `${BASE_URL}/${locale}/contact`,
-      languages: Object.fromEntries(
-        locales.map((l) => [l, `${BASE_URL}/${l}/contact`])
-      ),
+      languages: {
+        ...Object.fromEntries(
+          locales.map((l) => [l, `${BASE_URL}/${l}/contact`])
+        ),
+        "x-default": `${BASE_URL}/en/contact`,
+      },
     },
     openGraph: {
       title: t("title"),
       description: t("description"),
       url: `${BASE_URL}/${locale}/contact`,
+      siteName: "Tuttilo",
+      locale,
+      type: "website",
+      images: [{ url: `${BASE_URL}/og-image.png`, width: 1200, height: 630, alt: "Tuttilo" }],
     },
   };
 }

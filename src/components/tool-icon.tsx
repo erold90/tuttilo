@@ -16,6 +16,7 @@ import {
   SpeakerSlash, FastForward, Megaphone, Rewind,
   SpeakerHigh, GitFork, MagnifyingGlass,
   Info, CircleHalf, EyeSlash,
+  CurrencyDollar, Browsers, Tag, At, Timer, ChartBar, ChartLineUp,
 } from "@phosphor-icons/react";
 
 interface ToolIconProps {
@@ -91,6 +92,13 @@ const iconMap: Record<string, Icon> = {
   Info,
   CircleHalf,
   EyeOff: EyeSlash,
+  Dollar: CurrencyDollar,
+  Browsers,
+  TagSimple: Tag,
+  At,
+  Timer,
+  ChartBar,
+  ChartLine: ChartLineUp,
 };
 
 export function ToolIcon({ name, ...props }: ToolIconProps) {

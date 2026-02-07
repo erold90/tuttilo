@@ -39,7 +39,7 @@ export function MobileStickyAd() {
       )}
     >
       <div className="relative">
-        <AdSlot slot="mobile-sticky-320x50" width={320} height={50} />
+        <AdSlot slot={104} />
 
         <button
           onClick={handleDismiss}

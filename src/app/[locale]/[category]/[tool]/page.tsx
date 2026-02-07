@@ -41,6 +41,9 @@ const implementedToolIds = new Set([
   "markdown-to-html", "find-replace",
   "pdf-to-text", "pdf-metadata", "grayscale-pdf",
   "redact-pdf", "extract-pdf-images",
+  "youtube-money-calculator", "youtube-embed-generator", "youtube-seo-generator",
+  "youtube-channel-name-generator", "youtube-watch-time-calculator",
+  "youtube-video-analyzer", "youtube-channel-analyzer",
 ]);
 
 export async function generateMetadata({
@@ -54,11 +57,25 @@ export async function generateMetadata({
 
   const t = await getTranslations({ locale, namespace: "tools" });
   const name = t(`${toolData.id}.name`);
-  const description = t(`${toolData.id}.description`);
+  const shortDesc = t(`${toolData.id}.description`);
   const cat = categories.find((c) => c.id === category);
 
+  // Prefer seo.description (130-160 char) over short description for meta tags
+  let description = shortDesc;
+  try {
+    const seoDesc = t(`${toolData.id}.seo.description`);
+    if (seoDesc && !seoDesc.startsWith("tools.")) description = seoDesc;
+  } catch {}
+
+  // Prefer seo.title (50-60 char, keyword-optimized) over short name
+  let title = name;
+  try {
+    const seoTitle = t(`${toolData.id}.seo.title`);
+    if (seoTitle && !seoTitle.startsWith("tools.")) title = seoTitle;
+  } catch {}
+
   return {
-    title: name,
+    title,
     description,
     alternates: {
       canonical: `${BASE_URL}/${locale}/${category}/${toolSlug}`,
@@ -81,7 +98,7 @@ export async function generateMetadata({
       type: "website",
       images: [
         {
-          url: `${BASE_URL}/og-image.svg`,
+          url: `${BASE_URL}/og-image.png`,
           width: 1200,
           height: 630,
           alt: `${name} | Tuttilo`,
@@ -92,7 +109,7 @@ export async function generateMetadata({
       card: "summary_large_image",
       title: `${name} | Tuttilo`,
       description,
-      images: [`${BASE_URL}/og-image.svg`],
+      images: [`${BASE_URL}/og-image.png`],
     },
   };
 }
@@ -140,6 +157,7 @@ export default async function ToolPage({
     applicationCategory: "UtilityApplication",
     operatingSystem: "Any",
     offers: { "@type": "Offer", price: "0", priceCurrency: "USD" },
+    author: { "@type": "Organization", name: "Tuttilo", url: BASE_URL },
   };
 
   const faqEntries: Array<{ "@type": string; name: string; acceptedAnswer: { "@type": string; text: string } }> = [];

@@ -127,9 +127,16 @@ export const tools: Tool[] = [
   { id: 'css-minifier', slug: 'css-minifier', category: 'developer', icon: 'FileCode', isAvailable: true, isPremium: false, maxFileSize: 0, acceptedFormats: [], processingType: 'none' },
   { id: 'sql-formatter', slug: 'sql-formatter', category: 'developer', icon: 'Database', isAvailable: true, isPremium: false, maxFileSize: 0, acceptedFormats: [], processingType: 'none' },
 
-  // ---------- YouTube (2 tools) ----------
+  // ---------- YouTube (9 tools) ----------
   { id: 'youtube-thumbnail', slug: 'thumbnail', category: 'youtube', icon: 'Image', isAvailable: true, isPremium: false, maxFileSize: 0, acceptedFormats: [], processingType: 'client' },
   { id: 'youtube-transcript', slug: 'transcript', category: 'youtube', icon: 'Subtitles', isAvailable: false, isPremium: false, maxFileSize: 0, acceptedFormats: [], processingType: 'server' },
+  { id: 'youtube-money-calculator', slug: 'money-calculator', category: 'youtube', icon: 'Dollar', isAvailable: true, isPremium: false, maxFileSize: 0, acceptedFormats: [], processingType: 'none' },
+  { id: 'youtube-embed-generator', slug: 'embed-generator', category: 'youtube', icon: 'Browsers', isAvailable: true, isPremium: false, maxFileSize: 0, acceptedFormats: [], processingType: 'none' },
+  { id: 'youtube-seo-generator', slug: 'seo-generator', category: 'youtube', icon: 'TagSimple', isAvailable: true, isPremium: false, maxFileSize: 0, acceptedFormats: [], processingType: 'none' },
+  { id: 'youtube-channel-name-generator', slug: 'channel-name-generator', category: 'youtube', icon: 'At', isAvailable: true, isPremium: false, maxFileSize: 0, acceptedFormats: [], processingType: 'none' },
+  { id: 'youtube-watch-time-calculator', slug: 'watch-time-calculator', category: 'youtube', icon: 'Timer', isAvailable: true, isPremium: false, maxFileSize: 0, acceptedFormats: [], processingType: 'none' },
+  { id: 'youtube-video-analyzer', slug: 'video-analyzer', category: 'youtube', icon: 'ChartBar', isAvailable: true, isPremium: false, maxFileSize: 0, acceptedFormats: [], processingType: 'client' },
+  { id: 'youtube-channel-analyzer', slug: 'channel-analyzer', category: 'youtube', icon: 'ChartLine', isAvailable: true, isPremium: false, maxFileSize: 0, acceptedFormats: [], processingType: 'client' },
 ]
 
 // ============================================================================

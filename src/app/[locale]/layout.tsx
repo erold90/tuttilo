@@ -11,6 +11,7 @@ import { Header } from "@/components/layout/header";
 import { Footer } from "@/components/layout/footer";
 import { routing, locales } from "@/i18n/routing";
 import { GoogleAnalytics } from "@/components/analytics/google-analytics";
+import { EzoicProvider } from "@/components/ads/ezoic-provider";
 import "@/styles/globals.css";
 
 const BASE_URL = "https://tuttilo.com";
@@ -62,7 +63,7 @@ export async function generateMetadata({
       },
     },
     verification: {
-      google: "google-site-verification-token",
+      google: "googlea6b9f851de332dd7",
     },
     icons: {
       icon: "/favicon.svg",
@@ -77,7 +78,7 @@ export async function generateMetadata({
       description,
       images: [
         {
-          url: `${BASE_URL}/og-image.svg`,
+          url: `${BASE_URL}/og-image.png`,
           width: 1200,
           height: 630,
           alt: `${t("siteName")} — Free All-in-One Online Tools`,
@@ -88,7 +89,7 @@ export async function generateMetadata({
       card: "summary_large_image",
       title,
       description,
-      images: [`${BASE_URL}/og-image.svg`],
+      images: [`${BASE_URL}/og-image.png`],
     },
     robots: {
       index: true,
@@ -105,29 +106,48 @@ export async function generateMetadata({
 }
 
 function JsonLd({ locale }: { locale: string }) {
-  const jsonLd = {
-    "@context": "https://schema.org",
-    "@type": "WebSite",
-    name: "Tuttilo",
-    url: `${BASE_URL}/${locale}`,
-    description:
-      "Free all-in-one online tools for PDF, images, video, audio, text, and developer utilities.",
-    inLanguage: locale,
-    potentialAction: {
-      "@type": "SearchAction",
-      target: {
-        "@type": "EntryPoint",
-        urlTemplate: `${BASE_URL}/${locale}?q={search_term_string}`,
+  const schemas = [
+    {
+      "@context": "https://schema.org",
+      "@type": "WebSite",
+      name: "Tuttilo",
+      url: `${BASE_URL}/${locale}`,
+      description:
+        "Free all-in-one online tools for PDF, images, video, audio, text, and developer utilities.",
+      inLanguage: locale,
+      potentialAction: {
+        "@type": "SearchAction",
+        target: {
+          "@type": "EntryPoint",
+          urlTemplate: `${BASE_URL}/${locale}?q={search_term_string}`,
+        },
+        "query-input": "required name=search_term_string",
       },
-      "query-input": "required name=search_term_string",
     },
-  };
+    {
+      "@context": "https://schema.org",
+      "@type": "Organization",
+      name: "Tuttilo",
+      url: BASE_URL,
+      logo: `${BASE_URL}/favicon.svg`,
+      description:
+        "Free all-in-one online tools for PDF, images, video, audio, text, and developer utilities. All processing happens in your browser.",
+      sameAs: [
+        "https://github.com/erold90/tuttilo",
+      ],
+    },
+  ];
 
   return (
-    <script
-      type="application/ld+json"
-      dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
-    />
+    <>
+      {schemas.map((s, i) => (
+        <script
+          key={i}
+          type="application/ld+json"
+          dangerouslySetInnerHTML={{ __html: JSON.stringify(s) }}
+        />
+      ))}
+    </>
   );
 }
 
@@ -154,6 +174,20 @@ export default async function LocaleLayout({
     >
       <head>
         <JsonLd locale={locale} />
+        {/* Preconnect for performance */}
+        <link rel="preconnect" href="https://fonts.googleapis.com" />
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossOrigin="anonymous" />
+        <link rel="dns-prefetch" href="https://www.googletagmanager.com" />
+        <link rel="dns-prefetch" href="https://www.ezojs.com" />
+        {/* Ezoic CMP — raw tags so Ezoic crawler detects them */}
+        <script async data-cfasync="false" src="https://cmp.gatekeeperconsent.com/min.js" />
+        <script async data-cfasync="false" src="https://the.gatekeeperconsent.com/cmp.min.js" />
+        <script
+          dangerouslySetInnerHTML={{
+            __html: "window.ezstandalone=window.ezstandalone||{};ezstandalone.cmd=ezstandalone.cmd||[];",
+          }}
+        />
+        <script async src="https://www.ezojs.com/ezoic/sa.min.js" />
       </head>
       <body className="min-h-screen bg-background font-sans antialiased">
         <GoogleAnalytics />
@@ -170,6 +204,7 @@ export default async function LocaleLayout({
               <Footer />
             </div>
             <Toaster richColors position="bottom-right" />
+            <EzoicProvider />
           </ThemeProvider>
         </NextIntlClientProvider>
       </body>

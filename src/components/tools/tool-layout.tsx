@@ -6,6 +6,7 @@ import { Link } from "@/i18n/routing";
 import { CaretRight as ChevronRight, House as Home } from "@phosphor-icons/react";
 import { SidebarAd } from "@/components/ads/sidebar-ad";
 import { LeaderboardAd } from "@/components/ads/leaderboard-ad";
+import { SupportNotice } from "@/components/ads/support-notice";
 import { RelatedTools } from "@/components/tools/related-tools";
 import { HowItWorks } from "@/components/tools/how-it-works";
 import { FavoritesButton } from "@/components/tools/favorites-button";
@@ -74,13 +75,15 @@ export function ToolLayout({ toolId, category, children }: ToolLayoutProps) {
       {/* How it works */}
       <HowItWorks />
 
-      {/* Main content + sidebar */}
-      <div className="flex gap-8">
-        <div className="min-w-0 flex-1">{children}</div>
-        <aside className="hidden shrink-0 lg:block" style={{ width: 300 }}>
-          <SidebarAd />
-        </aside>
-      </div>
+      {/* Main content + sidebar — wrapped by support notice wall */}
+      <SupportNotice>
+        <div className="flex gap-8">
+          <div className="min-w-0 flex-1">{children}</div>
+          <aside className="hidden shrink-0 lg:block" style={{ width: 300 }}>
+            <SidebarAd />
+          </aside>
+        </div>
+      </SupportNotice>
 
       {/* Leaderboard ad */}
       <div className="mt-10">

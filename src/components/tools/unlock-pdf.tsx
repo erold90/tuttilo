@@ -182,7 +182,10 @@ export function UnlockPdf() {
           <div>
             <label className="block text-sm font-medium mb-2">{t("password")}</label>
             <input
-              type="password"
+              type="text"
+              autoComplete="off"
+              data-1p-ignore
+              data-lpignore="true"
               value={password}
               onChange={(e) => setPassword(e.target.value)}
               placeholder={t("passwordPlaceholder")}

@@ -19,14 +19,21 @@ export async function generateMetadata({
     description: t("description"),
     alternates: {
       canonical: `${BASE_URL}/${locale}/privacy`,
-      languages: Object.fromEntries(
-        locales.map((l) => [l, `${BASE_URL}/${l}/privacy`])
-      ),
+      languages: {
+        ...Object.fromEntries(
+          locales.map((l) => [l, `${BASE_URL}/${l}/privacy`])
+        ),
+        "x-default": `${BASE_URL}/en/privacy`,
+      },
     },
     openGraph: {
       title: t("title"),
       description: t("description"),
       url: `${BASE_URL}/${locale}/privacy`,
+      siteName: "Tuttilo",
+      locale,
+      type: "website",
+      images: [{ url: `${BASE_URL}/og-image.png`, width: 1200, height: 630, alt: "Tuttilo" }],
     },
   };
 }
@@ -35,6 +42,7 @@ const sections = [
   "noDataCollection",
   "analytics",
   "cookies",
+  "advertising",
   "thirdParty",
   "retention",
   "rights",

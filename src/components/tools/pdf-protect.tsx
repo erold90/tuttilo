@@ -134,13 +134,13 @@ export function PdfProtect() {
 
           <div>
             <label className="block text-sm font-medium mb-1">{t("password")}</label>
-            <input type="password" value={userPassword} onChange={(e) => setUserPassword(e.target.value)}
+            <input type="text" autoComplete="off" data-1p-ignore data-lpignore="true" value={userPassword} onChange={(e) => setUserPassword(e.target.value)}
               placeholder={t("passwordPlaceholder")} className="w-full rounded-lg border border-border bg-background px-3 py-2 text-sm" />
           </div>
 
           <div>
             <label className="block text-sm font-medium mb-1">{t("ownerPassword")}</label>
-            <input type="password" value={ownerPassword} onChange={(e) => setOwnerPassword(e.target.value)}
+            <input type="text" autoComplete="off" data-1p-ignore data-lpignore="true" value={ownerPassword} onChange={(e) => setOwnerPassword(e.target.value)}
               placeholder={t("ownerPasswordPlaceholder")} className="w-full rounded-lg border border-border bg-background px-3 py-2 text-sm" />
             <p className="text-xs text-muted-foreground mt-1">{t("ownerPasswordHint")}</p>
           </div>

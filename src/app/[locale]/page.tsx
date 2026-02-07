@@ -92,19 +92,8 @@ export default function HomePage() {
     <div className="flex flex-col">
       {/* Hero */}
       <section id="hero-section" className="relative overflow-hidden">
-        <video
-          autoPlay
-          muted
-          loop
-          playsInline
-          poster="/hero-poster.jpg"
-          className="absolute inset-0 h-full w-full object-cover"
-        >
-          <source src="/hero-bg.webm" type="video/webm" />
-          <source src="/hero-bg.mp4" type="video/mp4" />
-        </video>
-        <div className="absolute inset-0 bg-black/30" />
-        <div className="absolute inset-0 bg-gradient-to-b from-black/40 via-transparent to-black/50" />
+        <div className="absolute inset-0 bg-gradient-to-br from-[#09090b] via-[#0c1222] to-[#09090b]" />
+        <div className="absolute inset-0 bg-[radial-gradient(ellipse_80%_50%_at_50%_-20%,rgba(6,182,212,0.15),transparent)]" />
         <div className="container mx-auto max-w-7xl px-4 py-10 md:py-16 relative">
           <div className="mx-auto max-w-3xl text-center space-y-6">
             <h1 className="text-4xl font-bold tracking-tight sm:text-5xl md:text-6xl text-white">
