@@ -1,6 +1,6 @@
-# Session Handoff — 2026-02-07 (Sessione SEO Audit & Fix)
+# Session Handoff — 2026-02-07 (Sessione SEO Audit & Fix + Portuguese Conversions)
 
-## Task Completato: SEO Audit Completo + Fix Critici
+## Task Completati: SEO Audit + Fix Critici + Portuguese Translations
 
 ### Audit SEO eseguito (4 audit paralleli)
 Score iniziale: **78/100 (B+)**, target post-fix: **90/100 (A)**
@@ -39,12 +39,14 @@ Score iniziale: **78/100 (B+)**, target post-fix: **90/100 (A)**
 - `/Users/witerose/Desktop/Tuttilo-app/src/app/[locale]/terms/page.tsx`
 - `/Users/witerose/Desktop/Tuttilo-app/src/app/[locale]/contact/page.tsx`
 - `/Users/witerose/Desktop/Tuttilo-app/src/messages/en.json` (+ it, es, fr, de, pt, ja, ko)
+- `/Users/witerose/Desktop/Tuttilo-app/src/messages/pt.json` (19 conversioni aggiunte/aggiornate)
 - `/Users/witerose/Desktop/Tuttilo-app/public/og-image.png` (NUOVO)
 - `/Users/witerose/Desktop/Tuttilo-app/public/manifest.json`
 - `/Users/witerose/Desktop/Tuttilo-app/public/favicon.svg`
 - `/Users/witerose/Desktop/Tuttilo-app/public/a1fd1ae7e759405497c1deaf450ae405.txt` (NUOVO)
 
 ### Cosa resta da fare (futuro):
+- [ ] Tradurre 19 conversioni nelle altre 6 lingue (IT, ES, FR, DE, JA, KO) — attualmente solo PT fatto
 - [ ] Aggiungere SoftwareApplication `author` e `aggregateRating` allo schema
 - [ ] Implementare GA Consent Mode integrato con cookie consent
 - [ ] Ripristinare FAQ Q4-Q6 se bundle lo permette
