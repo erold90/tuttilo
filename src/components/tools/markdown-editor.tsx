@@ -3,8 +3,18 @@
 import { useState, useMemo, useCallback } from "react";
 import { useTranslations } from "next-intl";
 
+function sanitizeUrl(url: string): string {
+  const trimmed = url.trim().toLowerCase();
+  if (trimmed.startsWith("javascript:") || trimmed.startsWith("data:") || trimmed.startsWith("vbscript:")) return "#";
+  return url;
+}
+
+function stripScripts(html: string): string {
+  return html.replace(/<script[\s\S]*?<\/script>/gi, "").replace(/on\w+\s*=\s*"[^"]*"/gi, "").replace(/on\w+\s*=\s*'[^']*'/gi, "");
+}
+
 function parseMarkdown(md: string): string {
-  let html = md
+  let html = stripScripts(md)
     // Code blocks
     .replace(/```(\w*)\n([\s\S]*?)```/g, '<pre class="bg-muted/50 rounded p-3 overflow-x-auto my-2"><code>$2</code></pre>')
     // Inline code
@@ -20,8 +30,8 @@ function parseMarkdown(md: string): string {
     // Strikethrough
     .replace(/~~(.+?)~~/g, "<del>$1</del>")
     // Links & Images
-    .replace(/!\[([^\]]*)\]\(([^)]+)\)/g, '<img src="$2" alt="$1" class="max-w-full rounded my-2" />')
-    .replace(/\[([^\]]+)\]\(([^)]+)\)/g, '<a href="$2" class="text-primary underline" target="_blank" rel="noopener">$1</a>')
+    .replace(/!\[([^\]]*)\]\(([^)]+)\)/g, (_m: string, alt: string, src: string) => `<img src="${sanitizeUrl(src)}" alt="${alt}" class="max-w-full rounded my-2" />`)
+    .replace(/\[([^\]]+)\]\(([^)]+)\)/g, (_m: string, text: string, href: string) => `<a href="${sanitizeUrl(href)}" class="text-primary underline" target="_blank" rel="noopener">${text}</a>`)
     // Blockquotes
     .replace(/^> (.+)$/gm, '<blockquote class="border-l-4 border-primary/30 pl-4 italic text-muted-foreground my-2">$1</blockquote>')
     // Horizontal rule

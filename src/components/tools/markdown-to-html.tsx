@@ -3,6 +3,16 @@
 import { useState, useCallback, useMemo } from "react";
 import { useTranslations } from "next-intl";
 
+function sanitizeUrl(url: string): string {
+  const trimmed = url.trim().toLowerCase();
+  if (trimmed.startsWith("javascript:") || trimmed.startsWith("data:") || trimmed.startsWith("vbscript:")) return "#";
+  return url;
+}
+
+function stripScripts(html: string): string {
+  return html.replace(/<script[\s\S]*?<\/script>/gi, "").replace(/on\w+\s*=\s*"[^"]*"/gi, "").replace(/on\w+\s*=\s*'[^']*'/gi, "");
+}
+
 export function MarkdownToHtml() {
   const t = useTranslations("tools.markdown-to-html.ui");
   const [input, setInput] = useState("");
@@ -11,6 +21,8 @@ export function MarkdownToHtml() {
   const html = useMemo(() => {
     if (!input) return "";
     let result = input;
+    // Strip raw HTML script tags and event handlers first
+    result = stripScripts(result);
     // Headers
     result = result.replace(/^### (.+)$/gm, "<h3>$1</h3>");
     result = result.replace(/^## (.+)$/gm, "<h2>$1</h2>");
@@ -23,8 +35,8 @@ export function MarkdownToHtml() {
     result = result.replace(/```(\w*)\n([\s\S]*?)```/g, "<pre><code>$2</code></pre>");
     result = result.replace(/`(.+?)`/g, "<code>$1</code>");
     // Links & images
-    result = result.replace(/!\[(.+?)\]\((.+?)\)/g, '<img src="$2" alt="$1" />');
-    result = result.replace(/\[(.+?)\]\((.+?)\)/g, '<a href="$2">$1</a>');
+    result = result.replace(/!\[(.+?)\]\((.+?)\)/g, (_m, alt: string, src: string) => `<img src="${sanitizeUrl(src)}" alt="${alt}" />`);
+    result = result.replace(/\[(.+?)\]\((.+?)\)/g, (_m, text: string, href: string) => `<a href="${sanitizeUrl(href)}">${text}</a>`);
     // Lists
     result = result.replace(/^\- (.+)$/gm, "<li>$1</li>");
     result = result.replace(/^\d+\. (.+)$/gm, "<li>$1</li>");

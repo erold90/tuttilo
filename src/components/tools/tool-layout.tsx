@@ -9,8 +9,8 @@ import { LeaderboardAd } from "@/components/ads/leaderboard-ad";
 import { MobileStickyAd } from "@/components/ads/mobile-sticky-ad";
 import { SupportNotice } from "@/components/ads/support-notice";
 import { RelatedTools } from "@/components/tools/related-tools";
-import { HowItWorks } from "@/components/tools/how-it-works";
 import { FavoritesButton } from "@/components/tools/favorites-button";
+import { BookmarkButton } from "@/components/tools/bookmark-button";
 import { useRecents } from "@/hooks/use-recents";
 
 interface ToolLayoutProps {
@@ -69,12 +69,12 @@ export function ToolLayout({ toolId, category, children }: ToolLayoutProps) {
               {toolDescription}
             </p>
           </div>
-          <FavoritesButton toolId={toolId} className="mt-1 shrink-0" />
+          <div className="mt-1 flex shrink-0 items-center gap-2">
+            <BookmarkButton />
+            <FavoritesButton toolId={toolId} />
+          </div>
         </div>
       </div>
-
-      {/* How it works */}
-      <HowItWorks />
 
       {/* Main content + sidebar — wrapped by support notice wall */}
       <SupportNotice>

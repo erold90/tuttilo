@@ -4,6 +4,7 @@ import { useState, useCallback, useEffect } from "react";
 import { useTranslations } from "next-intl";
 import { configurePdfjsWorker } from "@/lib/pdf-utils";
 import { FileImage } from "@phosphor-icons/react";
+import { SafariPdfBanner } from "@/components/safari-pdf-banner";
 
 type OutputFormat = "jpg" | "png";
 
@@ -112,6 +113,7 @@ export function PdfToImages() {
 
   return (
     <div className="space-y-6">
+      <SafariPdfBanner />
       {!file ? (
         <div
           onDragOver={(e) => { e.preventDefault(); e.currentTarget.classList.add("border-primary"); }}

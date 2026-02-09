@@ -2,6 +2,7 @@
 
 import { useState, useCallback, useRef } from "react";
 import { useTranslations } from "next-intl";
+import { LinkSimple, LinkBreak } from "@phosphor-icons/react";
 
 const PRESETS = [
   { label: "Instagram Post", w: 1080, h: 1080 },
@@ -90,7 +91,7 @@ export function ImageResizer() {
               <input type="number" value={width} onChange={(e) => updateWidth(Number(e.target.value))} className="w-28 rounded-lg border border-border bg-background px-3 py-2 text-sm" />
             </div>
             <button onClick={() => setLock(!lock)} className={`mb-1 rounded px-2 py-2 text-xs ${lock ? "text-primary" : "text-muted-foreground"}`}>
-              {lock ? "🔗" : "🔓"}
+              {lock ? <LinkSimple size={16} weight="bold" /> : <LinkBreak size={16} weight="bold" />}
             </button>
             <div>
               <label className="mb-1 block text-xs font-medium">{t("height")}</label>

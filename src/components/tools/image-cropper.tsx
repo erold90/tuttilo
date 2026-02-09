@@ -3,14 +3,14 @@
 import { useState, useCallback, useRef, useEffect } from "react";
 import { useTranslations } from "next-intl";
 
-const RATIOS = [
-  { label: "Free", value: 0 },
-  { label: "1:1", value: 1 },
-  { label: "4:3", value: 4 / 3 },
-  { label: "3:2", value: 3 / 2 },
-  { label: "16:9", value: 16 / 9 },
-  { label: "9:16", value: 9 / 16 },
-  { label: "Circle", value: -1 },
+const RATIO_VALUES = [
+  { key: "free", label: "Free", value: 0 },
+  { key: "1:1", label: "1:1", value: 1 },
+  { key: "4:3", label: "4:3", value: 4 / 3 },
+  { key: "3:2", label: "3:2", value: 3 / 2 },
+  { key: "16:9", label: "16:9", value: 16 / 9 },
+  { key: "9:16", label: "9:16", value: 9 / 16 },
+  { key: "circle", label: "Circle", value: -1 },
 ];
 
 export function ImageCropper() {
@@ -25,10 +25,24 @@ export function ImageCropper() {
   const [dragStart, setDragStart] = useState({ x: 0, y: 0, cx: 0, cy: 0 });
   const [result, setResult] = useState("");
   const [scale, setScale] = useState(1);
+  const imgUrlRef = useRef("");
+  const resultUrlRef = useRef("");
+
+  // Cleanup blob URLs on unmount
+  useEffect(() => {
+    return () => {
+      if (imgUrlRef.current) URL.revokeObjectURL(imgUrlRef.current);
+      if (resultUrlRef.current) URL.revokeObjectURL(resultUrlRef.current);
+    };
+  }, []);
 
   const load = useCallback((f: File) => {
-    setFile(f); setResult("");
+    setFile(f);
+    if (resultUrlRef.current) { URL.revokeObjectURL(resultUrlRef.current); resultUrlRef.current = ""; }
+    setResult("");
+    if (imgUrlRef.current) URL.revokeObjectURL(imgUrlRef.current);
     const url = URL.createObjectURL(f);
+    imgUrlRef.current = url;
     setImgUrl(url);
     const img = new Image();
     img.onload = () => {
@@ -106,7 +120,7 @@ export function ImageCropper() {
       ctx.clip();
     }
     ctx.drawImage(img, crop.x / scale, crop.y / scale, rw, rh, 0, 0, rw, rh);
-    out.toBlob((b) => { if (b) setResult(URL.createObjectURL(b)); }, "image/png");
+    out.toBlob((b) => { if (b) { if (resultUrlRef.current) URL.revokeObjectURL(resultUrlRef.current); const u = URL.createObjectURL(b); resultUrlRef.current = u; setResult(u); } }, "image/png");
   }, [crop, scale, ratio]);
 
   const inputRef = useRef<HTMLInputElement>(null);
@@ -122,8 +136,8 @@ export function ImageCropper() {
       ) : (
         <>
           <div className="flex flex-wrap gap-2">
-            {RATIOS.map((r) => (
-              <button key={r.label} onClick={() => { setRatio(r.value); if (r.value > 0) setCrop((c) => ({ ...c, h: Math.round(c.w / r.value) })); if (r.value === -1) setCrop((c) => ({ ...c, h: c.w })); }} className={`rounded-lg border px-3 py-1 text-xs ${ratio === r.value ? "border-primary bg-primary/10 text-primary" : "border-border"}`}>{r.label}</button>
+            {RATIO_VALUES.map((r) => (
+              <button key={r.key} onClick={() => { setRatio(r.value); if (r.value > 0) setCrop((c) => ({ ...c, h: Math.round(c.w / r.value) })); if (r.value === -1) setCrop((c) => ({ ...c, h: c.w })); }} className={`rounded-lg border px-3 py-1 text-xs ${ratio === r.value ? "border-primary bg-primary/10 text-primary" : "border-border"}`}>{r.key === "free" ? t("ratioFree") : r.key === "circle" ? t("ratioCircle") : r.label}</button>
             ))}
           </div>
 
@@ -131,7 +145,7 @@ export function ImageCropper() {
 
           <div className="flex gap-3">
             <button onClick={doCrop} className="rounded-lg bg-primary px-6 py-2.5 text-sm font-medium text-primary-foreground hover:bg-primary/90">{t("crop")}</button>
-            <button onClick={() => { setFile(null); setResult(""); }} className="rounded-lg border border-border px-4 py-2.5 text-sm hover:bg-muted">{t("reset")}</button>
+            <button onClick={() => { if (imgUrlRef.current) { URL.revokeObjectURL(imgUrlRef.current); imgUrlRef.current = ""; } if (resultUrlRef.current) { URL.revokeObjectURL(resultUrlRef.current); resultUrlRef.current = ""; } setFile(null); setResult(""); setImgUrl(""); }} className="rounded-lg border border-border px-4 py-2.5 text-sm hover:bg-muted">{t("reset")}</button>
           </div>
 
           {result && (

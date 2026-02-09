@@ -1,0 +1,5 @@
+# ads.txt - Authorized Digital Sellers for tuttilo.com
+# Ezoic
+ezoic.com, pub-PENDING, DIRECT
+# Google AdSense (via Ezoic)
+google.com, pub-PENDING, RESELLER, f08c47fec0942fa0

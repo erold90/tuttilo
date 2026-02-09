@@ -119,12 +119,14 @@ export default async function ConversionPage({
         position: 1,
         name: "Home",
         item: `${BASE_URL}/${locale}`,
+        "@id": `${BASE_URL}/${locale}`,
       },
       {
         "@type": "ListItem",
         position: 2,
         name: `${source} to ${target}`,
         item: pageUrl,
+        "@id": pageUrl,
       },
     ],
   };
@@ -139,6 +141,7 @@ export default async function ConversionPage({
     operatingSystem: "Any",
     offers: { "@type": "Offer", price: "0", priceCurrency: "USD" },
     author: { "@type": "Organization", name: "Tuttilo", url: BASE_URL },
+    featureList: ["Free to use", "No registration required", "Browser-based processing", "Privacy-first — no server uploads"],
   };
 
   const howToLd = {

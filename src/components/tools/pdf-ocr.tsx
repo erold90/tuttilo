@@ -4,6 +4,7 @@ import { useState, useCallback, useEffect } from "react";
 import { useTranslations } from "next-intl";
 import { configurePdfjsWorker } from "@/lib/pdf-utils";
 import { Scan } from "@phosphor-icons/react";
+import { SafariPdfBanner } from "@/components/safari-pdf-banner";
 
 const OCR_LANGS = [
   { code: "eng", label: "English" },
@@ -124,6 +125,7 @@ export function PdfOcr() {
 
   return (
     <div className="space-y-6">
+      <SafariPdfBanner />
       {!file ? (
         <div
           onDragOver={(e) => { e.preventDefault(); e.currentTarget.classList.add("border-primary"); }}

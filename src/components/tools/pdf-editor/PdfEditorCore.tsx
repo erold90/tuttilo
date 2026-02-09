@@ -2,6 +2,24 @@
 
 import { useState, useCallback, useRef, useEffect } from "react";
 import { useTranslations } from "next-intl";
+import {
+  Cursor as CursorIcon,
+  TextT,
+  PencilSimple,
+  Image as ImageIcon,
+  ListBullets,
+  Signature,
+  ArrowCounterClockwise,
+  ArrowClockwise,
+  X as XIcon,
+  Info,
+  CaretLeft,
+  CaretRight,
+  MagnifyingGlassMinus,
+  MagnifyingGlassPlus,
+  FloppyDisk,
+  Upload,
+} from "@phosphor-icons/react";
 import type {
   TextInfo,
   TextAnnotation,
@@ -19,6 +37,16 @@ import { InlineTextEditor } from "./InlineTextEditor";
 import { FloatingToolbar } from "./FloatingToolbar";
 import { DraggableAnnotation } from "./DraggableAnnotation";
 import { ImageAnnotationEl } from "./ImageAnnotation";
+import { SafariPdfBanner } from "@/components/safari-pdf-banner";
+
+const MODE_ICONS: Record<EditorMode, React.ElementType> = {
+  select: CursorIcon,
+  text: TextT,
+  draw: PencilSimple,
+  image: ImageIcon,
+  fill: ListBullets,
+  sign: Signature,
+};
 
 export function PdfEditorCore({ file, rawBytes, onReset }: PdfEditorProps) {
   const t = useTranslations("tools.pdf-editor.ui");
@@ -73,6 +101,7 @@ export function PdfEditorCore({ file, rawBytes, onReset }: PdfEditorProps) {
   const [signPos, setSignPos] = useState<SignPos | null>(null);
   const [signAspect, setSignAspect] = useState(2.5);
   const [signSize, setSignSize] = useState(200);
+  const [showSignDialog, setShowSignDialog] = useState(false);
   const signImgRef = useRef<HTMLImageElement | null>(null);
 
   const previewRef = useRef<HTMLCanvasElement>(null);
@@ -224,7 +253,7 @@ export function PdfEditorCore({ file, rawBytes, onReset }: PdfEditorProps) {
       }
       // Detect form fields via pdf-lib
       try {
-        const { PDFDocument } = await import("pdf-lib");
+        const { PDFDocument, PDFTextField, PDFCheckBox, PDFDropdown } = await import("pdf-lib");
         const doc = await PDFDocument.load(rawBytes.slice(0), { ignoreEncryption: true });
         if (cancelled) return;
         try {
@@ -235,18 +264,17 @@ export function PdfEditorCore({ file, rawBytes, onReset }: PdfEditorProps) {
           const cv: Record<string, boolean> = {};
           for (const field of allFields) {
             const name = field.getName();
-            const kind = field.constructor.name;
-            if (kind === "PDFTextField") {
+            if (field instanceof PDFTextField) {
               detected.push({ name, type: "text" });
-              const val = (field as any).getText?.() ?? "";
+              const val = field.getText() ?? "";
               if (val) tv[name] = val;
-            } else if (kind === "PDFCheckBox") {
+            } else if (field instanceof PDFCheckBox) {
               detected.push({ name, type: "checkbox" });
-              cv[name] = !!(field as any).isChecked?.();
-            } else if (kind === "PDFDropdown") {
-              const opts = (field as any).getOptions?.() ?? [];
+              cv[name] = field.isChecked();
+            } else if (field instanceof PDFDropdown) {
+              const opts = field.getOptions() ?? [];
               detected.push({ name, type: "dropdown", options: opts });
-              const sel = (field as any).getSelected?.()?.[0] ?? "";
+              const sel = field.getSelected()?.[0] ?? "";
               if (sel) tv[name] = sel;
             }
           }
@@ -1141,49 +1169,66 @@ export function PdfEditorCore({ file, rawBytes, onReset }: PdfEditorProps) {
   /* ---------- editor ---------- */
 
   return (
-    <div className="space-y-4">
+    <div className="space-y-3">
+      <SafariPdfBanner />
       {/* Toolbar */}
       <div className="flex flex-wrap gap-2 items-center">
-        <div className="flex gap-1 bg-muted rounded-lg p-1 flex-wrap">
-          {(["select", "text", "draw", "image", "fill", "sign"] as EditorMode[]).map((m) => (
-            <button
-              key={m}
-              onClick={() => {
-                setMode(m);
-                setSelectedIdx(null);
-                setSelectedAnnotationId(null);
-                setSelectedImageId(null);
-                setInlineEditing(false);
-                setNewTextPos(null);
-                if (m === "image") onImageUpload();
-              }}
-              className={`px-3 py-1.5 rounded-md text-sm font-medium transition-colors ${
-                mode === m ? "bg-background shadow-sm" : "hover:bg-background/50"
-              }`}
-            >
-              {t(`mode${m.charAt(0).toUpperCase() + m.slice(1)}` as any)}
-              {m === "fill" && fields.length > 0 && <span className="ml-1 text-xs opacity-60">({fields.length})</span>}
-            </button>
-          ))}
+        <div className="flex gap-0.5 bg-muted rounded-lg p-1 flex-wrap">
+          {(["select", "text", "draw", "image", "fill", "sign"] as EditorMode[]).map((m) => {
+            const Icon = MODE_ICONS[m];
+            return (
+              <button
+                key={m}
+                onClick={() => {
+                  setMode(m);
+                  setSelectedIdx(null);
+                  setSelectedAnnotationId(null);
+                  setSelectedImageId(null);
+                  setInlineEditing(false);
+                  setNewTextPos(null);
+                  if (m === "image") onImageUpload();
+                  if (m === "sign") setShowSignDialog(true);
+                }}
+                className={`flex items-center gap-1.5 px-2.5 py-1.5 rounded-md text-sm font-medium transition-colors ${
+                  mode === m ? "bg-background shadow-sm text-foreground" : "text-muted-foreground hover:bg-background/50 hover:text-foreground"
+                }`}
+              >
+                <Icon weight={mode === m ? "fill" : "regular"} className="h-4 w-4 shrink-0" />
+                <span className="hidden sm:inline">{t(`mode${m.charAt(0).toUpperCase() + m.slice(1)}` as Parameters<typeof t>[0])}</span>
+                {m === "fill" && fields.length > 0 && <span className="text-xs opacity-60">({fields.length})</span>}
+                {m === "sign" && hasSignature && <span className="h-1.5 w-1.5 rounded-full bg-green-500" />}
+              </button>
+            );
+          })}
         </div>
 
+        {/* Inline mode controls */}
         {mode === "draw" && (
-          <div className="flex items-center gap-2">
-            <input type="color" value={penColor} onChange={(e) => setPenColor(e.target.value)} className="h-8 w-8 rounded cursor-pointer" />
+          <div className="flex items-center gap-2 rounded-lg border bg-background px-2 py-1">
+            <input type="color" value={penColor} onChange={(e) => setPenColor(e.target.value)} className="h-7 w-7 rounded cursor-pointer border-0" />
             <input type="range" min={1} max={10} value={penWidth} onChange={(e) => setPenWidth(Number(e.target.value))} className="w-20 accent-primary" />
-            <span className="text-xs text-muted-foreground">{penWidth}px</span>
+            <span className="text-xs text-muted-foreground tabular-nums w-6">{penWidth}px</span>
           </div>
         )}
 
         {mode === "text" && (
-          <div className="flex items-center gap-2">
-            <input type="color" value={newTextColor} onChange={(e) => setNewTextColor(e.target.value)} className="h-8 w-8 rounded cursor-pointer" />
+          <div className="flex items-center gap-2 rounded-lg border bg-background px-2 py-1">
+            <input type="color" value={newTextColor} onChange={(e) => setNewTextColor(e.target.value)} className="h-7 w-7 rounded cursor-pointer border-0" />
+            <input type="number" min={6} max={72} value={newTextSize} onChange={(e) => setNewTextSize(Number(e.target.value))} className="w-16 px-2 py-0.5 rounded border bg-muted text-xs tabular-nums" />
           </div>
         )}
 
         {mode === "image" && (
-          <button onClick={onImageUpload} className="px-3 py-1.5 bg-muted rounded-lg text-sm hover:bg-muted/80">
+          <button onClick={onImageUpload} className="flex items-center gap-1.5 px-3 py-1.5 rounded-lg border bg-background text-sm hover:bg-muted transition-colors">
+            <Upload weight="bold" className="h-3.5 w-3.5" />
             {t("uploadImage")}
+          </button>
+        )}
+
+        {mode === "sign" && (
+          <button onClick={() => setShowSignDialog(true)} className="flex items-center gap-1.5 px-3 py-1.5 rounded-lg border bg-background text-sm hover:bg-muted transition-colors">
+            <Signature weight="bold" className="h-3.5 w-3.5" />
+            {signDataUrl ? t("signChange") : t("signCreate")}
           </button>
         )}
 
@@ -1191,31 +1236,34 @@ export function PdfEditorCore({ file, rawBytes, onReset }: PdfEditorProps) {
           <button
             onClick={doUndo}
             disabled={!history.canUndo()}
-            className="px-3 py-1.5 bg-muted rounded-lg text-sm hover:bg-muted/80 disabled:opacity-40"
+            className="h-8 w-8 flex items-center justify-center rounded-lg bg-muted hover:bg-muted/80 disabled:opacity-30 transition-colors"
             title="Ctrl+Z"
           >
-            {t("undoAction")}
+            <ArrowCounterClockwise className="h-4 w-4" />
           </button>
           <button
             onClick={doRedo}
             disabled={!history.canRedo()}
-            className="px-3 py-1.5 bg-muted rounded-lg text-sm hover:bg-muted/80 disabled:opacity-40"
+            className="h-8 w-8 flex items-center justify-center rounded-lg bg-muted hover:bg-muted/80 disabled:opacity-30 transition-colors"
             title="Ctrl+Y"
           >
-            {t("redoAction")}
+            <ArrowClockwise className="h-4 w-4" />
           </button>
         </div>
       </div>
 
-      {/* Hint */}
-      <p className="text-xs text-muted-foreground">
-        {mode === "select" && t("selectHint")}
-        {mode === "text" && t("textHint")}
-        {mode === "draw" && t("drawHint")}
-        {mode === "image" && t("imageHint")}
-        {mode === "fill" && t("fillHint")}
-        {mode === "sign" && t("signHint")}
-      </p>
+      {/* Hint badge */}
+      <div className="flex items-center gap-2 rounded-lg bg-muted/50 px-3 py-2 text-xs text-muted-foreground">
+        <Info weight="fill" className="h-3.5 w-3.5 shrink-0 text-primary/60" />
+        <span>
+          {mode === "select" && t("selectHint")}
+          {mode === "text" && t("textHint")}
+          {mode === "draw" && t("drawHint")}
+          {mode === "image" && t("imageHint")}
+          {mode === "fill" && t("fillHint")}
+          {mode === "sign" && (signDataUrl ? t("signInstruction") : t("signHint"))}
+        </span>
+      </div>
 
       {/* Canvas area */}
       <div ref={wrapperRef}>
@@ -1224,9 +1272,11 @@ export function PdfEditorCore({ file, rawBytes, onReset }: PdfEditorProps) {
             className="relative"
             style={dims.w > 0 ? { width: dims.w, height: dims.h } : { width: "100%", minHeight: 200 }}
           >
-            <canvas ref={previewRef} className="block rounded shadow-lg" />
+            <canvas ref={previewRef} role="img" aria-label="PDF preview" className="block rounded shadow-lg" />
             <canvas
               ref={overlayRef}
+              role="img"
+              aria-label="PDF editor overlay"
               className="absolute inset-0 rounded"
               style={{ cursor: mode === "select" ? (hoverIdx !== null ? "text" : "default") : mode === "image" ? "crosshair" : mode === "draw" ? "crosshair" : "crosshair" }}
               onPointerDown={mode === "draw" ? onDrawStart : undefined}
@@ -1349,49 +1399,49 @@ export function PdfEditorCore({ file, rawBytes, onReset }: PdfEditorProps) {
           </div>
         </div>
 
-        <div className="flex items-center justify-center gap-3 mt-3 flex-wrap">
-          {pageCount > 1 && (
-            <>
+        {/* Page navigation + Zoom bar */}
+        <div className="flex items-center justify-between gap-3 mt-3 px-1">
+          {pageCount > 1 ? (
+            <div className="flex items-center gap-1">
               <button
                 onClick={() => { setCurrentPage((p) => Math.max(1, p - 1)); setSelectedIdx(null); setInlineEditing(false); }}
                 disabled={currentPage <= 1}
-                className="px-3 py-1 rounded bg-muted hover:bg-muted/80 disabled:opacity-40 text-sm"
+                className="h-8 w-8 flex items-center justify-center rounded-lg bg-muted hover:bg-muted/80 disabled:opacity-30 transition-colors"
               >
-                {t("prev")}
+                <CaretLeft className="h-4 w-4" />
               </button>
-              <span className="text-sm text-muted-foreground">
-                {t("page")} {currentPage} {t("of")} {pageCount}
+              <span className="text-sm tabular-nums min-w-[80px] text-center font-medium">
+                {currentPage} / {pageCount}
               </span>
               <button
                 onClick={() => { setCurrentPage((p) => Math.min(pageCount, p + 1)); setSelectedIdx(null); setInlineEditing(false); }}
                 disabled={currentPage >= pageCount}
-                className="px-3 py-1 rounded bg-muted hover:bg-muted/80 disabled:opacity-40 text-sm"
+                className="h-8 w-8 flex items-center justify-center rounded-lg bg-muted hover:bg-muted/80 disabled:opacity-30 transition-colors"
               >
-                {t("next")}
+                <CaretRight className="h-4 w-4" />
               </button>
-              <div className="w-px h-5 bg-border mx-1" />
-            </>
-          )}
+            </div>
+          ) : <div />}
           <div className="flex items-center gap-1">
             <button
               onClick={() => setZoom((z) => Math.max(0.5, +(z - 0.25).toFixed(2)))}
               disabled={zoom <= 0.5}
-              className="w-8 h-8 flex items-center justify-center rounded bg-muted hover:bg-muted/80 disabled:opacity-40 text-sm font-bold"
+              className="h-8 w-8 flex items-center justify-center rounded-lg bg-muted hover:bg-muted/80 disabled:opacity-30 transition-colors"
             >
-              −
+              <MagnifyingGlassMinus className="h-4 w-4" />
             </button>
             <button
               onClick={() => setZoom(1)}
-              className="px-2 py-1 rounded hover:bg-muted text-xs tabular-nums min-w-[48px] text-center"
+              className="px-2 py-1 rounded-lg hover:bg-muted text-xs tabular-nums min-w-[48px] text-center font-medium"
             >
               {Math.round(zoom * 100)}%
             </button>
             <button
               onClick={() => setZoom((z) => Math.min(3, +(z + 0.25).toFixed(2)))}
               disabled={zoom >= 3}
-              className="w-8 h-8 flex items-center justify-center rounded bg-muted hover:bg-muted/80 disabled:opacity-40 text-sm font-bold"
+              className="h-8 w-8 flex items-center justify-center rounded-lg bg-muted hover:bg-muted/80 disabled:opacity-30 transition-colors"
             >
-              +
+              <MagnifyingGlassPlus className="h-4 w-4" />
             </button>
           </div>
         </div>
@@ -1477,62 +1527,72 @@ export function PdfEditorCore({ file, rawBytes, onReset }: PdfEditorProps) {
         </div>
       )}
 
-      {/* Sign panel */}
-      {mode === "sign" && (
-        <div className="bg-muted/50 rounded-lg p-4 space-y-4">
-          <div className="flex gap-2">
-            {(["draw", "type", "upload"] as const).map((m) => (
-              <button key={m} onClick={() => { setSignMode(m); setSignDataUrl(""); setSignPos(null); }} className={`px-4 py-2 rounded-lg text-sm font-medium transition-colors ${signMode === m ? "bg-primary text-primary-foreground" : "bg-muted hover:bg-muted/80"}`}>
-                {t(`sign${m.charAt(0).toUpperCase() + m.slice(1)}` as any)}
-              </button>
-            ))}
+      {/* Signature size slider - shown when signature is placed */}
+      {mode === "sign" && signDataUrl && (
+        <div className="flex items-center gap-3 rounded-lg border bg-background px-3 py-2">
+          {/* eslint-disable-next-line @next/next/no-img-element */}
+          <img src={signDataUrl} alt="Signature" className="h-8 border rounded bg-white px-1" />
+          <div className="flex items-center gap-2 flex-1">
+            <span className="text-xs text-muted-foreground">{t("fontSize")}:</span>
+            <input type="range" min={80} max={400} value={signSize} onChange={(e) => setSignSize(Number(e.target.value))} className="flex-1 accent-primary" />
+            <span className="text-xs text-muted-foreground tabular-nums w-10 text-right">{signSize}px</span>
           </div>
+          <button onClick={clearSig} className="h-7 w-7 flex items-center justify-center rounded-md hover:bg-muted transition-colors text-muted-foreground hover:text-foreground">
+            <XIcon className="h-3.5 w-3.5" />
+          </button>
+        </div>
+      )}
 
-          {signMode === "draw" && (
-            <div>
-              <div className="border-2 border-muted rounded-lg bg-white overflow-hidden" style={{ height: "150px" }}>
-                <canvas ref={signCanvasRef} style={{ width: "100%", height: "100%" }} />
-              </div>
-              <div className="flex gap-2 mt-2">
-                <button onClick={saveDrawnSig} className="px-4 py-1.5 bg-primary text-primary-foreground rounded-lg text-sm font-medium hover:bg-primary/90">{t("signSave")}</button>
-                <button onClick={clearSig} className="px-4 py-1.5 bg-muted rounded-lg text-sm font-medium hover:bg-muted/80">{t("signClear")}</button>
-              </div>
+      {/* Signature Dialog/Modal */}
+      {showSignDialog && (
+        <div className="fixed inset-0 z-50 flex items-center justify-center bg-black/50 p-4" onClick={(e) => { if (e.target === e.currentTarget) setShowSignDialog(false); }}>
+          <div className="w-full max-w-md rounded-xl border bg-background p-5 shadow-2xl space-y-4">
+            <div className="flex items-center justify-between">
+              <h3 className="font-semibold">{t("signCreate")}</h3>
+              <button onClick={() => setShowSignDialog(false)} className="h-8 w-8 flex items-center justify-center rounded-lg hover:bg-muted transition-colors">
+                <XIcon className="h-4 w-4" />
+              </button>
             </div>
-          )}
 
-          {signMode === "type" && (
-            <div className="space-y-3">
-              <input type="text" value={typedName} onChange={(e) => setTypedName(e.target.value)} placeholder={t("signPlaceholder")} className="w-full px-3 py-2 rounded-lg border bg-background text-sm" />
-              {typedName && (
-                <div className="bg-white border rounded-lg p-4">
-                  <p className="text-3xl italic" style={{ fontFamily: "Georgia, 'Times New Roman', serif" }}>{typedName}</p>
+            <div className="flex gap-1 bg-muted rounded-lg p-1">
+              {(["draw", "type", "upload"] as const).map((m) => (
+                <button key={m} onClick={() => { setSignMode(m); setSignDataUrl(""); setSignPos(null); }} className={`flex-1 px-3 py-1.5 rounded-md text-sm font-medium transition-colors ${signMode === m ? "bg-background shadow-sm" : "hover:bg-background/50"}`}>
+                  {t(`sign${m.charAt(0).toUpperCase() + m.slice(1)}` as Parameters<typeof t>[0])}
+                </button>
+              ))}
+            </div>
+
+            {signMode === "draw" && (
+              <div className="space-y-3">
+                <div className="border-2 border-muted rounded-lg bg-white overflow-hidden" style={{ height: "140px" }}>
+                  <canvas ref={signCanvasRef} style={{ width: "100%", height: "100%" }} />
                 </div>
-              )}
-              <button onClick={genTypedSig} disabled={!typedName.trim()} className="px-4 py-1.5 bg-primary text-primary-foreground rounded-lg text-sm font-medium hover:bg-primary/90 disabled:opacity-50">{t("signSave")}</button>
-            </div>
-          )}
-
-          {signMode === "upload" && (
-            <div onClick={() => { const i = document.createElement("input"); i.type = "file"; i.accept = "image/*"; i.onchange = () => i.files?.[0] && uploadSig(i.files[0]); i.click(); }} className="border-2 border-dashed border-muted-foreground/25 rounded-lg p-6 text-center cursor-pointer hover:border-primary/50 transition-colors">
-              <p className="text-sm font-medium">{t("signUploadHint")}</p>
-            </div>
-          )}
-
-          {signDataUrl && (
-            <div className="space-y-3">
-              <div className="flex items-center gap-3 p-3 bg-background rounded-lg">
-                {/* eslint-disable-next-line @next/next/no-img-element */}
-                <img src={signDataUrl} alt="Signature" className="max-h-16 border rounded bg-white p-1" />
-                <p className="text-sm text-muted-foreground flex-1">{signPos ? t("signPlaced") : t("signInstruction")}</p>
-                <button onClick={clearSig} className="text-xs text-muted-foreground hover:text-foreground">&#10005;</button>
+                <div className="flex gap-2">
+                  <button onClick={() => { saveDrawnSig(); setShowSignDialog(false); }} className="flex-1 py-2 bg-primary text-primary-foreground rounded-lg text-sm font-medium hover:bg-primary/90 transition-colors">{t("signSave")}</button>
+                  <button onClick={clearSig} className="px-4 py-2 bg-muted rounded-lg text-sm font-medium hover:bg-muted/80 transition-colors">{t("signClear")}</button>
+                </div>
               </div>
-              <div className="flex items-center gap-3">
-                <label className="text-xs text-muted-foreground whitespace-nowrap">{t("fontSize")}:</label>
-                <input type="range" min={80} max={400} value={signSize} onChange={(e) => setSignSize(Number(e.target.value))} className="flex-1 accent-primary" />
-                <span className="text-xs text-muted-foreground tabular-nums w-10 text-right">{signSize}px</span>
+            )}
+
+            {signMode === "type" && (
+              <div className="space-y-3">
+                <input type="text" value={typedName} onChange={(e) => setTypedName(e.target.value)} placeholder={t("signPlaceholder")} className="w-full px-3 py-2 rounded-lg border bg-background text-sm" autoFocus />
+                {typedName && (
+                  <div className="bg-white border rounded-lg p-4 text-center">
+                    <p className="text-3xl italic" style={{ fontFamily: "Georgia, 'Times New Roman', serif" }}>{typedName}</p>
+                  </div>
+                )}
+                <button onClick={() => { genTypedSig(); setShowSignDialog(false); }} disabled={!typedName.trim()} className="w-full py-2 bg-primary text-primary-foreground rounded-lg text-sm font-medium hover:bg-primary/90 disabled:opacity-50 transition-colors">{t("signSave")}</button>
               </div>
-            </div>
-          )}
+            )}
+
+            {signMode === "upload" && (
+              <div onClick={() => { const i = document.createElement("input"); i.type = "file"; i.accept = "image/*"; i.onchange = () => { if (i.files?.[0]) { uploadSig(i.files[0]); setShowSignDialog(false); } }; i.click(); }} className="border-2 border-dashed border-muted-foreground/25 rounded-lg p-8 text-center cursor-pointer hover:border-primary/50 transition-colors">
+                <Upload className="h-8 w-8 mx-auto mb-2 text-muted-foreground" />
+                <p className="text-sm font-medium">{t("signUploadHint")}</p>
+              </div>
+            )}
+          </div>
         </div>
       )}
 
@@ -1540,13 +1600,17 @@ export function PdfEditorCore({ file, rawBytes, onReset }: PdfEditorProps) {
         <div className="bg-destructive/10 text-destructive rounded-lg p-3 text-sm">{error}</div>
       )}
 
-      <button
-        onClick={apply}
-        disabled={processing || changeCount === 0}
-        className="w-full py-3 px-4 bg-primary text-primary-foreground rounded-lg font-medium hover:bg-primary/90 disabled:opacity-50 transition-colors"
-      >
-        {processing ? t("processing") : changeCount > 0 ? `${t("apply")} (${changeCount})` : t("apply")}
-      </button>
+      {/* Sticky bottom save bar */}
+      <div className="sticky bottom-0 z-30 -mx-4 mt-4 border-t bg-background/95 backdrop-blur-sm px-4 py-3">
+        <button
+          onClick={apply}
+          disabled={processing || changeCount === 0}
+          className="w-full flex items-center justify-center gap-2 py-3 px-4 bg-primary text-primary-foreground rounded-lg font-medium hover:bg-primary/90 disabled:opacity-40 transition-colors"
+        >
+          <FloppyDisk weight="bold" className="h-5 w-5" />
+          {processing ? t("processing") : changeCount > 0 ? `${t("apply")} (${changeCount})` : t("apply")}
+        </button>
+      </div>
     </div>
   );
 }

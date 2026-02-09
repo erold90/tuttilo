@@ -3,6 +3,7 @@
 import { useState, useCallback } from "react";
 import { useTranslations } from "next-intl";
 import { loadPdfRobust } from "@/lib/pdf-utils";
+import { FileArrowDown } from "@phosphor-icons/react";
 
 export function CompressPdf() {
   const t = useTranslations("tools.compress-pdf.ui");
@@ -95,7 +96,7 @@ export function CompressPdf() {
           className="border-2 border-dashed border-muted-foreground/25 rounded-xl p-8 text-center hover:border-primary/50 transition-colors cursor-pointer"
           onClick={() => { const input = document.createElement("input"); input.type = "file"; input.accept = ".pdf"; input.onchange = () => input.files?.[0] && loadPdf(input.files[0]); input.click(); }}
         >
-          <div className="text-4xl mb-3">📄</div>
+          <FileArrowDown size={48} weight="duotone" className="mx-auto mb-3 text-muted-foreground" />
           <p className="text-lg font-medium">{t("dropzone")}</p>
           <p className="text-sm text-muted-foreground mt-1">{t("dropzoneHint")}</p>
         </div>

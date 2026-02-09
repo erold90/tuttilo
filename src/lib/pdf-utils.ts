@@ -4,10 +4,25 @@ import { PDFDocument } from "pdf-lib";
 
 let pdfjsReady: typeof import("pdfjs-dist") | null = null;
 
+/** Detect Safari (no ES module worker support in pdfjs v5) */
+function isSafariBrowser(): boolean {
+  if (typeof navigator === "undefined") return false;
+  return /^((?!chrome|android).)*safari/i.test(navigator.userAgent);
+}
+
+/** Configure pdfjs worker — disables worker on Safari for compatibility */
+export function configurePdfjsWorker(lib: typeof import("pdfjs-dist")) {
+  if (isSafariBrowser()) {
+    lib.GlobalWorkerOptions.workerSrc = "";
+  } else {
+    lib.GlobalWorkerOptions.workerSrc = `https://cdn.jsdelivr.net/npm/pdfjs-dist@${lib.version}/build/pdf.worker.min.mjs`;
+  }
+}
+
 async function getPdfjs() {
   if (pdfjsReady) return pdfjsReady;
   const lib = await import("pdfjs-dist");
-  lib.GlobalWorkerOptions.workerSrc = `https://cdn.jsdelivr.net/npm/pdfjs-dist@${lib.version}/build/pdf.worker.min.mjs`;
+  configurePdfjsWorker(lib);
   pdfjsReady = lib;
   return lib;
 }
@@ -103,4 +118,45 @@ async function reconstructPdf(
 
   srcDoc.destroy();
   return newDoc;
+}
+
+/**
+ * Render PDF page thumbnails as JPEG data URLs.
+ * Calls onThumbnail progressively for each rendered page.
+ */
+export async function renderPdfThumbnails(
+  bytes: ArrayBuffer | Uint8Array,
+  opts?: {
+    scale?: number;
+    maxPages?: number;
+    onThumbnail?: (index: number, dataUrl: string) => void;
+  }
+): Promise<string[]> {
+  const pdfjsLib = await getPdfjs();
+  // Always use Uint8Array to prevent ArrayBuffer detachment by pdfjs worker
+  const safeBytes = bytes instanceof Uint8Array ? bytes : new Uint8Array(bytes);
+  const doc = await pdfjsLib.getDocument({ data: safeBytes }).promise;
+  const scale = opts?.scale ?? 0.3;
+  const total = opts?.maxPages ? Math.min(opts.maxPages, doc.numPages) : doc.numPages;
+  const thumbnails: string[] = [];
+
+  for (let i = 1; i <= total; i++) {
+    const page = await doc.getPage(i);
+    const viewport = page.getViewport({ scale });
+    const canvas = document.createElement("canvas");
+    canvas.width = viewport.width;
+    canvas.height = viewport.height;
+    const ctx = canvas.getContext("2d")!;
+    ctx.fillStyle = "#ffffff";
+    ctx.fillRect(0, 0, canvas.width, canvas.height);
+    await (page.render({ canvasContext: ctx, viewport, canvas } as Parameters<typeof page.render>[0]).promise);
+    const dataUrl = canvas.toDataURL("image/jpeg", 0.65);
+    thumbnails.push(dataUrl);
+    opts?.onThumbnail?.(i - 1, dataUrl);
+    canvas.width = 0;
+    canvas.height = 0;
+  }
+
+  doc.destroy();
+  return thumbnails;
 }

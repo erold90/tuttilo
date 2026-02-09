@@ -34,6 +34,36 @@
   --color-tool-youtube: #EC4899;
 
   --radius: 0.5rem;
+
+  /* Aceternity UI animations */
+  --animate-spotlight: spotlight 2s ease 0.75s 1 forwards;
+  --animate-aurora-drift: aurora-drift 25s ease-in-out infinite;
+  --animate-aurora-drift-reverse: aurora-drift-reverse 30s ease-in-out infinite;
+  --animate-aurora-pulse: aurora-pulse 20s ease-in-out infinite;
+}
+
+@keyframes spotlight {
+  0% { opacity: 0; transform: translate(-72%, -62%) scale(0.5) rotate(0deg); }
+  100% { opacity: 1; transform: translate(-50%, -40%) scale(1) rotate(0deg); }
+}
+
+@keyframes aurora-drift {
+  0%, 100% { transform: translate(0, 0) rotate(0deg) scale(1); }
+  25% { transform: translate(3%, -4%) rotate(3deg) scale(1.05); }
+  50% { transform: translate(-2%, 3%) rotate(-2deg) scale(0.97); }
+  75% { transform: translate(4%, 2%) rotate(4deg) scale(1.03); }
+}
+
+@keyframes aurora-drift-reverse {
+  0%, 100% { transform: translate(0, 0) rotate(0deg) scale(1); }
+  25% { transform: translate(-4%, 3%) rotate(-3deg) scale(1.04); }
+  50% { transform: translate(3%, -2%) rotate(2deg) scale(0.96); }
+  75% { transform: translate(-3%, -3%) rotate(-4deg) scale(1.02); }
+}
+
+@keyframes aurora-pulse {
+  0%, 100% { opacity: 0.18; }
+  50% { opacity: 0.28; }
 }
 
 @layer base {
@@ -115,8 +145,8 @@
 /* Scroll animation (#8) */
 .animate-on-scroll {
   opacity: 0;
-  transform: translateY(20px);
-  transition: opacity 0.6s ease-out, transform 0.6s ease-out;
+  transform: translateY(12px);
+  transition: opacity 0.35s ease-out, transform 0.35s ease-out;
 }
 .animate-on-scroll.visible {
   opacity: 1;

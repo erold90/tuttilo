@@ -4,6 +4,7 @@ import { useState, useCallback, useEffect, useRef } from "react";
 import { useTranslations } from "next-intl";
 import { configurePdfjsWorker } from "@/lib/pdf-utils";
 import { PresentationChart } from "@phosphor-icons/react";
+import { SafariPdfBanner } from "@/components/safari-pdf-banner";
 
 // PptxGenJS loaded at runtime via script tag
 type PptxGenJSConstructor = new () => {
@@ -117,6 +118,7 @@ export function PdfToPptx() {
 
   return (
     <div className="space-y-6">
+      <SafariPdfBanner />
       {!file ? (
         <div
           onDragOver={(e) => { e.preventDefault(); e.currentTarget.classList.add("border-primary"); }}

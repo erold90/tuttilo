@@ -5,6 +5,7 @@ import { useTranslations } from "next-intl";
 import { PDFDocument } from "pdf-lib";
 import { loadPdfRobust, configurePdfjsWorker } from "@/lib/pdf-utils";
 import { LockOpen } from "@phosphor-icons/react";
+import { SafariPdfBanner } from "@/components/safari-pdf-banner";
 
 export function UnlockPdf() {
   const t = useTranslations("tools.unlock-pdf.ui");
@@ -161,6 +162,7 @@ export function UnlockPdf() {
 
   return (
     <div className="space-y-6">
+      <SafariPdfBanner />
       {!file ? (
         <div
           onDragOver={(e) => { e.preventDefault(); e.currentTarget.classList.add("border-primary"); }}

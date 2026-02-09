@@ -3,6 +3,7 @@
 import { useState, useCallback, useRef, useEffect } from "react";
 import { useTranslations } from "next-intl";
 import { configurePdfjsWorker } from "@/lib/pdf-utils";
+import { SafariPdfBanner } from "@/components/safari-pdf-banner";
 
 interface FieldInfo {
   name: string;
@@ -64,7 +65,7 @@ export function PdfFillSign({ file, rawBytes, onReset }: PdfFillSignProps) {
     let cancelled = false;
     (async () => {
       try {
-        const { PDFDocument } = await import("pdf-lib");
+        const { PDFDocument, PDFTextField, PDFCheckBox, PDFDropdown } = await import("pdf-lib");
         const doc = await PDFDocument.load(rawBytes.slice(0), {
           ignoreEncryption: true,
         });
@@ -78,18 +79,17 @@ export function PdfFillSign({ file, rawBytes, onReset }: PdfFillSignProps) {
           const cv: Record<string, boolean> = {};
           for (const field of allFields) {
             const name = field.getName();
-            const kind = field.constructor.name;
-            if (kind === "PDFTextField") {
+            if (field instanceof PDFTextField) {
               detected.push({ name, type: "text" });
-              const val = (field as any).getText?.() ?? "";
+              const val = field.getText() ?? "";
               if (val) tv[name] = val;
-            } else if (kind === "PDFCheckBox") {
+            } else if (field instanceof PDFCheckBox) {
               detected.push({ name, type: "checkbox" });
-              cv[name] = !!(field as any).isChecked?.();
-            } else if (kind === "PDFDropdown") {
-              const opts = (field as any).getOptions?.() ?? [];
+              cv[name] = field.isChecked();
+            } else if (field instanceof PDFDropdown) {
+              const opts = field.getOptions() ?? [];
               detected.push({ name, type: "dropdown", options: opts });
-              const sel = (field as any).getSelected?.()?.[0] ?? "";
+              const sel = field.getSelected()?.[0] ?? "";
               if (sel) tv[name] = sel;
             }
           }
@@ -454,12 +454,15 @@ export function PdfFillSign({ file, rawBytes, onReset }: PdfFillSignProps) {
 
   return (
     <div className="space-y-4">
+      <SafariPdfBanner />
       {/* Preview */}
       <div ref={wrapperRef}>
         <div className="bg-muted/30 rounded-lg p-2 flex justify-center overflow-hidden">
           <canvas
             ref={previewRef}
             onClick={onPreviewClick}
+            role="img"
+            aria-label="PDF preview"
             className="shadow-lg rounded"
             style={{
               maxWidth: "100%",

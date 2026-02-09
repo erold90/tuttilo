@@ -88,10 +88,10 @@ export function QrCode() {
               onChange={(e) => setErrorLevel(e.target.value as "L" | "M" | "Q" | "H")}
               className="w-full px-3 py-2 rounded-lg border border-border bg-background text-foreground"
             >
-              <option value="L">Low (7%)</option>
-              <option value="M">Medium (15%)</option>
-              <option value="Q">Quartile (25%)</option>
-              <option value="H">High (30%)</option>
+              <option value="L">{t("errorLow")} (7%)</option>
+              <option value="M">{t("errorMedium")} (15%)</option>
+              <option value="Q">{t("errorQuartile")} (25%)</option>
+              <option value="H">{t("errorHigh")} (30%)</option>
             </select>
           </div>
         </div>

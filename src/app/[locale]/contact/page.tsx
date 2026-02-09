@@ -1,11 +1,15 @@
-export const runtime = "edge";
-
 import type { Metadata } from "next";
 import { getTranslations } from "next-intl/server";
 import { locales } from "@/i18n/routing";
 import { Envelope as Mail, GithubLogo as Github, Question as HelpCircle, Clock } from "@/components/icons";
+import { CaretRight, House } from "@phosphor-icons/react/dist/ssr";
+import { Link } from "@/i18n/routing";
 
 const BASE_URL = "https://tuttilo.com";
+
+export function generateStaticParams() {
+  return locales.map((locale) => ({ locale }));
+}
 
 export async function generateMetadata({
   params,
@@ -36,6 +40,12 @@ export async function generateMetadata({
       type: "website",
       images: [{ url: `${BASE_URL}/og-image.png`, width: 1200, height: 630, alt: "Tuttilo" }],
     },
+    twitter: {
+      card: "summary_large_image",
+      title: t("title"),
+      description: t("description"),
+      images: [`${BASE_URL}/og-image.png`],
+    },
   };
 }
 
@@ -46,6 +56,7 @@ export default async function ContactPage({
 }) {
   const { locale } = await params;
   const t = await getTranslations({ locale, namespace: "pages.contact" });
+  const tNav = await getTranslations({ locale, namespace: "nav" });
 
   const cards: {
     key: string;
@@ -82,6 +93,16 @@ export default async function ContactPage({
 
   return (
     <div className="flex flex-col">
+      {/* Breadcrumb */}
+      <nav aria-label="Breadcrumb" className="container mx-auto max-w-4xl px-4 pt-8 flex items-center gap-1.5 text-sm text-muted-foreground">
+        <Link href="/" className="flex items-center gap-1 transition-colors hover:text-foreground">
+          <House className="h-3.5 w-3.5" />
+          <span>{tNav("home")}</span>
+        </Link>
+        <CaretRight className="h-3.5 w-3.5" />
+        <span className="font-medium text-foreground">{t("title")}</span>
+      </nav>
+
       {/* Hero */}
       <section className="relative overflow-hidden border-b">
         <div className="absolute inset-0 bg-gradient-to-b from-cyan-500/5 via-transparent to-transparent" />

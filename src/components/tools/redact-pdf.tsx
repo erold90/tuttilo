@@ -3,6 +3,7 @@
 import { useState, useCallback, useRef } from "react";
 import { useTranslations } from "next-intl";
 import { configurePdfjsWorker } from "@/lib/pdf-utils";
+import { SafariPdfBanner } from "@/components/safari-pdf-banner";
 
 export function RedactPdf() {
   const t = useTranslations("tools.redact-pdf.ui");
@@ -77,6 +78,7 @@ export function RedactPdf() {
 
   return (
     <div className="space-y-6">
+      <SafariPdfBanner />
       {!file ? (
         <div onClick={() => inputRef.current?.click()} onDragOver={(e) => e.preventDefault()} onDrop={(e) => { e.preventDefault(); if (e.dataTransfer.files[0]) { setFile(e.dataTransfer.files[0]); setResultUrl(""); } }} className="cursor-pointer rounded-xl border-2 border-dashed border-border p-12 text-center hover:border-primary/50">
           <p className="text-lg font-medium">{t("dropzone")}</p>

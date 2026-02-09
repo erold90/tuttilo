@@ -60,6 +60,8 @@ const implementedToolIds = new Set([
   "gradient-generator", "palette-generator", "contrast-checker",
   "box-shadow-generator", "border-radius-generator", "glassmorphism-generator",
   "animation-generator", "clip-path-generator",
+  "flexbox-generator", "color-blindness-simulator", "palette-from-image",
+  "font-pair-suggester", "css-pattern-generator",
 ]);
 
 export function generateStaticParams() {

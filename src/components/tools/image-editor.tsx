@@ -2,7 +2,8 @@
 
 import { useState, useRef } from "react";
 import { useTranslations } from "next-intl";
-import Cropper from "react-cropper";
+import { Scissors, Resize, ArrowClockwise, SlidersHorizontal, Package, LinkSimple, LinkBreak } from "@phosphor-icons/react";
+import Cropper, { ReactCropperElement } from "react-cropper";
 import "cropperjs/dist/cropper.css";
 import {
   loadImage,
@@ -17,12 +18,12 @@ type Tab = "crop" | "resize" | "rotate" | "adjust" | "compress";
 
 const TABS: Tab[] = ["crop", "resize", "rotate", "adjust", "compress"];
 
-const TAB_ICONS: Record<Tab, string> = {
-  crop: "\u2702\uFE0F",
-  resize: "\uD83D\uDCD0",
-  rotate: "\uD83D\uDD04",
-  adjust: "\uD83C\uDFA8",
-  compress: "\uD83D\uDCE6",
+const TAB_ICONS: Record<Tab, typeof Scissors> = {
+  crop: Scissors,
+  resize: Resize,
+  rotate: ArrowClockwise,
+  adjust: SlidersHorizontal,
+  compress: Package,
 };
 
 interface OutputFmt {
@@ -61,7 +62,7 @@ export function ImageEditor() {
   const inputRef = useRef<HTMLInputElement>(null);
 
   // Crop state
-  const cropperRef = useRef<Cropper>(null);
+  const cropperRef = useRef<ReactCropperElement>(null);
   const [aspectRatio, setAspectRatio] = useState<number>(NaN);
 
   // Resize state
@@ -185,12 +186,12 @@ export function ImageEditor() {
 
   // ─── Crop ────────────────────────────────────────────
   async function applyCrop() {
-    const cropper = (cropperRef.current as any)?.cropper;
+    const cropper = cropperRef.current?.cropper;
     if (!cropper) return;
     setProcessing(true);
     setError("");
     try {
-      const canvas = cropper.getCroppedCanvas() as HTMLCanvasElement;
+      const canvas = cropper.getCroppedCanvas();
       const blob = await canvasToBlob(canvas, "image/png", 1);
       pushResult(blob, canvas.width, canvas.height);
     } catch (err) {
@@ -443,7 +444,7 @@ export function ImageEditor() {
                 : "text-muted-foreground hover:text-foreground"
             }`}
           >
-            <span className="text-xs">{TAB_ICONS[tab]}</span>
+            {(() => { const Icon = TAB_ICONS[tab]; return <Icon size={14} weight="duotone" />; })()}
             {t(`tab${tab.charAt(0).toUpperCase() + tab.slice(1)}`)}
           </button>
         ))}
@@ -458,7 +459,7 @@ export function ImageEditor() {
                 key={a.label}
                 onClick={() => {
                   setAspectRatio(a.value);
-                  const cropper = (cropperRef.current as any)?.cropper;
+                  const cropper = cropperRef.current?.cropper;
                   if (cropper) cropper.setAspectRatio(a.value);
                 }}
                 className={`rounded-md border px-3 py-1.5 text-xs font-medium transition-colors ${
@@ -474,7 +475,7 @@ export function ImageEditor() {
           <div className="overflow-hidden rounded-lg border border-border">
             <Cropper
               key={workingUrl}
-              ref={cropperRef as any}
+              ref={cropperRef}
               src={workingUrl}
               style={{ height: 400, width: "100%" }}
               aspectRatio={aspectRatio}
@@ -503,7 +504,7 @@ export function ImageEditor() {
                 className="w-24 rounded-md border border-border bg-background px-3 py-2 text-sm font-mono focus:outline-none focus:ring-2 focus:ring-primary/50" />
             </div>
             <button onClick={() => setLockAR(!lockAR)} className={`mb-0.5 rounded-md border p-2 text-xs ${lockAR ? "border-primary bg-primary/10 text-primary" : "border-border"}`}>
-              {lockAR ? "\uD83D\uDD17" : "\uD83D\uDD13"}
+              {lockAR ? <LinkSimple size={16} weight="bold" /> : <LinkBreak size={16} weight="bold" />}
             </button>
             <div>
               <label className="mb-1 block text-xs font-medium">{t("height")}</label>

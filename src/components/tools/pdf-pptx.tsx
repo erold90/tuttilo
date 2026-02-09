@@ -4,6 +4,7 @@ import { useState, useCallback, useEffect, useRef } from "react";
 import { useTranslations } from "next-intl";
 import { configurePdfjsWorker } from "@/lib/pdf-utils";
 import { PresentationChart } from "@phosphor-icons/react";
+import { SafariPdfBanner } from "@/components/safari-pdf-banner";
 
 type PptxGenJSConstructor = new () => {
   defineLayout(opts: { name: string; width: number; height: number }): void;
@@ -39,6 +40,9 @@ export function PdfPptx() {
   const [pdfjsLib, setPdfjsLib] = useState<typeof import("pdfjs-dist") | null>(null);
   const pptxReady = useRef(false);
   const htmlRef = useRef("");
+  const [thumbs, setThumbs] = useState<string[]>([]);
+  const [pageCount, setPageCount] = useState(0);
+  const [loadingThumbs, setLoadingThumbs] = useState(false);
 
   useEffect(() => {
     import("pdfjs-dist").then((lib) => {
@@ -52,6 +56,7 @@ export function PdfPptx() {
 
   const loadFile = useCallback(async (f: File) => {
     setError(""); setResultUrl(""); setSlideCount(0); htmlRef.current = "";
+    setThumbs([]); setPageCount(0);
 
     const isPdf = f.type === "application/pdf" || f.name.toLowerCase().endsWith(".pdf");
     const isPptx = f.type.includes("presentationml") || /\.pptx?$/i.test(f.name);
@@ -62,7 +67,6 @@ export function PdfPptx() {
       try {
         const JSZip = (await import("jszip")).default;
         const zip = await JSZip.loadAsync(await f.arrayBuffer());
-
         let count = 0;
         zip.folder("ppt/slides")?.forEach((path) => {
           if (/^slide\d+\.xml$/.test(path)) count++;
@@ -93,17 +97,10 @@ export function PdfPptx() {
           .slide-content p{margin-bottom:8px}
           @page{size:landscape;margin:0.5cm}
         </style></head><body>`;
-
         for (const slide of slides) {
-          html += `<div class="slide">`;
-          html += `<div class="slide-num">${slide.num} / ${count}</div>`;
-          html += `<div class="slide-content">`;
-          for (const text of slide.texts) {
-            html += `<p>${text.replace(/</g, "&lt;").replace(/>/g, "&gt;")}</p>`;
-          }
-          if (slide.texts.length === 0) {
-            html += `<p style="color:#999;font-style:italic">(Slide ${slide.num})</p>`;
-          }
+          html += `<div class="slide"><div class="slide-num">${slide.num} / ${count}</div><div class="slide-content">`;
+          for (const text of slide.texts) html += `<p>${text.replace(/</g, "&lt;").replace(/>/g, "&gt;")}</p>`;
+          if (slide.texts.length === 0) html += `<p style="color:#999;font-style:italic">(Slide ${slide.num})</p>`;
           html += `</div></div>`;
         }
         html += "</body></html>";
@@ -117,7 +114,36 @@ export function PdfPptx() {
 
     setFile(f);
     setDirection(isPdf ? "pdf-to-pptx" : "pptx-to-pdf");
-  }, [t]);
+
+    // Generate thumbnails for PDF
+    if (isPdf && pdfjsLib) {
+      setLoadingThumbs(true);
+      try {
+        const bytes = new Uint8Array(await f.arrayBuffer());
+        const doc = await pdfjsLib.getDocument({ data: new Uint8Array(bytes) }).promise;
+        setPageCount(doc.numPages);
+        const arr: string[] = [];
+        for (let i = 1; i <= doc.numPages; i++) {
+          const page = await doc.getPage(i);
+          const vp = page.getViewport({ scale: 0.3 });
+          const canvas = document.createElement("canvas");
+          canvas.width = vp.width; canvas.height = vp.height;
+          const ctx = canvas.getContext("2d")!;
+          ctx.fillStyle = "#fff";
+          ctx.fillRect(0, 0, canvas.width, canvas.height);
+          await (page.render({ canvasContext: ctx, viewport: vp, canvas } as Parameters<typeof page.render>[0]).promise);
+          arr.push(canvas.toDataURL("image/jpeg", 0.6));
+          if (i % 4 === 0 || i === doc.numPages) setThumbs([...arr]);
+          canvas.width = 0; canvas.height = 0;
+        }
+        doc.destroy();
+      } catch {
+        // thumbnails optional
+      } finally {
+        setLoadingThumbs(false);
+      }
+    }
+  }, [t, pdfjsLib]);
 
   const convertPdfToPptx = useCallback(async () => {
     if (!file || !pdfjsLib) return;
@@ -132,8 +158,7 @@ export function PdfPptx() {
         const page = await doc.getPage(i);
         const viewport = page.getViewport({ scale });
         const canvas = document.createElement("canvas");
-        canvas.width = viewport.width;
-        canvas.height = viewport.height;
+        canvas.width = viewport.width; canvas.height = viewport.height;
         const ctx = canvas.getContext("2d")!;
         ctx.fillStyle = "#ffffff";
         ctx.fillRect(0, 0, canvas.width, canvas.height);
@@ -178,17 +203,9 @@ export function PdfPptx() {
 
       const pdf = new jsPDF({ orientation: "landscape", unit: "pt", format: "a4" });
       const pageW = pdf.internal.pageSize.getWidth() - 40;
-
       await new Promise<void>((resolve) => {
-        pdf.html(container, {
-          callback: () => resolve(),
-          x: 20,
-          y: 20,
-          width: pageW,
-          windowWidth: 960,
-        });
+        pdf.html(container, { callback: () => resolve(), x: 20, y: 20, width: pageW, windowWidth: 960 });
       });
-
       document.body.removeChild(container);
       setProgress(100);
 
@@ -222,16 +239,14 @@ export function PdfPptx() {
     if (resultUrl) URL.revokeObjectURL(resultUrl);
     setFile(null); setDirection(null); setResultUrl(""); setError("");
     setProgress(0); setSlideCount(0); htmlRef.current = "";
+    setThumbs([]); setPageCount(0);
   }, [resultUrl]);
 
-  const formatSize = (bytes: number) => {
-    if (bytes < 1024) return `${bytes} B`;
-    if (bytes < 1024 * 1024) return `${(bytes / 1024).toFixed(1)} KB`;
-    return `${(bytes / (1024 * 1024)).toFixed(1)} MB`;
-  };
+  const fmtSize = (b: number) => b < 1024 ? `${b} B` : b < 1048576 ? `${(b / 1024).toFixed(1)} KB` : `${(b / 1048576).toFixed(1)} MB`;
 
   return (
     <div className="space-y-6">
+      <SafariPdfBanner />
       {!file ? (
         <div
           onDragOver={(e) => { e.preventDefault(); e.currentTarget.classList.add("border-primary"); }}
@@ -246,6 +261,7 @@ export function PdfPptx() {
         </div>
       ) : !resultUrl ? (
         <div className="space-y-4">
+          {/* File info */}
           <div className="bg-muted/50 rounded-lg p-4">
             <div className="flex items-center gap-2">
               <p className="font-medium truncate flex-1">{file.name}</p>
@@ -253,12 +269,29 @@ export function PdfPptx() {
                 {direction === "pdf-to-pptx" ? "PDF → PPTX" : "PPTX → PDF"}
               </span>
             </div>
-            <p className="text-sm text-muted-foreground">{formatSize(file.size)}</p>
-            {direction === "pptx-to-pdf" && slideCount > 0 && (
-              <p className="text-xs text-muted-foreground mt-1">{t("slides")}: {slideCount}</p>
-            )}
+            <p className="text-sm text-muted-foreground">
+              {fmtSize(file.size)}
+              {pageCount > 0 ? ` · ${pageCount} ${t("pages")}` : ""}
+              {direction === "pptx-to-pdf" && slideCount > 0 ? ` · ${slideCount} ${t("slides")}` : ""}
+            </p>
           </div>
 
+          {/* Thumbnails for PDF */}
+          {direction === "pdf-to-pptx" && (thumbs.length > 0 || loadingThumbs) && (
+            <div className="grid grid-cols-4 sm:grid-cols-6 md:grid-cols-8 gap-2">
+              {thumbs.map((url, i) => (
+                <div key={i} className="border border-border rounded overflow-hidden bg-white shadow-sm">
+                  <img src={url} alt={`${i + 1}`} className="w-full" />
+                  <p className="text-[10px] text-center text-muted-foreground py-0.5">{i + 1}</p>
+                </div>
+              ))}
+              {loadingThumbs && (
+                <div className="border border-border rounded bg-muted/30 animate-pulse aspect-[3/4]" />
+              )}
+            </div>
+          )}
+
+          {/* Quality selector (PDF → PPTX only) */}
           {direction === "pdf-to-pptx" && (
             <div>
               <label className="block text-sm font-medium mb-1">{t("quality")}</label>
@@ -273,6 +306,7 @@ export function PdfPptx() {
             </div>
           )}
 
+          {/* PPTX preview */}
           {direction === "pptx-to-pdf" && htmlRef.current && (
             <div className="border border-border rounded-lg overflow-hidden bg-white">
               <iframe srcDoc={htmlRef.current} className="w-full h-64 pointer-events-none" title="Preview" />
@@ -289,7 +323,7 @@ export function PdfPptx() {
         </div>
       ) : (
         <div className="bg-green-500/10 border border-green-500/20 rounded-xl p-6 text-center space-y-3">
-          <div className="text-3xl">✓</div>
+          <p className="text-2xl font-bold text-green-500">&#10003;</p>
           <p className="font-medium">{t("done")}</p>
           <div className="flex gap-3 justify-center">
             <button onClick={download} className="py-2 px-6 bg-primary text-primary-foreground rounded-lg font-medium hover:bg-primary/90">

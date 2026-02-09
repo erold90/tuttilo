@@ -4,6 +4,7 @@ import { useState, useCallback, useRef, useEffect } from "react";
 import { useTranslations } from "next-intl";
 import { configurePdfjsWorker } from "@/lib/pdf-utils";
 import { FileText, CheckCircle } from "@phosphor-icons/react";
+import { SafariPdfBanner } from "@/components/safari-pdf-banner";
 
 export function PdfCompare() {
   const t = useTranslations("tools.pdf-compare.ui");
@@ -108,6 +109,7 @@ export function PdfCompare() {
 
   return (
     <div className="space-y-6">
+      <SafariPdfBanner />
       {pages.length === 0 ? (
         <div className="space-y-4">
           <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">

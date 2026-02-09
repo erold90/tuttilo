@@ -286,24 +286,36 @@ export function HomeSearchTrigger() {
       {/* Results dropdown */}
       {showResults && (
         <div
-          className="absolute left-0 right-0 top-full mt-2 z-50 rounded-2xl border border-white/[0.08] bg-[#0c0c0f]/95 backdrop-blur-xl shadow-2xl shadow-black/40 overflow-hidden animate-in fade-in-0 slide-in-from-top-2 duration-200"
+          className="absolute left-0 right-0 top-full mt-1.5 z-50 rounded-2xl border border-white/[0.08] bg-white/[0.04] backdrop-blur-2xl shadow-[0_8px_40px_rgba(0,0,0,0.4)] overflow-hidden animate-in fade-in-0 slide-in-from-top-2 duration-200"
         >
-          <div ref={listRef} className="max-h-[340px] overflow-y-auto overscroll-contain py-2 px-2">
+          <div
+            ref={listRef}
+            className="max-h-[400px] overflow-y-auto overscroll-contain py-2 px-2"
+            onWheel={(e) => {
+              const el = e.currentTarget;
+              const atTop = el.scrollTop === 0 && e.deltaY < 0;
+              const atBottom = el.scrollTop + el.clientHeight >= el.scrollHeight - 1 && e.deltaY > 0;
+              if (!atTop && !atBottom) e.stopPropagation();
+            }}
+          >
             {filteredTools.length === 0 ? (
-              <p className="py-6 text-center text-sm text-white/30">
+              <p className="py-8 text-center text-sm text-white/25">
                 {tSearch("noResults")}
               </p>
             ) : (
               Object.entries(grouped).map(([category, categoryTools]) => (
                 <div key={category} className="mb-1">
-                  <p
-                    className={cn(
-                      "px-3 py-1.5 text-[10px] font-semibold uppercase tracking-widest opacity-60",
-                      getCategoryClasses(category as ToolCategoryId).text
-                    )}
-                  >
-                    {(() => { try { return tNav(category); } catch { return category; } })()}
-                  </p>
+                  <div className="flex items-center gap-2 px-3.5 pt-3 pb-1.5">
+                    <span
+                      className={cn(
+                        "h-1.5 w-1.5 rounded-full opacity-60",
+                        getCategoryClasses(category as ToolCategoryId).bg
+                      )}
+                    />
+                    <p className="text-[11px] font-medium uppercase tracking-wider text-white/30">
+                      {(() => { try { return tNav(category); } catch { return category; } })()}
+                    </p>
+                  </div>
                   {categoryTools.map((tool) => {
                     flatIndex++;
                     const idx = flatIndex;
@@ -315,27 +327,33 @@ export function HomeSearchTrigger() {
                         onClick={() => handleSelect(tool)}
                         onMouseEnter={() => setSelectedIndex(idx)}
                         className={cn(
-                          "flex w-full items-center gap-3 rounded-xl px-3 py-2.5 text-left transition-all duration-150",
-                          isSelected ? "bg-white/[0.06]" : "hover:bg-white/[0.04]"
+                          "flex w-full items-center gap-3.5 rounded-xl px-3.5 py-3 text-left transition-all duration-150",
+                          isSelected
+                            ? "bg-white/[0.06] shadow-[inset_0_0_0_1px_rgba(255,255,255,0.06)]"
+                            : "hover:bg-white/[0.04]"
                         )}
                       >
                         <span
                           className={cn(
-                            "flex h-8 w-8 items-center justify-center rounded-lg transition-colors",
+                            "flex h-9 w-9 shrink-0 items-center justify-center rounded-lg transition-all duration-150",
                             isSelected ? "bg-white/[0.08]" : "bg-white/[0.04]",
-                            getCategoryClasses(tool.category).text
+                            getCategoryClasses(tool.category).text,
+                            isSelected ? "opacity-100" : "opacity-60"
                           )}
                         >
-                          <ToolIcon name={tool.icon} className="h-4 w-4" />
+                          <ToolIcon name={tool.icon} className="h-[18px] w-[18px]" />
                         </span>
                         <div className="flex-1 min-w-0">
                           <p className={cn(
                             "text-sm font-medium truncate transition-colors",
-                            isSelected ? "text-white" : "text-white/70"
+                            isSelected ? "text-white" : "text-white/60"
                           )}>
                             {tool.name}
                           </p>
-                          <p className="text-xs text-white/25 truncate">
+                          <p className={cn(
+                            "text-xs truncate transition-colors",
+                            isSelected ? "text-white/35" : "text-white/20"
+                          )}>
                             {tool.description}
                           </p>
                         </div>
@@ -348,9 +366,9 @@ export function HomeSearchTrigger() {
           </div>
 
           {/* Footer */}
-          <div className="border-t border-white/[0.06] px-4 py-2 flex items-center justify-between">
-            <span className="text-[10px] text-white/15">{tSearch("hint")}</span>
-            <span className="text-[10px] text-white/15">
+          <div className="border-t border-white/[0.06] px-4 py-2.5 flex items-center justify-between">
+            <span className="text-[11px] text-white/20">{tSearch("hint")}</span>
+            <span className="text-[11px] text-white/20">
               {filteredTools.length} {filteredTools.length === 1 ? tSearch("result") : tSearch("results")}
             </span>
           </div>

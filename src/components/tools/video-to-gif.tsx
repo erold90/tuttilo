@@ -3,6 +3,7 @@
 import { useState, useCallback, useRef, useEffect } from "react";
 import { useTranslations } from "next-intl";
 import { getFFmpeg, ffmpegFetchFile } from "@/lib/ffmpeg";
+import { FilmStrip } from "@phosphor-icons/react";
 
 export function VideoToGif() {
   const t = useTranslations("tools.video-to-gif.ui");
@@ -143,7 +144,7 @@ export function VideoToGif() {
           className="border-2 border-dashed border-muted-foreground/25 rounded-xl p-8 text-center hover:border-primary/50 transition-colors cursor-pointer"
           onClick={() => { const input = document.createElement("input"); input.type = "file"; input.accept = "video/*"; input.onchange = () => input.files?.[0] && loadFile(input.files[0]); input.click(); }}
         >
-          <div className="text-4xl mb-3">🎞️</div>
+          <FilmStrip size={48} weight="duotone" className="mx-auto mb-3 text-muted-foreground" />
           <p className="text-lg font-medium">{t("dropzone")}</p>
           <p className="text-sm text-muted-foreground mt-1">{t("dropzoneHint")}</p>
         </div>

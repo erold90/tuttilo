@@ -80,7 +80,6 @@ export async function POST(request: NextRequest) {
 
 export async function GET() {
   return NextResponse.json({
-    key: INDEXNOW_KEY,
     totalUrls: getAllUrls().length,
     info: "POST to this endpoint with x-indexnow-auth header to submit URLs",
   });

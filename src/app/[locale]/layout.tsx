@@ -12,6 +12,7 @@ import { Footer } from "@/components/layout/footer";
 import { routing, locales } from "@/i18n/routing";
 import { GoogleAnalytics } from "@/components/analytics/google-analytics";
 import { EzoicProvider } from "@/components/ads/ezoic-provider";
+import { SmoothScrollProvider } from "@/components/smooth-scroll-provider";
 import "@/styles/globals.css";
 
 const BASE_URL = "https://tuttilo.com";
@@ -43,8 +44,7 @@ export async function generateMetadata({
   const t = await getTranslations({ locale, namespace: "common" });
 
   const title = `${t("siteName")} — ${t("tagline")}`;
-  const description =
-    "Free all-in-one online tools for PDF, images, video, audio, text, and developer utilities. All processing happens in your browser.";
+  const description = t("siteDescription");
 
   return {
     title: {
@@ -66,7 +66,11 @@ export async function generateMetadata({
       google: "googlea6b9f851de332dd7",
     },
     icons: {
-      icon: "/favicon.svg",
+      icon: [
+        { url: "/favicon.ico", sizes: "32x32" },
+        { url: "/favicon.svg", type: "image/svg+xml" },
+      ],
+      apple: "/apple-touch-icon.png",
     },
     manifest: "/manifest.json",
     openGraph: {
@@ -105,15 +109,14 @@ export async function generateMetadata({
   };
 }
 
-function JsonLd({ locale }: { locale: string }) {
+function JsonLd({ locale, description }: { locale: string; description: string }) {
   const schemas = [
     {
       "@context": "https://schema.org",
       "@type": "WebSite",
       name: "Tuttilo",
       url: `${BASE_URL}/${locale}`,
-      description:
-        "Free all-in-one online tools for PDF, images, video, audio, text, and developer utilities.",
+      description,
       inLanguage: locale,
       potentialAction: {
         "@type": "SearchAction",
@@ -130,8 +133,7 @@ function JsonLd({ locale }: { locale: string }) {
       name: "Tuttilo",
       url: BASE_URL,
       logo: `${BASE_URL}/favicon.svg`,
-      description:
-        "Free all-in-one online tools for PDF, images, video, audio, text, and developer utilities. All processing happens in your browser.",
+      description,
       sameAs: [
         "https://github.com/erold90/tuttilo",
       ],
@@ -160,11 +162,13 @@ export default async function LocaleLayout({
 }) {
   const { locale } = await params;
 
-  if (!routing.locales.includes(locale as any)) {
+  if (!(routing.locales as readonly string[]).includes(locale)) {
     notFound();
   }
 
   const messages = await getMessages();
+  const tCommon = await getTranslations({ locale, namespace: "common" });
+  const siteDescription = tCommon("siteDescription");
 
   return (
     <html
@@ -173,7 +177,7 @@ export default async function LocaleLayout({
       suppressHydrationWarning
     >
       <head>
-        <JsonLd locale={locale} />
+        <JsonLd locale={locale} description={siteDescription} />
         {/* Preconnect for performance */}
         <link rel="preconnect" href="https://fonts.googleapis.com" />
         <link rel="preconnect" href="https://fonts.gstatic.com" crossOrigin="anonymous" />
@@ -198,11 +202,13 @@ export default async function LocaleLayout({
             forcedTheme="dark"
             disableTransitionOnChange
           >
-            <div className="relative flex min-h-screen flex-col">
-              <Header />
-              <main className="flex-1">{children}</main>
-              <Footer />
-            </div>
+            <SmoothScrollProvider>
+              <div className="relative flex min-h-screen flex-col">
+                <Header />
+                <main className="flex-1">{children}</main>
+                <Footer />
+              </div>
+            </SmoothScrollProvider>
             <Toaster richColors position="bottom-right" />
             <EzoicProvider />
           </ThemeProvider>

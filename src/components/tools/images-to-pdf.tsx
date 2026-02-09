@@ -1,13 +1,16 @@
 "use client";
 
-import { useState, useCallback } from "react";
+import { useState, useCallback, useEffect, useRef } from "react";
 import { useTranslations } from "next-intl";
 import { PDFDocument } from "pdf-lib";
+import { Images, CaretLeft, CaretRight, Eye } from "@phosphor-icons/react";
 
 interface ImageFile {
   file: File;
   name: string;
   url: string;
+  naturalW?: number;
+  naturalH?: number;
 }
 
 type PageSize = "fit" | "a4" | "letter";
@@ -16,6 +19,8 @@ const PAGE_SIZES = {
   a4: { width: 595.28, height: 841.89 },
   letter: { width: 612, height: 792 },
 };
+
+const PREVIEW_MAX_H = 400;
 
 export function ImagesToPdf() {
   const t = useTranslations("tools.images-to-pdf.ui");
@@ -27,17 +32,25 @@ export function ImagesToPdf() {
   const [resultSize, setResultSize] = useState(0);
   const [error, setError] = useState("");
 
+  const [previewPage, setPreviewPage] = useState(0);
+
   const addImages = useCallback(async (newFiles: FileList | File[]) => {
     setError("");
     const accepted = Array.from(newFiles).filter((f) =>
       f.type === "image/jpeg" || f.type === "image/png" || f.type === "image/webp"
     );
     if (accepted.length === 0) return;
-    const newImages: ImageFile[] = accepted.map((f) => ({
-      file: f,
-      name: f.name,
-      url: URL.createObjectURL(f),
-    }));
+    const newImages: ImageFile[] = [];
+    for (const f of accepted) {
+      const url = URL.createObjectURL(f);
+      const dims = await new Promise<{ w: number; h: number }>((resolve) => {
+        const img = new Image();
+        img.onload = () => resolve({ w: img.naturalWidth, h: img.naturalHeight });
+        img.onerror = () => resolve({ w: 800, h: 600 });
+        img.src = url;
+      });
+      newImages.push({ file: f, name: f.name, url, naturalW: dims.w, naturalH: dims.h });
+    }
     setImages((prev) => [...prev, ...newImages]);
     setResultUrl("");
   }, []);
@@ -169,7 +182,7 @@ export function ImagesToPdf() {
         className="border-2 border-dashed border-muted-foreground/25 rounded-xl p-8 text-center hover:border-primary/50 transition-colors cursor-pointer"
         onClick={() => { const input = document.createElement("input"); input.type = "file"; input.accept = "image/jpeg,image/png,image/webp"; input.multiple = true; input.onchange = () => input.files && addImages(input.files); input.click(); }}
       >
-        <div className="text-4xl mb-3">🖼️</div>
+        <Images size={48} weight="duotone" className="mx-auto mb-3 text-muted-foreground" />
         <p className="text-lg font-medium">{t("dropzone")}</p>
         <p className="text-sm text-muted-foreground mt-1">{t("dropzoneHint")}</p>
       </div>
@@ -180,24 +193,7 @@ export function ImagesToPdf() {
 
       {images.length > 0 && !resultUrl && (
         <div className="space-y-4">
-          <h3 className="font-medium">{t("images")} ({images.length})</h3>
-          <div className="grid grid-cols-2 sm:grid-cols-3 gap-3">
-            {images.map((img, i) => (
-              <div key={`${img.name}-${i}`} className="bg-muted/50 rounded-lg overflow-hidden relative group">
-                <img src={img.url} alt={img.name} className="w-full aspect-[3/4] object-cover" />
-                <div className="absolute top-1 left-1 bg-black/60 text-white text-xs px-1.5 py-0.5 rounded">{i + 1}</div>
-                <div className="absolute top-1 right-1 flex gap-1 opacity-0 group-hover:opacity-100 transition-opacity">
-                  <button onClick={() => moveImage(i, -1)} disabled={i === 0} className="bg-black/60 text-white text-xs p-1 rounded disabled:opacity-30">↑</button>
-                  <button onClick={() => moveImage(i, 1)} disabled={i === images.length - 1} className="bg-black/60 text-white text-xs p-1 rounded disabled:opacity-30">↓</button>
-                  <button onClick={() => removeImage(i)} className="bg-red-600/80 text-white text-xs p-1 rounded">✕</button>
-                </div>
-                <div className="p-2">
-                  <p className="text-xs truncate">{img.name}</p>
-                </div>
-              </div>
-            ))}
-          </div>
-
+          {/* Options row */}
           <div className="grid grid-cols-2 gap-4">
             <div>
               <label className="block text-sm font-medium mb-2">{t("pageSize")}</label>
@@ -223,6 +219,118 @@ export function ImagesToPdf() {
                 <option value="40">{t("marginMedium")}</option>
                 <option value="60">{t("marginLarge")}</option>
               </select>
+            </div>
+          </div>
+
+          {/* Live PDF Preview */}
+          {(() => {
+            const idx = Math.min(previewPage, images.length - 1);
+            const img = images[idx];
+            if (!img) return null;
+            const imgW = img.naturalW || 800;
+            const imgH = img.naturalH || 600;
+            const m = margin;
+
+            let pageW: number, pageH: number, drawW: number, drawH: number, drawX: number, drawY: number;
+            if (pageSize === "fit") {
+              pageW = imgW + m * 2;
+              pageH = imgH + m * 2;
+              drawW = imgW; drawH = imgH; drawX = m; drawY = m;
+            } else {
+              const dim = PAGE_SIZES[pageSize];
+              pageW = dim.width; pageH = dim.height;
+              const availW = pageW - m * 2;
+              const availH = pageH - m * 2;
+              const ratio = Math.min(availW / imgW, availH / imgH);
+              drawW = imgW * ratio; drawH = imgH * ratio;
+              drawX = (pageW - drawW) / 2; drawY = (pageH - drawH) / 2;
+            }
+
+            const scale = Math.min(PREVIEW_MAX_H / pageH, 360 / pageW, 1);
+            const pw = Math.round(pageW * scale);
+            const ph = Math.round(pageH * scale);
+            const dx = Math.round(drawX * scale);
+            const dy = Math.round(drawY * scale);
+            const dw = Math.round(drawW * scale);
+            const dh = Math.round(drawH * scale);
+
+            return (
+              <div className="space-y-3">
+                <div className="flex items-center gap-2 text-sm text-muted-foreground">
+                  <Eye weight="bold" className="h-4 w-4" />
+                  <span>{t("preview")}</span>
+                </div>
+                <div className="flex justify-center rounded-lg bg-muted/30 p-4">
+                  <div className="relative" style={{ width: pw, height: ph }}>
+                    {/* Page background */}
+                    <div className="absolute inset-0 rounded-sm bg-white shadow-lg" />
+                    {/* Image */}
+                    {/* eslint-disable-next-line @next/next/no-img-element */}
+                    <img
+                      src={img.url}
+                      alt={img.name}
+                      className="absolute object-contain"
+                      style={{ left: dx, top: dy, width: dw, height: dh }}
+                    />
+                    {/* Margin indicators */}
+                    {m > 0 && (
+                      <>
+                        <div className="absolute border-b border-dashed border-blue-300/50" style={{ top: Math.round(m * scale), left: 0, right: 0 }} />
+                        <div className="absolute border-t border-dashed border-blue-300/50" style={{ bottom: Math.round(m * scale), left: 0, right: 0 }} />
+                        <div className="absolute border-r border-dashed border-blue-300/50" style={{ left: Math.round(m * scale), top: 0, bottom: 0 }} />
+                        <div className="absolute border-l border-dashed border-blue-300/50" style={{ right: Math.round(m * scale), top: 0, bottom: 0 }} />
+                      </>
+                    )}
+                  </div>
+                </div>
+                {/* Page navigation */}
+                {images.length > 1 && (
+                  <div className="flex items-center justify-center gap-2">
+                    <button
+                      onClick={() => setPreviewPage((p) => Math.max(0, p - 1))}
+                      disabled={idx <= 0}
+                      className="h-8 w-8 flex items-center justify-center rounded-lg bg-muted hover:bg-muted/80 disabled:opacity-30 transition-colors"
+                    >
+                      <CaretLeft className="h-4 w-4" />
+                    </button>
+                    <span className="text-sm tabular-nums min-w-[60px] text-center font-medium">
+                      {idx + 1} / {images.length}
+                    </span>
+                    <button
+                      onClick={() => setPreviewPage((p) => Math.min(images.length - 1, p + 1))}
+                      disabled={idx >= images.length - 1}
+                      className="h-8 w-8 flex items-center justify-center rounded-lg bg-muted hover:bg-muted/80 disabled:opacity-30 transition-colors"
+                    >
+                      <CaretRight className="h-4 w-4" />
+                    </button>
+                  </div>
+                )}
+              </div>
+            );
+          })()}
+
+          {/* Image thumbnails strip */}
+          <div className="space-y-2">
+            <h3 className="text-sm font-medium">{t("images")} ({images.length})</h3>
+            <div className="flex gap-2 overflow-x-auto pb-2">
+              {images.map((img, i) => (
+                <div
+                  key={`${img.name}-${i}`}
+                  onClick={() => setPreviewPage(i)}
+                  className={`relative shrink-0 w-20 h-20 rounded-lg overflow-hidden cursor-pointer border-2 transition-colors group ${
+                    i === Math.min(previewPage, images.length - 1) ? "border-primary" : "border-transparent hover:border-muted-foreground/30"
+                  }`}
+                >
+                  {/* eslint-disable-next-line @next/next/no-img-element */}
+                  <img src={img.url} alt={img.name} className="w-full h-full object-cover" />
+                  <div className="absolute top-0.5 left-0.5 bg-black/60 text-white text-[10px] px-1 rounded">{i + 1}</div>
+                  <div className="absolute top-0.5 right-0.5 flex gap-0.5 opacity-0 group-hover:opacity-100 transition-opacity">
+                    <button onClick={(e) => { e.stopPropagation(); moveImage(i, -1); }} disabled={i === 0} className="bg-black/60 text-white text-[10px] p-0.5 rounded disabled:opacity-30">&#8593;</button>
+                    <button onClick={(e) => { e.stopPropagation(); moveImage(i, 1); }} disabled={i === images.length - 1} className="bg-black/60 text-white text-[10px] p-0.5 rounded disabled:opacity-30">&#8595;</button>
+                    <button onClick={(e) => { e.stopPropagation(); removeImage(i); }} className="bg-red-600/80 text-white text-[10px] p-0.5 rounded">&#10005;</button>
+                  </div>
+                </div>
+              ))}
             </div>
           </div>
 

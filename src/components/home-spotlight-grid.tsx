@@ -1,6 +1,7 @@
 "use client";
 
 import { useRef, useCallback, useEffect, useState } from "react";
+import { motion, useInView } from "motion/react";
 import { Link } from "@/i18n/routing";
 import { cn } from "@/lib/utils";
 import { ToolIcon } from "@/components/tool-icon";
@@ -32,6 +33,7 @@ export function SpotlightGrid({
   variant = "category",
 }: SpotlightGridProps) {
   const gridRef = useRef<HTMLDivElement>(null);
+  const isInView = useInView(gridRef, { once: true, margin: "-40px" });
   const [canHover, setCanHover] = useState(false);
 
   useEffect(() => {
@@ -65,70 +67,79 @@ export function SpotlightGrid({
       onMouseMove={handleMouseMove}
     >
       {cards.map((card, i) => (
-        <Link
+        <motion.div
           key={card.id}
-          href={`/${card.categorySlug}/${card.slug}` as any}
-          data-spotlight-card
-          className="group"
-          style={
-            {
-              "--spotlight-color": `${card.color}14`,
-              animationDelay: `${i * 60}ms`,
-            } as React.CSSProperties
-          }
+          initial={{ opacity: 0, y: 20 }}
+          animate={isInView ? { opacity: 1, y: 0 } : { opacity: 0, y: 20 }}
+          transition={{
+            duration: 0.4,
+            delay: Math.min(i * 0.05, 0.4),
+            ease: "easeOut",
+          }}
         >
-          {/* Gradient border wrapper */}
-          <div
-            className={cn(
-              "rounded-xl p-px bg-gradient-to-b from-white/10 to-transparent",
-              "transition-transform duration-300",
-              "group-hover:-translate-y-1"
-            )}
+          <Link
+            href={`/${card.categorySlug}/${card.slug}` as any}
+            data-spotlight-card
+            className="group block h-full"
+            style={
+              {
+                "--spotlight-color": `${card.color}14`,
+              } as React.CSSProperties
+            }
           >
-            {/* Inner card */}
+            {/* Gradient border wrapper */}
             <div
               className={cn(
-                "relative rounded-[11px] bg-slate-950/80 p-4 h-full",
-                "border border-white/[0.04]",
-                "transition-shadow duration-300",
-                "group-hover:shadow-lg",
-                variant === "popular" ? "flex items-center gap-3" : "flex items-center gap-3"
+                "rounded-xl p-px bg-gradient-to-b from-white/10 to-transparent h-full",
+                "transition-transform duration-300",
+                "group-hover:-translate-y-1"
               )}
-              data-spotlight-card
-              style={
-                {
-                  "--spotlight-color": `${card.color}14`,
-                } as React.CSSProperties
-              }
             >
-              {/* Icon with glow */}
-              <span
+              {/* Inner card */}
+              <div
                 className={cn(
-                  "flex shrink-0 items-center justify-center rounded-lg icon-glow",
-                  variant === "popular" ? "h-10 w-10" : "h-9 w-9",
-                  card.bgClass,
-                  card.textClass
+                  "relative rounded-[11px] bg-slate-950/80 p-4 h-full",
+                  "border border-white/[0.04]",
+                  "transition-shadow duration-300",
+                  "group-hover:shadow-lg",
+                  "flex items-center gap-3"
                 )}
-                style={{ "--glow-color": `${card.color}4D` } as React.CSSProperties}
+                data-spotlight-card
+                style={
+                  {
+                    "--spotlight-color": `${card.color}14`,
+                  } as React.CSSProperties
+                }
               >
-                <ToolIcon
-                  name={card.icon}
-                  className={variant === "popular" ? "h-5 w-5" : "h-4 w-4"}
-                />
-              </span>
+                {/* Icon with glow */}
+                <span
+                  className={cn(
+                    "flex shrink-0 items-center justify-center rounded-lg icon-glow",
+                    variant === "popular" ? "h-10 w-10" : "h-9 w-9",
+                    card.bgClass,
+                    card.textClass
+                  )}
+                  style={{ "--glow-color": `${card.color}4D` } as React.CSSProperties}
+                >
+                  <ToolIcon
+                    name={card.icon}
+                    className={variant === "popular" ? "h-5 w-5" : "h-4 w-4"}
+                  />
+                </span>
 
-              {/* Text */}
-              <div className="min-w-0 relative z-10">
-                <p className="font-medium text-sm truncate text-slate-100">
-                  {card.name}
-                </p>
-                <p className="text-xs text-slate-400 truncate">
-                  {card.description}
-                </p>
+                {/* Text */}
+                <div className="min-w-0 relative z-10">
+                  <p className="font-medium text-sm truncate text-slate-100">
+                    {card.name}
+                  </p>
+                  <p className="text-xs text-slate-400 truncate">
+                    {card.description}
+                  </p>
+                </div>
               </div>
             </div>
-          </div>
-        </Link>
+          </Link>
+        </motion.div>
       ))}
     </div>
   );

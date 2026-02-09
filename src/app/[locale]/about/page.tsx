@@ -1,5 +1,3 @@
-export const runtime = "edge";
-
 import type { Metadata } from "next";
 import { getTranslations } from "next-intl/server";
 import { locales } from "@/i18n/routing";
@@ -11,8 +9,14 @@ import {
   Wrench,
   CurrencyDollar as DollarSign,
 } from "@/components/icons";
+import { CaretRight, House } from "@phosphor-icons/react/dist/ssr";
+import { Link } from "@/i18n/routing";
 
 const BASE_URL = "https://tuttilo.com";
+
+export function generateStaticParams() {
+  return locales.map((locale) => ({ locale }));
+}
 
 export async function generateMetadata({
   params,
@@ -42,6 +46,12 @@ export async function generateMetadata({
       locale,
       type: "website",
       images: [{ url: `${BASE_URL}/og-image.png`, width: 1200, height: 630, alt: "Tuttilo" }],
+    },
+    twitter: {
+      card: "summary_large_image",
+      title: t("title"),
+      description: t("description"),
+      images: [`${BASE_URL}/og-image.png`],
     },
   };
 }
@@ -76,6 +86,16 @@ export default async function AboutPage({
 
   return (
     <div className="flex flex-col">
+      {/* Breadcrumb */}
+      <nav aria-label="Breadcrumb" className="container mx-auto max-w-4xl px-4 pt-8 flex items-center gap-1.5 text-sm text-muted-foreground">
+        <Link href="/" className="flex items-center gap-1 transition-colors hover:text-foreground">
+          <House className="h-3.5 w-3.5" />
+          <span>{tNav("home")}</span>
+        </Link>
+        <CaretRight className="h-3.5 w-3.5" />
+        <span className="font-medium text-foreground">{t("title")}</span>
+      </nav>
+
       {/* Hero */}
       <section className="relative overflow-hidden border-b">
         <div className="absolute inset-0 bg-gradient-to-b from-cyan-500/5 via-transparent to-transparent" />
@@ -150,12 +170,49 @@ export default async function AboutPage({
         </div>
       </section>
 
+      {/* Stats */}
+      <section className="border-t border-b bg-muted/30">
+        <div className="container mx-auto max-w-4xl px-4 py-16">
+          <h2 className="text-2xl font-bold mb-8 text-center">
+            {t("stats.title")}
+          </h2>
+          <div className="grid grid-cols-1 sm:grid-cols-3 gap-6">
+            {(["tools", "languages", "privacy"] as const).map((key) => (
+              <div key={key} className="text-center rounded-xl border bg-background p-6">
+                <div className="text-3xl font-bold text-primary mb-2">
+                  {t(`stats.${key}`)}
+                </div>
+                <p className="text-sm text-muted-foreground">
+                  {t(`stats.${key}Desc`)}
+                </p>
+              </div>
+            ))}
+          </div>
+        </div>
+      </section>
+
       {/* Open & Transparent */}
       <section className="container mx-auto max-w-4xl px-4 py-16">
         <h2 className="text-2xl font-bold mb-4">{t("openSource.title")}</h2>
         <p className="text-muted-foreground leading-relaxed text-lg">
           {t("openSource.content")}
         </p>
+      </section>
+
+      {/* CTA */}
+      <section className="border-t">
+        <div className="container mx-auto max-w-4xl px-4 py-16 text-center">
+          <h2 className="text-2xl font-bold mb-3">{t("cta.title")}</h2>
+          <p className="text-muted-foreground mb-6 max-w-lg mx-auto">
+            {t("cta.description")}
+          </p>
+          <Link
+            href="/"
+            className="inline-flex items-center gap-2 rounded-lg bg-primary px-8 py-3 font-medium text-primary-foreground transition-colors hover:bg-primary/90"
+          >
+            {t("cta.button")}
+          </Link>
+        </div>
       </section>
     </div>
   );

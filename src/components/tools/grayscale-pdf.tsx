@@ -3,6 +3,7 @@
 import { useState, useCallback, useRef } from "react";
 import { useTranslations } from "next-intl";
 import { configurePdfjsWorker } from "@/lib/pdf-utils";
+import { SafariPdfBanner } from "@/components/safari-pdf-banner";
 
 export function GrayscalePdf() {
   const t = useTranslations("tools.grayscale-pdf.ui");
@@ -70,6 +71,7 @@ export function GrayscalePdf() {
 
   return (
     <div className="space-y-6">
+      <SafariPdfBanner />
       {!file ? (
         <div onClick={() => inputRef.current?.click()} onDragOver={(e) => e.preventDefault()} onDrop={(e) => { e.preventDefault(); if (e.dataTransfer.files[0]) process(e.dataTransfer.files[0]); }} className="cursor-pointer rounded-xl border-2 border-dashed border-border p-12 text-center hover:border-primary/50">
           <p className="text-lg font-medium">{t("dropzone")}</p>

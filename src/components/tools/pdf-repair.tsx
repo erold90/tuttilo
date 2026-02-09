@@ -5,6 +5,7 @@ import { useTranslations } from "next-intl";
 import { PDFDocument } from "pdf-lib";
 import { configurePdfjsWorker } from "@/lib/pdf-utils";
 import { Wrench } from "@phosphor-icons/react";
+import { SafariPdfBanner } from "@/components/safari-pdf-banner";
 
 export function PdfRepair() {
   const t = useTranslations("tools.pdf-repair.ui");
@@ -110,6 +111,7 @@ export function PdfRepair() {
 
   return (
     <div className="space-y-6">
+      <SafariPdfBanner />
       {!file ? (
         <div
           onDragOver={(e) => { e.preventDefault(); e.currentTarget.classList.add("border-primary"); }}

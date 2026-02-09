@@ -3,6 +3,10 @@
 import { useState, useCallback, useRef } from "react";
 import { useTranslations } from "next-intl";
 
+function stripScripts(html: string): string {
+  return html.replace(/<script[\s\S]*?<\/script>/gi, "").replace(/on\w+\s*=\s*"[^"]*"/gi, "").replace(/on\w+\s*=\s*'[^']*'/gi, "");
+}
+
 export function HtmlToPdf() {
   const t = useTranslations("tools.html-to-pdf.ui");
   const [htmlInput, setHtmlInput] = useState("");
@@ -20,11 +24,13 @@ export function HtmlToPdf() {
   <tr><td>Item 2</td><td>200</td></tr>
 </table>`;
 
+  const safeHtml = stripScripts(htmlInput);
+
   const previewHtml = `<!DOCTYPE html><html><head><style>
     body{font-family:Arial,sans-serif;padding:20px;color:#222;max-width:100%;overflow-x:hidden}
     table{border-collapse:collapse}th,td{padding:6px 12px}
     img{max-width:100%;height:auto}
-  </style></head><body>${htmlInput}</body></html>`;
+  </style></head><body>${safeHtml}</body></html>`;
 
   const convert = useCallback(async () => {
     if (!htmlInput.trim()) { setError(t("emptyError")); return; }
@@ -33,7 +39,7 @@ export function HtmlToPdf() {
       const { jsPDF } = await import("jspdf");
       const container = document.createElement("div");
       container.style.cssText = "position:absolute;left:-9999px;top:0;width:800px;background:white;color:#222;font-family:Arial,sans-serif;padding:20px";
-      container.innerHTML = htmlInput;
+      container.innerHTML = safeHtml;
       document.body.appendChild(container);
 
       const pdf = new jsPDF({ orientation, unit: "pt", format: "a4" });

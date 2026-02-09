@@ -123,44 +123,55 @@ export function SearchDialog() {
           />
 
           {/* Search panel */}
-          <div className="relative mx-auto mt-[12vh] w-full max-w-[560px] px-4 animate-in fade-in-0 slide-in-from-top-4 duration-300">
-            <div className="overflow-hidden rounded-2xl border border-white/[0.08] bg-[#0c0c0f]/90 backdrop-blur-xl shadow-2xl shadow-cyan-500/[0.05]">
+          <div className="relative mx-auto mt-[12vh] w-full max-w-[600px] px-4 animate-in fade-in-0 slide-in-from-top-4 duration-300">
+            <div className="overflow-hidden rounded-2xl border border-white/[0.08] bg-white/[0.04] backdrop-blur-2xl shadow-[0_8px_40px_rgba(0,0,0,0.4)]">
               {/* Input */}
-              <div className="flex items-center gap-3 px-5 py-4 border-b border-white/[0.06]">
-                <Search className="h-4.5 w-4.5 text-white/30 shrink-0" />
+              <div className="flex items-center gap-3.5 px-5 py-4.5 border-b border-white/[0.06]">
+                <Search className="h-5 w-5 text-white/25 shrink-0" />
                 <input
                   ref={inputRef}
                   value={query}
                   onChange={(e) => setQuery(e.target.value)}
                   onKeyDown={handleKeyDown}
                   placeholder={tSearch("placeholder")}
-                  className="flex-1 bg-transparent text-[15px] text-white placeholder:text-white/25 outline-none"
+                  className="flex-1 bg-transparent text-base text-white placeholder:text-white/25 outline-none"
                   autoComplete="off"
                   spellCheck={false}
                 />
-                <kbd className="hidden sm:inline-flex h-5 items-center rounded-md border border-white/[0.08] bg-white/[0.04] px-1.5 font-mono text-[10px] text-white/20">
+                <kbd className="hidden sm:inline-flex h-6 items-center rounded-md border border-white/[0.06] bg-white/[0.03] px-2 font-mono text-[11px] text-white/20">
                   ESC
                 </kbd>
               </div>
 
               {/* Results */}
-              <div ref={listRef} className="max-h-[360px] overflow-y-auto overscroll-contain py-2 px-2">
+              <div
+                ref={listRef}
+                className="max-h-[400px] overflow-y-auto overscroll-contain py-2 px-2"
+                onWheel={(e) => {
+                  const el = e.currentTarget;
+                  const atTop = el.scrollTop === 0 && e.deltaY < 0;
+                  const atBottom = el.scrollTop + el.clientHeight >= el.scrollHeight - 1 && e.deltaY > 0;
+                  if (!atTop && !atBottom) e.stopPropagation();
+                }}
+              >
                 {Object.keys(grouped).length === 0 ? (
-                  <p className="py-8 text-center text-sm text-white/30">
+                  <p className="py-8 text-center text-sm text-white/25">
                     {tSearch("noResults")}
                   </p>
                 ) : (
                   Object.entries(grouped).map(([category, categoryTools]) => (
                     <div key={category} className="mb-1">
-                      <p
-                        className={cn(
-                          "px-3 py-1.5 text-[10px] font-semibold uppercase tracking-widest",
-                          getCategoryClasses(category as ToolCategoryId).text,
-                          "opacity-60"
-                        )}
-                      >
-                        {(() => { try { return tNav(category); } catch { return category; } })()}
-                      </p>
+                      <div className="flex items-center gap-2 px-3.5 pt-3 pb-1.5">
+                        <span
+                          className={cn(
+                            "h-1.5 w-1.5 rounded-full opacity-60",
+                            getCategoryClasses(category as ToolCategoryId).bg
+                          )}
+                        />
+                        <p className="text-[11px] font-medium uppercase tracking-wider text-white/30">
+                          {(() => { try { return tNav(category); } catch { return category; } })()}
+                        </p>
+                      </div>
                       {categoryTools.map((tool) => {
                         flatIndex++;
                         const idx = flatIndex;
@@ -172,29 +183,33 @@ export function SearchDialog() {
                             onClick={() => handleSelect(tool)}
                             onMouseEnter={() => setSelectedIndex(idx)}
                             className={cn(
-                              "flex w-full items-center gap-3 rounded-xl px-3 py-2.5 text-left transition-all duration-150",
+                              "flex w-full items-center gap-3.5 rounded-xl px-3.5 py-3 text-left transition-all duration-150",
                               isSelected
-                                ? "bg-white/[0.06]"
+                                ? "bg-white/[0.06] shadow-[inset_0_0_0_1px_rgba(255,255,255,0.06)]"
                                 : "hover:bg-white/[0.04]"
                             )}
                           >
                             <span
                               className={cn(
-                                "flex h-8 w-8 items-center justify-center rounded-lg transition-colors",
+                                "flex h-9 w-9 shrink-0 items-center justify-center rounded-lg transition-all duration-150",
                                 isSelected ? "bg-white/[0.08]" : "bg-white/[0.04]",
-                                getCategoryClasses(tool.category).text
+                                getCategoryClasses(tool.category).text,
+                                isSelected ? "opacity-100" : "opacity-60"
                               )}
                             >
-                              <ToolIcon name={tool.icon} className="h-4 w-4" />
+                              <ToolIcon name={tool.icon} className="h-[18px] w-[18px]" />
                             </span>
                             <div className="flex-1 min-w-0">
                               <p className={cn(
                                 "text-sm font-medium truncate transition-colors",
-                                isSelected ? "text-white" : "text-white/70"
+                                isSelected ? "text-white" : "text-white/60"
                               )}>
                                 {tool.name}
                               </p>
-                              <p className="text-xs text-white/25 truncate">
+                              <p className={cn(
+                                "text-xs truncate transition-colors",
+                                isSelected ? "text-white/35" : "text-white/20"
+                              )}>
                                 {tool.description}
                               </p>
                             </div>
@@ -208,8 +223,8 @@ export function SearchDialog() {
 
               {/* Footer hint */}
               <div className="border-t border-white/[0.06] px-5 py-2.5 flex items-center justify-between">
-                <span className="text-[10px] text-white/15">{tSearch("hint")}</span>
-                <kbd className="hidden sm:inline-flex items-center rounded-md border border-white/[0.06] bg-white/[0.03] px-1.5 py-0.5 font-mono text-[10px] text-white/15">
+                <span className="text-[11px] text-white/20">{tSearch("hint")}</span>
+                <kbd className="hidden sm:inline-flex items-center rounded-md border border-white/[0.06] bg-white/[0.03] px-2 py-0.5 font-mono text-[11px] text-white/20">
                   Cmd+K
                 </kbd>
               </div>

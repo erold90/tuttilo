@@ -1,5 +1,3 @@
-export const runtime = "edge";
-
 import type { Metadata } from "next";
 import { getTranslations } from "next-intl/server";
 import { notFound } from "next/navigation";
@@ -16,6 +14,12 @@ import { cn } from "@/lib/utils";
 import { CheckCircle, Question } from "@phosphor-icons/react/dist/ssr";
 
 const BASE_URL = "https://tuttilo.com";
+
+export function generateStaticParams() {
+  return categories.flatMap((cat) =>
+    locales.map((locale) => ({ locale, category: cat.slug }))
+  );
+}
 
 export async function generateMetadata({
   params,
@@ -96,8 +100,8 @@ export default async function CategoryPage({
     "@context": "https://schema.org",
     "@type": "BreadcrumbList",
     itemListElement: [
-      { "@type": "ListItem", position: 1, name: tNav("home"), item: `${BASE_URL}/${locale}` },
-      { "@type": "ListItem", position: 2, name: tNav(cat.id), item: `${BASE_URL}/${locale}/${category}` },
+      { "@type": "ListItem", position: 1, name: tNav("home"), item: `${BASE_URL}/${locale}`, "@id": `${BASE_URL}/${locale}` },
+      { "@type": "ListItem", position: 2, name: tNav(cat.id), item: `${BASE_URL}/${locale}/${category}`, "@id": `${BASE_URL}/${locale}/${category}` },
     ],
   };
 
@@ -119,17 +123,21 @@ export default async function CategoryPage({
     },
   };
 
+  const faqEntries: Array<{ "@type": string; name: string; acceptedAnswer: { "@type": string; text: string } }> = [];
+  for (let n = 1; n <= 3; n++) {
+    try {
+      const q = tCat(`${catKey}.faq.q${n}`);
+      const a = tCat(`${catKey}.faq.a${n}`);
+      if (q && !q.startsWith("categories.") && a && !a.startsWith("categories.")) {
+        faqEntries.push({ "@type": "Question", name: q, acceptedAnswer: { "@type": "Answer", text: a } });
+      }
+    } catch { break; }
+  }
+
   const faqLd = {
     "@context": "https://schema.org",
     "@type": "FAQPage",
-    mainEntity: [1, 2, 3].map((n) => ({
-      "@type": "Question",
-      name: tCat(`${catKey}.faq.q${n}`),
-      acceptedAnswer: {
-        "@type": "Answer",
-        text: tCat(`${catKey}.faq.a${n}`),
-      },
-    })),
+    mainEntity: faqEntries,
   };
 
   return (
@@ -207,8 +215,11 @@ export default async function CategoryPage({
             {comingSoonTools.map((tool) => (
               <div
                 key={tool.id}
-                className="flex flex-col gap-2 rounded-xl border border-border/50 p-5"
+                className="relative flex flex-col gap-2 rounded-xl border border-border/50 p-5"
               >
+                <span className="absolute top-3 right-3 rounded-full bg-muted px-2 py-0.5 text-[10px] font-semibold uppercase tracking-wider text-muted-foreground">
+                  {tCommon("comingSoon")}
+                </span>
                 <div className="flex items-center gap-3">
                   <ToolIcon
                     name={tool.icon}

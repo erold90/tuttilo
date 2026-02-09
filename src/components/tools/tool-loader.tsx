@@ -74,6 +74,11 @@ const lightTools: Record<string, React.ComponentType> = {
   "glassmorphism-generator": dynamic(() => import("./glassmorphism-generator").then(m => m.default), { ssr }),
   "animation-generator": dynamic(() => import("./animation-generator").then(m => m.default), { ssr }),
   "clip-path-generator": dynamic(() => import("./clip-path-generator").then(m => m.default), { ssr }),
+  "flexbox-generator": dynamic(() => import("./flexbox-generator").then(m => m.default), { ssr }),
+  "color-blindness-simulator": dynamic(() => import("./color-blindness-simulator").then(m => m.default), { ssr }),
+  "palette-from-image": dynamic(() => import("./palette-from-image").then(m => m.default), { ssr }),
+  "font-pair-suggester": dynamic(() => import("./font-pair-suggester").then(m => m.default), { ssr }),
+  "css-pattern-generator": dynamic(() => import("./css-pattern-generator").then(m => m.default), { ssr }),
 };
 
 // FFmpeg-based tools — loaded via ffmpeg-tools proxy

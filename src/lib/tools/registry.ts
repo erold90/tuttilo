@@ -212,6 +212,11 @@ export const tools: Tool[] = [
   { id: 'glassmorphism-generator', slug: 'glassmorphism-generator', category: 'color-design', icon: 'Drop', isAvailable: true, isPremium: false, maxFileSize: 0, acceptedFormats: [], processingType: 'none' },
   { id: 'animation-generator', slug: 'animation-generator', category: 'color-design', icon: 'Play', isAvailable: true, isPremium: false, maxFileSize: 0, acceptedFormats: [], processingType: 'none' },
   { id: 'clip-path-generator', slug: 'clip-path-generator', category: 'color-design', icon: 'Polygon', isAvailable: true, isPremium: false, maxFileSize: 0, acceptedFormats: [], processingType: 'none' },
+  { id: 'flexbox-generator', slug: 'flexbox-generator', category: 'color-design', icon: 'Columns', isAvailable: true, isPremium: false, maxFileSize: 0, acceptedFormats: [], processingType: 'none' },
+  { id: 'color-blindness-simulator', slug: 'color-blindness-simulator', category: 'color-design', icon: 'Eye', isAvailable: true, isPremium: false, maxFileSize: 0, acceptedFormats: [], processingType: 'none' },
+  { id: 'palette-from-image', slug: 'palette-from-image', category: 'color-design', icon: 'PaintBrushBroad', isAvailable: true, isPremium: false, maxFileSize: 0, acceptedFormats: [], processingType: 'none' },
+  { id: 'font-pair-suggester', slug: 'font-pair-suggester', category: 'color-design', icon: 'TextT', isAvailable: true, isPremium: false, maxFileSize: 0, acceptedFormats: [], processingType: 'none' },
+  { id: 'css-pattern-generator', slug: 'css-pattern-generator', category: 'color-design', icon: 'GridNine', isAvailable: true, isPremium: false, maxFileSize: 0, acceptedFormats: [], processingType: 'none' },
 
   // ---------- YouTube (9 tools) ----------
   { id: 'youtube-thumbnail', slug: 'thumbnail', category: 'youtube', icon: 'Image', isAvailable: true, isPremium: false, maxFileSize: 0, acceptedFormats: [], processingType: 'client' },

@@ -3,6 +3,7 @@
 import { useState, useCallback } from "react";
 import { useTranslations } from "next-intl";
 import { PdfFillSign } from "./pdf-fill-sign";
+import { PenNib } from "@phosphor-icons/react";
 
 export function PdfFillSignWrapper() {
   const t = useTranslations("tools.pdf-fill-sign.ui");
@@ -40,7 +41,7 @@ export function PdfFillSignWrapper() {
         }}
         className="border-2 border-dashed border-muted-foreground/25 rounded-xl p-8 text-center hover:border-primary/50 transition-colors cursor-pointer"
       >
-        <div className="text-4xl mb-3">📝</div>
+        <PenNib size={48} weight="duotone" className="mx-auto mb-3 text-muted-foreground" />
         <p className="text-lg font-medium">{t("dropzone")}</p>
         <p className="text-sm text-muted-foreground mt-1">{t("dropzoneHint")}</p>
       </div>

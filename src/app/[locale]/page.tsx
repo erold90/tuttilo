@@ -171,7 +171,7 @@ export default function HomePage() {
       <div className="gradient-divider" />
 
       {/* Popular Tools */}
-      <section id="popular-section" className="animate-on-scroll container mx-auto max-w-7xl px-4 py-16">
+      <section id="popular-section" className="container mx-auto max-w-7xl px-4 py-16">
         <h2 className="text-2xl font-bold text-center mb-8">
           {t("popularTools")}
         </h2>
@@ -180,67 +180,55 @@ export default function HomePage() {
 
       <div className="gradient-divider" />
 
-      {/* All Tools by Category */}
+      {/* Browse All Categories */}
       <section className="bg-muted/10">
         <div className="container mx-auto max-w-7xl px-4 py-16">
-          <h2 className="text-2xl font-bold text-center mb-12">
+          <h2 className="text-2xl font-bold text-center mb-3">
             {t("allTools")}
           </h2>
-          <div className="space-y-12">
+          <p className="text-muted-foreground text-center mb-10 text-sm max-w-lg mx-auto">
+            {t("exploreAll")}
+          </p>
+          <div className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-4 gap-3">
             {categories.map((cat) => {
               const catTools = getToolsByCategory(cat.id).filter(
                 (tool) => tool.isAvailable
               );
-              if (catTools.length === 0) return null;
               const classes = getCategoryClasses(cat.id);
 
-              // Serialize category tools for SpotlightGrid
-              const catCards: SpotlightCardData[] = catTools.map((tool) => ({
-                id: tool.id,
-                slug: tool.slug,
-                category: tool.category,
-                categorySlug: cat.slug,
-                icon: tool.icon,
-                name: tTools(`${tool.id}.name`),
-                description: tTools(`${tool.id}.description`),
-                color: getCategoryColor(tool.category),
-                textClass: classes.text,
-                bgClass: classes.bg,
-                borderClass: classes.border,
-                hoverBorderClass: classes.hoverBorder,
-              }));
-
               return (
-                <div
+                <Link
                   key={cat.id}
-                  id={`category-${cat.slug}`}
-                  className="animate-on-scroll"
+                  href={`/${cat.slug}` as Parameters<typeof Link>[0]["href"]}
+                  className={cn(
+                    "group relative flex flex-col items-center gap-2 rounded-xl border p-5 transition-all duration-200",
+                    "hover:scale-[1.02] hover:shadow-lg",
+                    classes.border,
+                    classes.cardHover,
+                    "bg-background/50 hover:bg-background/80"
+                  )}
                 >
-                  <div className="flex items-center gap-3 mb-4">
-                    <span
-                      className={cn(
-                        "flex h-8 w-8 items-center justify-center rounded-lg",
-                        classes.bg,
-                        classes.text
-                      )}
-                    >
-                      <ToolIcon name={cat.icon} className="h-4 w-4" />
+                  <span
+                    className={cn(
+                      "flex h-10 w-10 items-center justify-center rounded-lg",
+                      classes.bg
+                    )}
+                  >
+                    <ToolIcon name={cat.icon} className={cn("h-5 w-5", classes.text)} />
+                  </span>
+                  <h3 className={cn("text-sm font-semibold text-center", classes.text)}>
+                    {tNav(cat.id)}
+                  </h3>
+                  <p className="text-xs text-muted-foreground text-center line-clamp-2 leading-relaxed">
+                    {t(`categoryDesc.${cat.id}`)}
+                  </p>
+                  {catTools.length > 0 && (
+                    <span className="text-[10px] text-muted-foreground/60 font-medium">
+                      {catTools.length} {catTools.length === 1 ? "tool" : "tools"}
                     </span>
-                    <Link
-                      href={`/${cat.slug}` as Parameters<typeof Link>[0]["href"]}
-                      className="group flex items-center gap-2"
-                    >
-                      <h3 className={cn("text-lg font-semibold", classes.text)}>
-                        {tNav(cat.id)}
-                      </h3>
-                      <span className="text-xs text-muted-foreground">
-                        ({catTools.length})
-                      </span>
-                      <ArrowRight className="h-4 w-4 opacity-0 -translate-x-2 group-hover:opacity-100 group-hover:translate-x-0 transition-all text-muted-foreground" />
-                    </Link>
-                  </div>
-                  <SpotlightGrid cards={catCards} columns="3" variant="category" />
-                </div>
+                  )}
+                  <ArrowRight className="absolute top-3 right-3 h-3.5 w-3.5 opacity-0 group-hover:opacity-60 transition-opacity text-muted-foreground" />
+                </Link>
               );
             })}
           </div>

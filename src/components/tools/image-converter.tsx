@@ -12,6 +12,7 @@ import {
 } from "@/lib/image-utils";
 import { useBatchImage } from "@/hooks/use-batch-image";
 import { BatchImageList } from "@/components/tools/batch-image-list";
+import { Image } from "@phosphor-icons/react";
 
 type OutputFormatId = "jpeg" | "png" | "webp" | "avif" | "bmp";
 
@@ -175,7 +176,7 @@ export function ImageConverter() {
             className="hidden"
             onChange={(e) => { if (e.target.files?.length) handleFiles(e.target.files); }}
           />
-          <div className="text-4xl mb-3">🖼️</div>
+          <Image size={48} weight="duotone" className="mx-auto mb-3 text-muted-foreground" />
           <p className="text-sm font-medium">{t("dropzone")}</p>
           <p className="text-xs text-muted-foreground mt-2">
             JPG, PNG, WebP, GIF, BMP, SVG, HEIC, AVIF, TIFF, ICO

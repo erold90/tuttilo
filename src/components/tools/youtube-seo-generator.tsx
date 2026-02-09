@@ -3,23 +3,6 @@
 import { useState, useCallback, useMemo } from "react";
 import { useTranslations } from "next-intl";
 
-const TAG_MODIFIERS = ["tutorial","how to","best","top","guide","tips","tricks","review","2026","for beginners","explained","vs","ultimate","free","easy","step by step","complete","advanced","pro","hack"];
-const HASHTAG_MODIFIERS = ["viral","trending","fyp","shorts","tips","life","daily","motivation","inspo","creator","content","growth","success","mindset","reels"];
-const TITLE_TEMPLATES = [
-  (k: string) => `How to ${k} — Complete Guide (2026)`,
-  (k: string) => `${k}: Everything You Need to Know`,
-  (k: string) => `10 ${k} Tips That Actually Work`,
-  (k: string) => `The Ultimate ${k} Tutorial for Beginners`,
-  (k: string) => `Why ${k} Changes Everything`,
-  (k: string) => `${k} in 2026: What Nobody Tells You`,
-  (k: string) => `I Tried ${k} for 30 Days — Here's What Happened`,
-  (k: string) => `${k} vs Traditional Methods: Which Is Better?`,
-  (k: string) => `Stop Making These ${k} Mistakes!`,
-  (k: string) => `${k} Made Simple — 5 Minute Guide`,
-  (k: string) => `The Truth About ${k} (No One Talks About This)`,
-  (k: string) => `Master ${k} in Just 7 Days`,
-];
-
 type Tab = "tags" | "hashtags" | "titles" | "description";
 
 export function YoutubeSeoGenerator() {
@@ -28,13 +11,17 @@ export function YoutubeSeoGenerator() {
   const [activeTab, setActiveTab] = useState<Tab>("tags");
   const [copied, setCopied] = useState(false);
 
+  // Parse comma-separated modifiers from translations
+  const tagMods = useMemo(() => t("tagModifiers").split(",").map((s) => s.trim()).filter(Boolean), [t]);
+  const hashtagMods = useMemo(() => t("hashtagModifiers").split(",").map((s) => s.trim()).filter(Boolean), [t]);
+
   // Tags generation
   const tags = useMemo(() => {
     const k = keyword.trim();
     if (!k) return [];
     const result: string[] = [k];
     const words = k.toLowerCase().split(/\s+/);
-    TAG_MODIFIERS.forEach((mod) => {
+    tagMods.forEach((mod) => {
       result.push(`${k} ${mod}`);
       result.push(`${mod} ${k}`);
     });
@@ -43,7 +30,7 @@ export function YoutubeSeoGenerator() {
       result.push(words.join("-"));
     }
     return [...new Set(result)].slice(0, 30);
-  }, [keyword]);
+  }, [keyword, tagMods]);
 
   // Hashtags generation
   const hashtags = useMemo(() => {
@@ -51,30 +38,36 @@ export function YoutubeSeoGenerator() {
     if (!k) return [];
     const base = k.toLowerCase().replace(/\s+/g, "");
     const result = [`#${base}`];
-    HASHTAG_MODIFIERS.forEach((mod) => result.push(`#${base}${mod}`));
+    hashtagMods.forEach((mod) => result.push(`#${base}${mod}`));
     const words = k.toLowerCase().split(/\s+/);
     if (words.length > 1) words.forEach((w) => result.push(`#${w}`));
     result.push("#youtube", "#subscribe", "#viral");
     return [...new Set(result)].slice(0, 30);
-  }, [keyword]);
+  }, [keyword, hashtagMods]);
 
-  // Titles
+  // Titles from translation templates
   const titles = useMemo(() => {
     const k = keyword.trim();
     if (!k) return [];
-    return TITLE_TEMPLATES.map((tpl) => tpl(k));
-  }, [keyword]);
+    const result: string[] = [];
+    for (let i = 1; i <= 12; i++) {
+      try {
+        const tpl = t(`titleTemplate${i}`, { keyword: k });
+        if (tpl && !tpl.startsWith("tools.")) result.push(tpl);
+      } catch { break; }
+    }
+    return result;
+  }, [keyword, t]);
 
-  // Description template
+  // Description template from translations
   const description = useMemo(() => {
     const k = keyword.trim() || "your topic";
-    return `In this video, I'll show you everything about ${k}.\n\n` +
-      `\u23f0 Timestamps:\n00:00 - Introduction\n01:00 - What is ${k}\n03:00 - How it works\n05:00 - Tips & tricks\n08:00 - Conclusion\n\n` +
-      `\ud83d\udd17 Links:\n- Website: \n- Instagram: \n- Twitter: \n\n` +
-      `\ud83c\udff7\ufe0f Tags: ${tags.slice(0, 10).join(", ")}\n\n` +
-      `${hashtags.slice(0, 5).join(" ")}\n\n` +
-      `If you found this helpful, please like, subscribe, and hit the notification bell!`;
-  }, [keyword, tags, hashtags]);
+    return t("descriptionTemplate", {
+      keyword: k,
+      tags: tags.slice(0, 10).join(", "),
+      hashtags: hashtags.slice(0, 5).join(" "),
+    });
+  }, [keyword, tags, hashtags, t]);
 
   const copyAll = useCallback((text: string) => {
     navigator.clipboard.writeText(text);

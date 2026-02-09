@@ -5,8 +5,8 @@ import { conversions } from "@/lib/tools/conversions";
 
 const BASE_URL = "https://tuttilo.com";
 
-// Static date to avoid crawl budget waste — update when content changes
-const LAST_UPDATED = new Date("2026-02-07");
+// Build-time date — refreshed on each deploy
+const LAST_UPDATED = new Date();
 
 export default function sitemap(): MetadataRoute.Sitemap {
   const entries: MetadataRoute.Sitemap = [];
