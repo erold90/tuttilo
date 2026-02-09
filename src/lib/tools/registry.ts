@@ -3,7 +3,7 @@
 // All tool definitions, categories, and helper functions
 // ============================================================================
 
-export type ToolCategoryId = 'pdf' | 'image' | 'video' | 'audio' | 'text' | 'developer' | 'youtube'
+export type ToolCategoryId = 'pdf' | 'image' | 'video' | 'audio' | 'text' | 'developer' | 'youtube' | 'calculators' | 'converters' | 'color-design' | 'security' | 'datetime' | 'seo' | 'social' | 'generators' | 'network'
 
 export type ProcessingType = 'client' | 'server' | 'none'
 
@@ -31,14 +31,48 @@ export interface ToolCategory {
 // ============================================================================
 
 export const categories: ToolCategory[] = [
-  { id: 'pdf',       slug: 'pdf',       color: '#EF4444', icon: 'FileText' },
-  { id: 'image',     slug: 'image',     color: '#22C55E', icon: 'Image' },
-  { id: 'video',     slug: 'video',     color: '#8B5CF6', icon: 'Video' },
-  { id: 'audio',     slug: 'audio',     color: '#F97316', icon: 'Music' },
-  { id: 'text',      slug: 'text',      color: '#3B82F6', icon: 'Type' },
-  { id: 'developer', slug: 'developer', color: '#14B8A6', icon: 'Code' },
-  { id: 'youtube',   slug: 'youtube',   color: '#EC4899', icon: 'Youtube' },
+  // --- File Tools ---
+  { id: 'pdf',          slug: 'pdf',          color: '#EF4444', icon: 'FileText' },
+  { id: 'image',        slug: 'image',        color: '#22C55E', icon: 'Image' },
+  { id: 'video',        slug: 'video',        color: '#8B5CF6', icon: 'Video' },
+  { id: 'audio',        slug: 'audio',        color: '#F97316', icon: 'Music' },
+  // --- Content ---
+  { id: 'text',         slug: 'text',         color: '#3B82F6', icon: 'Type' },
+  { id: 'youtube',      slug: 'youtube',      color: '#EC4899', icon: 'Youtube' },
+  // --- Utility ---
+  { id: 'calculators',  slug: 'calculators',  color: '#F59E0B', icon: 'Calculator' },
+  { id: 'converters',   slug: 'converters',   color: '#06B6D4', icon: 'ArrowsClockwise' },
+  { id: 'color-design', slug: 'color-design', color: '#A855F7', icon: 'Palette' },
+  { id: 'datetime',     slug: 'datetime',     color: '#0EA5E9', icon: 'Clock' },
+  { id: 'generators',   slug: 'generators',   color: '#7C3AED', icon: 'Shuffle' },
+  // --- Web & Dev ---
+  { id: 'developer',    slug: 'developer',    color: '#14B8A6', icon: 'Code' },
+  { id: 'seo',          slug: 'seo',          color: '#84CC16', icon: 'MagnifyingGlass' },
+  { id: 'social',       slug: 'social',       color: '#E11D48', icon: 'ShareNetwork' },
+  { id: 'network',      slug: 'network',      color: '#475569', icon: 'Globe' },
+  { id: 'security',     slug: 'security',     color: '#DC2626', icon: 'ShieldCheck' },
 ]
+
+// ============================================================================
+// Category Macro-Groups (for mega menu & mobile nav)
+// ============================================================================
+
+export type CategoryGroupId = 'file' | 'content' | 'utility' | 'webdev'
+
+export interface CategoryGroup {
+  id: CategoryGroupId
+  categories: ToolCategoryId[]
+}
+
+export const categoryGroups: CategoryGroup[] = [
+  { id: 'file',    categories: ['pdf', 'image', 'video', 'audio'] },
+  { id: 'content', categories: ['text', 'youtube'] },
+  { id: 'utility', categories: ['calculators', 'converters', 'color-design', 'datetime', 'generators'] },
+  { id: 'webdev',  categories: ['developer', 'seo', 'social', 'network', 'security'] },
+]
+
+/** Categories shown directly in the top navbar (desktop) */
+export const primaryNavCategories: ToolCategoryId[] = ['pdf', 'image', 'video', 'converters', 'calculators']
 
 // ============================================================================
 // Tools
@@ -82,11 +116,16 @@ export const tools: Tool[] = [
   { id: 'meme-maker', slug: 'meme-maker', category: 'image', icon: 'Laugh', isAvailable: true, isPremium: false, maxFileSize: 50 * 1024 * 1024, acceptedFormats: ['image/jpeg', 'image/png', 'image/webp'], processingType: 'client' },
   { id: 'add-text-to-image', slug: 'add-text', category: 'image', icon: 'Type', isAvailable: true, isPremium: false, maxFileSize: 50 * 1024 * 1024, acceptedFormats: ['image/jpeg', 'image/png', 'image/webp'], processingType: 'client' },
 
-  // ---------- Video (5 tools) ----------
+  // ---------- Video (10 tools) ----------
   { id: 'compress-video', slug: 'compress', category: 'video', icon: 'Minimize2', isAvailable: true, isPremium: false, maxFileSize: 500 * 1024 * 1024, acceptedFormats: ['video/mp4', 'video/webm', 'video/quicktime'], processingType: 'client' },
   { id: 'trim-video', slug: 'trim', category: 'video', icon: 'Scissors', isAvailable: true, isPremium: false, maxFileSize: 500 * 1024 * 1024, acceptedFormats: ['video/mp4', 'video/webm', 'video/quicktime'], processingType: 'client' },
   { id: 'video-to-gif', slug: 'to-gif', category: 'video', icon: 'Film', isAvailable: true, isPremium: false, maxFileSize: 200 * 1024 * 1024, acceptedFormats: ['video/mp4', 'video/webm'], processingType: 'client' },
   { id: 'video-to-mp3', slug: 'to-mp3', category: 'video', icon: 'Music', isAvailable: true, isPremium: false, maxFileSize: 500 * 1024 * 1024, acceptedFormats: ['video/mp4', 'video/webm', 'video/quicktime'], processingType: 'client' },
+  { id: 'video-converter', slug: 'converter', category: 'video', icon: 'ArrowRightLeft', isAvailable: true, isPremium: false, maxFileSize: 500 * 1024 * 1024, acceptedFormats: ['video/mp4', 'video/webm', 'video/quicktime', 'video/x-msvideo', 'video/x-matroska'], processingType: 'client' },
+  { id: 'rotate-video', slug: 'rotate', category: 'video', icon: 'RotateCw', isAvailable: true, isPremium: false, maxFileSize: 500 * 1024 * 1024, acceptedFormats: ['video/mp4', 'video/webm', 'video/quicktime'], processingType: 'client' },
+  { id: 'mute-video', slug: 'mute', category: 'video', icon: 'VolumeX', isAvailable: true, isPremium: false, maxFileSize: 500 * 1024 * 1024, acceptedFormats: ['video/mp4', 'video/webm', 'video/quicktime'], processingType: 'client' },
+  { id: 'change-video-speed', slug: 'speed', category: 'video', icon: 'FastForward', isAvailable: true, isPremium: false, maxFileSize: 500 * 1024 * 1024, acceptedFormats: ['video/mp4', 'video/webm', 'video/quicktime'], processingType: 'client' },
+  { id: 'resize-video', slug: 'resize', category: 'video', icon: 'Maximize2', isAvailable: true, isPremium: false, maxFileSize: 500 * 1024 * 1024, acceptedFormats: ['video/mp4', 'video/webm', 'video/quicktime'], processingType: 'client' },
   { id: 'screen-recorder', slug: 'screen-recorder', category: 'video', icon: 'Monitor', isAvailable: true, isPremium: false, maxFileSize: 0, acceptedFormats: [], processingType: 'none' },
 
   // ---------- Audio (3 tools) ----------
@@ -115,9 +154,9 @@ export const tools: Tool[] = [
   { id: 'json-formatter', slug: 'json-formatter', category: 'developer', icon: 'Braces', isAvailable: true, isPremium: false, maxFileSize: 0, acceptedFormats: [], processingType: 'none' },
   { id: 'base64', slug: 'base64', category: 'developer', icon: 'Binary', isAvailable: true, isPremium: false, maxFileSize: 10 * 1024 * 1024, acceptedFormats: [], processingType: 'none' },
   { id: 'regex-tester', slug: 'regex-tester', category: 'developer', icon: 'Regex', isAvailable: true, isPremium: false, maxFileSize: 0, acceptedFormats: [], processingType: 'none' },
-  { id: 'color-picker', slug: 'color-picker', category: 'developer', icon: 'Palette', isAvailable: true, isPremium: false, maxFileSize: 0, acceptedFormats: [], processingType: 'none' },
+  { id: 'color-picker', slug: 'color-picker', category: 'color-design', icon: 'Palette', isAvailable: true, isPremium: false, maxFileSize: 0, acceptedFormats: [], processingType: 'none' },
   { id: 'qr-code', slug: 'qr-code', category: 'developer', icon: 'QrCode', isAvailable: true, isPremium: false, maxFileSize: 0, acceptedFormats: [], processingType: 'none' },
-  { id: 'hex-rgb', slug: 'hex-rgb', category: 'developer', icon: 'Pipette', isAvailable: true, isPremium: false, maxFileSize: 0, acceptedFormats: [], processingType: 'none' },
+  { id: 'hex-rgb', slug: 'hex-rgb', category: 'color-design', icon: 'Pipette', isAvailable: true, isPremium: false, maxFileSize: 0, acceptedFormats: [], processingType: 'none' },
   { id: 'url-encoder', slug: 'url-encoder', category: 'developer', icon: 'Link', isAvailable: true, isPremium: false, maxFileSize: 0, acceptedFormats: [], processingType: 'none' },
   { id: 'timestamp', slug: 'timestamp', category: 'developer', icon: 'Clock', isAvailable: true, isPremium: false, maxFileSize: 0, acceptedFormats: [], processingType: 'none' },
   { id: 'password-generator', slug: 'password-generator', category: 'developer', icon: 'Key', isAvailable: true, isPremium: false, maxFileSize: 0, acceptedFormats: [], processingType: 'none' },
@@ -126,6 +165,48 @@ export const tools: Tool[] = [
   { id: 'jwt-decoder', slug: 'jwt-decoder', category: 'developer', icon: 'ShieldCheck', isAvailable: true, isPremium: false, maxFileSize: 0, acceptedFormats: [], processingType: 'none' },
   { id: 'css-minifier', slug: 'css-minifier', category: 'developer', icon: 'FileCode', isAvailable: true, isPremium: false, maxFileSize: 0, acceptedFormats: [], processingType: 'none' },
   { id: 'sql-formatter', slug: 'sql-formatter', category: 'developer', icon: 'Database', isAvailable: true, isPremium: false, maxFileSize: 0, acceptedFormats: [], processingType: 'none' },
+
+  // ---------- Calculators (6 tools) ----------
+  { id: 'scientific-calculator', slug: 'scientific', category: 'calculators', icon: 'Calculator', isAvailable: true, isPremium: false, maxFileSize: 0, acceptedFormats: [], processingType: 'none' },
+  { id: 'percentage-calculator', slug: 'percentage', category: 'calculators', icon: 'Percent', isAvailable: true, isPremium: false, maxFileSize: 0, acceptedFormats: [], processingType: 'none' },
+  { id: 'bmi-calculator', slug: 'bmi', category: 'calculators', icon: 'Heartbeat', isAvailable: true, isPremium: false, maxFileSize: 0, acceptedFormats: [], processingType: 'none' },
+  { id: 'loan-calculator', slug: 'loan', category: 'calculators', icon: 'Bank', isAvailable: true, isPremium: false, maxFileSize: 0, acceptedFormats: [], processingType: 'none' },
+  { id: 'mortgage-calculator', slug: 'mortgage', category: 'calculators', icon: 'House', isAvailable: true, isPremium: false, maxFileSize: 0, acceptedFormats: [], processingType: 'none' },
+  { id: 'compound-interest-calculator', slug: 'compound-interest', category: 'calculators', icon: 'TrendUp', isAvailable: true, isPremium: false, maxFileSize: 0, acceptedFormats: [], processingType: 'none' },
+  { id: 'roi-calculator', slug: 'roi', category: 'calculators', icon: 'ChartLine', isAvailable: true, isPremium: false, maxFileSize: 0, acceptedFormats: [], processingType: 'none' },
+  { id: 'tip-calculator', slug: 'tip', category: 'calculators', icon: 'CurrencyDollar', isAvailable: true, isPremium: false, maxFileSize: 0, acceptedFormats: [], processingType: 'none' },
+  { id: 'salary-calculator', slug: 'salary', category: 'calculators', icon: 'Wallet', isAvailable: true, isPremium: false, maxFileSize: 0, acceptedFormats: [], processingType: 'none' },
+  { id: 'vat-calculator', slug: 'vat', category: 'calculators', icon: 'Receipt', isAvailable: true, isPremium: false, maxFileSize: 0, acceptedFormats: [], processingType: 'none' },
+  { id: 'profit-margin-calculator', slug: 'profit-margin', category: 'calculators', icon: 'ChartBar', isAvailable: true, isPremium: false, maxFileSize: 0, acceptedFormats: [], processingType: 'none' },
+  { id: 'discount-calculator', slug: 'discount', category: 'calculators', icon: 'TagSimple', isAvailable: true, isPremium: false, maxFileSize: 0, acceptedFormats: [], processingType: 'none' },
+  { id: 'age-calculator', slug: 'age', category: 'calculators', icon: 'CalendarBlank', isAvailable: true, isPremium: false, maxFileSize: 0, acceptedFormats: [], processingType: 'none' },
+  { id: 'date-diff-calculator', slug: 'date-diff', category: 'calculators', icon: 'CalendarDots', isAvailable: true, isPremium: false, maxFileSize: 0, acceptedFormats: [], processingType: 'none' },
+  { id: 'calorie-calculator', slug: 'calorie', category: 'calculators', icon: 'ForkKnife', isAvailable: true, isPremium: false, maxFileSize: 0, acceptedFormats: [], processingType: 'none' },
+  { id: 'fraction-calculator', slug: 'fraction', category: 'calculators', icon: 'MathOperations', isAvailable: true, isPremium: false, maxFileSize: 0, acceptedFormats: [], processingType: 'none' },
+  { id: 'grade-calculator', slug: 'grade', category: 'calculators', icon: 'GraduationCap', isAvailable: true, isPremium: false, maxFileSize: 0, acceptedFormats: [], processingType: 'none' },
+  { id: 'break-even-calculator', slug: 'break-even', category: 'calculators', icon: 'Scales', isAvailable: true, isPremium: false, maxFileSize: 0, acceptedFormats: [], processingType: 'none' },
+
+  // ---------- Converters ----------
+  { id: 'length-converter', slug: 'length', category: 'converters', icon: 'Ruler', isAvailable: true, isPremium: false, maxFileSize: 0, acceptedFormats: [], processingType: 'none' },
+  { id: 'weight-converter', slug: 'weight', category: 'converters', icon: 'Barbell', isAvailable: true, isPremium: false, maxFileSize: 0, acceptedFormats: [], processingType: 'none' },
+  { id: 'temperature-converter', slug: 'temperature', category: 'converters', icon: 'Thermometer', isAvailable: true, isPremium: false, maxFileSize: 0, acceptedFormats: [], processingType: 'none' },
+  { id: 'data-size-converter', slug: 'data-size', category: 'converters', icon: 'HardDrive', isAvailable: true, isPremium: false, maxFileSize: 0, acceptedFormats: [], processingType: 'none' },
+  { id: 'area-converter', slug: 'area', category: 'converters', icon: 'BoundingBox', isAvailable: true, isPremium: false, maxFileSize: 0, acceptedFormats: [], processingType: 'none' },
+  { id: 'volume-converter', slug: 'volume', category: 'converters', icon: 'Drop', isAvailable: true, isPremium: false, maxFileSize: 0, acceptedFormats: [], processingType: 'none' },
+  { id: 'speed-converter', slug: 'speed', category: 'converters', icon: 'Gauge', isAvailable: true, isPremium: false, maxFileSize: 0, acceptedFormats: [], processingType: 'none' },
+  { id: 'time-converter', slug: 'time', category: 'converters', icon: 'Clock', isAvailable: true, isPremium: false, maxFileSize: 0, acceptedFormats: [], processingType: 'none' },
+  { id: 'fuel-economy-converter', slug: 'fuel-economy', category: 'converters', icon: 'GasPump', isAvailable: true, isPremium: false, maxFileSize: 0, acceptedFormats: [], processingType: 'none' },
+  { id: 'shoe-size-converter', slug: 'shoe-size', category: 'converters', icon: 'Sneaker', isAvailable: true, isPremium: false, maxFileSize: 0, acceptedFormats: [], processingType: 'none' },
+  { id: 'pressure-converter', slug: 'pressure', category: 'converters', icon: 'Gauge', isAvailable: true, isPremium: false, maxFileSize: 0, acceptedFormats: [], processingType: 'none' },
+  { id: 'energy-converter', slug: 'energy', category: 'converters', icon: 'Lightning', isAvailable: true, isPremium: false, maxFileSize: 0, acceptedFormats: [], processingType: 'none' },
+  { id: 'number-base-converter', slug: 'number-base', category: 'converters', icon: 'Binary', isAvailable: true, isPremium: false, maxFileSize: 0, acceptedFormats: [], processingType: 'none' },
+  { id: 'roman-numeral-converter', slug: 'roman-numeral', category: 'converters', icon: 'TextAa', isAvailable: true, isPremium: false, maxFileSize: 0, acceptedFormats: [], processingType: 'none' },
+  { id: 'power-converter', slug: 'power', category: 'converters', icon: 'Lightning', isAvailable: true, isPremium: false, maxFileSize: 0, acceptedFormats: [], processingType: 'none' },
+
+  // ---------- Color & Design ----------
+  { id: 'gradient-generator', slug: 'gradient-generator', category: 'color-design', icon: 'Gradient', isAvailable: true, isPremium: false, maxFileSize: 0, acceptedFormats: [], processingType: 'none' },
+  { id: 'palette-generator', slug: 'palette-generator', category: 'color-design', icon: 'SwatchBook', isAvailable: true, isPremium: false, maxFileSize: 0, acceptedFormats: [], processingType: 'none' },
+  { id: 'contrast-checker', slug: 'contrast-checker', category: 'color-design', icon: 'SunDim', isAvailable: true, isPremium: false, maxFileSize: 0, acceptedFormats: [], processingType: 'none' },
 
   // ---------- YouTube (9 tools) ----------
   { id: 'youtube-thumbnail', slug: 'thumbnail', category: 'youtube', icon: 'Image', isAvailable: true, isPremium: false, maxFileSize: 0, acceptedFormats: [], processingType: 'client' },
@@ -160,8 +241,49 @@ export function getAllCategories(): ToolCategory[] {
 }
 
 export function getPopularTools(): Tool[] {
-  const popularIds = ['pdf-organizer', 'compress-pdf', 'image-converter', 'image-editor', 'video-to-mp3', 'word-counter', 'json-formatter', 'qr-code']
+  const popularIds = [
+    'pdf-organizer', 'compress-pdf', 'pdf-word', 'image-converter',
+    'image-editor', 'video-to-mp3', 'compress-video', 'word-counter',
+    'json-formatter', 'qr-code', 'password-generator', 'audio-converter',
+  ]
   return popularIds.map((id) => tools.find((t) => t.id === id)).filter((t): t is Tool => t !== undefined)
+}
+
+/** Get mega menu groups with their categories and tool counts */
+export function getMegaMenuGroups() {
+  return categoryGroups.map((group) => ({
+    id: group.id,
+    categories: group.categories.map((catId) => {
+      const cat = categories.find((c) => c.id === catId)!
+      const catTools = getToolsByCategory(catId)
+      return {
+        id: catId,
+        slug: cat.slug,
+        icon: cat.icon,
+        color: getCategoryColor(catId),
+        classes: getCategoryClasses(catId),
+        availableCount: catTools.filter((t) => t.isAvailable).length,
+        totalCount: catTools.length,
+      }
+    }),
+  }))
+}
+
+/** Get only primary nav categories (shown in top bar) */
+export function getPrimaryNavItems() {
+  return primaryNavCategories.map((catId) => {
+    const cat = categories.find((c) => c.id === catId)!
+    const classes = getCategoryClasses(catId)
+    return {
+      key: catId,
+      href: `/${cat.slug}`,
+      icon: cat.icon,
+      color: getCategoryColor(catId),
+      hoverText: classes.hoverText,
+      classes,
+      availableTools: getToolsByCategory(catId).filter((t) => t.isAvailable).length,
+    }
+  })
 }
 
 // ============================================================================
@@ -177,20 +299,50 @@ const categoryColorMap: Record<ToolCategoryId, string> = {
   text: '#3B82F6',
   developer: '#14B8A6',
   youtube: '#EC4899',
+  calculators: '#F59E0B',
+  converters: '#06B6D4',
+  'color-design': '#A855F7',
+  security: '#DC2626',
+  datetime: '#0EA5E9',
+  seo: '#84CC16',
+  social: '#E11D48',
+  generators: '#7C3AED',
+  network: '#475569',
 }
 
 export function getCategoryColor(id: ToolCategoryId): string {
   return categoryColorMap[id] ?? '#6366F1'
 }
 
+function buildCategoryClasses(hex: string) {
+  return {
+    text: `text-[${hex}]`,
+    bg: `bg-[${hex}]/10`,
+    border: `border-[${hex}]/20`,
+    hoverBorder: `hover:border-[${hex}]/40`,
+    hoverText: `hover:text-[${hex}]`,
+    card: `bg-[${hex}]/10 text-[${hex}] border-[${hex}]/20`,
+    cardHover: `hover:border-[${hex}]/40`,
+  }
+}
+
 const categoryClassesMap: Record<ToolCategoryId, { text: string; bg: string; border: string; hoverBorder: string; hoverText: string; card: string; cardHover: string }> = {
-  pdf:       { text: 'text-[#EF4444]', bg: 'bg-[#EF4444]/10', border: 'border-[#EF4444]/20', hoverBorder: 'hover:border-[#EF4444]/40', hoverText: 'hover:text-[#EF4444]', card: 'bg-[#EF4444]/10 text-[#EF4444] border-[#EF4444]/20', cardHover: 'hover:border-[#EF4444]/40' },
-  image:     { text: 'text-[#22C55E]', bg: 'bg-[#22C55E]/10', border: 'border-[#22C55E]/20', hoverBorder: 'hover:border-[#22C55E]/40', hoverText: 'hover:text-[#22C55E]', card: 'bg-[#22C55E]/10 text-[#22C55E] border-[#22C55E]/20', cardHover: 'hover:border-[#22C55E]/40' },
-  video:     { text: 'text-[#8B5CF6]', bg: 'bg-[#8B5CF6]/10', border: 'border-[#8B5CF6]/20', hoverBorder: 'hover:border-[#8B5CF6]/40', hoverText: 'hover:text-[#8B5CF6]', card: 'bg-[#8B5CF6]/10 text-[#8B5CF6] border-[#8B5CF6]/20', cardHover: 'hover:border-[#8B5CF6]/40' },
-  audio:     { text: 'text-[#F97316]', bg: 'bg-[#F97316]/10', border: 'border-[#F97316]/20', hoverBorder: 'hover:border-[#F97316]/40', hoverText: 'hover:text-[#F97316]', card: 'bg-[#F97316]/10 text-[#F97316] border-[#F97316]/20', cardHover: 'hover:border-[#F97316]/40' },
-  text:      { text: 'text-[#3B82F6]', bg: 'bg-[#3B82F6]/10', border: 'border-[#3B82F6]/20', hoverBorder: 'hover:border-[#3B82F6]/40', hoverText: 'hover:text-[#3B82F6]', card: 'bg-[#3B82F6]/10 text-[#3B82F6] border-[#3B82F6]/20', cardHover: 'hover:border-[#3B82F6]/40' },
-  developer: { text: 'text-[#14B8A6]', bg: 'bg-[#14B8A6]/10', border: 'border-[#14B8A6]/20', hoverBorder: 'hover:border-[#14B8A6]/40', hoverText: 'hover:text-[#14B8A6]', card: 'bg-[#14B8A6]/10 text-[#14B8A6] border-[#14B8A6]/20', cardHover: 'hover:border-[#14B8A6]/40' },
-  youtube:   { text: 'text-[#EC4899]', bg: 'bg-[#EC4899]/10', border: 'border-[#EC4899]/20', hoverBorder: 'hover:border-[#EC4899]/40', hoverText: 'hover:text-[#EC4899]', card: 'bg-[#EC4899]/10 text-[#EC4899] border-[#EC4899]/20', cardHover: 'hover:border-[#EC4899]/40' },
+  pdf:            buildCategoryClasses('#EF4444'),
+  image:          buildCategoryClasses('#22C55E'),
+  video:          buildCategoryClasses('#8B5CF6'),
+  audio:          buildCategoryClasses('#F97316'),
+  text:           buildCategoryClasses('#3B82F6'),
+  developer:      buildCategoryClasses('#14B8A6'),
+  youtube:        buildCategoryClasses('#EC4899'),
+  calculators:    buildCategoryClasses('#F59E0B'),
+  converters:     buildCategoryClasses('#06B6D4'),
+  'color-design': buildCategoryClasses('#A855F7'),
+  security:       buildCategoryClasses('#DC2626'),
+  datetime:       buildCategoryClasses('#0EA5E9'),
+  seo:            buildCategoryClasses('#84CC16'),
+  social:         buildCategoryClasses('#E11D48'),
+  generators:     buildCategoryClasses('#7C3AED'),
+  network:        buildCategoryClasses('#475569'),
 }
 
 const defaultClasses = { text: 'text-[#6366F1]', bg: 'bg-[#6366F1]/10', border: 'border-[#6366F1]/20', hoverBorder: 'hover:border-[#6366F1]/40', hoverText: 'hover:text-[#6366F1]', card: 'bg-[#6366F1]/10 text-[#6366F1] border-[#6366F1]/20', cardHover: 'hover:border-[#6366F1]/40' }

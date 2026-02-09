@@ -1,5 +1,3 @@
-export const runtime = "edge";
-
 import type { Metadata } from "next";
 import { getTranslations } from "next-intl/server";
 import { notFound } from "next/navigation";
@@ -44,7 +42,37 @@ const implementedToolIds = new Set([
   "youtube-money-calculator", "youtube-embed-generator", "youtube-seo-generator",
   "youtube-channel-name-generator", "youtube-watch-time-calculator",
   "youtube-video-analyzer", "youtube-channel-analyzer",
+  // Calculators
+  "scientific-calculator", "percentage-calculator", "bmi-calculator",
+  "loan-calculator", "mortgage-calculator", "compound-interest-calculator",
+  "roi-calculator", "tip-calculator", "salary-calculator",
+  "vat-calculator", "profit-margin-calculator", "discount-calculator",
+  "age-calculator", "date-diff-calculator", "calorie-calculator",
+  "fraction-calculator", "grade-calculator", "break-even-calculator",
+  // Converters
+  "length-converter", "weight-converter", "temperature-converter",
+  "data-size-converter", "area-converter",
+  "volume-converter", "speed-converter", "time-converter",
+  "fuel-economy-converter", "shoe-size-converter",
+  "pressure-converter", "energy-converter", "number-base-converter",
+  "roman-numeral-converter", "power-converter",
+  // Color & Design
+  "gradient-generator", "palette-generator", "contrast-checker",
 ]);
+
+export function generateStaticParams() {
+  return tools
+    .filter((t) => t.isAvailable)
+    .flatMap((tool) => {
+      const cat = categories.find((c) => c.id === tool.category);
+      if (!cat) return [];
+      return locales.map((locale) => ({
+        locale,
+        category: cat.slug,
+        tool: tool.slug,
+      }));
+    });
+}
 
 export async function generateMetadata({
   params,
@@ -127,7 +155,7 @@ export default async function ToolPage({
   const toolData = getToolBySlug(category as ToolCategoryId, toolSlug);
   if (!toolData) notFound();
 
-  if (!implementedToolIds.has(toolData.id)) notFound();
+  if (!toolData.isAvailable || !implementedToolIds.has(toolData.id)) notFound();
 
   // Structured data
   const t = await getTranslations({ locale, namespace: "tools" });
@@ -142,9 +170,9 @@ export default async function ToolPage({
     "@context": "https://schema.org",
     "@type": "BreadcrumbList",
     itemListElement: [
-      { "@type": "ListItem", position: 1, name: tNav("home"), item: `${BASE_URL}/${locale}` },
-      { "@type": "ListItem", position: 2, name: tNav(validCategory.id), item: `${BASE_URL}/${locale}/${category}` },
-      { "@type": "ListItem", position: 3, name: toolName, item: toolUrl },
+      { "@type": "ListItem", position: 1, name: tNav("home"), item: `${BASE_URL}/${locale}`, "@id": `${BASE_URL}/${locale}` },
+      { "@type": "ListItem", position: 2, name: tNav(validCategory.id), item: `${BASE_URL}/${locale}/${category}`, "@id": `${BASE_URL}/${locale}/${category}` },
+      { "@type": "ListItem", position: 3, name: toolName, item: toolUrl, "@id": toolUrl },
     ],
   };
 
@@ -158,6 +186,7 @@ export default async function ToolPage({
     operatingSystem: "Any",
     offers: { "@type": "Offer", price: "0", priceCurrency: "USD" },
     author: { "@type": "Organization", name: "Tuttilo", url: BASE_URL },
+    featureList: ["Free to use", "No registration required", "Browser-based processing", "Privacy-first — no server uploads"],
   };
 
   const faqEntries: Array<{ "@type": string; name: string; acceptedAnswer: { "@type": string; text: string } }> = [];
