@@ -7,7 +7,7 @@ Espansione Tuttilo da 82 a 250+ tool. Attualmente nella Fase 1 (tool HIGH priori
 - [x] 0.1-0.7 Fase 0 Infrastruttura COMPLETATA
 - [x] 1.1a Calculators batch 1: scientific, percentage, bmi, loan, mortgage, compound-interest (DONE + deployed)
 - [x] 1.1b Calculators batch 2: roi, tip, salary, vat, profit-margin, discount (DONE + deployed f7883aed)
-- [~] 1.1c Calculators batch 3: age, date-diff, calorie, fraction, grade, break-even (componenti + EN + registry + IT + DE + KO + JA + FR + PT + ES DONE, build pending)
+- [x] 1.1c Calculators batch 3: age, date-diff, calorie, fraction, grade, break-even (FULLY TRANSLATED IN 8 LANGUAGES + KO commit 28bc0d1, 2026-02-09)
 - [ ] 1.2a Converters batch 1: length, weight, temperature, data-size, area
 - [ ] 1.2b Converters batch 2: volume, speed, time, fuel-economy, shoe-size
 - [ ] 1.2c Converters batch 3: pressure, energy, number-base, roman-numeral, power
