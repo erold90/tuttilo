@@ -26,6 +26,7 @@ import {
   Square, Play, Polygon,
   Columns, Eye, PaintBrushBroad, TextT, GridNine,
   LockSimple, CreditCard, CheckCircle, Globe,
+  ListChecks, SortAscending,
 } from "@phosphor-icons/react";
 
 interface ToolIconProps {
@@ -148,6 +149,8 @@ const iconMap: Record<string, Icon> = {
   CreditCard,
   CheckCircle,
   Globe,
+  ListChecks,
+  SortAscending,
 };
 
 export function ToolIcon({ name, ...props }: ToolIconProps) {

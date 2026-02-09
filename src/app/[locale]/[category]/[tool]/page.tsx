@@ -74,6 +74,9 @@ const implementedToolIds = new Set([
   "javascript-minifier", "html-minifier", "json-diff", "cron-parser",
   "chmod-calculator", "http-status-codes", "json-to-typescript",
   "text-to-binary", "url-parser", "color-converter",
+  // Text Extra (Phase 2.2)
+  "slug-generator", "word-frequency", "text-reverser", "duplicate-remover",
+  "text-sorter", "unicode-lookup", "invisible-char-detector", "random-string-generator",
 ]);
 
 export function generateStaticParams() {

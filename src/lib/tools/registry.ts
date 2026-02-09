@@ -191,6 +191,15 @@ export const tools: Tool[] = [
   { id: 'text-to-binary', slug: 'text-to-binary', category: 'developer', icon: 'Binary', isAvailable: true, isPremium: false, maxFileSize: 0, acceptedFormats: [], processingType: 'none' },
   { id: 'url-parser', slug: 'url-parser', category: 'developer', icon: 'Link', isAvailable: true, isPremium: false, maxFileSize: 0, acceptedFormats: [], processingType: 'none' },
   { id: 'color-converter', slug: 'color-converter', category: 'color-design', icon: 'Palette', isAvailable: true, isPremium: false, maxFileSize: 0, acceptedFormats: [], processingType: 'none' },
+  // Text Extra (Phase 2.2)
+  { id: 'slug-generator', slug: 'slug-generator', category: 'text', icon: 'Link', isAvailable: true, isPremium: false, maxFileSize: 0, acceptedFormats: [], processingType: 'none' },
+  { id: 'word-frequency', slug: 'word-frequency', category: 'text', icon: 'ChartBar', isAvailable: true, isPremium: false, maxFileSize: 0, acceptedFormats: [], processingType: 'none' },
+  { id: 'text-reverser', slug: 'text-reverser', category: 'text', icon: 'ArrowsLeftRight', isAvailable: true, isPremium: false, maxFileSize: 0, acceptedFormats: [], processingType: 'none' },
+  { id: 'duplicate-remover', slug: 'duplicate-remover', category: 'text', icon: 'ListChecks', isAvailable: true, isPremium: false, maxFileSize: 0, acceptedFormats: [], processingType: 'none' },
+  { id: 'text-sorter', slug: 'text-sorter', category: 'text', icon: 'SortAscending', isAvailable: true, isPremium: false, maxFileSize: 0, acceptedFormats: [], processingType: 'none' },
+  { id: 'unicode-lookup', slug: 'unicode-lookup', category: 'text', icon: 'MagnifyingGlass', isAvailable: true, isPremium: false, maxFileSize: 0, acceptedFormats: [], processingType: 'none' },
+  { id: 'invisible-char-detector', slug: 'invisible-char-detector', category: 'text', icon: 'Eye', isAvailable: true, isPremium: false, maxFileSize: 0, acceptedFormats: [], processingType: 'none' },
+  { id: 'random-string-generator', slug: 'random-string-generator', category: 'text', icon: 'Shuffle', isAvailable: true, isPremium: false, maxFileSize: 0, acceptedFormats: [], processingType: 'none' },
 
   // ---------- Calculators (6 tools) ----------
   { id: 'scientific-calculator', slug: 'scientific', category: 'calculators', icon: 'Calculator', isAvailable: true, isPremium: false, maxFileSize: 0, acceptedFormats: [], processingType: 'none' },

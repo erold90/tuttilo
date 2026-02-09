@@ -108,6 +108,15 @@ const lightTools: Record<string, React.ComponentType> = {
   "text-to-binary": dynamic(() => import("./text-to-binary").then(m => m.default), { ssr }),
   "url-parser": dynamic(() => import("./url-parser").then(m => m.default), { ssr }),
   "color-converter": dynamic(() => import("./color-converter").then(m => m.default), { ssr }),
+  // Text Extra (Phase 2.2)
+  "slug-generator": dynamic(() => import("./slug-generator").then(m => m.default), { ssr }),
+  "word-frequency": dynamic(() => import("./word-frequency").then(m => m.default), { ssr }),
+  "text-reverser": dynamic(() => import("./text-reverser").then(m => m.default), { ssr }),
+  "duplicate-remover": dynamic(() => import("./duplicate-remover").then(m => m.default), { ssr }),
+  "text-sorter": dynamic(() => import("./text-sorter").then(m => m.default), { ssr }),
+  "unicode-lookup": dynamic(() => import("./unicode-lookup").then(m => m.default), { ssr }),
+  "invisible-char-detector": dynamic(() => import("./invisible-char-detector").then(m => m.default), { ssr }),
+  "random-string-generator": dynamic(() => import("./random-string-generator").then(m => m.default), { ssr }),
 };
 
 // FFmpeg-based tools — loaded via ffmpeg-tools proxy
