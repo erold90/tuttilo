@@ -83,6 +83,9 @@ const implementedToolIds = new Set([
   // DateTime (Phase 2.4)
   "timezone-converter", "countdown-timer", "stopwatch", "date-calculator",
   "week-number", "world-clock", "pomodoro-timer", "epoch-converter",
+  // Social Media (Phase 2.5)
+  "twitter-card-preview", "instagram-font-generator", "hashtag-generator",
+  "social-image-resizer", "emoji-picker", "bio-generator",
 ]);
 
 export function generateStaticParams() {

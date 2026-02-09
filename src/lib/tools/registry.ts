@@ -221,6 +221,14 @@ export const tools: Tool[] = [
   { id: 'pomodoro-timer', slug: 'pomodoro-timer', category: 'datetime', icon: 'Timer', isAvailable: true, isPremium: false, maxFileSize: 0, acceptedFormats: [], processingType: 'none' },
   { id: 'epoch-converter', slug: 'epoch-converter', category: 'datetime', icon: 'Clock', isAvailable: true, isPremium: false, maxFileSize: 0, acceptedFormats: [], processingType: 'none' },
 
+  // ---------- Social Media (6 tools) ----------
+  { id: 'twitter-card-preview', slug: 'twitter-card-preview', category: 'social', icon: 'ChatText', isAvailable: true, isPremium: false, maxFileSize: 0, acceptedFormats: [], processingType: 'none' },
+  { id: 'instagram-font-generator', slug: 'instagram-font-generator', category: 'social', icon: 'TextT', isAvailable: true, isPremium: false, maxFileSize: 0, acceptedFormats: [], processingType: 'none' },
+  { id: 'hashtag-generator', slug: 'hashtag-generator', category: 'social', icon: 'Hash', isAvailable: true, isPremium: false, maxFileSize: 0, acceptedFormats: [], processingType: 'none' },
+  { id: 'social-image-resizer', slug: 'social-image-resizer', category: 'social', icon: 'ImageSquare', isAvailable: true, isPremium: false, maxFileSize: 0, acceptedFormats: [], processingType: 'none' },
+  { id: 'emoji-picker', slug: 'emoji-picker', category: 'social', icon: 'Smiley', isAvailable: true, isPremium: false, maxFileSize: 0, acceptedFormats: [], processingType: 'none' },
+  { id: 'bio-generator', slug: 'bio-generator', category: 'social', icon: 'ShareNetwork', isAvailable: true, isPremium: false, maxFileSize: 0, acceptedFormats: [], processingType: 'none' },
+
   // ---------- Calculators (6 tools) ----------
   { id: 'scientific-calculator', slug: 'scientific', category: 'calculators', icon: 'Calculator', isAvailable: true, isPremium: false, maxFileSize: 0, acceptedFormats: [], processingType: 'none' },
   { id: 'percentage-calculator', slug: 'percentage', category: 'calculators', icon: 'Percent', isAvailable: true, isPremium: false, maxFileSize: 0, acceptedFormats: [], processingType: 'none' },

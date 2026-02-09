@@ -135,6 +135,13 @@ const lightTools: Record<string, React.ComponentType> = {
   "world-clock": dynamic(() => import("./world-clock").then(m => m.default), { ssr }),
   "pomodoro-timer": dynamic(() => import("./pomodoro-timer").then(m => m.default), { ssr }),
   "epoch-converter": dynamic(() => import("./epoch-converter").then(m => m.default), { ssr }),
+  // Social Media
+  "twitter-card-preview": dynamic(() => import("./twitter-card-preview").then(m => m.default), { ssr }),
+  "instagram-font-generator": dynamic(() => import("./instagram-font-generator").then(m => m.default), { ssr }),
+  "hashtag-generator": dynamic(() => import("./hashtag-generator").then(m => m.default), { ssr }),
+  "social-image-resizer": dynamic(() => import("./social-image-resizer").then(m => m.default), { ssr }),
+  "emoji-picker": dynamic(() => import("./emoji-picker").then(m => m.default), { ssr }),
+  "bio-generator": dynamic(() => import("./bio-generator").then(m => m.default), { ssr }),
 };
 
 // FFmpeg-based tools — loaded via ffmpeg-tools proxy
