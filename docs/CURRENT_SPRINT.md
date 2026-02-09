@@ -7,7 +7,7 @@ Espandere Tuttilo da 82 a 250+ tool con nuova navigazione, 16 categorie, mega me
 
 ## Stato Globale
 - **Fase 0**: COMPLETATA (0.5/0.6 deferred)
-- **Fase 1**: IN CORSO (1.1a-1.4b DONE, 136 tool attivi)
+- **Fase 1**: COMPLETATA (1.1a-1.5b DONE, 152 tool attivi)
 - **Fase 2**: Non iniziata
 - **Fase 3**: Non iniziata
 
@@ -40,8 +40,8 @@ Espandere Tuttilo da 82 a 250+ tool con nuova navigazione, 16 categorie, mega me
 | 1.3c | Color/CSS | flexbox-gen, color-blindness, palette-extract, font-pair, pattern | DONE ✓ (deployed 6aed16e8) |
 | 1.4a | Security | password-gen, password-strength, md5, sha256, uuid, jwt, base64 | DONE ✓ (5 moved + 1 new) |
 | 1.4b | Security | hmac, aes-encrypt, crc32, credit-card, totp, rsa-key, pbkdf2 | DONE ✓ (deployed 807d3244) |
-| 1.5a | Data Conv | csv-json, json-csv, xml-json, json-xml, yaml-json, json-yaml | TODO |
-| 1.5b | Data Conv | html-entity, json-path, csv-editor, table-gen, sql-csv, yaml-valid | TODO |
+| 1.5a | Data Conv | xml-json-converter, yaml-json-converter (csv-json already existed) | DONE ✓ |
+| 1.5b | Data Conv | html-entity-encoder, json-path-evaluator, csv-editor, markdown-table-generator, sql-to-csv, yaml-validator | DONE ✓ (deployed 4b269175) |
 
 ## FASE 2 — Tool MEDIUM Priority (64 tool)
 
