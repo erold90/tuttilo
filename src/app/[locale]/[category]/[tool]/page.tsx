@@ -66,6 +66,10 @@ const implementedToolIds = new Set([
   "password-strength-checker", "hmac-generator", "aes-encrypt-decrypt",
   "crc32-checker", "credit-card-validator", "totp-generator",
   "rsa-key-generator", "pbkdf2-generator",
+  // Data conversion
+  "xml-json-converter", "yaml-json-converter", "html-entity-encoder",
+  "json-path-evaluator", "csv-editor", "markdown-table-generator",
+  "sql-to-csv", "yaml-validator",
 ]);
 
 export function generateStaticParams() {

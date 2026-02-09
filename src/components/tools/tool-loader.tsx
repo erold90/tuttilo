@@ -88,6 +88,15 @@ const lightTools: Record<string, React.ComponentType> = {
   "totp-generator": dynamic(() => import("./totp-generator").then(m => m.default), { ssr }),
   "rsa-key-generator": dynamic(() => import("./rsa-key-generator").then(m => m.default), { ssr }),
   "pbkdf2-generator": dynamic(() => import("./pbkdf2-generator").then(m => m.default), { ssr }),
+  // Data conversion tools (light — no deps)
+  "xml-json-converter": dynamic(() => import("./xml-json-converter").then(m => m.default), { ssr }),
+  "yaml-json-converter": dynamic(() => import("./yaml-json-converter").then(m => m.default), { ssr }),
+  "html-entity-encoder": dynamic(() => import("./html-entity-encoder").then(m => m.default), { ssr }),
+  "json-path-evaluator": dynamic(() => import("./json-path-evaluator").then(m => m.default), { ssr }),
+  "csv-editor": dynamic(() => import("./csv-editor").then(m => m.default), { ssr }),
+  "markdown-table-generator": dynamic(() => import("./markdown-table-generator").then(m => m.default), { ssr }),
+  "sql-to-csv": dynamic(() => import("./sql-to-csv").then(m => m.default), { ssr }),
+  "yaml-validator": dynamic(() => import("./yaml-validator").then(m => m.default), { ssr }),
 };
 
 // FFmpeg-based tools — loaded via ffmpeg-tools proxy

@@ -25,7 +25,7 @@ import {
   Gradient, Swatches, SunDim,
   Square, Play, Polygon,
   Columns, Eye, PaintBrushBroad, TextT, GridNine,
-  LockSimple, CreditCard,
+  LockSimple, CreditCard, CheckCircle,
 } from "@phosphor-icons/react";
 
 interface ToolIconProps {
@@ -146,6 +146,7 @@ const iconMap: Record<string, Icon> = {
   GridNine,
   LockSimple,
   CreditCard,
+  CheckCircle,
 };
 
 export function ToolIcon({ name, ...props }: ToolIconProps) {

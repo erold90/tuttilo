@@ -173,6 +173,14 @@ export const tools: Tool[] = [
   { id: 'pbkdf2-generator', slug: 'pbkdf2-generator', category: 'security', icon: 'LockSimple', isAvailable: true, isPremium: false, maxFileSize: 0, acceptedFormats: [], processingType: 'none' },
   { id: 'css-minifier', slug: 'css-minifier', category: 'developer', icon: 'FileCode', isAvailable: true, isPremium: false, maxFileSize: 0, acceptedFormats: [], processingType: 'none' },
   { id: 'sql-formatter', slug: 'sql-formatter', category: 'developer', icon: 'Database', isAvailable: true, isPremium: false, maxFileSize: 0, acceptedFormats: [], processingType: 'none' },
+  { id: 'xml-json-converter', slug: 'xml-json', category: 'developer', icon: 'FileCode', isAvailable: true, isPremium: false, maxFileSize: 0, acceptedFormats: [], processingType: 'none' },
+  { id: 'yaml-json-converter', slug: 'yaml-json', category: 'developer', icon: 'FileCode', isAvailable: true, isPremium: false, maxFileSize: 0, acceptedFormats: [], processingType: 'none' },
+  { id: 'html-entity-encoder', slug: 'html-entity', category: 'developer', icon: 'Code', isAvailable: true, isPremium: false, maxFileSize: 0, acceptedFormats: [], processingType: 'none' },
+  { id: 'json-path-evaluator', slug: 'json-path', category: 'developer', icon: 'Braces', isAvailable: true, isPremium: false, maxFileSize: 0, acceptedFormats: [], processingType: 'none' },
+  { id: 'csv-editor', slug: 'csv-editor', category: 'developer', icon: 'Table', isAvailable: true, isPremium: false, maxFileSize: 0, acceptedFormats: [], processingType: 'none' },
+  { id: 'markdown-table-generator', slug: 'markdown-table', category: 'developer', icon: 'Table', isAvailable: true, isPremium: false, maxFileSize: 0, acceptedFormats: [], processingType: 'none' },
+  { id: 'sql-to-csv', slug: 'sql-to-csv', category: 'developer', icon: 'Database', isAvailable: true, isPremium: false, maxFileSize: 0, acceptedFormats: [], processingType: 'none' },
+  { id: 'yaml-validator', slug: 'yaml-validator', category: 'developer', icon: 'CheckCircle', isAvailable: true, isPremium: false, maxFileSize: 0, acceptedFormats: [], processingType: 'none' },
 
   // ---------- Calculators (6 tools) ----------
   { id: 'scientific-calculator', slug: 'scientific', category: 'calculators', icon: 'Calculator', isAvailable: true, isPremium: false, maxFileSize: 0, acceptedFormats: [], processingType: 'none' },
