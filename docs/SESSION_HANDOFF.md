@@ -14,25 +14,25 @@ Espansione Tuttilo da 82 a 250+ tool. Fase 1 in corso rapido.
 - [x] 1.3a Color/CSS: color-picker, gradient-generator, palette-generator, contrast-checker, hex-rgb
 - [x] 1.3b Color/CSS: box-shadow-generator, border-radius-generator, glassmorphism-generator, animation-generator, clip-path-generator
 - [x] 1.3c Color/CSS: flexbox-generator, color-blindness-simulator, palette-from-image, font-pair-suggester, css-pattern-generator (deployed 6aed16e8)
-- [ ] 1.4a Security: password-gen, password-strength, md5, sha256, uuid, jwt, base64
-- [ ] 1.4b Security: bcrypt, hmac, aes-encrypt, crc32, credit-card, totp, pgp
+- [x] 1.4a Security: moved password-gen, hash-gen, uuid-gen, jwt-decoder, base64 to security + new password-strength-checker
+- [x] 1.4b Security: hmac-generator, aes-encrypt-decrypt, crc32-checker, credit-card-validator, totp-generator, rsa-key-generator, pbkdf2-generator (deployed 807d3244)
 - [ ] 1.5a Data Conv: csv-json, json-csv, xml-json, json-xml, yaml-json, json-yaml
 - [ ] 1.5b Data Conv: html-entity, json-path, csv-editor, table-gen, sql-csv, yaml-valid
 
-## TOOL ATTIVI: 128
+## TOOL ATTIVI: 136
 
 ## ULTIMO COMPLETATO
-- **2026-02-09**: Phase 1.3c — 5 Color/CSS tools completati e deployati (6aed16e8)
-  - flexbox-generator, color-blindness-simulator, palette-from-image, font-pair-suggester, css-pattern-generator
-  - Componenti + registry + tool-loader + page.tsx + icone + EN + 7 lingue (8 totali)
+- **2026-02-09**: Phase 1.4a+1.4b — 8 new security tools + 5 moved from developer
+  - New: password-strength-checker, hmac-generator, aes-encrypt-decrypt, crc32-checker, credit-card-validator, totp-generator, rsa-key-generator, pbkdf2-generator
+  - Moved: password-generator, hash-generator, uuid-generator, jwt-decoder, base64
+  - All 8 languages translated, deployed 807d3244
 
 ## PROSSIMO PASSO
-Phase 1.4a: Security tools (7 tool)
-- password-gen, password-strength, md5, sha256, uuid, jwt, base64
-- Nota: password-generator, hash-generator, uuid-generator, jwt-decoder, base64 ESISTONO GIA' come tool attivi
-- Serve: password-strength, md5 (standalone), sha256 (standalone) — valutare se servono come tool separati o se hash-generator li copre
+Phase 1.5a: Data Conversion tools (6 tool)
+- csv-json, json-csv, xml-json, json-xml, yaml-json, json-yaml
+- Tutti client-side, no deps esterne
 
 ## DECISIONI ARCHITETTURALI
-- Tutti i calc/converter/color-design: "light" import diretto (no proxy)
+- Tutti i calc/converter/color-design/security: "light" import diretto (no proxy)
 - Pattern: componente + registry + tool-loader + page.tsx + icone + EN + 7 lingue parallele
 - Subagent traduzioni: SEMPRE "DO NOT run npm build/tsc" per evitare corruzione lock file

@@ -7,7 +7,7 @@ Espandere Tuttilo da 82 a 250+ tool con nuova navigazione, 16 categorie, mega me
 
 ## Stato Globale
 - **Fase 0**: COMPLETATA (0.5/0.6 deferred)
-- **Fase 1**: IN CORSO (1.1a-1.3c DONE, 128 tool attivi)
+- **Fase 1**: IN CORSO (1.1a-1.4b DONE, 136 tool attivi)
 - **Fase 2**: Non iniziata
 - **Fase 3**: Non iniziata
 
@@ -38,8 +38,8 @@ Espandere Tuttilo da 82 a 250+ tool con nuova navigazione, 16 categorie, mega me
 | 1.3a | Color/CSS | color-picker, gradient-generator, palette-generator, contrast-checker, hex-rgb | DONE ✓ (deployed 6e33f644) |
 | 1.3b | Color/CSS | box-shadow-generator, border-radius-generator, glassmorphism-generator, animation-generator, clip-path-generator | DONE ✓ (deployed d025815b) |
 | 1.3c | Color/CSS | flexbox-gen, color-blindness, palette-extract, font-pair, pattern | DONE ✓ (deployed 6aed16e8) |
-| 1.4a | Security | password-gen, password-strength, md5, sha256, uuid, jwt, base64 | TODO |
-| 1.4b | Security | bcrypt, hmac, aes-encrypt, crc32, credit-card, totp, pgp | TODO |
+| 1.4a | Security | password-gen, password-strength, md5, sha256, uuid, jwt, base64 | DONE ✓ (5 moved + 1 new) |
+| 1.4b | Security | hmac, aes-encrypt, crc32, credit-card, totp, rsa-key, pbkdf2 | DONE ✓ (deployed 807d3244) |
 | 1.5a | Data Conv | csv-json, json-csv, xml-json, json-xml, yaml-json, json-yaml | TODO |
 | 1.5b | Data Conv | html-entity, json-path, csv-editor, table-gen, sql-csv, yaml-valid | TODO |
 
