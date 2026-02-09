@@ -79,6 +79,15 @@ const lightTools: Record<string, React.ComponentType> = {
   "palette-from-image": dynamic(() => import("./palette-from-image").then(m => m.default), { ssr }),
   "font-pair-suggester": dynamic(() => import("./font-pair-suggester").then(m => m.default), { ssr }),
   "css-pattern-generator": dynamic(() => import("./css-pattern-generator").then(m => m.default), { ssr }),
+  // Security tools (light — Web Crypto API, no heavy deps)
+  "password-strength-checker": dynamic(() => import("./password-strength-checker").then(m => m.default), { ssr }),
+  "hmac-generator": dynamic(() => import("./hmac-generator").then(m => m.default), { ssr }),
+  "aes-encrypt-decrypt": dynamic(() => import("./aes-encrypt-decrypt").then(m => m.default), { ssr }),
+  "crc32-checker": dynamic(() => import("./crc32-checker").then(m => m.default), { ssr }),
+  "credit-card-validator": dynamic(() => import("./credit-card-validator").then(m => m.default), { ssr }),
+  "totp-generator": dynamic(() => import("./totp-generator").then(m => m.default), { ssr }),
+  "rsa-key-generator": dynamic(() => import("./rsa-key-generator").then(m => m.default), { ssr }),
+  "pbkdf2-generator": dynamic(() => import("./pbkdf2-generator").then(m => m.default), { ssr }),
 };
 
 // FFmpeg-based tools — loaded via ffmpeg-tools proxy

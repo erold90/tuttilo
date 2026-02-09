@@ -62,6 +62,10 @@ const implementedToolIds = new Set([
   "animation-generator", "clip-path-generator",
   "flexbox-generator", "color-blindness-simulator", "palette-from-image",
   "font-pair-suggester", "css-pattern-generator",
+  // Security
+  "password-strength-checker", "hmac-generator", "aes-encrypt-decrypt",
+  "crc32-checker", "credit-card-validator", "totp-generator",
+  "rsa-key-generator", "pbkdf2-generator",
 ]);
 
 export function generateStaticParams() {
