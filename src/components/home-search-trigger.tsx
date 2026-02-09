@@ -244,7 +244,7 @@ export function HomeSearchTrigger() {
   let flatIndex = -1;
 
   return (
-    <div ref={containerRef} className="mx-auto max-w-2xl relative">
+    <div ref={containerRef} className="mx-auto max-w-2xl relative z-[60]">
       {/* Search bar */}
       <div
         className={cn(

@@ -1,5 +1,5 @@
 import type { Metadata } from "next";
-import { useTranslations } from "next-intl";
+import { useTranslations, useLocale } from "next-intl";
 import { getTranslations } from "next-intl/server";
 import { Link, locales } from "@/i18n/routing";
 import { ShieldCheck as Shield, Lightning as Zap, Globe, ArrowRight, Monitor, UserMinus as UserX, Lock } from "@/components/icons";
@@ -15,9 +15,15 @@ import { ToolIcon } from "@/components/tool-icon";
 import { HomeSearchTrigger } from "@/components/home-search-trigger";
 import { HomeUserSections } from "@/components/home-user-sections";
 import { SpotlightGrid, type SpotlightCardData } from "@/components/home-spotlight-grid";
-import { HomeCategoryNav } from "@/components/home-category-nav";
+import { HomeHeroAnimated } from "@/components/home-hero-animated";
+import { HomeTrustAnimated } from "@/components/home-trust-animated";
+import { HomeFeaturesAnimated } from "@/components/home-features-animated";
 
 const BASE_URL = "https://tuttilo.com";
+
+export function generateStaticParams() {
+  return locales.map((locale) => ({ locale }));
+}
 
 export async function generateMetadata({
   params,
@@ -39,8 +45,19 @@ export async function generateMetadata({
         "x-default": `${BASE_URL}/en`,
       },
     },
-    openGraph: { description: desc },
-    twitter: { description: desc },
+    openGraph: {
+      description: desc,
+      url: `${BASE_URL}/${locale}`,
+      type: "website",
+      siteName: "Tuttilo",
+      locale,
+      images: [{ url: `${BASE_URL}/og-image.png`, width: 1200, height: 630, alt: "Tuttilo" }],
+    },
+    twitter: {
+      card: "summary_large_image",
+      description: desc,
+      images: [`${BASE_URL}/og-image.png`],
+    },
   };
 }
 
@@ -49,8 +66,47 @@ export default function HomePage() {
   const tNav = useTranslations("nav");
   const tTools = useTranslations("tools");
   const tTrust = useTranslations("home.trust");
+  const tCommon = useTranslations("common");
+  const locale = useLocale();
 
   const popularTools = getPopularTools();
+
+  // Structured data for Google Sitelinks
+  const siteNavigationLd = {
+    "@context": "https://schema.org",
+    "@type": "ItemList",
+    name: "Tuttilo - Online Tools",
+    description: t("subtitle"),
+    itemListOrder: "https://schema.org/ItemListOrderDescending",
+    numberOfItems: categories.length,
+    itemListElement: categories.map((cat, i) => ({
+      "@type": "SiteNavigationElement",
+      position: i + 1,
+      name: tNav(cat.id),
+      description: tCommon("siteDescription"),
+      url: `${BASE_URL}/${locale}/${cat.slug}`,
+    })),
+  };
+
+  const collectionPageLd = {
+    "@context": "https://schema.org",
+    "@type": "CollectionPage",
+    name: `Tuttilo — ${t("title")}`,
+    description: t("subtitle"),
+    url: `${BASE_URL}/${locale}`,
+    mainEntity: {
+      "@type": "ItemList",
+      itemListElement: popularTools.slice(0, 8).map((tool, i) => {
+        const cat = categories.find((c) => c.id === tool.category);
+        return {
+          "@type": "ListItem",
+          position: i + 1,
+          name: tTools(`${tool.id}.name`),
+          url: `${BASE_URL}/${locale}/${cat?.slug ?? tool.category}/${tool.slug}`,
+        };
+      }),
+    },
+  };
 
   const trustItems = [
     { icon: Monitor, key: "browserOnly", color: "text-green-500 bg-green-500/10" },
@@ -79,70 +135,35 @@ export default function HomePage() {
     };
   });
 
-  // Serialize category nav pills
-  const categoryPills = categories.map((cat) => ({
-    id: cat.id,
-    slug: cat.slug,
-    icon: cat.icon,
-    label: tNav(cat.id),
-    color: getCategoryColor(cat.id),
-  }));
-
   return (
     <div className="flex flex-col">
-      {/* Hero */}
-      <section id="hero-section" className="relative overflow-hidden">
-        <div className="absolute inset-0 bg-gradient-to-br from-[#09090b] via-[#0c1222] to-[#09090b]" />
-        <div className="absolute inset-0 bg-[radial-gradient(ellipse_80%_50%_at_50%_-20%,rgba(6,182,212,0.15),transparent)]" />
-        <div className="container mx-auto max-w-7xl px-4 py-10 md:py-16 relative">
-          <div className="mx-auto max-w-3xl text-center space-y-6">
-            <h1 className="text-4xl font-bold tracking-tight sm:text-5xl md:text-6xl text-white">
-              {t("title")}
-            </h1>
-            <p className="text-lg text-white/80 md:text-xl leading-relaxed">
-              {t("subtitle")}
-            </p>
-            <HomeSearchTrigger />
-            <div className="flex items-center justify-center gap-2 text-sm text-white/70">
-              <Shield className="h-4 w-4 text-green-400" />
-              <span>{t("privacyNote")}</span>
-            </div>
-          </div>
-        </div>
+      {/* Structured data for Google Sitelinks */}
+      <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(siteNavigationLd) }} />
+      <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(collectionPageLd) }} />
+
+      {/* Hero — Minimal gradient + search */}
+      <section id="hero-section" className="relative z-20">
+        <HomeHeroAnimated
+          title={t("title")}
+          subtitle={t("subtitle")}
+          privacyNote={t("privacyNote")}
+          searchTrigger={<HomeSearchTrigger />}
+        />
       </section>
 
-      <div className="gradient-divider" />
-
-      {/* Trust Signals — glassmorphism (#7) */}
-      <section id="trust-section" className="animate-on-scroll bg-muted/10">
-        <div className="container mx-auto max-w-7xl px-4 py-10">
-          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4">
-            {trustItems.map(({ icon: Icon, key, color }) => (
-              <div
-                key={key}
-                className="flex items-start gap-3 p-4 bg-slate-900/60 backdrop-blur-md border border-white/5 rounded-2xl"
-              >
-                <div
-                  className={`flex h-9 w-9 shrink-0 items-center justify-center rounded-lg ${color}`}
-                >
-                  <Icon weight="duotone" className="h-4.5 w-4.5" />
-                </div>
-                <div>
-                  <p className="font-medium text-sm">{tTrust(key)}</p>
-                  <p className="text-xs text-muted-foreground leading-relaxed">
-                    {tTrust(`${key}Desc`)}
-                  </p>
-                </div>
-              </div>
-            ))}
-          </div>
-        </div>
-      </section>
+      {/* Trust Signals */}
+      <HomeTrustAnimated
+        srTitle={t("trustTitle")}
+        items={trustItems.map(({ icon: Icon, key, color }) => ({
+          key,
+          title: tTrust(key),
+          description: tTrust(`${key}Desc`),
+          color,
+          icon: <Icon weight="duotone" className="h-4.5 w-4.5" />,
+        }))}
+      />
 
       <div className="gradient-divider" />
-
-      {/* Category Navigation Pills */}
-      <HomeCategoryNav categories={categoryPills} />
 
       {/* Favorites & Recents (client-side, localStorage) */}
       <HomeUserSections />
@@ -206,7 +227,7 @@ export default function HomePage() {
                       <ToolIcon name={cat.icon} className="h-4 w-4" />
                     </span>
                     <Link
-                      href={`/${cat.slug}` as any}
+                      href={`/${cat.slug}` as Parameters<typeof Link>[0]["href"]}
                       className="group flex items-center gap-2"
                     >
                       <h3 className={cn("text-lg font-semibold", classes.text)}>
@@ -228,38 +249,29 @@ export default function HomePage() {
 
       <div className="gradient-divider" />
 
-      {/* Features */}
-      <section id="features-section" className="animate-on-scroll container mx-auto max-w-7xl px-4 py-16">
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
-          <div className="text-center space-y-3">
-            <div className="mx-auto flex h-12 w-12 items-center justify-center rounded-full bg-cyan-500/10">
-              <Shield weight="duotone" className="h-6 w-6 text-cyan-500" />
-            </div>
-            <h3 className="font-semibold">{t("features.privacy.title")}</h3>
-            <p className="text-sm text-muted-foreground">
-              {t("features.privacy.desc")}
-            </p>
-          </div>
-          <div className="text-center space-y-3">
-            <div className="mx-auto flex h-12 w-12 items-center justify-center rounded-full bg-cyan-500/10">
-              <Zap weight="duotone" className="h-6 w-6 text-cyan-500" />
-            </div>
-            <h3 className="font-semibold">{t("features.fast.title")}</h3>
-            <p className="text-sm text-muted-foreground">
-              {t("features.fast.desc")}
-            </p>
-          </div>
-          <div className="text-center space-y-3">
-            <div className="mx-auto flex h-12 w-12 items-center justify-center rounded-full bg-cyan-500/10">
-              <Globe weight="duotone" className="h-6 w-6 text-cyan-500" />
-            </div>
-            <h3 className="font-semibold">{t("features.free.title")}</h3>
-            <p className="text-sm text-muted-foreground">
-              {t("features.free.desc")}
-            </p>
-          </div>
-        </div>
-      </section>
+      {/* Features — Animated */}
+      <HomeFeaturesAnimated
+        features={[
+          {
+            key: "privacy",
+            title: t("features.privacy.title"),
+            description: t("features.privacy.desc"),
+            icon: <Shield weight="duotone" className="h-6 w-6 text-cyan-500" />,
+          },
+          {
+            key: "fast",
+            title: t("features.fast.title"),
+            description: t("features.fast.desc"),
+            icon: <Zap weight="duotone" className="h-6 w-6 text-cyan-500" />,
+          },
+          {
+            key: "free",
+            title: t("features.free.title"),
+            description: t("features.free.desc"),
+            icon: <Globe weight="duotone" className="h-6 w-6 text-cyan-500" />,
+          },
+        ]}
+      />
     </div>
   );
 }
