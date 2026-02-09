@@ -77,6 +77,9 @@ const implementedToolIds = new Set([
   // Text Extra (Phase 2.2)
   "slug-generator", "word-frequency", "text-reverser", "duplicate-remover",
   "text-sorter", "unicode-lookup", "invisible-char-detector", "random-string-generator",
+  // SEO (Phase 2.3)
+  "meta-tag-generator", "open-graph-generator", "robots-txt-generator", "sitemap-generator",
+  "keyword-density", "serp-preview", "schema-markup-generator", "readability-score",
 ]);
 
 export function generateStaticParams() {

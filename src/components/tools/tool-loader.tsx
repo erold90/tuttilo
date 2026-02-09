@@ -117,6 +117,15 @@ const lightTools: Record<string, React.ComponentType> = {
   "unicode-lookup": dynamic(() => import("./unicode-lookup").then(m => m.default), { ssr }),
   "invisible-char-detector": dynamic(() => import("./invisible-char-detector").then(m => m.default), { ssr }),
   "random-string-generator": dynamic(() => import("./random-string-generator").then(m => m.default), { ssr }),
+  // SEO
+  "meta-tag-generator": dynamic(() => import("./meta-tag-generator").then(m => m.default), { ssr }),
+  "open-graph-generator": dynamic(() => import("./open-graph-generator").then(m => m.default), { ssr }),
+  "robots-txt-generator": dynamic(() => import("./robots-txt-generator").then(m => m.default), { ssr }),
+  "sitemap-generator": dynamic(() => import("./sitemap-generator").then(m => m.default), { ssr }),
+  "keyword-density": dynamic(() => import("./keyword-density").then(m => m.default), { ssr }),
+  "serp-preview": dynamic(() => import("./serp-preview").then(m => m.default), { ssr }),
+  "schema-markup-generator": dynamic(() => import("./schema-markup-generator").then(m => m.default), { ssr }),
+  "readability-score": dynamic(() => import("./readability-score").then(m => m.default), { ssr }),
 };
 
 // FFmpeg-based tools — loaded via ffmpeg-tools proxy

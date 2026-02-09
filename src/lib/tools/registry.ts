@@ -201,6 +201,16 @@ export const tools: Tool[] = [
   { id: 'invisible-char-detector', slug: 'invisible-char-detector', category: 'text', icon: 'Eye', isAvailable: true, isPremium: false, maxFileSize: 0, acceptedFormats: [], processingType: 'none' },
   { id: 'random-string-generator', slug: 'random-string-generator', category: 'text', icon: 'Shuffle', isAvailable: true, isPremium: false, maxFileSize: 0, acceptedFormats: [], processingType: 'none' },
 
+  // ---------- SEO (8 tools) ----------
+  { id: 'meta-tag-generator', slug: 'meta-tag-generator', category: 'seo', icon: 'Code', isAvailable: true, isPremium: false, maxFileSize: 0, acceptedFormats: [], processingType: 'none' },
+  { id: 'open-graph-generator', slug: 'open-graph-generator', category: 'seo', icon: 'Browsers', isAvailable: true, isPremium: false, maxFileSize: 0, acceptedFormats: [], processingType: 'none' },
+  { id: 'robots-txt-generator', slug: 'robots-txt-generator', category: 'seo', icon: 'FileText', isAvailable: true, isPremium: false, maxFileSize: 0, acceptedFormats: [], processingType: 'none' },
+  { id: 'sitemap-generator', slug: 'sitemap-generator', category: 'seo', icon: 'ListChecks', isAvailable: true, isPremium: false, maxFileSize: 0, acceptedFormats: [], processingType: 'none' },
+  { id: 'keyword-density', slug: 'keyword-density', category: 'seo', icon: 'ChartBar', isAvailable: true, isPremium: false, maxFileSize: 0, acceptedFormats: [], processingType: 'none' },
+  { id: 'serp-preview', slug: 'serp-preview', category: 'seo', icon: 'MagnifyingGlass', isAvailable: true, isPremium: false, maxFileSize: 0, acceptedFormats: [], processingType: 'none' },
+  { id: 'schema-markup-generator', slug: 'schema-markup-generator', category: 'seo', icon: 'BracketsCurly', isAvailable: true, isPremium: false, maxFileSize: 0, acceptedFormats: [], processingType: 'none' },
+  { id: 'readability-score', slug: 'readability-score', category: 'seo', icon: 'TextAlignLeft', isAvailable: true, isPremium: false, maxFileSize: 0, acceptedFormats: [], processingType: 'none' },
+
   // ---------- Calculators (6 tools) ----------
   { id: 'scientific-calculator', slug: 'scientific', category: 'calculators', icon: 'Calculator', isAvailable: true, isPremium: false, maxFileSize: 0, acceptedFormats: [], processingType: 'none' },
   { id: 'percentage-calculator', slug: 'percentage', category: 'calculators', icon: 'Percent', isAvailable: true, isPremium: false, maxFileSize: 0, acceptedFormats: [], processingType: 'none' },
