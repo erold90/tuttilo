@@ -7,9 +7,10 @@ Espandere Tuttilo da 82 a 250+ tool con nuova navigazione, 16 categorie, mega me
 
 ## Stato Globale
 - **Fase 0**: COMPLETATA (0.5/0.6 deferred)
-- **Fase 1**: COMPLETATA (1.1a-1.5b DONE, 152 tool attivi)
-- **Fase 2**: Non iniziata
-- **Fase 3**: Non iniziata
+- **Fase 1**: COMPLETATA (74 tool)
+- **Fase 2**: COMPLETATA (40 tool)
+- **Fase 3**: COMPLETATA (30 tool)
+- **Totale**: 216 tool attivi × 8 lingue
 
 ---
 
@@ -31,36 +32,37 @@ Espandere Tuttilo da 82 a 250+ tool con nuova navigazione, 16 categorie, mega me
 |-------|-----------|------|--------|
 | 1.1a | Calculators | scientific, percentage, bmi, loan, mortgage, compound-interest | DONE ✓ |
 | 1.1b | Calculators | roi, tip, salary, vat, profit-margin, discount | DONE ✓ |
-| 1.1c | Calculators | age, date-diff, calorie, fraction, grade, break-even | DONE ✓ (deployed 26237032) |
+| 1.1c | Calculators | age, date-diff, calorie, fraction, grade, break-even | DONE ✓ |
 | 1.2a | Converters | length, weight, temperature, data-size, area | DONE ✓ |
 | 1.2b | Converters | volume, speed, time, fuel-economy, shoe-size | DONE ✓ |
 | 1.2c | Converters | pressure, energy, number-base, roman-numeral, power | DONE ✓ |
-| 1.3a | Color/CSS | color-picker, gradient-generator, palette-generator, contrast-checker, hex-rgb | DONE ✓ (deployed 6e33f644) |
-| 1.3b | Color/CSS | box-shadow-generator, border-radius-generator, glassmorphism-generator, animation-generator, clip-path-generator | DONE ✓ (deployed d025815b) |
-| 1.3c | Color/CSS | flexbox-gen, color-blindness, palette-extract, font-pair, pattern | DONE ✓ (deployed 6aed16e8) |
-| 1.4a | Security | password-gen, password-strength, md5, sha256, uuid, jwt, base64 | DONE ✓ (5 moved + 1 new) |
-| 1.4b | Security | hmac, aes-encrypt, crc32, credit-card, totp, rsa-key, pbkdf2 | DONE ✓ (deployed 807d3244) |
-| 1.5a | Data Conv | xml-json-converter, yaml-json-converter (csv-json already existed) | DONE ✓ |
-| 1.5b | Data Conv | html-entity-encoder, json-path-evaluator, csv-editor, markdown-table-generator, sql-to-csv, yaml-validator | DONE ✓ (deployed 4b269175) |
+| 1.3a | Color/CSS | gradient, palette, contrast-checker, hex-rgb + existing | DONE ✓ |
+| 1.3b | Color/CSS | box-shadow, border-radius, glassmorphism, animation, clip-path | DONE ✓ |
+| 1.3c | Color/CSS | flexbox, color-blindness, palette-extract, font-pair, pattern | DONE ✓ |
+| 1.4a | Security | password-gen, password-strength, md5, sha256, uuid, jwt, base64 | DONE ✓ |
+| 1.4b | Security | hmac, aes-encrypt, crc32, credit-card, totp, rsa-key, pbkdf2 | DONE ✓ |
+| 1.5a | Data Conv | xml-json, yaml-json (csv-json existing) | DONE ✓ |
+| 1.5b | Data Conv | html-entity, json-path, csv-editor, md-table, sql-csv, yaml-validator | DONE ✓ |
 
-## FASE 2 — Tool MEDIUM Priority (64 tool)
+## FASE 2 — Tool MEDIUM Priority (40 tool)
 
 | Batch | Categoria | Count | Status |
 |-------|-----------|-------|--------|
-| 2.1 | Dev Tools Extra | 20 | TODO |
-| 2.2 | Text Extra | 16 | TODO |
-| 2.3 | SEO Tools | 12 | TODO |
-| 2.4 | Date & Time | 8 | TODO |
-| 2.5 | Social Media | 8 | TODO |
+| 2.1 | Dev Tools Extra | 10 | DONE ✓ |
+| 2.2 | Text Extra | 8 | DONE ✓ |
+| 2.3 | SEO Tools | 8 | DONE ✓ |
+| 2.4 | Date & Time | 8 | DONE ✓ |
+| 2.5 | Social Media | 6 | DONE ✓ |
 
 ## FASE 3 — Tool LOW Priority (30 tool)
 
 | Batch | Categoria | Count | Status |
 |-------|-----------|-------|--------|
-| 3.1 | Random Generators | 12 | TODO |
-| 3.2 | Network Tools | 8 | TODO |
-| 3.3 | Document Generators | 5 | TODO |
-| 3.4 | Privacy Tools | 5 | TODO |
+| 3.1a | Generators | 6 | DONE ✓ |
+| 3.1b | Generators | 6 | DONE ✓ |
+| 3.2 | Network Tools | 8 | DONE ✓ |
+| 3.3 | Security Extras | 5 | DONE ✓ |
+| 3.4 | Text/Dev Extras | 5 | DONE ✓ |
 
 ---
 
