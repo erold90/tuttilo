@@ -58,6 +58,8 @@ const implementedToolIds = new Set([
   "roman-numeral-converter", "power-converter",
   // Color & Design
   "gradient-generator", "palette-generator", "contrast-checker",
+  "box-shadow-generator", "border-radius-generator", "glassmorphism-generator",
+  "animation-generator", "clip-path-generator",
 ]);
 
 export function generateStaticParams() {

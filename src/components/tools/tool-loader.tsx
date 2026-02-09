@@ -69,6 +69,11 @@ const lightTools: Record<string, React.ComponentType> = {
   "gradient-generator": dynamic(() => import("./gradient-generator").then(m => m.default), { ssr }),
   "palette-generator": dynamic(() => import("./palette-generator").then(m => m.default), { ssr }),
   "contrast-checker": dynamic(() => import("./contrast-checker").then(m => m.default), { ssr }),
+  "box-shadow-generator": dynamic(() => import("./box-shadow-generator").then(m => m.default), { ssr }),
+  "border-radius-generator": dynamic(() => import("./border-radius-generator").then(m => m.default), { ssr }),
+  "glassmorphism-generator": dynamic(() => import("./glassmorphism-generator").then(m => m.default), { ssr }),
+  "animation-generator": dynamic(() => import("./animation-generator").then(m => m.default), { ssr }),
+  "clip-path-generator": dynamic(() => import("./clip-path-generator").then(m => m.default), { ssr }),
 };
 
 // FFmpeg-based tools — loaded via ffmpeg-tools proxy

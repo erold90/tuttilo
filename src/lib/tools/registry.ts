@@ -207,6 +207,11 @@ export const tools: Tool[] = [
   { id: 'gradient-generator', slug: 'gradient-generator', category: 'color-design', icon: 'Gradient', isAvailable: true, isPremium: false, maxFileSize: 0, acceptedFormats: [], processingType: 'none' },
   { id: 'palette-generator', slug: 'palette-generator', category: 'color-design', icon: 'SwatchBook', isAvailable: true, isPremium: false, maxFileSize: 0, acceptedFormats: [], processingType: 'none' },
   { id: 'contrast-checker', slug: 'contrast-checker', category: 'color-design', icon: 'SunDim', isAvailable: true, isPremium: false, maxFileSize: 0, acceptedFormats: [], processingType: 'none' },
+  { id: 'box-shadow-generator', slug: 'box-shadow-generator', category: 'color-design', icon: 'Square', isAvailable: true, isPremium: false, maxFileSize: 0, acceptedFormats: [], processingType: 'none' },
+  { id: 'border-radius-generator', slug: 'border-radius-generator', category: 'color-design', icon: 'BoundingBox', isAvailable: true, isPremium: false, maxFileSize: 0, acceptedFormats: [], processingType: 'none' },
+  { id: 'glassmorphism-generator', slug: 'glassmorphism-generator', category: 'color-design', icon: 'Drop', isAvailable: true, isPremium: false, maxFileSize: 0, acceptedFormats: [], processingType: 'none' },
+  { id: 'animation-generator', slug: 'animation-generator', category: 'color-design', icon: 'Play', isAvailable: true, isPremium: false, maxFileSize: 0, acceptedFormats: [], processingType: 'none' },
+  { id: 'clip-path-generator', slug: 'clip-path-generator', category: 'color-design', icon: 'Polygon', isAvailable: true, isPremium: false, maxFileSize: 0, acceptedFormats: [], processingType: 'none' },
 
   // ---------- YouTube (9 tools) ----------
   { id: 'youtube-thumbnail', slug: 'thumbnail', category: 'youtube', icon: 'Image', isAvailable: true, isPremium: false, maxFileSize: 0, acceptedFormats: [], processingType: 'client' },

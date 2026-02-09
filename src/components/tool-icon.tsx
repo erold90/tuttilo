@@ -23,6 +23,7 @@ import {
   Ruler, Barbell, Thermometer, HardDrive, BoundingBox,
   Gauge, GasPump, Sneaker, Lightning,
   Gradient, Swatches, SunDim,
+  Square, Play, Polygon,
 } from "@phosphor-icons/react";
 
 interface ToolIconProps {
@@ -133,6 +134,9 @@ const iconMap: Record<string, Icon> = {
   Gradient,
   SwatchBook: Swatches,
   SunDim,
+  Square,
+  Play,
+  Polygon,
 };
 
 export function ToolIcon({ name, ...props }: ToolIconProps) {
