@@ -126,6 +126,15 @@ const lightTools: Record<string, React.ComponentType> = {
   "serp-preview": dynamic(() => import("./serp-preview").then(m => m.default), { ssr }),
   "schema-markup-generator": dynamic(() => import("./schema-markup-generator").then(m => m.default), { ssr }),
   "readability-score": dynamic(() => import("./readability-score").then(m => m.default), { ssr }),
+  // DateTime
+  "timezone-converter": dynamic(() => import("./timezone-converter").then(m => m.default), { ssr }),
+  "countdown-timer": dynamic(() => import("./countdown-timer").then(m => m.default), { ssr }),
+  "stopwatch": dynamic(() => import("./stopwatch").then(m => m.default), { ssr }),
+  "date-calculator": dynamic(() => import("./date-calculator").then(m => m.default), { ssr }),
+  "week-number": dynamic(() => import("./week-number").then(m => m.default), { ssr }),
+  "world-clock": dynamic(() => import("./world-clock").then(m => m.default), { ssr }),
+  "pomodoro-timer": dynamic(() => import("./pomodoro-timer").then(m => m.default), { ssr }),
+  "epoch-converter": dynamic(() => import("./epoch-converter").then(m => m.default), { ssr }),
 };
 
 // FFmpeg-based tools — loaded via ffmpeg-tools proxy

@@ -211,6 +211,16 @@ export const tools: Tool[] = [
   { id: 'schema-markup-generator', slug: 'schema-markup-generator', category: 'seo', icon: 'BracketsCurly', isAvailable: true, isPremium: false, maxFileSize: 0, acceptedFormats: [], processingType: 'none' },
   { id: 'readability-score', slug: 'readability-score', category: 'seo', icon: 'TextAlignLeft', isAvailable: true, isPremium: false, maxFileSize: 0, acceptedFormats: [], processingType: 'none' },
 
+  // ---------- DateTime (8 tools) ----------
+  { id: 'timezone-converter', slug: 'timezone-converter', category: 'datetime', icon: 'Globe', isAvailable: true, isPremium: false, maxFileSize: 0, acceptedFormats: [], processingType: 'none' },
+  { id: 'countdown-timer', slug: 'countdown-timer', category: 'datetime', icon: 'Timer', isAvailable: true, isPremium: false, maxFileSize: 0, acceptedFormats: [], processingType: 'none' },
+  { id: 'stopwatch', slug: 'stopwatch', category: 'datetime', icon: 'Clock', isAvailable: true, isPremium: false, maxFileSize: 0, acceptedFormats: [], processingType: 'none' },
+  { id: 'date-calculator', slug: 'date-calculator', category: 'datetime', icon: 'CalendarDots', isAvailable: true, isPremium: false, maxFileSize: 0, acceptedFormats: [], processingType: 'none' },
+  { id: 'week-number', slug: 'week-number', category: 'datetime', icon: 'CalendarBlank', isAvailable: true, isPremium: false, maxFileSize: 0, acceptedFormats: [], processingType: 'none' },
+  { id: 'world-clock', slug: 'world-clock', category: 'datetime', icon: 'Globe', isAvailable: true, isPremium: false, maxFileSize: 0, acceptedFormats: [], processingType: 'none' },
+  { id: 'pomodoro-timer', slug: 'pomodoro-timer', category: 'datetime', icon: 'Timer', isAvailable: true, isPremium: false, maxFileSize: 0, acceptedFormats: [], processingType: 'none' },
+  { id: 'epoch-converter', slug: 'epoch-converter', category: 'datetime', icon: 'Clock', isAvailable: true, isPremium: false, maxFileSize: 0, acceptedFormats: [], processingType: 'none' },
+
   // ---------- Calculators (6 tools) ----------
   { id: 'scientific-calculator', slug: 'scientific', category: 'calculators', icon: 'Calculator', isAvailable: true, isPremium: false, maxFileSize: 0, acceptedFormats: [], processingType: 'none' },
   { id: 'percentage-calculator', slug: 'percentage', category: 'calculators', icon: 'Percent', isAvailable: true, isPremium: false, maxFileSize: 0, acceptedFormats: [], processingType: 'none' },

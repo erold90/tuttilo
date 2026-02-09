@@ -80,6 +80,9 @@ const implementedToolIds = new Set([
   // SEO (Phase 2.3)
   "meta-tag-generator", "open-graph-generator", "robots-txt-generator", "sitemap-generator",
   "keyword-density", "serp-preview", "schema-markup-generator", "readability-score",
+  // DateTime (Phase 2.4)
+  "timezone-converter", "countdown-timer", "stopwatch", "date-calculator",
+  "week-number", "world-clock", "pomodoro-timer", "epoch-converter",
 ]);
 
 export function generateStaticParams() {
