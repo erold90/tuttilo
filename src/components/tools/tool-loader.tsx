@@ -142,6 +142,41 @@ const lightTools: Record<string, React.ComponentType> = {
   "social-image-resizer": dynamic(() => import("./social-image-resizer").then(m => m.default), { ssr }),
   "emoji-picker": dynamic(() => import("./emoji-picker").then(m => m.default), { ssr }),
   "bio-generator": dynamic(() => import("./bio-generator").then(m => m.default), { ssr }),
+  // Generators (Phase 3.1a)
+  "random-number-generator": dynamic(() => import("./random-number-generator").then(m => m.default), { ssr }),
+  "random-color-generator": dynamic(() => import("./random-color-generator").then(m => m.default), { ssr }),
+  "fake-data-generator": dynamic(() => import("./fake-data-generator").then(m => m.default), { ssr }),
+  "barcode-generator": dynamic(() => import("./barcode-generator").then(m => m.default), { ssr }),
+  "placeholder-image-generator": dynamic(() => import("./placeholder-image-generator").then(m => m.default), { ssr }),
+  "avatar-generator": dynamic(() => import("./avatar-generator").then(m => m.default), { ssr }),
+  // Generators (Phase 3.1b)
+  "data-generator": dynamic(() => import("./data-generator").then(m => m.default), { ssr }),
+  "svg-wave-generator": dynamic(() => import("./svg-wave-generator").then(m => m.default), { ssr }),
+  "gradient-wallpaper-generator": dynamic(() => import("./gradient-wallpaper-generator").then(m => m.default), { ssr }),
+  "invoice-generator": dynamic(() => import("./invoice-generator").then(m => m.default), { ssr }),
+  "receipt-generator": dynamic(() => import("./receipt-generator").then(m => m.default), { ssr }),
+  "privacy-policy-generator": dynamic(() => import("./privacy-policy-generator").then(m => m.default), { ssr }),
+  // Network (Phase 3.2)
+  "subnet-calculator": dynamic(() => import("./subnet-calculator").then(m => m.default), { ssr }),
+  "ip-converter": dynamic(() => import("./ip-converter").then(m => m.default), { ssr }),
+  "bandwidth-calculator": dynamic(() => import("./bandwidth-calculator").then(m => m.default), { ssr }),
+  "mac-address-generator": dynamic(() => import("./mac-address-generator").then(m => m.default), { ssr }),
+  "port-reference": dynamic(() => import("./port-reference").then(m => m.default), { ssr }),
+  "ip-range-calculator": dynamic(() => import("./ip-range-calculator").then(m => m.default), { ssr }),
+  "user-agent-parser": dynamic(() => import("./user-agent-parser").then(m => m.default), { ssr }),
+  "http-header-analyzer": dynamic(() => import("./http-header-analyzer").then(m => m.default), { ssr }),
+  // Security Extras (Phase 3.3)
+  "exif-viewer": dynamic(() => import("./exif-viewer").then(m => m.default), { ssr }),
+  "file-hash-checker": dynamic(() => import("./file-hash-checker").then(m => m.default), { ssr }),
+  "text-steganography": dynamic(() => import("./text-steganography").then(m => m.default), { ssr }),
+  "ssl-certificate-decoder": dynamic(() => import("./ssl-certificate-decoder").then(m => m.default), { ssr }),
+  "csr-generator": dynamic(() => import("./csr-generator").then(m => m.default), { ssr }),
+  // Text/Dev Extras (Phase 3.4)
+  "ascii-art-generator": dynamic(() => import("./ascii-art-generator").then(m => m.default), { ssr }),
+  "morse-code-translator": dynamic(() => import("./morse-code-translator").then(m => m.default), { ssr }),
+  "regex-generator": dynamic(() => import("./regex-generator").then(m => m.default), { ssr }),
+  "json-schema-generator": dynamic(() => import("./json-schema-generator").then(m => m.default), { ssr }),
+  "api-tester": dynamic(() => import("./api-tester").then(m => m.default), { ssr }),
 };
 
 // FFmpeg-based tools — loaded via ffmpeg-tools proxy

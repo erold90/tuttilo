@@ -86,6 +86,19 @@ const implementedToolIds = new Set([
   // Social Media (Phase 2.5)
   "twitter-card-preview", "instagram-font-generator", "hashtag-generator",
   "social-image-resizer", "emoji-picker", "bio-generator",
+  // Generators (Phase 3.1a)
+  "random-number-generator", "random-color-generator", "fake-data-generator",
+  "barcode-generator", "placeholder-image-generator", "avatar-generator",
+  // Generators (Phase 3.1b)
+  "data-generator", "svg-wave-generator", "gradient-wallpaper-generator",
+  "invoice-generator", "receipt-generator", "privacy-policy-generator",
+  // Network (Phase 3.2)
+  "subnet-calculator", "ip-converter", "bandwidth-calculator", "mac-address-generator",
+  "port-reference", "ip-range-calculator", "user-agent-parser", "http-header-analyzer",
+  // Security Extras (Phase 3.3)
+  "exif-viewer", "file-hash-checker", "text-steganography", "ssl-certificate-decoder", "csr-generator",
+  // Text/Dev Extras (Phase 3.4)
+  "ascii-art-generator", "morse-code-translator", "regex-generator", "json-schema-generator", "api-tester",
 ]);
 
 export function generateStaticParams() {

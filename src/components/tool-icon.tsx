@@ -28,6 +28,7 @@ import {
   LockSimple, CreditCard, CheckCircle, Globe,
   ListChecks, SortAscending,
   ShareNetwork, ImageSquare, ChatText, Camera,
+  Barcode, UserCircle, WaveSine,
 } from "@phosphor-icons/react";
 
 interface ToolIconProps {
@@ -156,6 +157,9 @@ const iconMap: Record<string, Icon> = {
   ImageSquare,
   ChatText,
   Camera,
+  Barcode,
+  UserCircle,
+  WaveSine,
 };
 
 export function ToolIcon({ name, ...props }: ToolIconProps) {

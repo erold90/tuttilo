@@ -229,6 +229,45 @@ export const tools: Tool[] = [
   { id: 'emoji-picker', slug: 'emoji-picker', category: 'social', icon: 'Smiley', isAvailable: true, isPremium: false, maxFileSize: 0, acceptedFormats: [], processingType: 'none' },
   { id: 'bio-generator', slug: 'bio-generator', category: 'social', icon: 'ShareNetwork', isAvailable: true, isPremium: false, maxFileSize: 0, acceptedFormats: [], processingType: 'none' },
 
+  // ---------- Generators (Phase 3.1a) ----------
+  { id: 'random-number-generator', slug: 'random-number', category: 'generators', icon: 'Shuffle', isAvailable: true, isPremium: false, maxFileSize: 0, acceptedFormats: [], processingType: 'none' },
+  { id: 'random-color-generator', slug: 'random-color', category: 'generators', icon: 'Palette', isAvailable: true, isPremium: false, maxFileSize: 0, acceptedFormats: [], processingType: 'none' },
+  { id: 'fake-data-generator', slug: 'fake-data', category: 'generators', icon: 'Database', isAvailable: true, isPremium: false, maxFileSize: 0, acceptedFormats: [], processingType: 'none' },
+  { id: 'barcode-generator', slug: 'barcode', category: 'generators', icon: 'Barcode', isAvailable: true, isPremium: false, maxFileSize: 0, acceptedFormats: [], processingType: 'none' },
+  { id: 'placeholder-image-generator', slug: 'placeholder-image', category: 'generators', icon: 'Image', isAvailable: true, isPremium: false, maxFileSize: 0, acceptedFormats: [], processingType: 'none' },
+  { id: 'avatar-generator', slug: 'avatar', category: 'generators', icon: 'UserCircle', isAvailable: true, isPremium: false, maxFileSize: 0, acceptedFormats: [], processingType: 'none' },
+  // Generators (Phase 3.1b)
+  { id: 'data-generator', slug: 'data-generator', category: 'generators', icon: 'Table', isAvailable: true, isPremium: false, maxFileSize: 0, acceptedFormats: [], processingType: 'none' },
+  { id: 'svg-wave-generator', slug: 'svg-wave', category: 'generators', icon: 'WaveSine', isAvailable: true, isPremium: false, maxFileSize: 0, acceptedFormats: [], processingType: 'none' },
+  { id: 'gradient-wallpaper-generator', slug: 'gradient-wallpaper', category: 'generators', icon: 'Gradient', isAvailable: true, isPremium: false, maxFileSize: 0, acceptedFormats: [], processingType: 'none' },
+  { id: 'invoice-generator', slug: 'invoice', category: 'generators', icon: 'Receipt', isAvailable: true, isPremium: false, maxFileSize: 0, acceptedFormats: [], processingType: 'none' },
+  { id: 'receipt-generator', slug: 'receipt', category: 'generators', icon: 'Receipt', isAvailable: true, isPremium: false, maxFileSize: 0, acceptedFormats: [], processingType: 'none' },
+  { id: 'privacy-policy-generator', slug: 'privacy-policy', category: 'generators', icon: 'FileText', isAvailable: true, isPremium: false, maxFileSize: 0, acceptedFormats: [], processingType: 'none' },
+
+  // ---------- Network (Phase 3.2) ----------
+  { id: 'subnet-calculator', slug: 'subnet', category: 'network', icon: 'Globe', isAvailable: true, isPremium: false, maxFileSize: 0, acceptedFormats: [], processingType: 'none' },
+  { id: 'ip-converter', slug: 'ip-converter', category: 'network', icon: 'ArrowRightLeft', isAvailable: true, isPremium: false, maxFileSize: 0, acceptedFormats: [], processingType: 'none' },
+  { id: 'bandwidth-calculator', slug: 'bandwidth', category: 'network', icon: 'Gauge', isAvailable: true, isPremium: false, maxFileSize: 0, acceptedFormats: [], processingType: 'none' },
+  { id: 'mac-address-generator', slug: 'mac-address', category: 'network', icon: 'Fingerprint', isAvailable: true, isPremium: false, maxFileSize: 0, acceptedFormats: [], processingType: 'none' },
+  { id: 'port-reference', slug: 'port-reference', category: 'network', icon: 'ListNumbers', isAvailable: true, isPremium: false, maxFileSize: 0, acceptedFormats: [], processingType: 'none' },
+  { id: 'ip-range-calculator', slug: 'ip-range', category: 'network', icon: 'Rows', isAvailable: true, isPremium: false, maxFileSize: 0, acceptedFormats: [], processingType: 'none' },
+  { id: 'user-agent-parser', slug: 'user-agent', category: 'network', icon: 'Info', isAvailable: true, isPremium: false, maxFileSize: 0, acceptedFormats: [], processingType: 'none' },
+  { id: 'http-header-analyzer', slug: 'http-headers', category: 'network', icon: 'Code', isAvailable: true, isPremium: false, maxFileSize: 0, acceptedFormats: [], processingType: 'none' },
+
+  // ---------- Security Extras (Phase 3.3) ----------
+  { id: 'exif-viewer', slug: 'exif-viewer', category: 'security', icon: 'Info', isAvailable: true, isPremium: false, maxFileSize: 100_000_000, acceptedFormats: ['image/jpeg', 'image/tiff'], processingType: 'client' },
+  { id: 'file-hash-checker', slug: 'file-hash-checker', category: 'security', icon: 'Fingerprint', isAvailable: true, isPremium: false, maxFileSize: 100_000_000, acceptedFormats: [], processingType: 'client' },
+  { id: 'text-steganography', slug: 'text-steganography', category: 'security', icon: 'EyeOff', isAvailable: true, isPremium: false, maxFileSize: 0, acceptedFormats: [], processingType: 'none' },
+  { id: 'ssl-certificate-decoder', slug: 'ssl-certificate-decoder', category: 'security', icon: 'Certificate', isAvailable: true, isPremium: false, maxFileSize: 0, acceptedFormats: [], processingType: 'none' },
+  { id: 'csr-generator', slug: 'csr-generator', category: 'security', icon: 'Key', isAvailable: true, isPremium: false, maxFileSize: 0, acceptedFormats: [], processingType: 'none' },
+
+  // ---------- Text/Dev Extras (Phase 3.4) ----------
+  { id: 'ascii-art-generator', slug: 'ascii-art-generator', category: 'text', icon: 'TextT', isAvailable: true, isPremium: false, maxFileSize: 0, acceptedFormats: [], processingType: 'none' },
+  { id: 'morse-code-translator', slug: 'morse-code-translator', category: 'text', icon: 'ChatText', isAvailable: true, isPremium: false, maxFileSize: 0, acceptedFormats: [], processingType: 'none' },
+  { id: 'regex-generator', slug: 'regex-generator', category: 'developer', icon: 'Regex', isAvailable: true, isPremium: false, maxFileSize: 0, acceptedFormats: [], processingType: 'none' },
+  { id: 'json-schema-generator', slug: 'json-schema-generator', category: 'developer', icon: 'Braces', isAvailable: true, isPremium: false, maxFileSize: 0, acceptedFormats: [], processingType: 'none' },
+  { id: 'api-tester', slug: 'api-tester', category: 'developer', icon: 'Lightning', isAvailable: true, isPremium: false, maxFileSize: 0, acceptedFormats: [], processingType: 'none' },
+
   // ---------- Calculators (6 tools) ----------
   { id: 'scientific-calculator', slug: 'scientific', category: 'calculators', icon: 'Calculator', isAvailable: true, isPremium: false, maxFileSize: 0, acceptedFormats: [], processingType: 'none' },
   { id: 'percentage-calculator', slug: 'percentage', category: 'calculators', icon: 'Percent', isAvailable: true, isPremium: false, maxFileSize: 0, acceptedFormats: [], processingType: 'none' },
