@@ -181,6 +181,16 @@ export const tools: Tool[] = [
   { id: 'markdown-table-generator', slug: 'markdown-table', category: 'developer', icon: 'Table', isAvailable: true, isPremium: false, maxFileSize: 0, acceptedFormats: [], processingType: 'none' },
   { id: 'sql-to-csv', slug: 'sql-to-csv', category: 'developer', icon: 'Database', isAvailable: true, isPremium: false, maxFileSize: 0, acceptedFormats: [], processingType: 'none' },
   { id: 'yaml-validator', slug: 'yaml-validator', category: 'developer', icon: 'CheckCircle', isAvailable: true, isPremium: false, maxFileSize: 0, acceptedFormats: [], processingType: 'none' },
+  { id: 'javascript-minifier', slug: 'javascript-minifier', category: 'developer', icon: 'FileCode', isAvailable: true, isPremium: false, maxFileSize: 0, acceptedFormats: [], processingType: 'none' },
+  { id: 'html-minifier', slug: 'html-minifier', category: 'developer', icon: 'FileCode', isAvailable: true, isPremium: false, maxFileSize: 0, acceptedFormats: [], processingType: 'none' },
+  { id: 'json-diff', slug: 'json-diff', category: 'developer', icon: 'GitCompare', isAvailable: true, isPremium: false, maxFileSize: 0, acceptedFormats: [], processingType: 'none' },
+  { id: 'cron-parser', slug: 'cron-parser', category: 'developer', icon: 'Clock', isAvailable: true, isPremium: false, maxFileSize: 0, acceptedFormats: [], processingType: 'none' },
+  { id: 'chmod-calculator', slug: 'chmod-calculator', category: 'developer', icon: 'Terminal', isAvailable: true, isPremium: false, maxFileSize: 0, acceptedFormats: [], processingType: 'none' },
+  { id: 'http-status-codes', slug: 'http-status-codes', category: 'developer', icon: 'Globe', isAvailable: true, isPremium: false, maxFileSize: 0, acceptedFormats: [], processingType: 'none' },
+  { id: 'json-to-typescript', slug: 'json-to-typescript', category: 'developer', icon: 'Braces', isAvailable: true, isPremium: false, maxFileSize: 0, acceptedFormats: [], processingType: 'none' },
+  { id: 'text-to-binary', slug: 'text-to-binary', category: 'developer', icon: 'Binary', isAvailable: true, isPremium: false, maxFileSize: 0, acceptedFormats: [], processingType: 'none' },
+  { id: 'url-parser', slug: 'url-parser', category: 'developer', icon: 'Link', isAvailable: true, isPremium: false, maxFileSize: 0, acceptedFormats: [], processingType: 'none' },
+  { id: 'color-converter', slug: 'color-converter', category: 'color-design', icon: 'Palette', isAvailable: true, isPremium: false, maxFileSize: 0, acceptedFormats: [], processingType: 'none' },
 
   // ---------- Calculators (6 tools) ----------
   { id: 'scientific-calculator', slug: 'scientific', category: 'calculators', icon: 'Calculator', isAvailable: true, isPremium: false, maxFileSize: 0, acceptedFormats: [], processingType: 'none' },

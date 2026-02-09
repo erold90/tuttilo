@@ -97,6 +97,17 @@ const lightTools: Record<string, React.ComponentType> = {
   "markdown-table-generator": dynamic(() => import("./markdown-table-generator").then(m => m.default), { ssr }),
   "sql-to-csv": dynamic(() => import("./sql-to-csv").then(m => m.default), { ssr }),
   "yaml-validator": dynamic(() => import("./yaml-validator").then(m => m.default), { ssr }),
+  // Dev Tools Extra (Phase 2.1)
+  "javascript-minifier": dynamic(() => import("./javascript-minifier").then(m => m.default), { ssr }),
+  "html-minifier": dynamic(() => import("./html-minifier").then(m => m.default), { ssr }),
+  "json-diff": dynamic(() => import("./json-diff").then(m => m.default), { ssr }),
+  "cron-parser": dynamic(() => import("./cron-parser").then(m => m.default), { ssr }),
+  "chmod-calculator": dynamic(() => import("./chmod-calculator").then(m => m.default), { ssr }),
+  "http-status-codes": dynamic(() => import("./http-status-codes").then(m => m.default), { ssr }),
+  "json-to-typescript": dynamic(() => import("./json-to-typescript").then(m => m.default), { ssr }),
+  "text-to-binary": dynamic(() => import("./text-to-binary").then(m => m.default), { ssr }),
+  "url-parser": dynamic(() => import("./url-parser").then(m => m.default), { ssr }),
+  "color-converter": dynamic(() => import("./color-converter").then(m => m.default), { ssr }),
 };
 
 // FFmpeg-based tools — loaded via ffmpeg-tools proxy

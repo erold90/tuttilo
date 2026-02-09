@@ -70,6 +70,10 @@ const implementedToolIds = new Set([
   "xml-json-converter", "yaml-json-converter", "html-entity-encoder",
   "json-path-evaluator", "csv-editor", "markdown-table-generator",
   "sql-to-csv", "yaml-validator",
+  // Dev Tools Extra (Phase 2.1)
+  "javascript-minifier", "html-minifier", "json-diff", "cron-parser",
+  "chmod-calculator", "http-status-codes", "json-to-typescript",
+  "text-to-binary", "url-parser", "color-converter",
 ]);
 
 export function generateStaticParams() {
