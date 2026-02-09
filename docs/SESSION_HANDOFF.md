@@ -7,7 +7,7 @@ Espansione Tuttilo da 82 a 250+ tool. Attualmente nella Fase 1 (tool HIGH priori
 - [x] 0.1-0.7 Fase 0 Infrastruttura COMPLETATA
 - [x] 1.1a Calculators batch 1: scientific, percentage, bmi, loan, mortgage, compound-interest (DONE + deployed)
 - [x] 1.1b Calculators batch 2: roi, tip, salary, vat, profit-margin, discount (DONE + deployed f7883aed)
-- [x] 1.1c Calculators batch 3: age, date-diff, calorie, fraction, grade, break-even (FULLY TRANSLATED IN 8 LANGUAGES + KO commit 28bc0d1, 2026-02-09)
+- [x] 1.1c Calculators batch 3: age, date-diff, calorie, fraction, grade, break-even (FULLY TRANSLATED IN 8 LANGUAGES + KO commit 28bc0d1, PT commit c49c58e, 2026-02-09)
 - [ ] 1.2a Converters batch 1: length, weight, temperature, data-size, area
 - [ ] 1.2b Converters batch 2: volume, speed, time, fuel-economy, shoe-size
 - [ ] 1.2c Converters batch 3: pressure, energy, number-base, roman-numeral, power
@@ -20,9 +20,17 @@ Espansione Tuttilo da 82 a 250+ tool. Attualmente nella Fase 1 (tool HIGH priori
 ## PIANO COMPLETO: docs/EXPANSION_PLAN.md
 
 ## PROSSIMO PASSO
-1. Completare traduzioni 1.1c (7 subagent in background)
-2. Build + Deploy 1.1c
-3. Iniziare Phase 1.2a (Converters)
+1. Build + Deploy 1.1c (attualmente bloccato su build - verificare)
+2. Iniziare Phase 1.2a (Converters)
+
+## TRADUZIONI 1.1c COMPLETATE (PT)
+- age-calculator: Calculadora de Idade
+- date-diff-calculator: Calculadora de Diferença de Datas
+- calorie-calculator: Calculadora de Calorias
+- fraction-calculator: Calculadora de Frações
+- grade-calculator: Calculadora de Notas
+- break-even-calculator: Calculadora de Ponto de Equilíbrio
+Commit: c49c58e
 
 ## FILE MODIFICATI IN QUESTA SESSIONE
 - src/components/tools/age-calculator.tsx (NEW)
