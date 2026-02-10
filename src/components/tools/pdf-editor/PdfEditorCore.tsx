@@ -252,6 +252,7 @@ export function PdfEditorCore({ file, rawBytes, onReset }: PdfEditorProps) {
         return;
       }
       // Detect form fields via pdf-lib
+      let foundFields = false;
       try {
         const { PDFDocument, PDFTextField, PDFCheckBox, PDFDropdown } = await import("pdf-lib");
         const doc = await PDFDocument.load(rawBytes.slice(0), { ignoreEncryption: true });
@@ -278,13 +279,50 @@ export function PdfEditorCore({ file, rawBytes, onReset }: PdfEditorProps) {
               if (sel) tv[name] = sel;
             }
           }
-          if (!cancelled) {
+          if (!cancelled && detected.length > 0) {
+            setFields(detected);
+            setTextVals(tv);
+            setCheckVals(cv);
+            foundFields = true;
+          }
+        } catch { /* No form fields */ }
+      } catch { /* pdf-lib can't parse */ }
+      // Fallback: detect Widget annotations via pdfjs-dist
+      if (!foundFields && !cancelled) {
+        try {
+          const pdfjs = await getPdfjs();
+          const doc = await pdfjs.getDocument({ data: rawBytes.slice(0) }).promise;
+          const detected: FieldInfo[] = [];
+          const tv: Record<string, string> = {};
+          const cv: Record<string, boolean> = {};
+          for (let p = 1; p <= doc.numPages; p++) {
+            const page = await doc.getPage(p);
+            const annots = await page.getAnnotations();
+            for (const a of annots) {
+              if (a.subtype !== "Widget" || !a.fieldName) continue;
+              const name = a.fieldName as string;
+              if (detected.some((d) => d.name === name)) continue;
+              if (a.fieldType === "Tx") {
+                detected.push({ name, type: "text" });
+                if (a.fieldValue) tv[name] = String(a.fieldValue);
+              } else if (a.fieldType === "Btn" && a.checkBox) {
+                detected.push({ name, type: "checkbox" });
+                cv[name] = !!a.fieldValue && a.fieldValue !== "Off";
+              } else if (a.fieldType === "Ch") {
+                const opts = (a.options || []).map((o: { displayValue?: string; exportValue?: string }) => o.displayValue || o.exportValue || "");
+                detected.push({ name, type: "dropdown", options: opts });
+                if (a.fieldValue) tv[name] = String(a.fieldValue);
+              }
+            }
+          }
+          doc.destroy();
+          if (!cancelled && detected.length > 0) {
             setFields(detected);
             setTextVals(tv);
             setCheckVals(cv);
           }
-        } catch { /* No form fields */ }
-      } catch { /* pdf-lib can't parse - no form fields */ }
+        } catch { /* pdfjs fallback failed */ }
+      }
     })();
     return () => { cancelled = true; };
   }, [rawBytes, t]);
@@ -1497,7 +1535,16 @@ export function PdfEditorCore({ file, rawBytes, onReset }: PdfEditorProps) {
       {mode === "fill" && (
         <div className="bg-muted/50 rounded-lg p-4 space-y-3">
           {fields.length === 0 ? (
-            <p className="text-sm text-muted-foreground text-center py-4">{t("noFields")}</p>
+            <div className="text-center py-4 space-y-3">
+              <p className="text-sm text-muted-foreground">{t("noFields")}</p>
+              <p className="text-xs text-muted-foreground/70">{t("noFieldsHint")}</p>
+              <button
+                onClick={() => setMode("text")}
+                className="inline-flex items-center gap-2 px-4 py-2 rounded-lg bg-primary text-primary-foreground text-sm font-medium hover:bg-primary/90 transition-colors"
+              >
+                {t("switchToText")}
+              </button>
+            </div>
           ) : (
             <>
               {fields.map((f) => (
