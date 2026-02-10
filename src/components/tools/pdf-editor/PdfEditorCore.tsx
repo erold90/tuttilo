@@ -1323,7 +1323,7 @@ export function PdfEditorCore({ file, rawBytes, onReset }: PdfEditorProps) {
               onPointerLeave={mode === "draw" ? onDrawEnd : () => setHoverIdx(null)}
             />
 
-            {/* Inline text editor */}
+            {/* Inline text editor (select mode - editing existing text) */}
             {mode === "select" && inlineEditing && selectedItem && selectedKey && (
               <InlineTextEditor
                 item={selectedItem}
@@ -1334,6 +1334,89 @@ export function PdfEditorCore({ file, rawBytes, onReset }: PdfEditorProps) {
                 onClose={onInlineClose}
                 scale={scaleRef.current}
               />
+            )}
+
+            {/* Inline new text input (text mode - adding text at click position) */}
+            {mode === "text" && newTextPos && (
+              <div
+                style={{
+                  position: "absolute",
+                  left: newTextPos.x * scaleRef.current,
+                  top: (pageDimsRef.current.h - newTextPos.y) * scaleRef.current - newTextSize * scaleRef.current,
+                  zIndex: 20,
+                }}
+              >
+                {/* Mini toolbar above input */}
+                <div
+                  className="flex items-center gap-1.5 mb-1 px-2 py-1 rounded-md bg-background border shadow-lg"
+                  style={{ fontSize: 12, whiteSpace: "nowrap" }}
+                  onPointerDown={(e) => e.stopPropagation()}
+                >
+                  <input
+                    type="number"
+                    min={6}
+                    max={72}
+                    value={newTextSize}
+                    onChange={(e) => setNewTextSize(Number(e.target.value))}
+                    className="w-12 px-1 py-0.5 rounded border bg-muted text-xs text-center"
+                    onPointerDown={(e) => e.stopPropagation()}
+                  />
+                  <input
+                    type="color"
+                    value={newTextColor}
+                    onChange={(e) => setNewTextColor(e.target.value)}
+                    className="h-5 w-5 rounded cursor-pointer border-0 p-0"
+                    onPointerDown={(e) => e.stopPropagation()}
+                  />
+                  <button
+                    onClick={(e) => { e.stopPropagation(); addTextAnnotation(); }}
+                    disabled={!newTextInput.trim()}
+                    className="px-2 py-0.5 bg-primary text-primary-foreground rounded text-xs font-medium hover:bg-primary/90 disabled:opacity-40"
+                  >
+                    ✓
+                  </button>
+                  <button
+                    onClick={(e) => { e.stopPropagation(); setNewTextPos(null); setNewTextInput(""); }}
+                    className="px-1.5 py-0.5 rounded text-xs text-muted-foreground hover:bg-muted"
+                  >
+                    ✕
+                  </button>
+                </div>
+                <div
+                  ref={(el) => {
+                    if (el && !el.dataset.init) {
+                      el.dataset.init = "1";
+                      el.focus();
+                    }
+                  }}
+                  contentEditable
+                  suppressContentEditableWarning
+                  onInput={(e) => setNewTextInput((e.target as HTMLDivElement).textContent || "")}
+                  onKeyDown={(e) => {
+                    if (e.key === "Enter" && !e.shiftKey) { e.preventDefault(); addTextAnnotation(); }
+                    if (e.key === "Escape") { setNewTextPos(null); setNewTextInput(""); }
+                    e.stopPropagation();
+                  }}
+                  onPointerDown={(e) => e.stopPropagation()}
+                  spellCheck={false}
+                  style={{
+                    fontSize: newTextSize * scaleRef.current,
+                    lineHeight: 1.2,
+                    fontFamily: "sans-serif",
+                    color: newTextColor,
+                    caretColor: "#6366F1",
+                    background: "rgba(255, 255, 255, 0.9)",
+                    border: "2px solid #6366F1",
+                    borderRadius: 2,
+                    outline: "none",
+                    padding: "1px 3px",
+                    minWidth: 60,
+                    minHeight: newTextSize * scaleRef.current * 1.2,
+                    whiteSpace: "pre-wrap",
+                    cursor: "text",
+                  }}
+                />
+              </div>
             )}
 
             {/* Floating toolbar */}
@@ -1486,43 +1569,7 @@ export function PdfEditorCore({ file, rawBytes, onReset }: PdfEditorProps) {
       </div>
 
       {/* Add text panel (text mode) */}
-      {mode === "text" && newTextPos && (
-        <div className="bg-muted/50 rounded-lg p-4 space-y-3">
-          <input
-            type="text"
-            value={newTextInput}
-            onChange={(e) => setNewTextInput(e.target.value)}
-            className="w-full px-3 py-2 rounded-lg border bg-background text-sm"
-            placeholder={t("editPlaceholder")}
-            onKeyDown={(e) => e.key === "Enter" && addTextAnnotation()}
-            autoFocus
-          />
-          <div className="flex items-center gap-3">
-            <label className="text-xs text-muted-foreground">{t("fontSize")}:</label>
-            <input
-              type="number"
-              min={6}
-              max={72}
-              value={newTextSize}
-              onChange={(e) => setNewTextSize(Number(e.target.value))}
-              className="w-20 px-2 py-1 rounded border bg-background text-sm"
-            />
-            <input
-              type="color"
-              value={newTextColor}
-              onChange={(e) => setNewTextColor(e.target.value)}
-              className="h-7 w-7 rounded cursor-pointer"
-            />
-            <button
-              onClick={addTextAnnotation}
-              disabled={!newTextInput.trim()}
-              className="px-4 py-1.5 bg-primary text-primary-foreground rounded-lg text-sm font-medium hover:bg-primary/90 disabled:opacity-50"
-            >
-              {t("addText")}
-            </button>
-          </div>
-        </div>
-      )}
+      {/* Text input is now inline on the PDF canvas */}
 
       {/* Pending image hint */}
       {mode === "image" && pendingImage && (
