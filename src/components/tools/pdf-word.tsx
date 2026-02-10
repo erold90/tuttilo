@@ -82,12 +82,13 @@ export function PdfWord() {
     setProcessing(true); setProgress(0); setError("");
     try {
       const { Document, Packer, Paragraph, ImageRun } = await import("docx");
-      const bytes = await file.arrayBuffer();
-      const doc = await pdfjsLib.getDocument({ data: bytes }).promise;
+      const rawBytes = new Uint8Array(await file.arrayBuffer());
+      const doc = await pdfjsLib.getDocument({ data: rawBytes }).promise;
 
       // Each PDF page becomes its own section with matching dimensions
       const sectionsList: { properties: { page: { size: { width: number; height: number }; margin: { top: number; right: number; bottom: number; left: number } } }; children: InstanceType<typeof Paragraph>[] }[] = [];
-      const RENDER_SCALE = 3; // 216 DPI for high quality
+      // Use scale 2 for pages > 20 to reduce memory pressure
+      const RENDER_SCALE = doc.numPages > 20 ? 2 : 3;
 
       for (let i = 1; i <= doc.numPages; i++) {
         const page = await doc.getPage(i);
@@ -96,12 +97,14 @@ export function PdfWord() {
 
         const canvas = document.createElement("canvas");
         canvas.width = viewport.width; canvas.height = viewport.height;
-        const ctx = canvas.getContext("2d")!;
+        const ctx = canvas.getContext("2d");
+        if (!ctx) throw new Error("Canvas 2D context not available");
         ctx.fillStyle = "#ffffff";
         ctx.fillRect(0, 0, canvas.width, canvas.height);
         await (page.render({ canvasContext: ctx, viewport, canvas } as Parameters<typeof page.render>[0]).promise);
 
-        const blob = await new Promise<Blob>((res) => canvas.toBlob((b) => res(b!), "image/jpeg", 0.92));
+        const blob = await new Promise<Blob | null>((res) => canvas.toBlob((b) => res(b), "image/jpeg", 0.92));
+        if (!blob) throw new Error(`Failed to render page ${i} as JPEG`);
         const imgBytes = new Uint8Array(await blob.arrayBuffer());
 
         // Page size in twips (1 pt = 20 twips)
@@ -140,7 +143,8 @@ export function PdfWord() {
       setResultSize(outBlob.size);
     } catch (err) {
       console.error("Visual PDF→Word error:", err);
-      setError(t("convertError"));
+      const msg = err instanceof Error ? err.message : String(err);
+      setError(`${t("convertError")} (${msg})`);
     } finally {
       setProcessing(false);
     }
@@ -152,8 +156,8 @@ export function PdfWord() {
     setProcessing(true); setProgress(0); setError("");
     try {
       const { Document, Packer, Paragraph, TextRun, HeadingLevel, PageBreak, AlignmentType } = await import("docx");
-      const bytes = await file.arrayBuffer();
-      const doc = await pdfjsLib.getDocument({ data: bytes }).promise;
+      const rawBytes = new Uint8Array(await file.arrayBuffer());
+      const doc = await pdfjsLib.getDocument({ data: rawBytes }).promise;
       type Para = InstanceType<typeof Paragraph>;
       const allChildren: Para[] = [];
 
@@ -268,7 +272,8 @@ export function PdfWord() {
       setResultSize(outBlob.size);
     } catch (err) {
       console.error("Editable PDF→Word error:", err);
-      setError(t("convertError"));
+      const msg = err instanceof Error ? err.message : String(err);
+      setError(`${t("convertError")} (${msg})`);
     } finally {
       setProcessing(false);
     }
@@ -297,7 +302,8 @@ strong, b { font-weight: bold; } em, i { font-style: italic; }
       setHtmlContent(fullHtml);
     } catch (err) {
       console.error("Word→PDF error:", err);
-      setError(t("convertError"));
+      const msg = err instanceof Error ? err.message : String(err);
+      setError(`${t("convertError")} (${msg})`);
     } finally {
       setProcessing(false);
     }

@@ -10,12 +10,12 @@ function isSafariBrowser(): boolean {
   return /^((?!chrome|android).)*safari/i.test(navigator.userAgent);
 }
 
-/** Configure pdfjs worker — disables worker on Safari for compatibility */
+/** Configure pdfjs worker — uses local worker file, disables on Safari */
 export function configurePdfjsWorker(lib: typeof import("pdfjs-dist")) {
   if (isSafariBrowser()) {
     lib.GlobalWorkerOptions.workerSrc = "";
   } else {
-    lib.GlobalWorkerOptions.workerSrc = `https://cdn.jsdelivr.net/npm/pdfjs-dist@${lib.version}/build/pdf.worker.min.mjs`;
+    lib.GlobalWorkerOptions.workerSrc = "/pdf.worker.min.mjs";
   }
 }
 
