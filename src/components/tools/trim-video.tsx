@@ -395,11 +395,24 @@ export function TrimVideo() {
     return () => video.removeEventListener("loadedmetadata", onLoaded);
   }, [videoUrl]);
 
-  /* ── Sync video time ── */
+  /* ── Sync video time + constrain to selection ── */
+  const startRef = useRef(start);
+  const endRef = useRef(end);
+  startRef.current = start;
+  endRef.current = end;
+
   useEffect(() => {
     const video = videoRef.current;
     if (!video) return;
-    const onTimeUpdate = () => setCurrentTime(video.currentTime);
+    const onTimeUpdate = () => {
+      const t = video.currentTime;
+      setCurrentTime(t);
+      // Stop at end of selection
+      if (t >= endRef.current) {
+        video.pause();
+        video.currentTime = endRef.current;
+      }
+    };
     const onPlay = () => setIsPlaying(true);
     const onPause = () => setIsPlaying(false);
     video.addEventListener("timeupdate", onTimeUpdate);
@@ -411,6 +424,29 @@ export function TrimVideo() {
       video.removeEventListener("pause", onPause);
     };
   }, [videoUrl]);
+
+  /* ── Player controls ── */
+  const togglePlay = useCallback(() => {
+    const video = videoRef.current;
+    if (!video) return;
+    if (video.paused) {
+      // If current time is outside selection or at end, jump to start of selection
+      if (video.currentTime < startRef.current || video.currentTime >= endRef.current - 0.05) {
+        video.currentTime = startRef.current;
+      }
+      video.play();
+    } else {
+      video.pause();
+    }
+  }, []);
+
+  const seekTo = useCallback((time: number) => {
+    const video = videoRef.current;
+    if (video) video.currentTime = Math.max(0, Math.min(duration, time));
+  }, [duration]);
+
+  const skipBack = useCallback(() => seekTo((videoRef.current?.currentTime ?? 0) - 5), [seekTo]);
+  const skipForward = useCallback(() => seekTo((videoRef.current?.currentTime ?? 0) + 5), [seekTo]);
 
   /* ── Keyboard shortcuts ── */
   useEffect(() => {
@@ -424,7 +460,7 @@ export function TrimVideo() {
       switch (e.key) {
         case " ":
           e.preventDefault();
-          video.paused ? video.play() : video.pause();
+          togglePlay();
           break;
         case "ArrowLeft":
           e.preventDefault();
@@ -446,22 +482,7 @@ export function TrimVideo() {
     };
     window.addEventListener("keydown", handler);
     return () => window.removeEventListener("keydown", handler);
-  }, [file, resultUrl, duration]);
-
-  /* ── Player controls ── */
-  const togglePlay = useCallback(() => {
-    const video = videoRef.current;
-    if (!video) return;
-    video.paused ? video.play() : video.pause();
-  }, []);
-
-  const seekTo = useCallback((time: number) => {
-    const video = videoRef.current;
-    if (video) video.currentTime = Math.max(0, Math.min(duration, time));
-  }, [duration]);
-
-  const skipBack = useCallback(() => seekTo((videoRef.current?.currentTime ?? 0) - 5), [seekTo]);
-  const skipForward = useCallback(() => seekTo((videoRef.current?.currentTime ?? 0) + 5), [seekTo]);
+  }, [file, resultUrl, duration, togglePlay]);
 
   /* ── FFmpeg trim ── */
   const trim = useCallback(async () => {
@@ -475,22 +496,24 @@ export function TrimVideo() {
 
       const ext = file.name.match(/\.\w+$/)?.[0] || ".mp4";
       const inputName = "input" + ext;
-      const outputName = "output.mp4";
+      const outputName = "output" + ext;
+      const dur = (end - start).toFixed(3);
 
       await ffmpeg.writeFile(inputName, await ffmpegFetchFile(file));
+
+      // Use -c copy (stream copy) — fast and doesn't require libx264/aac encoders
+      // -ss before -i for fast keyframe seek, -t for duration
       await ffmpeg.exec([
-        "-i", inputName,
         "-ss", start.toFixed(3),
-        "-to", end.toFixed(3),
-        "-c:v", "libx264",
-        "-preset", "fast",
-        "-c:a", "aac",
-        "-movflags", "+faststart",
+        "-i", inputName,
+        "-t", dur,
+        "-c", "copy",
+        "-avoid_negative_ts", "make_zero",
         outputName,
       ]);
 
       const data = await ffmpeg.readFile(outputName);
-      const blob = new Blob([(data as Uint8Array).buffer as ArrayBuffer], { type: "video/mp4" });
+      const blob = new Blob([(data as Uint8Array).buffer as ArrayBuffer], { type: file.type || "video/mp4" });
       if (resultUrl) URL.revokeObjectURL(resultUrl);
       setResultUrl(URL.createObjectURL(blob));
       setResultSize(blob.size);
