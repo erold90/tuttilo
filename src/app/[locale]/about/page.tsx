@@ -30,18 +30,18 @@ export async function generateMetadata({
     title: t("title"),
     description: t("description"),
     alternates: {
-      canonical: `${BASE_URL}/${locale}/about`,
+      canonical: locale === "en" ? `${BASE_URL}/about` : `${BASE_URL}/${locale}/about`,
       languages: {
         ...Object.fromEntries(
-          locales.map((l) => [l, `${BASE_URL}/${l}/about`])
+          locales.map((l) => [l, l === "en" ? `${BASE_URL}/about` : `${BASE_URL}/${l}/about`])
         ),
-        "x-default": `${BASE_URL}/en/about`,
+        "x-default": `${BASE_URL}/about`,
       },
     },
     openGraph: {
       title: t("title"),
       description: t("description"),
-      url: `${BASE_URL}/${locale}/about`,
+      url: locale === "en" ? `${BASE_URL}/about` : `${BASE_URL}/${locale}/about`,
       siteName: "Tuttilo",
       locale,
       type: "website",

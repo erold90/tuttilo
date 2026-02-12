@@ -40,18 +40,18 @@ export async function generateMetadata({
     title: `${title} | Tuttilo`,
     description,
     alternates: {
-      canonical: `${BASE_URL}/${locale}/${category}`,
+      canonical: locale === "en" ? `${BASE_URL}/${category}` : `${BASE_URL}/${locale}/${category}`,
       languages: {
         ...Object.fromEntries(
-          locales.map((l) => [l, `${BASE_URL}/${l}/${category}`])
+          locales.map((l) => [l, l === "en" ? `${BASE_URL}/${category}` : `${BASE_URL}/${l}/${category}`])
         ),
-        "x-default": `${BASE_URL}/en/${category}`,
+        "x-default": `${BASE_URL}/${category}`,
       },
     },
     openGraph: {
       title: `${title} | Tuttilo`,
       description,
-      url: `${BASE_URL}/${locale}/${category}`,
+      url: locale === "en" ? `${BASE_URL}/${category}` : `${BASE_URL}/${locale}/${category}`,
       siteName: "Tuttilo",
       locale,
       type: "website",
@@ -100,8 +100,8 @@ export default async function CategoryPage({
     "@context": "https://schema.org",
     "@type": "BreadcrumbList",
     itemListElement: [
-      { "@type": "ListItem", position: 1, name: tNav("home"), item: `${BASE_URL}/${locale}`, "@id": `${BASE_URL}/${locale}` },
-      { "@type": "ListItem", position: 2, name: tNav(cat.id), item: `${BASE_URL}/${locale}/${category}`, "@id": `${BASE_URL}/${locale}/${category}` },
+      { "@type": "ListItem", position: 1, name: tNav("home"), item: locale === "en" ? BASE_URL : `${BASE_URL}/${locale}`, "@id": locale === "en" ? BASE_URL : `${BASE_URL}/${locale}` },
+      { "@type": "ListItem", position: 2, name: tNav(cat.id), item: locale === "en" ? `${BASE_URL}/${category}` : `${BASE_URL}/${locale}/${category}`, "@id": locale === "en" ? `${BASE_URL}/${category}` : `${BASE_URL}/${locale}/${category}` },
     ],
   };
 
@@ -110,7 +110,7 @@ export default async function CategoryPage({
     "@type": "CollectionPage",
     name: tCat(`${catKey}.title`),
     description: tCat(`${catKey}.description`),
-    url: `${BASE_URL}/${locale}/${category}`,
+    url: locale === "en" ? `${BASE_URL}/${category}` : `${BASE_URL}/${locale}/${category}`,
     mainEntity: {
       "@type": "ItemList",
       numberOfItems: availableTools.length,
@@ -118,7 +118,7 @@ export default async function CategoryPage({
         "@type": "ListItem",
         position: i + 1,
         name: tTools(`${tool.id}.name`),
-        url: `${BASE_URL}/${locale}/${category}/${tool.slug}`,
+        url: locale === "en" ? `${BASE_URL}/${category}/${tool.slug}` : `${BASE_URL}/${locale}/${category}/${tool.slug}`,
       })),
     },
   };

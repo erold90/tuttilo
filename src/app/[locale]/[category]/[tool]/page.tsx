@@ -147,21 +147,21 @@ export async function generateMetadata({
     title,
     description,
     alternates: {
-      canonical: `${BASE_URL}/${locale}/${category}/${toolSlug}`,
+      canonical: locale === "en" ? `${BASE_URL}/${category}/${toolSlug}` : `${BASE_URL}/${locale}/${category}/${toolSlug}`,
       languages: {
         ...Object.fromEntries(
           locales.map((l) => [
             l,
-            `${BASE_URL}/${l}/${category}/${toolSlug}`,
+            l === "en" ? `${BASE_URL}/${category}/${toolSlug}` : `${BASE_URL}/${l}/${category}/${toolSlug}`,
           ])
         ),
-        "x-default": `${BASE_URL}/en/${category}/${toolSlug}`,
+        "x-default": `${BASE_URL}/${category}/${toolSlug}`,
       },
     },
     openGraph: {
       title: `${name} | Tuttilo`,
       description,
-      url: `${BASE_URL}/${locale}/${category}/${toolSlug}`,
+      url: locale === "en" ? `${BASE_URL}/${category}/${toolSlug}` : `${BASE_URL}/${locale}/${category}/${toolSlug}`,
       siteName: "Tuttilo",
       locale,
       type: "website",
@@ -205,14 +205,14 @@ export default async function ToolPage({
 
   const toolName = t(`${toolData.id}.name`);
   const toolDesc = t(`${toolData.id}.description`);
-  const toolUrl = `${BASE_URL}/${locale}/${category}/${toolSlug}`;
+  const toolUrl = locale === "en" ? `${BASE_URL}/${category}/${toolSlug}` : `${BASE_URL}/${locale}/${category}/${toolSlug}`;
 
   const breadcrumbLd = {
     "@context": "https://schema.org",
     "@type": "BreadcrumbList",
     itemListElement: [
-      { "@type": "ListItem", position: 1, name: tNav("home"), item: `${BASE_URL}/${locale}`, "@id": `${BASE_URL}/${locale}` },
-      { "@type": "ListItem", position: 2, name: tNav(validCategory.id), item: `${BASE_URL}/${locale}/${category}`, "@id": `${BASE_URL}/${locale}/${category}` },
+      { "@type": "ListItem", position: 1, name: tNav("home"), item: locale === "en" ? BASE_URL : `${BASE_URL}/${locale}`, "@id": locale === "en" ? BASE_URL : `${BASE_URL}/${locale}` },
+      { "@type": "ListItem", position: 2, name: tNav(validCategory.id), item: locale === "en" ? `${BASE_URL}/${category}` : `${BASE_URL}/${locale}/${category}`, "@id": locale === "en" ? `${BASE_URL}/${category}` : `${BASE_URL}/${locale}/${category}` },
       { "@type": "ListItem", position: 3, name: toolName, item: toolUrl, "@id": toolUrl },
     ],
   };

@@ -32,7 +32,7 @@ export async function generateMetadata({
   const t = await getTranslations({ locale, namespace: "conversions" });
   const title = t(`${slug}.title`);
   const description = t(`${slug}.description`);
-  const url = `${BASE_URL}/${locale}/convert/${slug}`;
+  const url = locale === "en" ? `${BASE_URL}/convert/${slug}` : `${BASE_URL}/${locale}/convert/${slug}`;
 
   return {
     title,
@@ -41,9 +41,9 @@ export async function generateMetadata({
       canonical: url,
       languages: {
         ...Object.fromEntries(
-          locales.map((l) => [l, `${BASE_URL}/${l}/convert/${slug}`])
+          locales.map((l) => [l, l === "en" ? `${BASE_URL}/convert/${slug}` : `${BASE_URL}/${l}/convert/${slug}`])
         ),
-        "x-default": `${BASE_URL}/en/convert/${slug}`,
+        "x-default": `${BASE_URL}/convert/${slug}`,
       },
     },
     openGraph: {
@@ -107,7 +107,7 @@ export default async function ConversionPage({
   ];
 
   const toolUrl = `/${conv.category}/${conv.toolSlug}`;
-  const pageUrl = `${BASE_URL}/${locale}/convert/${slug}`;
+  const pageUrl = locale === "en" ? `${BASE_URL}/convert/${slug}` : `${BASE_URL}/${locale}/convert/${slug}`;
 
   // Structured data
   const breadcrumbLd = {
@@ -118,8 +118,8 @@ export default async function ConversionPage({
         "@type": "ListItem",
         position: 1,
         name: "Home",
-        item: `${BASE_URL}/${locale}`,
-        "@id": `${BASE_URL}/${locale}`,
+        item: locale === "en" ? BASE_URL : `${BASE_URL}/${locale}`,
+        "@id": locale === "en" ? BASE_URL : `${BASE_URL}/${locale}`,
       },
       {
         "@type": "ListItem",
