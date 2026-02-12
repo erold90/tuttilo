@@ -2,14 +2,14 @@
 
 import { useState, useCallback } from "react";
 import { useTranslations } from "next-intl";
-import { getFFmpeg, ffmpegFetchFile } from "@/lib/ffmpeg";
+import { compressVideo } from "@/lib/video-compress";
 import { VideoCamera } from "@phosphor-icons/react";
 import { useFileInput } from "@/hooks/use-file-input";
 
 const QUALITY_PRESETS = [
-  { key: "high", crf: "23" },
-  { key: "medium", crf: "28" },
-  { key: "low", crf: "33" },
+  { key: "high", factor: 0.6 },   // 40% smaller
+  { key: "medium", factor: 0.35 }, // 65% smaller
+  { key: "low", factor: 0.15 },    // 85% smaller
 ] as const;
 
 type QualityKey = (typeof QUALITY_PRESETS)[number]["key"];
@@ -18,11 +18,11 @@ export function CompressVideo() {
   const t = useTranslations("tools.compress-video.ui");
   const [file, setFile] = useState<File | null>(null);
   const [quality, setQuality] = useState<QualityKey>("medium");
-  const [loading, setLoading] = useState(false);
   const [compressing, setCompressing] = useState(false);
   const [progress, setProgress] = useState(0);
   const [resultUrl, setResultUrl] = useState("");
   const [resultSize, setResultSize] = useState(0);
+  const [resultExt, setResultExt] = useState("mp4");
   const [error, setError] = useState("");
 
   const loadFile = useCallback((f: File) => {
@@ -36,44 +36,21 @@ export function CompressVideo() {
 
   const compress = useCallback(async () => {
     if (!file) return;
-    setLoading(true);
+    setCompressing(true);
     setError("");
+    setProgress(0);
     try {
-      const ffmpeg = await getFFmpeg(setProgress);
-      setLoading(false);
-      setCompressing(true);
-
-      const ext = file.name.match(/\.\w+$/)?.[0] || ".mp4";
-      const inputName = "input" + ext;
-      const outputName = "output.mp4";
-
-      await ffmpeg.writeFile(inputName, await ffmpegFetchFile(file));
-
       const preset = QUALITY_PRESETS.find((p) => p.key === quality)!;
-      await ffmpeg.exec([
-        "-i", inputName,
-        "-c:v", "libx264",
-        "-crf", preset.crf,
-        "-preset", "fast",
-        "-c:a", "aac",
-        "-b:a", "128k",
-        "-movflags", "+faststart",
-        outputName,
-      ]);
-
-      const data = await ffmpeg.readFile(outputName);
-      const blob = new Blob([(data as Uint8Array).buffer as ArrayBuffer], { type: "video/mp4" });
+      const result = await compressVideo(file, preset.factor, setProgress);
+      if (result.blob.size === 0) throw new Error("Output file is empty");
       if (resultUrl) URL.revokeObjectURL(resultUrl);
-      setResultUrl(URL.createObjectURL(blob));
-      setResultSize(blob.size);
-
-      await ffmpeg.deleteFile(inputName);
-      await ffmpeg.deleteFile(outputName);
+      setResultUrl(URL.createObjectURL(result.blob));
+      setResultSize(result.blob.size);
+      setResultExt(result.extension);
     } catch (err) {
       console.error("CompressVideo error:", err);
       setError(t("compressError"));
     } finally {
-      setLoading(false);
       setCompressing(false);
       setProgress(0);
     }
@@ -83,9 +60,9 @@ export function CompressVideo() {
     if (!resultUrl || !file) return;
     const a = document.createElement("a");
     a.href = resultUrl;
-    a.download = file.name.replace(/\.\w+$/, "_compressed.mp4");
+    a.download = file.name.replace(/\.\w+$/, `_compressed.${resultExt}`);
     a.click();
-  }, [resultUrl, file]);
+  }, [resultUrl, file, resultExt]);
 
   const reset = useCallback(() => {
     if (resultUrl) URL.revokeObjectURL(resultUrl);
@@ -147,10 +124,10 @@ export function CompressVideo() {
 
           <button
             onClick={compress}
-            disabled={loading || compressing}
+            disabled={compressing}
             className="w-full py-3 px-4 bg-primary text-primary-foreground rounded-lg font-medium hover:bg-primary/90 disabled:opacity-50 transition-colors"
           >
-            {loading ? t("loadingFfmpeg") : compressing ? `${t("compressing")} ${progress}%` : t("compress")}
+            {compressing ? `${t("compressing")} ${progress}%` : t("compress")}
           </button>
         </div>
       ) : (

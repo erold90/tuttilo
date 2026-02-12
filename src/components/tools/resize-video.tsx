@@ -2,7 +2,7 @@
 
 import { useState, useCallback } from "react";
 import { useTranslations } from "next-intl";
-import { getFFmpeg, ffmpegFetchFile } from "@/lib/ffmpeg";
+import { processVideo, getVideoExtension } from "@/lib/video-process";
 import { useFileInput } from "@/hooks/use-file-input";
 
 const PRESETS = [
@@ -18,7 +18,6 @@ export function ResizeVideo() {
   const [file, setFile] = useState<File | null>(null);
   const [width, setWidth] = useState(1280);
   const [height, setHeight] = useState(720);
-  const [loading, setLoading] = useState(false);
   const [processing, setProcessing] = useState(false);
   const [progress, setProgress] = useState(0);
   const [resultUrl, setResultUrl] = useState("");
@@ -33,35 +32,29 @@ export function ResizeVideo() {
 
   const resize = useCallback(async () => {
     if (!file) return;
-    setLoading(true); setError("");
+    setProcessing(true); setError(""); setProgress(0);
     try {
-      const ffmpeg = await getFFmpeg(setProgress);
-      setLoading(false); setProcessing(true);
-      const ext = file.name.match(/\.\w+$/)?.[0] || ".mp4";
-      await ffmpeg.writeFile("input" + ext, await ffmpegFetchFile(file));
-      // Ensure even dimensions
       const w = width % 2 === 0 ? width : width + 1;
       const h = height % 2 === 0 ? height : height + 1;
-      await ffmpeg.exec(["-i", "input" + ext, "-vf", `scale=${w}:${h}`, "-c:a", "copy", "output.mp4"]);
-      const data = await ffmpeg.readFile("output.mp4");
-      const blob = new Blob([(data as Uint8Array).buffer as ArrayBuffer], { type: "video/mp4" });
+      const result = await processVideo(file, {
+        canvasSize: () => ({ width: w, height: h }),
+      }, setProgress);
       if (resultUrl) URL.revokeObjectURL(resultUrl);
-      setResultUrl(URL.createObjectURL(blob));
-      await ffmpeg.deleteFile("input" + ext);
-      await ffmpeg.deleteFile("output.mp4");
+      setResultUrl(URL.createObjectURL(result.blob));
     } catch (err) {
       console.error("ResizeVideo error:", err);
       setError(t("processError"));
     } finally {
-      setLoading(false); setProcessing(false); setProgress(0);
+      setProcessing(false); setProgress(0);
     }
   }, [file, width, height, resultUrl, t]);
 
   const download = useCallback(() => {
     if (!resultUrl || !file) return;
+    const ext = getVideoExtension();
     const a = document.createElement("a");
     a.href = resultUrl;
-    a.download = file.name.replace(/\.\w+$/, `_${width}x${height}.mp4`);
+    a.download = file.name.replace(/\.\w+$/, `_${width}x${height}.${ext}`);
     a.click();
   }, [resultUrl, file, width, height]);
 
@@ -112,8 +105,8 @@ export function ResizeVideo() {
             </div>
           </div>
           <div className="flex gap-2">
-            <button onClick={resize} disabled={loading || processing} className="flex-1 rounded-lg bg-primary px-4 py-2.5 text-sm font-medium text-primary-foreground hover:bg-primary/90 disabled:opacity-50">
-              {loading ? t("loadingFFmpeg") : processing ? `${t("processing")} ${progress}%` : t("resize")}
+            <button onClick={resize} disabled={processing} className="flex-1 rounded-lg bg-primary px-4 py-2.5 text-sm font-medium text-primary-foreground hover:bg-primary/90 disabled:opacity-50">
+              {processing ? `${t("processing")} ${progress}%` : t("resize")}
             </button>
             <button onClick={reset} className="rounded-lg border border-border px-4 py-2.5 text-sm hover:bg-muted">{t("reset")}</button>
           </div>

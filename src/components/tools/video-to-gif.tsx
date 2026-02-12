@@ -2,7 +2,7 @@
 
 import { useState, useCallback, useRef, useEffect } from "react";
 import { useTranslations } from "next-intl";
-import { getFFmpeg, ffmpegFetchFile } from "@/lib/ffmpeg";
+import { encodeGIF } from "@/lib/gif-encode";
 import { FilmStrip } from "@phosphor-icons/react";
 import { useFileInput } from "@/hooks/use-file-input";
 
@@ -15,7 +15,6 @@ export function VideoToGif() {
   const [end, setEnd] = useState(0);
   const [fps, setFps] = useState(10);
   const [width, setWidth] = useState(480);
-  const [loading, setLoading] = useState(false);
   const [converting, setConverting] = useState(false);
   const [progress, setProgress] = useState(0);
   const [resultUrl, setResultUrl] = useState("");
@@ -57,51 +56,36 @@ export function VideoToGif() {
 
   const convert = useCallback(async () => {
     if (!file) return;
-    setLoading(true);
+    setConverting(true);
     setError("");
+    setProgress(0);
+
     try {
-      const ffmpeg = await getFFmpeg(setProgress);
-      setLoading(false);
-      setConverting(true);
+      // Capture frames by seeking through the video
+      const frames = await captureFrames(file, start, end, fps, width, (pct) => {
+        setProgress(Math.round(pct * 0.7)); // 0-70% for frame capture
+      });
 
-      const ext = file.name.match(/\.\w+$/)?.[0] || ".mp4";
-      const inputName = "input" + ext;
+      if (frames.length === 0) throw new Error("No frames captured");
 
-      await ffmpeg.writeFile(inputName, await ffmpegFetchFile(file));
+      // Encode GIF
+      const gifBlob = encodeGIF(
+        frames,
+        frames[0].width,
+        frames[0].height,
+        1000 / fps,
+        (pct) => {
+          setProgress(70 + Math.round(pct * 0.3)); // 70-100% for encoding
+        }
+      );
 
-      // Generate palette for better GIF quality
-      await ffmpeg.exec([
-        "-i", inputName,
-        "-ss", start.toFixed(3),
-        "-to", end.toFixed(3),
-        "-vf", `fps=${fps},scale=${width}:-1:flags=lanczos,palettegen`,
-        "-y", "palette.png",
-      ]);
-
-      await ffmpeg.exec([
-        "-i", inputName,
-        "-i", "palette.png",
-        "-ss", start.toFixed(3),
-        "-to", end.toFixed(3),
-        "-lavfi", `fps=${fps},scale=${width}:-1:flags=lanczos[x];[x][1:v]paletteuse`,
-        "-loop", "0",
-        "-y", "output.gif",
-      ]);
-
-      const data = await ffmpeg.readFile("output.gif");
-      const blob = new Blob([(data as Uint8Array).buffer as ArrayBuffer], { type: "image/gif" });
       if (resultUrl) URL.revokeObjectURL(resultUrl);
-      setResultUrl(URL.createObjectURL(blob));
-      setResultSize(blob.size);
-
-      await ffmpeg.deleteFile(inputName);
-      await ffmpeg.deleteFile("palette.png");
-      await ffmpeg.deleteFile("output.gif");
+      setResultUrl(URL.createObjectURL(gifBlob));
+      setResultSize(gifBlob.size);
     } catch (err) {
       console.error("VideoToGif error:", err);
       setError(t("convertError"));
     } finally {
-      setLoading(false);
       setConverting(false);
       setProgress(0);
     }
@@ -208,10 +192,10 @@ export function VideoToGif() {
 
               <button
                 onClick={convert}
-                disabled={loading || converting}
+                disabled={converting}
                 className="w-full py-3 px-4 bg-primary text-primary-foreground rounded-lg font-medium hover:bg-primary/90 disabled:opacity-50 transition-colors"
               >
-                {loading ? t("loadingFfmpeg") : converting ? `${t("converting")} ${progress}%` : t("convert")}
+                {converting ? `${t("converting")} ${progress}%` : t("convert")}
               </button>
             </>
           )}
@@ -241,4 +225,81 @@ export function VideoToGif() {
       )}
     </div>
   );
+}
+
+/** Capture video frames by seeking to each timestamp */
+function captureFrames(
+  file: File,
+  startTime: number,
+  endTime: number,
+  fps: number,
+  targetWidth: number,
+  onProgress?: (pct: number) => void
+): Promise<ImageData[]> {
+  return new Promise((resolve, reject) => {
+    const video = document.createElement("video");
+    video.preload = "auto";
+    video.muted = true;
+    video.playsInline = true;
+
+    const url = URL.createObjectURL(file);
+    video.src = url;
+
+    const canvas = document.createElement("canvas");
+    const ctx = canvas.getContext("2d");
+    if (!ctx) {
+      reject(new Error("Canvas not supported"));
+      return;
+    }
+
+    const frames: ImageData[] = [];
+    const frameTimes: number[] = [];
+
+    video.onerror = () => {
+      URL.revokeObjectURL(url);
+      reject(new Error("Failed to load video"));
+    };
+
+    video.onloadedmetadata = () => {
+      const interval = 1 / fps;
+      for (let t = startTime; t < endTime; t += interval) {
+        frameTimes.push(t);
+      }
+
+      if (frameTimes.length === 0) {
+        URL.revokeObjectURL(url);
+        reject(new Error("No frames to capture"));
+        return;
+      }
+
+      const aspectRatio = (video.videoHeight || 720) / (video.videoWidth || 1280);
+      canvas.width = targetWidth;
+      canvas.height = Math.round(targetWidth * aspectRatio);
+      // Ensure even dimensions
+      if (canvas.height % 2 !== 0) canvas.height++;
+
+      let frameIndex = 0;
+
+      const captureNext = () => {
+        if (frameIndex >= frameTimes.length) {
+          URL.revokeObjectURL(url);
+          resolve(frames);
+          return;
+        }
+        video.currentTime = frameTimes[frameIndex];
+      };
+
+      video.onseeked = () => {
+        ctx.drawImage(video, 0, 0, canvas.width, canvas.height);
+        frames.push(ctx.getImageData(0, 0, canvas.width, canvas.height));
+        frameIndex++;
+        if (onProgress) {
+          onProgress(frameIndex / frameTimes.length);
+        }
+        captureNext();
+      };
+
+      captureNext();
+    };
+  });
 }

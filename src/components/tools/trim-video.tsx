@@ -2,7 +2,7 @@
 
 import { useState, useCallback, useRef, useEffect, useMemo } from "react";
 import { useTranslations } from "next-intl";
-import { getFFmpeg, ffmpegFetchFile } from "@/lib/ffmpeg";
+import { trimMP4 } from "@/lib/mp4-trim";
 import { useFileInput } from "@/hooks/use-file-input";
 import {
   Scissors,
@@ -350,11 +350,11 @@ export function TrimVideo() {
   const [end, setEnd] = useState(0);
   const [currentTime, setCurrentTime] = useState(0);
   const [isPlaying, setIsPlaying] = useState(false);
-  const [loading, setLoading] = useState(false);
   const [trimming, setTrimming] = useState(false);
   const [progress, setProgress] = useState(0);
   const [resultUrl, setResultUrl] = useState("");
   const [resultSize, setResultSize] = useState(0);
+  const [resultExt, setResultExt] = useState("mp4");
   const [error, setError] = useState("");
   const videoRef = useRef<HTMLVideoElement>(null);
   const containerRef = useRef<HTMLDivElement>(null);
@@ -484,47 +484,28 @@ export function TrimVideo() {
     return () => window.removeEventListener("keydown", handler);
   }, [file, resultUrl, duration, togglePlay]);
 
-  /* ── FFmpeg trim ── */
+  /* ── Trim via Canvas + MediaRecorder (exact, re-encoded) ── */
   const trim = useCallback(async () => {
     if (!file) return;
-    setLoading(true);
+    // Pause preview video to avoid conflicts
+    videoRef.current?.pause();
+    setTrimming(true);
     setError("");
+    setProgress(0);
     try {
-      const ffmpeg = await getFFmpeg(setProgress);
-      setLoading(false);
-      setTrimming(true);
-
-      const ext = file.name.match(/\.\w+$/)?.[0] || ".mp4";
-      const inputName = "input" + ext;
-      const outputName = "output" + ext;
-      const dur = (end - start).toFixed(3);
-
-      await ffmpeg.writeFile(inputName, await ffmpegFetchFile(file));
-
-      // Use -c copy (stream copy) — fast and doesn't require libx264/aac encoders
-      // -ss before -i for fast keyframe seek, -t for duration
-      await ffmpeg.exec([
-        "-ss", start.toFixed(3),
-        "-i", inputName,
-        "-t", dur,
-        "-c", "copy",
-        "-avoid_negative_ts", "make_zero",
-        outputName,
-      ]);
-
-      const data = await ffmpeg.readFile(outputName);
-      const blob = new Blob([(data as Uint8Array).buffer as ArrayBuffer], { type: file.type || "video/mp4" });
+      const result = await trimMP4(file, start, end, setProgress);
+      if (result.blob.size === 0) {
+        throw new Error("Output file is empty");
+      }
       if (resultUrl) URL.revokeObjectURL(resultUrl);
-      setResultUrl(URL.createObjectURL(blob));
-      setResultSize(blob.size);
-
-      await ffmpeg.deleteFile(inputName);
-      await ffmpeg.deleteFile(outputName);
+      setResultUrl(URL.createObjectURL(result.blob));
+      setResultSize(result.blob.size);
+      setResultExt(result.extension);
     } catch (err) {
       console.error("TrimVideo error:", err);
-      setError(t("trimError"));
+      const msg = err instanceof Error ? err.message : String(err);
+      setError(`${t("trimError")} (${msg})`);
     } finally {
-      setLoading(false);
       setTrimming(false);
       setProgress(0);
     }
@@ -534,7 +515,7 @@ export function TrimVideo() {
     if (!resultUrl || !file) return;
     const a = document.createElement("a");
     a.href = resultUrl;
-    a.download = file.name.replace(/\.\w+$/, "_trimmed.mp4");
+    a.download = file.name.replace(/\.\w+$/, `_trimmed.${resultExt}`);
     a.click();
   }, [resultUrl, file]);
 
@@ -703,12 +684,10 @@ export function TrimVideo() {
           {/* Trim button */}
           <button
             onClick={trim}
-            disabled={loading || trimming || selectionDuration < MIN_SELECTION}
+            disabled={trimming || selectionDuration < MIN_SELECTION}
             className="w-full py-3.5 px-4 bg-cyan-500 text-white rounded-xl font-semibold hover:bg-cyan-600 disabled:opacity-50 disabled:cursor-not-allowed transition-colors flex items-center justify-center gap-2"
           >
-            {loading ? (
-              <>{t("loadingFfmpeg")}</>
-            ) : trimming ? (
+            {trimming ? (
               <>
                 <div className="w-full bg-cyan-800/50 rounded-full h-2 overflow-hidden">
                   <div className="bg-white h-full rounded-full transition-all duration-300" style={{ width: `${progress}%` }} />

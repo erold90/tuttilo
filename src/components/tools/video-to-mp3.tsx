@@ -2,14 +2,13 @@
 
 import { useState, useCallback } from "react";
 import { useTranslations } from "next-intl";
-import { getFFmpeg, ffmpegFetchFile } from "@/lib/ffmpeg";
+import { extractAudio, getBestAudioFormat } from "@/lib/video-process";
 import { MusicNotes } from "@phosphor-icons/react";
 import { useFileInput } from "@/hooks/use-file-input";
 
 export function VideoToMp3() {
   const t = useTranslations("tools.video-to-mp3.ui");
   const [file, setFile] = useState<File | null>(null);
-  const [loading, setLoading] = useState(false);
   const [converting, setConverting] = useState(false);
   const [progress, setProgress] = useState(0);
   const [result, setResult] = useState<{ url: string; name: string; size: number } | null>(null);
@@ -26,39 +25,22 @@ export function VideoToMp3() {
 
   const extract = useCallback(async () => {
     if (!file) return;
-    setLoading(true);
+    setConverting(true);
     setError("");
     setProgress(0);
     try {
-      const ffmpeg = await getFFmpeg(setProgress);
-      setLoading(false);
-      setConverting(true);
-
-      const inputExt = file.name.match(/\.\w+$/)?.[0] || ".mp4";
-      const inputName = "input" + inputExt;
-      const outputName = "output.mp3";
-
-      await ffmpeg.writeFile(inputName, await ffmpegFetchFile(file));
-      await ffmpeg.exec(["-i", inputName, "-vn", "-codec:a", "libmp3lame", "-q:a", "2", outputName]);
-
-      const data = await ffmpeg.readFile(outputName);
-      const blob = new Blob([(data as Uint8Array).buffer as ArrayBuffer], { type: "audio/mpeg" });
-
+      const audioResult = await extractAudio(file, setProgress);
       const baseName = file.name.replace(/\.[^.]+$/, "");
       if (result) URL.revokeObjectURL(result.url);
       setResult({
-        url: URL.createObjectURL(blob),
-        name: `${baseName}.mp3`,
-        size: blob.size,
+        url: URL.createObjectURL(audioResult.blob),
+        name: `${baseName}.${audioResult.extension}`,
+        size: audioResult.blob.size,
       });
-
-      await ffmpeg.deleteFile(inputName);
-      await ffmpeg.deleteFile(outputName);
     } catch (err) {
       console.error("VideoToMp3 error:", err);
       setError(t("extractError"));
     } finally {
-      setLoading(false);
       setConverting(false);
       setProgress(0);
     }
@@ -86,6 +68,8 @@ export function VideoToMp3() {
     return `${(bytes / (1024 * 1024)).toFixed(1)} MB`;
   };
 
+  const audioExt = getBestAudioFormat().extension.toUpperCase();
+
   return (
     <div className="space-y-6">
       {!file ? (
@@ -110,7 +94,11 @@ export function VideoToMp3() {
             <p className="text-sm text-muted-foreground">{formatSize(file.size)}</p>
           </div>
 
-          {(loading || converting) && (
+          <p className="text-xs text-muted-foreground text-center">
+            {t("outputFormat")}: {audioExt}
+          </p>
+
+          {converting && (
             <div className="w-full bg-muted rounded-full h-2">
               <div
                 className="bg-primary h-2 rounded-full transition-all duration-300"
@@ -121,10 +109,10 @@ export function VideoToMp3() {
 
           <button
             onClick={extract}
-            disabled={loading || converting}
+            disabled={converting}
             className="w-full py-3 px-4 bg-primary text-primary-foreground rounded-lg font-medium hover:bg-primary/90 disabled:opacity-50 transition-colors"
           >
-            {loading ? t("processing") : converting ? `${t("processing")} ${progress}%` : t("extract")}
+            {converting ? `${t("processing")} ${progress}%` : t("extract")}
           </button>
         </div>
       ) : (

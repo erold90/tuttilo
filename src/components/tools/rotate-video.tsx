@@ -2,24 +2,23 @@
 
 import { useState, useCallback } from "react";
 import { useTranslations } from "next-intl";
-import { getFFmpeg, ffmpegFetchFile } from "@/lib/ffmpeg";
+import { processVideo, getVideoExtension } from "@/lib/video-process";
 import { useFileInput } from "@/hooks/use-file-input";
 
-const ROTATIONS = [
-  { key: "90", filter: "transpose=1" },
-  { key: "180", filter: "transpose=1,transpose=1" },
-  { key: "270", filter: "transpose=2" },
-  { key: "hflip", filter: "hflip" },
-  { key: "vflip", filter: "vflip" },
-] as const;
+type RotationKey = "90" | "180" | "270" | "hflip" | "vflip";
 
-type RotationKey = (typeof ROTATIONS)[number]["key"];
+const ROTATIONS: { key: RotationKey }[] = [
+  { key: "90" },
+  { key: "180" },
+  { key: "270" },
+  { key: "hflip" },
+  { key: "vflip" },
+];
 
 export function RotateVideo() {
   const t = useTranslations("tools.rotate-video.ui");
   const [file, setFile] = useState<File | null>(null);
   const [rotation, setRotation] = useState<RotationKey>("90");
-  const [loading, setLoading] = useState(false);
   const [processing, setProcessing] = useState(false);
   const [progress, setProgress] = useState(0);
   const [resultUrl, setResultUrl] = useState("");
@@ -34,33 +33,66 @@ export function RotateVideo() {
 
   const rotate = useCallback(async () => {
     if (!file) return;
-    setLoading(true); setError("");
+    setProcessing(true); setError(""); setProgress(0);
     try {
-      const ffmpeg = await getFFmpeg(setProgress);
-      setLoading(false); setProcessing(true);
-      const ext = file.name.match(/\.\w+$/)?.[0] || ".mp4";
-      await ffmpeg.writeFile("input" + ext, await ffmpegFetchFile(file));
-      const filter = ROTATIONS.find((r) => r.key === rotation)!.filter;
-      await ffmpeg.exec(["-i", "input" + ext, "-vf", filter, "-c:a", "copy", "output.mp4"]);
-      const data = await ffmpeg.readFile("output.mp4");
-      const blob = new Blob([(data as Uint8Array).buffer as ArrayBuffer], { type: "video/mp4" });
+      const swapDims = rotation === "90" || rotation === "270";
+
+      const result = await processVideo(file, {
+        canvasSize: (video) => {
+          const w = video.videoWidth || 1280;
+          const h = video.videoHeight || 720;
+          return swapDims ? { width: h, height: w } : { width: w, height: h };
+        },
+        drawFrame: (ctx, video, canvas) => {
+          const vw = video.videoWidth || 1280;
+          const vh = video.videoHeight || 720;
+          ctx.save();
+          switch (rotation) {
+            case "90":
+              ctx.translate(canvas.width, 0);
+              ctx.rotate(Math.PI / 2);
+              ctx.drawImage(video, 0, 0, vw, vh);
+              break;
+            case "180":
+              ctx.translate(canvas.width, canvas.height);
+              ctx.rotate(Math.PI);
+              ctx.drawImage(video, 0, 0, canvas.width, canvas.height);
+              break;
+            case "270":
+              ctx.translate(0, canvas.height);
+              ctx.rotate(-Math.PI / 2);
+              ctx.drawImage(video, 0, 0, vw, vh);
+              break;
+            case "hflip":
+              ctx.translate(canvas.width, 0);
+              ctx.scale(-1, 1);
+              ctx.drawImage(video, 0, 0, canvas.width, canvas.height);
+              break;
+            case "vflip":
+              ctx.translate(0, canvas.height);
+              ctx.scale(1, -1);
+              ctx.drawImage(video, 0, 0, canvas.width, canvas.height);
+              break;
+          }
+          ctx.restore();
+        },
+      }, setProgress);
       if (resultUrl) URL.revokeObjectURL(resultUrl);
-      setResultUrl(URL.createObjectURL(blob));
-      await ffmpeg.deleteFile("input" + ext);
-      await ffmpeg.deleteFile("output.mp4");
+      setResultUrl(URL.createObjectURL(result.blob));
     } catch (err) {
       console.error("RotateVideo error:", err);
       setError(t("processError"));
     } finally {
-      setLoading(false); setProcessing(false); setProgress(0);
+      setProcessing(false); setProgress(0);
     }
   }, [file, rotation, resultUrl, t]);
 
   const download = useCallback(() => {
     if (!resultUrl || !file) return;
+    const ext = getVideoExtension();
     const a = document.createElement("a");
     a.href = resultUrl;
-    a.download = file.name.replace(/\.\w+$/, "_rotated.mp4");
+    a.download = file.name.replace(/\.\w+$/, `_rotated.${ext}`);
     a.click();
   }, [resultUrl, file]);
 
@@ -100,8 +132,8 @@ export function RotateVideo() {
             </div>
           </div>
           <div className="flex gap-2">
-            <button onClick={rotate} disabled={loading || processing} className="flex-1 rounded-lg bg-primary px-4 py-2.5 text-sm font-medium text-primary-foreground hover:bg-primary/90 disabled:opacity-50">
-              {loading ? t("loadingFFmpeg") : processing ? `${t("processing")} ${progress}%` : t("rotate")}
+            <button onClick={rotate} disabled={processing} className="flex-1 rounded-lg bg-primary px-4 py-2.5 text-sm font-medium text-primary-foreground hover:bg-primary/90 disabled:opacity-50">
+              {processing ? `${t("processing")} ${progress}%` : t("rotate")}
             </button>
             <button onClick={reset} className="rounded-lg border border-border px-4 py-2.5 text-sm hover:bg-muted">{t("reset")}</button>
           </div>

@@ -1,28 +1,42 @@
 "use client";
 
-import { useState, useCallback } from "react";
+import { useState, useCallback, useEffect } from "react";
 import { useTranslations } from "next-intl";
-import { getFFmpeg, ffmpegFetchFile } from "@/lib/ffmpeg";
+import { processVideo } from "@/lib/video-process";
 import { useFileInput } from "@/hooks/use-file-input";
 
-const FORMATS = [
-  { ext: "mp4", mime: "video/mp4" },
-  { ext: "webm", mime: "video/webm" },
-  { ext: "avi", mime: "video/x-msvideo" },
-  { ext: "mov", mime: "video/quicktime" },
-] as const;
-
-type Format = (typeof FORMATS)[number]["ext"];
+interface OutputFormat {
+  ext: string;
+  label: string;
+  mimeType: string;
+}
 
 export function VideoConverter() {
   const t = useTranslations("tools.video-converter.ui");
   const [file, setFile] = useState<File | null>(null);
-  const [format, setFormat] = useState<Format>("mp4");
-  const [loading, setLoading] = useState(false);
+  const [formats, setFormats] = useState<OutputFormat[]>([]);
+  const [format, setFormat] = useState("");
   const [converting, setConverting] = useState(false);
   const [progress, setProgress] = useState(0);
   const [resultUrl, setResultUrl] = useState("");
   const [error, setError] = useState("");
+
+  useEffect(() => {
+    const available: OutputFormat[] = [];
+    if (typeof MediaRecorder !== "undefined") {
+      if (MediaRecorder.isTypeSupported("video/mp4")) {
+        available.push({ ext: "mp4", label: "MP4", mimeType: "video/mp4" });
+      }
+      if (MediaRecorder.isTypeSupported("video/webm;codecs=vp9,opus") || MediaRecorder.isTypeSupported("video/webm")) {
+        available.push({ ext: "webm", label: "WebM", mimeType: "video/webm" });
+      }
+    }
+    if (available.length === 0) {
+      available.push({ ext: "webm", label: "WebM", mimeType: "video/webm" });
+    }
+    setFormats(available);
+    setFormat(available[0].ext);
+  }, []);
 
   const loadFile = useCallback((f: File) => {
     if (!f.type.startsWith("video/")) return;
@@ -32,37 +46,22 @@ export function VideoConverter() {
   const { open: openFileDialog, inputProps: fileInputProps } = useFileInput({ accept: "video/*", onFile: loadFile });
 
   const convert = useCallback(async () => {
-    if (!file) return;
-    setLoading(true); setError("");
+    if (!file || !format) return;
+    setConverting(true); setError(""); setProgress(0);
     try {
-      const ffmpeg = await getFFmpeg(setProgress);
-      setLoading(false); setConverting(true);
-      const ext = file.name.match(/\.\w+$/)?.[0] || ".mp4";
-      const inputName = "input" + ext;
-      const outputName = "output." + format;
-      await ffmpeg.writeFile(inputName, await ffmpegFetchFile(file));
-
-      const args = ["-i", inputName];
-      if (format === "mp4") args.push("-c:v", "libx264", "-preset", "fast", "-c:a", "aac", "-movflags", "+faststart");
-      else if (format === "webm") args.push("-c:v", "libvpx", "-c:a", "libvorbis", "-b:v", "1M");
-      else args.push("-c:v", "mpeg4", "-c:a", "aac");
-      args.push(outputName);
-
-      await ffmpeg.exec(args);
-      const data = await ffmpeg.readFile(outputName);
-      const mime = FORMATS.find((f) => f.ext === format)?.mime || "video/mp4";
-      const blob = new Blob([(data as Uint8Array).buffer as ArrayBuffer], { type: mime });
+      const fmt = formats.find((f) => f.ext === format);
+      const result = await processVideo(file, {
+        outputFormat: fmt ? { mimeType: fmt.mimeType, extension: fmt.ext } : undefined,
+      }, setProgress);
       if (resultUrl) URL.revokeObjectURL(resultUrl);
-      setResultUrl(URL.createObjectURL(blob));
-      await ffmpeg.deleteFile(inputName);
-      await ffmpeg.deleteFile(outputName);
+      setResultUrl(URL.createObjectURL(result.blob));
     } catch (err) {
       console.error("VideoConverter error:", err);
       setError(t("convertError"));
     } finally {
-      setLoading(false); setConverting(false); setProgress(0);
+      setConverting(false); setProgress(0);
     }
-  }, [file, format, resultUrl, t]);
+  }, [file, format, formats, resultUrl, t]);
 
   const download = useCallback(() => {
     if (!resultUrl || !file) return;
@@ -98,19 +97,21 @@ export function VideoConverter() {
             <p className="font-medium truncate">{file.name}</p>
             <p className="text-sm text-muted-foreground">{(file.size / 1024 / 1024).toFixed(1)} MB</p>
           </div>
-          <div>
-            <label className="block text-sm font-medium mb-2">{t("outputFormat")}</label>
-            <div className="flex gap-2">
-              {FORMATS.map((f) => (
-                <button key={f.ext} onClick={() => setFormat(f.ext)} className={`flex-1 py-2 px-3 rounded-lg text-sm font-medium ${format === f.ext ? "bg-primary text-primary-foreground" : "bg-muted hover:bg-muted/80"}`}>
-                  {f.ext.toUpperCase()}
-                </button>
-              ))}
+          {formats.length > 0 && (
+            <div>
+              <label className="block text-sm font-medium mb-2">{t("outputFormat")}</label>
+              <div className="flex gap-2">
+                {formats.map((f) => (
+                  <button key={f.ext} onClick={() => setFormat(f.ext)} className={`flex-1 py-2 px-3 rounded-lg text-sm font-medium ${format === f.ext ? "bg-primary text-primary-foreground" : "bg-muted hover:bg-muted/80"}`}>
+                    {f.label}
+                  </button>
+                ))}
+              </div>
             </div>
-          </div>
+          )}
           <div className="flex gap-2">
-            <button onClick={convert} disabled={loading || converting} className="flex-1 rounded-lg bg-primary px-4 py-2.5 text-sm font-medium text-primary-foreground hover:bg-primary/90 disabled:opacity-50">
-              {loading ? t("loadingFFmpeg") : converting ? `${t("converting")} ${progress}%` : t("convert")}
+            <button onClick={convert} disabled={converting} className="flex-1 rounded-lg bg-primary px-4 py-2.5 text-sm font-medium text-primary-foreground hover:bg-primary/90 disabled:opacity-50">
+              {converting ? `${t("converting")} ${progress}%` : t("convert")}
             </button>
             <button onClick={reset} className="rounded-lg border border-border px-4 py-2.5 text-sm hover:bg-muted">{t("reset")}</button>
           </div>
