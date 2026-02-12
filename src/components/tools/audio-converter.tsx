@@ -4,6 +4,7 @@ import { useState, useCallback } from "react";
 import { useTranslations } from "next-intl";
 import { getFFmpeg, ffmpegFetchFile } from "@/lib/ffmpeg";
 import { ArrowsClockwise } from "@phosphor-icons/react";
+import { useFileInput } from "@/hooks/use-file-input";
 
 const FORMATS = [
   { value: "mp3", label: "MP3", mime: "audio/mpeg", ext: ".mp3" },
@@ -32,6 +33,11 @@ export function AudioConverter() {
     setResultUrl("");
     setFile(f);
   }, []);
+
+  const { open: openFileDialog, inputProps: fileInputProps } = useFileInput({
+    accept: "audio/*",
+    onFile: loadFile,
+  });
 
   const convert = useCallback(async () => {
     if (!file) return;
@@ -102,17 +108,20 @@ export function AudioConverter() {
   return (
     <div className="space-y-6">
       {!file ? (
-        <div
-          onDragOver={(e) => { e.preventDefault(); e.currentTarget.classList.add("border-primary"); }}
-          onDragLeave={(e) => { e.currentTarget.classList.remove("border-primary"); }}
-          onDrop={(e) => { e.preventDefault(); e.currentTarget.classList.remove("border-primary"); if (e.dataTransfer.files[0]) loadFile(e.dataTransfer.files[0]); }}
-          className="border-2 border-dashed border-muted-foreground/25 rounded-xl p-8 text-center hover:border-primary/50 transition-colors cursor-pointer"
-          onClick={() => { const input = document.createElement("input"); input.type = "file"; input.accept = "audio/*"; input.onchange = () => input.files?.[0] && loadFile(input.files[0]); input.click(); }}
-        >
-          <ArrowsClockwise size={48} weight="duotone" className="mx-auto mb-3 text-muted-foreground" />
-          <p className="text-lg font-medium">{t("dropzone")}</p>
-          <p className="text-sm text-muted-foreground mt-1">{t("dropzoneHint")}</p>
-        </div>
+        <>
+          <input {...fileInputProps} />
+          <div
+            onDragOver={(e) => { e.preventDefault(); e.currentTarget.classList.add("border-primary"); }}
+            onDragLeave={(e) => { e.currentTarget.classList.remove("border-primary"); }}
+            onDrop={(e) => { e.preventDefault(); e.currentTarget.classList.remove("border-primary"); if (e.dataTransfer.files[0]) loadFile(e.dataTransfer.files[0]); }}
+            className="border-2 border-dashed border-muted-foreground/25 rounded-xl p-8 text-center hover:border-primary/50 transition-colors cursor-pointer"
+            onClick={openFileDialog}
+          >
+            <ArrowsClockwise size={48} weight="duotone" className="mx-auto mb-3 text-muted-foreground" />
+            <p className="text-lg font-medium">{t("dropzone")}</p>
+            <p className="text-sm text-muted-foreground mt-1">{t("dropzoneHint")}</p>
+          </div>
+        </>
       ) : !resultUrl ? (
         <div className="space-y-4">
           <div className="bg-muted/50 rounded-lg p-4">

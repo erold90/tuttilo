@@ -1,10 +1,11 @@
 "use client";
 
-import { useState, useCallback, useRef, useEffect } from "react";
+import { useState, useCallback, useEffect } from "react";
 import { useTranslations } from "next-intl";
 import { configurePdfjsWorker } from "@/lib/pdf-utils";
 import { FileText, CheckCircle } from "@phosphor-icons/react";
 import { SafariPdfBanner } from "@/components/safari-pdf-banner";
+import { useFileInput } from "@/hooks/use-file-input";
 
 export function PdfCompare() {
   const t = useTranslations("tools.pdf-compare.ui");
@@ -100,11 +101,14 @@ export function PdfCompare() {
     setFileA(null); setFileB(null); setPages([]); setError("");
   }, []);
 
+  const { open: openFileDialogA, inputProps: fileInputPropsA } = useFileInput({ accept: ".pdf", onFile: (file) => loadFile(file, "a") });
+  const { open: openFileDialogB, inputProps: fileInputPropsB } = useFileInput({ accept: ".pdf", onFile: (file) => loadFile(file, "b") });
+
   const dropHandler = (which: "a" | "b") => ({
     onDragOver: (e: React.DragEvent) => { e.preventDefault(); e.currentTarget.classList.add("border-primary"); },
     onDragLeave: (e: React.DragEvent) => { e.currentTarget.classList.remove("border-primary"); },
     onDrop: (e: React.DragEvent) => { e.preventDefault(); e.currentTarget.classList.remove("border-primary"); if (e.dataTransfer.files[0]) loadFile(e.dataTransfer.files[0], which); },
-    onClick: () => { const input = document.createElement("input"); input.type = "file"; input.accept = ".pdf"; input.onchange = () => input.files?.[0] && loadFile(input.files[0], which); input.click(); },
+    onClick: which === "a" ? openFileDialogA : openFileDialogB,
   });
 
   return (
@@ -112,6 +116,8 @@ export function PdfCompare() {
       <SafariPdfBanner />
       {pages.length === 0 ? (
         <div className="space-y-4">
+          <input {...fileInputPropsA} />
+          <input {...fileInputPropsB} />
           <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
             <div {...dropHandler("a")}
               className={`border-2 border-dashed rounded-xl p-6 text-center hover:border-primary/50 transition-colors cursor-pointer ${fileA ? "border-green-500/50 bg-green-500/5" : "border-muted-foreground/25"}`}>

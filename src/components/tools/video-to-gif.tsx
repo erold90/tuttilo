@@ -4,6 +4,7 @@ import { useState, useCallback, useRef, useEffect } from "react";
 import { useTranslations } from "next-intl";
 import { getFFmpeg, ffmpegFetchFile } from "@/lib/ffmpeg";
 import { FilmStrip } from "@phosphor-icons/react";
+import { useFileInput } from "@/hooks/use-file-input";
 
 export function VideoToGif() {
   const t = useTranslations("tools.video-to-gif.ui");
@@ -31,6 +32,8 @@ export function VideoToGif() {
     setVideoUrl(url);
     setFile(f);
   }, [videoUrl]);
+
+  const { open: openFileDialog, inputProps: fileInputProps } = useFileInput({ accept: "video/*", onFile: loadFile });
 
   useEffect(() => {
     const video = videoRef.current;
@@ -137,17 +140,20 @@ export function VideoToGif() {
   return (
     <div className="space-y-6">
       {!file ? (
-        <div
-          onDragOver={(e) => { e.preventDefault(); e.currentTarget.classList.add("border-primary"); }}
-          onDragLeave={(e) => { e.currentTarget.classList.remove("border-primary"); }}
-          onDrop={(e) => { e.preventDefault(); e.currentTarget.classList.remove("border-primary"); if (e.dataTransfer.files[0]) loadFile(e.dataTransfer.files[0]); }}
-          className="border-2 border-dashed border-muted-foreground/25 rounded-xl p-8 text-center hover:border-primary/50 transition-colors cursor-pointer"
-          onClick={() => { const input = document.createElement("input"); input.type = "file"; input.accept = "video/*"; input.onchange = () => input.files?.[0] && loadFile(input.files[0]); input.click(); }}
-        >
-          <FilmStrip size={48} weight="duotone" className="mx-auto mb-3 text-muted-foreground" />
-          <p className="text-lg font-medium">{t("dropzone")}</p>
-          <p className="text-sm text-muted-foreground mt-1">{t("dropzoneHint")}</p>
-        </div>
+        <>
+          <input {...fileInputProps} />
+          <div
+            onDragOver={(e) => { e.preventDefault(); e.currentTarget.classList.add("border-primary"); }}
+            onDragLeave={(e) => { e.currentTarget.classList.remove("border-primary"); }}
+            onDrop={(e) => { e.preventDefault(); e.currentTarget.classList.remove("border-primary"); if (e.dataTransfer.files[0]) loadFile(e.dataTransfer.files[0]); }}
+            className="border-2 border-dashed border-muted-foreground/25 rounded-xl p-8 text-center hover:border-primary/50 transition-colors cursor-pointer"
+            onClick={openFileDialog}
+          >
+            <FilmStrip size={48} weight="duotone" className="mx-auto mb-3 text-muted-foreground" />
+            <p className="text-lg font-medium">{t("dropzone")}</p>
+            <p className="text-sm text-muted-foreground mt-1">{t("dropzoneHint")}</p>
+          </div>
+        </>
       ) : !resultUrl ? (
         <div className="space-y-4">
           <div className="border rounded-xl overflow-hidden">

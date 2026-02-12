@@ -4,6 +4,7 @@ import { useState, useCallback, useEffect, useRef } from "react";
 import { useTranslations } from "next-intl";
 import { PDFDocument } from "pdf-lib";
 import { Images, CaretLeft, CaretRight, Eye } from "@phosphor-icons/react";
+import { useFileInput } from "@/hooks/use-file-input";
 
 interface ImageFile {
   file: File;
@@ -54,6 +55,16 @@ export function ImagesToPdf() {
     setImages((prev) => [...prev, ...newImages]);
     setResultUrl("");
   }, []);
+
+  const handleFileSelect = useCallback(async (file: File) => {
+    await addImages([file]);
+  }, [addImages]);
+
+  const { open: openFileDialog, inputProps: fileInputProps } = useFileInput({
+    accept: "image/jpeg,image/png,image/webp",
+    onFile: handleFileSelect,
+    multiple: true,
+  });
 
   const removeImage = useCallback((index: number) => {
     setImages((prev) => {
@@ -175,12 +186,13 @@ export function ImagesToPdf() {
 
   return (
     <div className="space-y-6">
+      <input {...fileInputProps} />
       <div
         onDragOver={(e) => { e.preventDefault(); e.currentTarget.classList.add("border-primary"); }}
         onDragLeave={(e) => { e.currentTarget.classList.remove("border-primary"); }}
         onDrop={(e) => { e.preventDefault(); e.currentTarget.classList.remove("border-primary"); addImages(e.dataTransfer.files); }}
         className="border-2 border-dashed border-muted-foreground/25 rounded-xl p-8 text-center hover:border-primary/50 transition-colors cursor-pointer"
-        onClick={() => { const input = document.createElement("input"); input.type = "file"; input.accept = "image/jpeg,image/png,image/webp"; input.multiple = true; input.onchange = () => input.files && addImages(input.files); input.click(); }}
+        onClick={openFileDialog}
       >
         <Images size={48} weight="duotone" className="mx-auto mb-3 text-muted-foreground" />
         <p className="text-lg font-medium">{t("dropzone")}</p>

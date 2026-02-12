@@ -4,6 +4,7 @@ import { useState, useCallback, useRef, useEffect } from "react";
 import { useTranslations } from "next-intl";
 import { configurePdfjsWorker } from "@/lib/pdf-utils";
 import { SafariPdfBanner } from "@/components/safari-pdf-banner";
+import { useFileInput } from "@/hooks/use-file-input";
 
 interface FieldInfo {
   name: string;
@@ -270,6 +271,11 @@ export function PdfFillSign({ file, rawBytes, onReset }: PdfFillSignProps) {
     };
     reader.readAsDataURL(f);
   }, []);
+
+  const { open: openSignatureUpload, inputProps: signatureInputProps } = useFileInput({
+    accept: "image/*",
+    onFile: uploadSig,
+  });
 
   /* ---------- place ---------- */
 
@@ -687,18 +693,15 @@ export function PdfFillSign({ file, rawBytes, onReset }: PdfFillSignProps) {
           )}
 
           {signMode === "upload" && (
-            <div
-              onClick={() => {
-                const i = document.createElement("input");
-                i.type = "file";
-                i.accept = "image/*";
-                i.onchange = () => i.files?.[0] && uploadSig(i.files[0]);
-                i.click();
-              }}
-              className="border-2 border-dashed border-muted-foreground/25 rounded-lg p-6 text-center cursor-pointer hover:border-primary/50 transition-colors"
-            >
-              <p className="text-sm font-medium">{t("signUploadHint")}</p>
-            </div>
+            <>
+              <input {...signatureInputProps} />
+              <div
+                onClick={openSignatureUpload}
+                className="border-2 border-dashed border-muted-foreground/25 rounded-lg p-6 text-center cursor-pointer hover:border-primary/50 transition-colors"
+              >
+                <p className="text-sm font-medium">{t("signUploadHint")}</p>
+              </div>
+            </>
           )}
 
           {signDataUrl && (

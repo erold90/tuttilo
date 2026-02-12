@@ -4,6 +4,7 @@ import { useState, useCallback } from "react";
 import { useTranslations } from "next-intl";
 import { PdfFillSign } from "./pdf-fill-sign";
 import { PenNib } from "@phosphor-icons/react";
+import { useFileInput } from "@/hooks/use-file-input";
 
 export function PdfFillSignWrapper() {
   const t = useTranslations("tools.pdf-fill-sign.ui");
@@ -17,6 +18,11 @@ export function PdfFillSignWrapper() {
     setRawBytes(bytes);
   }, []);
 
+  const { open: openFileDialog, inputProps: fileInputProps } = useFileInput({
+    accept: ".pdf",
+    onFile: loadFile,
+  });
+
   const reset = useCallback(() => {
     setFile(null);
     setRawBytes(null);
@@ -24,27 +30,24 @@ export function PdfFillSignWrapper() {
 
   if (!file || !rawBytes) {
     return (
-      <div
-        onDragOver={(e) => { e.preventDefault(); e.currentTarget.classList.add("border-primary"); }}
-        onDragLeave={(e) => { e.currentTarget.classList.remove("border-primary"); }}
-        onDrop={(e) => {
-          e.preventDefault();
-          e.currentTarget.classList.remove("border-primary");
-          if (e.dataTransfer.files[0]) loadFile(e.dataTransfer.files[0]);
-        }}
-        onClick={() => {
-          const i = document.createElement("input");
-          i.type = "file";
-          i.accept = ".pdf";
-          i.onchange = () => i.files?.[0] && loadFile(i.files[0]);
-          i.click();
-        }}
-        className="border-2 border-dashed border-muted-foreground/25 rounded-xl p-8 text-center hover:border-primary/50 transition-colors cursor-pointer"
-      >
-        <PenNib size={48} weight="duotone" className="mx-auto mb-3 text-muted-foreground" />
-        <p className="text-lg font-medium">{t("dropzone")}</p>
-        <p className="text-sm text-muted-foreground mt-1">{t("dropzoneHint")}</p>
-      </div>
+      <>
+        <input {...fileInputProps} />
+        <div
+          onDragOver={(e) => { e.preventDefault(); e.currentTarget.classList.add("border-primary"); }}
+          onDragLeave={(e) => { e.currentTarget.classList.remove("border-primary"); }}
+          onDrop={(e) => {
+            e.preventDefault();
+            e.currentTarget.classList.remove("border-primary");
+            if (e.dataTransfer.files[0]) loadFile(e.dataTransfer.files[0]);
+          }}
+          onClick={openFileDialog}
+          className="border-2 border-dashed border-muted-foreground/25 rounded-xl p-8 text-center hover:border-primary/50 transition-colors cursor-pointer"
+        >
+          <PenNib size={48} weight="duotone" className="mx-auto mb-3 text-muted-foreground" />
+          <p className="text-lg font-medium">{t("dropzone")}</p>
+          <p className="text-sm text-muted-foreground mt-1">{t("dropzoneHint")}</p>
+        </div>
+      </>
     );
   }
 

@@ -2,6 +2,7 @@
 
 import { useState, useCallback } from "react";
 import { useTranslations } from "next-intl";
+import { useFileInput } from "@/hooks/use-file-input";
 
 interface HashResult { algorithm: string; hash: string; }
 
@@ -30,17 +31,23 @@ export default function FileHashChecker() {
     setComputing(false);
   }, []);
 
+  const { open: openFileDialog, inputProps: fileInputProps } = useFileInput({
+    accept: "*",
+    onFile: computeHashes,
+  });
+
   const matchResult = compareHash.trim()
     ? hashes.find(h => h.hash.toLowerCase() === compareHash.trim().toLowerCase())
     : null;
 
   return (
     <div className="space-y-4">
+      <input {...fileInputProps} />
       <div
         className="border-2 border-dashed border-zinc-300 dark:border-zinc-600 rounded-lg p-8 text-center cursor-pointer hover:border-blue-400 transition-colors"
         onDragOver={e => { e.preventDefault(); }}
         onDrop={e => { e.preventDefault(); const f = e.dataTransfer.files[0]; if (f) computeHashes(f); }}
-        onClick={() => { const inp = document.createElement("input"); inp.type = "file"; inp.onchange = () => { if (inp.files?.[0]) computeHashes(inp.files[0]); }; inp.click(); }}
+        onClick={openFileDialog}
       >
         <p className="text-sm text-zinc-500">{t("ui.dropFile")}</p>
       </div>

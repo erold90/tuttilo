@@ -4,6 +4,7 @@ import { useState, useCallback } from "react";
 import { useTranslations } from "next-intl";
 import { loadPdfRobust } from "@/lib/pdf-utils";
 import { FileArrowDown } from "@phosphor-icons/react";
+import { useFileInput } from "@/hooks/use-file-input";
 
 export function CompressPdf() {
   const t = useTranslations("tools.compress-pdf.ui");
@@ -22,6 +23,8 @@ export function CompressPdf() {
     setFile(f);
     setOriginalSize(f.size);
   }, []);
+
+  const { open: openFileDialog, inputProps: fileInputProps } = useFileInput({ accept: ".pdf", onFile: loadPdf });
 
   const compress = useCallback(async () => {
     if (!file) return;
@@ -89,17 +92,20 @@ export function CompressPdf() {
   return (
     <div className="space-y-6">
       {!file ? (
-        <div
-          onDragOver={(e) => { e.preventDefault(); e.currentTarget.classList.add("border-primary"); }}
-          onDragLeave={(e) => { e.currentTarget.classList.remove("border-primary"); }}
-          onDrop={(e) => { e.preventDefault(); e.currentTarget.classList.remove("border-primary"); if (e.dataTransfer.files[0]) loadPdf(e.dataTransfer.files[0]); }}
-          className="border-2 border-dashed border-muted-foreground/25 rounded-xl p-8 text-center hover:border-primary/50 transition-colors cursor-pointer"
-          onClick={() => { const input = document.createElement("input"); input.type = "file"; input.accept = ".pdf"; input.onchange = () => input.files?.[0] && loadPdf(input.files[0]); input.click(); }}
-        >
-          <FileArrowDown size={48} weight="duotone" className="mx-auto mb-3 text-muted-foreground" />
-          <p className="text-lg font-medium">{t("dropzone")}</p>
-          <p className="text-sm text-muted-foreground mt-1">{t("dropzoneHint")}</p>
-        </div>
+        <>
+          <input {...fileInputProps} />
+          <div
+            onDragOver={(e) => { e.preventDefault(); e.currentTarget.classList.add("border-primary"); }}
+            onDragLeave={(e) => { e.currentTarget.classList.remove("border-primary"); }}
+            onDrop={(e) => { e.preventDefault(); e.currentTarget.classList.remove("border-primary"); if (e.dataTransfer.files[0]) loadPdf(e.dataTransfer.files[0]); }}
+            className="border-2 border-dashed border-muted-foreground/25 rounded-xl p-8 text-center hover:border-primary/50 transition-colors cursor-pointer"
+            onClick={openFileDialog}
+          >
+            <FileArrowDown size={48} weight="duotone" className="mx-auto mb-3 text-muted-foreground" />
+            <p className="text-lg font-medium">{t("dropzone")}</p>
+            <p className="text-sm text-muted-foreground mt-1">{t("dropzoneHint")}</p>
+          </div>
+        </>
       ) : (
         <div className="bg-muted/50 rounded-lg p-4">
           <p className="font-medium truncate">{file.name}</p>

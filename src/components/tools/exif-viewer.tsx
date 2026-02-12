@@ -2,6 +2,7 @@
 
 import { useState, useCallback } from "react";
 import { useTranslations } from "next-intl";
+import { useFileInput } from "@/hooks/use-file-input";
 
 interface ExifTag { name: string; value: string; }
 
@@ -134,13 +135,19 @@ export default function ExifViewer() {
     reader.readAsArrayBuffer(file);
   }, [t]);
 
+  const { open: openFileDialog, inputProps: fileInputProps } = useFileInput({
+    accept: "image/*",
+    onFile: handleFile,
+  });
+
   return (
     <div className="space-y-4">
+      <input {...fileInputProps} />
       <div
         className="border-2 border-dashed border-zinc-300 dark:border-zinc-600 rounded-lg p-8 text-center cursor-pointer hover:border-blue-400 transition-colors"
         onDragOver={e => { e.preventDefault(); e.stopPropagation(); }}
         onDrop={e => { e.preventDefault(); e.stopPropagation(); const f = e.dataTransfer.files[0]; if (f) handleFile(f); }}
-        onClick={() => { const inp = document.createElement("input"); inp.type = "file"; inp.accept = "image/*"; inp.onchange = () => { if (inp.files?.[0]) handleFile(inp.files[0]); }; inp.click(); }}
+        onClick={openFileDialog}
       >
         <p className="text-sm text-zinc-500">{t("ui.dropImage")}</p>
       </div>

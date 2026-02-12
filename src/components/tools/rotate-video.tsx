@@ -3,6 +3,7 @@
 import { useState, useCallback } from "react";
 import { useTranslations } from "next-intl";
 import { getFFmpeg, ffmpegFetchFile } from "@/lib/ffmpeg";
+import { useFileInput } from "@/hooks/use-file-input";
 
 const ROTATIONS = [
   { key: "90", filter: "transpose=1" },
@@ -28,6 +29,8 @@ export function RotateVideo() {
     if (!f.type.startsWith("video/")) return;
     setError(""); setResultUrl(""); setFile(f);
   }, []);
+
+  const { open: openFileDialog, inputProps: fileInputProps } = useFileInput({ accept: "video/*", onFile: loadFile });
 
   const rotate = useCallback(async () => {
     if (!file) return;
@@ -69,15 +72,18 @@ export function RotateVideo() {
   return (
     <div className="space-y-6">
       {!file ? (
-        <div
-          onDragOver={(e) => e.preventDefault()}
-          onDrop={(e) => { e.preventDefault(); if (e.dataTransfer.files[0]) loadFile(e.dataTransfer.files[0]); }}
-          onClick={() => { const i = document.createElement("input"); i.type = "file"; i.accept = "video/*"; i.onchange = () => i.files?.[0] && loadFile(i.files[0]); i.click(); }}
-          className="border-2 border-dashed border-border rounded-xl p-12 text-center hover:border-primary/50 cursor-pointer"
-        >
-          <p className="text-lg font-medium">{t("dropzone")}</p>
-          <p className="text-sm text-muted-foreground">{t("formats")}</p>
-        </div>
+        <>
+          <input {...fileInputProps} />
+          <div
+            onDragOver={(e) => e.preventDefault()}
+            onDrop={(e) => { e.preventDefault(); if (e.dataTransfer.files[0]) loadFile(e.dataTransfer.files[0]); }}
+            onClick={openFileDialog}
+            className="border-2 border-dashed border-border rounded-xl p-12 text-center hover:border-primary/50 cursor-pointer"
+          >
+            <p className="text-lg font-medium">{t("dropzone")}</p>
+            <p className="text-sm text-muted-foreground">{t("formats")}</p>
+          </div>
+        </>
       ) : !resultUrl ? (
         <div className="space-y-4">
           <div className="bg-muted/50 rounded-lg p-4">

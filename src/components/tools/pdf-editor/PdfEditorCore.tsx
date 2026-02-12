@@ -38,6 +38,7 @@ import { FloatingToolbar } from "./FloatingToolbar";
 import { DraggableAnnotation } from "./DraggableAnnotation";
 import { ImageAnnotationEl } from "./ImageAnnotation";
 import { SafariPdfBanner } from "@/components/safari-pdf-banner";
+import { useFileInput } from "@/hooks/use-file-input";
 
 const MODE_ICONS: Record<EditorMode, React.ElementType> = {
   select: CursorIcon,
@@ -720,37 +721,6 @@ export function PdfEditorCore({ file, rawBytes, onReset }: PdfEditorProps) {
 
   /* ---------- image upload ---------- */
 
-  const onImageUpload = useCallback(() => {
-    const input = document.createElement("input");
-    input.type = "file";
-    input.accept = "image/*";
-    input.onchange = () => {
-      const f = input.files?.[0];
-      if (!f) return;
-      const reader = new FileReader();
-      reader.onload = () => {
-        const img = new Image();
-        img.onload = () => {
-          // Scale down if too large (max 200pt in PDF units)
-          let w = img.naturalWidth;
-          let h = img.naturalHeight;
-          const maxDim = 200;
-          if (w > maxDim || h > maxDim) {
-            const ratio = Math.min(maxDim / w, maxDim / h);
-            w = Math.round(w * ratio);
-            h = Math.round(h * ratio);
-          }
-          setPendingImage({ dataUrl: reader.result as string, w, h });
-        };
-        img.src = reader.result as string;
-      };
-      reader.readAsDataURL(f);
-    };
-    input.click();
-  }, []);
-
-  /* ---------- signature pad ---------- */
-
   useEffect(() => {
     if (mode !== "sign" || signMode !== "draw" || !signCanvasRef.current) return;
     let cancelled = false;
@@ -832,6 +802,36 @@ export function PdfEditorCore({ file, rawBytes, onReset }: PdfEditorProps) {
     };
     reader.readAsDataURL(f);
   }, []);
+
+  const handleImageFileSelect = useCallback((f: File) => {
+    const reader = new FileReader();
+    reader.onload = () => {
+      const img = new Image();
+      img.onload = () => {
+        let w = img.naturalWidth;
+        let h = img.naturalHeight;
+        const maxDim = 200;
+        if (w > maxDim || h > maxDim) {
+          const ratio = Math.min(maxDim / w, maxDim / h);
+          w = Math.round(w * ratio);
+          h = Math.round(h * ratio);
+        }
+        setPendingImage({ dataUrl: reader.result as string, w, h });
+      };
+      img.src = reader.result as string;
+    };
+    reader.readAsDataURL(f);
+  }, []);
+
+  const { open: openImageUpload, inputProps: imageInputProps } = useFileInput({
+    accept: "image/*",
+    onFile: handleImageFileSelect,
+  });
+
+  const { open: openSignatureUpload, inputProps: signatureInputProps } = useFileInput({
+    accept: "image/*",
+    onFile: uploadSig,
+  });
 
   /* ---------- annotation handlers ---------- */
 
@@ -1224,7 +1224,7 @@ export function PdfEditorCore({ file, rawBytes, onReset }: PdfEditorProps) {
                   setSelectedImageId(null);
                   setInlineEditing(false);
                   setNewTextPos(null);
-                  if (m === "image") onImageUpload();
+                  if (m === "image") openImageUpload();
                   if (m === "sign") setShowSignDialog(true);
                 }}
                 className={`flex items-center gap-1.5 px-2.5 py-1.5 rounded-md text-sm font-medium transition-colors ${
@@ -1257,10 +1257,13 @@ export function PdfEditorCore({ file, rawBytes, onReset }: PdfEditorProps) {
         )}
 
         {mode === "image" && (
-          <button onClick={onImageUpload} className="flex items-center gap-1.5 px-3 py-1.5 rounded-lg border bg-background text-sm hover:bg-muted transition-colors">
-            <Upload weight="bold" className="h-3.5 w-3.5" />
-            {t("uploadImage")}
-          </button>
+          <>
+            <input {...imageInputProps} />
+            <button onClick={openImageUpload} className="flex items-center gap-1.5 px-3 py-1.5 rounded-lg border bg-background text-sm hover:bg-muted transition-colors">
+              <Upload weight="bold" className="h-3.5 w-3.5" />
+              {t("uploadImage")}
+            </button>
+          </>
         )}
 
         {mode === "sign" && (
@@ -1681,10 +1684,13 @@ export function PdfEditorCore({ file, rawBytes, onReset }: PdfEditorProps) {
             )}
 
             {signMode === "upload" && (
-              <div onClick={() => { const i = document.createElement("input"); i.type = "file"; i.accept = "image/*"; i.onchange = () => { if (i.files?.[0]) { uploadSig(i.files[0]); setShowSignDialog(false); } }; i.click(); }} className="border-2 border-dashed border-muted-foreground/25 rounded-lg p-8 text-center cursor-pointer hover:border-primary/50 transition-colors">
-                <Upload className="h-8 w-8 mx-auto mb-2 text-muted-foreground" />
-                <p className="text-sm font-medium">{t("signUploadHint")}</p>
-              </div>
+              <>
+                <input {...signatureInputProps} />
+                <div onClick={() => { openSignatureUpload(); setShowSignDialog(false); }} className="border-2 border-dashed border-muted-foreground/25 rounded-lg p-8 text-center cursor-pointer hover:border-primary/50 transition-colors">
+                  <Upload className="h-8 w-8 mx-auto mb-2 text-muted-foreground" />
+                  <p className="text-sm font-medium">{t("signUploadHint")}</p>
+                </div>
+              </>
             )}
           </div>
         </div>

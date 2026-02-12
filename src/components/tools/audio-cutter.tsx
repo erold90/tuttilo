@@ -3,6 +3,7 @@
 import { useState, useCallback, useRef, useEffect } from "react";
 import { useTranslations } from "next-intl";
 import { MusicNotes } from "@phosphor-icons/react";
+import { useFileInput } from "@/hooks/use-file-input";
 
 function encodeWav(audioBuffer: AudioBuffer): Blob {
   const numChannels = audioBuffer.numberOfChannels;
@@ -132,6 +133,11 @@ export function AudioCutter() {
     }
   }, [drawWaveform, t]);
 
+  const { open: openFileDialog, inputProps: fileInputProps } = useFileInput({
+    accept: "audio/*",
+    onFile: loadAudio,
+  });
+
   useEffect(() => {
     if (audioBuffer) drawWaveform(audioBuffer, startTime, endTime);
   }, [audioBuffer, startTime, endTime, drawWaveform]);
@@ -228,17 +234,20 @@ export function AudioCutter() {
   return (
     <div className="space-y-6">
       {!file ? (
-        <div
-          onDragOver={(e) => { e.preventDefault(); e.currentTarget.classList.add("border-primary"); }}
-          onDragLeave={(e) => { e.currentTarget.classList.remove("border-primary"); }}
-          onDrop={(e) => { e.preventDefault(); e.currentTarget.classList.remove("border-primary"); if (e.dataTransfer.files[0]) loadAudio(e.dataTransfer.files[0]); }}
-          className="border-2 border-dashed border-muted-foreground/25 rounded-xl p-8 text-center hover:border-primary/50 transition-colors cursor-pointer"
-          onClick={() => { const input = document.createElement("input"); input.type = "file"; input.accept = "audio/*"; input.onchange = () => input.files?.[0] && loadAudio(input.files[0]); input.click(); }}
-        >
-          <MusicNotes size={48} weight="duotone" className="mx-auto mb-3 text-muted-foreground" />
-          <p className="text-lg font-medium">{t("dropzone")}</p>
-          <p className="text-sm text-muted-foreground mt-1">{t("dropzoneHint")}</p>
-        </div>
+        <>
+          <input {...fileInputProps} />
+          <div
+            onDragOver={(e) => { e.preventDefault(); e.currentTarget.classList.add("border-primary"); }}
+            onDragLeave={(e) => { e.currentTarget.classList.remove("border-primary"); }}
+            onDrop={(e) => { e.preventDefault(); e.currentTarget.classList.remove("border-primary"); if (e.dataTransfer.files[0]) loadAudio(e.dataTransfer.files[0]); }}
+            className="border-2 border-dashed border-muted-foreground/25 rounded-xl p-8 text-center hover:border-primary/50 transition-colors cursor-pointer"
+            onClick={openFileDialog}
+          >
+            <MusicNotes size={48} weight="duotone" className="mx-auto mb-3 text-muted-foreground" />
+            <p className="text-lg font-medium">{t("dropzone")}</p>
+            <p className="text-sm text-muted-foreground mt-1">{t("dropzoneHint")}</p>
+          </div>
+        </>
       ) : !result ? (
         <div className="space-y-4">
           <div className="bg-muted/50 rounded-lg p-4">

@@ -7,6 +7,7 @@ import { loadPdfRobust, getPdfPageCount, configurePdfjsWorker } from "@/lib/pdf-
 import { SquaresFour, DotsSixVertical, X, Check } from "@phosphor-icons/react";
 import { cn } from "@/lib/utils";
 import { SafariPdfBanner } from "@/components/safari-pdf-banner";
+import { useFileInput } from "@/hooks/use-file-input";
 
 type Tab = "merge" | "split" | "rotate";
 
@@ -355,19 +356,30 @@ export function PdfOrganizer() {
   }, []);
 
   // ==================== SHARED COMPONENTS ====================
-  const DropZone = ({ onFile, multi, hint }: { onFile: (files: FileList) => void; multi?: boolean; hint?: string }) => (
-    <div
-      onDragOver={(e) => { e.preventDefault(); e.currentTarget.classList.add("border-primary"); }}
-      onDragLeave={(e) => { e.currentTarget.classList.remove("border-primary"); }}
-      onDrop={(e) => { e.preventDefault(); e.currentTarget.classList.remove("border-primary"); onFile(e.dataTransfer.files); }}
-      className="border-2 border-dashed border-muted-foreground/25 rounded-xl p-8 text-center hover:border-primary/50 transition-colors cursor-pointer"
-      onClick={() => { const input = document.createElement("input"); input.type = "file"; input.accept = ".pdf"; input.multiple = !!multi; input.onchange = () => input.files && onFile(input.files); input.click(); }}
-    >
-      <SquaresFour size={48} weight="duotone" className="mx-auto mb-3 text-muted-foreground" />
-      <p className="text-lg font-medium">{t("dropzone")}</p>
-      <p className="text-sm text-muted-foreground mt-1">{hint || t("dropzoneHint")}</p>
-    </div>
-  );
+  const DropZone = ({ onFile, multi, hint }: { onFile: (files: FileList) => void; multi?: boolean; hint?: string }) => {
+    const handleFile = useCallback((file: File) => {
+      const dt = new DataTransfer();
+      dt.items.add(file);
+      onFile(dt.files);
+    }, [onFile]);
+    const { open: openFileDialog, inputProps: fileInputProps } = useFileInput({ accept: ".pdf", onFile: handleFile, multiple: !!multi });
+    return (
+      <>
+        <input {...fileInputProps} />
+        <div
+          onDragOver={(e) => { e.preventDefault(); e.currentTarget.classList.add("border-primary"); }}
+          onDragLeave={(e) => { e.currentTarget.classList.remove("border-primary"); }}
+          onDrop={(e) => { e.preventDefault(); e.currentTarget.classList.remove("border-primary"); onFile(e.dataTransfer.files); }}
+          className="border-2 border-dashed border-muted-foreground/25 rounded-xl p-8 text-center hover:border-primary/50 transition-colors cursor-pointer"
+          onClick={openFileDialog}
+        >
+          <SquaresFour size={48} weight="duotone" className="mx-auto mb-3 text-muted-foreground" />
+          <p className="text-lg font-medium">{t("dropzone")}</p>
+          <p className="text-sm text-muted-foreground mt-1">{hint || t("dropzoneHint")}</p>
+        </div>
+      </>
+    );
+  };
 
   const PageGrid = ({ thumbnails, totalPages, selectedPages, onToggle, rotationDeg, loading }: {
     thumbnails: string[]; totalPages: number; selectedPages?: Set<number>;

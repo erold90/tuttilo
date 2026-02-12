@@ -6,6 +6,7 @@ import { configurePdfjsWorker } from "@/lib/pdf-utils";
 import { FileText, Eye, PencilSimple } from "@phosphor-icons/react";
 import { SafariPdfBanner } from "@/components/safari-pdf-banner";
 import { cn } from "@/lib/utils";
+import { useFileInput } from "@/hooks/use-file-input";
 
 type Direction = "pdf-to-word" | "word-to-pdf" | null;
 type ConvMode = "visual" | "editable";
@@ -337,22 +338,27 @@ strong, b { font-weight: bold; } em, i { font-style: italic; }
   const fmtSize = (b: number) => b < 1024 ? `${b} B` : b < 1048576 ? `${(b / 1024).toFixed(1)} KB` : `${(b / 1048576).toFixed(1)} MB`;
   const isDone = (direction === "pdf-to-word" && resultUrl) || (direction === "word-to-pdf" && htmlContent);
 
+  const { open: openFileDialog, inputProps: fileInputProps } = useFileInput({ accept: ".pdf,.docx,.doc", onFile: (file) => loadFile(file) });
+
   return (
     <div className="space-y-6">
       <SafariPdfBanner />
 
       {!file ? (
-        <div
-          onDragOver={(e) => { e.preventDefault(); e.currentTarget.classList.add("border-primary"); }}
-          onDragLeave={(e) => { e.currentTarget.classList.remove("border-primary"); }}
-          onDrop={(e) => { e.preventDefault(); e.currentTarget.classList.remove("border-primary"); if (e.dataTransfer.files[0]) loadFile(e.dataTransfer.files[0]); }}
-          onClick={() => { const inp = document.createElement("input"); inp.type = "file"; inp.accept = ".pdf,.docx,.doc"; inp.onchange = () => inp.files?.[0] && loadFile(inp.files[0]); inp.click(); }}
-          className="border-2 border-dashed border-muted-foreground/25 rounded-xl p-8 text-center hover:border-primary/50 transition-colors cursor-pointer"
-        >
-          <FileText size={48} weight="duotone" className="mx-auto mb-3 text-muted-foreground" />
-          <p className="text-lg font-medium">{t("dropzone")}</p>
-          <p className="text-sm text-muted-foreground mt-1">{t("dropzoneHint")}</p>
-        </div>
+        <>
+          <input {...fileInputProps} />
+          <div
+            onDragOver={(e) => { e.preventDefault(); e.currentTarget.classList.add("border-primary"); }}
+            onDragLeave={(e) => { e.currentTarget.classList.remove("border-primary"); }}
+            onDrop={(e) => { e.preventDefault(); e.currentTarget.classList.remove("border-primary"); if (e.dataTransfer.files[0]) loadFile(e.dataTransfer.files[0]); }}
+            onClick={openFileDialog}
+            className="border-2 border-dashed border-muted-foreground/25 rounded-xl p-8 text-center hover:border-primary/50 transition-colors cursor-pointer"
+          >
+            <FileText size={48} weight="duotone" className="mx-auto mb-3 text-muted-foreground" />
+            <p className="text-lg font-medium">{t("dropzone")}</p>
+            <p className="text-sm text-muted-foreground mt-1">{t("dropzoneHint")}</p>
+          </div>
+        </>
       ) : !isDone ? (
         <div className="space-y-4">
           {/* File info */}
