@@ -244,9 +244,10 @@ function captureFrames(
 
     const url = URL.createObjectURL(file);
     video.src = url;
+    video.load(); // force loading for off-DOM elements
 
     const canvas = document.createElement("canvas");
-    const ctx = canvas.getContext("2d");
+    const ctx = canvas.getContext("2d", { willReadFrequently: true });
     if (!ctx) {
       reject(new Error("Canvas not supported"));
       return;
@@ -263,7 +264,8 @@ function captureFrames(
     video.onloadedmetadata = () => {
       const interval = 1 / fps;
       for (let t = startTime; t < endTime; t += interval) {
-        frameTimes.push(t);
+        // Ensure non-zero time to always trigger seeked event
+        frameTimes.push(Math.max(0.001, t));
       }
 
       if (frameTimes.length === 0) {
@@ -275,10 +277,19 @@ function captureFrames(
       const aspectRatio = (video.videoHeight || 720) / (video.videoWidth || 1280);
       canvas.width = targetWidth;
       canvas.height = Math.round(targetWidth * aspectRatio);
-      // Ensure even dimensions
       if (canvas.height % 2 !== 0) canvas.height++;
 
       let frameIndex = 0;
+
+      const drawAndCapture = () => {
+        ctx.drawImage(video, 0, 0, canvas.width, canvas.height);
+        frames.push(ctx.getImageData(0, 0, canvas.width, canvas.height));
+        frameIndex++;
+        if (onProgress) {
+          onProgress(frameIndex / frameTimes.length);
+        }
+        captureNext();
+      };
 
       const captureNext = () => {
         if (frameIndex >= frameTimes.length) {
@@ -290,13 +301,14 @@ function captureFrames(
       };
 
       video.onseeked = () => {
-        ctx.drawImage(video, 0, 0, canvas.width, canvas.height);
-        frames.push(ctx.getImageData(0, 0, canvas.width, canvas.height));
-        frameIndex++;
-        if (onProgress) {
-          onProgress(frameIndex / frameTimes.length);
+        // Wait for the frame to be composited before drawing
+        if ("requestVideoFrameCallback" in video) {
+          (video as unknown as { requestVideoFrameCallback: (cb: () => void) => void })
+            .requestVideoFrameCallback(drawAndCapture);
+        } else {
+          // Fallback: use rAF to ensure frame is ready
+          requestAnimationFrame(drawAndCapture);
         }
-        captureNext();
       };
 
       captureNext();

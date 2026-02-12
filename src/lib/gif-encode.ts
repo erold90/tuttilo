@@ -140,10 +140,12 @@ function lzwEncode(indices: Uint8Array, minCodeSize: number): Uint8Array {
           code: nextCode,
           children: new Map(),
         });
+        nextCode++;
+        // "Early change" timing: increment codeSize AFTER nextCode++
+        // to match Chrome/Firefox GIF decoders
         if (nextCode >= 1 << codeSize && codeSize < 12) {
           codeSize++;
         }
-        nextCode++;
       } else {
         writeBits(clearCode, codeSize);
         resetTable();
