@@ -2,7 +2,7 @@
 
 import { useState, useCallback, useRef, useEffect } from "react";
 import { useTranslations } from "next-intl";
-import { encodeGIF } from "@/lib/gif-encode";
+import { GIFEncoder, quantize, applyPalette } from "gifenc";
 import { FilmStrip } from "@phosphor-icons/react";
 import { useFileInput } from "@/hooks/use-file-input";
 
@@ -61,27 +61,14 @@ export function VideoToGif() {
     setProgress(0);
 
     try {
-      // Capture frames by seeking through the video
-      const frames = await captureFrames(file, start, end, fps, width, (pct) => {
-        setProgress(Math.round(pct * 0.7)); // 0-70% for frame capture
+      const gifBytes = await captureAndEncode(file, start, end, fps, width, (pct) => {
+        setProgress(pct);
       });
 
-      if (frames.length === 0) throw new Error("No frames captured");
-
-      // Encode GIF
-      const gifBlob = encodeGIF(
-        frames,
-        frames[0].width,
-        frames[0].height,
-        1000 / fps,
-        (pct) => {
-          setProgress(70 + Math.round(pct * 0.3)); // 70-100% for encoding
-        }
-      );
-
+      const blob = new Blob([new Uint8Array(gifBytes)], { type: "image/gif" });
       if (resultUrl) URL.revokeObjectURL(resultUrl);
-      setResultUrl(URL.createObjectURL(gifBlob));
-      setResultSize(gifBlob.size);
+      setResultUrl(URL.createObjectURL(blob));
+      setResultSize(blob.size);
     } catch (err) {
       console.error("VideoToGif error:", err);
       setError(t("convertError"));
@@ -227,91 +214,97 @@ export function VideoToGif() {
   );
 }
 
-/** Capture video frames by seeking to each timestamp */
-function captureFrames(
+/** Capture video frames via sequential seeking + encode with gifenc */
+async function captureAndEncode(
   file: File,
   startTime: number,
   endTime: number,
   fps: number,
   targetWidth: number,
-  onProgress?: (pct: number) => void
-): Promise<ImageData[]> {
-  return new Promise((resolve, reject) => {
-    const video = document.createElement("video");
-    video.preload = "auto";
-    video.muted = true;
-    video.playsInline = true;
+  onProgress: (pct: number) => void
+): Promise<Uint8Array> {
+  const video = document.createElement("video");
+  video.preload = "auto";
+  video.muted = true;
+  video.playsInline = true;
 
-    const url = URL.createObjectURL(file);
-    video.src = url;
-    video.load(); // force loading for off-DOM elements
+  const url = URL.createObjectURL(file);
+  video.src = url;
 
-    const canvas = document.createElement("canvas");
-    const ctx = canvas.getContext("2d", { willReadFrequently: true });
-    if (!ctx) {
-      reject(new Error("Canvas not supported"));
-      return;
+  try {
+    // Wait for metadata
+    await new Promise<void>((resolve, reject) => {
+      video.onloadedmetadata = () => resolve();
+      video.onerror = () => reject(new Error("Failed to load video"));
+    });
+
+    // Wait for enough data to seek
+    if (video.readyState < 3) {
+      await new Promise<void>((resolve) => {
+        video.oncanplay = () => resolve();
+      });
     }
 
-    const frames: ImageData[] = [];
+    video.pause();
+
+    const aspectRatio = (video.videoHeight || 720) / (video.videoWidth || 1280);
+    const canvasW = targetWidth;
+    let canvasH = Math.round(targetWidth * aspectRatio);
+    if (canvasH % 2 !== 0) canvasH++;
+
+    const canvas = document.createElement("canvas");
+    canvas.width = canvasW;
+    canvas.height = canvasH;
+    const ctx = canvas.getContext("2d", { willReadFrequently: true });
+    if (!ctx) throw new Error("Canvas not supported");
+
+    // Calculate frame times
+    const interval = 1 / fps;
     const frameTimes: number[] = [];
+    for (let t = startTime; t < endTime; t += interval) {
+      frameTimes.push(t);
+    }
+    if (frameTimes.length === 0) throw new Error("No frames to capture");
 
-    video.onerror = () => {
-      URL.revokeObjectURL(url);
-      reject(new Error("Failed to load video"));
-    };
+    const delay = Math.round(1000 / fps);
+    const gif = GIFEncoder();
+    const totalFrames = frameTimes.length;
 
-    video.onloadedmetadata = () => {
-      const interval = 1 / fps;
-      for (let t = startTime; t < endTime; t += interval) {
-        // Ensure non-zero time to always trigger seeked event
-        frameTimes.push(Math.max(0.001, t));
-      }
+    // Sequential frame capture using seeked event
+    for (let i = 0; i < totalFrames; i++) {
+      // Seek to frame time
+      await new Promise<void>((resolve) => {
+        const onSeeked = () => {
+          video.removeEventListener("seeked", onSeeked);
+          resolve();
+        };
+        video.addEventListener("seeked", onSeeked);
+        video.currentTime = frameTimes[i];
+      });
 
-      if (frameTimes.length === 0) {
-        URL.revokeObjectURL(url);
-        reject(new Error("No frames to capture"));
-        return;
-      }
+      // Draw frame to canvas
+      ctx.drawImage(video, 0, 0, canvasW, canvasH);
+      const imageData = ctx.getImageData(0, 0, canvasW, canvasH);
 
-      const aspectRatio = (video.videoHeight || 720) / (video.videoWidth || 1280);
-      canvas.width = targetWidth;
-      canvas.height = Math.round(targetWidth * aspectRatio);
-      if (canvas.height % 2 !== 0) canvas.height++;
+      // Quantize and write frame
+      const palette = quantize(imageData.data, 256, { format: "rgb444" });
+      const indexed = applyPalette(imageData.data, palette, "rgb444");
+      gif.writeFrame(indexed, canvasW, canvasH, {
+        palette,
+        delay,
+        repeat: 0,
+      });
 
-      let frameIndex = 0;
+      // Report progress
+      onProgress(Math.round(((i + 1) / totalFrames) * 100));
 
-      const drawAndCapture = () => {
-        ctx.drawImage(video, 0, 0, canvas.width, canvas.height);
-        frames.push(ctx.getImageData(0, 0, canvas.width, canvas.height));
-        frameIndex++;
-        if (onProgress) {
-          onProgress(frameIndex / frameTimes.length);
-        }
-        captureNext();
-      };
+      // Yield to browser for UI updates
+      await new Promise<void>((r) => setTimeout(r, 0));
+    }
 
-      const captureNext = () => {
-        if (frameIndex >= frameTimes.length) {
-          URL.revokeObjectURL(url);
-          resolve(frames);
-          return;
-        }
-        video.currentTime = frameTimes[frameIndex];
-      };
-
-      video.onseeked = () => {
-        // Wait for the frame to be composited before drawing
-        if ("requestVideoFrameCallback" in video) {
-          (video as unknown as { requestVideoFrameCallback: (cb: () => void) => void })
-            .requestVideoFrameCallback(drawAndCapture);
-        } else {
-          // Fallback: use rAF to ensure frame is ready
-          requestAnimationFrame(drawAndCapture);
-        }
-      };
-
-      captureNext();
-    };
-  });
+    gif.finish();
+    return gif.bytesView();
+  } finally {
+    URL.revokeObjectURL(url);
+  }
 }
