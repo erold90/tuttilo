@@ -54,12 +54,12 @@ export async function generateMetadata({
     description,
     metadataBase: new URL(BASE_URL),
     alternates: {
-      canonical: `${BASE_URL}/${locale}`,
+      canonical: locale === "en" ? BASE_URL : `${BASE_URL}/${locale}`,
       languages: {
         ...Object.fromEntries(
-          locales.map((l) => [l, `${BASE_URL}/${l}`])
+          locales.map((l) => [l, l === "en" ? BASE_URL : `${BASE_URL}/${l}`])
         ),
-        "x-default": `${BASE_URL}/en`,
+        "x-default": BASE_URL,
       },
     },
     verification: {
@@ -76,7 +76,7 @@ export async function generateMetadata({
     openGraph: {
       type: "website",
       locale,
-      url: `${BASE_URL}/${locale}`,
+      url: locale === "en" ? BASE_URL : `${BASE_URL}/${locale}`,
       siteName: t("siteName"),
       title,
       description,
@@ -115,14 +115,14 @@ function JsonLd({ locale, description }: { locale: string; description: string }
       "@context": "https://schema.org",
       "@type": "WebSite",
       name: "Tuttilo",
-      url: `${BASE_URL}/${locale}`,
+      url: locale === "en" ? BASE_URL : `${BASE_URL}/${locale}`,
       description,
       inLanguage: locale,
       potentialAction: {
         "@type": "SearchAction",
         target: {
           "@type": "EntryPoint",
-          urlTemplate: `${BASE_URL}/${locale}?q={search_term_string}`,
+          urlTemplate: `${locale === "en" ? BASE_URL : `${BASE_URL}/${locale}`}?q={search_term_string}`,
         },
         "query-input": "required name=search_term_string",
       },
@@ -136,7 +136,12 @@ function JsonLd({ locale, description }: { locale: string; description: string }
       description,
       sameAs: [
         "https://github.com/erold90/tuttilo",
+        "https://x.com/tuttilo_tools",
       ],
+      founder: {
+        "@type": "Person",
+        name: "Daniele Lo Re",
+      },
     },
   ];
 

@@ -2,11 +2,33 @@ import type { MetadataRoute } from "next";
 import { locales } from "@/i18n/routing";
 import { tools, categories } from "@/lib/tools/registry";
 import { conversions } from "@/lib/tools/conversions";
+import { blogArticles } from "@/lib/blog/articles";
 
 const BASE_URL = "https://tuttilo.com";
+const DEFAULT_LOCALE = "en";
 
 // Build-time date — refreshed on each deploy
 const LAST_UPDATED = new Date();
+
+/** Build locale-prefixed URL: default locale (en) has no prefix */
+function localeUrl(locale: string, path = "") {
+  if (locale === DEFAULT_LOCALE) {
+    return path ? `${BASE_URL}/${path}` : BASE_URL;
+  }
+  return path ? `${BASE_URL}/${locale}/${path}` : `${BASE_URL}/${locale}`;
+}
+
+/** Build alternates map for all locales + x-default */
+function alternates(path = "") {
+  return {
+    languages: {
+      ...Object.fromEntries(
+        locales.map((l) => [l, localeUrl(l, path)])
+      ),
+      "x-default": localeUrl(DEFAULT_LOCALE, path),
+    },
+  };
+}
 
 export default function sitemap(): MetadataRoute.Sitemap {
   const entries: MetadataRoute.Sitemap = [];
@@ -14,107 +36,93 @@ export default function sitemap(): MetadataRoute.Sitemap {
   // Homepage for each locale
   for (const locale of locales) {
     entries.push({
-      url: `${BASE_URL}/${locale}`,
+      url: localeUrl(locale),
       lastModified: LAST_UPDATED,
       changeFrequency: "daily",
       priority: 1.0,
-      alternates: {
-        languages: {
-          ...Object.fromEntries(
-            locales.map((l) => [l, `${BASE_URL}/${l}`])
-          ),
-          "x-default": `${BASE_URL}/en`,
-        },
-      },
+      alternates: alternates(),
     });
   }
 
-  // Legal / institutional pages for each locale
+  // Legal / institutional pages
   const legalPages = ["about", "privacy", "terms", "contact"];
   for (const page of legalPages) {
     for (const locale of locales) {
       entries.push({
-        url: `${BASE_URL}/${locale}/${page}`,
+        url: localeUrl(locale, page),
         lastModified: LAST_UPDATED,
         changeFrequency: "monthly",
         priority: 0.4,
-        alternates: {
-          languages: {
-            ...Object.fromEntries(
-              locales.map((l) => [l, `${BASE_URL}/${l}/${page}`])
-            ),
-            "x-default": `${BASE_URL}/en/${page}`,
-          },
-        },
+        alternates: alternates(page),
       });
     }
   }
 
-  // Category pages for each locale (7 categories × 8 locales = 56 URLs)
+  // Category pages
   for (const cat of categories) {
     for (const locale of locales) {
       entries.push({
-        url: `${BASE_URL}/${locale}/${cat.slug}`,
+        url: localeUrl(locale, cat.slug),
         lastModified: LAST_UPDATED,
         changeFrequency: "weekly",
         priority: 0.8,
-        alternates: {
-          languages: {
-            ...Object.fromEntries(
-              locales.map((l) => [l, `${BASE_URL}/${l}/${cat.slug}`])
-            ),
-            "x-default": `${BASE_URL}/en/${cat.slug}`,
-          },
-        },
+        alternates: alternates(cat.slug),
       });
     }
   }
 
-  // Tool pages for each locale (only available tools)
+  // Tool pages (only available tools)
   for (const tool of tools) {
     const category = categories.find((c) => c.id === tool.category);
     if (!category || !tool.isAvailable) continue;
 
+    const path = `${category.slug}/${tool.slug}`;
     for (const locale of locales) {
       entries.push({
-        url: `${BASE_URL}/${locale}/${category.slug}/${tool.slug}`,
+        url: localeUrl(locale, path),
         lastModified: LAST_UPDATED,
         changeFrequency: "weekly",
         priority: 0.7,
-        alternates: {
-          languages: {
-            ...Object.fromEntries(
-              locales.map((l) => [
-                l,
-                `${BASE_URL}/${l}/${category.slug}/${tool.slug}`,
-              ])
-            ),
-            "x-default": `${BASE_URL}/en/${category.slug}/${tool.slug}`,
-          },
-        },
+        alternates: alternates(path),
       });
     }
   }
 
-  // Conversion landing pages for each locale
-  for (const conv of conversions) {
+  // Blog index
+  for (const locale of locales) {
+    entries.push({
+      url: localeUrl(locale, "blog"),
+      lastModified: LAST_UPDATED,
+      changeFrequency: "weekly",
+      priority: 0.7,
+      alternates: alternates("blog"),
+    });
+  }
+
+  // Blog articles
+  for (const article of blogArticles) {
+    const path = `blog/${article.slug}`;
     for (const locale of locales) {
       entries.push({
-        url: `${BASE_URL}/${locale}/convert/${conv.slug}`,
+        url: localeUrl(locale, path),
+        lastModified: new Date(article.date),
+        changeFrequency: "monthly",
+        priority: 0.6,
+        alternates: alternates(path),
+      });
+    }
+  }
+
+  // Conversion landing pages
+  for (const conv of conversions) {
+    const path = `convert/${conv.slug}`;
+    for (const locale of locales) {
+      entries.push({
+        url: localeUrl(locale, path),
         lastModified: LAST_UPDATED,
         changeFrequency: "monthly",
         priority: 0.6,
-        alternates: {
-          languages: {
-            ...Object.fromEntries(
-              locales.map((l) => [
-                l,
-                `${BASE_URL}/${l}/convert/${conv.slug}`,
-              ])
-            ),
-            "x-default": `${BASE_URL}/en/convert/${conv.slug}`,
-          },
-        },
+        alternates: alternates(path),
       });
     }
   }

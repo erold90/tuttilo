@@ -1,6 +1,6 @@
 "use client";
 
-import { useState } from "react";
+import { useState, useCallback } from "react";
 import { useTranslations } from "next-intl";
 
 type Op = "add" | "subtract" | "multiply" | "divide";
@@ -29,6 +29,7 @@ export default function FractionCalculator() {
   const [n2, setN2] = useState("");
   const [d2, setD2] = useState("");
   const [op, setOp] = useState<Op>("add");
+  const [copied, setCopied] = useState<string | null>(null);
 
   const ops: { key: Op; symbol: string }[] = [
     { key: "add", symbol: "+" },
@@ -73,6 +74,12 @@ export default function FractionCalculator() {
   };
 
   const result = calc();
+
+  const copy = useCallback((val: string, id: string) => {
+    navigator.clipboard.writeText(val);
+    setCopied(id);
+    setTimeout(() => setCopied(null), 1200);
+  }, []);
 
   return (
     <div className="space-y-6">
@@ -148,21 +155,40 @@ export default function FractionCalculator() {
       {/* Results */}
       {result && result.den !== 0 && (
         <div className="grid gap-4 sm:grid-cols-3">
-          <div className="rounded-xl border bg-muted/50 p-5 text-center">
+          <div
+            className="cursor-pointer rounded-xl border bg-muted/50 p-5 text-center transition-colors hover:border-primary/30"
+            onClick={() => copy(`${result.num}/${result.den}`, "simplified")}
+          >
             <div className="text-xs text-muted-foreground">{t("simplified")}</div>
             <div className="mt-1 text-2xl font-bold">{result.num}/{result.den}</div>
+            <div className="mt-1 h-4 text-xs text-primary">{copied === "simplified" ? "✓" : ""}</div>
           </div>
-          <div className="rounded-xl border bg-muted/50 p-5 text-center">
+          <div
+            className="cursor-pointer rounded-xl border bg-muted/50 p-5 text-center transition-colors hover:border-primary/30"
+            onClick={() => {
+              const mixed = result.whole !== 0
+                ? `${result.whole} ${result.remainder}/${result.den}`
+                : result.remainder !== 0
+                  ? `${result.remainder}/${result.den}`
+                  : "0";
+              copy(mixed, "mixed");
+            }}
+          >
             <div className="text-xs text-muted-foreground">{t("mixed")}</div>
             <div className="mt-1 text-2xl font-bold">
               {result.whole !== 0 && <>{result.whole} </>}
               {result.remainder !== 0 && <>{result.remainder}/{result.den}</>}
               {result.whole === 0 && result.remainder === 0 && "0"}
             </div>
+            <div className="mt-1 h-4 text-xs text-primary">{copied === "mixed" ? "✓" : ""}</div>
           </div>
-          <div className="rounded-xl border bg-muted/50 p-5 text-center">
+          <div
+            className="cursor-pointer rounded-xl border bg-muted/50 p-5 text-center transition-colors hover:border-primary/30"
+            onClick={() => copy(result.decimal.toFixed(6), "decimal")}
+          >
             <div className="text-xs text-muted-foreground">{t("decimal")}</div>
             <div className="mt-1 text-2xl font-bold">{result.decimal.toFixed(6)}</div>
+            <div className="mt-1 h-4 text-xs text-primary">{copied === "decimal" ? "✓" : ""}</div>
           </div>
         </div>
       )}

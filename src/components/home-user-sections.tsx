@@ -9,9 +9,11 @@ import { useRecents } from "@/hooks/use-recents";
 import {
   getAvailableTools,
   getCategoryClasses,
+  getCategoryColor,
   type ToolCategoryId,
 } from "@/lib/tools/registry";
 import { ToolIcon } from "@/components/tool-icon";
+import { SpotlightContainer } from "@/components/ui/spotlight-container";
 
 export function HomeUserSections() {
   const t = useTranslations();
@@ -43,30 +45,35 @@ export function HomeUserSections() {
               <Heart weight="fill" className="h-5 w-5 text-red-500" />
               <h2 className="text-lg font-semibold">{t("home.favorites")}</h2>
             </div>
-            <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-3">
+            <SpotlightContainer className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-3">
               {favoriteTools.map((tool) => {
                 if (!tool) return null;
                 const classes = getCategoryClasses(tool.category);
+                const color = getCategoryColor(tool.category);
                 return (
                   <Link
                     key={tool.id}
                     href={`/${tool.category}/${tool.slug}` as any}
+                    data-spotlight-card
                     className={cn(
-                      "flex items-center gap-3 rounded-xl border p-3 transition-all hover:shadow-md",
+                      "group relative flex items-center gap-3 rounded-xl border p-3 transition-all duration-300",
+                      "hover:shadow-md hover:-translate-y-0.5",
                       classes.border,
                       classes.hoverBorder
                     )}
+                    style={{ "--spotlight-color": `${color}14` } as React.CSSProperties}
                   >
                     <span
                       className={cn(
-                        "flex h-9 w-9 shrink-0 items-center justify-center rounded-lg",
+                        "flex h-9 w-9 shrink-0 items-center justify-center rounded-lg icon-glow relative z-10",
                         classes.bg,
                         classes.text
                       )}
+                      style={{ "--glow-color": `${color}4D` } as React.CSSProperties}
                     >
                       <ToolIcon name={tool.icon} className="h-4 w-4" />
                     </span>
-                    <div className="min-w-0">
+                    <div className="min-w-0 relative z-10">
                       <p className="font-medium text-sm truncate">
                         {t(`tools.${tool.id}.name`)}
                       </p>
@@ -77,7 +84,7 @@ export function HomeUserSections() {
                   </Link>
                 );
               })}
-            </div>
+            </SpotlightContainer>
           </div>
         )}
 
@@ -88,31 +95,35 @@ export function HomeUserSections() {
               <Clock className="h-5 w-5 text-muted-foreground" />
               <h2 className="text-lg font-semibold">{t("home.recents")}</h2>
             </div>
-            <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-3">
+            <SpotlightContainer className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-3">
               {recentTools.map((tool) => {
                 if (!tool) return null;
                 const classes = getCategoryClasses(tool.category as ToolCategoryId);
+                const color = getCategoryColor(tool.category as ToolCategoryId);
                 return (
                   <Link
                     key={tool.id}
                     href={`/${tool.category}/${tool.slug}` as any}
+                    data-spotlight-card
                     className={cn(
-                      "flex items-center gap-3 rounded-lg border p-3 transition-all hover:shadow-sm",
+                      "group relative flex items-center gap-3 rounded-lg border p-3 transition-all duration-300",
+                      "hover:shadow-sm hover:-translate-y-0.5",
                       classes.border,
                       classes.hoverBorder
                     )}
+                    style={{ "--spotlight-color": `${color}14` } as React.CSSProperties}
                   >
                     <ToolIcon
                       name={tool.icon}
-                      className={cn("h-4 w-4 shrink-0", classes.text)}
+                      className={cn("h-4 w-4 shrink-0 relative z-10", classes.text)}
                     />
-                    <p className="font-medium text-sm truncate">
+                    <p className="font-medium text-sm truncate relative z-10">
                       {t(`tools.${tool.id}.name`)}
                     </p>
                   </Link>
                 );
               })}
-            </div>
+            </SpotlightContainer>
           </div>
         )}
       </div>

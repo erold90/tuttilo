@@ -1,6 +1,6 @@
 "use client";
 
-import { useState } from "react";
+import { useState, useCallback } from "react";
 import { useTranslations } from "next-intl";
 
 export default function DiscountCalculator() {
@@ -10,6 +10,7 @@ export default function DiscountCalculator() {
   const [discountPercent, setDiscountPercent] = useState("");
   const [secondDiscount, setSecondDiscount] = useState("");
   const [taxRate, setTaxRate] = useState("");
+  const [copied, setCopied] = useState<string | null>(null);
 
   const original = parseFloat(originalPrice) || 0;
   const discount1 = parseFloat(discountPercent) || 0;
@@ -26,19 +27,13 @@ export default function DiscountCalculator() {
   const presets = [10, 15, 20, 25, 30, 40, 50, 60, 70, 75];
 
   const fmt = (n: number) =>
-    new Intl.NumberFormat("en-US", {
-      style: "currency",
-      currency: "USD",
-      minimumFractionDigits: 2,
-      maximumFractionDigits: 2,
-    }).format(n);
+    n.toLocaleString(undefined, { minimumFractionDigits: 2, maximumFractionDigits: 2 });
 
-  const reset = () => {
-    setOriginalPrice("");
-    setDiscountPercent("");
-    setSecondDiscount("");
-    setTaxRate("");
-  };
+  const copy = useCallback((val: string, id: string) => {
+    navigator.clipboard.writeText(val);
+    setCopied(id);
+    setTimeout(() => setCopied(null), 1200);
+  }, []);
 
   return (
     <div className="space-y-6">
@@ -120,7 +115,7 @@ export default function DiscountCalculator() {
       </div>
 
       <button
-        onClick={reset}
+        onClick={() => { setOriginalPrice(""); setDiscountPercent(""); setSecondDiscount(""); setTaxRate(""); }}
         className="rounded-xl border bg-muted/50 px-6 py-3 font-medium hover:bg-muted"
       >
         {t("reset")}
@@ -129,26 +124,42 @@ export default function DiscountCalculator() {
       {/* Results */}
       {original > 0 && discount1 > 0 && (
         <div className="space-y-4">
-          <div className="rounded-xl border bg-muted/50 p-6">
+          <div
+            className="cursor-pointer rounded-xl border bg-muted/50 p-6 transition-colors hover:border-primary/30"
+            onClick={() => copy(fmt(tax > 0 ? finalPrice : afterSecond), "final")}
+          >
             <div className="flex items-baseline gap-3">
               <span className="text-2xl text-muted-foreground line-through">{fmt(original)}</span>
-              <span className="text-4xl font-bold text-green-600">{fmt(tax > 0 ? finalPrice : afterSecond)}</span>
+              <span className="text-4xl font-bold text-primary">{fmt(tax > 0 ? finalPrice : afterSecond)}</span>
             </div>
+            <div className="mt-1 h-4 text-xs text-primary">{copied === "final" ? "✓" : ""}</div>
           </div>
 
           <div className="grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
-            <div className="rounded-xl border bg-background p-4">
+            <div
+              className="cursor-pointer rounded-xl border bg-background p-4 transition-colors hover:border-primary/30"
+              onClick={() => copy(fmt(totalSaved), "saved")}
+            >
               <div className="text-sm text-muted-foreground">{t("youSave")}</div>
-              <div className="mt-1 text-2xl font-semibold text-red-500">{fmt(totalSaved)}</div>
+              <div className="mt-1 text-2xl font-semibold">{fmt(totalSaved)}</div>
+              <div className="mt-1 h-4 text-xs text-primary">{copied === "saved" ? "✓" : ""}</div>
             </div>
-            <div className="rounded-xl border bg-background p-4">
+            <div
+              className="cursor-pointer rounded-xl border bg-background p-4 transition-colors hover:border-primary/30"
+              onClick={() => copy(effectiveDiscount.toFixed(1) + "%", "eff")}
+            >
               <div className="text-sm text-muted-foreground">{t("effectiveDiscount")}</div>
               <div className="mt-1 text-2xl font-semibold">{effectiveDiscount.toFixed(1)}%</div>
+              <div className="mt-1 h-4 text-xs text-primary">{copied === "eff" ? "✓" : ""}</div>
             </div>
             {tax > 0 && (
-              <div className="rounded-xl border bg-background p-4">
+              <div
+                className="cursor-pointer rounded-xl border bg-background p-4 transition-colors hover:border-primary/30"
+                onClick={() => copy(fmt(taxAmount), "tax")}
+              >
                 <div className="text-sm text-muted-foreground">{t("taxAmount")}</div>
                 <div className="mt-1 text-2xl font-semibold">{fmt(taxAmount)}</div>
+                <div className="mt-1 h-4 text-xs text-primary">{copied === "tax" ? "✓" : ""}</div>
               </div>
             )}
           </div>

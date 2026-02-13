@@ -1,6 +1,6 @@
 "use client";
 
-import { useState } from "react";
+import { useState, useCallback } from "react";
 import { useTranslations } from "next-intl";
 
 type VatMode = "addVat" | "removeVat" | "vatAmount";
@@ -14,6 +14,7 @@ export default function VatCalculator() {
   const [amount, setAmount] = useState("");
   const [vatRate, setVatRate] = useState("20");
   const [customRate, setCustomRate] = useState("");
+  const [copied, setCopied] = useState<string | null>(null);
 
   const amountNum = parseFloat(amount) || 0;
   const rate = customRate ? parseFloat(customRate) || 0 : parseFloat(vatRate) || 0;
@@ -43,18 +44,13 @@ export default function VatCalculator() {
   }
 
   const fmt = (n: number) =>
-    new Intl.NumberFormat("en-US", {
-      style: "currency",
-      currency: "USD",
-      minimumFractionDigits: 2,
-      maximumFractionDigits: 2,
-    }).format(n);
+    n.toLocaleString(undefined, { minimumFractionDigits: 2, maximumFractionDigits: 2 });
 
-  const reset = () => {
-    setAmount("");
-    setVatRate("20");
-    setCustomRate("");
-  };
+  const copy = useCallback((val: string, id: string) => {
+    navigator.clipboard.writeText(val);
+    setCopied(id);
+    setTimeout(() => setCopied(null), 1200);
+  }, []);
 
   return (
     <div className="space-y-6">
@@ -121,7 +117,7 @@ export default function VatCalculator() {
       </div>
 
       <button
-        onClick={reset}
+        onClick={() => { setAmount(""); setVatRate("20"); setCustomRate(""); }}
         className="rounded-xl border bg-muted/50 px-6 py-3 font-medium hover:bg-muted"
       >
         {t("reset")}
@@ -130,19 +126,31 @@ export default function VatCalculator() {
       {/* Results */}
       {amountNum > 0 && (
         <div className="grid gap-4 sm:grid-cols-3">
-          <div className="rounded-xl border bg-background p-5">
+          <div
+            className="cursor-pointer rounded-xl border bg-background p-5 transition-colors hover:border-primary/30"
+            onClick={() => copy(fmt(netAmount), "net")}
+          >
             <div className="text-sm text-muted-foreground">{t("netAmount")}</div>
             <div className="mt-1 text-2xl font-bold">{fmt(netAmount)}</div>
+            <div className="mt-1 h-4 text-xs text-primary">{copied === "net" ? "✓" : ""}</div>
           </div>
-          <div className="rounded-xl border bg-muted/50 p-5">
+          <div
+            className="cursor-pointer rounded-xl border bg-muted/50 p-5 transition-colors hover:border-primary/30"
+            onClick={() => copy(fmt(vatAmount), "vat")}
+          >
             <div className="text-sm text-muted-foreground">
               {t("vatAmountLabel")} ({rate}%)
             </div>
             <div className="mt-1 text-2xl font-bold text-primary">{fmt(vatAmount)}</div>
+            <div className="mt-1 h-4 text-xs text-primary">{copied === "vat" ? "✓" : ""}</div>
           </div>
-          <div className="rounded-xl border bg-background p-5">
+          <div
+            className="cursor-pointer rounded-xl border bg-background p-5 transition-colors hover:border-primary/30"
+            onClick={() => copy(fmt(grossAmount), "gross")}
+          >
             <div className="text-sm text-muted-foreground">{t("grossAmount")}</div>
             <div className="mt-1 text-2xl font-bold">{fmt(grossAmount)}</div>
+            <div className="mt-1 h-4 text-xs text-primary">{copied === "gross" ? "✓" : ""}</div>
           </div>
         </div>
       )}

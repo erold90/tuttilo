@@ -16,7 +16,7 @@ const securityHeaders: Record<string, string> = {
     "style-src 'self' 'unsafe-inline' https://fonts.googleapis.com",
     "font-src 'self' https://fonts.gstatic.com",
     "img-src 'self' data: blob: https://i.ytimg.com https://img.youtube.com https://yt3.ggpht.com https://*.ezoic.net https://*.ezodn.com https://pagead2.googlesyndication.com",
-    "connect-src 'self' blob: https://www.google-analytics.com https://www.googletagmanager.com https://*.ezoic.net https://*.ezojs.com https://*.ezodn.com https://cmp.gatekeeperconsent.com https://the.gatekeeperconsent.com https://youtube.googleapis.com https://pagead2.googlesyndication.com",
+    "connect-src 'self' blob: https://cdn.jsdelivr.net https://www.google-analytics.com https://www.googletagmanager.com https://*.ezoic.net https://*.ezojs.com https://*.ezodn.com https://cmp.gatekeeperconsent.com https://the.gatekeeperconsent.com https://youtube.googleapis.com https://pagead2.googlesyndication.com https://api.frankfurter.app",
     "media-src 'self' blob:",
     "worker-src 'self' blob:",
     "frame-src 'self' https://*.ezoic.net https://*.ezodn.com https://www.google.com https://pagead2.googlesyndication.com",

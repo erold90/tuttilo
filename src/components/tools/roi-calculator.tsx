@@ -1,71 +1,45 @@
 "use client";
 
-import { useState } from "react";
+import { useState, useCallback } from "react";
 import { useTranslations } from "next-intl";
 
 export default function RoiCalculator() {
   const t = useTranslations("tools.roi-calculator.ui");
 
-  const [initialInvestment, setInitialInvestment] = useState("10000");
-  const [finalValue, setFinalValue] = useState("15000");
-  const [years, setYears] = useState("3");
+  const [initialInvestment, setInitialInvestment] = useState("");
+  const [finalValue, setFinalValue] = useState("");
+  const [years, setYears] = useState("");
   const [additionalCosts, setAdditionalCosts] = useState("0");
+  const [copied, setCopied] = useState<string | null>(null);
 
-  const [result, setResult] = useState<{
-    roi: number;
-    annualizedRoi: number;
-    netProfit: number;
-    totalCost: number;
-  } | null>(null);
-  const [error, setError] = useState("");
+  const calc = () => {
+    const invest = parseFloat(initialInvestment);
+    const final_ = parseFloat(finalValue);
+    const yrs = parseFloat(years);
+    const costs = parseFloat(additionalCosts || "0");
 
-  const calculate = () => {
-    try {
-      setError("");
-      setResult(null);
+    if (isNaN(invest) || invest <= 0) return null;
+    if (isNaN(final_) || final_ < 0) return null;
+    if (isNaN(yrs) || yrs <= 0 || yrs > 100) return null;
 
-      const invest = parseFloat(initialInvestment);
-      const final_ = parseFloat(finalValue);
-      const yrs = parseFloat(years);
-      const costs = parseFloat(additionalCosts || "0");
+    const totalCost = invest + costs;
+    const netProfit = final_ - totalCost;
+    const roi = (netProfit / totalCost) * 100;
+    const annualizedRoi = (Math.pow(final_ / totalCost, 1 / yrs) - 1) * 100;
 
-      if (isNaN(invest) || invest <= 0) {
-        throw new Error(t("errorInvestment"));
-      }
-      if (isNaN(final_) || final_ < 0) {
-        throw new Error(t("errorFinalValue"));
-      }
-      if (isNaN(yrs) || yrs <= 0 || yrs > 100) {
-        throw new Error(t("errorYears"));
-      }
-
-      const totalCost = invest + costs;
-      const netProfit = final_ - totalCost;
-      const roi = (netProfit / totalCost) * 100;
-      const annualizedRoi = (Math.pow(final_ / totalCost, 1 / yrs) - 1) * 100;
-
-      setResult({ roi, annualizedRoi, netProfit, totalCost });
-    } catch (err) {
-      setError(err instanceof Error ? err.message : t("error"));
-    }
+    return { roi, annualizedRoi, netProfit, totalCost };
   };
 
-  const reset = () => {
-    setInitialInvestment("10000");
-    setFinalValue("15000");
-    setYears("3");
-    setAdditionalCosts("0");
-    setResult(null);
-    setError("");
-  };
+  const result = calc();
 
   const fmt = (n: number) =>
-    new Intl.NumberFormat("en-US", {
-      style: "currency",
-      currency: "USD",
-      minimumFractionDigits: 2,
-      maximumFractionDigits: 2,
-    }).format(n);
+    n.toLocaleString(undefined, { minimumFractionDigits: 2, maximumFractionDigits: 2 });
+
+  const copy = useCallback((val: string, id: string) => {
+    navigator.clipboard.writeText(val);
+    setCopied(id);
+    setTimeout(() => setCopied(null), 1200);
+  }, []);
 
   return (
     <div className="space-y-6">
@@ -102,16 +76,12 @@ export default function RoiCalculator() {
               className="w-full rounded-xl border bg-background px-4 py-3 pr-20 text-base"
               placeholder="3"
             />
-            <span className="absolute right-4 top-1/2 -translate-y-1/2 text-muted-foreground">
-              {t("years")}
-            </span>
+            <span className="absolute right-4 top-1/2 -translate-y-1/2 text-muted-foreground">{t("years")}</span>
           </div>
         </div>
 
         <div className="space-y-2">
-          <label className="text-sm font-medium">
-            {t("additionalCosts")} ({t("optional")})
-          </label>
+          <label className="text-sm font-medium">{t("additionalCosts")} ({t("optional")})</label>
           <input
             type="number"
             value={additionalCosts}
@@ -122,56 +92,48 @@ export default function RoiCalculator() {
         </div>
       </div>
 
-      <div className="flex flex-wrap gap-3">
-        <button
-          onClick={calculate}
-          className="rounded-xl bg-primary px-6 py-3 font-medium text-primary-foreground hover:bg-primary/90"
-        >
-          {t("calculate")}
-        </button>
-        <button
-          onClick={reset}
-          className="rounded-xl border bg-muted/50 px-6 py-3 font-medium hover:bg-muted"
-        >
-          {t("reset")}
-        </button>
-      </div>
-
-      {error && (
-        <div className="rounded-xl border border-red-500/20 bg-red-500/10 p-4 text-red-500">
-          {error}
-        </div>
-      )}
+      <button
+        onClick={() => { setInitialInvestment(""); setFinalValue(""); setYears(""); setAdditionalCosts("0"); }}
+        className="rounded-xl border bg-muted/50 px-6 py-3 font-medium hover:bg-muted"
+      >
+        {t("reset")}
+      </button>
 
       {result && (
         <div className="space-y-4">
-          <div className="rounded-xl border bg-muted/50 p-6">
-            <h3 className="mb-4 text-lg font-semibold">{t("roiResult")}</h3>
-            <div className={`text-4xl font-bold ${result.roi >= 0 ? "text-green-600" : "text-red-500"}`}>
-              {result.roi.toFixed(2)}%
-            </div>
+          <div
+            className="cursor-pointer rounded-xl border bg-muted/50 p-6 transition-colors hover:border-primary/30"
+            onClick={() => copy(result.roi.toFixed(2) + "%", "roi")}
+          >
+            <h3 className="mb-2 text-lg font-semibold">{t("roiResult")}</h3>
+            <div className="text-4xl font-bold text-primary">{result.roi.toFixed(2)}%</div>
+            <div className="mt-1 h-4 text-xs text-primary">{copied === "roi" ? "✓" : ""}</div>
           </div>
 
           <div className="grid gap-4 sm:grid-cols-3">
-            <div className="rounded-xl border bg-background p-4">
+            <div
+              className="cursor-pointer rounded-xl border bg-background p-4 transition-colors hover:border-primary/30"
+              onClick={() => copy(result.annualizedRoi.toFixed(2) + "%", "aroi")}
+            >
               <div className="text-sm text-muted-foreground">{t("annualizedRoi")}</div>
-              <div className={`mt-1 text-2xl font-semibold ${result.annualizedRoi >= 0 ? "text-green-600" : "text-red-500"}`}>
-                {result.annualizedRoi.toFixed(2)}%
-              </div>
+              <div className="mt-1 text-2xl font-semibold">{result.annualizedRoi.toFixed(2)}%</div>
+              <div className="mt-1 h-4 text-xs text-primary">{copied === "aroi" ? "✓" : ""}</div>
             </div>
-
-            <div className="rounded-xl border bg-background p-4">
+            <div
+              className="cursor-pointer rounded-xl border bg-background p-4 transition-colors hover:border-primary/30"
+              onClick={() => copy(fmt(result.netProfit), "profit")}
+            >
               <div className="text-sm text-muted-foreground">{t("netProfit")}</div>
-              <div className={`mt-1 text-2xl font-semibold ${result.netProfit >= 0 ? "text-green-600" : "text-red-500"}`}>
-                {fmt(result.netProfit)}
-              </div>
+              <div className="mt-1 text-2xl font-semibold">{fmt(result.netProfit)}</div>
+              <div className="mt-1 h-4 text-xs text-primary">{copied === "profit" ? "✓" : ""}</div>
             </div>
-
-            <div className="rounded-xl border bg-background p-4">
+            <div
+              className="cursor-pointer rounded-xl border bg-background p-4 transition-colors hover:border-primary/30"
+              onClick={() => copy(fmt(result.totalCost), "cost")}
+            >
               <div className="text-sm text-muted-foreground">{t("totalCost")}</div>
-              <div className="mt-1 text-2xl font-semibold">
-                {fmt(result.totalCost)}
-              </div>
+              <div className="mt-1 text-2xl font-semibold">{fmt(result.totalCost)}</div>
+              <div className="mt-1 h-4 text-xs text-primary">{copied === "cost" ? "✓" : ""}</div>
             </div>
           </div>
         </div>

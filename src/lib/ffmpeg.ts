@@ -4,7 +4,15 @@ let loadPromise: Promise<any> | null = null;
 export async function getFFmpeg(
   onProgress?: (progress: number) => void
 ): Promise<any> {
-  if (ffmpegInstance?.loaded) return ffmpegInstance;
+  if (ffmpegInstance?.loaded) {
+    if (onProgress) {
+      ffmpegInstance.off("progress");
+      ffmpegInstance.on("progress", ({ progress }: { progress: number }) => {
+        onProgress(Math.round(progress * 100));
+      });
+    }
+    return ffmpegInstance;
+  }
   if (loadPromise) return loadPromise;
 
   loadPromise = (async () => {
@@ -19,14 +27,14 @@ export async function getFFmpeg(
       });
     }
 
-    const baseURL = "https://unpkg.com/@ffmpeg/core@0.12.6/dist/esm";
-    await ffmpeg.load({
-      coreURL: await toBlobURL(`${baseURL}/ffmpeg-core.js`, "text/javascript"),
-      wasmURL: await toBlobURL(
-        `${baseURL}/ffmpeg-core.wasm`,
-        "application/wasm"
-      ),
-    });
+    // Core JS is self-hosted (112KB), WASM from jsdelivr CDN (31MB, too large for CF Pages 25MB limit)
+    const coreURL = await toBlobURL("/ffmpeg/ffmpeg-core.js", "text/javascript");
+    const wasmURL = await toBlobURL(
+      "https://cdn.jsdelivr.net/npm/@ffmpeg/core@0.12.6/dist/esm/ffmpeg-core.wasm",
+      "application/wasm"
+    );
+
+    await ffmpeg.load({ coreURL, wasmURL });
 
     ffmpegInstance = ffmpeg;
     return ffmpeg;
@@ -34,9 +42,10 @@ export async function getFFmpeg(
 
   try {
     return await loadPromise;
-  } catch {
+  } catch (err) {
     loadPromise = null;
-    throw new Error("Failed to load FFmpeg");
+    ffmpegInstance = null;
+    throw err;
   }
 }
 

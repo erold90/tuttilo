@@ -1,6 +1,6 @@
 "use client";
 
-import { useState } from "react";
+import { useState, useCallback } from "react";
 import { useTranslations } from "next-intl";
 
 interface YearData {
@@ -14,127 +14,78 @@ interface YearData {
 export default function CompoundInterestCalculator() {
   const t = useTranslations("tools.compound-interest-calculator.ui");
 
-  const [principal, setPrincipal] = useState<string>("10000");
-  const [annualRate, setAnnualRate] = useState<string>("5");
-  const [frequency, setFrequency] = useState<string>("12");
-  const [years, setYears] = useState<string>("10");
-  const [monthlyContribution, setMonthlyContribution] = useState<string>("100");
-
-  const [result, setResult] = useState<{
-    finalAmount: number;
-    totalInterest: number;
-    totalContributions: number;
-    totalPrincipal: number;
-    yearlyData: YearData[];
-  } | null>(null);
-  const [error, setError] = useState<string>("");
+  const [principal, setPrincipal] = useState("");
+  const [annualRate, setAnnualRate] = useState("");
+  const [frequency, setFrequency] = useState("12");
+  const [years, setYears] = useState("");
+  const [monthlyContribution, setMonthlyContribution] = useState("0");
   const [showTable, setShowTable] = useState(false);
+  const [copied, setCopied] = useState<string | null>(null);
 
-  const calculate = () => {
-    try {
-      setError("");
-      setResult(null);
+  const calc = () => {
+    const p = parseFloat(principal);
+    const r = parseFloat(annualRate);
+    const n = parseFloat(frequency);
+    const yrs = parseFloat(years);
+    const pmt = parseFloat(monthlyContribution || "0");
 
-      const p = parseFloat(principal);
-      const r = parseFloat(annualRate);
-      const n = parseFloat(frequency);
-      const yrs = parseFloat(years);
-      const pmt = parseFloat(monthlyContribution || "0");
+    if (isNaN(p) || p < 0) return null;
+    if (isNaN(r) || r < 0 || r > 100) return null;
+    if (isNaN(yrs) || yrs <= 0 || yrs > 100) return null;
+    if (isNaN(pmt) || pmt < 0) return null;
 
-      if (isNaN(p) || p < 0) {
-        throw new Error(t("errorPrincipal"));
-      }
-      if (isNaN(r) || r < 0 || r > 100) {
-        throw new Error(t("errorRate"));
-      }
-      if (isNaN(yrs) || yrs <= 0 || yrs > 100) {
-        throw new Error(t("errorYears"));
-      }
-      if (isNaN(pmt) || pmt < 0) {
-        throw new Error(t("errorContribution"));
-      }
+    const yearlyData: YearData[] = [];
+    let balance = p;
+    const ratePerPeriod = r / 100 / n;
+    const monthlyRate = r / 100 / 12;
 
-      const yearlyData: YearData[] = [];
-      let balance = p;
-      const ratePerPeriod = r / 100 / n;
-      const monthlyRate = r / 100 / 12;
+    for (let year = 1; year <= yrs; year++) {
+      const startBalance = balance;
+      let yearContributions = 0;
+      let yearInterest = 0;
 
-      for (let year = 1; year <= yrs; year++) {
-        const startBalance = balance;
-        let yearContributions = 0;
-        let yearInterest = 0;
+      const periodsInYear = n;
+      const monthsPerPeriod = 12 / n;
 
-        // Calculate for each compounding period in the year
-        const periodsInYear = n;
-        const monthsPerPeriod = 12 / n;
+      for (let period = 0; period < periodsInYear; period++) {
+        const interest = balance * ratePerPeriod;
+        balance += interest;
+        yearInterest += interest;
 
-        for (let period = 0; period < periodsInYear; period++) {
-          // Add interest
-          const interest = balance * ratePerPeriod;
-          balance += interest;
-          yearInterest += interest;
-
-          // Add contributions (monthly)
-          const monthsInPeriod = Math.min(monthsPerPeriod, 12 - period * monthsPerPeriod);
-          for (let m = 0; m < monthsInPeriod; m++) {
-            balance += pmt;
-            yearContributions += pmt;
-            // Add interest on contributions
-            const contributionInterest = pmt * monthlyRate * (monthsInPeriod - m - 1);
-            balance += contributionInterest;
-            yearInterest += contributionInterest;
-          }
+        const monthsInPeriod = Math.min(monthsPerPeriod, 12 - period * monthsPerPeriod);
+        for (let m = 0; m < monthsInPeriod; m++) {
+          balance += pmt;
+          yearContributions += pmt;
+          const contributionInterest = pmt * monthlyRate * (monthsInPeriod - m - 1);
+          balance += contributionInterest;
+          yearInterest += contributionInterest;
         }
-
-        yearlyData.push({
-          year,
-          startBalance,
-          contributions: yearContributions,
-          interest: yearInterest,
-          endBalance: balance,
-        });
       }
 
-      const totalContributions = pmt * 12 * yrs;
-      const finalAmount = balance;
-      const totalInterest = finalAmount - p - totalContributions;
-
-      setResult({
-        finalAmount,
-        totalInterest,
-        totalContributions,
-        totalPrincipal: p,
-        yearlyData,
-      });
-    } catch (err) {
-      setError(err instanceof Error ? err.message : t("error"));
+      yearlyData.push({ year, startBalance, contributions: yearContributions, interest: yearInterest, endBalance: balance });
     }
+
+    const totalContributions = pmt * 12 * yrs;
+    const finalAmount = balance;
+    const totalInterest = finalAmount - p - totalContributions;
+
+    return { finalAmount, totalInterest, totalContributions, totalPrincipal: p, yearlyData };
   };
 
-  const formatCurrency = (amount: number) => {
-    return new Intl.NumberFormat("en-US", {
-      style: "currency",
-      currency: "USD",
-      minimumFractionDigits: 2,
-      maximumFractionDigits: 2,
-    }).format(amount);
-  };
+  const result = calc();
 
-  const reset = () => {
-    setPrincipal("10000");
-    setAnnualRate("5");
-    setFrequency("12");
-    setYears("10");
-    setMonthlyContribution("100");
-    setResult(null);
-    setError("");
-    setShowTable(false);
-  };
+  const fmt = (n: number) =>
+    n.toLocaleString(undefined, { minimumFractionDigits: 2, maximumFractionDigits: 2 });
+
+  const copy = useCallback((val: string, id: string) => {
+    navigator.clipboard.writeText(val);
+    setCopied(id);
+    setTimeout(() => setCopied(null), 1200);
+  }, []);
 
   return (
     <div className="space-y-6">
       <div className="grid gap-6 md:grid-cols-2">
-        {/* Principal */}
         <div className="space-y-2">
           <label className="text-sm font-medium">{t("principal")}</label>
           <input
@@ -146,7 +97,6 @@ export default function CompoundInterestCalculator() {
           />
         </div>
 
-        {/* Annual Interest Rate */}
         <div className="space-y-2">
           <label className="text-sm font-medium">{t("annualRate")}</label>
           <div className="relative">
@@ -158,13 +108,10 @@ export default function CompoundInterestCalculator() {
               className="w-full rounded-xl border bg-background px-4 py-3 pr-10 text-base"
               placeholder="5"
             />
-            <span className="absolute right-4 top-1/2 -translate-y-1/2 text-muted-foreground">
-              %
-            </span>
+            <span className="absolute right-4 top-1/2 -translate-y-1/2 text-muted-foreground">%</span>
           </div>
         </div>
 
-        {/* Compounding Frequency */}
         <div className="space-y-2">
           <label className="text-sm font-medium">{t("compoundingFrequency")}</label>
           <select
@@ -179,7 +126,6 @@ export default function CompoundInterestCalculator() {
           </select>
         </div>
 
-        {/* Time Period */}
         <div className="space-y-2">
           <label className="text-sm font-medium">{t("timePeriod")}</label>
           <div className="relative">
@@ -190,17 +136,12 @@ export default function CompoundInterestCalculator() {
               className="w-full rounded-xl border bg-background px-4 py-3 pr-20 text-base"
               placeholder="10"
             />
-            <span className="absolute right-4 top-1/2 -translate-y-1/2 text-muted-foreground">
-              {t("years")}
-            </span>
+            <span className="absolute right-4 top-1/2 -translate-y-1/2 text-muted-foreground">{t("years")}</span>
           </div>
         </div>
 
-        {/* Monthly Contribution */}
         <div className="space-y-2 md:col-span-2">
-          <label className="text-sm font-medium">
-            {t("monthlyContribution")} ({t("optional")})
-          </label>
+          <label className="text-sm font-medium">{t("monthlyContribution")} ({t("optional")})</label>
           <input
             type="number"
             value={monthlyContribution}
@@ -211,58 +152,48 @@ export default function CompoundInterestCalculator() {
         </div>
       </div>
 
-      <div className="flex flex-wrap gap-3">
-        <button
-          onClick={calculate}
-          className="rounded-xl bg-primary px-6 py-3 font-medium text-primary-foreground hover:bg-primary/90"
-        >
-          {t("calculate")}
-        </button>
-        <button
-          onClick={reset}
-          className="rounded-xl border bg-muted/50 px-6 py-3 font-medium hover:bg-muted"
-        >
-          {t("reset")}
-        </button>
-      </div>
-
-      {error && (
-        <div className="rounded-xl border border-red-500/20 bg-red-500/10 p-4 text-red-500">
-          {error}
-        </div>
-      )}
+      <button
+        onClick={() => { setPrincipal(""); setAnnualRate(""); setFrequency("12"); setYears(""); setMonthlyContribution("0"); setShowTable(false); }}
+        className="rounded-xl border bg-muted/50 px-6 py-3 font-medium hover:bg-muted"
+      >
+        {t("reset")}
+      </button>
 
       {result && (
         <div className="space-y-4">
-          <div className="rounded-xl border bg-muted/50 p-6">
-            <h3 className="mb-4 text-lg font-semibold">{t("finalAmount")}</h3>
-            <div className="text-4xl font-bold text-primary">
-              {formatCurrency(result.finalAmount)}
-            </div>
+          <div
+            className="cursor-pointer rounded-xl border bg-muted/50 p-6 transition-colors hover:border-primary/30"
+            onClick={() => copy(fmt(result.finalAmount), "final")}
+          >
+            <h3 className="mb-2 text-lg font-semibold">{t("finalAmount")}</h3>
+            <div className="text-4xl font-bold text-primary">{fmt(result.finalAmount)}</div>
+            <div className="mt-1 h-4 text-xs text-primary">{copied === "final" ? "✓" : ""}</div>
           </div>
 
           <div className="grid gap-4 sm:grid-cols-3">
-            <div className="rounded-xl border bg-background p-4">
+            <div
+              className="cursor-pointer rounded-xl border bg-background p-4 transition-colors hover:border-primary/30"
+              onClick={() => copy(fmt(result.totalPrincipal), "princ")}
+            >
               <div className="text-sm text-muted-foreground">{t("totalPrincipal")}</div>
-              <div className="mt-1 text-2xl font-semibold">
-                {formatCurrency(result.totalPrincipal)}
-              </div>
+              <div className="mt-1 text-2xl font-semibold">{fmt(result.totalPrincipal)}</div>
+              <div className="mt-1 h-4 text-xs text-primary">{copied === "princ" ? "✓" : ""}</div>
             </div>
-
-            <div className="rounded-xl border bg-background p-4">
-              <div className="text-sm text-muted-foreground">
-                {t("totalContributions")}
-              </div>
-              <div className="mt-1 text-2xl font-semibold">
-                {formatCurrency(result.totalContributions)}
-              </div>
+            <div
+              className="cursor-pointer rounded-xl border bg-background p-4 transition-colors hover:border-primary/30"
+              onClick={() => copy(fmt(result.totalContributions), "contrib")}
+            >
+              <div className="text-sm text-muted-foreground">{t("totalContributions")}</div>
+              <div className="mt-1 text-2xl font-semibold">{fmt(result.totalContributions)}</div>
+              <div className="mt-1 h-4 text-xs text-primary">{copied === "contrib" ? "✓" : ""}</div>
             </div>
-
-            <div className="rounded-xl border bg-background p-4">
+            <div
+              className="cursor-pointer rounded-xl border bg-background p-4 transition-colors hover:border-primary/30"
+              onClick={() => copy(fmt(result.totalInterest), "int")}
+            >
               <div className="text-sm text-muted-foreground">{t("totalInterest")}</div>
-              <div className="mt-1 text-2xl font-semibold">
-                {formatCurrency(result.totalInterest)}
-              </div>
+              <div className="mt-1 text-2xl font-semibold">{fmt(result.totalInterest)}</div>
+              <div className="mt-1 h-4 text-xs text-primary">{copied === "int" ? "✓" : ""}</div>
             </div>
           </div>
 
@@ -273,9 +204,7 @@ export default function CompoundInterestCalculator() {
                 className="flex w-full items-center justify-between p-4 text-left hover:bg-muted/50"
               >
                 <span className="font-medium">{t("yearByYearGrowth")}</span>
-                <span className="text-muted-foreground">
-                  {showTable ? "−" : "+"}
-                </span>
+                <span className="text-muted-foreground">{showTable ? "−" : "+"}</span>
               </button>
 
               {showTable && (
@@ -285,9 +214,7 @@ export default function CompoundInterestCalculator() {
                       <tr>
                         <th className="p-3 text-left font-medium">{t("year")}</th>
                         <th className="p-3 text-right font-medium">{t("startBalance")}</th>
-                        <th className="p-3 text-right font-medium">
-                          {t("contributions")}
-                        </th>
+                        <th className="p-3 text-right font-medium">{t("contributions")}</th>
                         <th className="p-3 text-right font-medium">{t("interest")}</th>
                         <th className="p-3 text-right font-medium">{t("endBalance")}</th>
                       </tr>
@@ -296,18 +223,10 @@ export default function CompoundInterestCalculator() {
                       {result.yearlyData.map((data) => (
                         <tr key={data.year} className="border-t">
                           <td className="p-3">{data.year}</td>
-                          <td className="p-3 text-right">
-                            {formatCurrency(data.startBalance)}
-                          </td>
-                          <td className="p-3 text-right">
-                            {formatCurrency(data.contributions)}
-                          </td>
-                          <td className="p-3 text-right text-green-600">
-                            {formatCurrency(data.interest)}
-                          </td>
-                          <td className="p-3 text-right font-semibold">
-                            {formatCurrency(data.endBalance)}
-                          </td>
+                          <td className="p-3 text-right">{fmt(data.startBalance)}</td>
+                          <td className="p-3 text-right">{fmt(data.contributions)}</td>
+                          <td className="p-3 text-right text-primary">{fmt(data.interest)}</td>
+                          <td className="p-3 text-right font-semibold">{fmt(data.endBalance)}</td>
                         </tr>
                       ))}
                     </tbody>

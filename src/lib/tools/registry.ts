@@ -304,6 +304,7 @@ export const tools: Tool[] = [
   { id: 'number-base-converter', slug: 'number-base', category: 'converters', icon: 'Binary', isAvailable: true, isPremium: false, maxFileSize: 0, acceptedFormats: [], processingType: 'none' },
   { id: 'roman-numeral-converter', slug: 'roman-numeral', category: 'converters', icon: 'TextAa', isAvailable: true, isPremium: false, maxFileSize: 0, acceptedFormats: [], processingType: 'none' },
   { id: 'power-converter', slug: 'power', category: 'converters', icon: 'Lightning', isAvailable: true, isPremium: false, maxFileSize: 0, acceptedFormats: [], processingType: 'none' },
+  { id: 'currency-converter', slug: 'currency', category: 'converters', icon: 'CurrencyDollar', isAvailable: true, isPremium: false, maxFileSize: 0, acceptedFormats: [], processingType: 'none' },
 
   // ---------- Color & Design ----------
   { id: 'gradient-generator', slug: 'gradient-generator', category: 'color-design', icon: 'Gradient', isAvailable: true, isPremium: false, maxFileSize: 0, acceptedFormats: [], processingType: 'none' },

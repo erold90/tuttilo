@@ -1,6 +1,6 @@
 "use client";
 
-import { useState } from "react";
+import { useState, useCallback } from "react";
 import { useTranslations } from "next-intl";
 
 interface GradeEntry {
@@ -20,6 +20,7 @@ export default function GradeCalculator() {
     { id: nextId++, name: "", grade: "", weight: "1" },
     { id: nextId++, name: "", grade: "", weight: "1" },
   ]);
+  const [copied, setCopied] = useState<string | null>(null);
 
   const addEntry = () => {
     setEntries((prev) => [
@@ -77,6 +78,12 @@ export default function GradeCalculator() {
 
   const result = calc();
 
+  const copy = useCallback((val: string, id: string) => {
+    navigator.clipboard.writeText(val);
+    setCopied(id);
+    setTimeout(() => setCopied(null), 1200);
+  }, []);
+
   return (
     <div className="space-y-6">
       {/* Entries */}
@@ -129,21 +136,37 @@ export default function GradeCalculator() {
       {/* Results */}
       {result && (
         <div className="grid gap-4 sm:grid-cols-2 lg:grid-cols-4">
-          <div className="rounded-xl border bg-primary/10 p-5 text-center">
+          <div
+            className="cursor-pointer rounded-xl border bg-primary/10 p-5 text-center transition-colors hover:border-primary/30"
+            onClick={() => copy(result.average.toFixed(2), "avg")}
+          >
             <div className="text-xs text-muted-foreground">{t("weightedAverage")}</div>
             <div className="mt-1 text-3xl font-bold text-primary">{result.average.toFixed(2)}</div>
+            <div className="mt-1 h-4 text-xs text-primary">{copied === "avg" ? "✓" : ""}</div>
           </div>
-          <div className="rounded-xl border bg-muted/50 p-5 text-center">
+          <div
+            className="cursor-pointer rounded-xl border bg-muted/50 p-5 text-center transition-colors hover:border-primary/30"
+            onClick={() => copy(result.letterGrade, "letter")}
+          >
             <div className="text-xs text-muted-foreground">{t("letterGrade")}</div>
             <div className="mt-1 text-3xl font-bold">{result.letterGrade}</div>
+            <div className="mt-1 h-4 text-xs text-primary">{copied === "letter" ? "✓" : ""}</div>
           </div>
-          <div className="rounded-xl border bg-green-500/10 p-5 text-center">
+          <div
+            className="cursor-pointer rounded-xl border bg-muted/50 p-5 text-center transition-colors hover:border-primary/30"
+            onClick={() => copy(result.highest.toFixed(1), "high")}
+          >
             <div className="text-xs text-muted-foreground">{t("highest")}</div>
-            <div className="mt-1 text-3xl font-bold text-green-600">{result.highest.toFixed(1)}</div>
+            <div className="mt-1 text-3xl font-bold">{result.highest.toFixed(1)}</div>
+            <div className="mt-1 h-4 text-xs text-primary">{copied === "high" ? "✓" : ""}</div>
           </div>
-          <div className="rounded-xl border bg-red-500/10 p-5 text-center">
+          <div
+            className="cursor-pointer rounded-xl border bg-muted/50 p-5 text-center transition-colors hover:border-primary/30"
+            onClick={() => copy(result.lowest.toFixed(1), "low")}
+          >
             <div className="text-xs text-muted-foreground">{t("lowest")}</div>
-            <div className="mt-1 text-3xl font-bold text-red-600">{result.lowest.toFixed(1)}</div>
+            <div className="mt-1 text-3xl font-bold">{result.lowest.toFixed(1)}</div>
+            <div className="mt-1 h-4 text-xs text-primary">{copied === "low" ? "✓" : ""}</div>
           </div>
         </div>
       )}

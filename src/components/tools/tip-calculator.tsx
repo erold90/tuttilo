@@ -1,6 +1,6 @@
 "use client";
 
-import { useState } from "react";
+import { useState, useCallback } from "react";
 import { useTranslations } from "next-intl";
 
 export default function TipCalculator() {
@@ -10,6 +10,7 @@ export default function TipCalculator() {
   const [tipPercent, setTipPercent] = useState("15");
   const [splitCount, setSplitCount] = useState("1");
   const [customTip, setCustomTip] = useState("");
+  const [copied, setCopied] = useState<string | null>(null);
 
   const presets = [10, 15, 18, 20, 25];
 
@@ -23,19 +24,13 @@ export default function TipCalculator() {
   const tipPerPerson = tipAmount / split;
 
   const fmt = (n: number) =>
-    new Intl.NumberFormat("en-US", {
-      style: "currency",
-      currency: "USD",
-      minimumFractionDigits: 2,
-      maximumFractionDigits: 2,
-    }).format(n);
+    n.toLocaleString(undefined, { minimumFractionDigits: 2, maximumFractionDigits: 2 });
 
-  const reset = () => {
-    setBillAmount("");
-    setTipPercent("15");
-    setSplitCount("1");
-    setCustomTip("");
-  };
+  const copy = useCallback((val: string, id: string) => {
+    navigator.clipboard.writeText(val);
+    setCopied(id);
+    setTimeout(() => setCopied(null), 1200);
+  }, []);
 
   return (
     <div className="space-y-6">
@@ -100,7 +95,7 @@ export default function TipCalculator() {
       </div>
 
       <button
-        onClick={reset}
+        onClick={() => { setBillAmount(""); setTipPercent("15"); setSplitCount("1"); setCustomTip(""); }}
         className="rounded-xl border bg-muted/50 px-6 py-3 font-medium hover:bg-muted"
       >
         {t("reset")}
@@ -110,25 +105,41 @@ export default function TipCalculator() {
       {bill > 0 && (
         <div className="space-y-4">
           <div className="grid gap-4 sm:grid-cols-2">
-            <div className="rounded-xl border bg-muted/50 p-6">
+            <div
+              className="group cursor-pointer rounded-xl border bg-muted/50 p-6 transition-colors hover:border-primary/30"
+              onClick={() => copy(fmt(tipAmount), "tip")}
+            >
               <div className="text-sm text-muted-foreground">{t("tipAmount")}</div>
               <div className="mt-1 text-3xl font-bold text-primary">{fmt(tipAmount)}</div>
+              <div className="mt-1 h-4 text-xs text-primary">{copied === "tip" ? "✓" : ""}</div>
             </div>
-            <div className="rounded-xl border bg-muted/50 p-6">
+            <div
+              className="group cursor-pointer rounded-xl border bg-muted/50 p-6 transition-colors hover:border-primary/30"
+              onClick={() => copy(fmt(total), "total")}
+            >
               <div className="text-sm text-muted-foreground">{t("totalAmount")}</div>
               <div className="mt-1 text-3xl font-bold">{fmt(total)}</div>
+              <div className="mt-1 h-4 text-xs text-primary">{copied === "total" ? "✓" : ""}</div>
             </div>
           </div>
 
           {split > 1 && (
             <div className="grid gap-4 sm:grid-cols-2">
-              <div className="rounded-xl border bg-background p-4">
+              <div
+                className="group cursor-pointer rounded-xl border bg-background p-4 transition-colors hover:border-primary/30"
+                onClick={() => copy(fmt(tipPerPerson), "tpp")}
+              >
                 <div className="text-sm text-muted-foreground">{t("tipPerPerson")}</div>
                 <div className="mt-1 text-2xl font-semibold">{fmt(tipPerPerson)}</div>
+                <div className="mt-1 h-4 text-xs text-primary">{copied === "tpp" ? "✓" : ""}</div>
               </div>
-              <div className="rounded-xl border bg-background p-4">
+              <div
+                className="group cursor-pointer rounded-xl border bg-background p-4 transition-colors hover:border-primary/30"
+                onClick={() => copy(fmt(perPerson), "pp")}
+              >
                 <div className="text-sm text-muted-foreground">{t("totalPerPerson")}</div>
                 <div className="mt-1 text-2xl font-semibold">{fmt(perPerson)}</div>
+                <div className="mt-1 h-4 text-xs text-primary">{copied === "pp" ? "✓" : ""}</div>
               </div>
             </div>
           )}

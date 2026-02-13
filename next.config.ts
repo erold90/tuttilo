@@ -51,7 +51,7 @@ const nextConfig: NextConfig = {
       // Images: self + data/blob (tool outputs) + YouTube + Ezoic ads
       "img-src 'self' data: blob: https://i.ytimg.com https://img.youtube.com https://yt3.ggpht.com https://*.ezoic.net https://*.ezodn.com https://pagead2.googlesyndication.com",
       // Connections: self + analytics + ads + YouTube API + blob (workers)
-      "connect-src 'self' blob: https://www.google-analytics.com https://www.googletagmanager.com https://*.ezoic.net https://*.ezojs.com https://*.ezodn.com https://cmp.gatekeeperconsent.com https://the.gatekeeperconsent.com https://youtube.googleapis.com https://pagead2.googlesyndication.com",
+      "connect-src 'self' blob: https://cdn.jsdelivr.net https://www.google-analytics.com https://www.googletagmanager.com https://*.ezoic.net https://*.ezojs.com https://*.ezodn.com https://cmp.gatekeeperconsent.com https://the.gatekeeperconsent.com https://youtube.googleapis.com https://pagead2.googlesyndication.com https://api.frankfurter.app",
       // Media: self + blob (video/audio tool outputs)
       "media-src 'self' blob:",
       // Workers: self + blob (PDF.js web workers)

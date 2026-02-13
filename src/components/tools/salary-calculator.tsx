@@ -1,6 +1,6 @@
 "use client";
 
-import { useState } from "react";
+import { useState, useCallback } from "react";
 import { useTranslations } from "next-intl";
 
 type SalaryMode = "annual" | "hourly";
@@ -13,6 +13,7 @@ export default function SalaryCalculator() {
   const [hoursPerWeek, setHoursPerWeek] = useState("40");
   const [weeksPerYear, setWeeksPerYear] = useState("52");
   const [taxRate, setTaxRate] = useState("25");
+  const [copied, setCopied] = useState<string | null>(null);
 
   const salaryNum = parseFloat(salary) || 0;
   const hours = parseFloat(hoursPerWeek) || 40;
@@ -30,19 +31,13 @@ export default function SalaryCalculator() {
   const monthlyNet = annualNet / 12;
 
   const fmt = (n: number) =>
-    new Intl.NumberFormat("en-US", {
-      style: "currency",
-      currency: "USD",
-      minimumFractionDigits: 2,
-      maximumFractionDigits: 2,
-    }).format(n);
+    n.toLocaleString(undefined, { minimumFractionDigits: 2, maximumFractionDigits: 2 });
 
-  const reset = () => {
-    setSalary("");
-    setHoursPerWeek("40");
-    setWeeksPerYear("52");
-    setTaxRate("25");
-  };
+  const copy = useCallback((val: string, id: string) => {
+    navigator.clipboard.writeText(val);
+    setCopied(id);
+    setTimeout(() => setCopied(null), 1200);
+  }, []);
 
   return (
     <div className="space-y-6">
@@ -117,7 +112,7 @@ export default function SalaryCalculator() {
       </div>
 
       <button
-        onClick={reset}
+        onClick={() => { setSalary(""); setHoursPerWeek("40"); setWeeksPerYear("52"); setTaxRate("25"); }}
         className="rounded-xl border bg-muted/50 px-6 py-3 font-medium hover:bg-muted"
       >
         {t("reset")}
@@ -127,43 +122,75 @@ export default function SalaryCalculator() {
         <div className="space-y-4">
           <h3 className="text-lg font-semibold">{t("grossBreakdown")}</h3>
           <div className="grid gap-4 sm:grid-cols-2 lg:grid-cols-4">
-            <div className="rounded-xl border bg-muted/50 p-4">
+            <div
+              className="cursor-pointer rounded-xl border bg-muted/50 p-4 transition-colors hover:border-primary/30"
+              onClick={() => copy(fmt(annualGross), "annual")}
+            >
               <div className="text-sm text-muted-foreground">{t("annual")}</div>
               <div className="mt-1 text-2xl font-bold text-primary">{fmt(annualGross)}</div>
+              <div className="mt-1 h-4 text-xs text-primary">{copied === "annual" ? "✓" : ""}</div>
             </div>
-            <div className="rounded-xl border bg-background p-4">
+            <div
+              className="cursor-pointer rounded-xl border bg-background p-4 transition-colors hover:border-primary/30"
+              onClick={() => copy(fmt(monthlyGross), "monthly")}
+            >
               <div className="text-sm text-muted-foreground">{t("monthly")}</div>
               <div className="mt-1 text-xl font-semibold">{fmt(monthlyGross)}</div>
+              <div className="mt-1 h-4 text-xs text-primary">{copied === "monthly" ? "✓" : ""}</div>
             </div>
-            <div className="rounded-xl border bg-background p-4">
+            <div
+              className="cursor-pointer rounded-xl border bg-background p-4 transition-colors hover:border-primary/30"
+              onClick={() => copy(fmt(weeklyGross), "weekly")}
+            >
               <div className="text-sm text-muted-foreground">{t("weekly")}</div>
               <div className="mt-1 text-xl font-semibold">{fmt(weeklyGross)}</div>
+              <div className="mt-1 h-4 text-xs text-primary">{copied === "weekly" ? "✓" : ""}</div>
             </div>
-            <div className="rounded-xl border bg-background p-4">
+            <div
+              className="cursor-pointer rounded-xl border bg-background p-4 transition-colors hover:border-primary/30"
+              onClick={() => copy(fmt(dailyGross), "daily")}
+            >
               <div className="text-sm text-muted-foreground">{t("daily")}</div>
               <div className="mt-1 text-xl font-semibold">{fmt(dailyGross)}</div>
+              <div className="mt-1 h-4 text-xs text-primary">{copied === "daily" ? "✓" : ""}</div>
             </div>
           </div>
 
           <h3 className="text-lg font-semibold">{t("afterTax")}</h3>
           <div className="grid gap-4 sm:grid-cols-3">
-            <div className="rounded-xl border bg-muted/50 p-4">
+            <div
+              className="cursor-pointer rounded-xl border bg-muted/50 p-4 transition-colors hover:border-primary/30"
+              onClick={() => copy(fmt(hourlyRate), "hourly")}
+            >
               <div className="text-sm text-muted-foreground">{t("hourlyEquivalent")}</div>
               <div className="mt-1 text-2xl font-bold">{fmt(hourlyRate)}</div>
+              <div className="mt-1 h-4 text-xs text-primary">{copied === "hourly" ? "✓" : ""}</div>
             </div>
-            <div className="rounded-xl border bg-background p-4">
+            <div
+              className="cursor-pointer rounded-xl border bg-background p-4 transition-colors hover:border-primary/30"
+              onClick={() => copy(fmt(annualNet), "anet")}
+            >
               <div className="text-sm text-muted-foreground">{t("annualNet")}</div>
-              <div className="mt-1 text-2xl font-semibold text-green-600">{fmt(annualNet)}</div>
+              <div className="mt-1 text-2xl font-semibold">{fmt(annualNet)}</div>
+              <div className="mt-1 h-4 text-xs text-primary">{copied === "anet" ? "✓" : ""}</div>
             </div>
-            <div className="rounded-xl border bg-background p-4">
+            <div
+              className="cursor-pointer rounded-xl border bg-background p-4 transition-colors hover:border-primary/30"
+              onClick={() => copy(fmt(monthlyNet), "mnet")}
+            >
               <div className="text-sm text-muted-foreground">{t("monthlyNet")}</div>
-              <div className="mt-1 text-2xl font-semibold text-green-600">{fmt(monthlyNet)}</div>
+              <div className="mt-1 text-2xl font-semibold">{fmt(monthlyNet)}</div>
+              <div className="mt-1 h-4 text-xs text-primary">{copied === "mnet" ? "✓" : ""}</div>
             </div>
           </div>
 
-          <div className="rounded-xl border bg-background p-4">
+          <div
+            className="cursor-pointer rounded-xl border bg-background p-4 transition-colors hover:border-primary/30"
+            onClick={() => copy(fmt(taxAmount), "taxamt")}
+          >
             <div className="text-sm text-muted-foreground">{t("totalTax")}</div>
-            <div className="mt-1 text-xl font-semibold text-red-500">{fmt(taxAmount)}</div>
+            <div className="mt-1 text-xl font-semibold">{fmt(taxAmount)}</div>
+            <div className="mt-1 h-4 text-xs text-primary">{copied === "taxamt" ? "✓" : ""}</div>
           </div>
         </div>
       )}

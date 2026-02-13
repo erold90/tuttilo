@@ -18,6 +18,7 @@ import { SpotlightGrid, type SpotlightCardData } from "@/components/home-spotlig
 import { HomeHeroAnimated } from "@/components/home-hero-animated";
 import { HomeTrustAnimated } from "@/components/home-trust-animated";
 import { HomeFeaturesAnimated } from "@/components/home-features-animated";
+import { SpotlightContainer } from "@/components/ui/spotlight-container";
 
 const BASE_URL = "https://tuttilo.com";
 
@@ -37,17 +38,17 @@ export async function generateMetadata({
   return {
     description: desc,
     alternates: {
-      canonical: `${BASE_URL}/${locale}`,
+      canonical: locale === "en" ? BASE_URL : `${BASE_URL}/${locale}`,
       languages: {
         ...Object.fromEntries(
-          locales.map((l) => [l, `${BASE_URL}/${l}`])
+          locales.map((l) => [l, l === "en" ? BASE_URL : `${BASE_URL}/${l}`])
         ),
-        "x-default": `${BASE_URL}/en`,
+        "x-default": BASE_URL,
       },
     },
     openGraph: {
       description: desc,
-      url: `${BASE_URL}/${locale}`,
+      url: locale === "en" ? BASE_URL : `${BASE_URL}/${locale}`,
       type: "website",
       siteName: "Tuttilo",
       locale,
@@ -189,49 +190,53 @@ export default function HomePage() {
           <p className="text-muted-foreground text-center mb-10 text-sm max-w-lg mx-auto">
             {t("exploreAll")}
           </p>
-          <div className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-4 gap-3">
+          <SpotlightContainer className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-4 gap-3">
             {categories.map((cat) => {
               const catTools = getToolsByCategory(cat.id).filter(
                 (tool) => tool.isAvailable
               );
               const classes = getCategoryClasses(cat.id);
+              const color = getCategoryColor(cat.id);
 
               return (
                 <Link
                   key={cat.id}
                   href={`/${cat.slug}` as Parameters<typeof Link>[0]["href"]}
+                  data-spotlight-card
                   className={cn(
-                    "group relative flex flex-col items-center gap-2 rounded-xl border p-5 transition-all duration-200",
+                    "group relative flex flex-col items-center gap-2 rounded-xl border p-5 transition-all duration-300",
                     "hover:scale-[1.02] hover:shadow-lg",
                     classes.border,
                     classes.cardHover,
                     "bg-background/50 hover:bg-background/80"
                   )}
+                  style={{ "--spotlight-color": `${color}14` } as React.CSSProperties}
                 >
                   <span
                     className={cn(
-                      "flex h-10 w-10 items-center justify-center rounded-lg",
+                      "flex h-10 w-10 items-center justify-center rounded-lg icon-glow relative z-10",
                       classes.bg
                     )}
+                    style={{ "--glow-color": `${color}4D` } as React.CSSProperties}
                   >
                     <ToolIcon name={cat.icon} className={cn("h-5 w-5", classes.text)} />
                   </span>
-                  <h3 className={cn("text-sm font-semibold text-center", classes.text)}>
+                  <h3 className={cn("text-sm font-semibold text-center relative z-10", classes.text)}>
                     {tNav(cat.id)}
                   </h3>
-                  <p className="text-xs text-muted-foreground text-center line-clamp-2 leading-relaxed">
+                  <p className="text-xs text-muted-foreground text-center line-clamp-2 leading-relaxed relative z-10">
                     {t(`categoryDesc.${cat.id}`)}
                   </p>
                   {catTools.length > 0 && (
-                    <span className="text-[10px] text-muted-foreground/60 font-medium">
+                    <span className="text-[10px] text-muted-foreground/60 font-medium relative z-10">
                       {catTools.length} {catTools.length === 1 ? "tool" : "tools"}
                     </span>
                   )}
-                  <ArrowRight className="absolute top-3 right-3 h-3.5 w-3.5 opacity-0 group-hover:opacity-60 transition-opacity text-muted-foreground" />
+                  <ArrowRight className="absolute top-3 right-3 h-3.5 w-3.5 opacity-0 group-hover:opacity-60 transition-opacity text-muted-foreground z-10" />
                 </Link>
               );
             })}
-          </div>
+          </SpotlightContainer>
         </div>
       </section>
 

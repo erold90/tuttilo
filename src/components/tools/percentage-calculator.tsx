@@ -1,166 +1,105 @@
-"use client"
+"use client";
 
-import { useState } from "react"
-import { useTranslations } from "next-intl"
-import { Button } from "@/components/ui/button"
-import { Input } from "@/components/ui/input"
-import { Label } from "@/components/ui/label"
-import { Copy } from "@phosphor-icons/react"
+import { useState, useCallback } from "react";
+import { useTranslations } from "next-intl";
 
-type CalculationMode = "percentOf" | "whatPercent" | "percentChange"
+type CalculationMode = "percentOf" | "whatPercent" | "percentChange";
 
 export default function PercentageCalculator() {
-  const t = useTranslations("tools.percentage-calculator.ui")
-  const [mode, setMode] = useState<CalculationMode>("percentOf")
-  const [value1, setValue1] = useState("")
-  const [value2, setValue2] = useState("")
-  const [result, setResult] = useState<number | null>(null)
-  const [error, setError] = useState("")
-  const [copied, setCopied] = useState(false)
+  const t = useTranslations("tools.percentage-calculator.ui");
+  const [mode, setMode] = useState<CalculationMode>("percentOf");
+  const [value1, setValue1] = useState("");
+  const [value2, setValue2] = useState("");
+  const [copied, setCopied] = useState<string | null>(null);
 
-  const calculate = () => {
-    try {
-      setError("")
-      const num1 = parseFloat(value1)
-      const num2 = parseFloat(value2)
+  const num1 = parseFloat(value1);
+  const num2 = parseFloat(value2);
+  const hasInputs = !isNaN(num1) && !isNaN(num2);
 
-      if (isNaN(num1) || isNaN(num2)) {
-        setError(t("invalidInput"))
-        setResult(null)
-        return
-      }
+  let result: number | null = null;
+  let error = "";
 
-      let calculatedResult: number
-
-      switch (mode) {
-        case "percentOf":
-          // What is X% of Y?
-          calculatedResult = (num1 / 100) * num2
-          break
-        case "whatPercent":
-          // X is what % of Y?
-          if (num2 === 0) {
-            setError(t("divisionByZero"))
-            setResult(null)
-            return
-          }
-          calculatedResult = (num1 / num2) * 100
-          break
-        case "percentChange":
-          // % change from X to Y
-          if (num1 === 0) {
-            setError(t("divisionByZero"))
-            setResult(null)
-            return
-          }
-          calculatedResult = ((num2 - num1) / num1) * 100
-          break
-        default:
-          return
-      }
-
-      setResult(calculatedResult)
-    } catch (err) {
-      setError(t("calculationError"))
-      setResult(null)
+  if (hasInputs) {
+    switch (mode) {
+      case "percentOf":
+        result = (num1 / 100) * num2;
+        break;
+      case "whatPercent":
+        if (num2 === 0) error = t("divisionByZero");
+        else result = (num1 / num2) * 100;
+        break;
+      case "percentChange":
+        if (num1 === 0) error = t("divisionByZero");
+        else result = ((num2 - num1) / num1) * 100;
+        break;
     }
   }
 
-  const handleInputChange = (setter: (value: string) => void) => (e: React.ChangeEvent<HTMLInputElement>) => {
-    setter(e.target.value)
-    setResult(null)
-    setError("")
-  }
-
-  const handleCopy = async () => {
-    if (result !== null) {
-      await navigator.clipboard.writeText(result.toFixed(2))
-      setCopied(true)
-      setTimeout(() => setCopied(false), 2000)
-    }
-  }
-
-  const reset = () => {
-    setValue1("")
-    setValue2("")
-    setResult(null)
-    setError("")
-    setCopied(false)
-  }
+  const copy = useCallback((val: string, id: string) => {
+    navigator.clipboard.writeText(val);
+    setCopied(id);
+    setTimeout(() => setCopied(null), 1200);
+  }, []);
 
   return (
     <div className="w-full max-w-2xl mx-auto space-y-6">
       {/* Mode Tabs */}
       <div className="flex flex-wrap gap-2">
-        <Button
-          variant={mode === "percentOf" ? "default" : "outline"}
-          onClick={() => setMode("percentOf")}
-          className="flex-1 min-w-fit"
-        >
-          {t("modePercentOf")}
-        </Button>
-        <Button
-          variant={mode === "whatPercent" ? "default" : "outline"}
-          onClick={() => setMode("whatPercent")}
-          className="flex-1 min-w-fit"
-        >
-          {t("modeWhatPercent")}
-        </Button>
-        <Button
-          variant={mode === "percentChange" ? "default" : "outline"}
-          onClick={() => setMode("percentChange")}
-          className="flex-1 min-w-fit"
-        >
-          {t("modePercentChange")}
-        </Button>
+        {(["percentOf", "whatPercent", "percentChange"] as CalculationMode[]).map((m) => (
+          <button
+            key={m}
+            onClick={() => { setMode(m); setValue1(""); setValue2(""); }}
+            className={`flex-1 min-w-fit rounded-xl px-4 py-3 text-sm font-medium transition-colors ${
+              mode === m ? "bg-primary text-primary-foreground" : "border bg-muted/50 hover:bg-muted"
+            }`}
+          >
+            {t(`mode${m.charAt(0).toUpperCase() + m.slice(1)}` as "modePercentOf" | "modeWhatPercent" | "modePercentChange")}
+          </button>
+        ))}
       </div>
 
       {/* Input Section */}
       <div className="rounded-xl border bg-muted/50 p-6 space-y-4">
         <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
           <div className="space-y-2">
-            <Label htmlFor="value1">
+            <label className="text-sm font-medium">
               {mode === "percentOf" && t("percentage")}
               {mode === "whatPercent" && t("value")}
               {mode === "percentChange" && t("initialValue")}
-            </Label>
-            <Input
-              id="value1"
+            </label>
+            <input
               type="number"
               step="any"
               value={value1}
-              onChange={handleInputChange(setValue1)}
+              onChange={(e) => setValue1(e.target.value)}
               placeholder="0"
-              className="text-lg"
+              className="w-full rounded-xl border bg-background px-4 py-3 text-lg"
             />
           </div>
 
           <div className="space-y-2">
-            <Label htmlFor="value2">
+            <label className="text-sm font-medium">
               {mode === "percentOf" && t("ofValue")}
               {mode === "whatPercent" && t("ofValue")}
               {mode === "percentChange" && t("finalValue")}
-            </Label>
-            <Input
-              id="value2"
+            </label>
+            <input
               type="number"
               step="any"
               value={value2}
-              onChange={handleInputChange(setValue2)}
+              onChange={(e) => setValue2(e.target.value)}
               placeholder="0"
-              className="text-lg"
+              className="w-full rounded-xl border bg-background px-4 py-3 text-lg"
             />
           </div>
         </div>
 
-        <div className="flex gap-2">
-          <Button onClick={calculate} className="flex-1">
-            {t("calculate")}
-          </Button>
-          <Button onClick={reset} variant="outline">
-            {t("reset")}
-          </Button>
-        </div>
+        <button
+          onClick={() => { setValue1(""); setValue2(""); }}
+          className="rounded-xl border bg-background px-6 py-3 font-medium hover:bg-muted"
+        >
+          {t("reset")}
+        </button>
       </div>
 
       {/* Error Message */}
@@ -172,29 +111,18 @@ export default function PercentageCalculator() {
 
       {/* Result */}
       {result !== null && !error && (
-        <div className="rounded-xl border bg-muted/50 p-6 space-y-4">
-          <div className="space-y-2">
-            <Label className="text-muted-foreground">{t("result")}</Label>
-            <div className="flex items-center gap-2">
-              <p className="text-3xl font-bold">
-                {result.toLocaleString(undefined, { maximumFractionDigits: 2, minimumFractionDigits: 2 })}
-                {mode !== "percentOf" && "%"}
-              </p>
-              <Button
-                size="icon"
-                variant="outline"
-                onClick={handleCopy}
-                className="shrink-0"
-              >
-                <Copy weight="duotone" className="w-4 h-4" />
-              </Button>
-            </div>
-            {copied && (
-              <p className="text-sm text-muted-foreground">{t("copied")}</p>
-            )}
-          </div>
+        <div
+          className="cursor-pointer rounded-xl border bg-muted/50 p-6 transition-colors hover:border-primary/30"
+          onClick={() => copy(result!.toLocaleString(undefined, { maximumFractionDigits: 2, minimumFractionDigits: 2 }) + (mode !== "percentOf" ? "%" : ""), "result")}
+        >
+          <div className="text-sm text-muted-foreground">{t("result")}</div>
+          <p className="mt-1 text-3xl font-bold">
+            {result.toLocaleString(undefined, { maximumFractionDigits: 2, minimumFractionDigits: 2 })}
+            {mode !== "percentOf" && "%"}
+          </p>
+          <div className="mt-1 h-4 text-xs text-primary">{copied === "result" ? "✓" : ""}</div>
         </div>
       )}
     </div>
-  )
+  );
 }

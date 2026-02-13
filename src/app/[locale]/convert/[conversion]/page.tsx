@@ -81,11 +81,13 @@ export default async function ConversionPage({
   if (!conv) notFound();
 
   const t = await getTranslations({ locale, namespace: "conversions" });
+  // Content & FAQ only exist in EN to save bundle size
+  const tEn = await getTranslations({ locale: "en", namespace: "conversions" });
   const tCommon = await getTranslations({ locale, namespace: "common" });
 
   const title = t(`${slug}.title`);
   const description = t(`${slug}.description`);
-  const content = t(`${slug}.content`);
+  const content = tEn(`${slug}.content`);
   const source = t(`${slug}.source`);
   const target = t(`${slug}.target`);
   const cta = t(`${slug}.cta`);
@@ -101,9 +103,9 @@ export default async function ConversionPage({
   ];
 
   const faq = [
-    { q: t(`${slug}.faq.q1`), a: t(`${slug}.faq.a1`) },
-    { q: t(`${slug}.faq.q2`), a: t(`${slug}.faq.a2`) },
-    { q: t(`${slug}.faq.q3`), a: t(`${slug}.faq.a3`) },
+    { q: tEn(`${slug}.faq.q1`), a: tEn(`${slug}.faq.a1`) },
+    { q: tEn(`${slug}.faq.q2`), a: tEn(`${slug}.faq.a2`) },
+    { q: tEn(`${slug}.faq.q3`), a: tEn(`${slug}.faq.a3`) },
   ];
 
   const toolUrl = `/${conv.category}/${conv.toolSlug}`;

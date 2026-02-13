@@ -7,11 +7,13 @@ import {
   categories,
   getToolsByCategory,
   getCategoryClasses,
+  getCategoryColor,
   type ToolCategoryId,
 } from "@/lib/tools/registry";
 import { ToolIcon } from "@/components/tool-icon";
 import { cn } from "@/lib/utils";
 import { CheckCircle, Question } from "@phosphor-icons/react/dist/ssr";
+import { SpotlightContainer } from "@/components/ui/spotlight-container";
 
 const BASE_URL = "https://tuttilo.com";
 
@@ -169,24 +171,28 @@ export default async function CategoryPage({
 
       {/* Tool grid */}
       {availableTools.length > 0 && (
-        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4 mb-12">
+        <SpotlightContainer className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4 mb-12">
           {availableTools.map((tool) => (
             <Link
               key={tool.id}
               href={`/${category}/${tool.slug}`}
+              data-spotlight-card
               className={cn(
-                "flex flex-col gap-3 rounded-xl border p-5 transition-all hover:shadow-md",
+                "group relative flex flex-col gap-3 rounded-xl border p-5 transition-all duration-300",
+                "hover:shadow-lg hover:-translate-y-0.5",
                 classes.border,
                 classes.hoverBorder
               )}
+              style={{ "--spotlight-color": `${getCategoryColor(catKey)}14` } as React.CSSProperties}
             >
-              <div className="flex items-center gap-3">
+              <div className="flex items-center gap-3 relative z-10">
                 <span
                   className={cn(
-                    "flex h-9 w-9 items-center justify-center rounded-lg",
+                    "flex h-9 w-9 items-center justify-center rounded-lg icon-glow",
                     classes.bg,
                     classes.text
                   )}
+                  style={{ "--glow-color": `${getCategoryColor(catKey)}4D` } as React.CSSProperties}
                 >
                   <ToolIcon name={tool.icon} className="h-4 w-4" />
                 </span>
@@ -194,15 +200,15 @@ export default async function CategoryPage({
                   {tTools(`${tool.id}.name`)}
                 </h2>
               </div>
-              <p className="text-sm text-muted-foreground">
+              <p className="text-sm text-muted-foreground relative z-10">
                 {tTools(`${tool.id}.description`)}
               </p>
-              <span className={cn("text-xs font-medium mt-auto", classes.text)}>
+              <span className={cn("text-xs font-medium mt-auto relative z-10", classes.text)}>
                 {tCommon("tryNow")} {"\u2192"}
               </span>
             </Link>
           ))}
-        </div>
+        </SpotlightContainer>
       )}
 
       {/* Coming soon */}

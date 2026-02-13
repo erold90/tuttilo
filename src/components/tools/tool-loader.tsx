@@ -65,6 +65,7 @@ const lightTools: Record<string, React.ComponentType> = {
   "number-base-converter": dynamic(() => import("./number-base-converter").then(m => m.default), { ssr }),
   "roman-numeral-converter": dynamic(() => import("./roman-numeral-converter").then(m => m.default), { ssr }),
   "power-converter": dynamic(() => import("./power-converter").then(m => m.default), { ssr }),
+  "currency-converter": dynamic(() => import("./currency-converter").then(m => m.default), { ssr }),
   // Color & Design (light — no heavy deps)
   "gradient-generator": dynamic(() => import("./gradient-generator").then(m => m.default), { ssr }),
   "palette-generator": dynamic(() => import("./palette-generator").then(m => m.default), { ssr }),

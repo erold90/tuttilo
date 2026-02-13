@@ -1,105 +1,58 @@
-"use client"
+"use client";
 
-import { useState } from "react"
-import { useTranslations } from "next-intl"
-import { Button } from "@/components/ui/button"
-import { Input } from "@/components/ui/input"
-import { Label } from "@/components/ui/label"
+import { useState, useCallback } from "react";
+import { useTranslations } from "next-intl";
 
-type TermUnit = "months" | "years"
-
-interface LoanResult {
-  monthlyPayment: number
-  totalPayment: number
-  totalInterest: number
-  principal: number
-}
+type TermUnit = "months" | "years";
 
 export default function LoanCalculator() {
-  const t = useTranslations("tools.loan-calculator.ui")
-  const [loanAmount, setLoanAmount] = useState("")
-  const [interestRate, setInterestRate] = useState("")
-  const [loanTerm, setLoanTerm] = useState("")
-  const [termUnit, setTermUnit] = useState<TermUnit>("years")
-  const [result, setResult] = useState<LoanResult | null>(null)
-  const [error, setError] = useState("")
+  const t = useTranslations("tools.loan-calculator.ui");
+  const [loanAmount, setLoanAmount] = useState("");
+  const [interestRate, setInterestRate] = useState("");
+  const [loanTerm, setLoanTerm] = useState("");
+  const [termUnit, setTermUnit] = useState<TermUnit>("years");
+  const [copied, setCopied] = useState<string | null>(null);
 
-  const calculate = () => {
-    try {
-      setError("")
-      const principal = parseFloat(loanAmount)
-      const annualRate = parseFloat(interestRate)
-      let termMonths = parseFloat(loanTerm)
+  const calc = () => {
+    const principal = parseFloat(loanAmount);
+    const annualRate = parseFloat(interestRate);
+    let termMonths = parseFloat(loanTerm);
 
-      if (isNaN(principal) || isNaN(annualRate) || isNaN(termMonths)) {
-        setError(t("invalidInput"))
-        setResult(null)
-        return
-      }
+    if (isNaN(principal) || isNaN(annualRate) || isNaN(termMonths)) return null;
+    if (principal <= 0 || annualRate < 0 || termMonths <= 0) return null;
 
-      if (principal <= 0 || annualRate < 0 || termMonths <= 0) {
-        setError(t("invalidInput"))
-        setResult(null)
-        return
-      }
+    if (termUnit === "years") termMonths = termMonths * 12;
 
-      // Convert years to months if needed
-      if (termUnit === "years") {
-        termMonths = termMonths * 12
-      }
+    const monthlyRate = annualRate / 100 / 12;
 
-      // Monthly interest rate
-      const monthlyRate = annualRate / 100 / 12
+    let monthlyPayment: number;
+    let totalPayment: number;
+    let totalInterest: number;
 
-      let monthlyPayment: number
-      let totalPayment: number
-      let totalInterest: number
-
-      if (annualRate === 0) {
-        // No interest case
-        monthlyPayment = principal / termMonths
-        totalPayment = principal
-        totalInterest = 0
-      } else {
-        // Standard loan formula: M = P * [r(1+r)^n] / [(1+r)^n - 1]
-        const x = Math.pow(1 + monthlyRate, termMonths)
-        monthlyPayment = (principal * monthlyRate * x) / (x - 1)
-        totalPayment = monthlyPayment * termMonths
-        totalInterest = totalPayment - principal
-      }
-
-      setResult({
-        monthlyPayment,
-        totalPayment,
-        totalInterest,
-        principal,
-      })
-    } catch (err) {
-      setError(t("calculationError"))
-      setResult(null)
+    if (annualRate === 0) {
+      monthlyPayment = principal / termMonths;
+      totalPayment = principal;
+      totalInterest = 0;
+    } else {
+      const x = Math.pow(1 + monthlyRate, termMonths);
+      monthlyPayment = (principal * monthlyRate * x) / (x - 1);
+      totalPayment = monthlyPayment * termMonths;
+      totalInterest = totalPayment - principal;
     }
-  }
 
-  const handleInputChange = (setter: (value: string) => void) => (e: React.ChangeEvent<HTMLInputElement>) => {
-    setter(e.target.value)
-    setResult(null)
-    setError("")
-  }
+    return { monthlyPayment, totalPayment, totalInterest, principal };
+  };
 
-  const reset = () => {
-    setLoanAmount("")
-    setInterestRate("")
-    setLoanTerm("")
-    setResult(null)
-    setError("")
-  }
+  const result = calc();
 
-  const formatCurrency = (value: number) => {
-    return value.toLocaleString(undefined, {
-      minimumFractionDigits: 2,
-      maximumFractionDigits: 2,
-    })
-  }
+  const fmt = (n: number) =>
+    n.toLocaleString(undefined, { minimumFractionDigits: 2, maximumFractionDigits: 2 });
+
+  const copy = useCallback((val: string, id: string) => {
+    navigator.clipboard.writeText(val);
+    setCopied(id);
+    setTimeout(() => setCopied(null), 1200);
+  }, []);
 
   return (
     <div className="w-full max-w-2xl mx-auto space-y-6">
@@ -107,127 +60,128 @@ export default function LoanCalculator() {
       <div className="rounded-xl border bg-muted/50 p-6 space-y-4">
         <div className="space-y-4">
           <div className="space-y-2">
-            <Label htmlFor="loanAmount">{t("loanAmount")}</Label>
-            <Input
-              id="loanAmount"
+            <label className="text-sm font-medium">{t("loanAmount")}</label>
+            <input
               type="number"
               step="any"
               value={loanAmount}
-              onChange={handleInputChange(setLoanAmount)}
+              onChange={(e) => setLoanAmount(e.target.value)}
               placeholder="10000"
-              className="text-lg"
+              className="w-full rounded-xl border bg-background px-4 py-3 text-lg"
             />
           </div>
 
           <div className="space-y-2">
-            <Label htmlFor="interestRate">{t("interestRate")}</Label>
-            <Input
-              id="interestRate"
-              type="number"
-              step="any"
-              value={interestRate}
-              onChange={handleInputChange(setInterestRate)}
-              placeholder="5.0"
-              className="text-lg"
-            />
+            <label className="text-sm font-medium">{t("interestRate")}</label>
+            <div className="relative">
+              <input
+                type="number"
+                step="any"
+                value={interestRate}
+                onChange={(e) => setInterestRate(e.target.value)}
+                placeholder="5.0"
+                className="w-full rounded-xl border bg-background px-4 py-3 pr-10 text-lg"
+              />
+              <span className="absolute right-4 top-1/2 -translate-y-1/2 text-muted-foreground">%</span>
+            </div>
           </div>
 
           <div className="space-y-2">
-            <Label htmlFor="loanTerm">{t("loanTerm")}</Label>
+            <label className="text-sm font-medium">{t("loanTerm")}</label>
             <div className="flex gap-2">
-              <Input
-                id="loanTerm"
+              <input
                 type="number"
                 step="any"
                 value={loanTerm}
-                onChange={handleInputChange(setLoanTerm)}
+                onChange={(e) => setLoanTerm(e.target.value)}
                 placeholder="5"
-                className="text-lg flex-1"
+                className="flex-1 rounded-xl border bg-background px-4 py-3 text-lg"
               />
-              <div className="flex rounded-lg border">
-                <Button
-                  variant={termUnit === "months" ? "default" : "ghost"}
+              <div className="flex rounded-xl border overflow-hidden">
+                <button
                   onClick={() => setTermUnit("months")}
-                  className="rounded-r-none"
+                  className={`px-4 py-3 text-sm font-medium transition-colors ${
+                    termUnit === "months" ? "bg-primary text-primary-foreground" : "bg-muted/50 hover:bg-muted"
+                  }`}
                 >
                   {t("months")}
-                </Button>
-                <Button
-                  variant={termUnit === "years" ? "default" : "ghost"}
+                </button>
+                <button
                   onClick={() => setTermUnit("years")}
-                  className="rounded-l-none"
+                  className={`px-4 py-3 text-sm font-medium transition-colors ${
+                    termUnit === "years" ? "bg-primary text-primary-foreground" : "bg-muted/50 hover:bg-muted"
+                  }`}
                 >
                   {t("years")}
-                </Button>
+                </button>
               </div>
             </div>
           </div>
         </div>
 
-        <div className="flex gap-2 pt-2">
-          <Button onClick={calculate} className="flex-1">
-            {t("calculate")}
-          </Button>
-          <Button onClick={reset} variant="outline">
-            {t("reset")}
-          </Button>
-        </div>
+        <button
+          onClick={() => { setLoanAmount(""); setInterestRate(""); setLoanTerm(""); }}
+          className="rounded-xl border bg-background px-6 py-3 font-medium hover:bg-muted"
+        >
+          {t("reset")}
+        </button>
       </div>
 
-      {/* Error Message */}
-      {error && (
-        <div className="rounded-xl border border-destructive bg-destructive/10 p-4">
-          <p className="text-sm text-destructive">{error}</p>
-        </div>
-      )}
-
       {/* Result */}
-      {result && !error && (
+      {result && (
         <div className="rounded-xl border bg-muted/50 p-6 space-y-6">
           {/* Monthly Payment - Highlighted */}
-          <div className="rounded-lg border bg-background p-6 space-y-2">
-            <Label className="text-muted-foreground">{t("monthlyPayment")}</Label>
-            <p className="text-4xl font-bold">
-              ${formatCurrency(result.monthlyPayment)}
-            </p>
+          <div
+            className="cursor-pointer rounded-lg border bg-background p-6 transition-colors hover:border-primary/30"
+            onClick={() => copy(fmt(result.monthlyPayment), "mp")}
+          >
+            <div className="text-sm text-muted-foreground">{t("monthlyPayment")}</div>
+            <p className="mt-1 text-4xl font-bold">{fmt(result.monthlyPayment)}</p>
+            <div className="mt-1 h-4 text-xs text-primary">{copied === "mp" ? "✓" : ""}</div>
           </div>
 
           {/* Summary Grid */}
           <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
-            <div className="rounded-lg border bg-background p-4 space-y-1">
-              <Label className="text-xs text-muted-foreground">{t("totalPrincipal")}</Label>
-              <p className="text-xl font-semibold">
-                ${formatCurrency(result.principal)}
-              </p>
+            <div
+              className="cursor-pointer rounded-lg border bg-background p-4 transition-colors hover:border-primary/30"
+              onClick={() => copy(fmt(result.principal), "princ")}
+            >
+              <div className="text-xs text-muted-foreground">{t("totalPrincipal")}</div>
+              <p className="mt-1 text-xl font-semibold">{fmt(result.principal)}</p>
+              <div className="mt-1 h-4 text-xs text-primary">{copied === "princ" ? "✓" : ""}</div>
             </div>
 
-            <div className="rounded-lg border bg-background p-4 space-y-1">
-              <Label className="text-xs text-muted-foreground">{t("totalInterest")}</Label>
-              <p className="text-xl font-semibold text-orange-500">
-                ${formatCurrency(result.totalInterest)}
-              </p>
+            <div
+              className="cursor-pointer rounded-lg border bg-background p-4 transition-colors hover:border-primary/30"
+              onClick={() => copy(fmt(result.totalInterest), "int")}
+            >
+              <div className="text-xs text-muted-foreground">{t("totalInterest")}</div>
+              <p className="mt-1 text-xl font-semibold">{fmt(result.totalInterest)}</p>
+              <div className="mt-1 h-4 text-xs text-primary">{copied === "int" ? "✓" : ""}</div>
             </div>
 
-            <div className="rounded-lg border bg-background p-4 space-y-1">
-              <Label className="text-xs text-muted-foreground">{t("totalPayment")}</Label>
-              <p className="text-xl font-semibold">
-                ${formatCurrency(result.totalPayment)}
-              </p>
+            <div
+              className="cursor-pointer rounded-lg border bg-background p-4 transition-colors hover:border-primary/30"
+              onClick={() => copy(fmt(result.totalPayment), "total")}
+            >
+              <div className="text-xs text-muted-foreground">{t("totalPayment")}</div>
+              <p className="mt-1 text-xl font-semibold">{fmt(result.totalPayment)}</p>
+              <div className="mt-1 h-4 text-xs text-primary">{copied === "total" ? "✓" : ""}</div>
             </div>
           </div>
 
           {/* Interest Breakdown Visual */}
           <div className="space-y-3">
-            <Label className="text-muted-foreground">{t("paymentBreakdown")}</Label>
+            <div className="text-sm text-muted-foreground">{t("paymentBreakdown")}</div>
             <div className="h-8 rounded-full overflow-hidden flex">
               <div
-                className="bg-blue-500 flex items-center justify-center text-xs font-medium text-white"
+                className="bg-primary flex items-center justify-center text-xs font-medium text-primary-foreground"
                 style={{ width: `${(result.principal / result.totalPayment) * 100}%` }}
               >
                 {((result.principal / result.totalPayment) * 100).toFixed(0)}%
               </div>
               <div
-                className="bg-orange-500 flex items-center justify-center text-xs font-medium text-white"
+                className="bg-muted-foreground/40 flex items-center justify-center text-xs font-medium"
                 style={{ width: `${(result.totalInterest / result.totalPayment) * 100}%` }}
               >
                 {((result.totalInterest / result.totalPayment) * 100).toFixed(0)}%
@@ -235,11 +189,11 @@ export default function LoanCalculator() {
             </div>
             <div className="flex justify-between text-xs text-muted-foreground">
               <div className="flex items-center gap-2">
-                <div className="w-3 h-3 rounded-full bg-blue-500" />
+                <div className="w-3 h-3 rounded-full bg-primary" />
                 <span>{t("principal")}</span>
               </div>
               <div className="flex items-center gap-2">
-                <div className="w-3 h-3 rounded-full bg-orange-500" />
+                <div className="w-3 h-3 rounded-full bg-muted-foreground/40" />
                 <span>{t("interest")}</span>
               </div>
             </div>
@@ -247,5 +201,5 @@ export default function LoanCalculator() {
         </div>
       )}
     </div>
-  )
+  );
 }

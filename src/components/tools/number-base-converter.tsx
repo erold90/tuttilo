@@ -1,31 +1,72 @@
 "use client";
 
-import { useState } from "react";
+import { useState, useCallback } from "react";
 import { useTranslations } from "next-intl";
 
 const bases = [
-  { id: "bin", base: 2, label: "Binary" },
-  { id: "oct", base: 8, label: "Octal" },
-  { id: "dec", base: 10, label: "Decimal" },
-  { id: "hex", base: 16, label: "Hexadecimal" },
+  { id: "bin", base: 2, prefix: "0b" },
+  { id: "oct", base: 8, prefix: "0o" },
+  { id: "dec", base: 10, prefix: "" },
+  { id: "hex", base: 16, prefix: "0x" },
 ];
+
+function tryParseBigInt(value: string, base: number): bigint | null {
+  try {
+    if (!value.trim()) return null;
+    const clean = value.trim().toUpperCase();
+    // Validate characters
+    const chars = "0123456789ABCDEF".slice(0, base);
+    if (!new RegExp(`^[${chars}]+$`, "i").test(clean)) return null;
+    // Parse
+    if (base === 16) return BigInt("0x" + clean);
+    if (base === 8) return BigInt("0o" + clean);
+    if (base === 2) return BigInt("0b" + clean);
+    return BigInt(clean);
+  } catch {
+    return null;
+  }
+}
+
+const ZERO = BigInt(0);
+
+function bigIntToBase(val: bigint, base: number): string {
+  if (val === ZERO) return "0";
+  const neg = val < ZERO;
+  let abs = neg ? -val : val;
+  const chars = "0123456789ABCDEF";
+  const b = BigInt(base);
+  let result = "";
+  while (abs > ZERO) {
+    result = chars[Number(abs % b)] + result;
+    abs = abs / b;
+  }
+  return neg ? "-" + result : result;
+}
 
 export default function NumberBaseConverter() {
   const t = useTranslations("tools.number-base-converter.ui");
   const [value, setValue] = useState("");
   const [fromBase, setFromBase] = useState("dec");
+  const [copied, setCopied] = useState<string | null>(null);
 
   const from = bases.find((b) => b.id === fromBase)!;
-
-  const parsed = parseInt(value, from.base);
-  const isValid = !isNaN(parsed) && value.length > 0;
+  const parsed = tryParseBigInt(value, from.base);
+  const isValid = parsed !== null;
 
   const results = isValid
     ? bases.map((b) => ({
         id: b.id,
-        value: parsed.toString(b.base).toUpperCase(),
+        value: bigIntToBase(parsed, b.base),
+        prefix: b.prefix,
       }))
     : null;
+
+  const copyValue = useCallback((val: string, id: string) => {
+    navigator.clipboard.writeText(val).then(() => {
+      setCopied(id);
+      setTimeout(() => setCopied(null), 1500);
+    });
+  }, []);
 
   return (
     <div className="space-y-6">
@@ -42,13 +83,15 @@ export default function NumberBaseConverter() {
         </div>
         <div className="space-y-2">
           <label className="text-sm font-medium">{t("inputBase")}</label>
-          <div className="flex gap-2">
+          <div className="grid grid-cols-4 gap-2">
             {bases.map((b) => (
               <button
                 key={b.id}
                 onClick={() => { setFromBase(b.id); setValue(""); }}
-                className={`flex-1 rounded-xl px-3 py-2 text-sm font-medium transition-colors ${
-                  fromBase === b.id ? "bg-primary text-primary-foreground" : "border bg-muted/50 hover:bg-muted"
+                className={`rounded-xl px-3 py-2 text-sm font-medium transition-colors ${
+                  fromBase === b.id
+                    ? "bg-primary text-primary-foreground"
+                    : "border bg-muted/50 hover:bg-muted"
                 }`}
               >
                 {t(b.id)}
@@ -65,14 +108,24 @@ export default function NumberBaseConverter() {
       )}
 
       {results && (
-        <div className="grid gap-4 sm:grid-cols-2">
+        <div className="grid gap-4 grid-cols-1 sm:grid-cols-2">
           {results.map((r) => (
-            <div key={r.id} className={`rounded-xl border p-5 ${r.id === fromBase ? "bg-primary/10 border-primary" : "bg-muted/50"}`}>
+            <button
+              key={r.id}
+              onClick={() => copyValue(r.value, r.id)}
+              className={`rounded-xl border p-5 text-left hover:opacity-90 transition-colors cursor-pointer relative group ${
+                r.id === fromBase ? "bg-primary/10 border-primary" : "bg-muted/50"
+              }`}
+            >
               <div className="text-xs text-muted-foreground">{t(r.id)}</div>
               <div className={`mt-1 text-2xl font-bold font-mono break-all ${r.id === fromBase ? "text-primary" : ""}`}>
+                {r.prefix && <span className="text-muted-foreground/40 text-lg">{r.prefix}</span>}
                 {r.value}
               </div>
-            </div>
+              <span className="absolute top-3 right-3 text-xs text-muted-foreground/40 opacity-0 group-hover:opacity-100 transition-opacity">
+                {copied === r.id ? "✓" : "copy"}
+              </span>
+            </button>
           ))}
         </div>
       )}

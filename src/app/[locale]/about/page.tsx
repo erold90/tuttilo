@@ -81,7 +81,10 @@ export default async function AboutPage({
     "audio",
     "text",
     "developer",
-    "youtube",
+    "calculators",
+    "converters",
+    "color-design",
+    "security",
   ] as const;
 
   return (
@@ -191,12 +194,55 @@ export default async function AboutPage({
         </div>
       </section>
 
-      {/* Open & Transparent */}
+      {/* Team / Creator */}
       <section className="container mx-auto max-w-4xl px-4 py-16">
-        <h2 className="text-2xl font-bold mb-4">{t("openSource.title")}</h2>
-        <p className="text-muted-foreground leading-relaxed text-lg">
-          {t("openSource.content")}
-        </p>
+        <h2 className="text-2xl font-bold mb-6">{t("team.title")}</h2>
+        <div className="flex flex-col sm:flex-row gap-6 items-start">
+          <div className="flex h-20 w-20 shrink-0 items-center justify-center rounded-full bg-cyan-500/10 text-3xl font-bold text-cyan-500">
+            DL
+          </div>
+          <div>
+            <h3 className="text-xl font-semibold">Daniele Lo Re</h3>
+            <p className="text-sm text-cyan-500 font-medium mb-3">{t("team.role")}</p>
+            <p className="text-muted-foreground leading-relaxed">
+              {t("team.content")}
+            </p>
+            <div className="mt-4 flex items-center gap-4">
+              <a
+                href="https://github.com/erold90"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="text-sm text-muted-foreground hover:text-foreground transition-colors"
+              >
+                GitHub →
+              </a>
+              <a
+                href="https://x.com/tuttilo_tools"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="text-sm text-muted-foreground hover:text-foreground transition-colors"
+              >
+                X (Twitter) →
+              </a>
+              <a
+                href="mailto:support@tuttilo.com"
+                className="text-sm text-muted-foreground hover:text-foreground transition-colors"
+              >
+                Email →
+              </a>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      {/* Open & Transparent */}
+      <section className="border-t bg-muted/30">
+        <div className="container mx-auto max-w-4xl px-4 py-16">
+          <h2 className="text-2xl font-bold mb-4">{t("openSource.title")}</h2>
+          <p className="text-muted-foreground leading-relaxed text-lg">
+            {t("openSource.content")}
+          </p>
+        </div>
       </section>
 
       {/* CTA */}

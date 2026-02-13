@@ -1,6 +1,6 @@
 "use client";
 
-import { useState } from "react";
+import { useState, useCallback } from "react";
 import { useTranslations } from "next-intl";
 
 type Gender = "male" | "female";
@@ -23,6 +23,7 @@ export default function CalorieCalculator() {
   const [height, setHeight] = useState("");
   const [activity, setActivity] = useState<Activity>("moderate");
   const [unit, setUnit] = useState<"metric" | "imperial">("metric");
+  const [copied, setCopied] = useState<string | null>(null);
 
   const calc = () => {
     const a = parseFloat(age);
@@ -31,11 +32,10 @@ export default function CalorieCalculator() {
     if (!a || !w || !h) return null;
 
     if (unit === "imperial") {
-      w = w * 0.453592; // lbs to kg
-      h = h * 2.54; // in to cm
+      w = w * 0.453592;
+      h = h * 2.54;
     }
 
-    // Mifflin-St Jeor
     let bmr: number;
     if (gender === "male") {
       bmr = 10 * w + 6.25 * h - 5 * a + 5;
@@ -55,6 +55,12 @@ export default function CalorieCalculator() {
 
   const result = calc();
   const activities: Activity[] = ["sedentary", "light", "moderate", "active", "veryActive"];
+
+  const copy = useCallback((val: string, id: string) => {
+    navigator.clipboard.writeText(val);
+    setCopied(id);
+    setTimeout(() => setCopied(null), 1200);
+  }, []);
 
   return (
     <div className="space-y-6">
@@ -145,25 +151,41 @@ export default function CalorieCalculator() {
       {/* Results */}
       {result && (
         <div className="grid gap-4 sm:grid-cols-2 lg:grid-cols-4">
-          <div className="rounded-xl border bg-muted/50 p-5 text-center">
+          <div
+            className="cursor-pointer rounded-xl border bg-muted/50 p-5 text-center transition-colors hover:border-primary/30"
+            onClick={() => copy(String(result.bmr), "bmr")}
+          >
             <div className="text-xs text-muted-foreground">{t("bmr")}</div>
             <div className="mt-1 text-3xl font-bold">{result.bmr.toLocaleString()}</div>
             <div className="text-xs text-muted-foreground">{t("calDay")}</div>
+            <div className="mt-1 h-4 text-xs text-primary">{copied === "bmr" ? "✓" : ""}</div>
           </div>
-          <div className="rounded-xl border bg-primary/10 p-5 text-center">
+          <div
+            className="cursor-pointer rounded-xl border bg-primary/10 p-5 text-center transition-colors hover:border-primary/30"
+            onClick={() => copy(String(result.tdee), "tdee")}
+          >
             <div className="text-xs text-muted-foreground">{t("tdee")}</div>
             <div className="mt-1 text-3xl font-bold text-primary">{result.tdee.toLocaleString()}</div>
             <div className="text-xs text-muted-foreground">{t("calDay")}</div>
+            <div className="mt-1 h-4 text-xs text-primary">{copied === "tdee" ? "✓" : ""}</div>
           </div>
-          <div className="rounded-xl border bg-green-500/10 p-5 text-center">
+          <div
+            className="cursor-pointer rounded-xl border bg-muted/50 p-5 text-center transition-colors hover:border-primary/30"
+            onClick={() => copy(String(result.lose), "lose")}
+          >
             <div className="text-xs text-muted-foreground">{t("loseWeight")}</div>
-            <div className="mt-1 text-3xl font-bold text-green-600">{result.lose.toLocaleString()}</div>
+            <div className="mt-1 text-3xl font-bold">{result.lose.toLocaleString()}</div>
             <div className="text-xs text-muted-foreground">{t("calDay")}</div>
+            <div className="mt-1 h-4 text-xs text-primary">{copied === "lose" ? "✓" : ""}</div>
           </div>
-          <div className="rounded-xl border bg-blue-500/10 p-5 text-center">
+          <div
+            className="cursor-pointer rounded-xl border bg-muted/50 p-5 text-center transition-colors hover:border-primary/30"
+            onClick={() => copy(String(result.gain), "gain")}
+          >
             <div className="text-xs text-muted-foreground">{t("gainWeight")}</div>
-            <div className="mt-1 text-3xl font-bold text-blue-600">{result.gain.toLocaleString()}</div>
+            <div className="mt-1 text-3xl font-bold">{result.gain.toLocaleString()}</div>
             <div className="text-xs text-muted-foreground">{t("calDay")}</div>
+            <div className="mt-1 h-4 text-xs text-primary">{copied === "gain" ? "✓" : ""}</div>
           </div>
         </div>
       )}

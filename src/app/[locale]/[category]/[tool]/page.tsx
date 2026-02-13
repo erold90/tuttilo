@@ -55,7 +55,7 @@ const implementedToolIds = new Set([
   "volume-converter", "speed-converter", "time-converter",
   "fuel-economy-converter", "shoe-size-converter",
   "pressure-converter", "energy-converter", "number-base-converter",
-  "roman-numeral-converter", "power-converter",
+  "roman-numeral-converter", "power-converter", "currency-converter",
   // Color & Design
   "gradient-generator", "palette-generator", "contrast-checker",
   "box-shadow-generator", "border-radius-generator", "glassmorphism-generator",

@@ -1,6 +1,6 @@
 "use client";
 
-import { useState } from "react";
+import { useState, useCallback } from "react";
 import { useTranslations } from "next-intl";
 
 type MarginMode = "costRevenue" | "costMargin" | "revenueMargin";
@@ -11,6 +11,7 @@ export default function ProfitMarginCalculator() {
   const [mode, setMode] = useState<MarginMode>("costRevenue");
   const [value1, setValue1] = useState("");
   const [value2, setValue2] = useState("");
+  const [copied, setCopied] = useState<string | null>(null);
 
   const v1 = parseFloat(value1) || 0;
   const v2 = parseFloat(value2) || 0;
@@ -49,17 +50,13 @@ export default function ProfitMarginCalculator() {
   }
 
   const fmt = (n: number) =>
-    new Intl.NumberFormat("en-US", {
-      style: "currency",
-      currency: "USD",
-      minimumFractionDigits: 2,
-      maximumFractionDigits: 2,
-    }).format(n);
+    n.toLocaleString(undefined, { minimumFractionDigits: 2, maximumFractionDigits: 2 });
 
-  const reset = () => {
-    setValue1("");
-    setValue2("");
-  };
+  const copy = useCallback((val: string, id: string) => {
+    navigator.clipboard.writeText(val);
+    setCopied(id);
+    setTimeout(() => setCopied(null), 1200);
+  }, []);
 
   const modes: { key: MarginMode; label1: string; label2: string }[] = [
     { key: "costRevenue", label1: t("cost"), label2: t("revenue") },
@@ -118,7 +115,7 @@ export default function ProfitMarginCalculator() {
       </div>
 
       <button
-        onClick={reset}
+        onClick={() => { setValue1(""); setValue2(""); }}
         className="rounded-xl border bg-muted/50 px-6 py-3 font-medium hover:bg-muted"
       >
         {t("reset")}
@@ -127,31 +124,49 @@ export default function ProfitMarginCalculator() {
       {/* Results */}
       {hasResult && (
         <div className="space-y-4">
-          <div className="rounded-xl border bg-muted/50 p-6">
+          <div
+            className="cursor-pointer rounded-xl border bg-muted/50 p-6 transition-colors hover:border-primary/30"
+            onClick={() => copy(margin.toFixed(2) + "%", "margin")}
+          >
             <div className="text-sm text-muted-foreground">{t("profitMargin")}</div>
-            <div className={`mt-1 text-4xl font-bold ${margin >= 0 ? "text-green-600" : "text-red-500"}`}>
+            <div className="mt-1 text-4xl font-bold text-primary">
               {margin.toFixed(2)}%
             </div>
+            <div className="mt-1 h-4 text-xs text-primary">{copied === "margin" ? "✓" : ""}</div>
           </div>
 
           <div className="grid gap-4 sm:grid-cols-2 lg:grid-cols-4">
-            <div className="rounded-xl border bg-background p-4">
+            <div
+              className="cursor-pointer rounded-xl border bg-background p-4 transition-colors hover:border-primary/30"
+              onClick={() => copy(fmt(cost), "cost")}
+            >
               <div className="text-sm text-muted-foreground">{t("cost")}</div>
               <div className="mt-1 text-xl font-semibold">{fmt(cost)}</div>
+              <div className="mt-1 h-4 text-xs text-primary">{copied === "cost" ? "✓" : ""}</div>
             </div>
-            <div className="rounded-xl border bg-background p-4">
+            <div
+              className="cursor-pointer rounded-xl border bg-background p-4 transition-colors hover:border-primary/30"
+              onClick={() => copy(fmt(revenue), "rev")}
+            >
               <div className="text-sm text-muted-foreground">{t("revenue")}</div>
               <div className="mt-1 text-xl font-semibold">{fmt(revenue)}</div>
+              <div className="mt-1 h-4 text-xs text-primary">{copied === "rev" ? "✓" : ""}</div>
             </div>
-            <div className="rounded-xl border bg-background p-4">
+            <div
+              className="cursor-pointer rounded-xl border bg-background p-4 transition-colors hover:border-primary/30"
+              onClick={() => copy(fmt(profit), "profit")}
+            >
               <div className="text-sm text-muted-foreground">{t("profit")}</div>
-              <div className={`mt-1 text-xl font-semibold ${profit >= 0 ? "text-green-600" : "text-red-500"}`}>
-                {fmt(profit)}
-              </div>
+              <div className="mt-1 text-xl font-semibold">{fmt(profit)}</div>
+              <div className="mt-1 h-4 text-xs text-primary">{copied === "profit" ? "✓" : ""}</div>
             </div>
-            <div className="rounded-xl border bg-background p-4">
+            <div
+              className="cursor-pointer rounded-xl border bg-background p-4 transition-colors hover:border-primary/30"
+              onClick={() => copy(markup.toFixed(2) + "%", "markup")}
+            >
               <div className="text-sm text-muted-foreground">{t("markup")}</div>
               <div className="mt-1 text-xl font-semibold">{markup.toFixed(2)}%</div>
+              <div className="mt-1 h-4 text-xs text-primary">{copied === "markup" ? "✓" : ""}</div>
             </div>
           </div>
         </div>

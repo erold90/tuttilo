@@ -1,187 +1,133 @@
-"use client"
+"use client";
 
-import { useState } from "react"
-import { useTranslations } from "next-intl"
-import { Button } from "@/components/ui/button"
-import { Input } from "@/components/ui/input"
-import { Label } from "@/components/ui/label"
+import { useState, useCallback } from "react";
+import { useTranslations } from "next-intl";
 
-type UnitSystem = "metric" | "imperial"
-
-interface BMIResult {
-  bmi: number
-  category: string
-  categoryColor: string
-  position: number
-}
+type UnitSystem = "metric" | "imperial";
 
 export default function BMICalculator() {
-  const t = useTranslations("tools.bmi-calculator.ui")
-  const [unitSystem, setUnitSystem] = useState<UnitSystem>("metric")
-  const [weight, setWeight] = useState("")
-  const [height, setHeight] = useState("")
-  const [result, setResult] = useState<BMIResult | null>(null)
-  const [error, setError] = useState("")
+  const t = useTranslations("tools.bmi-calculator.ui");
+  const [unitSystem, setUnitSystem] = useState<UnitSystem>("metric");
+  const [weight, setWeight] = useState("");
+  const [height, setHeight] = useState("");
+  const [copied, setCopied] = useState<string | null>(null);
 
-  const calculate = () => {
-    try {
-      setError("")
-      let weightKg = parseFloat(weight)
-      let heightM = parseFloat(height)
+  const calc = () => {
+    let weightKg = parseFloat(weight);
+    let heightM = parseFloat(height);
 
-      if (isNaN(weightKg) || isNaN(heightM) || weightKg <= 0 || heightM <= 0) {
-        setError(t("invalidInput"))
-        setResult(null)
-        return
-      }
+    if (isNaN(weightKg) || isNaN(heightM) || weightKg <= 0 || heightM <= 0) return null;
 
-      // Convert to metric if imperial
-      if (unitSystem === "imperial") {
-        weightKg = weightKg * 0.453592 // lbs to kg
-        heightM = heightM * 0.0254 // inches to meters
-      } else {
-        heightM = heightM / 100 // cm to meters
-      }
-
-      const bmi = weightKg / (heightM * heightM)
-
-      let category: string
-      let categoryColor: string
-      let position: number
-
-      if (bmi < 18.5) {
-        category = t("underweight")
-        categoryColor = "text-blue-500"
-        position = (bmi / 18.5) * 25
-      } else if (bmi < 25) {
-        category = t("normal")
-        categoryColor = "text-green-500"
-        position = 25 + ((bmi - 18.5) / (25 - 18.5)) * 25
-      } else if (bmi < 30) {
-        category = t("overweight")
-        categoryColor = "text-yellow-500"
-        position = 50 + ((bmi - 25) / (30 - 25)) * 25
-      } else {
-        category = t("obese")
-        categoryColor = "text-red-500"
-        position = Math.min(75 + ((bmi - 30) / 10) * 25, 100)
-      }
-
-      setResult({ bmi, category, categoryColor, position })
-    } catch (err) {
-      setError(t("calculationError"))
-      setResult(null)
+    if (unitSystem === "imperial") {
+      weightKg = weightKg * 0.453592;
+      heightM = heightM * 0.0254;
+    } else {
+      heightM = heightM / 100;
     }
-  }
 
-  const handleInputChange = (setter: (value: string) => void) => (e: React.ChangeEvent<HTMLInputElement>) => {
-    setter(e.target.value)
-    setResult(null)
-    setError("")
-  }
+    const bmi = weightKg / (heightM * heightM);
 
-  const toggleUnit = () => {
-    setUnitSystem(unitSystem === "metric" ? "imperial" : "metric")
-    setWeight("")
-    setHeight("")
-    setResult(null)
-    setError("")
-  }
+    let category: string;
+    let position: number;
 
-  const reset = () => {
-    setWeight("")
-    setHeight("")
-    setResult(null)
-    setError("")
-  }
+    if (bmi < 18.5) {
+      category = "underweight";
+      position = (bmi / 18.5) * 25;
+    } else if (bmi < 25) {
+      category = "normal";
+      position = 25 + ((bmi - 18.5) / (25 - 18.5)) * 25;
+    } else if (bmi < 30) {
+      category = "overweight";
+      position = 50 + ((bmi - 25) / (30 - 25)) * 25;
+    } else {
+      category = "obese";
+      position = Math.min(75 + ((bmi - 30) / 10) * 25, 100);
+    }
+
+    return { bmi, category, position };
+  };
+
+  const result = calc();
+
+  const copy = useCallback((val: string, id: string) => {
+    navigator.clipboard.writeText(val);
+    setCopied(id);
+    setTimeout(() => setCopied(null), 1200);
+  }, []);
 
   return (
     <div className="w-full max-w-2xl mx-auto space-y-6">
       {/* Unit Toggle */}
       <div className="flex gap-2">
-        <Button
-          variant={unitSystem === "metric" ? "default" : "outline"}
-          onClick={() => setUnitSystem("metric")}
-          className="flex-1"
-        >
-          {t("metric")}
-        </Button>
-        <Button
-          variant={unitSystem === "imperial" ? "default" : "outline"}
-          onClick={() => setUnitSystem("imperial")}
-          className="flex-1"
-        >
-          {t("imperial")}
-        </Button>
+        {(["metric", "imperial"] as UnitSystem[]).map((u) => (
+          <button
+            key={u}
+            onClick={() => { setUnitSystem(u); setWeight(""); setHeight(""); }}
+            className={`flex-1 rounded-xl px-4 py-3 font-medium transition-colors ${
+              unitSystem === u ? "bg-primary text-primary-foreground" : "border bg-muted/50 hover:bg-muted"
+            }`}
+          >
+            {t(u)}
+          </button>
+        ))}
       </div>
 
       {/* Input Section */}
       <div className="rounded-xl border bg-muted/50 p-6 space-y-4">
         <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
           <div className="space-y-2">
-            <Label htmlFor="weight">
+            <label className="text-sm font-medium">
               {t("weight")} ({unitSystem === "metric" ? "kg" : "lbs"})
-            </Label>
-            <Input
-              id="weight"
+            </label>
+            <input
               type="number"
               step="any"
               value={weight}
-              onChange={handleInputChange(setWeight)}
+              onChange={(e) => setWeight(e.target.value)}
               placeholder="0"
-              className="text-lg"
+              className="w-full rounded-xl border bg-background px-4 py-3 text-lg"
             />
           </div>
 
           <div className="space-y-2">
-            <Label htmlFor="height">
+            <label className="text-sm font-medium">
               {t("height")} ({unitSystem === "metric" ? "cm" : "in"})
-            </Label>
-            <Input
-              id="height"
+            </label>
+            <input
               type="number"
               step="any"
               value={height}
-              onChange={handleInputChange(setHeight)}
+              onChange={(e) => setHeight(e.target.value)}
               placeholder="0"
-              className="text-lg"
+              className="w-full rounded-xl border bg-background px-4 py-3 text-lg"
             />
           </div>
         </div>
 
-        <div className="flex gap-2">
-          <Button onClick={calculate} className="flex-1">
-            {t("calculate")}
-          </Button>
-          <Button onClick={reset} variant="outline">
-            {t("reset")}
-          </Button>
-        </div>
+        <button
+          onClick={() => { setWeight(""); setHeight(""); }}
+          className="rounded-xl border bg-background px-6 py-3 font-medium hover:bg-muted"
+        >
+          {t("reset")}
+        </button>
       </div>
 
-      {/* Error Message */}
-      {error && (
-        <div className="rounded-xl border border-destructive bg-destructive/10 p-4">
-          <p className="text-sm text-destructive">{error}</p>
-        </div>
-      )}
-
       {/* Result */}
-      {result && !error && (
+      {result && (
         <div className="rounded-xl border bg-muted/50 p-6 space-y-6">
-          <div className="space-y-2">
-            <Label className="text-muted-foreground">{t("yourBMI")}</Label>
-            <p className="text-4xl font-bold">
-              {result.bmi.toFixed(1)}
-            </p>
-            <p className={`text-xl font-semibold ${result.categoryColor}`}>
-              {result.category}
-            </p>
+          <div
+            className="cursor-pointer transition-colors hover:border-primary/30"
+            onClick={() => copy(result.bmi.toFixed(1), "bmi")}
+          >
+            <div className="text-sm text-muted-foreground">{t("yourBMI")}</div>
+            <p className="text-4xl font-bold">{result.bmi.toFixed(1)}</p>
+            <p className="text-xl font-semibold text-primary">{t(result.category)}</p>
+            <div className="mt-1 h-4 text-xs text-primary">{copied === "bmi" ? "✓" : ""}</div>
           </div>
 
           {/* BMI Scale */}
           <div className="space-y-3">
-            <Label className="text-muted-foreground">{t("bmiScale")}</Label>
+            <div className="text-sm text-muted-foreground">{t("bmiScale")}</div>
             <div className="relative h-8 rounded-full overflow-hidden bg-gradient-to-r from-blue-500 via-green-500 via-yellow-500 to-red-500">
               <div
                 className="absolute top-0 bottom-0 w-1 bg-white shadow-lg"
@@ -216,5 +162,5 @@ export default function BMICalculator() {
         </div>
       )}
     </div>
-  )
+  );
 }

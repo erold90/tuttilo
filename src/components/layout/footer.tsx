@@ -2,7 +2,7 @@
 
 import { useTranslations } from "next-intl";
 import { Link } from "@/i18n/routing";
-import { ShieldCheck as Shield } from "@phosphor-icons/react";
+import { ShieldCheck as Shield, GithubLogo, XLogo, Envelope } from "@phosphor-icons/react";
 import { LanguageSwitcher } from "@/components/layout/language-switcher";
 import { cn } from "@/lib/utils";
 import { getCategoryNavItems } from "@/lib/tools/registry";
@@ -11,6 +11,7 @@ const categories = getCategoryNavItems();
 
 const companyLinks = [
   { key: "about", href: "/about" },
+  { key: "blog", href: "/blog" },
   { key: "contact", href: "/contact" },
   { key: "privacy", href: "/privacy" },
   { key: "terms", href: "/terms" },
@@ -75,15 +76,47 @@ export function Footer() {
             </ul>
           </div>
 
-          {/* Column 4: Settings */}
-          <div>
-            <h3 className="mb-3 text-sm font-semibold">{t("settings")}</h3>
-            <div className="space-y-3">
-              <div className="flex items-center gap-2">
-                <span className="text-sm text-muted-foreground">
-                  {t("language")}
-                </span>
-                <LanguageSwitcher />
+          {/* Column 4: Settings + Social */}
+          <div className="space-y-6">
+            <div>
+              <h3 className="mb-3 text-sm font-semibold">{t("settings")}</h3>
+              <div className="space-y-3">
+                <div className="flex items-center gap-2">
+                  <span className="text-sm text-muted-foreground">
+                    {t("language")}
+                  </span>
+                  <LanguageSwitcher />
+                </div>
+              </div>
+            </div>
+            <div>
+              <h3 className="mb-3 text-sm font-semibold">{t("followUs")}</h3>
+              <div className="flex items-center gap-3">
+                <a
+                  href="https://github.com/erold90/tuttilo"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="text-muted-foreground hover:text-foreground transition-colors"
+                  aria-label="GitHub"
+                >
+                  <GithubLogo className="h-5 w-5" />
+                </a>
+                <a
+                  href="https://x.com/tuttilo_tools"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="text-muted-foreground hover:text-foreground transition-colors"
+                  aria-label="X (Twitter)"
+                >
+                  <XLogo className="h-5 w-5" />
+                </a>
+                <a
+                  href="mailto:support@tuttilo.com"
+                  className="text-muted-foreground hover:text-foreground transition-colors"
+                  aria-label="Email"
+                >
+                  <Envelope className="h-5 w-5" />
+                </a>
               </div>
             </div>
           </div>

@@ -1,6 +1,6 @@
 "use client";
 
-import { useState } from "react";
+import { useState, useCallback } from "react";
 import { useTranslations } from "next-intl";
 
 export default function AgeCalculator() {
@@ -10,6 +10,7 @@ export default function AgeCalculator() {
   const [targetDate, setTargetDate] = useState(
     new Date().toISOString().split("T")[0]
   );
+  const [copied, setCopied] = useState<string | null>(null);
 
   const calcAge = () => {
     if (!birthDate || !targetDate) return null;
@@ -43,10 +44,11 @@ export default function AgeCalculator() {
 
   const result = calcAge();
 
-  const reset = () => {
-    setBirthDate("");
-    setTargetDate(new Date().toISOString().split("T")[0]);
-  };
+  const copy = useCallback((val: string, id: string) => {
+    navigator.clipboard.writeText(val);
+    setCopied(id);
+    setTimeout(() => setCopied(null), 1200);
+  }, []);
 
   return (
     <div className="space-y-6">
@@ -72,7 +74,7 @@ export default function AgeCalculator() {
       </div>
 
       <button
-        onClick={reset}
+        onClick={() => { setBirthDate(""); setTargetDate(new Date().toISOString().split("T")[0]); }}
         className="rounded-xl border bg-muted/50 px-6 py-3 font-medium hover:bg-muted"
       >
         {t("reset")}
@@ -80,29 +82,49 @@ export default function AgeCalculator() {
 
       {result && (
         <div className="space-y-4">
-          <div className="rounded-xl border bg-primary/10 p-6 text-center">
+          <div
+            className="cursor-pointer rounded-xl border bg-primary/10 p-6 text-center transition-colors hover:border-primary/30"
+            onClick={() => copy(`${result.years}y ${result.months}m ${result.days}d`, "age")}
+          >
             <div className="text-sm text-muted-foreground">{t("yourAge")}</div>
             <div className="mt-2 text-4xl font-bold text-primary">
               {result.years} {t("years")}, {result.months} {t("months")}, {result.days} {t("days")}
             </div>
+            <div className="mt-1 h-4 text-xs text-primary">{copied === "age" ? "✓" : ""}</div>
           </div>
 
           <div className="grid gap-3 sm:grid-cols-2 lg:grid-cols-4">
-            <div className="rounded-xl border bg-muted/50 p-4 text-center">
+            <div
+              className="cursor-pointer rounded-xl border bg-muted/50 p-4 text-center transition-colors hover:border-primary/30"
+              onClick={() => copy(result.totalMonths.toLocaleString(), "tm")}
+            >
               <div className="text-xs text-muted-foreground">{t("totalMonths")}</div>
               <div className="mt-1 text-2xl font-bold">{result.totalMonths.toLocaleString()}</div>
+              <div className="mt-1 h-4 text-xs text-primary">{copied === "tm" ? "✓" : ""}</div>
             </div>
-            <div className="rounded-xl border bg-muted/50 p-4 text-center">
+            <div
+              className="cursor-pointer rounded-xl border bg-muted/50 p-4 text-center transition-colors hover:border-primary/30"
+              onClick={() => copy(result.totalWeeks.toLocaleString(), "tw")}
+            >
               <div className="text-xs text-muted-foreground">{t("totalWeeks")}</div>
               <div className="mt-1 text-2xl font-bold">{result.totalWeeks.toLocaleString()}</div>
+              <div className="mt-1 h-4 text-xs text-primary">{copied === "tw" ? "✓" : ""}</div>
             </div>
-            <div className="rounded-xl border bg-muted/50 p-4 text-center">
+            <div
+              className="cursor-pointer rounded-xl border bg-muted/50 p-4 text-center transition-colors hover:border-primary/30"
+              onClick={() => copy(result.totalDays.toLocaleString(), "td")}
+            >
               <div className="text-xs text-muted-foreground">{t("totalDays")}</div>
               <div className="mt-1 text-2xl font-bold">{result.totalDays.toLocaleString()}</div>
+              <div className="mt-1 h-4 text-xs text-primary">{copied === "td" ? "✓" : ""}</div>
             </div>
-            <div className="rounded-xl border bg-muted/50 p-4 text-center">
+            <div
+              className="cursor-pointer rounded-xl border bg-muted/50 p-4 text-center transition-colors hover:border-primary/30"
+              onClick={() => copy(result.totalHours.toLocaleString(), "th")}
+            >
               <div className="text-xs text-muted-foreground">{t("totalHours")}</div>
               <div className="mt-1 text-2xl font-bold">{result.totalHours.toLocaleString()}</div>
+              <div className="mt-1 h-4 text-xs text-primary">{copied === "th" ? "✓" : ""}</div>
             </div>
           </div>
         </div>

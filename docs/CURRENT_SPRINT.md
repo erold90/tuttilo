@@ -1,6 +1,34 @@
-# Sprint Corrente: Mega Espansione Tool (2026-02-09)
+# Sprint Corrente: Ezoic Content Fix (2026-02-13)
 
 ## Obiettivo
+Risolvere il rifiuto Ezoic "Reason: Content" aggiungendo contenuto editoriale sostanzioso al sito tool-only.
+
+## Deadline Riapplicazione: 12 maggio 2026
+
+## Fase 1: Blog + About (COMPLETATA)
+- [x] 22 articoli blog (avg 865 parole) in EN
+- [x] Traduzioni blog complete in tutte le 8 lingue
+- [x] About page con team reale
+- [x] Contact page
+- [x] Social links (GitHub, X, Email)
+- [x] ads.txt
+- [x] Sitemap con blog
+
+## Fase 2: Tool SEO Extended Content (IN CORSO)
+- [x] Analisi: 216 tool pages hanno solo ~150-200 parole (thin content)
+- [x] Architettura: file statici JSON + componente client-side
+- [x] Componente ToolExtendedContent creato e integrato in tool-layout
+- [ ] Generazione contenuto EN (p2/p3/p4) per 214 tool — 8 agent in esecuzione
+- [ ] Merge in public/data/tools/en.json
+- [ ] Build + deploy EN
+- [ ] Traduzione 7 lingue
+- [ ] Build + deploy finale
+
+---
+
+# Sprint Precedente: Mega Espansione Tool (2026-02-09) — COMPLETATO
+
+## Obiettivo Originale
 Espandere Tuttilo da 82 a 250+ tool con nuova navigazione, 16 categorie, mega menu e sicurezza rinforzata.
 
 ## Piano Dettagliato: docs/EXPANSION_PLAN.md
