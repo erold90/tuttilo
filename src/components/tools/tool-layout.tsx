@@ -7,13 +7,10 @@ import { CaretRight as ChevronRight, House as Home } from "@phosphor-icons/react
 import { SidebarAd } from "@/components/ads/sidebar-ad";
 import { LeaderboardAd } from "@/components/ads/leaderboard-ad";
 import { MobileStickyAd } from "@/components/ads/mobile-sticky-ad";
-import { SupportNotice } from "@/components/ads/support-notice";
 import { RelatedTools } from "@/components/tools/related-tools";
 import { FavoritesButton } from "@/components/tools/favorites-button";
 import { BookmarkButton } from "@/components/tools/bookmark-button";
 import { useRecents } from "@/hooks/use-recents";
-import { ToolExtendedContent } from "@/components/tools/tool-extended-content";
-import { ToolFaq } from "@/components/tools/tool-faq";
 
 interface ToolLayoutProps {
   toolId: string;
@@ -78,15 +75,13 @@ export function ToolLayout({ toolId, category, children }: ToolLayoutProps) {
         </div>
       </div>
 
-      {/* Main content + sidebar — wrapped by support notice wall */}
-      <SupportNotice>
-        <div className="flex gap-8">
-          <div className="min-w-0 flex-1">{children}</div>
-          <aside className="hidden shrink-0 lg:block" style={{ width: 300 }}>
-            <SidebarAd />
-          </aside>
-        </div>
-      </SupportNotice>
+      {/* Main content + sidebar */}
+      <div className="flex gap-8">
+        <div className="min-w-0 flex-1">{children}</div>
+        <aside className="hidden shrink-0 lg:block" style={{ width: 300 }}>
+          <SidebarAd />
+        </aside>
+      </div>
 
       {/* Leaderboard ad */}
       <div className="mt-10">
@@ -100,21 +95,6 @@ export function ToolLayout({ toolId, category, children }: ToolLayoutProps) {
       <div className="mt-10">
         <RelatedTools currentToolId={toolId} category={category} />
       </div>
-
-      {/* SEO content */}
-      <section className="mt-10">
-        <div className="prose prose-gray max-w-none dark:prose-invert">
-          <h2>{t(`tools.${toolId}.seo.title`)}</h2>
-          <p>{t(`tools.${toolId}.seo.content`)}</p>
-          {/* Extended content loaded from static JSON */}
-          <ToolExtendedContent toolId={toolId} />
-          {/* Shared privacy paragraph */}
-          <p>{t("common.seoPrivacy")}</p>
-        </div>
-
-        {/* FAQ — loaded from static JSON */}
-        <ToolFaq toolId={toolId} />
-      </section>
     </div>
   );
 }

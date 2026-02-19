@@ -1,0 +1,1 @@
+{"q1":"What formats can I join?","a1":"MP3, WAV, OGG, and FLAC files. All files are decoded and joined using the Web Audio API.","q2":"What is the output format?","a2":"The joined audio is exported as a WAV file for maximum quality.","q3":"Can I change the order?","a3":"Yes, use the Move Up button to reorder tracks before joining."}

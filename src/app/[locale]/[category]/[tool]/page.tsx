@@ -8,8 +8,19 @@ import {
   tools,
   type ToolCategoryId,
 } from "@/lib/tools/registry";
+import { readStaticJsonWithFallback } from "@/lib/read-static-data";
 import { ToolLayout } from "@/components/tools/tool-layout";
 import { ToolLoader } from "@/components/tools/tool-loader";
+
+interface ExtendedContent {
+  p2?: string;
+  p3?: string;
+  p4?: string;
+}
+
+interface FaqData {
+  [key: string]: string;
+}
 
 const BASE_URL = "https://tuttilo.com";
 
@@ -127,7 +138,6 @@ export async function generateMetadata({
   const t = await getTranslations({ locale, namespace: "tools" });
   const name = t(`${toolData.id}.name`);
   const shortDesc = t(`${toolData.id}.description`);
-  const cat = categories.find((c) => c.id === category);
 
   // Prefer seo.description (130-160 char) over short description for meta tags
   let description = shortDesc;
@@ -230,20 +240,29 @@ export default async function ToolPage({
     featureList: ["Free to use", "No registration required", "Browser-based processing", "Privacy-first — no server uploads"],
   };
 
-  const faqEntries: Array<{ "@type": string; name: string; acceptedAnswer: { "@type": string; text: string } }> = [];
-  for (let i = 1; i <= 8; i++) {
-    try {
-      const q = t(`${toolData.id}.faq.q${i}`);
-      const a = t(`${toolData.id}.faq.a${i}`);
-      if (q && !q.startsWith("tools.") && a && !a.startsWith("tools.")) {
-        faqEntries.push({
-          "@type": "Question",
-          name: q,
-          acceptedAnswer: { "@type": "Answer", text: a },
-        });
-      }
-    } catch { break; }
+  // Read extended content (p2/p3/p4) and FAQ from static JSON
+  const extContent = await readStaticJsonWithFallback<ExtendedContent>(
+    "tools", locale, `${toolData.id}.json`
+  );
+  const faqData = await readStaticJsonWithFallback<FaqData>(
+    "faq", locale, `${toolData.id}.json`
+  );
+
+  // Parse FAQ pairs for rendering and JSON-LD
+  const faqPairs: { q: string; a: string }[] = [];
+  if (faqData) {
+    for (let i = 1; i <= 8; i++) {
+      const q = faqData[`q${i}`];
+      const a = faqData[`a${i}`];
+      if (q && a) faqPairs.push({ q, a });
+    }
   }
+
+  const faqEntries = faqPairs.map((p) => ({
+    "@type": "Question" as const,
+    name: p.q,
+    acceptedAnswer: { "@type": "Answer" as const, text: p.a },
+  }));
 
   const faqLd = {
     "@context": "https://schema.org",
@@ -262,21 +281,21 @@ export default async function ToolPage({
       {
         "@type": "HowToStep",
         position: 1,
-        name: tCommon("howItWorks.upload.title"),
+        name: "Upload file",
         text: tCommon("howToSchema.step1"),
         url: `${toolUrl}#upload`,
       },
       {
         "@type": "HowToStep",
         position: 2,
-        name: tCommon("howItWorks.process.title"),
+        name: "Adjust settings",
         text: tCommon("howToSchema.step2"),
         url: `${toolUrl}#settings`,
       },
       {
         "@type": "HowToStep",
         position: 3,
-        name: tCommon("howItWorks.download.title"),
+        name: "Download result",
         text: tCommon("howToSchema.step3"),
         url: `${toolUrl}#download`,
       },
@@ -287,11 +306,47 @@ export default async function ToolPage({
     <div className="container mx-auto max-w-7xl px-4 py-8">
       <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(breadcrumbLd) }} />
       <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(softwareLd) }} />
-      <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(faqLd) }} />
+      {faqEntries.length > 0 && (
+        <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(faqLd) }} />
+      )}
       <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(howToLd) }} />
       <ToolLayout toolId={toolData.id} category={category}>
         <ToolLoader toolId={toolData.id} />
       </ToolLayout>
+
+      {/* Server-rendered SEO content — visible to crawlers without JS */}
+      <section className="mt-10">
+        <div className="prose prose-gray max-w-none dark:prose-invert">
+          <h2>{t(`${toolData.id}.seo.title`)}</h2>
+          <p>{t(`${toolData.id}.seo.content`)}</p>
+          {extContent && (
+            <>
+              {extContent.p2 && <p>{extContent.p2}</p>}
+              {extContent.p3 && <p>{extContent.p3}</p>}
+              {extContent.p4 && <p>{extContent.p4}</p>}
+            </>
+          )}
+          <p>{tCommon("seoPrivacy")}</p>
+        </div>
+
+        {faqPairs.length > 0 && (
+          <div className="mt-8">
+            <h2 className="mb-4 text-2xl font-bold">{tCommon("faq")}</h2>
+            <div className="space-y-4">
+              {faqPairs.map((p, i) => (
+                <details
+                  key={i}
+                  className="group rounded-lg border border-border bg-card p-4"
+                  open={i === 0}
+                >
+                  <summary className="cursor-pointer font-medium">{p.q}</summary>
+                  <p className="mt-2 text-muted-foreground">{p.a}</p>
+                </details>
+              ))}
+            </div>
+          </div>
+        )}
+      </section>
     </div>
   );
 }

@@ -1,0 +1,1 @@
+{"q1":"What CSV format is supported?","a1":"Standard CSV with comma separators, quoted fields, and escaped quotes.","q2":"Can I convert JSON back to CSV?","a2":"Yes, switch to JSON → CSV mode to convert a JSON array of objects back to CSV format.","q3":"Is there a size limit?","a3":"No hard limit, but very large files may slow down your browser."}

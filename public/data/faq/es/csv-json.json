@@ -1,0 +1,1 @@
+{"q1":"¿Qué formato CSV es compatible?","a1":"CSV estándar con separadores de coma, campos entrecomillados y comillas escapadas.","q2":"¿Puedo convertir JSON a CSV?","a2":"Sí, cambia al modo JSON → CSV para convertir un array JSON de objetos a formato CSV.","q3":"¿Hay límite de tamaño?","a3":"Sin límite estricto, pero archivos muy grandes pueden ralentizar tu navegador."}

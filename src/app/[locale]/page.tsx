@@ -21,6 +21,14 @@ import { HomeFeaturesAnimated } from "@/components/home-features-animated";
 import { SpotlightContainer } from "@/components/ui/spotlight-container";
 
 const BASE_URL = "https://tuttilo.com";
+const DEFAULT_LOCALE = "en";
+
+function localeUrl(locale: string, path = "") {
+  if (locale === DEFAULT_LOCALE) {
+    return path ? `${BASE_URL}/${path}` : BASE_URL;
+  }
+  return path ? `${BASE_URL}/${locale}/${path}` : `${BASE_URL}/${locale}`;
+}
 
 export function generateStaticParams() {
   return locales.map((locale) => ({ locale }));
@@ -85,7 +93,7 @@ export default function HomePage() {
       position: i + 1,
       name: tNav(cat.id),
       description: tCommon("siteDescription"),
-      url: `${BASE_URL}/${locale}/${cat.slug}`,
+      url: localeUrl(locale, cat.slug),
     })),
   };
 
@@ -94,7 +102,7 @@ export default function HomePage() {
     "@type": "CollectionPage",
     name: `Tuttilo — ${t("title")}`,
     description: t("subtitle"),
-    url: `${BASE_URL}/${locale}`,
+    url: localeUrl(locale),
     mainEntity: {
       "@type": "ItemList",
       itemListElement: popularTools.slice(0, 8).map((tool, i) => {
@@ -103,7 +111,7 @@ export default function HomePage() {
           "@type": "ListItem",
           position: i + 1,
           name: tTools(`${tool.id}.name`),
-          url: `${BASE_URL}/${locale}/${cat?.slug ?? tool.category}/${tool.slug}`,
+          url: localeUrl(locale, `${cat?.slug ?? tool.category}/${tool.slug}`),
         };
       }),
     },
@@ -237,6 +245,18 @@ export default function HomePage() {
               );
             })}
           </SpotlightContainer>
+        </div>
+      </section>
+
+      <div className="gradient-divider" />
+
+      {/* SEO-rich crawlable text section */}
+      <section className="container mx-auto max-w-4xl px-4 py-12">
+        <h2 className="text-2xl font-bold text-center mb-6">{t("seoSection.title")}</h2>
+        <div className="space-y-4 text-muted-foreground text-sm leading-relaxed">
+          <p>{t("seoSection.p1")}</p>
+          <p>{t("seoSection.p2")}</p>
+          <p>{t("seoSection.p3")}</p>
         </div>
       </section>
 

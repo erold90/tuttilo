@@ -1,0 +1,1 @@
+{"q1":"Does it preserve formatting?","a1":"Text is extracted in reading order. Basic structure is preserved but complex layouts may differ.","q2":"Can I extract from scanned PDFs?","a2":"This tool extracts embedded text. For scanned PDFs, use our PDF OCR tool instead.","q3":"Is there a page limit?","a3":"No page limit. All pages are extracted at once."}

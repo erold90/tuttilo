@@ -1,0 +1,1 @@
+{"q1":"Quali formati posso unire?","a1":"File MP3, WAV, OGG e FLAC. Tutti i file vengono decodificati e uniti usando la Web Audio API.","q2":"Qual e il formato di output?","a2":"L'audio unito viene esportato in formato WAV per la massima qualita.","q3":"Posso cambiare l'ordine?","a3":"Si, usa il pulsante Sposta Su per riordinare le tracce prima di unirle."}

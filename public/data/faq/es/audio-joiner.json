@@ -1,0 +1,1 @@
+{"q1":"¿Qué formatos puedo fusionar?","a1":"Archivos MP3, WAV, OGG y FLAC. Todos los archivos se decodifican y unen usando la Web Audio API.","q2":"¿Cuál es el formato de salida?","a2":"El audio fusionado se exporta como archivo WAV para la máxima calidad.","q3":"¿Puedo cambiar el orden?","a3":"Sí, usa el botón Mover hacia arriba para reordenar pistas antes de fusionar."}

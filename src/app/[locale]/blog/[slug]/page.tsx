@@ -6,8 +6,47 @@ import { blogArticles, getArticleBySlug } from "@/lib/blog/articles";
 import { tools, categories } from "@/lib/tools/registry";
 import { notFound } from "next/navigation";
 import { CaretRight, House, Clock, User, ArrowRight } from "@phosphor-icons/react/dist/ssr";
-import { ArticleContent } from "@/components/blog/article-content";
+import { readStaticJsonWithFallback } from "@/lib/read-static-data";
 import { TranslatedTitle, TranslatedExcerpt } from "@/components/blog/translated-text";
+
+interface BlogArticleData {
+  [key: string]: { h: string; p: string } | string;
+}
+
+async function ServerArticleBody({ locale, slug }: { locale: string; slug: string }) {
+  const articleData = await readStaticJsonWithFallback<BlogArticleData>("blog", locale, `${slug}.json`);
+  if (!articleData) return null;
+
+  const sections: { h: string; p: string }[] = [];
+  for (let i = 1; i <= 20; i++) {
+    const s = articleData[`s${i}`];
+    if (!s || typeof s === "string" || !s.h || !s.p) break;
+    sections.push({ h: s.h, p: s.p });
+  }
+  if (sections.length === 0) return null;
+
+  return (
+    <div className="max-w-none space-y-10">
+      {sections.map((section, i) => (
+        <section key={i} className="space-y-4">
+          <h2 className="text-2xl font-bold tracking-tight text-foreground">
+            {section.h}
+          </h2>
+          <div className="space-y-4">
+            {section.p.split("\n\n").map((paragraph, j) => (
+              <p
+                key={j}
+                className="text-base leading-7 text-muted-foreground"
+              >
+                {paragraph}
+              </p>
+            ))}
+          </div>
+        </section>
+      ))}
+    </div>
+  );
+}
 
 const BASE_URL = "https://tuttilo.com";
 
@@ -188,9 +227,9 @@ export default async function BlogArticlePage({
         </div>
       </header>
 
-      {/* Article body - loaded client-side from static JSON */}
+      {/* Article body — server-rendered for crawlers */}
       <article className="container mx-auto max-w-4xl px-4">
-        <ArticleContent slug={slug} />
+        <ServerArticleBody locale={locale} slug={slug} />
       </article>
 
       {/* Related tools */}
@@ -234,10 +273,13 @@ export default async function BlogArticlePage({
             "@type": "Article",
             headline: title,
             description: excerpt,
+            image: `${BASE_URL}/og-image.png`,
             datePublished: article.date,
+            dateModified: article.date,
             author: {
               "@type": "Person",
               name: "Daniele Lo Re",
+              url: `${BASE_URL}/${locale === "en" ? "" : `${locale}/`}about`,
             },
             publisher: {
               "@type": "Organization",
@@ -252,6 +294,8 @@ export default async function BlogArticlePage({
               "@type": "WebPage",
               "@id": locale === "en" ? `${BASE_URL}/blog/${slug}` : `${BASE_URL}/${locale}/blog/${slug}`,
             },
+            inLanguage: locale,
+            wordCount: article.readingTime * 200,
           }),
         }}
       />

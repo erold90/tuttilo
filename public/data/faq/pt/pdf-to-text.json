@@ -1,0 +1,1 @@
+{"q1":"Funciona com PDFs escaneados?","a1":"Não, esta ferramenta extrai apenas texto digital. PDFs escaneados requerem OCR.","q2":"A formatação é preservada?","a2":"Quebras de linha e parágrafos são preservados, mas estilos e layout não.","q3":"Posso processar múltiplas páginas?","a3":"Sim, todo o texto de todas as páginas é extraído."}

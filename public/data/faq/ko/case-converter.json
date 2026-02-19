@@ -1,0 +1,1 @@
+{"q1":"어떤 텍스트 케이스를 지원하나요?","a1":"10가지 케이스를 지원합니다: UPPERCASE, lowercase, Title Case, Sentence case, camelCase, PascalCase, snake_case, kebab-case, dot.case, CONSTANT_CASE.","q2":"프로그래밍 변수명을 변환할 수 있나요?","a2":"네! 이 도구는 camelCase, snake_case 및 기타 형식의 단어 경계를 자동으로 감지한 후 원하는 케이스로 변환합니다.","q3":"텍스트가 어딘가에 저장되나요?","a3":"아니요. 모든 변환은 브라우저에서 로컬로 처리됩니다. 텍스트는 서버로 전송되지 않습니다."}

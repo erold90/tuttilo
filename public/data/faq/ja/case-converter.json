@@ -1,0 +1,1 @@
+{"q1":"どのようなテキストケースに対応していますか？","a1":"10種類のケースに対応しています：UPPERCASE、lowercase、Title Case、Sentence case、camelCase、PascalCase、snake_case、kebab-case、dot.case、CONSTANT_CASEです。","q2":"プログラミング変数名を変換できますか？","a2":"はい。このツールはcamelCase、snake_caseなどの形式で単語の境界を自動検出し、希望のケースに変換します。","q3":"テキストはどこかに保存されますか？","a3":"いいえ。すべての変換はブラウザ内でローカルに実行されます。テキストがサーバーに送信されることはありません。"}

@@ -21,7 +21,7 @@ export const blogArticles: BlogArticle[] = [
   {
     slug: "how-to-compress-pdf",
     category: "how-to",
-    relatedTools: ["compress-pdf", "pdf-editor", "merge-pdf"],
+    relatedTools: ["compress-pdf", "pdf-editor", "pdf-organizer"],
     author: "daniele",
     date: "2026-02-10",
     readingTime: 6,
@@ -29,7 +29,7 @@ export const blogArticles: BlogArticle[] = [
   {
     slug: "how-to-convert-images",
     category: "how-to",
-    relatedTools: ["image-converter", "compress-image", "resize-image"],
+    relatedTools: ["image-converter", "image-compressor", "image-resizer"],
     author: "daniele",
     date: "2026-02-10",
     readingTime: 7,
@@ -37,7 +37,7 @@ export const blogArticles: BlogArticle[] = [
   {
     slug: "how-to-edit-pdf",
     category: "how-to",
-    relatedTools: ["pdf-editor", "pdf-fill-form", "pdf-annotate"],
+    relatedTools: ["pdf-editor", "pdf-fill-sign", "pdf-organizer"],
     author: "daniele",
     date: "2026-02-09",
     readingTime: 8,
@@ -45,7 +45,7 @@ export const blogArticles: BlogArticle[] = [
   {
     slug: "how-to-remove-background",
     category: "how-to",
-    relatedTools: ["remove-background", "crop-image", "resize-image"],
+    relatedTools: ["image-editor", "image-cropper", "image-resizer"],
     author: "daniele",
     date: "2026-02-09",
     readingTime: 5,
@@ -53,7 +53,7 @@ export const blogArticles: BlogArticle[] = [
   {
     slug: "how-to-create-qr-code",
     category: "how-to",
-    relatedTools: ["qr-code", "barcode"],
+    relatedTools: ["qr-code", "barcode-generator"],
     author: "daniele",
     date: "2026-02-08",
     readingTime: 5,
@@ -69,7 +69,7 @@ export const blogArticles: BlogArticle[] = [
   {
     slug: "how-to-merge-pdf",
     category: "how-to",
-    relatedTools: ["merge-pdf", "split-pdf", "compress-pdf"],
+    relatedTools: ["pdf-organizer", "pdf-editor", "compress-pdf"],
     author: "daniele",
     date: "2026-02-07",
     readingTime: 5,
@@ -77,7 +77,7 @@ export const blogArticles: BlogArticle[] = [
   {
     slug: "how-to-resize-images",
     category: "how-to",
-    relatedTools: ["resize-image", "compress-image", "crop-image"],
+    relatedTools: ["image-resizer", "image-compressor", "image-cropper"],
     author: "daniele",
     date: "2026-02-07",
     readingTime: 6,
@@ -86,7 +86,7 @@ export const blogArticles: BlogArticle[] = [
   {
     slug: "jpeg-vs-png-vs-webp",
     category: "guide",
-    relatedTools: ["image-converter", "compress-image"],
+    relatedTools: ["image-converter", "image-compressor"],
     author: "daniele",
     date: "2026-02-06",
     readingTime: 8,
@@ -94,7 +94,7 @@ export const blogArticles: BlogArticle[] = [
   {
     slug: "pdf-vs-word",
     category: "guide",
-    relatedTools: ["pdf-to-word", "word-to-pdf"],
+    relatedTools: ["pdf-word", "pdf-editor"],
     author: "daniele",
     date: "2026-02-06",
     readingTime: 7,
@@ -102,7 +102,7 @@ export const blogArticles: BlogArticle[] = [
   {
     slug: "md5-vs-sha256",
     category: "guide",
-    relatedTools: ["md5-hash", "sha256-hash", "file-hash-checker"],
+    relatedTools: ["hash-generator", "file-hash-checker", "hmac-generator"],
     author: "daniele",
     date: "2026-02-05",
     readingTime: 8,
@@ -110,7 +110,7 @@ export const blogArticles: BlogArticle[] = [
   {
     slug: "rgb-vs-hex-vs-hsl",
     category: "guide",
-    relatedTools: ["hex-rgb-converter", "color-picker", "contrast-checker"],
+    relatedTools: ["hex-rgb", "color-picker", "contrast-checker"],
     author: "daniele",
     date: "2026-02-05",
     readingTime: 7,
@@ -126,7 +126,7 @@ export const blogArticles: BlogArticle[] = [
   {
     slug: "base64-encoding-guide",
     category: "guide",
-    relatedTools: ["base64-encode", "base64-image"],
+    relatedTools: ["base64", "image-converter"],
     author: "daniele",
     date: "2026-02-04",
     readingTime: 7,
@@ -135,7 +135,7 @@ export const blogArticles: BlogArticle[] = [
   {
     slug: "image-optimization-web",
     category: "best-practices",
-    relatedTools: ["compress-image", "resize-image", "image-converter"],
+    relatedTools: ["image-compressor", "image-resizer", "image-converter"],
     author: "daniele",
     date: "2026-02-03",
     readingTime: 9,
@@ -143,7 +143,7 @@ export const blogArticles: BlogArticle[] = [
   {
     slug: "file-security-privacy",
     category: "best-practices",
-    relatedTools: ["aes-encrypt", "file-hash-checker", "password-generator"],
+    relatedTools: ["aes-encrypt-decrypt", "file-hash-checker", "password-generator"],
     author: "daniele",
     date: "2026-02-03",
     readingTime: 8,
@@ -159,7 +159,7 @@ export const blogArticles: BlogArticle[] = [
   {
     slug: "seo-tools-guide",
     category: "best-practices",
-    relatedTools: ["meta-tag-generator", "open-graph-preview", "sitemap-generator"],
+    relatedTools: ["meta-tag-generator", "open-graph-generator", "sitemap-generator"],
     author: "daniele",
     date: "2026-02-02",
     readingTime: 8,
@@ -192,7 +192,7 @@ export const blogArticles: BlogArticle[] = [
   {
     slug: "privacy-browser-tools",
     category: "informational",
-    relatedTools: ["aes-encrypt", "password-generator", "file-hash-checker"],
+    relatedTools: ["aes-encrypt-decrypt", "password-generator", "file-hash-checker"],
     author: "daniele",
     date: "2026-01-31",
     readingTime: 8,
